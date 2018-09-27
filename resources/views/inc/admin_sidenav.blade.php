@@ -101,7 +101,7 @@
                         
                             <!--Submenu-->
                             <ul class="collapse">
-                                <li><a class="nav-link" href="trt">Category</a></li>
+                                <li><a class="nav-link" href="{{route('categories.index')}}">Category</a></li>
                                 <li><a class="nav-link" href="trt">Sub Category</a></li>
                                 <li><a class="nav-link" href="trt">Sub Sub Category</a></li>
                                 <li><a class="nav-link" href="trt">Brand</a></li>

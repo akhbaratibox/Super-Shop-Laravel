@@ -86,7 +86,10 @@
             
                         <!--Menu list item-->
                         <li>
-                            <a class="nav-link" href="{{route('home')}}">Dashboard</a>
+                            <a class="nav-link" href="{{route('home')}}">
+                                <i class="demo-pli-home"></i>
+                                <span class="menu-title">Dashboard</span>
+                            </a>
                         </li>
 
                         <li>

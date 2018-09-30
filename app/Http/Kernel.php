@@ -2,6 +2,9 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\IsAdmin;
+use App\Http\Middleware\IsVendor;
+use App\Http\Middleware\IsCustomer;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -51,6 +54,9 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'admin' => IsAdmin::class,
+        'vendor' => IsVendor::class,
+        'customer' => IsCustomer::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,

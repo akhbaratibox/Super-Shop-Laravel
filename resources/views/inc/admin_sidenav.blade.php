@@ -91,7 +91,8 @@
                                 <span class="menu-title">Dashboard</span>
                             </a>
                         </li>
-
+                        
+                        <!-- Product Menu -->
                         <li>
                             <a href="#">
                                 <i class="demo-pli-home"></i>
@@ -101,11 +102,21 @@
                         
                             <!--Submenu-->
                             <ul class="collapse">
-                                <li><a class="nav-link" href="{{route('categories.index')}}">Category</a></li>
-                                <li><a class="nav-link" href="trt">Sub Category</a></li>
-                                <li><a class="nav-link" href="trt">Sub Sub Category</a></li>
-                                <li><a class="nav-link" href="trt">Brand</a></li>
-                                <li><a class="nav-link" href="trt">Product</a></li>
+                                <li class="{{ areActiveRoutes(['categories.index', 'categories.create', 'categories.edit'])}}">
+                                    <a class="nav-link" href="{{route('categories.index')}}">Category</a>
+                                </li>
+                                <li class="{{ areActiveRoutes(['subcategories.index', 'subcategories.create', 'subcategories.edit'])}}">
+                                    <a class="nav-link" href="{{route('subcategories.index')}}">Sub Category</a>
+                                </li>
+                                <li class="{{ areActiveRoutes(['subsubcategories.index', 'subsubcategories.create', 'subsubcategories.edit'])}}">
+                                    <a class="nav-link" href="{{route('subsubcategories.index')}}">Sub Sub Category</a>
+                                </li>
+                                <li class="{{ areActiveRoutes(['brands.index', 'brands.create', 'brands.edit'])}}">
+                                    <a class="nav-link" href="{{route('brands.index')}}">Brand</a>
+                                </li>
+                                <li class="{{ areActiveRoutes(['products.index'])}}">
+                                    <a class="nav-link" href="{{route('products.index')}}">Product</a>
+                                </li>
                             </ul>
                         </li>
             

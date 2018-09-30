@@ -13,7 +13,7 @@ class SubSubCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('subsubcategories.index');
     }
 
     /**

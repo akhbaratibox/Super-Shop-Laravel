@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
 
 class CategoryController extends Controller
 {
@@ -13,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('categories.index');
+        $categories = Category::all();
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -23,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
@@ -34,7 +36,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category;
+        $category->name = $request->name;
+        $category->banner = $request->file('banner')->store('uploads');
+        $category->icon = $request->file('icon')->store('uploads');
+        
+        if($category->save()){
+            //flash('Category inserted successfully')->success();
+            return redirect()->route('categories.index');
+        }
+        else{
+            //flash('Something went wrong')->danger();
+            return redirect()->route('categories.index');   
+        }
     }
 
     /**
@@ -56,7 +70,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -68,7 +83,23 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->name = $request->name;
+        if($request->hasFile('banner')){
+            $category->banner = $request->file('banner')->store('uploads');
+        }
+        if($request->hasFile('icon')){
+            $category->icon = $request->file('icon')->store('uploads');
+        }
+
+        if($category->save()){
+            //flash('Category inserted successfully')->success();
+            return redirect()->route('categories.index');
+        }
+        else{
+            //flash('Something went wrong')->danger();
+            return redirect()->route('categories.index');   
+        }
     }
 
     /**
@@ -79,6 +110,13 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Category::destroy($id)){
+            //flash('Category inserted successfully')->success();
+            return redirect()->route('categories.index');
+        }
+        else{
+            //flash('Something went wrong')->danger();
+            return redirect()->route('categories.index');   
+        }
     }
 }

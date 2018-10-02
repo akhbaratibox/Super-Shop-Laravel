@@ -26,9 +26,14 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 
 	Route::resource('subcategories','SubCategoryController');
 	Route::get('/subcategories/destroy/{id}', 'SubCategoryController@destroy')->name('subcategories.destroy');
+	Route::post('/subcategories/get_subcategories_by_category', 'SubCategoryController@get_subcategories_by_category')->name('subcategories.get_subcategories_by_category');
 
 	Route::resource('subsubcategories','SubSubCategoryController');
+	Route::get('/subsubcategories/destroy/{id}', 'SubSubCategoryController@destroy')->name('subsubcategories.destroy');
+
 	Route::resource('brands','BrandController');
+	Route::get('/brands/destroy/{id}', 'BrandController@destroy')->name('brands.destroy');
+	
 	Route::resource('products','ProductController');
 });
 

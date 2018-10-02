@@ -102,6 +102,9 @@
                         
                             <!--Submenu-->
                             <ul class="collapse">
+                                <li class="{{ areActiveRoutes(['brands.index', 'brands.create', 'brands.edit'])}}">
+                                    <a class="nav-link" href="{{route('brands.index')}}">Brand</a>
+                                </li>
                                 <li class="{{ areActiveRoutes(['categories.index', 'categories.create', 'categories.edit'])}}">
                                     <a class="nav-link" href="{{route('categories.index')}}">Category</a>
                                 </li>
@@ -110,9 +113,6 @@
                                 </li>
                                 <li class="{{ areActiveRoutes(['subsubcategories.index', 'subsubcategories.create', 'subsubcategories.edit'])}}">
                                     <a class="nav-link" href="{{route('subsubcategories.index')}}">Sub Sub Category</a>
-                                </li>
-                                <li class="{{ areActiveRoutes(['brands.index', 'brands.create', 'brands.edit'])}}">
-                                    <a class="nav-link" href="{{route('brands.index')}}">Brand</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['products.index'])}}">
                                     <a class="nav-link" href="{{route('products.index')}}">Product</a>

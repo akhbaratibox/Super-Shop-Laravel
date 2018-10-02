@@ -15,7 +15,7 @@
         	@csrf
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">Category Name</label>
+                    <label class="col-sm-3 control-label" for="name">Name</label>
                     <div class="col-sm-9">
                         <input type="text" placeholder="Name" id="name" name="name" class="form-control" required value="{{$category->name}}">
                     </div>

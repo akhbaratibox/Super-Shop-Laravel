@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Brand;
 
 class BrandController extends Controller
 {
@@ -13,7 +14,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        return view('brands.index');
+        $brands = Brand::all();
+        return view('brands.index', compact('brands'));
     }
 
     /**
@@ -23,7 +25,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('brands.create');
     }
 
     /**
@@ -34,7 +36,18 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $brand = new Brand;
+        $brand->name = $request->name;
+        $brand->logo = $request->file('logo')->store('uploads');
+        
+        if($brand->save()){
+            //flash('Brand inserted successfully')->success();
+            return redirect()->route('brands.index');
+        }
+        else{
+            //flash('Something went wrong')->danger();
+            return redirect()->route('brands.index');   
+        }
     }
 
     /**
@@ -56,7 +69,8 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        //
+        $brand = Brand::findOrFail($id);
+        return view('brands.edit', compact('brand'));
     }
 
     /**
@@ -68,7 +82,20 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $brand = Brand::findOrFail($id);
+        $brand->name = $request->name;
+        if($request->hasFile('logo')){
+            $brand->logo = $request->file('logo')->store('uploads');
+        }
+
+        if($brand->save()){
+            //flash('Brand inserted successfully')->success();
+            return redirect()->route('brands.index');
+        }
+        else{
+            //flash('Something went wrong')->danger();
+            return redirect()->route('brands.index');   
+        }
     }
 
     /**
@@ -79,6 +106,13 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Brand::destroy($id)){
+            //flash('Brand inserted successfully')->success();
+            return redirect()->route('brands.index');
+        }
+        else{
+            //flash('Something went wrong')->danger();
+            return redirect()->route('brands.index');   
+        }
     }
 }

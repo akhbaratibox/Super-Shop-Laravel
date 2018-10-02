@@ -238,7 +238,7 @@ $(document).on('nifty.ready', function() {
     // Require Select2
     // https://github.com/select2/select2
     // =================================================================
-    $("#demo-select2").select2();
+    $(".demo-select2").select2();
 
 
 
@@ -248,8 +248,8 @@ $(document).on('nifty.ready', function() {
     // Require Select2
     // https://github.com/select2/select2
     // =================================================================
-    $("#demo-select2-placeholder").select2({
-        placeholder: "Select a state",
+    $(".demo-select2-placeholder").select2({
+        placeholder: "Select an option",
         allowClear: true
     });
 
@@ -260,7 +260,7 @@ $(document).on('nifty.ready', function() {
     // Require Select2
     // https://github.com/select2/select2
     // =================================================================
-    $("#demo-select2-multiple-selects").select2();
+    $(".demo-select2-multiple-selects").select2();
 
 
 

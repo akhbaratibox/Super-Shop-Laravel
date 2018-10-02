@@ -33,16 +33,66 @@
     <!--DataTables [ OPTIONAL ]-->
     <link href="{{ asset('plugins/datatables/media/css/dataTables.bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/datatables/extensions/Responsive/css/responsive.dataTables.min.css') }}" rel="stylesheet">
-
-    <!--Chosen [ OPTIONAL ]-->
-    <link href="{{ asset('plugins/chosen/chosen.min.css') }}" rel="stylesheet">
     
     <!--Select2 [ OPTIONAL ]-->
     <link href="{{ asset('plugins/select2/css/select2.min.css')}}" rel="stylesheet">
+    
+    <!--Chosen [ OPTIONAL ]-->
+    {{-- <link href="{{ asset('plugins/chosen/chosen.min.css')}}" rel="stylesheet"> --}}
 
 
     <!--Custom Stylesheet [ REQUIRED ]-->
     <link href="{{ asset('css/custom.css')}}" rel="stylesheet">
+
+
+    <!--JAVASCRIPT-->
+    <!--=================================================-->
+
+    <!--jQuery [ REQUIRED ]-->
+    <script src=" {{asset('js/jquery.min.js') }}"></script>
+
+
+    <!--BootstrapJS [ RECOMMENDED ]-->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+
+    <!--NiftyJS [ RECOMMENDED ]-->
+    <script src="{{ asset('js/nifty.min.js') }}"></script>
+
+    <!--Alerts [ SAMPLE ]-->
+    <script src="{{asset('js/demo/ui-alerts.js') }}"></script>
+
+    <!--DataTables [ OPTIONAL ]-->
+    <script src="{{asset('plugins/datatables/media/js/jquery.dataTables.js')}}"></script>
+    <script src="{{asset('plugins/datatables/media/js/dataTables.bootstrap.js')}}"></script>
+    <script src="{{asset('plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js')}}"></script>
+
+    <!--DataTables Sample [ SAMPLE ]-->
+    <script src="{{asset('js/demo/tables-datatables.js')}}"></script>
+
+    <!--Select2 [ OPTIONAL ]-->
+    <script src="{{asset('plugins/select2/js/select2.min.js')}}"></script>
+
+    <!--Chosen [ OPTIONAL ]-->
+    {{-- <script src="{{asset('plugins/chosen/chosen.jquery.min.js')}}"></script> --}}
+
+    <!--Form Component [ SAMPLE ]-->
+    <script src="{{asset('js/demo/form-component.js')}}"></script>
+
+
+    <script type="text/javascript">
+
+        $( document ).ready(function() {
+            //$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+            if($('.active-link').parent().parent().is('li')){
+                $('.active-link').parent().parent().addClass('active-sub');
+            }
+            if($('.active-link').parent().is('ul')){
+                $('.active-link').parent().addClass('in');
+            }
+        });
+
+    </script>
 
 </head>
 <body>
@@ -70,55 +120,6 @@
         @include('partials.modal')
 
     </div>
-
-        <!--JAVASCRIPT-->
-        <!--=================================================-->
-
-        <!--jQuery [ REQUIRED ]-->
-        <script src=" {{asset('js/jquery.min.js') }}"></script>
-
-
-        <!--BootstrapJS [ RECOMMENDED ]-->
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-
-
-        <!--NiftyJS [ RECOMMENDED ]-->
-        <script src="{{ asset('js/nifty.min.js') }}"></script>
-
-        <!--Alerts [ SAMPLE ]-->
-        <script src="{{asset('js/demo/ui-alerts.js') }}"></script>
-
-        <!--DataTables [ OPTIONAL ]-->
-        <script src="{{asset('plugins/datatables/media/js/jquery.dataTables.js')}}"></script>
-        <script src="{{asset('plugins/datatables/media/js/dataTables.bootstrap.js')}}"></script>
-        <script src="{{asset('plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js')}}"></script>
-
-        <!--DataTables Sample [ SAMPLE ]-->
-        <script src="{{asset('js/demo/tables-datatables.js')}}"></script>
-
-        <!--Chosen [ OPTIONAL ]-->
-        <script src="{{asset('plugins/chosen/chosen.jquery.min.js')}}"></script>
-
-        <!--Select2 [ OPTIONAL ]-->
-        <script src="{{asset('plugins/select2/js/select2.min.js')}}"></script>
-
-        <!--Form Component [ SAMPLE ]-->
-        <script src="{{asset('js/demo/form-component.js')}}"></script>
-
-
-        <script type="text/javascript">
-
-            $( document ).ready(function() {
-                //$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
-                if($('.active-link').parent().parent().is('li')){
-                    $('.active-link').parent().parent().addClass('active-sub');
-                }
-                if($('.active-link').parent().is('ul')){
-                    $('.active-link').parent().addClass('in');
-                }
-            });
-
-        </script>
 
         @yield('script')
 

@@ -21,7 +21,7 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Category Name</th>
+                    <th>Name</th>
                     <th>Banner</th>
                     <th>Icon</th>
                     <th width="10%">Options</th>

@@ -21,8 +21,8 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Sub Category Name</th>
-                    <th>Category Name</th>
+                    <th>Sub Category</th>
+                    <th>Category</th>
                     <th>Banner</th>
                     <th width="10%">Options</th>
                 </tr>

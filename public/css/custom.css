@@ -1,3 +1,7 @@
 #demo-dt-basic{
 	margin-top: 20px;
 }
+
+select + .select2-container{
+    width: 100% !important;
+}

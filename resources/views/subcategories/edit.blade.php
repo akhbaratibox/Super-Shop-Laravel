@@ -15,7 +15,7 @@
         	@csrf
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">Sub Category Name</label>
+                    <label class="col-sm-3 control-label" for="name">Name</label>
                     <div class="col-sm-9">
                         <input type="text" placeholder="Name" id="name" name="name" class="form-control" value="{{$subcategory->name}}" required>
                     </div>
@@ -23,7 +23,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="name">Select Category</label>
                     <div class="col-sm-9">
-                        <select id="demo-chosen-select" name="category_id" required class="form-control">
+                        <select name="category_id" required class="form-control demo-select2">
                             @foreach($categories as $category)
                                 <option value="{{$category->id}}" <?php if($subcategory->category_id == $category->id) echo "selected";?> >{{$category->name}}</option>
                             @endforeach

@@ -121,4 +121,11 @@ class SubCategoryController extends Controller
             return redirect()->route('subcategories.index');   
         }
     }
+
+
+    public function get_subcategories_by_category(Request $request)
+    {
+        $subcategories = SubCategory::where('category_id', $request->category_id)->get();
+        return $subcategories;
+    }
 }

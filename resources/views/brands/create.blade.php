@@ -5,12 +5,12 @@
 <div class="col-sm-6">
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">Category Information</h3>
+            <h3 class="panel-title">Brand Information</h3>
         </div>
 
         <!--Horizontal Form-->
         <!--===================================================-->
-        <form class="form-horizontal" action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
+        <form class="form-horizontal" action="{{ route('brands.store') }}" method="POST" enctype="multipart/form-data">
         	@csrf
             <div class="panel-body">
                 <div class="form-group">
@@ -20,15 +20,9 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="banner">Banner</label>
+                    <label class="col-sm-3 control-label" for="logo">Logo</label>
                     <div class="col-sm-9">
-                        <input type="file" id="banner" name="banner" class="form-control" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label" for="icon">Icon</label>
-                    <div class="col-sm-9">
-                        <input type="file" id="icon" name="icon" class="form-control" required>
+                        <input type="file" id="logo" name="logo" class="form-control" required>
                     </div>
                 </div>
             </div>

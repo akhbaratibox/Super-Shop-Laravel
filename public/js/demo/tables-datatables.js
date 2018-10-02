@@ -23,7 +23,7 @@ $(document).on('nifty.ready', function() {
 
     // Basic Data Tables with responsive plugin
     // -----------------------------------------------------------------
-    $('#demo-dt-basic').dataTable( {
+    $('.demo-dt-basic').dataTable( {
         "responsive": true,
         "language": {
             "paginate": {

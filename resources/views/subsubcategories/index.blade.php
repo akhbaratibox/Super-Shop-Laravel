@@ -17,7 +17,7 @@
         <h3 class="panel-title">Sub Sub Categories</h3>
     </div>
     <div class="panel-body">
-        <table id="demo-dt-basic" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>#</th>

@@ -27,9 +27,6 @@
     <!--Demo [ DEMONSTRATION ]-->
     <link href="{{ asset('css/demo/nifty-demo.min.css') }}" rel="stylesheet">
 
-    <!--Theme [ DEMONSTRATION ]-->
-    <link href="{{ asset('css/themes/type-full/theme-dark-full.min.css') }}" rel="stylesheet">
-
     <!--DataTables [ OPTIONAL ]-->
     <link href="{{ asset('plugins/datatables/media/css/dataTables.bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/datatables/extensions/Responsive/css/responsive.dataTables.min.css') }}" rel="stylesheet">
@@ -40,6 +37,14 @@
     <!--Chosen [ OPTIONAL ]-->
     {{-- <link href="{{ asset('plugins/chosen/chosen.min.css')}}" rel="stylesheet"> --}}
 
+    <!--Bootstrap Tags Input [ OPTIONAL ]-->
+    <link href="{{ asset('plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.css') }}" rel="stylesheet">
+
+    <!--Summernote [ OPTIONAL ]-->
+    <link href="{{ asset('plugins/summernote/summernote.min.css') }}" rel="stylesheet">
+
+    <!--Theme [ DEMONSTRATION ]-->
+    <link href="{{ asset('css/themes/type-full/theme-dark-full.min.css') }}" rel="stylesheet">
 
     <!--Custom Stylesheet [ REQUIRED ]-->
     <link href="{{ asset('css/custom.css')}}" rel="stylesheet">
@@ -77,7 +82,29 @@
     {{-- <script src="{{asset('plugins/chosen/chosen.jquery.min.js')}}"></script> --}}
 
     <!--Form Component [ SAMPLE ]-->
-    <script src="{{asset('js/demo/form-component.js')}}"></script>
+    {{-- <script src="{{asset('js/demo/form-component.js')}}"></script> --}}
+
+    <!--Summernote [ OPTIONAL ]-->
+    <script src="{{ asset('plugins/summernote/summernote.min.js') }}"></script>
+
+
+    <!--Form File Upload [ SAMPLE ]-->
+    <script src="{{ asset('js/demo/form-text-editor.js') }}"></script>
+
+    <!--Bootstrap Tags Input [ OPTIONAL ]-->
+    <script src="{{ asset('plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js')}}"></script>
+
+    <!--Bootstrap Validator [ OPTIONAL ]-->
+    <script src="{{ asset('plugins/bootstrap-validator/bootstrapValidator.min.js') }}"></script>
+
+    <!--Bootstrap Wizard [ OPTIONAL ]-->
+    <script src="{{ asset('plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
+
+    <!--Form Component [ SAMPLE ]-->
+    <script src="{{asset('js/demo/form-wizard.js')}}"></script>
+
+    <!--Custom JavaScript [ REQUIRED ]-->
+    <script src="{{ asset('js/custom.js')}}"></script>
 
 
     <script type="text/javascript">

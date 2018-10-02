@@ -14,8 +14,8 @@ $(document).on('nifty.ready', function() {
     // Require Summernote
     // http://hackerwins.github.io/summernote/
     // =================================================================
-    $('#demo-summernote, #demo-summernote-full-width').summernote({
-        height : '230px'
+    $('.demo-summernote, .demo-summernote-full-width').summernote({
+        height : '150px'
     });
 
 
@@ -26,7 +26,7 @@ $(document).on('nifty.ready', function() {
     // Require Summernote
     // http://hackerwins.github.io/summernote/
     // =================================================================
-    $('#demo-summernote-airmode').summernote({
+    $('.demo-summernote-airmode').summernote({
         airMode: true
     });
 
@@ -39,13 +39,13 @@ $(document).on('nifty.ready', function() {
     // Require Summernote
     // http://hackerwins.github.io/summernote/
     // =================================================================
-    $('#demo-edit-text').on('click', function(){
-        $('#demo-summernote-edit').summernote({focus: true});
+    $('.demo-edit-text').on('click', function(){
+        $('.demo-summernote-edit').summernote({focus: true});
     });
 
 
-    $('#demo-save-text').on('click', function(){
-        $('#demo-summernote-edit').summernote('destroy');
+    $('.demo-save-text').on('click', function(){
+        $('.demo-summernote-edit').summernote('destroy');
     });
 
 })

@@ -127,4 +127,20 @@ class SubSubCategoryController extends Controller
             return redirect()->route('subsubcategories.index');   
         }
     }
+
+    public function get_subsubcategories_by_subcategory(Request $request)
+    {
+        $subsubcategories = SubSubCategory::where('subcategory_id', $request->subcategory_id)->get();
+        return $subsubcategories;
+    }
+
+    public function get_brands_by_subsubcategory(Request $request)
+    {
+        $brand_ids = json_decode(SubSubCategory::findOrFail($request->subsubcategory_id)->brands);
+        $brands = array();
+        foreach ($brand_ids as $key => $brand_id) {
+            array_push($brands, Brand::findOrFail($brand_id));
+        }
+        return $brands;
+    }
 }

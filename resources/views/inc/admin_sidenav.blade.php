@@ -114,7 +114,7 @@
                                 <li class="{{ areActiveRoutes(['subsubcategories.index', 'subsubcategories.create', 'subsubcategories.edit'])}}">
                                     <a class="nav-link" href="{{route('subsubcategories.index')}}">Sub Sub Category</a>
                                 </li>
-                                <li class="{{ areActiveRoutes(['products.index'])}}">
+                                <li class="{{ areActiveRoutes(['products.index', 'products.create', 'products.edit'])}}">
                                     <a class="nav-link" href="{{route('products.index')}}">Product</a>
                                 </li>
                             </ul>

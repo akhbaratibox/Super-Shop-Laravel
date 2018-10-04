@@ -11,7 +11,7 @@
 
                     <!--Profile Widget-->
                     <!--================================-->
-                    <div id="mainnav-profile" class="mainnav-profile">
+                    {{-- <div id="mainnav-profile" class="mainnav-profile">
                         <div class="profile-wrap text-center">
                             <div class="pad-btm">
                                 <img class="img-circle img-md" src="{{ asset('img/profile-photos/1.png') }}" alt="Profile Picture">
@@ -38,7 +38,7 @@
                                 <i class="demo-pli-unlock icon-lg icon-fw"></i> Logout
                             </a>
                         </div>
-                    </div>
+                    </div> --}}
 
 
                     <!--Shortcut buttons-->
@@ -82,7 +82,7 @@
                     <ul id="mainnav-menu" class="list-group">
             
                         <!--Category name-->
-                        <li class="list-header">Navigation</li>
+                        {{-- <li class="list-header">Navigation</li> --}}
             
                         <!--Menu list item-->
                         <li>
@@ -118,6 +118,27 @@
                                     <a class="nav-link" href="{{route('products.index')}}">Product</a>
                                 </li>
                             </ul>
+                        </li>
+
+                        <li>
+                            <a class="nav-link" href="sa">
+                                <i class="demo-pli-home"></i>
+                                <span class="menu-title">Sales</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="nav-link" href="fs">
+                                <i class="demo-pli-home"></i>
+                                <span class="menu-title">Seller Management</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="nav-link" href="s">
+                                <i class="demo-pli-home"></i>
+                                <span class="menu-title">Customer Management</span>
+                            </a>
                         </li>
             
                     </ul>

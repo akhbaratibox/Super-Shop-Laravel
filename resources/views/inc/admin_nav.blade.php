@@ -7,7 +7,7 @@
         <!--================================-->
         <div class="navbar-header">
             <a href="{{route('home')}}" class="navbar-brand">
-                <img src="{{ asset('img/logo.png') }}" alt="Nifty Logo" class="brand-icon">
+                <img src="{{ asset('img/logo_shop.png') }}" alt="Nifty Logo" class="brand-icon">
                 <div class="brand-title">
                     <span class="brand-text">ActiveShop</span>
                 </div>

@@ -16,10 +16,10 @@
         <!--Nav Tabs-->
         <ul class="nav nav-tabs">
             <li class="active">
-                <a data-toggle="tab" href="#demo-lft-tab-1" aria-expanded="true">Admin Products <span class="badge badge-info">127</span></a>
+                <a data-toggle="tab" href="#demo-lft-tab-1" aria-expanded="true">Admin Products <span class="badge badge-info">{{count(\App\Product::where('added_by','admin')->get())}}</span></a>
             </li>
             <li class="">
-                <a data-toggle="tab" href="#demo-lft-tab-2" aria-expanded="false">Seller Products <span class="badge badge-purple">150</span></a>
+                <a data-toggle="tab" href="#demo-lft-tab-2" aria-expanded="false">Seller Products <span class="badge badge-purple">{{count(\App\Product::where('added_by','seller')->get())}}</span></a>
             </li>
         </ul>
 
@@ -32,14 +32,27 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Sub Category</th>
-                                    <th>Category</th>
-                                    <th>Banner</th>
+                                    <th>Name</th>
+                                    <th>Photo</th>
+                                    <th>Current Qty</th>
+                                    <th>Base Price</th>
                                     <th width="10%">Options</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                @foreach(\App\Product::where('added_by', 'admin')->get() as $key => $product)
+                                    <tr>
+                                        <td>{{$key+1}}</td>
+                                        <td>{{$product->name}}</td>
+                                        <td><img class="img-md" src="{{ asset($product->photo)}}" alt="Image"></td>
+                                        <td>{{$product->current_stock}}</td>
+                                        <td>{{number_format($product->unit_price,2)}}</td>
+                                        <td>
+                                            <a href="{{route('products.edit', $product->id)}}" class="btn btn-mint btn-icon"><i class="demo-psi-pen-5 icon-lg"></i></a>
+                                            <a onclick="confirm_modal('{{route('products.destroy', $product->id)}}');" class="btn btn-danger btn-icon"><i class="demo-psi-recycling icon-lg"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
 
@@ -53,14 +66,27 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Sub Category</th>
-                                    <th>Category</th>
-                                    <th>Banner</th>
+                                    <th>Name</th>
+                                    <th>Photo</th>
+                                    <th>Current Qty</th>
+                                    <th>Base Price</th>
                                     <th width="10%">Options</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                @foreach(\App\Product::where('added_by', 'seller')->get() as $key => $product)
+                                    <tr>
+                                        <td>{{$key+1}}</td>
+                                        <td>{{$product->name}}</td>
+                                        <td><img class="img-md" src="{{ asset($product->photo)}}" alt="Image"></td>
+                                        <td>{{$product->current_stock}}</td>
+                                        <td>{{number_format($product->unit_price,2)}}</td>
+                                        <td>
+                                            <a href="{{route('products.edit', $product->id)}}" class="btn btn-mint btn-icon"><i class="demo-psi-pen-5 icon-lg"></i></a>
+                                            <a onclick="confirm_modal('{{route('products.destroy', $product->id)}}');" class="btn btn-danger btn-icon"><i class="demo-psi-recycling icon-lg"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
 

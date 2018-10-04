@@ -80,14 +80,24 @@ $(document).on('nifty.ready', function() {
                 $('#demo-cls-wz').find('.next').hide();
                 $('#demo-cls-wz').find('.finish').show();
                 $('#demo-cls-wz').find('.finish').prop('disabled', false);
+                $('.finish').on('click', function(){
+                    $('#product_form').submit();
+                    var isValid = true;
+                    $(':input').each(function() {
+                        if ( $(this).val() == '' ){
+                            isValid = false;
+                        }
+                    });
+                    if(isValid){
+                        $('#product_form').submit();
+                    }
+                });
             } else {
                 $('#demo-cls-wz').find('.next').show();
                 $('#demo-cls-wz').find('.finish').hide().prop('disabled', true);
             }
         }
     });
-
-
 
 
     // BUBBLE NUMBERS

@@ -5,3 +5,7 @@
 select + .select2-container{
     width: 100% !important;
 }
+
+.brand-icon{
+	padding: 13px;
+}

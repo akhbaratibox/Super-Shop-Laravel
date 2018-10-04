@@ -46,6 +46,24 @@ class SubSubCategoryController extends Controller
         $subsubcategory->banner = $request->file('banner')->store('uploads');
         $subsubcategory->brands = json_encode($request->brands);
 
+        $options = array();
+
+        //$str = 'option_options_'.'1';
+        //dd($request[$str]);
+
+        if($request->has('options')){
+            foreach ($request->options as $key => $option) {
+                $str = 'choices_'.$option;
+                $item['name'] = $str;
+                $item['title'] = $request->option_title[$key];
+                $item['type'] = $request->option_type[$key];
+                $item['options'] = $request[$str];
+                array_push($options, $item);
+            }
+        }
+
+        $subsubcategory->options = json_encode($options);
+
         if($subsubcategory->save()){
             //flash('subcategory inserted successfully')->success();
             return redirect()->route('subsubcategories.index');
@@ -100,6 +118,23 @@ class SubSubCategoryController extends Controller
         
         $subsubcategory->brands = json_encode($request->brands);
 
+
+        $options = array();
+        
+        if($request->has('options')){
+            foreach ($request->options as $key => $option) {
+                $str = 'choices_'.$option;
+                $item['name'] = $str;
+                $item['title'] = $request->option_title[$key];
+                $item['type'] = $request->option_type[$key];
+                $item['options'] = $request[$str];
+                array_push($options, $item);
+            }
+        }
+
+        $subsubcategory->options = json_encode($options);
+
+
         if($subsubcategory->save()){
             //flash('subcategory inserted successfully')->success();
             return redirect()->route('subsubcategories.index');
@@ -142,5 +177,11 @@ class SubSubCategoryController extends Controller
             array_push($brands, Brand::findOrFail($brand_id));
         }
         return $brands;
+    }
+
+    public function get_price_variations_by_subsubcategory(Request $request)
+    {
+        $subsubcategory = SubSubCategory::findOrFail($request->subsubcategory_id);
+        return view('partials.price_variations', compact('subsubcategory'));
     }
 }

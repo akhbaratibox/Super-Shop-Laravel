@@ -45,6 +45,9 @@
 
     <!--Theme [ DEMONSTRATION ]-->
     <link href="{{ asset('css/themes/type-full/theme-dark-full.min.css') }}" rel="stylesheet">
+    
+    <!--Spectrum Stylesheet [ REQUIRED ]-->
+    <link href="{{ asset('css/spectrum.css')}}" rel="stylesheet">
 
     <!--Custom Stylesheet [ REQUIRED ]-->
     <link href="{{ asset('css/custom.css')}}" rel="stylesheet">
@@ -102,10 +105,12 @@
 
     <!--Form Component [ SAMPLE ]-->
     <script src="{{asset('js/demo/form-wizard.js')}}"></script>
+    
+    <!--Spectrum JavaScript [ REQUIRED ]-->
+    <script src="{{ asset('js/spectrum.js')}}"></script>
 
     <!--Custom JavaScript [ REQUIRED ]-->
     <script src="{{ asset('js/custom.js')}}"></script>
-
 
     <script type="text/javascript">
 

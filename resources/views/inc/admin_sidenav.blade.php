@@ -85,7 +85,7 @@
                         {{-- <li class="list-header">Navigation</li> --}}
             
                         <!--Menu list item-->
-                        <li>
+                        <li class="{{ areActiveRoutes(['home'])}}">
                             <a class="nav-link" href="{{route('home')}}">
                                 <i class="demo-pli-home"></i>
                                 <span class="menu-title">Dashboard</span>
@@ -128,10 +128,18 @@
                         </li>
 
                         <li>
-                            <a class="nav-link" href="fs">
+                            <a href="#">
                                 <i class="demo-pli-home"></i>
                                 <span class="menu-title">Seller Management</span>
+                                <i class="arrow"></i>
                             </a>
+                        
+                            <!--Submenu-->
+                            <ul class="collapse">
+                                <li class="{{ areActiveRoutes(['sellers.index', 'sellers.create', 'sellers.edit'])}}">
+                                    <a class="nav-link" href="{{route('sellers.index')}}">Sellers List</a>
+                                </li>
+                            </ul>
                         </li>
 
                         <li>

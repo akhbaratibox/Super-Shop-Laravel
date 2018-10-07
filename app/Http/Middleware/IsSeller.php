@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Auth;
 
-class IsVendor
+class IsSeller
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class IsVendor
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->user_type == 'vendor') {
+        if (Auth::check() && Auth::user()->user_type == 'seller') {
             return $next($request);
         }
         else{

@@ -39,5 +39,8 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	
 	Route::resource('products','ProductController');
 	Route::get('/products/destroy/{id}', 'ProductController@destroy')->name('products.destroy');
+
+	Route::resource('sellers','SellerController');
+	Route::get('/sellers/destroy/{id}', 'SellerController@destroy')->name('sellers.destroy');
 });
 

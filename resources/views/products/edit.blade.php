@@ -30,7 +30,8 @@
 		        </ul>
 
 		        <!--Form-->
-		        <form id="product_form" class="form-horizontal mar-top" action="{{route('products.store')}}" method="POST" enctype="multipart/form-data">
+		        <form id="product_form" class="form-horizontal mar-top" action="{{route('products.update', $product->id)}}" method="POST" enctype="multipart/form-data">
+		        	<input name="_method" type="hidden" value="PATCH">
 		        	@csrf
 		        	<input type="hidden" name="added_by" value="admin">
 		            <div class="panel-body">
@@ -41,7 +42,7 @@
 		                        <div class="form-group">
 		                            <label class="col-lg-3 control-label">Product Name</label>
 		                            <div class="col-lg-7">
-		                                <input type="text" class="form-control" name="name" placeholder="Product Name" required>
+		                                <input type="text" class="form-control" name="name" placeholder="Product Name" value="{{$product->name}}" required>
 		                            </div>
 		                        </div>
 		                        <div class="form-group" id="category">
@@ -50,7 +51,7 @@
 		                                <select class="form-control demo-select2-placeholder" name="category_id" id="category_id" required>
 		                                	<option>Select an option</option>
 		                                	@foreach($categories as $category)
-		                                	    <option value="{{$category->id}}">{{$category->name}}</option>
+		                                	    <option value="{{$category->id}}" <?php if($product->category_id == $category->id) echo "selected"; ?> >{{$category->name}}</option>
 		                                	@endforeach
 		                                </select>
 		                            </div>
@@ -82,13 +83,19 @@
 		                        <div class="form-group">
 		                            <label class="col-lg-3 control-label">Unit</label>
 		                            <div class="col-lg-7">
-		                                <input type="text" class="form-control" name="unit" placeholder="Unit (e.g. KG, Pc etc)" required>
+		                                <input type="text" class="form-control" name="unit" placeholder="Unit (e.g. KG, Pc etc)" value="{{$product->unit}}" required>
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
 		                            <label class="col-lg-3 control-label">Tags</label>
 		                            <div class="col-lg-7">
-		                                <input type="text" class="form-control" name="tags[]" placeholder="Type to add a tag" data-role="tagsinput">
+		                            	@php
+		                            		$str = '';
+		                            		foreach (json_decode($product->tags) as $key => $tag) {
+		                            			$str .= $tag;
+		                            		}
+		                            	@endphp
+		                                <input type="text" class="form-control" name="tags[]" id="tags" value="{{$str}}" placeholder="Type to add a tag" data-role="tagsinput">
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
@@ -100,7 +107,7 @@
 		                        <div class="form-group">
 		                            <label class="col-lg-3 control-label">Description</label>
 		                            <div class="col-lg-7">
-		                                <textarea class="demo-summernote" name="description"></textarea>
+		                                <textarea class="demo-summernote" name="description">{{$product->description}}</textarea>
 		                            </div>
 		                        </div>
 		                    </div>
@@ -110,42 +117,42 @@
 		                        <div class="form-group">
 		                            <label class="col-lg-3 control-label">Unit Price (Base Price)</label>
 		                            <div class="col-lg-7">
-		                                <input type="text" placeholder="Unit Price" name="unit_price" class="form-control">
+		                                <input type="text" placeholder="Unit Price" name="unit_price" class="form-control" value="{{$product->unit_price}}" required>
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
 		                            <label class="col-lg-3 control-label">Purchase Price</label>
 		                            <div class="col-lg-7">
-		                                <input type="number" min="0" step="0.01" placeholder="Purchase Price" name="purchase_price" class="form-control">
+		                                <input type="number" min="0" step="0.01" placeholder="Purchase Price" name="purchase_price" class="form-control" value="{{$product->purchase_price}}" required>
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
 		                            <label class="col-lg-3 control-label">Shipping Cost</label>
 		                            <div class="col-lg-7">
-		                                <input type="number" min="0" step="0.01" placeholder="Shipping Cost" name="shipping_cost" class="form-control">
+		                                <input type="number" min="0" step="0.01" placeholder="Shipping Cost" name="shipping_cost" class="form-control" value="{{$product->shipping_cost}}" required>
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
 		                            <label class="col-lg-3 control-label">Tax</label>
 		                            <div class="col-lg-7">
-		                                <input type="number" min="0" step="0.01" placeholder="Tax" name="tax" class="form-control">
+		                                <input type="number" min="0" step="0.01" placeholder="Tax" name="tax" class="form-control" value="{{$product->tax}}" required>
 		                            </div>
 		                            <div class="col-lg-1">
-		                                <select class="demo-select2" name="tax_type">
-		                                	<option value="amount">$</option>
-		                                	<option value="percent">%</option>
+		                                <select class="demo-select2" name="tax_type" required>
+		                                	<option value="amount" <?php if($product->tax_type == 'amount') echo "selected";?> >$</option>
+		                                	<option value="percent" <?php if($product->tax_type == 'percent') echo "selected";?> >%</option>
 		                                </select>
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
 		                            <label class="col-lg-3 control-label">Discount</label>
 		                            <div class="col-lg-7">
-		                                <input type="number" min="0" step="0.01" placeholder="Discount" name="discount" class="form-control">
+		                                <input type="number" min="0" step="0.01" placeholder="Discount" name="discount" class="form-control" value="{{$product->discount}}" required>
 		                            </div>
 		                            <div class="col-lg-1">
-		                                <select class="demo-select2" name="discount_type">
-		                                	<option value="amount">$</option>
-		                                	<option value="percent">%</option>
+		                                <select class="demo-select2" name="discount_type" required>
+		                                	<option value="amount" <?php if($product->discount_type == 'amount') echo "selected";?> >$</option>
+		                                	<option value="percent" <?php if($product->discount_type == 'percent') echo "selected";?> >%</option>
 		                                </select>
 		                            </div>
 		                        </div>
@@ -153,18 +160,70 @@
 
 		                    <!--Third tab-->
 		                    <div id="demo-cls-tab3" class="tab-pane">
-		                        
-		                        <div class="form-group increment">
-		                            <label class="col-sm-3 control-label">Colors</label>
-		                            <div class="col-sm-3">
-		                                <input type="text" name="colors[]" class="form-control color" value="#000" required>
-		                            </div>
-		                            <div class="col-sm-3">
-		                                <button class="btn btn-primary add-colors" type="button" style="margin-left:10px">Add More Color Options</button>
-		                            </div>
-		                        </div>
+		                       
+								@foreach(json_decode($product->colors) as $key=> $color)
+									@if($key == 0)
+										<div class="form-group increment">
+										    <label class="col-sm-3 control-label">Colors</label>
+										    <div class="col-sm-3">
+										        <input type="text" name="colors[]" class="form-control color" value="{{$color}}" required>
+										    </div>
+										    <div class="col-sm-3">
+										        <button class="btn btn-primary add-colors" type="button" style="margin-left:10px">Add More Color Options</button>
+										    </div>
+										</div>
+									@else
+				                        <div class="form-group control-group">
+				                        	<label class="col-sm-3 control-label"></label>
+				                        	<div class="col-sm-3">
+				                        		<input type="text" name="colors[]" value="{{$color}}" class="form-control color" required>
+				                        	</div>
+				                        	<div class="col-sm-3">
+				                        		<button class="btn btn-danger btn-circle btn-sm remove-colors" type="button" style="margin-left:10px"><i class="glyphicon glyphicon-remove"></i>
+				                        		</button>
+				                        	</div>
+				                        </div>
+			                        @endif
+		                        @endforeach
 								
 								<div class="customer_choice_options" id="customer_choice_options">
+									
+									@foreach(json_decode($product->subsubcategory->options) as $key=> $option)
+									    <div class="form-group clearfix">
+									        <div class="col-sm-3 text-right">
+									            <label class="control-label">{{$option->title}}</label>
+									        </div>
+									        <div class="col-sm-6">
+									            <div class="customer_choice_options_types_wrap">
+									                <div class="customer_choice_options_types_wrap_child">
+									                    @if($option->type == 'radio' || $option->type == 'select')
+									                        @foreach($option->options as $options)
+									                            <div class="form-group clearfix">
+									                                <div class="col-sm-3">
+									                                    <input class="form-control" type="text" value="{{$options}}" disabled>
+									                                </div>
+									                                <div class="col-sm-3">
+									                                	@php
+									                                		$str_price = $option->name.'_'.$options.'_price';
+									                                		$str_variation = $option->name.'_'.$options.'_variation';
+									                                	@endphp
+									                                    <input class="form-control" type="number" min="0" step="0.01" name="{{$option->name}}_{{$options}}_price" value="{{json_decode($product->price_variations)->$str_price}}" required>
+									                                </div>
+									                                <div class="col-sm-3">
+									                                    <select class="form-control demo-select2" name="{{$option->name}}_{{$options}}_variation">
+									                                        <option value="increase" <?php if(json_decode($product->price_variations)->$str_variation == 'increase') echo "selected";?> >Increase</option>
+									                                        <option value="decrease" <?php if(json_decode($product->price_variations)->$str_variation == 'decrease') echo "selected";?> >Decrease</option>
+									                                    </select>
+									                                </div>
+									                            </div>
+									                        @endforeach
+
+									                    @endif
+									                </div>
+									            </div>
+									        </div>
+									    </div>
+									@endforeach
 
 								</div>
 
@@ -193,6 +252,8 @@
 @section('script')
 
 <script type="text/javascript">
+
+	var i = 0;
 
 	$('.color').spectrum({
 		preferredFormat: "hex",
@@ -243,8 +304,15 @@
 		            value: data[i].id,
 		            text: data[i].name
 		        }));
-		        $('.demo-select2').select2();
 		    }
+		    $("#subcategory_id > option").each(function() {
+		        if(this.value == '{{$product->subcategory_id}}'){
+		            $("#subcategory_id").val(this.value).change();
+		        }
+		    });
+
+		    $('.demo-select2').select2();
+
 		    get_subsubcategories_by_subcategory();
 		});
 	}
@@ -258,8 +326,15 @@
 		            value: data[i].id,
 		            text: data[i].name
 		        }));
-		        $('.demo-select2').select2();
 		    }
+		    $("#subsubcategory_id > option").each(function() {
+		        if(this.value == '{{$product->subsubcategory_id}}'){
+		            $("#subsubcategory_id").val(this.value).change();
+		        }
+		    });
+
+		    $('.demo-select2').select2();
+
 		    get_brands_by_subsubcategory();
 		});
 	}
@@ -273,10 +348,16 @@
 		            value: data[i].id,
 		            text: data[i].name
 		        }));
-		        $('.demo-select2').select2();
 		    }
+		    $("#brand_id > option").each(function() {
+		        if(this.value == '{{$product->brand_id}}'){
+		            $("#brand_id").val(this.value).change();
+		        }
+		    });
+
+		    $('.demo-select2').select2();
+
 		});
-		get_price_variations_by_subsubcategory();
 	}
 
 	function get_price_variations_by_subsubcategory(){
@@ -287,7 +368,7 @@
 	}
 
 	$(document).ready(function(){
-	    //get_subcategories_by_category();
+	    get_subcategories_by_category();
 	});
 
 	$('#category_id').on('change', function() {
@@ -299,8 +380,11 @@
 	});
 
 	$('#subsubcategory_id').on('change', function() {
+		if(i>1){
+			get_price_variations_by_subsubcategory();
+		}
 	    get_brands_by_subsubcategory();
-	    get_price_variations_by_subsubcategory();
+	    i++;
 	});
 
 

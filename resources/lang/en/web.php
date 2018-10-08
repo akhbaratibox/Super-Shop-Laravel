@@ -8,5 +8,5 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'dashboard' => 'English Dashboard',
+    'dashboard' => 'Dashboard',
 ];

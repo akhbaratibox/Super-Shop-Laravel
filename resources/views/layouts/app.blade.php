@@ -24,6 +24,9 @@
     <!--Nifty Premium Icon [ DEMONSTRATION ]-->
     <link href="{{ asset('css/demo/nifty-demo-icons.min.css')}}" rel="stylesheet">
 
+    <!--Font Awesome [ OPTIONAL ]-->
+    <link href="{{ asset('plugins/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+
     <!--Demo [ DEMONSTRATION ]-->
     <link href="{{ asset('css/demo/nifty-demo.min.css') }}" rel="stylesheet">
 
@@ -84,12 +87,6 @@
 
     <!--Select2 [ OPTIONAL ]-->
     <script src="{{ asset('plugins/select2/js/select2.min.js')}}"></script>
-
-    <!--Chosen [ OPTIONAL ]-->
-    {{-- <script src="{{asset('plugins/chosen/chosen.jquery.min.js')}}"></script> --}}
-
-    <!--Form Component [ SAMPLE ]-->
-    {{-- <script src="{{asset('js/demo/form-component.js')}}"></script> --}}
 
     <!--Summernote [ OPTIONAL ]-->
     <script src="{{ asset('plugins/summernote/summernote.min.js') }}"></script>

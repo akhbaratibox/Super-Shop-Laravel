@@ -18,7 +18,9 @@ $(document).on('nifty.ready', function() {
         height : '150px'
     });
 
-
+    $('.demo-summernote-long, .demo-summernote-full-width').summernote({
+        height : '400px'
+    });
 
 
     // SUMMERNOTE AIR-MODE

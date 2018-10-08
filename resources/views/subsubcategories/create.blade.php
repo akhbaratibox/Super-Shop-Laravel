@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">Select Category</label>
+                    <label class="col-sm-3 control-label" for="name">Category</label>
                     <div class="col-sm-9">
                         <select name="category_id" id="category_id" class="form-control demo-select2-placeholder" required>
                             @foreach($categories as $category)
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">Select Sub Category</label>
+                    <label class="col-sm-3 control-label" for="name">Sub Category</label>
                     <div class="col-sm-9">
                         <select name="sub_category_id" id="sub_category_id" class="form-control demo-select2-placeholder" required>
                             

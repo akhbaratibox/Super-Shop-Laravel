@@ -186,4 +186,10 @@ class ProductController extends Controller
             return back();  
         }
     }
+
+    public function get_products_by_subsubcategory(Request $request)
+    {
+        $products = Product::where('subsubcategory_id', $request->subsubcategory_id)->get();
+        return $products;
+    }
 }

@@ -40,8 +40,17 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	
 	Route::resource('products','ProductController');
 	Route::get('/products/destroy/{id}', 'ProductController@destroy')->name('products.destroy');
+	Route::post('/products/get_products_by_subsubcategory', 'ProductController@get_products_by_subsubcategory')->name('products.get_products_by_subsubcategory');
 
 	Route::resource('sellers','SellerController');
 	Route::get('/sellers/destroy/{id}', 'SellerController@destroy')->name('sellers.destroy');
+
+	Route::get('/newsletter', 'NewsletterController@index')->name('newsletters.index');
+	Route::post('/newsletter/send', 'NewsletterController@send')->name('newsletters.send');
+
+	Route::resource('messages','ContactMessageController');
+
+	Route::resource('stocks','ProductStockController');
+	Route::post('stocks/sku_combinations','ProductStockController@sku_combinations')->name('stocks.sku_combinations');
 });
 

@@ -95,7 +95,7 @@
                         <!-- Product Menu -->
                         <li>
                             <a href="#">
-                                <i class="demo-pli-home"></i>
+                                <i class="fa fa-shopping-cart"></i>
                                 <span class="menu-title">Products</span>
                                 <i class="arrow"></i>
                             </a>
@@ -115,21 +115,24 @@
                                     <a class="nav-link" href="{{route('subsubcategories.index')}}">Sub Sub Category</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['products.index', 'products.create', 'products.edit'])}}">
-                                    <a class="nav-link" href="{{route('products.index')}}">Product</a>
+                                    <a class="nav-link" href="{{route('products.index')}}">All Product</a>
                                 </li>
+                                <li class="{{ areActiveRoutes(['stocks.index', 'stocks.create', 'stocks.edit'])}}">
+                                    <a class="nav-link" href="{{route('stocks.index')}}">Product Stock</a>
+                                </li> 
                             </ul>
                         </li>
 
                         <li>
                             <a class="nav-link" href="sa">
-                                <i class="demo-pli-home"></i>
+                                <i class="fa fa-usd"></i>
                                 <span class="menu-title">Sales</span>
                             </a>
                         </li>
 
                         <li>
                             <a href="#">
-                                <i class="demo-pli-home"></i>
+                                <i class="fa fa-user-plus"></i>
                                 <span class="menu-title">Seller Management</span>
                                 <i class="arrow"></i>
                             </a>
@@ -144,9 +147,27 @@
 
                         <li>
                             <a class="nav-link" href="s">
-                                <i class="demo-pli-home"></i>
+                                <i class="fa fa-users"></i>
                                 <span class="menu-title">Customer Management</span>
                             </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-envelope"></i>
+                                <span class="menu-title">Messaging</span>
+                                <i class="arrow"></i>
+                            </a>
+                        
+                            <!--Submenu-->
+                            <ul class="collapse">
+                                <li class="{{ areActiveRoutes(['newsletters.index'])}}">
+                                    <a class="nav-link" href="{{route('newsletters.index')}}">Newsletters</a>
+                                </li>
+                                <li class="{{ areActiveRoutes(['messages.index'])}}">
+                                    <a class="nav-link" href="{{route('messages.index')}}">Contact Messages</a>
+                                </li>
+                            </ul>
                         </li>
             
                     </ul>

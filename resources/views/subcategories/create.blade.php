@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">Select Category</label>
+                    <label class="col-sm-3 control-label" for="name">Category</label>
                     <div class="col-sm-9">
                         <select name="category_id" required class="form-control demo-select2-placeholder">
                             @foreach($categories as $category)

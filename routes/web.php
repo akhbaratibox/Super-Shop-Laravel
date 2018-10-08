@@ -19,6 +19,7 @@ Auth::routes();
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/language', 'languageController@changeLanguage')->name('language.change');
 
 Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function(){
 	Route::resource('categories','CategoryController');

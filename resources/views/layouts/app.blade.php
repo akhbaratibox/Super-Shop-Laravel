@@ -27,6 +27,10 @@
     <!--Demo [ DEMONSTRATION ]-->
     <link href="{{ asset('css/demo/nifty-demo.min.css') }}" rel="stylesheet">
 
+    <!--Animate.css [ OPTIONAL ]-->
+    <link href="{{ asset('plugins/animate-css/animate.min.css')}}" rel="stylesheet">
+
+
     <!--DataTables [ OPTIONAL ]-->
     <link href="{{ asset('plugins/datatables/media/css/dataTables.bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/datatables/extensions/Responsive/css/responsive.dataTables.min.css') }}" rel="stylesheet">
@@ -68,18 +72,18 @@
     <script src="{{ asset('js/nifty.min.js') }}"></script>
 
     <!--Alerts [ SAMPLE ]-->
-    <script src="{{asset('js/demo/ui-alerts.js') }}"></script>
+    <script src="{{ asset('js/demo/ui-alerts.js') }}"></script>
 
     <!--DataTables [ OPTIONAL ]-->
-    <script src="{{asset('plugins/datatables/media/js/jquery.dataTables.js')}}"></script>
-    <script src="{{asset('plugins/datatables/media/js/dataTables.bootstrap.js')}}"></script>
-    <script src="{{asset('plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{ asset('plugins/datatables/media/js/jquery.dataTables.js')}}"></script>
+    <script src="{{ asset('plugins/datatables/media/js/dataTables.bootstrap.js')}}"></script>
+    <script src="{{ asset('plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js')}}"></script>
 
     <!--DataTables Sample [ SAMPLE ]-->
-    <script src="{{asset('js/demo/tables-datatables.js')}}"></script>
+    <script src="{{ asset('js/demo/tables-datatables.js')}}"></script>
 
     <!--Select2 [ OPTIONAL ]-->
-    <script src="{{asset('plugins/select2/js/select2.min.js')}}"></script>
+    <script src="{{ asset('plugins/select2/js/select2.min.js')}}"></script>
 
     <!--Chosen [ OPTIONAL ]-->
     {{-- <script src="{{asset('plugins/chosen/chosen.jquery.min.js')}}"></script> --}}
@@ -122,12 +126,45 @@
             if($('.active-link').parent().is('ul')){
                 $('.active-link').parent().addClass('in');
             }
+
+            $('#language').on('change', function(){
+                var locale = $('#language').val();
+                $.post('{{ route('language.change') }}',{_token:'{{ csrf_token() }}', locale:locale}, function(data){
+                    location.reload();
+                });
+            });
+
         });
 
     </script>
 
 </head>
 <body>
+
+    @foreach (session('flash_notification', collect())->toArray() as $message)
+        <script type="text/javascript">
+            $(document).on('nifty.ready', function() {
+                showAlert('{{ $message['level'] }}', '{{ $message['message'] }}');
+                function showAlert(type, message){
+                    $.niftyNoty({
+                        type: type,
+                        container: 'floating',
+                        html: message,
+                        closeBtn: true,
+                        floating: {
+                            position: 'top-right',
+                            animationIn: 'fadeIn',
+                            animationOut: 'fadeOut'
+                        },
+                        focus: true,
+                        timer: 3000
+                    });
+                }
+            });
+        </script>
+    @endforeach
+
+
     <div id="container" class="effect aside-float aside-bright mainnav-lg">
         
         @include('inc.admin_nav')

@@ -78,7 +78,12 @@ class ProductController extends Controller
         $product->price_variations = json_encode($price_variations);
 
         if($product->save()){
+            flash('Product has been inserted successfully')->success();
             return view('products.index');
+        }
+        else{
+            flash('Something went wrong')->danger();
+            return back();
         }
     }
 
@@ -155,7 +160,12 @@ class ProductController extends Controller
         $product->price_variations = json_encode($price_variations);
 
         if($product->save()){
+            flash('Product has been updated successfully')->success();
             return view('products.index');
+        }
+        else{
+            flash('Something went wrong')->danger();
+            return back();
         }
     }
 
@@ -168,12 +178,12 @@ class ProductController extends Controller
     public function destroy($id)
     {
         if(Product::destroy($id)){
-            //flash('Category inserted successfully')->success();
+            flash('Product has been deleted successfully')->success();
             return redirect()->route('products.index');
         }
         else{
-            //flash('Something went wrong')->danger();
-            return redirect()->route('products.index');   
+            flash('Something went wrong')->danger();
+            return back();  
         }
     }
 }

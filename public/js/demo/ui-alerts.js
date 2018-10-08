@@ -8,7 +8,6 @@
 
 $(document).on('nifty.ready', function() {
 
-
     var alert_preview = $("#demo-preview-alert").children(".alert"),
         alert_thumb = $(".demo-thumb-alert"),
         select_layout = $("#demo-alert-layout"),

@@ -41,12 +41,12 @@ class BrandController extends Controller
         $brand->logo = $request->file('logo')->store('uploads');
         
         if($brand->save()){
-            //flash('Brand inserted successfully')->success();
+            flash('Brand has been inserted successfully')->success();
             return redirect()->route('brands.index');
         }
         else{
-            //flash('Something went wrong')->danger();
-            return redirect()->route('brands.index');   
+            flash('Something went wrong')->danger();
+            return back();  
         }
     }
 
@@ -89,12 +89,12 @@ class BrandController extends Controller
         }
 
         if($brand->save()){
-            //flash('Brand inserted successfully')->success();
+            flash('Brand has been updated successfully')->success();
             return redirect()->route('brands.index');
         }
         else{
-            //flash('Something went wrong')->danger();
-            return redirect()->route('brands.index');   
+            flash('Something went wrong')->danger();
+            return back(); 
         }
     }
 
@@ -107,12 +107,12 @@ class BrandController extends Controller
     public function destroy($id)
     {
         if(Brand::destroy($id)){
-            //flash('Brand inserted successfully')->success();
+            flash('Brand has been deleted successfully')->success();
             return redirect()->route('brands.index');
         }
         else{
-            //flash('Something went wrong')->danger();
-            return redirect()->route('brands.index');   
+            flash('Something went wrong')->danger();
+            return back(); 
         }
     }
 }

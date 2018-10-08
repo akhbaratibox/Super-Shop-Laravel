@@ -44,12 +44,12 @@ class SubCategoryController extends Controller
         $subcategory->banner = $request->file('banner')->store('uploads');
 
         if($subcategory->save()){
-            //flash('subcategory inserted successfully')->success();
+            flash('Subcategory has been inserted successfully')->success();
             return redirect()->route('subcategories.index');
         }
         else{
-            //flash('Something went wrong')->danger();
-            return redirect()->route('subcategories.index');   
+            flash('Something went wrong')->danger();
+            return back();   
         }
     }
 
@@ -95,12 +95,12 @@ class SubCategoryController extends Controller
         }
 
         if($subcategory->save()){
-            //flash('subcategory inserted successfully')->success();
+            flash('Subcategory has been updated successfully')->success();
             return redirect()->route('subcategories.index');
         }
         else{
-            //flash('Something went wrong')->danger();
-            return redirect()->route('subcategories.index');   
+            flash('Something went wrong')->danger();
+            return back();    
         }
     }
 
@@ -113,12 +113,12 @@ class SubCategoryController extends Controller
     public function destroy($id)
     {
         if(SubCategory::destroy($id)){
-            //flash('Category inserted successfully')->success();
+            flash('Subcategory has been deleted successfully')->success();
             return redirect()->route('subcategories.index');
         }
         else{
-            //flash('Something went wrong')->danger();
-            return redirect()->route('subcategories.index');   
+            flash('Something went wrong')->danger();
+            return back();    
         }
     }
 

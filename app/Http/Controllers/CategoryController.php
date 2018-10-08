@@ -42,12 +42,12 @@ class CategoryController extends Controller
         $category->icon = $request->file('icon')->store('uploads');
         
         if($category->save()){
-            //flash('Category inserted successfully')->success();
+            flash('Category has been inserted successfully')->success();
             return redirect()->route('categories.index');
         }
         else{
-            //flash('Something went wrong')->danger();
-            return redirect()->route('categories.index');   
+            flash('Something went wrong')->danger();
+            return back(); 
         }
     }
 
@@ -93,12 +93,12 @@ class CategoryController extends Controller
         }
 
         if($category->save()){
-            //flash('Category inserted successfully')->success();
+            flash('Category has been updated successfully')->success();
             return redirect()->route('categories.index');
         }
         else{
-            //flash('Something went wrong')->danger();
-            return redirect()->route('categories.index');   
+            flash('Something went wrong')->danger();
+            return back();   
         }
     }
 
@@ -111,12 +111,12 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         if(Category::destroy($id)){
-            //flash('Category inserted successfully')->success();
+            flash('Category has been deleted successfully')->success();
             return redirect()->route('categories.index');
         }
         else{
-            //flash('Something went wrong')->danger();
-            return redirect()->route('categories.index');   
+            flash('Something went wrong')->danger();
+            return back();   
         }
     }
 }

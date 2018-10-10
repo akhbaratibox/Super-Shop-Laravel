@@ -14,17 +14,17 @@
 		        <ul class="wz-nav-off wz-icon-inline wz-classic">
 		            <li class="col-xs-4 bg-info active">
 		                <a data-toggle="tab" href="#demo-cls-tab1" aria-expanded="true">
-		                    Product Details
+		                    {{__('web.product_details')}}
 		                </a>
 		            </li>
 		            <li class="col-xs-4 bg-info">
 		                <a data-toggle="tab" href="#demo-cls-tab2" aria-expanded="false">
-		                	Business Details
+		                	{{__('web.business_details')}}
 		                </a>
 		            </li>
 		            <li class="col-xs-4 bg-info">
 		                <a data-toggle="tab" href="#demo-cls-tab3" aria-expanded="false">
-		                    Customer Choice Options
+		                    {{__('web.customer_choice_options')}}
 		                </a>
 		            </li>
 		        </ul>
@@ -39,16 +39,15 @@
 		                    <!--First tab-->
 		                    <div id="demo-cls-tab1" class="tab-pane active in">
 		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">Product Name</label>
+		                            <label class="col-lg-3 control-label">{{__('web.product_name')}}</label>
 		                            <div class="col-lg-7">
-		                                <input type="text" class="form-control" name="name" placeholder="Product Name" required>
+		                                <input type="text" class="form-control" name="name" placeholder="{{__('web.product_name')}}" required>
 		                            </div>
 		                        </div>
 		                        <div class="form-group" id="category">
-		                            <label class="col-lg-3 control-label">Category</label>
+		                            <label class="col-lg-3 control-label">{{__('web.category')}}</label>
 		                            <div class="col-lg-7">
 		                                <select class="form-control demo-select2-placeholder" name="category_id" id="category_id" required>
-		                                	<option>Select an option</option>
 		                                	@foreach($categories as $category)
 		                                	    <option value="{{$category->id}}">{{$category->name}}</option>
 		                                	@endforeach
@@ -56,7 +55,7 @@
 		                            </div>
 		                        </div>
 		                        <div class="form-group" id="subcategory">
-		                            <label class="col-lg-3 control-label">Sub Category</label>
+		                            <label class="col-lg-3 control-label">{{__('web.subcategory')}}</label>
 		                            <div class="col-lg-7">
 		                                <select class="form-control demo-select2-placeholder" name="subcategory_id" id="subcategory_id" required>
 		                                	
@@ -64,7 +63,7 @@
 		                            </div>
 		                        </div>
 		                        <div class="form-group" id="subsubcategory">
-		                            <label class="col-lg-3 control-label">Sub Sub Category</label>
+		                            <label class="col-lg-3 control-label">{{__('web.subsubcategory')}}</label>
 		                            <div class="col-lg-7">
 		                                <select class="form-control demo-select2-placeholder" name="subsubcategory_id" id="subsubcategory_id" required>
 		                                	
@@ -72,7 +71,7 @@
 		                            </div>
 		                        </div>
 		                        <div class="form-group" id="brand">
-		                            <label class="col-lg-3 control-label">Brand</label>
+		                            <label class="col-lg-3 control-label">{{__('web.brand')}}</label>
 		                            <div class="col-lg-7">
 		                                <select class="form-control demo-select2-placeholder" name="brand_id" id="brand_id" required>
 		                                	
@@ -80,25 +79,25 @@
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">Unit</label>
+		                            <label class="col-lg-3 control-label">{{__('web.unit')}}</label>
 		                            <div class="col-lg-7">
 		                                <input type="text" class="form-control" name="unit" placeholder="Unit (e.g. KG, Pc etc)" required>
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">Tags</label>
+		                            <label class="col-lg-3 control-label">{{__('web.tags')}}</label>
 		                            <div class="col-lg-7">
 		                                <input type="text" class="form-control" name="tags[]" placeholder="Type to add a tag" data-role="tagsinput">
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">Product Image</label>
+		                            <label class="col-lg-3 control-label">{{__('web.product_image')}}</label>
 		                            <div class="col-lg-7">
 		                                <input type="file" class="form-control" name="photo" required>
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">Description</label>
+		                            <label class="col-lg-3 control-label">{{__('web.description')}}</label>
 		                            <div class="col-lg-7">
 		                                <textarea class="demo-summernote" name="description"></textarea>
 		                            </div>
@@ -108,27 +107,27 @@
 		                    <!--Second tab-->
 		                    <div id="demo-cls-tab2" class="tab-pane fade">
 		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">Unit Price (Base Price)</label>
+		                            <label class="col-lg-3 control-label">{{__('web.unit_price')}}</label>
 		                            <div class="col-lg-7">
-		                                <input type="text" placeholder="Unit Price" name="unit_price" class="form-control">
+		                                <input type="text" placeholder="{{__('web.unit_price')}}" name="unit_price" class="form-control">
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">Purchase Price</label>
+		                            <label class="col-lg-3 control-label">{{__('web.purchase_price')}}</label>
 		                            <div class="col-lg-7">
-		                                <input type="number" min="0" step="0.01" placeholder="Purchase Price" name="purchase_price" class="form-control">
+		                                <input type="number" min="0" step="0.01" placeholder="{{__('web.purchase_price')}}" name="purchase_price" class="form-control">
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">Shipping Cost</label>
+		                            <label class="col-lg-3 control-label">{{__('web.shipping_cost')}}</label>
 		                            <div class="col-lg-7">
-		                                <input type="number" min="0" step="0.01" placeholder="Shipping Cost" name="shipping_cost" class="form-control">
+		                                <input type="number" min="0" step="0.01" placeholder="{{__('web.shipping_cost')}}" name="shipping_cost" class="form-control">
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">Tax</label>
+		                            <label class="col-lg-3 control-label">{{__('web.tax')}}</label>
 		                            <div class="col-lg-7">
-		                                <input type="number" min="0" step="0.01" placeholder="Tax" name="tax" class="form-control">
+		                                <input type="number" min="0" step="0.01" placeholder="{{__('web.tax')}}" name="tax" class="form-control">
 		                            </div>
 		                            <div class="col-lg-1">
 		                                <select class="demo-select2" name="tax_type">
@@ -138,9 +137,9 @@
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">Discount</label>
+		                            <label class="col-lg-3 control-label">{{__('web.discount')}}</label>
 		                            <div class="col-lg-7">
-		                                <input type="number" min="0" step="0.01" placeholder="Discount" name="discount" class="form-control">
+		                                <input type="number" min="0" step="0.01" placeholder="{{__('web.discount')}}" name="discount" class="form-control">
 		                            </div>
 		                            <div class="col-lg-1">
 		                                <select class="demo-select2" name="discount_type">
@@ -155,12 +154,12 @@
 		                    <div id="demo-cls-tab3" class="tab-pane">
 		                        
 		                        <div class="form-group increment">
-		                            <label class="col-sm-3 control-label">Colors</label>
+		                            <label class="col-sm-3 control-label">{{__('web.colors')}}</label>
 		                            <div class="col-sm-3">
 		                                <input type="text" name="colors[]" class="form-control color" value="#000" required>
 		                            </div>
 		                            <div class="col-sm-3">
-		                                <button class="btn btn-primary add-colors" type="button" style="margin-left:10px">Add More Color Options</button>
+		                                <button class="btn btn-primary add-colors" type="button" style="margin-left:10px">{{__('web.add_more_color')}}</button>
 		                            </div>
 		                        </div>
 								
@@ -174,9 +173,9 @@
 		            <!--Footer button-->
 		            <div class="panel-footer text-right">
 		                <div class="box-inline">
-		                    <button type="button" class="previous btn btn-info disabled">Previous</button>
-		                    <button type="button" class="next btn btn-info">Next</button>
-		                    <button type="button" class="finish btn btn-info" disabled="" style="display: none;">Finish</button>
+		                    <button type="button" class="previous btn btn-info disabled">{{__('web.previous')}}</button>
+		                    <button type="button" class="next btn btn-info">{{__('web.next')}}</button>
+		                    <button type="button" class="finish btn btn-info" disabled="" style="display: none;">{{__('web.finish')}}</button>
 		                </div>
 		            </div>
 		        </form>

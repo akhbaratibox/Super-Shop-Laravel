@@ -5,7 +5,7 @@
 <div class="col-sm-6">
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">Sub Category Information</h3>
+            <h3 class="panel-title">{{__('web.subcategory_information')}}</h3>
         </div>
 
         <!--Horizontal Form-->
@@ -15,13 +15,13 @@
         	@csrf
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">Name</label>
+                    <label class="col-sm-3 control-label" for="name">{{__('web.name')}}</label>
                     <div class="col-sm-9">
-                        <input type="text" placeholder="Name" id="name" name="name" class="form-control" value="{{$subcategory->name}}" required>
+                        <input type="text" placeholder="{{__('web.name')}}" id="name" name="name" class="form-control" value="{{$subcategory->name}}" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">Select Category</label>
+                    <label class="col-sm-3 control-label" for="name">{{__('web.category')}}</label>
                     <div class="col-sm-9">
                         <select name="category_id" required class="form-control demo-select2">
                             @foreach($categories as $category)
@@ -31,14 +31,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="banner">Banner</label>
+                    <label class="col-sm-3 control-label" for="banner">{{__('web.banner')}}</label>
                     <div class="col-sm-9">
                         <input type="file" id="banner" name="banner" class="form-control">
                     </div>
                 </div>
             </div>
             <div class="panel-footer text-right">
-                <button class="btn btn-purple" type="submit">Save</button>
+                <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
             </div>
         </form>
         <!--===================================================-->

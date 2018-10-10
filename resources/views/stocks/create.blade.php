@@ -5,7 +5,7 @@
 <div class="col-sm-12">
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">Product Stock Information</h3>
+            <h3 class="panel-title">{{__('web.product_stock_information')}}</h3>
         </div>
 
         <!--Horizontal Form-->
@@ -14,7 +14,7 @@
         	@csrf
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">Category</label>
+                    <label class="col-sm-3 control-label" for="name">{{__('web.category')}}</label>
                     <div class="col-sm-9">
                         <select name="category_id" id="category_id" class="form-control demo-select2-placeholder" required>
                             @foreach($categories as $category)
@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">Sub Category</label>
+                    <label class="col-sm-3 control-label" for="name">{{__('web.subcategory')}}</label>
                     <div class="col-sm-9">
                         <select name="subcategory_id" id="subcategory_id" class="form-control demo-select2-placeholder" required>
                             
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">Sub Sub Category</label>
+                    <label class="col-sm-3 control-label" for="name">{{__('web.subsubcategory')}}</label>
                     <div class="col-sm-9">
                         <select name="subsubcategory_id" id="subsubcategory_id" class="form-control demo-select2-placeholder" required>
                             
@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">Product</label>
+                    <label class="col-sm-3 control-label" for="name">{{__('web.product')}}</label>
                     <div class="col-sm-9">
                         <select name="product_id" id="product_id" class="form-control demo-select2-placeholder" required>
                             
@@ -50,7 +50,7 @@
             </div>
 
             <div class="panel-heading">
-                <h3 class="panel-title">SKU</h3>
+                <h3 class="panel-title">{{__('web.sku')}}</h3>
             </div>
 
             <div class="panel-body">
@@ -62,7 +62,7 @@
             </div>
 
             <div class="panel-footer text-right">
-                <button class="btn btn-purple" type="submit">Save</button>
+                <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
             </div>
         </form>
         <!--===================================================-->

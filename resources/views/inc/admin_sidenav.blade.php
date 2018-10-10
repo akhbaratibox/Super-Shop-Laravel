@@ -88,7 +88,7 @@
                         <li class="{{ areActiveRoutes(['home'])}}">
                             <a class="nav-link" href="{{route('home')}}">
                                 <i class="demo-pli-home"></i>
-                                <span class="menu-title">Dashboard</span>
+                                <span class="menu-title">{{__('web.dashboard')}}</span>
                             </a>
                         </li>
                         
@@ -96,76 +96,108 @@
                         <li>
                             <a href="#">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span class="menu-title">Products</span>
+                                <span class="menu-title">{{__('web.products')}}</span>
                                 <i class="arrow"></i>
                             </a>
                         
                             <!--Submenu-->
                             <ul class="collapse">
                                 <li class="{{ areActiveRoutes(['brands.index', 'brands.create', 'brands.edit'])}}">
-                                    <a class="nav-link" href="{{route('brands.index')}}">Brand</a>
+                                    <a class="nav-link" href="{{route('brands.index')}}">{{__('web.brand')}}</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['categories.index', 'categories.create', 'categories.edit'])}}">
-                                    <a class="nav-link" href="{{route('categories.index')}}">Category</a>
+                                    <a class="nav-link" href="{{route('categories.index')}}">{{__('web.category')}}</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['subcategories.index', 'subcategories.create', 'subcategories.edit'])}}">
-                                    <a class="nav-link" href="{{route('subcategories.index')}}">Sub Category</a>
+                                    <a class="nav-link" href="{{route('subcategories.index')}}">{{__('web.subcategory')}}</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['subsubcategories.index', 'subsubcategories.create', 'subsubcategories.edit'])}}">
-                                    <a class="nav-link" href="{{route('subsubcategories.index')}}">Sub Sub Category</a>
+                                    <a class="nav-link" href="{{route('subsubcategories.index')}}">{{__('web.subsubcategory')}}</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['products.index', 'products.create', 'products.edit'])}}">
-                                    <a class="nav-link" href="{{route('products.index')}}">All Product</a>
+                                    <a class="nav-link" href="{{route('products.index')}}">{{__('web.all_product')}}</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['stocks.index', 'stocks.create', 'stocks.edit'])}}">
-                                    <a class="nav-link" href="{{route('stocks.index')}}">Product Stock</a>
+                                    <a class="nav-link" href="{{route('stocks.index')}}">{{__('web.product_stock')}}</a>
                                 </li> 
                             </ul>
                         </li>
 
                         <li>
                             <a class="nav-link" href="sa">
-                                <i class="fa fa-usd"></i>
-                                <span class="menu-title">Sales</span>
+                                <i class="fa fa-money"></i>
+                                <span class="menu-title">{{__('web.sales')}}</span>
                             </a>
                         </li>
 
                         <li>
                             <a href="#">
                                 <i class="fa fa-user-plus"></i>
-                                <span class="menu-title">Seller Management</span>
+                                <span class="menu-title">{{__('web.sellers')}}</span>
                                 <i class="arrow"></i>
                             </a>
                         
                             <!--Submenu-->
                             <ul class="collapse">
                                 <li class="{{ areActiveRoutes(['sellers.index', 'sellers.create', 'sellers.edit'])}}">
-                                    <a class="nav-link" href="{{route('sellers.index')}}">Sellers List</a>
+                                    <a class="nav-link" href="{{route('sellers.index')}}">{{__('web.seller_list')}}</a>
                                 </li>
                             </ul>
                         </li>
 
                         <li>
-                            <a class="nav-link" href="s">
-                                <i class="fa fa-users"></i>
-                                <span class="menu-title">Customer Management</span>
+                            <a href="#">
+                                <i class="fa fa-user-plus"></i>
+                                <span class="menu-title">{{__('web.customers')}}</span>
+                                <i class="arrow"></i>
                             </a>
+                        
+                            <!--Submenu-->
+                            <ul class="collapse">
+                                <li class="{{ areActiveRoutes([])}}">
+                                    <a class="nav-link" href="#">{{__('web.customer_list')}}</a>
+                                </li>
+                            </ul>
                         </li>
 
                         <li>
                             <a href="#">
                                 <i class="fa fa-envelope"></i>
-                                <span class="menu-title">Messaging</span>
+                                <span class="menu-title">{{__('web.messaging')}}</span>
                                 <i class="arrow"></i>
                             </a>
                         
                             <!--Submenu-->
                             <ul class="collapse">
                                 <li class="{{ areActiveRoutes(['newsletters.index'])}}">
-                                    <a class="nav-link" href="{{route('newsletters.index')}}">Newsletters</a>
+                                    <a class="nav-link" href="{{route('newsletters.index')}}">{{__('web.newsletters')}}</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['messages.index'])}}">
-                                    <a class="nav-link" href="{{route('messages.index')}}">Contact Messages</a>
+                                    <a class="nav-link" href="{{route('messages.index')}}">{{__('web.contact_messages')}}</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-briefcase"></i>
+                                <span class="menu-title">{{__('web.business_settings')}}</span>
+                                <i class="arrow"></i>
+                            </a>
+                        
+                            <!--Submenu-->
+                            <ul class="collapse">
+                                <li class="{{ areActiveRoutes(['activation.index'])}}">
+                                    <a class="nav-link" href="{{route('activation.index')}}">{{__('web.activation')}}</a>
+                                </li>
+                                <li class="{{ areActiveRoutes([])}}">
+                                    <a class="nav-link" href="#">{{__('web.payment_mothod')}}</a>
+                                </li>
+                                <li class="{{ areActiveRoutes(['currency.index'])}}">
+                                    <a class="nav-link" href="{{route('currency.index')}}">{{__('web.currency')}}</a>
+                                </li>
+                                <li class="{{ areActiveRoutes(['seller_verification_form.index'])}}">
+                                    <a class="nav-link" href="{{route('seller_verification_form.index')}}">{{__('web.seller_verification_form')}}</a>
                                 </li>
                             </ul>
                         </li>

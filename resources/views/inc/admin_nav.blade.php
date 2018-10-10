@@ -63,19 +63,10 @@
                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right panel-default">
                         <ul class="head-list">
                             <li>
-                                <a href="#"><i class="demo-pli-male icon-lg icon-fw"></i> Profile</a>
+                                <a href="#"><i class="demo-pli-male icon-lg icon-fw"></i> {{__('web.profile')}}</a>
                             </li>
                             <li>
-                                <a href="#"><span class="badge badge-danger pull-right">9</span><i class="demo-pli-mail icon-lg icon-fw"></i> Messages</a>
-                            </li>
-                            <li>
-                                <a href="#"><span class="label label-success pull-right">New</span><i class="demo-pli-gear icon-lg icon-fw"></i> Settings</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="demo-pli-computer-secure icon-lg icon-fw"></i> Lock screen</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('logout')}}"><i class="demo-pli-unlock icon-lg icon-fw"></i> Logout</a>
+                                <a href="{{ route('logout')}}"><i class="demo-pli-unlock icon-lg icon-fw"></i> {{__('web.logout')}}</a>
                             </li>
                         </ul>
                     </div>

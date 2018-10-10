@@ -12,7 +12,7 @@
 	<div class="col-sm-2">
 		<select id="language" name="language">
 		    <option value="en" <?php if(Session::get('locale', Config::get('app.locale')) == 'en') echo "selected";?> >English</option>
-		    <option value="bn" <?php if(Session::get('locale', Config::get('app.locale')) == 'bn') echo "selected";?> >Bangla</option>
+		    <option value="bn" <?php if(Session::get('locale', Config::get('app.locale')) == 'bn') echo "selected";?> >বাংলা</option>
 		</select>
 	</div> 
 

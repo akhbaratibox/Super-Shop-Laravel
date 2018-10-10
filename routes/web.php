@@ -52,5 +52,9 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 
 	Route::resource('stocks','ProductStockController');
 	Route::post('stocks/sku_combinations','ProductStockController@sku_combinations')->name('stocks.sku_combinations');
+
+	Route::get('/activation', 'BusinessSettingsController@activation')->name('activation.index');
+	Route::get('/currency', 'BusinessSettingsController@currency')->name('currency.index');
+	Route::get('/verification/form', 'BusinessSettingsController@seller_verification_form')->name('seller_verification_form.index');
 });
 

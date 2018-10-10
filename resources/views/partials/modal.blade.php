@@ -12,16 +12,16 @@
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
+                <h4 class="modal-title" id="myModalLabel">{{__('web.confirmation')}}</h4>
             </div>
 
             <div class="modal-body">
-                <p>You are about to delete this record. Do you want to proceed?</p>
+                <p>{{__('web.delete_confirmation_msg')}}</p>
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <a id="delete_link" class="btn btn-danger btn-ok">Delete</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{__('web.cancel')}}</button>
+                <a id="delete_link" class="btn btn-danger btn-ok">{{__('web.delete')}}</a>
             </div>
         </div>
     </div>

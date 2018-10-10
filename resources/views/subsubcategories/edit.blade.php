@@ -5,7 +5,7 @@
 <div class="col-sm-12">
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">Sub Sub Category Information</h3>
+            <h3 class="panel-title">{{__('web.subsubcategory_information')}}</h3>
         </div>
 
         <!--Horizontal Form-->
@@ -15,13 +15,13 @@
             @csrf
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">Name</label>
+                    <label class="col-sm-3 control-label" for="name">{{__('web.name')}}</label>
                     <div class="col-sm-9">
-                        <input type="text" placeholder="Name" id="name" name="name" class="form-control" required value="{{$subsubcategory->name}}">
+                        <input type="text" placeholder="{{__('web.name')}}" id="name" name="name" class="form-control" required value="{{$subsubcategory->name}}">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">Select Category</label>
+                    <label class="col-sm-3 control-label" for="name">{{__('web.category')}}</label>
                     <div class="col-sm-9">
                         <select name="category_id" id="category_id" class="form-control demo-select2" required>
                             @foreach($categories as $category)
@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">Select Sub Category</label>
+                    <label class="col-sm-3 control-label" for="name">{{__('web.subcategory')}}</label>
                     <div class="col-sm-9">
                         <select name="sub_category_id" id="sub_category_id" class="form-control demo-select2" required>
                             
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">Brands</label>
+                    <label class="col-sm-3 control-label" for="name">{{__('web.brands')}}</label>
                     <div class="col-sm-9">
                         <select name="brands[]" id="brands" class="form-control demo-select2" multiple  required data-placeholder="Choose Brands">
                             @foreach($brands as $brand)
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="banner">Banner</label>
+                    <label class="col-sm-3 control-label" for="banner">{{__('web.banner')}}</label>
                     <div class="col-sm-9">
                         <input type="file" id="banner" name="banner" class="form-control">
                     </div>
@@ -58,7 +58,7 @@
 
 
             <div class="panel-heading">
-                <h3 class="panel-title">Customer Choice Options</h3>
+                <h3 class="panel-title">{{__('web.customer_choice_options')}}</h3>
             </div>
 
             <div class="panel-body">
@@ -91,7 +91,7 @@
 
                                         @endif
                                     </div>
-                                    <button class="btn btn-success add_customer_choice_options" type="button" style="margin-left:10px" onclick="add_customer_choice_options({{$key}},this)"><i class="glyphicon glyphicon-plus"></i> Add option</button>
+                                    <button class="btn btn-success add_customer_choice_options" type="button" style="margin-left:10px" onclick="add_customer_choice_options({{$key}},this)"><i class="glyphicon glyphicon-plus"></i> {{__('web.add_option')}}</button>
                                 </div>
                             </div>
                             <div class="col-sm-2"> <span class="btn btn-danger btn-icon btn-circle icon-lg fa fa-times" onclick="delete_choice_clearfix(this)"></span> </div>
@@ -100,7 +100,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12 text-right">
-                        <button id="customer_choice_options_add_new" class="btn btn-info" type="button">Add More Customer Choice Option</button>
+                        <button id="customer_choice_options_add_new" class="btn btn-info" type="button">{{__('web.add_more_customer_choice_option')}}</button>
                     </div>
                 </div>
 
@@ -108,7 +108,7 @@
 
 
             <div class="panel-footer text-right">
-                <button class="btn btn-purple" type="submit">Save</button>
+                <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
             </div>
         </form>
         <!--===================================================-->
@@ -135,7 +135,7 @@
     function customer_choice_options_types(i, em){
         if($(em).val() == 'select' || $(em).val() == 'radio'){
             if (!$(em).next().children().hasClass('add_customer_choice_options')) {
-                $(em).next().append('<button class="btn btn-success add_customer_choice_options" type="button" style="margin-left:10px" onclick="add_customer_choice_options('+i+',this)"><i class="glyphicon glyphicon-plus"></i> Add option</button>');
+                $(em).next().append('<button class="btn btn-success add_customer_choice_options" type="button" style="margin-left:10px" onclick="add_customer_choice_options('+i+',this)"><i class="glyphicon glyphicon-plus"></i> {{__('web.add_option')}}</button>');
             }
         }
     }

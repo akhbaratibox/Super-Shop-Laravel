@@ -29,4 +29,8 @@ $(document).on('nifty.ready', function() {
 	// =================================================================
 	$(".demo-select2-multiple-selects").select2();
 
+	$('.demo-sw').each(function(){
+		new Switchery(this);
+	});
+
 });

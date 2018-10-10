@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <a href="{{ route('brands.create')}}" class="btn btn-info pull-right">Add New</a>
+        <a href="{{ route('brands.create')}}" class="btn btn-info pull-right">{{__('web.add_new')}}</a>
     </div>
 </div>
 
@@ -14,16 +14,16 @@
 <!--===================================================-->
 <div class="panel">
     <div class="panel-heading">
-        <h3 class="panel-title">Brands</h3>
+        <h3 class="panel-title">{{__('web.brands')}}</h3>
     </div>
     <div class="panel-body">
         <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Logo</th>
-                    <th width="10%">Options</th>
+                    <th>{{__('web.name')}}</th>
+                    <th>{{__('web.logo')}}</th>
+                    <th width="10%">{{__('web.options')}}</th>
                 </tr>
             </thead>
             <tbody>

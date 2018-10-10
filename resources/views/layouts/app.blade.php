@@ -32,7 +32,9 @@
 
     <!--Animate.css [ OPTIONAL ]-->
     <link href="{{ asset('plugins/animate-css/animate.min.css')}}" rel="stylesheet">
-
+    
+    <!--Switchery [ OPTIONAL ]-->
+    <link href="{{ asset('plugins/switchery/switchery.min.css')}}" rel="stylesheet">
 
     <!--DataTables [ OPTIONAL ]-->
     <link href="{{ asset('plugins/datatables/media/css/dataTables.bootstrap.css') }}" rel="stylesheet">
@@ -76,6 +78,9 @@
 
     <!--Alerts [ SAMPLE ]-->
     <script src="{{ asset('js/demo/ui-alerts.js') }}"></script>
+
+    <!--Switchery [ OPTIONAL ]-->
+    <script src="{{ asset('plugins/switchery/switchery.min.js')}}"></script>
 
     <!--DataTables [ OPTIONAL ]-->
     <script src="{{ asset('plugins/datatables/media/js/jquery.dataTables.js')}}"></script>

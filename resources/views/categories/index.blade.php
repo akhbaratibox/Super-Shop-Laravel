@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <a href="{{ route('categories.create')}}" class="btn btn-info pull-right">Add New</a>
+        <a href="{{ route('categories.create')}}" class="btn btn-info pull-right">{{__('web.add_new')}}</a>
     </div>
 </div>
 
@@ -14,17 +14,17 @@
 <!--===================================================-->
 <div class="panel">
     <div class="panel-heading">
-        <h3 class="panel-title">Categories</h3>
+        <h3 class="panel-title">{{__('web.categories')}}</h3>
     </div>
     <div class="panel-body">
         <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Banner</th>
-                    <th>Icon</th>
-                    <th width="10%">Options</th>
+                    <th>{{__('web.name')}}</th>
+                    <th>{{__('web.banner')}}</th>
+                    <th>{{__('web.icon')}}</th>
+                    <th width="10%">{{__('web.options')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,8 +32,8 @@
                     <tr>
                         <td>{{$key+1}}</td>
                         <td>{{$category->name}}</td>
-                        <td><img class="img-md" src="{{ asset($category->banner) }}" alt="Banner"></td>
-                        <td><img class="img-md" src="{{ asset($category->icon) }}" alt="Icon"></td>
+                        <td><img class="img-md" src="{{ asset($category->banner) }}" alt="{{__('web.banner')}}"></td>
+                        <td><img class="img-md" src="{{ asset($category->icon) }}" alt="{{__('web.icon')}}"></td>
                         <td>
                             <a href="{{route('categories.edit', $category->id)}}" class="btn btn-mint btn-icon"><i class="demo-psi-pen-5 icon-lg"></i></a>
                             <a onclick="confirm_modal('{{route('categories.destroy', $category->id)}}');" class="btn btn-danger btn-icon"><i class="demo-psi-recycling icon-lg"></i></a>

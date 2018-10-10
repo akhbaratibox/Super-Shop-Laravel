@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <a href="{{ route('subsubcategories.create')}}" class="btn btn-info pull-right">Add New</a>
+        <a href="{{ route('subsubcategories.create')}}" class="btn btn-info pull-right">{{__('web.add_new')}}</a>
     </div>
 </div>
 
@@ -14,19 +14,19 @@
 <!--===================================================-->
 <div class="panel">
     <div class="panel-heading">
-        <h3 class="panel-title">Sub Sub Categories</h3>
+        <h3 class="panel-title">{{__('web.subsubcategories')}}</h3>
     </div>
     <div class="panel-body">
         <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Sub Sub Category</th>
-                    <th>Sub Category</th>
-                    <th>Category</th>
-                    <th>Brands</th>
-                    <th>Banner</th>
-                    <th width="10%">Options</th>
+                    <th>{{__('web.subsubcategory')}}</th>
+                    <th>{{__('web.subcategory')}}</th>
+                    <th>{{__('web.category')}}</th>
+                    <th>{{__('web.brands')}}</th>
+                    <th>{{__('web.banner')}}</th>
+                    <th width="10%">{{__('web.options')}}</th>
                 </tr>
             </thead>
             <tbody>

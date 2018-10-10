@@ -9,3 +9,11 @@ select + .select2-container{
 .brand-icon{
 	padding: 13px;
 }
+
+.seller_form_border{
+	border: 1px dashed rgba(255,255,255,0.2);
+}
+
+#form{
+	min-height: 300px;
+}

@@ -37,7 +37,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 
 	Route::resource('brands','BrandController');
 	Route::get('/brands/destroy/{id}', 'BrandController@destroy')->name('brands.destroy');
-	
+
 	Route::resource('products','ProductController');
 	Route::get('/products/destroy/{id}', 'ProductController@destroy')->name('products.destroy');
 	Route::post('/products/get_products_by_subsubcategory', 'ProductController@get_products_by_subsubcategory')->name('products.get_products_by_subsubcategory');
@@ -56,5 +56,10 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('/activation', 'BusinessSettingsController@activation')->name('activation.index');
 	Route::get('/currency', 'BusinessSettingsController@currency')->name('currency.index');
 	Route::get('/verification/form', 'BusinessSettingsController@seller_verification_form')->name('seller_verification_form.index');
-});
 
+	Route::resource('roles','RoleController');
+    Route::get('/roles/destroy/{id}', 'RoleController@destroy')->name('roles.destroy');
+
+    Route::resource('staffs','StaffController');
+    Route::get('/staffs/destroy/{id}', 'StaffController@destroy')->name('staffs.destroy');
+});

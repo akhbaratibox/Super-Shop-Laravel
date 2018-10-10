@@ -10,7 +10,7 @@
 			</div>
 			<div class="panel-body">
 				<div class="row">
-					<div class="col-lg-8 form-horizontal" id="form">
+					<div class="col-lg-8 form-horizontal seller_form_border" id="form">
 
 					</div>
 					<div class="col-lg-4">
@@ -138,6 +138,7 @@
 			$(em).parent().parent().remove();
 		}
 		function appenddToForm(type){
+			$('#form').removeClass('seller_form_border');
 			if(type == 'text'){
 				$('#form').append($('.text').html());
 			}

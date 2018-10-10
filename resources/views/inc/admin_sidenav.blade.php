@@ -80,10 +80,10 @@
 
 
                     <ul id="mainnav-menu" class="list-group">
-            
+
                         <!--Category name-->
                         {{-- <li class="list-header">Navigation</li> --}}
-            
+
                         <!--Menu list item-->
                         <li class="{{ areActiveRoutes(['home'])}}">
                             <a class="nav-link" href="{{route('home')}}">
@@ -91,7 +91,7 @@
                                 <span class="menu-title">{{__('web.dashboard')}}</span>
                             </a>
                         </li>
-                        
+
                         <!-- Product Menu -->
                         <li>
                             <a href="#">
@@ -99,7 +99,7 @@
                                 <span class="menu-title">{{__('web.products')}}</span>
                                 <i class="arrow"></i>
                             </a>
-                        
+
                             <!--Submenu-->
                             <ul class="collapse">
                                 <li class="{{ areActiveRoutes(['brands.index', 'brands.create', 'brands.edit'])}}">
@@ -119,7 +119,7 @@
                                 </li>
                                 <li class="{{ areActiveRoutes(['stocks.index', 'stocks.create', 'stocks.edit'])}}">
                                     <a class="nav-link" href="{{route('stocks.index')}}">{{__('web.product_stock')}}</a>
-                                </li> 
+                                </li>
                             </ul>
                         </li>
 
@@ -136,7 +136,7 @@
                                 <span class="menu-title">{{__('web.sellers')}}</span>
                                 <i class="arrow"></i>
                             </a>
-                        
+
                             <!--Submenu-->
                             <ul class="collapse">
                                 <li class="{{ areActiveRoutes(['sellers.index', 'sellers.create', 'sellers.edit'])}}">
@@ -151,7 +151,7 @@
                                 <span class="menu-title">{{__('web.customers')}}</span>
                                 <i class="arrow"></i>
                             </a>
-                        
+
                             <!--Submenu-->
                             <ul class="collapse">
                                 <li class="{{ areActiveRoutes([])}}">
@@ -166,7 +166,7 @@
                                 <span class="menu-title">{{__('web.messaging')}}</span>
                                 <i class="arrow"></i>
                             </a>
-                        
+
                             <!--Submenu-->
                             <ul class="collapse">
                                 <li class="{{ areActiveRoutes(['newsletters.index'])}}">
@@ -184,7 +184,7 @@
                                 <span class="menu-title">{{__('web.business_settings')}}</span>
                                 <i class="arrow"></i>
                             </a>
-                        
+
                             <!--Submenu-->
                             <ul class="collapse">
                                 <li class="{{ areActiveRoutes(['activation.index'])}}">
@@ -201,7 +201,25 @@
                                 </li>
                             </ul>
                         </li>
-            
+
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-user"></i>
+                                <span class="menu-title">{{__('web.staffs')}}</span>
+                                <i class="arrow"></i>
+                            </a>
+
+                            <!--Submenu-->
+                            <ul class="collapse">
+                                <li class="{{ areActiveRoutes(['staffs.index', 'staffs.create', 'staffs.edit'])}}">
+                                    <a class="nav-link" href="{{ route('staffs.index') }}">{{__('web.all_staffs')}}</a>
+                                </li>
+                                <li class="{{ areActiveRoutes(['roles.index', 'roles.create', 'roles.edit'])}}">
+                                    <a class="nav-link" href="{{route('roles.index')}}">{{__('web.staff_permissions')}}</a>
+                                </li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </div>
             </div>

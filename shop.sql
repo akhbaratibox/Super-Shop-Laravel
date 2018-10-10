@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2018 at 02:09 PM
+-- Generation Time: Oct 10, 2018 at 01:54 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -70,6 +70,53 @@ INSERT INTO `categories` (`id`, `name`, `banner`, `icon`, `created_at`, `updated
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `currencies`
+--
+
+CREATE TABLE `currencies` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `symbol` varchar(255) NOT NULL,
+  `exchange_rate` varchar(255) NOT NULL,
+  `status` int(10) NOT NULL DEFAULT '0',
+  `code` varchar(20) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `currencies`
+--
+
+INSERT INTO `currencies` (`id`, `name`, `symbol`, `exchange_rate`, `status`, `code`, `created_at`, `updated_at`) VALUES
+(1, 'U.S. Dollar', '$', '1', 0, 'USD', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(2, 'Australian Dollar', '$', '1.2762', 0, 'AUD', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(5, 'Brazilian Real', 'R$', '3.238', 0, 'BRL', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(6, 'Canadian Dollar', '$', '1.272', 0, 'CAD', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(7, 'Czech Koruna', 'Kč', '20.647', 0, 'CZK', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(8, 'Danish Krone', 'kr', '6.0532', 0, 'DKK', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(9, 'Euro', '€', '0.84861', 0, 'EUR', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(10, 'Hong Kong Dollar', '$', '7.8264', 0, 'HKD', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(11, 'Hungarian Forint', 'Ft', '255.24', 0, 'HUF', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(12, 'Israeli New Sheqel', '₪', '3.4812', 0, 'ILS', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(13, 'Japanese Yen', '¥', '107.12', 0, 'JPY', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(14, 'Malaysian Ringgit', 'RM', '3.908', 0, 'MYR', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(15, 'Mexican Peso', '$', '18.722', 0, 'MXN', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(16, 'Norwegian Krone', 'kr', '7.8278', 0, 'NOK', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(17, 'New Zealand Dollar', '$', '1.3753', 0, 'NZD', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(18, 'Philippine Peso', '₱', '52.261', 0, 'PHP', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(19, 'Polish Zloty', 'zł', '3.3875', 0, 'PLN', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(20, 'Pound Sterling', '£', '0.71864', 0, 'GBP', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(21, 'Russian Ruble', 'руб', '55.929', 0, 'RUB', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(22, 'Singapore Dollar', '$', '1.3198', 0, 'SGD', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(23, 'Swedish Krona', 'kr', '8.1945', 0, 'SEK', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(24, 'Swiss Franc', 'CHF', '0.93805', 0, 'CHF', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(26, 'Thai Baht', '฿', '31.39', 0, 'THB', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(27, 'your_currency', '?', '1', 0, '??', '2018-10-09 11:35:08', '2018-10-09 11:35:08');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -117,6 +164,8 @@ CREATE TABLE `products` (
   `name` varchar(30) NOT NULL,
   `added_by` varchar(6) NOT NULL DEFAULT 'admin',
   `user_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `subcategory_id` int(11) NOT NULL,
   `subsubcategory_id` int(11) NOT NULL,
   `brand_id` int(11) NOT NULL,
   `photo` varchar(100) DEFAULT NULL,
@@ -144,8 +193,85 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `added_by`, `user_id`, `subsubcategory_id`, `brand_id`, `photo`, `tags`, `description`, `unit_price`, `purchase_price`, `shipping_cost`, `price_variations`, `todays_deal`, `published`, `featured`, `current_stock`, `unit`, `colors`, `discount`, `discount_type`, `tax`, `tax_type`, `created_at`, `updated_at`) VALUES
-(1, 'Ryder Willis', 'admin', 1, 5, 2, 'uploads/1jusV7gSqCAqVEKv7ainH6IQaCDrPsfSG3H8v1Kt.jpeg', '[\"fgfdg,kj\"]', NULL, 415.00, 430.00, 82.00, '{\"choices_0_S_variation\":\"decrease\",\"choices_0_S_price\":\"108\",\"choices_0_M_variation\":\"decrease\",\"choices_0_M_price\":\"964\",\"choices_0_L_variation\":\"decrease\",\"choices_0_L_price\":\"203\"}', 0, 0, 0, 0, 'PC', '[\"#000\",\"#ff0000\"]', 90.00, 'percent', 98.00, 'percent', '2018-10-04 05:02:39', '2018-10-04 05:02:39');
+INSERT INTO `products` (`id`, `name`, `added_by`, `user_id`, `category_id`, `subcategory_id`, `subsubcategory_id`, `brand_id`, `photo`, `tags`, `description`, `unit_price`, `purchase_price`, `shipping_cost`, `price_variations`, `todays_deal`, `published`, `featured`, `current_stock`, `unit`, `colors`, `discount`, `discount_type`, `tax`, `tax_type`, `created_at`, `updated_at`) VALUES
+(1, 'Ryder Willis', 'admin', 1, 7, 4, 5, 3, 'uploads/1jusV7gSqCAqVEKv7ainH6IQaCDrPsfSG3H8v1Kt.jpeg', '[\"fgfdg,kj\"]', '<p><span style=\"background-color: rgb(255, 255, 255);\"><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">The company name is based on the Latin translation of the surname of the founder, August Horch. \"Horch\", meaning \"listen\" in German, becomes \"</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">\" in Latin. The four rings of the&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;logo each represent one of four&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">car</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;companies that banded together to create&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi\'s</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;predecessor company, Auto Union.</span></span><br></p>', 415.00, 430.00, 82.00, '{\"choices_0_S_variation\":\"decrease\",\"choices_0_S_price\":\"108\",\"choices_0_M_variation\":\"increase\",\"choices_0_M_price\":\"964\",\"choices_0_L_variation\":\"increase\",\"choices_0_L_price\":\"203\"}', 0, 0, 0, 0, 'PC', '[\"#000\",\"#0000ff\",\"#ff0000\"]', 90.00, 'percent', 98.00, 'percent', '2018-10-04 05:02:39', '2018-10-07 05:44:55'),
+(2, 'Cole Mcfadden', 'admin', 1, 7, 4, 6, 2, 'uploads/TMk1idweV4UFhrodUpy7WEpuxNAlxOT0xJyekyzj.jpeg', '[\"Libero aperiam asperiores veritatis excepturi consequatur laborum Quia ex aliquam tempor optio dolor possimus,Autem voluptas et quod minus dolor corrupti\"]', NULL, 759.00, 849.00, 60.00, '{\"choices_0_S_variation\":\"decrease\",\"choices_0_S_price\":\"160\",\"choices_0_M_variation\":\"decrease\",\"choices_0_M_price\":\"119\",\"choices_0_L_variation\":\"decrease\",\"choices_0_L_price\":\"465\",\"choices_1_Cotton_variation\":\"decrease\",\"choices_1_Cotton_price\":\"274\",\"choices_1_Semi-Cotton_variation\":\"decrease\",\"choices_1_Semi-Cotton_price\":\"288\"}', 0, 0, 0, 0, 'PC', '[\"#3d85c6\",\"#cc0000\",\"#f1c232\"]', 22.00, 'percent', 53.00, 'percent', '2018-10-07 02:03:37', '2018-10-07 02:04:04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_stocks`
+--
+
+CREATE TABLE `product_stocks` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `permissions` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `permissions`, `created_at`, `updated_at`) VALUES
+(1, 'Manager', '[\"1\",\"2\",\"4\"]', '2018-10-10 04:39:47', '2018-10-10 04:51:37'),
+(2, 'Accountant', '[\"2\",\"3\"]', '2018-10-10 04:52:09', '2018-10-10 04:52:09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sellers`
+--
+
+CREATE TABLE `sellers` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sellers`
+--
+
+INSERT INTO `sellers` (`id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 3, '2018-10-07 04:42:57', '2018-10-07 04:42:57');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff`
+--
+
+CREATE TABLE `staff` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `role_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`id`, `user_id`, `role_id`, `created_at`, `updated_at`) VALUES
+(2, 5, 1, '2018-10-10 05:53:31', '2018-10-10 05:53:31');
 
 -- --------------------------------------------------------
 
@@ -192,8 +318,8 @@ CREATE TABLE `sub_sub_categories` (
 --
 
 INSERT INTO `sub_sub_categories` (`id`, `subcategory_id`, `name`, `banner`, `brands`, `options`, `created_at`, `updated_at`) VALUES
-(5, 3, 'Private Cars', 'uploads/sctkUXlTXuERQkNmhtXbFVeNwGSxeUIyL5OJ6Pnn.jpeg', '[\"2\",\"3\"]', '[{\"name\":\"choices_0\",\"title\":\"Size\",\"type\":\"radio\",\"options\":[\"S\",\"M\",\"L\"]}]', '2018-10-01 02:31:47', '2018-10-04 04:59:09'),
-(6, 3, 'Clio Baxter', 'uploads/RdBo95yeom3lO45zQ8I7qysodhtOHPbtF6RWJkwN.jpeg', '[\"2\",\"3\"]', '[{\"name\":\"choices_0\",\"title\":\"Size\",\"type\":\"radio\",\"options\":[\"S\",\"M\",\"L\"]},{\"name\":\"choices_1\",\"title\":\"Fabric\",\"type\":\"select\",\"options\":[\"Cotton\",\"Semi-Cotton\"]}]', '2018-10-03 05:19:27', '2018-10-04 04:59:30');
+(5, 4, 'Private Cars', 'uploads/sctkUXlTXuERQkNmhtXbFVeNwGSxeUIyL5OJ6Pnn.jpeg', '[\"2\",\"3\"]', '[{\"name\":\"choices_0\",\"title\":\"Size\",\"type\":\"radio\",\"options\":[\"S\",\"M\",\"L\"]}]', '2018-10-01 02:31:47', '2018-10-04 04:59:09'),
+(6, 4, 'Clio Baxter', 'uploads/RdBo95yeom3lO45zQ8I7qysodhtOHPbtF6RWJkwN.jpeg', '[\"2\",\"3\"]', '[{\"name\":\"choices_0\",\"title\":\"Size\",\"type\":\"radio\",\"options\":[\"S\",\"M\",\"L\"]},{\"name\":\"choices_1\",\"title\":\"Fabric\",\"type\":\"select\",\"options\":[\"Cotton\",\"Semi-Cotton\"]}]', '2018-10-03 05:19:27', '2018-10-04 04:59:30');
 
 -- --------------------------------------------------------
 
@@ -218,8 +344,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_type`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'Admin', 'admin@example.com', NULL, '$2y$10$LB5/.OWjDuXpVQ3qp3ZgAevv0ZDFT8WcO5mlQqKLudgPYw46kBsIm', 'oqRjaDNwfPETo5Y4EV5nx1S1cvZ6MSasOYt38HSzwu4BSaF3HtbPbyObfP4A', '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
-(2, 'customer', 'Santu Roy', 'santu@gmail.com', NULL, '$2y$10$X90n.h20O1Z0pzDfoQjwvu.Thxe6EsRcQDPYZ8Lf/7fy6qkZV.qnq', '5yIwJmGbwc0wCHWmyVdLcdksRJp7VQnFxky7dE3avkEnhgS8Anmagxqp4692', '2018-09-30 02:55:40', '2018-09-30 02:55:40');
+(1, 'admin', 'Admin', 'mehedi.iitdu@gmail.com', NULL, '$2y$10$LB5/.OWjDuXpVQ3qp3ZgAevv0ZDFT8WcO5mlQqKLudgPYw46kBsIm', 'oqRjaDNwfPETo5Y4EV5nx1S1cvZ6MSasOYt38HSzwu4BSaF3HtbPbyObfP4A', '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
+(2, 'customer', 'Santu Roy', 'developer.activeitzone@gmail.com', NULL, '$2y$10$X90n.h20O1Z0pzDfoQjwvu.Thxe6EsRcQDPYZ8Lf/7fy6qkZV.qnq', '5yIwJmGbwc0wCHWmyVdLcdksRJp7VQnFxky7dE3avkEnhgS8Anmagxqp4692', '2018-09-30 02:55:40', '2018-09-30 02:55:40'),
+(3, 'seller', 'Seller 1', 'seller1@example.com', NULL, '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', NULL, '2018-10-07 04:42:57', '2018-10-07 04:48:43'),
+(5, 'staff', 'Santu Roy', 'santu@gmail.com', NULL, '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', NULL, '2018-10-10 05:53:31', '2018-10-10 05:53:31');
 
 --
 -- Indexes for dumped tables
@@ -238,6 +366,12 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `currencies`
+--
+ALTER TABLE `currencies`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -253,6 +387,30 @@ ALTER TABLE `password_resets`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_stocks`
+--
+ALTER TABLE `product_stocks`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sellers`
+--
+ALTER TABLE `sellers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `staff`
+--
+ALTER TABLE `staff`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -293,6 +451,12 @@ ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `currencies`
+--
+ALTER TABLE `currencies`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -302,7 +466,31 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `product_stocks`
+--
+ALTER TABLE `product_stocks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `sellers`
+--
+ALTER TABLE `sellers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `staff`
+--
+ALTER TABLE `staff`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `sub_categories`
@@ -320,7 +508,7 @@ ALTER TABLE `sub_sub_categories`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

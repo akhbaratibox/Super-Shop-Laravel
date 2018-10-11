@@ -55,6 +55,8 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 
 	Route::get('/activation', 'BusinessSettingsController@activation')->name('activation.index');
 	Route::get('/currency', 'BusinessSettingsController@currency')->name('currency.index');
+    Route::post('/currency/update', 'BusinessSettingsController@updateCurrency')->name('currency.update');
+    Route::post('/your_currency/update', 'BusinessSettingsController@updateYourCurrency')->name('your_currency.update');
 	Route::get('/verification/form', 'BusinessSettingsController@seller_verification_form')->name('seller_verification_form.index');
 
 	Route::resource('roles','RoleController');

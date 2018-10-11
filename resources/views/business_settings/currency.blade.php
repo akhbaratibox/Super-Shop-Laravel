@@ -15,7 +15,11 @@
                             <label class="control-label">{{__('web.home_default_currency')}}</label>
                         </div>
                         <div class="col-lg-6">
-                            <select class="form-control demo-select2-placeholder" name="home_defualt_currency"></select>
+                            <select class="form-control demo-select2-placeholder" name="home_defualt_currency">
+                                @foreach ($active_currencies as $key => $currency)
+                                    <option value="{{ $currency->id }}">{{ $currency->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="col-lg-3">
                             <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
@@ -38,7 +42,11 @@
                             <label class="control-label">{{__('web.system_default_currency')}}</label>
                         </div>
                         <div class="col-lg-6">
-                            <select class="form-control demo-select2-placeholder" name="system_default_currency"></select>
+                            <select class="form-control demo-select2-placeholder" name="system_default_currency">
+                                @foreach ($active_currencies as $key => $currency)
+                                    <option value="{{ $currency->id }}">{{ $currency->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="col-lg-3">
                             <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
@@ -116,19 +124,19 @@
                             <td>{{$currencies[$i]->name}}</td>
                             <td>{{$currencies[$i]->symbol}}</td>
                             <td>{{$currencies[$i]->code}}</td>
-                            <td><input class="form-control" type="number" min="0" step="0.01" value="{{$currencies[$i]->exchange_rate}}"></td>
-                            <td><input class="demo-sw" type="checkbox" <?php if($currencies[$i]->status == 1) echo "checked";?> ></td>
-                            <td><button class="btn btn-purple" type="submit">{{__('web.save')}}</button></td>
+                            <td><input id="exchange_rate_{{ $currencies[$i]->id }}" class="form-control" type="number" min="0" step="0.01" value="{{$currencies[$i]->exchange_rate}}"></td>
+                            <td><input id="status_{{ $currencies[$i]->id }}" class="demo-sw" type="checkbox" <?php if($currencies[$i]->status == 1) echo "checked";?> ></td>
+                            <td><button class="btn btn-purple" type="submit" onclick="updateCurrency({{ $currencies[$i]->id }})">{{__('web.save')}}</button></td>
                         </tr>
                     @endfor
                     <tr>
                         <td>{{count($currencies)}}</td>
-                        <td><input class="form-control" type="text" value="{{$currencies[count($currencies)-1]->name}}"></td>
-                        <td><input class="form-control" type="text" value="{{$currencies[count($currencies)-1]->symbol}}"></td>
-                        <td><input class="form-control" type="text" value="{{$currencies[count($currencies)-1]->code}}"></td>
-                        <td><input class="form-control" type="number" min="0" step="0.01" value="{{$currencies[count($currencies)-1]->exchange_rate}}"></td>
-                        <td><input class="demo-sw" type="checkbox" <?php if($currencies[count($currencies)-1]->status == 1) echo "checked";?> ></td>
-                        <td><button class="btn btn-purple" type="submit">{{__('web.save')}}</button></td>
+                        <td><input id="name_{{ $currencies[count($currencies)-1]->id }}" class="form-control" type="text" value="{{$currencies[count($currencies)-1]->name}}"></td>
+                        <td><input id="symbol_{{ $currencies[count($currencies)-1]->id }}" class="form-control" type="text" value="{{$currencies[count($currencies)-1]->symbol}}"></td>
+                        <td><input id="code_{{ $currencies[count($currencies)-1]->id }}" class="form-control" type="text" value="{{$currencies[count($currencies)-1]->code}}"></td>
+                        <td><input id="exchange_rate_{{ $currencies[count($currencies)-1]->id }}" class="form-control" type="number" min="0" step="0.01" value="{{$currencies[count($currencies)-1]->exchange_rate}}"></td>
+                        <td><input id="status_{{ $currencies[count($currencies)-1]->id }}" class="demo-sw" type="checkbox" <?php if($currencies[count($currencies)-1]->status == 1) echo "checked";?> ></td>
+                        <td><button class="btn btn-purple" type="submit" onclick="updateYourCurrency({{ $currencies[count($currencies)-1]->id }})" >{{__('web.save')}}</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -137,4 +145,50 @@
     </div>
 </div>
 
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+
+        //Updates default currencies
+        function updateCurrency(i){
+            var exchange_rate = $('#exchange_rate_'+i).val();
+            if($('#status_'+i).is(':checked')){
+                var status = 1;
+            }
+            else{
+                var status = 0;
+            }
+            $.post('{{ route('currency.update') }}', {_token:'{{ csrf_token() }}', id:i, exchange_rate:exchange_rate, status:status}, function(data){
+                if(data == 1){
+                    showAlert('success', 'Currency updated successfully');
+                }
+                else{
+                    showAlert('danger', 'Something went wrong');
+                }
+            });
+        }
+
+        //Updates your currency
+        function updateYourCurrency(i){
+            var name = $('#name_'+i).val();
+            var symbol = $('#symbol_'+i).val();
+            var code = $('#code_'+i).val();
+            var exchange_rate = $('#exchange_rate_'+i).val();
+            if($('#status_'+i).is(':checked')){
+                var status = 1;
+            }
+            else{
+                var status = 0;
+            }
+            $.post('{{ route('your_currency.update') }}', {_token:'{{ csrf_token() }}', id:i, name:name, symbol:symbol, code:code, exchange_rate:exchange_rate, status:status}, function(data){
+                if(data == 1){
+                    showAlert('success', 'Currency updated successfully');
+                }
+                else{
+                    showAlert('danger', 'Something went wrong');
+                }
+            });
+        }
+    </script>
 @endsection

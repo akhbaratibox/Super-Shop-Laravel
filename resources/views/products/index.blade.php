@@ -3,14 +3,14 @@
 @section('content')
 
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-lg-12">
         <a href="{{ route('products.create')}}" class="btn btn-info pull-right">{{__('web.add_new')}}</a>
     </div>
 </div>
 
 <br>
 
-<div class="col-sm-12">
+<div class="col-lg-12">
     <div class="tab-base">
 
         <!--Nav Tabs-->

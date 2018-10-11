@@ -43,7 +43,11 @@ class SubSubCategoryController extends Controller
         $subsubcategory = new SubSubCategory;
         $subsubcategory->name = $request->name;
         $subsubcategory->subcategory_id = $request->sub_category_id;
-        $subsubcategory->banner = $request->file('banner')->store('uploads');
+
+        if($request->hasFile('banner')){
+            $subsubcategory->banner = $request->file('banner')->store('uploads');
+        }
+
         $subsubcategory->brands = json_encode($request->brands);
 
         $options = array();
@@ -70,7 +74,7 @@ class SubSubCategoryController extends Controller
         }
         else{
             flash('Something went wrong')->danger();
-            return back();   
+            return back();
         }
     }
 
@@ -111,16 +115,16 @@ class SubSubCategoryController extends Controller
         $subsubcategory = SubSubCategory::findOrFail($id);
         $subsubcategory->name = $request->name;
         $subsubcategory->subcategory_id = $request->sub_category_id;
-        
+
         if($request->hasFile('banner')){
             $subsubcategory->banner = $request->file('banner')->store('uploads');
         }
-        
+
         $subsubcategory->brands = json_encode($request->brands);
 
 
         $options = array();
-        
+
         if($request->has('options')){
             foreach ($request->options as $key => $option) {
                 $str = 'choices_'.$option;
@@ -141,7 +145,7 @@ class SubSubCategoryController extends Controller
         }
         else{
             flash('Something went wrong')->danger();
-            return back(); 
+            return back();
         }
     }
 
@@ -159,7 +163,7 @@ class SubSubCategoryController extends Controller
         }
         else{
             flash('Something went wrong')->danger();
-            return back();   
+            return back();
         }
     }
 

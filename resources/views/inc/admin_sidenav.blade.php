@@ -87,7 +87,7 @@
                         <!--Menu list item-->
                         <li class="{{ areActiveRoutes(['home'])}}">
                             <a class="nav-link" href="{{route('home')}}">
-                                <i class="demo-pli-home"></i>
+                                <i class="fa fa-home"></i>
                                 <span class="menu-title">{{__('web.dashboard')}}</span>
                             </a>
                         </li>

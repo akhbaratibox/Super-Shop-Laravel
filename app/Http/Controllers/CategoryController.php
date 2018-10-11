@@ -38,16 +38,21 @@ class CategoryController extends Controller
     {
         $category = new Category;
         $category->name = $request->name;
-        $category->banner = $request->file('banner')->store('uploads');
-        $category->icon = $request->file('icon')->store('uploads');
-        
+
+        if($request->hasFile('banner')){
+            $category->banner = $request->file('banner')->store('uploads');
+        }
+        if($request->hasFile('icon')){
+            $category->icon = $request->file('icon')->store('uploads');
+        }
+
         if($category->save()){
             flash('Category has been inserted successfully')->success();
             return redirect()->route('categories.index');
         }
         else{
             flash('Something went wrong')->danger();
-            return back(); 
+            return back();
         }
     }
 
@@ -98,7 +103,7 @@ class CategoryController extends Controller
         }
         else{
             flash('Something went wrong')->danger();
-            return back();   
+            return back();
         }
     }
 
@@ -116,7 +121,7 @@ class CategoryController extends Controller
         }
         else{
             flash('Something went wrong')->danger();
-            return back();   
+            return back();
         }
     }
 }

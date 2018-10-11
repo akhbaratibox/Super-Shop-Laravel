@@ -41,7 +41,10 @@ class SubCategoryController extends Controller
         $subcategory = new SubCategory;
         $subcategory->name = $request->name;
         $subcategory->category_id = $request->category_id;
-        $subcategory->banner = $request->file('banner')->store('uploads');
+
+        if($request->hasFile('banner')){
+            $subcategory->banner = $request->file('banner')->store('uploads');
+        }
 
         if($subcategory->save()){
             flash('Subcategory has been inserted successfully')->success();
@@ -49,7 +52,7 @@ class SubCategoryController extends Controller
         }
         else{
             flash('Something went wrong')->danger();
-            return back();   
+            return back();
         }
     }
 
@@ -89,7 +92,7 @@ class SubCategoryController extends Controller
         $subcategory = SubCategory::findOrFail($id);
         $subcategory->name = $request->name;
         $subcategory->category_id = $request->category_id;
-        
+
         if($request->hasFile('banner')){
             $subcategory->banner = $request->file('banner')->store('uploads');
         }
@@ -100,7 +103,7 @@ class SubCategoryController extends Controller
         }
         else{
             flash('Something went wrong')->danger();
-            return back();    
+            return back();
         }
     }
 
@@ -118,7 +121,7 @@ class SubCategoryController extends Controller
         }
         else{
             flash('Something went wrong')->danger();
-            return back();    
+            return back();
         }
     }
 

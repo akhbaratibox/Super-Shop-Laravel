@@ -38,15 +38,18 @@ class BrandController extends Controller
     {
         $brand = new Brand;
         $brand->name = $request->name;
-        $brand->logo = $request->file('logo')->store('uploads');
-        
+
+        if($request->hasFile('logo')){
+            $brand->logo = $request->file('logo')->store('uploads');
+        }
+
         if($brand->save()){
             flash('Brand has been inserted successfully')->success();
             return redirect()->route('brands.index');
         }
         else{
             flash('Something went wrong')->danger();
-            return back();  
+            return back();
         }
     }
 
@@ -94,7 +97,7 @@ class BrandController extends Controller
         }
         else{
             flash('Something went wrong')->danger();
-            return back(); 
+            return back();
         }
     }
 
@@ -112,7 +115,7 @@ class BrandController extends Controller
         }
         else{
             flash('Something went wrong')->danger();
-            return back(); 
+            return back();
         }
     }
 }

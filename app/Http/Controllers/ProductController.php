@@ -64,7 +64,7 @@ class ProductController extends Controller
         $product->discount = $request->discount;
         $product->discount_type = $request->discount_type;
         $product->colors = json_encode($request->colors);
-        
+
         $price_variations = array();
 
         foreach (json_decode(SubSubCategory::find($request->subsubcategory_id)->options) as $key => $option) {
@@ -75,6 +75,7 @@ class ProductController extends Controller
                 $price_variations[$str_price] = $request[$str_price];
             }
         }
+
         $product->price_variations = json_encode($price_variations);
 
         if($product->save()){
@@ -146,7 +147,7 @@ class ProductController extends Controller
         $product->discount = $request->discount;
         $product->discount_type = $request->discount_type;
         $product->colors = json_encode($request->colors);
-        
+
         $price_variations = array();
 
         foreach (json_decode(SubSubCategory::find($request->subsubcategory_id)->options) as $key => $option) {
@@ -183,7 +184,7 @@ class ProductController extends Controller
         }
         else{
             flash('Something went wrong')->danger();
-            return back();  
+            return back();
         }
     }
 

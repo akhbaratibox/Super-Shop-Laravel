@@ -32,17 +32,17 @@
 
     <!--Animate.css [ OPTIONAL ]-->
     <link href="{{ asset('plugins/animate-css/animate.min.css')}}" rel="stylesheet">
-    
+
     <!--Switchery [ OPTIONAL ]-->
     <link href="{{ asset('plugins/switchery/switchery.min.css')}}" rel="stylesheet">
 
     <!--DataTables [ OPTIONAL ]-->
     <link href="{{ asset('plugins/datatables/media/css/dataTables.bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/datatables/extensions/Responsive/css/responsive.dataTables.min.css') }}" rel="stylesheet">
-    
+
     <!--Select2 [ OPTIONAL ]-->
     <link href="{{ asset('plugins/select2/css/select2.min.css')}}" rel="stylesheet">
-    
+
     <!--Chosen [ OPTIONAL ]-->
     {{-- <link href="{{ asset('plugins/chosen/chosen.min.css')}}" rel="stylesheet"> --}}
 
@@ -54,7 +54,7 @@
 
     <!--Theme [ DEMONSTRATION ]-->
     <link href="{{ asset('css/themes/type-full/theme-dark-full.min.css') }}" rel="stylesheet">
-    
+
     <!--Spectrum Stylesheet [ REQUIRED ]-->
     <link href="{{ asset('css/spectrum.css')}}" rel="stylesheet">
 
@@ -111,7 +111,7 @@
 
     <!--Form Component [ SAMPLE ]-->
     <script src="{{asset('js/demo/form-wizard.js')}}"></script>
-    
+
     <!--Spectrum JavaScript [ REQUIRED ]-->
     <script src="{{ asset('js/spectrum.js')}}"></script>
 
@@ -147,28 +147,13 @@
         <script type="text/javascript">
             $(document).on('nifty.ready', function() {
                 showAlert('{{ $message['level'] }}', '{{ $message['message'] }}');
-                function showAlert(type, message){
-                    $.niftyNoty({
-                        type: type,
-                        container: 'floating',
-                        html: message,
-                        closeBtn: true,
-                        floating: {
-                            position: 'top-right',
-                            animationIn: 'fadeIn',
-                            animationOut: 'fadeOut'
-                        },
-                        focus: true,
-                        timer: 3000
-                    });
-                }
             });
         </script>
     @endforeach
 
 
     <div id="container" class="effect aside-float aside-bright mainnav-lg">
-        
+
         @include('inc.admin_nav')
 
         <div class="boxed">

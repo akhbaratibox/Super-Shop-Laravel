@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="col-sm-12">
+<div class="col-lg-12">
     <div class="panel">
         <div class="panel-heading">
             <h3 class="panel-title">{{__('web.product_stock_information')}}</h3>
@@ -14,8 +14,8 @@
         	@csrf
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">{{__('web.category')}}</label>
-                    <div class="col-sm-9">
+                    <label class="col-lg-3 control-label" for="name">{{__('web.category')}}</label>
+                    <div class="col-lg-9">
                         <select name="category_id" id="category_id" class="form-control demo-select2-placeholder" required>
                             @foreach($categories as $category)
                                 <option value="{{$category->id}}">{{$category->name}}</option>
@@ -24,26 +24,26 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">{{__('web.subcategory')}}</label>
-                    <div class="col-sm-9">
+                    <label class="col-lg-3 control-label" for="name">{{__('web.subcategory')}}</label>
+                    <div class="col-lg-9">
                         <select name="subcategory_id" id="subcategory_id" class="form-control demo-select2-placeholder" required>
-                            
+
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">{{__('web.subsubcategory')}}</label>
-                    <div class="col-sm-9">
+                    <label class="col-lg-3 control-label" for="name">{{__('web.subsubcategory')}}</label>
+                    <div class="col-lg-9">
                         <select name="subsubcategory_id" id="subsubcategory_id" class="form-control demo-select2-placeholder" required>
-                            
+
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">{{__('web.product')}}</label>
-                    <div class="col-sm-9">
+                    <label class="col-lg-3 control-label" for="name">{{__('web.product')}}</label>
+                    <div class="col-lg-9">
                         <select name="product_id" id="product_id" class="form-control demo-select2-placeholder" required>
-                            
+
                         </select>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
 @section('script')
 
 <script type="text/javascript">
-    
+
     function get_subcategories_by_category(){
         var category_id = $('#category_id').val();
         $.post('{{ route('subcategories.get_subcategories_by_category') }}',{_token:'{{ csrf_token() }}', category_id:category_id}, function(data){
@@ -92,7 +92,7 @@
             get_subsubcategories_by_subcategory();
         });
     }
-    
+
     function get_subsubcategories_by_subcategory(){
         var subcategory_id = $('#subcategory_id').val();
         $.post('{{ route('subsubcategories.get_subsubcategories_by_subcategory') }}',{_token:'{{ csrf_token() }}', subcategory_id:subcategory_id}, function(data){
@@ -134,7 +134,7 @@
                     showPalette: false
                 });
         });
-    }    
+    }
 
     $(document).ready(function(){
         get_subcategories_by_category();

@@ -6,7 +6,7 @@
         <!--Brand logo & name-->
         <!--================================-->
         <div class="navbar-header">
-            <a href="{{route('home')}}" class="navbar-brand">
+            <a href="{{route('dashboard')}}" class="navbar-brand">
                 <img src="{{ asset('img/logo_shop.png') }}" alt="Nifty Logo" class="brand-icon">
                 <div class="brand-title">
                     <span class="brand-text">ActiveShop</span>
@@ -55,7 +55,7 @@
                 <li id="dropdown-user" class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
                         <span class="ic-user pull-right">
-                            
+
                             <i class="demo-pli-male"></i>
                         </span>
                     </a>

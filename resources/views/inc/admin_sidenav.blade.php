@@ -85,8 +85,8 @@
                         {{-- <li class="list-header">Navigation</li> --}}
 
                         <!--Menu list item-->
-                        <li class="{{ areActiveRoutes(['home'])}}">
-                            <a class="nav-link" href="{{route('home')}}">
+                        <li class="{{ areActiveRoutes(['dashboard'])}}">
+                            <a class="nav-link" href="{{route('dashboard')}}">
                                 <i class="fa fa-home"></i>
                                 <span class="menu-title">{{__('web.dashboard')}}</span>
                             </a>

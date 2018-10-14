@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2018 at 01:54 PM
+-- Generation Time: Oct 11, 2018 at 01:19 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -89,9 +89,9 @@ CREATE TABLE `currencies` (
 --
 
 INSERT INTO `currencies` (`id`, `name`, `symbol`, `exchange_rate`, `status`, `code`, `created_at`, `updated_at`) VALUES
-(1, 'U.S. Dollar', '$', '1', 0, 'USD', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
-(2, 'Australian Dollar', '$', '1.2762', 0, 'AUD', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
-(5, 'Brazilian Real', 'R$', '3.238', 0, 'BRL', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
+(1, 'U.S. Dollar', '$', '1', 1, 'USD', '2018-10-09 11:35:08', '2018-10-11 04:45:44'),
+(2, 'Australian Dollar', '$', '1.2762', 0, 'AUD', '2018-10-09 11:35:08', '2018-10-11 04:27:37'),
+(5, 'Brazilian Real', 'R$', '3.238', 0, 'BRL', '2018-10-09 11:35:08', '2018-10-11 04:34:43'),
 (6, 'Canadian Dollar', '$', '1.272', 0, 'CAD', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
 (7, 'Czech Koruna', 'Kč', '20.647', 0, 'CZK', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
 (8, 'Danish Krone', 'kr', '6.0532', 0, 'DKK', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
@@ -112,7 +112,7 @@ INSERT INTO `currencies` (`id`, `name`, `symbol`, `exchange_rate`, `status`, `co
 (23, 'Swedish Krona', 'kr', '8.1945', 0, 'SEK', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
 (24, 'Swiss Franc', 'CHF', '0.93805', 0, 'CHF', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
 (26, 'Thai Baht', '฿', '31.39', 0, 'THB', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
-(27, 'your_currency', '?', '1', 0, '??', '2018-10-09 11:35:08', '2018-10-09 11:35:08');
+(27, 'Taka', '/-', '84.50', 1, 'BDT', '2018-10-09 11:35:08', '2018-10-11 04:34:30');
 
 -- --------------------------------------------------------
 
@@ -206,6 +206,7 @@ INSERT INTO `products` (`id`, `name`, `added_by`, `user_id`, `category_id`, `sub
 CREATE TABLE `product_stocks` (
   `id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
+  `stocks` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -344,7 +345,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_type`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'Admin', 'mehedi.iitdu@gmail.com', NULL, '$2y$10$LB5/.OWjDuXpVQ3qp3ZgAevv0ZDFT8WcO5mlQqKLudgPYw46kBsIm', 'oqRjaDNwfPETo5Y4EV5nx1S1cvZ6MSasOYt38HSzwu4BSaF3HtbPbyObfP4A', '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
+(1, 'admin', 'Admin', 'admin@example.com', NULL, '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', 'XbzNCYqW9acsdNsyBBdepX3h7BtCKnGT1CFlg7hqq1amyGNRlKUmk2EqG5L1', '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
 (2, 'customer', 'Santu Roy', 'developer.activeitzone@gmail.com', NULL, '$2y$10$X90n.h20O1Z0pzDfoQjwvu.Thxe6EsRcQDPYZ8Lf/7fy6qkZV.qnq', '5yIwJmGbwc0wCHWmyVdLcdksRJp7VQnFxky7dE3avkEnhgS8Anmagxqp4692', '2018-09-30 02:55:40', '2018-09-30 02:55:40'),
 (3, 'seller', 'Seller 1', 'seller1@example.com', NULL, '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', NULL, '2018-10-07 04:42:57', '2018-10-07 04:48:43'),
 (5, 'staff', 'Santu Roy', 'santu@gmail.com', NULL, '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', NULL, '2018-10-10 05:53:31', '2018-10-10 05:53:31');

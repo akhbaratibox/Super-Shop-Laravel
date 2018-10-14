@@ -42,7 +42,7 @@ class SubSubCategoryController extends Controller
     {
         $subsubcategory = new SubSubCategory;
         $subsubcategory->name = $request->name;
-        $subsubcategory->subcategory_id = $request->sub_category_id;
+        $subsubcategory->sub_category_id = $request->sub_category_id;
 
         if($request->hasFile('banner')){
             $subsubcategory->banner = $request->file('banner')->store('uploads');
@@ -114,7 +114,7 @@ class SubSubCategoryController extends Controller
     {
         $subsubcategory = SubSubCategory::findOrFail($id);
         $subsubcategory->name = $request->name;
-        $subsubcategory->subcategory_id = $request->sub_category_id;
+        $subsubcategory->sub_category_id = $request->sub_category_id;
 
         if($request->hasFile('banner')){
             $subsubcategory->banner = $request->file('banner')->store('uploads');
@@ -169,7 +169,7 @@ class SubSubCategoryController extends Controller
 
     public function get_subsubcategories_by_subcategory(Request $request)
     {
-        $subsubcategories = SubSubCategory::where('subcategory_id', $request->subcategory_id)->get();
+        $subsubcategories = SubSubCategory::where('sub_category_id', $request->subcategory_id)->get();
         return $subsubcategories;
     }
 

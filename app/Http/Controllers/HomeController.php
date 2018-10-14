@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
+use App\Category;
 
 class HomeController extends Controller
 {
@@ -25,5 +26,16 @@ class HomeController extends Controller
     public function dashboard()
     {
         return view('dashboard');
+    }
+
+    /**
+     * Show the application frontend home.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $categories = Category::all();
+        return view('frontend.index', compact('categories'));
     }
 }

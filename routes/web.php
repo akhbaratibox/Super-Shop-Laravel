@@ -11,15 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
-Route::get('/admin', 'HomeController@dashboard')->name('dashboard');
 Route::post('/language', 'languageController@changeLanguage')->name('language.change');
+
+Route::get('/admin', 'HomeController@dashboard')->name('dashboard')->middleware(['auth', 'admin']);
 
 Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function(){
 	Route::resource('categories','CategoryController');

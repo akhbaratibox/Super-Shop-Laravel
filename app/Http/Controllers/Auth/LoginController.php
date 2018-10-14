@@ -25,7 +25,22 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //protected $redirectTo = '/';
+
+
+    /**
+     * Check user's role and redirect user based on their role
+     * @return
+     */
+    public function authenticated()
+    {
+        if(auth()->user()->user_type == 'admin' || auth()->user()->user_type == 'staff')
+        {
+            return redirect()->route('dashboard');
+        }
+
+        return redirect()->route('home');
+    }
 
     /**
      * Create a new controller instance.

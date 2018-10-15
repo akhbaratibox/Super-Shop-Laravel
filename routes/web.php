@@ -12,13 +12,15 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/{slug}', 'HomeController@product')->name('product');
+Route::get('/users/login', 'HomeController@login')->name('user.login');
 
 Auth::routes();
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::post('/language', 'languageController@changeLanguage')->name('language.change');
 
-Route::get('/admin', 'HomeController@dashboard')->name('dashboard')->middleware(['auth', 'admin']);
 
+Route::get('/admin', 'HomeController@dashboard')->name('dashboard')->middleware(['auth', 'admin']);
 Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function(){
 	Route::resource('categories','CategoryController');
 	Route::get('/categories/destroy/{id}', 'CategoryController@destroy')->name('categories.destroy');

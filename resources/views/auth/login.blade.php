@@ -40,9 +40,9 @@
 
     <div class="pad-all">
         <a href="{{ route('password.request') }}" class="btn-link mar-rgt">Forgot password ?</a>
-        <a href="{{ route('register') }}" class="btn-link mar-lft">Create a new account</a>
+        <!--<a href="{{ route('register') }}" class="btn-link mar-lft">Create a new account</a>-->
 
-        <div class="media pad-top bord-top">
+        <!--<div class="media pad-top bord-top">
             <div class="pull-right">
                 <a href="#" class="pad-rgt"><i class="demo-psi-facebook icon-lg text-primary"></i></a>
                 <a href="#" class="pad-rgt"><i class="demo-psi-twitter icon-lg text-info"></i></a>
@@ -51,7 +51,7 @@
             <div class="media-body text-left text-bold text-main">
                 Login with
             </div>
-        </div>
+        </div>-->
     </div>
 </div>
 

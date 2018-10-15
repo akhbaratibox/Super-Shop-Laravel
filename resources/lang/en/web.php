@@ -8,6 +8,14 @@ return [
     |--------------------------------------------------------------------------
     */
 
+    //Auth
+
+    'name' => 'Name',
+    'email' => 'Email',
+    'confirm_password' => 'Confirm Password',
+    'create_account' => 'Create Account',
+    'login' => 'Login',
+
     //Admin Side Navigation Strings
     'dashboard' => 'Dashboard',
     'products' => 'Products',

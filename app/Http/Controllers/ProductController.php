@@ -63,6 +63,9 @@ class ProductController extends Controller
         $product->tax_type = $request->tax_type;
         $product->discount = $request->discount;
         $product->discount_type = $request->discount_type;
+
+        $product->slug = preg_replace('/\s+/', '-', $request->name).'-'.str_random(5);
+
         $product->colors = json_encode($request->colors);
 
         $price_variations = array();
@@ -146,6 +149,9 @@ class ProductController extends Controller
         $product->tax_type = $request->tax_type;
         $product->discount = $request->discount;
         $product->discount_type = $request->discount_type;
+
+        $product->slug = preg_replace('/\s+/', '-', $request->name).'-'.str_random(5);
+
         $product->colors = json_encode($request->colors);
 
         $price_variations = array();

@@ -8,7 +8,6 @@
 public/uploads
 /storage/*.key
 /vendor
-vendor
 /.idea
 /.vscode
 /.vagrant

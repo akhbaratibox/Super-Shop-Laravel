@@ -280,7 +280,7 @@
                                     <div class="block-image">
                                         <div class="view view-first">
                                             <a href="#">
-                                                <img src="assets/images/prv/shop/electronics/img-8.png" class="img-fluid img-center img-primary">
+                                                <img src="{{ asset('frontend/images/prv/shop/electronics/img-8.png') }}" class="img-fluid img-center img-primary">
                                             </a>
                                         </div>
                                     </div>
@@ -299,7 +299,7 @@
                                     <div class="block-image">
                                         <div class="view view-first">
                                             <a href="#">
-                                                <img src="assets/images/prv/shop/electronics/img-8.png" class="img-fluid img-center img-primary">
+                                                <img src="{{ asset('frontend/images/prv/shop/electronics/img-8.png') }}" class="img-fluid img-center img-primary">
                                             </a>
                                         </div>
                                     </div>
@@ -332,87 +332,11 @@
                                 <div class="tab-pane active show" id="tab_default_1">
                                     <div class="py-2 px-4">
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <table class="table table-bordered">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td><strong>Sizes</strong></td>
-                                                            <td>M, L, XL, XXL</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><strong>Prodused in</strong></td>
-                                                            <td>USA</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><strong>Material</strong></td>
-                                                            <td>plastic, textile</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><strong>Colors</strong></td>
-                                                            <td>red, black, grey</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><strong>Dimension</strong></td>
-                                                            <td>20x40x33</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <table class="table table-no-border">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td><strong>Sizes</strong></td>
-                                                            <td>M, L, XL, XXL</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><strong>Prodused in</strong></td>
-                                                            <td>USA</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><strong>Material</strong></td>
-                                                            <td>plastic, textile</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><strong>Colors</strong></td>
-                                                            <td>red, black, grey</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><strong>Dimension</strong></td>
-                                                            <td>20x40x33</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                            <div class="col-md-12">
+                                                <?php echo $product->description; ?>
                                             </div>
                                         </div>
-
                                         <span class="space-md-md"></span>
-
-                                        <h3 class="heading heading-6 strong-600 text-uppercase">
-                                            Strength
-                                        </h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus, ut feugiat nibh adipiscing sit amet.
-                                        </p>
-
-                                        <span class="space-md-md"></span>
-
-                                        <h3 class="heading heading-6 strong-600 text-uppercase">
-                                            Flexibility
-                                        </h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus, ut feugiat nibh adipiscing sit amet.
-                                        </p>
-
-                                        <span class="space-md-md"></span>
-
-                                        <h3 class="heading heading-6 strong-600 text-uppercase">
-                                            Emotion
-                                        </h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus, ut feugiat nibh adipiscing sit amet.
-                                        </p>
                                     </div>
 
                                 </div>

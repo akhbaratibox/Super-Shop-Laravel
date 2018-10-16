@@ -50,10 +50,10 @@
                 <ul class="inline-links">
                     @auth
                     <li>
-                        <a href="#">{{ Auth::user()->name }}</a>
+                        <a href="#" class="top-bar-item">{{ Auth::user()->name }}</a>
                     </li>
                     <li>
-                        <a href="{{ route('logout') }}">Logout</a>
+                        <a href="{{ route('logout') }}" class="top-bar-item">Logout</a>
                     </li>
                     @else
                     <li>

@@ -3,189 +3,229 @@
 @section('content')
 
 <div class="row">
-	<div class="col-sm-12">
+	<form class="form form-horizontal mar-top" action="{{route('products.store')}}" method="POST" enctype="multipart/form-data">
+		@csrf
+		<input type="hidden" name="added_by" value="admin">
 		<div class="panel">
+			<div class="panel-heading">
+				<h3 class="panel-title">Product Information</h3>
+			</div>
+			<div class="panel-body">
+				<div class="tab-base tab-stacked-left">
+				    <!--Nav tabs-->
+				    <ul class="nav nav-tabs">
+				        <li class="active">
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-1" aria-expanded="true">General</a>
+				        </li>
+				        <li class="">
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-2" aria-expanded="false">Images</a>
+				        </li>
+						<li class="">
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-3" aria-expanded="false">Videos</a>
+				        </li>
+				        <li class="">
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-4" aria-expanded="false">Meta Tags</a>
+				        </li>
+						<li class="">
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-5" aria-expanded="false">Price</a>
+				        </li>
+						<li class="">
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-6" aria-expanded="false">Description</a>
+				        </li>
+						<li class="">
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-7" aria-expanded="false">Customer Choice</a>
+				        </li>
+						<li class="">
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-8" aria-expanded="false">Related Products</a>
+				        </li>
+						<li class="">
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-9" aria-expanded="false">Display Settings</a>
+				        </li>
+						<li class="">
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-10" aria-expanded="false">Shipping Info</a>
+				        </li>
+						<li class="">
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-11" aria-expanded="false">PDF Specs</a>
+				        </li>
+				    </ul>
 
-		    <!-- Classic Form Wizard -->
-		    <!--===================================================-->
-		    <div id="demo-cls-wz">
-
-		        <!--Nav-->
-		        <ul class="wz-nav-off wz-icon-inline wz-classic">
-		            <li class="col-xs-4 bg-info active">
-		                <a data-toggle="tab" href="#demo-cls-tab1" aria-expanded="true">
-		                    {{__('web.product_details')}}
-		                </a>
-		            </li>
-		            <li class="col-xs-4 bg-info">
-		                <a data-toggle="tab" href="#demo-cls-tab2" aria-expanded="false">
-		                	{{__('web.business_details')}}
-		                </a>
-		            </li>
-		            <li class="col-xs-4 bg-info">
-		                <a data-toggle="tab" href="#demo-cls-tab3" aria-expanded="false">
-		                    {{__('web.customer_choice_options')}}
-		                </a>
-		            </li>
-		        </ul>
-
-		        <!--Form-->
-		        <form id="product_form" class="form-horizontal mar-top" action="{{route('products.store')}}" method="POST" enctype="multipart/form-data">
-		        	@csrf
-		        	<input type="hidden" name="added_by" value="admin">
-		            <div class="panel-body">
-		                <div class="tab-content">
-
-		                    <!--First tab-->
-		                    <div id="demo-cls-tab1" class="tab-pane active in">
-		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">{{__('web.product_name')}}</label>
-		                            <div class="col-lg-7">
-		                                <input type="text" class="form-control" name="name" placeholder="{{__('web.product_name')}}" required>
-		                            </div>
-		                        </div>
-		                        <div class="form-group" id="category">
-		                            <label class="col-lg-3 control-label">{{__('web.category')}}</label>
-		                            <div class="col-lg-7">
-		                                <select class="form-control demo-select2-placeholder" name="category_id" id="category_id" required>
-		                                	@foreach($categories as $category)
-		                                	    <option value="{{$category->id}}">{{$category->name}}</option>
-		                                	@endforeach
-		                                </select>
-		                            </div>
-		                        </div>
-		                        <div class="form-group" id="subcategory">
-		                            <label class="col-lg-3 control-label">{{__('web.subcategory')}}</label>
-		                            <div class="col-lg-7">
-		                                <select class="form-control demo-select2-placeholder" name="subcategory_id" id="subcategory_id" required>
-
-		                                </select>
-		                            </div>
-		                        </div>
-		                        <div class="form-group" id="subsubcategory">
-		                            <label class="col-lg-3 control-label">{{__('web.subsubcategory')}}</label>
-		                            <div class="col-lg-7">
-		                                <select class="form-control demo-select2-placeholder" name="subsubcategory_id" id="subsubcategory_id" required>
-
-		                                </select>
-		                            </div>
-		                        </div>
-		                        <div class="form-group" id="brand">
-		                            <label class="col-lg-3 control-label">{{__('web.brand')}}</label>
-		                            <div class="col-lg-7">
-		                                <select class="form-control demo-select2-placeholder" name="brand_id" id="brand_id" required>
-
-		                                </select>
-		                            </div>
-		                        </div>
-		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">{{__('web.unit')}}</label>
-		                            <div class="col-lg-7">
-		                                <input type="text" class="form-control" name="unit" placeholder="Unit (e.g. KG, Pc etc)" required>
-		                            </div>
-		                        </div>
-		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">{{__('web.tags')}}</label>
-		                            <div class="col-lg-7">
-		                                <input type="text" class="form-control" name="tags[]" placeholder="Type to add a tag" data-role="tagsinput">
-		                            </div>
-		                        </div>
-		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">{{__('web.product_image')}}</label>
-		                            <div class="col-lg-7">
-		                                <input type="file" class="form-control" name="photos[]" multiple required>
-		                            </div>
-		                        </div>
-		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">{{__('web.description')}}</label>
-		                            <div class="col-lg-7">
-		                                <textarea class="demo-summernote" name="description"></textarea>
-		                            </div>
-		                        </div>
-		                    </div>
-
-		                    <!--Second tab-->
-		                    <div id="demo-cls-tab2" class="tab-pane fade">
-		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">{{__('web.unit_price')}}</label>
-		                            <div class="col-lg-7">
-		                                <input type="text" placeholder="{{__('web.unit_price')}}" name="unit_price" class="form-control">
-		                            </div>
-		                        </div>
-		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">{{__('web.purchase_price')}}</label>
-		                            <div class="col-lg-7">
-		                                <input type="number" min="0" step="0.01" placeholder="{{__('web.purchase_price')}}" name="purchase_price" class="form-control">
-		                            </div>
-		                        </div>
-		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">{{__('web.shipping_cost')}}</label>
-		                            <div class="col-lg-7">
-		                                <input type="number" min="0" step="0.01" placeholder="{{__('web.shipping_cost')}}" name="shipping_cost" class="form-control">
-		                            </div>
-		                        </div>
-		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">{{__('web.tax')}}</label>
-		                            <div class="col-lg-7">
-		                                <input type="number" min="0" step="0.01" placeholder="{{__('web.tax')}}" name="tax" class="form-control">
-		                            </div>
-		                            <div class="col-lg-1">
-		                                <select class="demo-select2" name="tax_type">
-		                                	<option value="amount">$</option>
-		                                	<option value="percent">%</option>
-		                                </select>
-		                            </div>
-		                        </div>
-		                        <div class="form-group">
-		                            <label class="col-lg-3 control-label">{{__('web.discount')}}</label>
-		                            <div class="col-lg-7">
-		                                <input type="number" min="0" step="0.01" placeholder="{{__('web.discount')}}" name="discount" class="form-control">
-		                            </div>
-		                            <div class="col-lg-1">
-		                                <select class="demo-select2" name="discount_type">
-		                                	<option value="amount">$</option>
-		                                	<option value="percent">%</option>
-		                                </select>
-		                            </div>
-		                        </div>
-		                    </div>
-
-		                    <!--Third tab-->
-		                    <div id="demo-cls-tab3" class="tab-pane">
-
-		                        <div class="form-group increment">
-		                            <label class="col-sm-3 control-label">{{__('web.colors')}}</label>
-		                            <div class="col-sm-3">
-		                                <input type="text" name="colors[]" class="form-control color" value="#000" required>
-		                            </div>
-		                            <div class="col-sm-3">
-		                                <button class="btn btn-primary add-colors" type="button" style="margin-left:10px">{{__('web.add_more_color')}}</button>
-		                            </div>
-		                        </div>
-
-								<div class="customer_choice_options" id="customer_choice_options">
-
+				    <!--Tabs Content-->
+				    <div class="tab-content">
+				        <div id="demo-stk-lft-tab-1" class="tab-pane fade active in">
+							<div class="form-group">
+								<label class="col-lg-2 control-label">{{__('web.product_name')}}</label>
+								<div class="col-lg-7">
+									<input type="text" class="form-control" name="name" placeholder="{{__('web.product_name')}}" required>
 								</div>
+							</div>
+							<div class="form-group" id="category">
+								<label class="col-lg-2 control-label">{{__('web.category')}}</label>
+								<div class="col-lg-7">
+									<select class="form-control demo-select2-placeholder" name="category_id" id="category_id" required>
+										@foreach($categories as $category)
+											<option value="{{$category->id}}">{{$category->name}}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+							<div class="form-group" id="subcategory">
+								<label class="col-lg-2 control-label">{{__('web.subcategory')}}</label>
+								<div class="col-lg-7">
+									<select class="form-control demo-select2-placeholder" name="subcategory_id" id="subcategory_id" required>
 
-		                    </div>
-		            </div>
+									</select>
+								</div>
+							</div>
+							<div class="form-group" id="subsubcategory">
+								<label class="col-lg-2 control-label">{{__('web.subsubcategory')}}</label>
+								<div class="col-lg-7">
+									<select class="form-control demo-select2-placeholder" name="subsubcategory_id" id="subsubcategory_id" required>
 
-		            <!--Footer button-->
-		            <div class="panel-footer text-right">
-		                <div class="box-inline">
-		                    <button type="button" class="previous btn btn-info disabled">{{__('web.previous')}}</button>
-		                    <button type="button" class="next btn btn-info">{{__('web.next')}}</button>
-		                    <button type="button" class="finish btn btn-info" disabled="" style="display: none;">{{__('web.finish')}}</button>
-		                </div>
-		            </div>
-		        </form>
-		    </div>
-		    <!--===================================================-->
-		    <!-- End Classic Form Wizard -->
+									</select>
+								</div>
+							</div>
+							<div class="form-group" id="brand">
+								<label class="col-lg-2 control-label">{{__('web.brand')}}</label>
+								<div class="col-lg-7">
+									<select class="form-control demo-select2-placeholder" name="brand_id" id="brand_id" required>
 
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">{{__('web.unit')}}</label>
+								<div class="col-lg-7">
+									<input type="text" class="form-control" name="unit" placeholder="Unit (e.g. KG, Pc etc)" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">{{__('web.tags')}}</label>
+								<div class="col-lg-7">
+									<input type="text" class="form-control" name="tags[]" placeholder="Type to add a tag" data-role="tagsinput">
+								</div>
+							</div>
+				        </div>
+				        <div id="demo-stk-lft-tab-2" class="tab-pane fade">
+							<div class="form-group">
+								<label class="col-lg-2 control-label">Main Images</label>
+								<div class="col-lg-7">
+									<input type="file" class="form-control" name="photos[]" multiple required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">Thumbnail Image</label>
+								<div class="col-lg-7">
+									<input type="file" class="form-control" name="thumbnail" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">Featured</label>
+								<div class="col-lg-7">
+									<input type="file" class="form-control" name="featured_img" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">Flash Deal</label>
+								<div class="col-lg-7">
+									<input type="file" class="form-control" name="flash_deal_img" required>
+								</div>
+							</div>
+				        </div>
+				        <div id="demo-stk-lft-tab-3" class="tab-pane fade">
+				            <p class="text-main text-semibold">Videos</p>
+				        </div>
+						<div id="demo-stk-lft-tab-4" class="tab-pane fade">
+				            <p class="text-main text-semibold">Meta Tags</p>
+				        </div>
+						<div id="demo-stk-lft-tab-5" class="tab-pane fade">
+							<div class="form-group">
+								<label class="col-lg-2 control-label">{{__('web.unit_price')}}</label>
+								<div class="col-lg-7">
+									<input type="text" placeholder="{{__('web.unit_price')}}" name="unit_price" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">{{__('web.purchase_price')}}</label>
+								<div class="col-lg-7">
+									<input type="number" min="0" step="0.01" placeholder="{{__('web.purchase_price')}}" name="purchase_price" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">{{__('web.shipping_cost')}}</label>
+								<div class="col-lg-7">
+									<input type="number" min="0" step="0.01" placeholder="{{__('web.shipping_cost')}}" name="shipping_cost" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">{{__('web.tax')}}</label>
+								<div class="col-lg-7">
+									<input type="number" min="0" step="0.01" placeholder="{{__('web.tax')}}" name="tax" class="form-control">
+								</div>
+								<div class="col-lg-1">
+									<select class="demo-select2" name="tax_type">
+										<option value="amount">$</option>
+										<option value="percent">%</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">{{__('web.discount')}}</label>
+								<div class="col-lg-7">
+									<input type="number" min="0" step="0.01" placeholder="{{__('web.discount')}}" name="discount" class="form-control">
+								</div>
+								<div class="col-lg-1">
+									<select class="demo-select2" name="discount_type">
+										<option value="amount">$</option>
+										<option value="percent">%</option>
+									</select>
+								</div>
+							</div>
+				        </div>
+						<div id="demo-stk-lft-tab-6" class="tab-pane fade">
+							<div class="form-group">
+								<label class="col-lg-2 control-label">{{__('web.description')}}</label>
+								<div class="col-lg-7">
+									<textarea class="demo-summernote" name="description"></textarea>
+								</div>
+							</div>
+				        </div>
+						<div id="demo-stk-lft-tab-7" class="tab-pane fade">
+							<div class="form-group increment">
+								<label class="col-sm-3 control-label">{{__('web.colors')}}</label>
+								<div class="col-sm-3">
+									<input type="text" name="colors[]" class="form-control color" value="#000" required>
+								</div>
+								<div class="col-sm-3">
+									<button class="btn btn-primary add-colors" type="button" style="margin-left:10px">{{__('web.add_more_color')}}</button>
+								</div>
+							</div>
+
+							<div class="customer_choice_options" id="customer_choice_options">
+
+							</div>
+				        </div>
+						<div id="demo-stk-lft-tab-8" class="tab-pane fade">
+							<label class="col-lg-2 control-label">Related Products</label>
+				        </div>
+						<div id="demo-stk-lft-tab-9" class="tab-pane fade">
+
+				        </div>
+						<div id="demo-stk-lft-tab-10" class="tab-pane fade">
+
+				        </div>
+						<div id="demo-stk-lft-tab-11" class="tab-pane fade">
+
+				        </div>
+				    </div>
+				</div>
+			</div>
+			<div class="panel-footer text-right">
+				<button type="submit" name="button" class="btn btn-purple">{{ __('web.save') }}</button>
+			</div>
 		</div>
-	</div>
+	</form>
 </div>
+
 
 @endsection
 
@@ -286,7 +326,7 @@
 	}
 
 	$(document).ready(function(){
-	    //get_subcategories_by_category();
+	    get_subcategories_by_category();
 	});
 
 	$('#category_id').on('change', function() {

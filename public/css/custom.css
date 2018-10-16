@@ -17,3 +17,7 @@ select + .select2-container{
 #form{
 	min-height: 300px;
 }
+
+.tab-stacked-left .nav-tabs{
+	width: 10%;
+}

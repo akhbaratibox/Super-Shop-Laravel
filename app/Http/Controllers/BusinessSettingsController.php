@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Currency;
+use App\BusinessSetting;
 
 class BusinessSettingsController extends Controller
 {
@@ -47,5 +48,22 @@ class BusinessSettingsController extends Controller
     public function seller_verification_form(Request $request)
     {
     	return view('business_settings.seller_verification_form');
+    }
+
+    public function update(Request $request)
+    {
+        $business_settings = BusinessSetting::where('type', $request->type)->first();
+        if($business_settings!=null){
+            $business_settings->value = $request[$request->type];
+            $business_settings->save();
+        }
+        else{
+            $business_settings = new BusinessSetting;
+            $business_settings->type = $request->type;
+            $business_settings->value = $request[$request->type];
+            $business_settings->save();
+        }
+        flash("Settings updated successfully")->success();
+        return back();
     }
 }

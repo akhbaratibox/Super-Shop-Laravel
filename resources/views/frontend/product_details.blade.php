@@ -15,36 +15,13 @@
                             <div id="slideshow_thumbs" class="swiper-js-container gallery-thumbs gallery-thumbs--style-1 mt-4">
                                 <div class="swiper-container" data-swiper-items="7" data-swiper-space-between="10" data-swiper-xs-items="3" data-swiper-xs-space-between="10" data-swiper-sm-items="4" data-swiper-sm-space-between="10">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <a href="assets/images/prv/shop/electronics/img-product-lg-1.jpg" data-desoslide-index="0">
-                                                <img src="assets/images/prv/shop/electronics/img-product-sm-1.jpg" alt="Bird">
-                                            </a>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <a href="assets/images/prv/shop/electronics/img-product-lg-2.jpg" data-desoslide-index="1">
-                                                <img src="assets/images/prv/shop/electronics/img-product-sm-2.jpg" alt="Bird">
-                                            </a>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <a href="assets/images/prv/shop/electronics/img-product-lg-3.jpg" data-desoslide-index="2">
-                                                <img src="assets/images/prv/shop/electronics/img-product-sm-3.jpg" alt="Bird">
-                                            </a>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <a href="assets/images/prv/shop/electronics/img-product-lg-4.jpg" data-desoslide-index="3">
-                                                <img src="assets/images/prv/shop/electronics/img-product-sm-4.jpg" alt="Bird">
-                                            </a>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <a href="assets/images/prv/shop/electronics/img-product-lg-5.jpg" data-desoslide-index="4">
-                                                <img src="assets/images/prv/shop/electronics/img-product-sm-5.jpg" alt="Bird">
-                                            </a>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <a href="assets/images/prv/shop/electronics/img-product-lg-6.jpg" data-desoslide-index="5">
-                                                <img src="assets/images/prv/shop/electronics/img-product-sm-6.jpg" alt="Bird">
-                                            </a>
-                                        </div>
+                                        @foreach (json_decode($product->photos) as $key => $photo)
+                                            <div class="swiper-slide">
+                                                <a href="{{ asset($photo) }}" data-desoslide-index="{{ $key }}">
+                                                    <img src="{{ asset($photo) }}" alt="Image">
+                                                </a>
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -101,8 +78,8 @@
                                     <div class="product-description-label">Price:</div>
                                 </div>
                                 <div class="col-10">
-                                    <div class="product-price"><small>$</small><strong>120.00</strong><span class="piece">/pc</span></div>
-                                    <div class="product-price-old"><small>$</small><strong>160.00</strong></div>
+                                    <div class="product-price"><small>{{ currency_symbol() }}</small><strong>{{ home_discounted_price($product->unit_price, $product->discount, $product->discount_type) }}</strong><span class="piece">/{{$product->unit}}</span></div>
+                                    <div class="product-price-old"><small>{{ currency_symbol() }}</small><strong>{{ home_price($product->unit_price) }}</strong></div>
                                 </div>
                             </div>
 
@@ -216,15 +193,10 @@
                                     </ul>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
-
-
             </div>
-
         </div>
     </section>
 
@@ -272,80 +244,29 @@
                         </div>
                         <div class="box-content">
                             <div class="category-accordion">
+                                @foreach (\App\Product::where('user_id', $product->user_id)->select('category_id')->distinct()->get() as $key => $category)
+                                    <div class="single-category">
+                                        <button class="btn w-100 category-name" type="button" data-toggle="collapse" data-target="#categoryOne" aria-expanded="true">
+                                        {{ App\Category::findOrFail($category->category_id)->name }}
+                                        </button>
 
-                                <div class="single-category">
-                                    <button class="btn w-100 category-name" type="button" data-toggle="collapse" data-target="#categoryOne" aria-expanded="true">
-                                    Category name
-                                    </button>
-
-                                    <div id="categoryOne" class="collapse show">
-                                        <div class="single-sub-category">
-                                            <button class="btn w-100 sub-category-name" type="button" data-toggle="collapse" data-target="#subCategoryOne" aria-expanded="true">
-                                            Sub category name
-                                            </button>
-                                            <div id="subCategoryOne" class="collapse show">
-                                                <ul class="sub-sub-category-list">
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="single-sub-category">
-                                            <button class="btn w-100 sub-category-name" type="button" data-toggle="collapse" data-target="#subCategoryTwo" aria-expanded="false">
-                                            Sub category name
-                                            </button>
-                                            <div id="subCategoryTwo" class="collapse ">
-                                                <ul class="sub-sub-category-list">
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                </ul>
-                                            </div>
+                                        <div id="categoryOne" class="collapse show">
+                                            @foreach (\App\Product::where('user_id', $product->user_id)->where('category_id', $category->category_id)->select('subcategory_id')->distinct()->get() as $key => $subcategory)
+                                                <div class="single-sub-category">
+                                                    <button class="btn w-100 sub-category-name" type="button" data-toggle="collapse" data-target="#subCategoryOne" aria-expanded="true">
+                                                    {{ App\SubCategory::findOrFail($subcategory->subcategory_id)->name }}
+                                                    </button>
+                                                    <div id="subCategoryOne" class="collapse show">
+                                                        <ul class="sub-sub-category-list">
+                                                            @foreach (\App\Product::where('user_id', $product->user_id)->where('category_id',            $category->category_id)->where('subcategory_id', $subcategory->subcategory_id)->select('subsubcategory_id')->distinct()->get() as $key => $subsubcategory)
+                                                                <li><a href="">{{ App\SubSubCategory::findOrFail($subsubcategory->subsubcategory_id)->name }}</a></li>
+                                                            @endforeach
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
-                                </div>
-                                <div class="single-category">
-                                    <button class="btn w-100 category-name" type="button" data-toggle="collapse" data-target="#categoryTwo" aria-expanded="false">
-                                    Category name
-                                    </button>
-
-                                    <div id="categoryTwo" class="collapse">
-                                        <div class="single-sub-category">
-                                            <button class="btn w-100 sub-category-name" type="button" data-toggle="collapse" data-target="#subCategorythree" aria-expanded="false">
-                                            Sub category name
-                                            </button>
-                                            <div id="subCategorythree" class="collapse">
-                                                <ul class="sub-sub-category-list">
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="single-sub-category">
-                                            <button class="btn w-100 sub-category-name" type="button" data-toggle="collapse" data-target="#subCategoryfour" aria-expanded="false">
-                                            Sub category name
-                                            </button>
-                                            <div id="subCategoryfour" class="collapse ">
-                                                <ul class="sub-sub-category-list">
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                @endforeach
                             </div>
                         </div>
                     </div>

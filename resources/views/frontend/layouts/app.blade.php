@@ -112,7 +112,7 @@
 <script src="{{ asset('frontend/js/main.js') }}"></script>
 
 <!-- Deso Slide -->
-<script src="assets/vendor/deso-slide/js/jquery.desoslide.min.js"></script>
+<script src="{{ asset('frontend/vendor/deso-slide/js/jquery.desoslide.min.js') }}"></script>
 <script>
     $('#slideshow').desoSlide({
         thumbs: $('#slideshow_thumbs .swiper-slide > a'),

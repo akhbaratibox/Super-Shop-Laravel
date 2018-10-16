@@ -49,9 +49,15 @@ class ProductController extends Controller
         $product->subsubcategory_id = $request->subsubcategory_id;
         $product->brand_id = $request->brand_id;
 
-        if($request->hasFile('photo')){
-            $product->photo = $request->file('photo')->store('uploads');
+        $photos = array();
+
+        if($request->hasFile('photos')){
+            foreach ($request->photos as $key => $photo) {
+                array_push($photos, $photo->store('uploads'));
+            }
         }
+
+        $product->photos = json_encode($photos);
 
         $product->unit = $request->unit;
         $product->tags = json_encode($request->tags);
@@ -135,9 +141,15 @@ class ProductController extends Controller
         $product->subsubcategory_id = $request->subsubcategory_id;
         $product->brand_id = $request->brand_id;
 
-        if($request->hasFile('photo')){
-            $product->photo = $request->file('photo')->store('uploads');
+        $photos = array();
+
+        if($request->hasFile('photos')){
+            foreach ($request->photos as $key => $photo) {
+                array_push($photos, $photo->store('uploads'));
+            }
         }
+
+        $product->photos = json_encode($photos);
 
         $product->unit = $request->unit;
         $product->tags = json_encode($request->tags);

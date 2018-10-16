@@ -58,7 +58,7 @@
 		                            <label class="col-lg-3 control-label">{{__('web.subcategory')}}</label>
 		                            <div class="col-lg-7">
 		                                <select class="form-control demo-select2-placeholder" name="subcategory_id" id="subcategory_id" required>
-		                                	
+
 		                                </select>
 		                            </div>
 		                        </div>
@@ -66,7 +66,7 @@
 		                            <label class="col-lg-3 control-label">{{__('web.subsubcategory')}}</label>
 		                            <div class="col-lg-7">
 		                                <select class="form-control demo-select2-placeholder" name="subsubcategory_id" id="subsubcategory_id" required>
-		                                	
+
 		                                </select>
 		                            </div>
 		                        </div>
@@ -74,7 +74,7 @@
 		                            <label class="col-lg-3 control-label">{{__('web.brand')}}</label>
 		                            <div class="col-lg-7">
 		                                <select class="form-control demo-select2-placeholder" name="brand_id" id="brand_id" required>
-		                                	
+
 		                                </select>
 		                            </div>
 		                        </div>
@@ -93,7 +93,7 @@
 		                        <div class="form-group">
 		                            <label class="col-lg-3 control-label">{{__('web.product_image')}}</label>
 		                            <div class="col-lg-7">
-		                                <input type="file" class="form-control" name="photo" required>
+		                                <input type="file" class="form-control" name="photos[]" multiple required>
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
@@ -152,7 +152,7 @@
 
 		                    <!--Third tab-->
 		                    <div id="demo-cls-tab3" class="tab-pane">
-		                        
+
 		                        <div class="form-group increment">
 		                            <label class="col-sm-3 control-label">{{__('web.colors')}}</label>
 		                            <div class="col-sm-3">
@@ -162,7 +162,7 @@
 		                                <button class="btn btn-primary add-colors" type="button" style="margin-left:10px">{{__('web.add_more_color')}}</button>
 		                            </div>
 		                        </div>
-								
+
 								<div class="customer_choice_options" id="customer_choice_options">
 
 								</div>
@@ -210,7 +210,7 @@
 
 	$(".add-colors").click(function(){
 	    var html = '<div class="form-group control-group"><label class="col-sm-3 control-label"></label><div class="col-sm-3"><input type="text" name="colors[]" class="form-control color" required></div><div class="col-sm-3"><button class="btn btn-danger btn-circle btn-sm remove-colors" type="button" style="margin-left:10px"><i class="glyphicon glyphicon-remove"></i></button></div></div>';
-	    
+
 	    $(".increment").after(html);
 
     	$('.color').spectrum({
@@ -247,7 +247,7 @@
 		    get_subsubcategories_by_subcategory();
 		});
 	}
-	
+
 	function get_subsubcategories_by_subcategory(){
 		var subcategory_id = $('#subcategory_id').val();
 		$.post('{{ route('subsubcategories.get_subsubcategories_by_subcategory') }}',{_token:'{{ csrf_token() }}', subcategory_id:subcategory_id}, function(data){

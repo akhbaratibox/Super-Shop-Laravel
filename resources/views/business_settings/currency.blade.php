@@ -9,18 +9,20 @@
                 <h3 class="panel-title text-center">{{__('web.home_default_currency')}}</h3>
             </div>
             <div class="panel-body">
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="{{ route('business_settings.update') }}" method="POST">
+                    @csrf
                     <div class="form-group">
                         <div class="col-lg-3">
                             <label class="control-label">{{__('web.home_default_currency')}}</label>
                         </div>
                         <div class="col-lg-6">
-                            <select class="form-control demo-select2-placeholder" name="home_defualt_currency">
+                            <select class="form-control demo-select2-placeholder" name="home_default_currency">
                                 @foreach ($active_currencies as $key => $currency)
                                     <option value="{{ $currency->id }}">{{ $currency->name }}</option>
                                 @endforeach
                             </select>
                         </div>
+                        <input type="hidden" name="type" value="home_default_currency">
                         <div class="col-lg-3">
                             <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
                         </div>
@@ -36,7 +38,8 @@
                 <h3 class="panel-title text-center">{{__('web.system_default_currency')}}</h3>
             </div>
             <div class="panel-body">
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="{{ route('business_settings.update') }}" method="POST">
+                    @csrf
                     <div class="form-group">
                         <div class="col-lg-3">
                             <label class="control-label">{{__('web.system_default_currency')}}</label>
@@ -48,6 +51,7 @@
                                 @endforeach
                             </select>
                         </div>
+                        <input type="hidden" name="type" value="system_default_currency">
                         <div class="col-lg-3">
                             <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
                         </div>

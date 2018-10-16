@@ -52,10 +52,11 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::resource('stocks','ProductStockController');
 	Route::post('stocks/sku_combinations','ProductStockController@sku_combinations')->name('stocks.sku_combinations');
 
+	Route::post('/business-settings/update', 'BusinessSettingsController@update')->name('business_settings.update');
 	Route::get('/activation', 'BusinessSettingsController@activation')->name('activation.index');
 	Route::get('/currency', 'BusinessSettingsController@currency')->name('currency.index');
     Route::post('/currency/update', 'BusinessSettingsController@updateCurrency')->name('currency.update');
-    Route::post('/your_currency/update', 'BusinessSettingsController@updateYourCurrency')->name('your_currency.update');
+    Route::post('/your-currency/update', 'BusinessSettingsController@updateYourCurrency')->name('your_currency.update');
 	Route::get('/verification/form', 'BusinessSettingsController@seller_verification_form')->name('seller_verification_form.index');
 
 	Route::resource('roles','RoleController');

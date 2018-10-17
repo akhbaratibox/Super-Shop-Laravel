@@ -22,7 +22,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <input type="hidden" name="type" value="home_default_currency">
+                        <input type="hidden" name="types[]" value="home_default_currency">
                         <div class="col-lg-3">
                             <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
                         </div>
@@ -51,7 +51,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <input type="hidden" name="type" value="system_default_currency">
+                        <input type="hidden" name="types[]" value="system_default_currency">
                         <div class="col-lg-3">
                             <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
                         </div>
@@ -67,29 +67,44 @@
                 <h3 class="panel-title text-center">{{__('web.set_currency_formats')}}</h3>
             </div>
             <div class="panel-body">
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="{{ route('business_settings.update') }}" method="POST">
+                    @csrf
                     <div class="form-group">
+                        <input type="hidden" name="types[]" value="currency_format">
                         <div class="col-lg-3">
                             <label class="control-label">{{__('web.currency_format')}}</label>
                         </div>
                         <div class="col-lg-6">
-                            <select class="form-control demo-select2-placeholder" name="currency_format"></select>
+                            <select class="form-control demo-select2-placeholder" name="currency_format">
+                                <option value="1">US Format - 1,234,567.89</option>
+                                <option value="2">German Format - 1.234.567,89</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
+                        <input type="hidden" name="types[]" value="symbol_format">
                         <div class="col-lg-3">
                             <label class="control-label">{{__('web.symbol_format')}}</label>
                         </div>
                         <div class="col-lg-6">
-                            <select class="form-control demo-select2-placeholder" name="symbol_format"></select>
+                            <select class="form-control demo-select2-placeholder" name="symbol_format">
+                                <option value="1">[Symbol] [Amount]</option>
+                                <option value="2">[Amount] [Symbol]</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
+                        <input type="hidden" name="types[]" value="no_of_decimals">
                         <div class="col-lg-3">
                             <label class="control-label">{{__('web.no_of_decimals')}}</label>
                         </div>
                         <div class="col-lg-6">
-                            <select class="form-control demo-select2-placeholder" name="no_of_decimals"></select>
+                            <select class="form-control demo-select2-placeholder" name="no_of_decimals">
+                                <option value="0">12345</option>
+                                <option value="1">1234.5</option>
+                                <option value="2">123.45</option>
+                                <option value="3">12.345</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -129,7 +144,7 @@
                             <td>{{$currencies[$i]->symbol}}</td>
                             <td>{{$currencies[$i]->code}}</td>
                             <td><input id="exchange_rate_{{ $currencies[$i]->id }}" class="form-control" type="number" min="0" step="0.01" value="{{$currencies[$i]->exchange_rate}}"></td>
-                            <td><input id="status_{{ $currencies[$i]->id }}" class="demo-sw" type="checkbox" <?php if($currencies[$i]->status == 1) echo "checked";?> ></td>
+                            <td><label class="switch"><input id="status_{{ $currencies[$i]->id }}" type="checkbox" <?php if($currencies[$i]->status == 1) echo "checked";?> ><span class="slider round"></span></label></td>
                             <td><button class="btn btn-purple" type="submit" onclick="updateCurrency({{ $currencies[$i]->id }})">{{__('web.save')}}</button></td>
                         </tr>
                     @endfor
@@ -139,7 +154,7 @@
                         <td><input id="symbol_{{ $currencies[count($currencies)-1]->id }}" class="form-control" type="text" value="{{$currencies[count($currencies)-1]->symbol}}"></td>
                         <td><input id="code_{{ $currencies[count($currencies)-1]->id }}" class="form-control" type="text" value="{{$currencies[count($currencies)-1]->code}}"></td>
                         <td><input id="exchange_rate_{{ $currencies[count($currencies)-1]->id }}" class="form-control" type="number" min="0" step="0.01" value="{{$currencies[count($currencies)-1]->exchange_rate}}"></td>
-                        <td><input id="status_{{ $currencies[count($currencies)-1]->id }}" class="demo-sw" type="checkbox" <?php if($currencies[count($currencies)-1]->status == 1) echo "checked";?> ></td>
+                        <td><label class="switch"><input id="status_{{ $currencies[count($currencies)-1]->id }}" class="demo-sw" type="checkbox" <?php if($currencies[count($currencies)-1]->status == 1) echo "checked";?> ><span class="slider round"></span></label></td>
                         <td><button class="btn btn-purple" type="submit" onclick="updateYourCurrency({{ $currencies[count($currencies)-1]->id }})" >{{__('web.save')}}</button></td>
                     </tr>
                 </tbody>
@@ -164,12 +179,7 @@
                 var status = 0;
             }
             $.post('{{ route('currency.update') }}', {_token:'{{ csrf_token() }}', id:i, exchange_rate:exchange_rate, status:status}, function(data){
-                if(data == 1){
-                    showAlert('success', 'Currency updated successfully');
-                }
-                else{
-                    showAlert('danger', 'Something went wrong');
-                }
+                location.reload();
             });
         }
 
@@ -186,12 +196,7 @@
                 var status = 0;
             }
             $.post('{{ route('your_currency.update') }}', {_token:'{{ csrf_token() }}', id:i, name:name, symbol:symbol, code:code, exchange_rate:exchange_rate, status:status}, function(data){
-                if(data == 1){
-                    showAlert('success', 'Currency updated successfully');
-                }
-                else{
-                    showAlert('danger', 'Something went wrong');
-                }
+                location.reload();
             });
         }
     </script>

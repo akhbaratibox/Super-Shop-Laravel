@@ -26,8 +26,10 @@ class BusinessSettingsController extends Controller
     	$currency->exchange_rate = $request->exchange_rate;
         $currency->status = $request->status;
         if($currency->save()){
+            flash('Currency updated successfully')->success();
             return '1';
         }
+        flash('Something went wrong')->error();
         return '0';
     }
 
@@ -40,8 +42,10 @@ class BusinessSettingsController extends Controller
     	$currency->exchange_rate = $request->exchange_rate;
         $currency->status = $request->status;
         if($currency->save()){
+            flash('Currency updated successfully')->success();
             return '1';
         }
+        flash('Something went wrong')->error();
         return '0';
     }
 
@@ -52,16 +56,18 @@ class BusinessSettingsController extends Controller
 
     public function update(Request $request)
     {
-        $business_settings = BusinessSetting::where('type', $request->type)->first();
-        if($business_settings!=null){
-            $business_settings->value = $request[$request->type];
-            $business_settings->save();
-        }
-        else{
-            $business_settings = new BusinessSetting;
-            $business_settings->type = $request->type;
-            $business_settings->value = $request[$request->type];
-            $business_settings->save();
+        foreach ($request->types as $key => $type) {
+            $business_settings = BusinessSetting::where('type', $type)->first();
+            if($business_settings!=null){
+                $business_settings->value = $request[$type];
+                $business_settings->save();
+            }
+            else{
+                $business_settings = new BusinessSetting;
+                $business_settings->type = $type;
+                $business_settings->value = $request[$type];
+                $business_settings->save();
+            }
         }
         flash("Settings updated successfully")->success();
         return back();

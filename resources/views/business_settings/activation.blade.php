@@ -10,7 +10,10 @@
                 <h3 class="panel-title text-center">Product Activation</h3>
             </div>
             <div class="panel-body text-center">
-                <input class="demo-sw" type="checkbox" checked>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
             </div>
         </div>
     </div>
@@ -20,7 +23,10 @@
                 <h3 class="panel-title text-center">Vendor System Activation</h3>
             </div>
             <div class="panel-body text-center">
-                <input class="demo-sw" type="checkbox" checked>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
             </div>
         </div>
     </div>
@@ -30,7 +36,10 @@
                 <h3 class="panel-title text-center">Show Vendors</h3>
             </div>
             <div class="panel-body text-center">
-                <input class="demo-sw" type="checkbox" checked>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
             </div>
         </div>
     </div>
@@ -44,7 +53,10 @@
                 <h3 class="panel-title text-center">Paypal Payment Activation</h3>
             </div>
             <div class="panel-body text-center">
-                <input class="demo-sw" type="checkbox" checked>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
             </div>
         </div>
     </div>
@@ -54,7 +66,10 @@
                 <h3 class="panel-title text-center">Stripe Payment Activation</h3>
             </div>
             <div class="panel-body text-center">
-                <input class="demo-sw" type="checkbox" checked>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
             </div>
         </div>
     </div>
@@ -64,7 +79,10 @@
                 <h3 class="panel-title text-center">Cash Payment Activation</h3>
             </div>
             <div class="panel-body text-center">
-                <input class="demo-sw" type="checkbox" checked>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
             </div>
         </div>
     </div>
@@ -74,7 +92,10 @@
                 <h3 class="panel-title text-center">Pay U Money Activation</h3>
             </div>
             <div class="panel-body text-center">
-                <input class="demo-sw" type="checkbox" checked>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
             </div>
         </div>
     </div>

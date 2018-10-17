@@ -101,7 +101,7 @@
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td>{{$product->name}}</td>
-                                        <td><img class="img-md" src="{{ asset($product->photo)}}" alt="Image"></td>
+                                        <td><img class="img-md" src="{{ asset(json_decode($product->photos)[0])}}" alt="Image"></td>
                                         <td>{{$product->current_stock}}</td>
                                         <td>{{number_format($product->unit_price,2)}}</td>
                                         <td><label class="switch">

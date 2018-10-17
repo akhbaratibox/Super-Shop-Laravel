@@ -154,8 +154,8 @@
 
                             <!--Submenu-->
                             <ul class="collapse">
-                                <li class="{{ areActiveRoutes([])}}">
-                                    <a class="nav-link" href="#">{{__('web.customer_list')}}</a>
+                                <li class="{{ areActiveRoutes(['customers.index'])}}">
+                                    <a class="nav-link" href="{{ route('customers.index') }}">{{__('web.customer_list')}}</a>
                                 </li>
                             </ul>
                         </li>

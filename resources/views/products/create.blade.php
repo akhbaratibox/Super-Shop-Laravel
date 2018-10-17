@@ -132,7 +132,22 @@
 							</div>
 				        </div>
 				        <div id="demo-stk-lft-tab-3" class="tab-pane fade">
-				            <p class="text-main text-semibold">Videos</p>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">Video Provider</label>
+								<div class="col-lg-7">
+									<select class="form-control demo-select2-placeholder" name="video_provider" id="video_provider" required>
+										<option value="youtube">Youtube</option>
+										<option value="dailymotion">Dailymotion</option>
+										<option value="vimeo">Vimeo</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">Video Link</label>
+								<div class="col-lg-7">
+									<input type="text" class="form-control" name="video_link" placeholder="Video Link" required>
+								</div>
+							</div>
 				        </div>
 						<div id="demo-stk-lft-tab-4" class="tab-pane fade">
 				            <p class="text-main text-semibold">Meta Tags</p>
@@ -185,7 +200,7 @@
 							<div class="form-group">
 								<label class="col-lg-2 control-label">{{__('web.description')}}</label>
 								<div class="col-lg-7">
-									<textarea class="demo-summernote" name="description"></textarea>
+									<textarea class="demo-summernote-long" name="description"></textarea>
 								</div>
 							</div>
 				        </div>
@@ -326,6 +341,7 @@
 	}
 
 	$(document).ready(function(){
+		$('#container').removeClass('mainnav-lg').addClass('mainnav-sm');
 	    get_subcategories_by_category();
 	});
 

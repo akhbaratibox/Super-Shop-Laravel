@@ -19,7 +19,7 @@ $(document).on('nifty.ready', function() {
     });
 
     $('.demo-summernote-long, .demo-summernote-full-width').summernote({
-        height : '400px'
+        height : '350px'
     });
 
 

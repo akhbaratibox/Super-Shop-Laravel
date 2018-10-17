@@ -110,7 +110,7 @@ return [
     'set_currency_formats' => 'Set Currency Formats',
     'currency_format' => 'Currency Format',
     'set_currency_formats' => 'Set Currency Formats',
-    'symbol_format' => 'Set Currency Formats',
+    'symbol_format' => 'Symbol Format',
     'no_of_decimals' => 'No Of Decimals',
     'all_currency' => 'All Currencies',
     'currency_name' => 'Currency Name',
@@ -126,4 +126,7 @@ return [
     'staff_information' => 'Satff Information',
     'permissions' => 'Permissions',
     'role_information' => 'Role Information',
+    'todays_deal' => "Today's Deal",
+    'published' => 'Published',
+    'featured' => 'Featured'
 ];

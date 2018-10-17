@@ -36,7 +36,10 @@
                                     <th>{{__('web.photo')}}</th>
                                     <th>{{__('web.current_qty')}}</th>
                                     <th>{{__('web.base_price')}}</th>
-                                    <th width="5%">{{__('web.options')}}</th>
+                                    <th>{{__('web.todays_deal')}}</th>
+                                    <th>{{__('web.published')}}</th>
+                                    <th>{{__('web.featured')}}</th>
+                                    <th>{{__('web.options')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,6 +50,15 @@
                                         <td><img class="img-md" src="{{ asset(json_decode($product->photos)[0])}}" alt="Image"></td>
                                         <td>{{$product->current_stock}}</td>
                                         <td>{{number_format($product->unit_price,2)}}</td>
+                                        <td><label class="switch">
+                                            <input onchange="update_todays_deal(this)" value="{{ $product->id }}" type="checkbox" <?php if($product->todays_deal == 1) echo "checked";?> >
+                                            <span class="slider round"></span></label></td>
+                                        <td><label class="switch">
+                                            <input onchange="update_published(this)" value="{{ $product->id }}" type="checkbox" <?php if($product->published == 1) echo "checked";?> >
+                                            <span class="slider round"></span></label></td>
+                                        <td><label class="switch">
+                                            <input onchange="update_featured(this)" value="{{ $product->id }}" type="checkbox" <?php if($product->featured == 1) echo "checked";?> >
+                                            <span class="slider round"></span></label></td>
                                         <td>
                                             <div class="btn-group dropdown">
 					                            <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
@@ -78,7 +90,10 @@
                                     <th>{{__('web.photo')}}</th>
                                     <th>{{__('web.current_qty')}}</th>
                                     <th>{{__('web.base_price')}}</th>
-                                    <th width="10%">{{__('web.options')}}</th>
+                                    <th>{{__('web.todays_deal')}}</th>
+                                    <th>{{__('web.published')}}</th>
+                                    <th>{{__('web.featured')}}</th>
+                                    <th>{{__('web.options')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -89,6 +104,15 @@
                                         <td><img class="img-md" src="{{ asset($product->photo)}}" alt="Image"></td>
                                         <td>{{$product->current_stock}}</td>
                                         <td>{{number_format($product->unit_price,2)}}</td>
+                                        <td><label class="switch">
+                                            <input onchange="update_todays_deal(this)" value="{{ $product->id }}" type="checkbox" <?php if($product->todays_deal == 1) echo "checked";?> >
+                                            <span class="slider round"></span></label></td>
+                                        <td><label class="switch">
+                                            <input onchange="update_published(this)" value="{{ $product->id }}" type="checkbox" <?php if($product->published == 1) echo "checked";?> >
+                                            <span class="slider round"></span></label></td>
+                                        <td><label class="switch">
+                                            <input onchange="update_featured(this)" value="{{ $product->id }}" type="checkbox" <?php if($product->featured == 1) echo "checked";?> >
+                                            <span class="slider round"></span></label></td>
                                         <td>
                                             <a href="{{route('products.edit', $product->id)}}" class="btn btn-mint btn-icon"><i class="demo-psi-pen-5 icon-lg"></i></a>
                                             <a onclick="confirm_modal('{{route('products.destroy', $product->id)}}');" class="btn btn-danger btn-icon"><i class="demo-psi-recycling icon-lg"></i></a>
@@ -105,4 +129,60 @@
     </div>
 </div>
 
+@endsection
+
+
+@section('script')
+    <script type="text/javascript">
+        function update_todays_deal(el){
+            if(el.checked){
+                var status = 1;
+            }
+            else{
+                var status = 0;
+            }
+            $.post('{{ route('products.todays_deal') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
+                if(data == 1){
+                    showAlert('success', 'Todays Deal updated successfully');
+                }
+                else{
+                    showAlert('danger', 'Something went wrong');
+                }
+            });
+        }
+
+        function update_published(el){
+            if(el.checked){
+                var status = 1;
+            }
+            else{
+                var status = 0;
+            }
+            $.post('{{ route('products.published') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
+                if(data == 1){
+                    showAlert('success', 'Published products updated successfully');
+                }
+                else{
+                    showAlert('danger', 'Something went wrong');
+                }
+            });
+        }
+
+        function update_featured(el){
+            if(el.checked){
+                var status = 1;
+            }
+            else{
+                var status = 0;
+            }
+            $.post('{{ route('products.featured') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
+                if(data == 1){
+                    showAlert('success', 'Featured products updated successfully');
+                }
+                else{
+                    showAlert('danger', 'Something went wrong');
+                }
+            });
+        }
+    </script>
 @endsection

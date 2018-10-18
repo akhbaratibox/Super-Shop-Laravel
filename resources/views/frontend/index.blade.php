@@ -393,361 +393,65 @@
                         <div class="col-lg-9">
                             <div class="row-wrapper">
                                 <div class="row cols-xs-space cols-sm-space cols-md-space">
-                                    <div class="col-lg-4">
-                                        <div class="card card-product z-depth-1-top z-depth-2--hover">
-                                            <div class="card-body">
-                                                <h2 class="heading heading-6 strong-600 mt-2 mb-3">
-                                                    <a href="#">Google Home Base</a>
-                                                </h2>
+                                    @foreach (\App\Product::all() as $key => $product)
+                                        <div class="col-lg-4">
+                                            <div class="card card-product z-depth-1-top z-depth-2--hover">
+                                                <div class="card-body">
+                                                    <h2 class="heading heading-6 strong-600 mt-2 mb-3">
+                                                        <a href="#">{{ $product->name }}</a>
+                                                    </h2>
 
-                                                <div class="card-image swiper-js-container">
-                                                    <div class="">
-                                                        <div class="swiper-container" data-swiper-items="1" data-swiper-space-between="0">
-                                                            <div class="swiper-wrapper">
-                                                                <div class="swiper-slide">
-                                                                    <img src="{{ asset('frontend/images/prv/shop/electronics/img-1.png') }}" class="img-fluid img-center img-primary">
-                                                                </div>
-                                                                <div class="swiper-slide">
-                                                                    <img src="{{ asset('frontend/images/prv/shop/electronics/img-1.png') }}" class="img-fluid img-center img-primary">
+                                                    <div class="card-image swiper-js-container">
+                                                        <div class="">
+                                                            <div class="swiper-container" data-swiper-items="1" data-swiper-space-between="0">
+                                                                <div class="swiper-wrapper">
+                                                                    @foreach (json_decode($product->photos) as $key => $photo)
+                                                                        <div class="swiper-slide">
+                                                                            <img src="{{ asset($photo) }}" class="img-fluid img-center img-primary">
+                                                                        </div>
+                                                                    @endforeach
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="mt-3">
-                                                    <div class="price-wrapper">
-                                                        <span class="price price-sm c-gray-dark">
-                                                            <span class="strong-300">$</span><span class="price-value strong-600">65.</span><small class="strong-300">00</small>
-                                                        </span>
-                                                        <span class="clearfix"></span>
+                                                    <div class="mt-3">
+                                                        <div class="price-wrapper">
+                                                            <span class="price price-sm c-gray-dark">
+                                                                <span class="strong-300">$</span><span class="price-value strong-600">65.</span><small class="strong-300">00</small>
+                                                            </span>
+                                                            <span class="clearfix"></span>
+                                                        </div>
+                                                        <h6 class="heading heading-sm strong-400 c-red">Save 10%</h6>
+                                                        <p class="product-description mt-3 mb-0">
+                                                            Customize your Google Home to fit into your space.
+                                                        </p>
                                                     </div>
-                                                    <h6 class="heading heading-sm strong-400 c-red">Save 10%</h6>
-                                                    <p class="product-description mt-3 mb-0">
-                                                        Customize your Google Home to fit into your space.
-                                                    </p>
                                                 </div>
-                                            </div>
-                                            <div class="card-footer">
-                                                <div class="product-buttons">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-2">
-                                                            <button type="button" class="btn-icon" data-toggle="tooltip" data-placement="top" title="Favorite">
-                                                                <i class="ion-ios-heart"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div class="col-2">
-                                                            <button type="button" class="btn-icon" data-toggle="tooltip" data-placement="top" title="Compare">
-                                                                <i class="ion-ios-browsers-outline"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div class="col-8">
-                                                            <button type="button" class="btn btn-block btn-base-1 btn-circle btn-icon-left">
-                                                                <i class="icon ion-android-cart"></i>Add to cart
-                                                            </button>
+                                                <div class="card-footer">
+                                                    <div class="product-buttons">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-2">
+                                                                <button type="button" class="btn-icon" data-toggle="tooltip" data-placement="top" title="Favorite" onclick="addToWishList({{ $product->id }})">
+                                                                    <i class="ion-ios-heart"></i>
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-2">
+                                                                <button type="button" class="btn-icon" data-toggle="tooltip" data-placement="top" title="Compare" onclick="addToCompare({{ $product->id }})">
+                                                                    <i class="ion-ios-browsers-outline"></i>
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-8">
+                                                                <button type="button" class="btn btn-block btn-base-1 btn-circle btn-icon-left" onclick="addToCart(this, {{ $product->id }})">
+                                                                    <i class="icon ion-android-cart"></i>Add to cart
+                                                                </button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="col-lg-4">
-                                        <div class="card card-product z-depth-1-top z-depth-2--hover">
-                                            <div class="card-body">
-                                                <h2 class="heading heading-6 strong-600 mt-2 mb-3">
-                                                    <a href="#">Google Home</a>
-                                                </h2>
-
-                                                <div class="card-image swiper-js-container">
-                                                    <div class="">
-                                                        <div class="swiper-container" data-swiper-items="1" data-swiper-space-between="0">
-                                                            <div class="swiper-wrapper">
-                                                                <div class="swiper-slide">
-                                                                    <img src="{{ asset('frontend/images/prv/shop/electronics/img-2.png') }}" class="img-fluid img-center img-primary">
-                                                                </div>
-                                                                <div class="swiper-slide">
-                                                                    <img src="{{ asset('frontend/images/prv/shop/electronics/img-2.png') }}" class="img-fluid img-center img-primary">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="mt-3">
-                                                    <div class="price-wrapper">
-                                                        <span class="price price-sm c-gray-dark">
-                                                            <span class="strong-300">$</span><span class="price-value strong-600">129.</span><small class="strong-300">00</small>
-                                                        </span>
-                                                        <span class="clearfix"></span>
-                                                    </div>
-                                                    <h6 class="heading heading-sm strong-400 c-green">In stock</h6>
-                                                    <p class="product-description mt-3 mb-0">
-                                                        Customize your Google Home to fit into your space.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="card-footer">
-                                                <div class="product-buttons">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-2">
-                                                            <button type="button" class="btn-icon" data-toggle="tooltip" data-placement="top" title="Favorite">
-                                                                <i class="ion-ios-heart"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div class="col-2">
-                                                            <button type="button" class="btn-icon" data-toggle="tooltip" data-placement="top" title="Compare">
-                                                                <i class="ion-ios-browsers-outline"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div class="col-8">
-                                                            <button type="button" class="btn btn-block btn-base-1 btn-circle btn-icon-left">
-                                                                <i class="icon ion-android-cart"></i>Add to cart
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4">
-                                        <div class="card card-product z-depth-1-top z-depth-2--hover">
-                                            <div class="card-body">
-                                                <h2 class="heading heading-6 strong-600 mt-2 mb-3">
-                                                    <a href="#">Libratone Q Adapt</a>
-                                                </h2>
-
-                                                <div class="card-image swiper-js-container">
-                                                    <div class="">
-                                                        <div class="swiper-container" data-swiper-items="1" data-swiper-space-between="0">
-                                                            <div class="swiper-wrapper">
-                                                                <div class="swiper-slide">
-                                                                    <img src="{{ asset('frontend/images/prv/shop/electronics/img-3.png') }}" class="img-fluid img-center img-primary">
-                                                                </div>
-                                                                <div class="swiper-slide">
-                                                                    <img src="{{ asset('frontend/images/prv/shop/electronics/img-3.png') }}" class="img-fluid img-center img-primary">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="mt-3">
-                                                    <div class="price-wrapper">
-                                                        <span class="price price-sm c-gray-dark">
-                                                            <span class="strong-300">$</span><span class="price-value strong-600">245.</span><small class="strong-300">00</small>
-                                                        </span>
-                                                        <span class="clearfix"></span>
-                                                    </div>
-                                                    <h6 class="heading heading-sm strong-400 c-gray-light">Limited stock</h6>
-                                                    <p class="product-description mt-3 mb-0">
-                                                        Customize your Google Home to fit into your space.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="card-footer">
-                                                <div class="product-buttons">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-2">
-                                                            <button type="button" class="btn-icon" data-toggle="tooltip" data-placement="top" title="Favorite">
-                                                                <i class="ion-ios-heart"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div class="col-2">
-                                                            <button type="button" class="btn-icon" data-toggle="tooltip" data-placement="top" title="Compare">
-                                                                <i class="ion-ios-browsers-outline"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div class="col-8">
-                                                            <button type="button" class="btn btn-block btn-base-1 btn-circle btn-icon-left">
-                                                                <i class="icon ion-android-cart"></i>Add to cart
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row cols-xs-space cols-sm-space cols-md-space">
-                                    <div class="col-lg-4">
-                                        <div class="card card-product z-depth-1-top z-depth-2--hover">
-                                            <div class="card-body">
-                                                <h2 class="heading heading-6 strong-600 mt-2 mb-3">
-                                                    <a href="#">Google Pixel 2</a>
-                                                </h2>
-
-                                                <div class="card-image swiper-js-container">
-                                                    <div class="">
-                                                        <div class="swiper-container" data-swiper-items="1" data-swiper-space-between="0">
-                                                            <div class="swiper-wrapper">
-                                                                <div class="swiper-slide">
-                                                                    <img src="{{ asset('frontend/images/prv/shop/electronics/img-5.png') }}" class="img-fluid img-center img-primary">
-                                                                </div>
-                                                                <div class="swiper-slide">
-                                                                    <img src="{{ asset('frontend/images/prv/shop/electronics/img-5.png') }}" class="img-fluid img-center img-primary">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="mt-3">
-                                                    <div class="price-wrapper">
-                                                        <span class="price price-sm c-gray-dark">
-                                                            <span class="strong-300">$</span><span class="price-value strong-600">699.</span><small class="strong-300">00</small>
-                                                        </span>
-                                                        <span class="clearfix"></span>
-                                                    </div>
-                                                    <h6 class="heading heading-sm strong-400 c-red">Save 10%</h6>
-                                                    <p class="product-description mt-3 mb-0">
-                                                        Customize your Google Home to fit into your space.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="card-footer">
-                                                <div class="product-buttons">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-2">
-                                                            <button type="button" class="btn-icon" data-toggle="tooltip" data-placement="top" title="Favorite">
-                                                                <i class="ion-ios-heart"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div class="col-2">
-                                                            <button type="button" class="btn-icon" data-toggle="tooltip" data-placement="top" title="Compare">
-                                                                <i class="ion-ios-browsers-outline"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div class="col-8">
-                                                            <button type="button" class="btn btn-block btn-base-1 btn-circle btn-icon-left">
-                                                                <i class="icon ion-android-cart"></i>Add to cart
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4">
-                                        <div class="card card-product z-depth-1-top z-depth-2--hover">
-                                            <div class="card-body">
-                                                <h2 class="heading heading-6 strong-600 mt-2 mb-3">
-                                                    <a href="#">Google Chromecast</a>
-                                                </h2>
-
-                                                <div class="card-image swiper-js-container">
-                                                    <div class="">
-                                                        <div class="swiper-container" data-swiper-items="1" data-swiper-space-between="0">
-                                                            <div class="swiper-wrapper">
-                                                                <div class="swiper-slide">
-                                                                    <img src="{{ asset('frontend/images/prv/shop/electronics/img-6.png') }}" class="img-fluid img-center img-primary">
-                                                                </div>
-                                                                <div class="swiper-slide">
-                                                                    <img src="{{ asset('frontend/images/prv/shop/electronics/img-6.png') }}" class="img-fluid img-center img-primary">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="mt-3">
-                                                    <div class="price-wrapper">
-                                                        <span class="price price-sm c-gray-dark">
-                                                            <span class="strong-300">$</span><span class="price-value strong-600">59.</span><small class="strong-300">00</small>
-                                                        </span>
-                                                        <span class="clearfix"></span>
-                                                    </div>
-                                                    <h6 class="heading heading-sm strong-400 c-green">In stock</h6>
-                                                    <p class="product-description mt-3 mb-0">
-                                                        Customize your Google Home to fit into your space.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="card-footer">
-                                                <div class="product-buttons">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-2">
-                                                            <button type="button" class="btn-icon" data-toggle="tooltip" data-placement="top" title="Favorite">
-                                                                <i class="ion-ios-heart"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div class="col-2">
-                                                            <button type="button" class="btn-icon" data-toggle="tooltip" data-placement="top" title="Compare">
-                                                                <i class="ion-ios-browsers-outline"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div class="col-8">
-                                                            <button type="button" class="btn btn-block btn-base-1 btn-circle btn-icon-left">
-                                                                <i class="icon ion-android-cart"></i>Add to cart
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4">
-                                        <div class="card card-product z-depth-1-top z-depth-2--hover">
-                                            <div class="card-body">
-                                                <h2 class="heading heading-6 strong-600 mt-2 mb-3">
-                                                    <a href="#">Google Pixel Bud</a>
-                                                </h2>
-
-                                                <div class="card-image swiper-js-container">
-                                                    <div class="">
-                                                        <div class="swiper-container" data-swiper-items="1" data-swiper-space-between="0">
-                                                            <div class="swiper-wrapper">
-                                                                <div class="swiper-slide">
-                                                                    <img src="{{ asset('frontend/images/prv/shop/electronics/img-7.png') }}" class="img-fluid img-center img-primary">
-                                                                </div>
-                                                                <div class="swiper-slide">
-                                                                    <img src="{{ asset('frontend/images/prv/shop/electronics/img-7.png') }}" class="img-fluid img-center img-primary">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="mt-3">
-                                                    <div class="price-wrapper">
-                                                        <span class="price price-sm c-gray-dark">
-                                                            <span class="strong-300">$</span><span class="price-value strong-600">245.</span><small class="strong-300">00</small>
-                                                        </span>
-                                                        <span class="clearfix"></span>
-                                                    </div>
-                                                    <h6 class="heading heading-sm strong-400 c-gray-light">Limited stock</h6>
-                                                    <p class="product-description mt-3 mb-0">
-                                                        Customize your Google Home to fit into your space.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="card-footer">
-                                                <div class="product-buttons">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-2">
-                                                            <button type="button" class="btn-icon" data-toggle="tooltip" data-placement="top" title="Favorite">
-                                                                <i class="ion-ios-heart"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div class="col-2">
-                                                            <button type="button" class="btn-icon" data-toggle="tooltip" data-placement="top" title="Compare">
-                                                                <i class="ion-ios-browsers-outline"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div class="col-8">
-                                                            <button type="button" class="btn btn-block btn-base-1 btn-circle btn-icon-left">
-                                                                <i class="icon ion-android-cart"></i>Add to cart
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
 
@@ -1069,4 +773,39 @@
             </section>
 
 
+        @endsection
+
+        @section('script')
+            <script type="text/javascript">
+                function addToCart(el, id){
+                    $.post('{{ route('products.addToCart') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
+                        $(el).html('Added to Cart');
+                        $('#cart_items').html(data);
+                    });
+                }
+
+                function removeFromCart(id){
+                    $.post('{{ route('products.removeFromCart') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
+                        $('#cart_items').html(data);
+                    });
+                }
+
+                function addToCompare(id){
+                    $.post('{{ route('products.addToCompare') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
+                        $('#compare').html(data);
+                    });
+                }
+
+                function addToWishList(id){
+                    if('{{ Auth::check() }}'){
+                        $.post('{{ route('wishlists.store') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
+                            $('#wishlist').html(data);
+                        });
+                    }
+                    else{
+                        alert('Please login to continue...');
+                        //showAlert('warning', 'Please login to continue...');
+                    }
+                }
+            </script>
         @endsection

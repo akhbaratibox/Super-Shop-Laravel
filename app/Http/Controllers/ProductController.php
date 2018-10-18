@@ -7,6 +7,7 @@ use App\Product;
 use App\Category;
 use Auth;
 use App\SubSubCategory;
+use Session;
 
 class ProductController extends Controller
 {
@@ -212,7 +213,8 @@ class ProductController extends Controller
         return $products;
     }
 
-    public function updateTodaysDeal(Request $request){
+    public function updateTodaysDeal(Request $request)
+    {
         $product = Product::findOrFail($request->id);
         $product->todays_deal = $request->status;
         if($product->save()){
@@ -221,7 +223,8 @@ class ProductController extends Controller
         return 0;
     }
 
-    public function updatePublished(Request $request){
+    public function updatePublished(Request $request)
+    {
         $product = Product::findOrFail($request->id);
         $product->published = $request->status;
         if($product->save()){
@@ -230,12 +233,58 @@ class ProductController extends Controller
         return 0;
     }
 
-    public function updateFeatured(Request $request){
+    public function updateFeatured(Request $request)
+    {
         $product = Product::findOrFail($request->id);
         $product->featured = $request->status;
         if($product->save()){
             return 1;
         }
         return 0;
+    }
+
+    public function addToCart(Request $request)
+    {
+        if($request->session()->has('cart')){
+            $cart = $request->session()->get('cart', collect([]));
+            if(!$cart->contains($request->id)){
+                $cart->push($request->id);
+            }
+        }
+        else{
+            $cart = collect([$request->id]);
+            $request->session()->put('cart', $cart);
+        }
+
+        return view('frontend.partials.cart');
+    }
+
+    public function removeFromCart(Request $request)
+    {
+        if($request->session()->has('cart')){
+            $cart = $request->session()->get('cart', collect([]));
+            if($cart->contains($request->id)){
+                $cart->pop($request->id);
+                $request->session()->put('cart', $cart);
+            }
+        }
+
+        return view('frontend.partials.cart');
+    }
+
+    public function addToCompare(Request $request)
+    {
+        if($request->session()->has('compare')){
+            $cart = $request->session()->get('compare', collect([]));
+            if(!$cart->contains($request->id)){
+                $cart->push($request->id);
+            }
+        }
+        else{
+            $cart = collect([$request->id]);
+            $request->session()->put('compare', $cart);
+        }
+
+        return view('frontend.partials.compare');
     }
 }

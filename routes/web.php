@@ -13,7 +13,14 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/products/{slug}', 'HomeController@product')->name('product');
+Route::post('/products/addtocart', 'ProductController@addToCart')->name('products.addToCart');
+Route::post('/products/removeFromCart', 'ProductController@removeFromCart')->name('products.removeFromCart');
+Route::post('/products/addToCompare', 'ProductController@addToCompare')->name('products.addToCompare');
 Route::get('/users/login', 'HomeController@login')->name('user.login');
+Route::get('/wishlist', 'HomeController@wishlist')->name('wishlist')->middleware(['auth']);
+
+Route::resource('wishlists','WishlistController');
+Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove')->middleware(['auth']);
 
 Auth::routes();
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

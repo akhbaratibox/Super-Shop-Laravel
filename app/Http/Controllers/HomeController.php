@@ -56,4 +56,10 @@ class HomeController extends Controller
         $categories = Category::all();
         return view('frontend.user_login', compact('categories'));
     }
+
+    public function wishlist()
+    {
+        $categories = Category::all();
+        return view('frontend.wishlist', compact('categories'));
+    }
 }

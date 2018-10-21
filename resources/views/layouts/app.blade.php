@@ -115,6 +115,9 @@
     <!--Spectrum JavaScript [ REQUIRED ]-->
     <script src="{{ asset('js/spectrum.js')}}"></script>
 
+    <!--Spartan Image JavaScript [ REQUIRED ]-->
+    <script src="{{ asset('js/spartan-multi-image-picker-min.js') }}"></script>
+
     <!--Custom JavaScript [ REQUIRED ]-->
     <script src="{{ asset('js/custom.js')}}"></script>
 

@@ -134,6 +134,11 @@
 
 @section('script')
     <script type="text/javascript">
+
+        $(document).ready(function(){
+            $('#container').removeClass('mainnav-lg').addClass('mainnav-sm');
+        });
+
         function update_todays_deal(el){
             if(el.checked){
                 var status = 1;

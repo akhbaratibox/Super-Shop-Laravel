@@ -109,25 +109,33 @@
 							<div class="form-group">
 								<label class="col-lg-2 control-label">Main Images</label>
 								<div class="col-lg-7">
-									<input type="file" class="form-control" name="photos[]" multiple required>
+									<div id="photos">
+
+									</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-lg-2 control-label">Thumbnail Image</label>
 								<div class="col-lg-7">
-									<input type="file" class="form-control" name="thumbnail" required>
+									<div id="thumbnail_img">
+
+									</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-lg-2 control-label">Featured</label>
 								<div class="col-lg-7">
-									<input type="file" class="form-control" name="featured_img" required>
+									<div id="featured_img">
+
+									</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-lg-2 control-label">Flash Deal</label>
 								<div class="col-lg-7">
-									<input type="file" class="form-control" name="flash_deal_img" required>
+									<div id="flash_deal_img">
+
+									</div>
 								</div>
 							</div>
 				        </div>
@@ -343,6 +351,70 @@
 	$(document).ready(function(){
 		$('#container').removeClass('mainnav-lg').addClass('mainnav-sm');
 	    get_subcategories_by_category();
+		$("#photos").spartanMultiImagePicker({
+			fieldName:        'fileUpload[]',
+			maxCount:         10,
+			rowHeight:        '200px',
+			groupClassName:   'col-md-4 col-sm-4 col-xs-6',
+			maxFileSize:      '',
+			dropFileLabel : "Drop Here",
+			onExtensionErr : function(index, file){
+				console.log(index, file,  'extension err');
+				alert('Please only input png or jpg type file')
+			},
+			onSizeErr : function(index, file){
+				console.log(index, file,  'file size too big');
+				alert('File size too big');
+			}
+		});
+		$("#thumbnail_img").spartanMultiImagePicker({
+			fieldName:        'thumbnail_img',
+			maxCount:         1,
+			rowHeight:        '200px',
+			groupClassName:   'col-md-4 col-sm-4 col-xs-6',
+			maxFileSize:      '',
+			dropFileLabel : "Drop Here",
+			onExtensionErr : function(index, file){
+				console.log(index, file,  'extension err');
+				alert('Please only input png or jpg type file')
+			},
+			onSizeErr : function(index, file){
+				console.log(index, file,  'file size too big');
+				alert('File size too big');
+			}
+		});
+		$("#featured_img").spartanMultiImagePicker({
+			fieldName:        'featured_img',
+			maxCount:         1,
+			rowHeight:        '200px',
+			groupClassName:   'col-md-4 col-sm-4 col-xs-6',
+			maxFileSize:      '',
+			dropFileLabel : "Drop Here",
+			onExtensionErr : function(index, file){
+				console.log(index, file,  'extension err');
+				alert('Please only input png or jpg type file')
+			},
+			onSizeErr : function(index, file){
+				console.log(index, file,  'file size too big');
+				alert('File size too big');
+			}
+		});
+		$("#flash_deal_img").spartanMultiImagePicker({
+			fieldName:        'flash_deal_img',
+			maxCount:         1,
+			rowHeight:        '200px',
+			groupClassName:   'col-md-4 col-sm-4 col-xs-6',
+			maxFileSize:      '',
+			dropFileLabel : "Drop Here",
+			onExtensionErr : function(index, file){
+				console.log(index, file,  'extension err');
+				alert('Please only input png or jpg type file')
+			},
+			onSizeErr : function(index, file){
+				console.log(index, file,  'file size too big');
+				alert('File size too big');
+			}
+		});
 	});
 
 	$('#category_id').on('change', function() {

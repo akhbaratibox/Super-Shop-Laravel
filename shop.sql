@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2018 at 07:42 AM
+-- Generation Time: Oct 22, 2018 at 01:04 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -60,7 +60,8 @@ INSERT INTO `brands` (`id`, `name`, `logo`, `created_at`, `updated_at`) VALUES
 (18, 'Asus', 'uploads/A7ENkfpQkScm0q5NhzXZP5ExBZOgv5lOmu4cGAuh.png', '2018-10-15 00:00:53', '2018-10-15 00:00:53'),
 (19, 'Acer', 'uploads/vrRl90qPmzokSIxtemguNoqKMVFAPpsMNRA2osUM.png', '2018-10-15 00:01:14', '2018-10-15 00:01:14'),
 (20, 'Rolex', 'uploads/RXvzfbfK3iU6BfYHyBQE5ZleEZ4u3IovulaIAwzu.png', '2018-10-15 00:01:57', '2018-10-15 00:01:57'),
-(21, 'Rolex', 'uploads/BGNFZsaJXa4wtQa5MnIQ7my6YCFr8Us11AO2MoKG.png', '2018-10-15 00:01:58', '2018-10-15 00:01:58');
+(21, 'Rolex', 'uploads/BGNFZsaJXa4wtQa5MnIQ7my6YCFr8Us11AO2MoKG.png', '2018-10-15 00:01:58', '2018-10-15 00:01:58'),
+(22, 'Audi', 'uploads/7yt0r5jnSOc1w14mce2hrWXnHI1IbLvVBdSQMkqn.jpeg', '2018-10-22 03:04:18', '2018-10-22 03:04:51');
 
 -- --------------------------------------------------------
 
@@ -116,7 +117,8 @@ INSERT INTO `categories` (`id`, `name`, `banner`, `icon`, `created_at`, `updated
 (13, 'Home Appliance', 'uploads/ZFiw5Xcrs6iIcFkj3K0TrSa8oIoy4pkhpnUukZhy.jpeg', 'uploads/xSIZbEpy3OsC6ANLSIJfP7ieaGP02E40rQVkjTOu.png', '2018-10-14 22:38:48', '2018-10-14 22:38:48'),
 (14, 'bags & Shoes', 'uploads/T7OdflyLppCVLfcQbrcNX2u5NplxZO6GxUXqYb5V.jpeg', 'uploads/4V6kp42dRmq9xWOChshL2lc5LHF55DsAjZlieBm7.png', '2018-10-14 22:39:57', '2018-10-14 22:39:57'),
 (15, 'Kids & Toys', 'uploads/uqSmE0jswOwy5nWd4yPSh4fT4bTgIFMyb0Z8zUdi.jpeg', 'uploads/bZxBw0f5vy4MFz9XoR7EQML3JMc8heT10ZbIAc5d.png', '2018-10-14 22:41:17', '2018-10-14 22:41:17'),
-(16, 'Health & Beauty', 'uploads/9C62APIf0N332pUqTXGIxSKeDhsmI5kLTC9YZ1OE.jpeg', 'uploads/QpFFOJvkYITZkIbeXnsHLsZbof7IfcW1z49YJ8uF.png', '2018-10-14 22:43:04', '2018-10-14 22:43:04');
+(16, 'Health & Beauty', 'uploads/9C62APIf0N332pUqTXGIxSKeDhsmI5kLTC9YZ1OE.jpeg', 'uploads/QpFFOJvkYITZkIbeXnsHLsZbof7IfcW1z49YJ8uF.png', '2018-10-14 22:43:04', '2018-10-14 22:43:04'),
+(17, 'Automobile', 'uploads/4Jtu4NCz6WvBHeDg5tLbZSnVuJjX4xpwXk5GBDBU.png', 'uploads/wQ3X2O6o3LtLavBniVuCQ8FMoATVnf9YqKH3LGYb.png', '2018-10-22 09:01:29', '2018-10-22 03:01:29');
 
 -- --------------------------------------------------------
 
@@ -240,11 +242,15 @@ CREATE TABLE `products` (
   `subsubcategory_id` int(11) NOT NULL,
   `brand_id` int(11) NOT NULL,
   `photos` varchar(2000) DEFAULT NULL,
+  `thumbnail_img` varchar(100) DEFAULT NULL,
+  `featured_img` varchar(100) DEFAULT NULL,
+  `flash_deal_img` varchar(100) DEFAULT NULL,
+  `video_provider` varchar(20) DEFAULT NULL,
+  `video_link` varchar(100) DEFAULT NULL,
   `tags` text,
   `description` text,
   `unit_price` double(8,2) NOT NULL,
   `purchase_price` double(8,2) NOT NULL,
-  `shipping_cost` double(8,2) NOT NULL,
   `price_variations` text NOT NULL,
   `todays_deal` int(11) NOT NULL DEFAULT '0',
   `published` int(11) NOT NULL DEFAULT '0',
@@ -265,9 +271,9 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `added_by`, `user_id`, `category_id`, `subcategory_id`, `subsubcategory_id`, `brand_id`, `photos`, `tags`, `description`, `unit_price`, `purchase_price`, `shipping_cost`, `price_variations`, `todays_deal`, `published`, `featured`, `current_stock`, `unit`, `colors`, `discount`, `discount_type`, `tax`, `tax_type`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'Ryder Willis', 'seller', 3, 7, 4, 5, 3, '[\"uploads\\/aHYPnKoKTrNTb2VX7ld47vaadvKI04eSgAdniFED.jpeg\", \"uploads\\/PYakQfept0XJfeoYtvG6nqHLYwOwLl1HS88IFO5b.png\"]', '[\"fgfdg,kj\"]', '<p><span style=\"background-color: rgb(255, 255, 255);\"><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">The company name is based on the Latin translation of the surname of the founder, August Horch. \"Horch\", meaning \"listen\" in German, becomes \"</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">\" in Latin. The four rings of the&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;logo each represent one of four&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">car</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;companies that banded together to create&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi\'s</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;predecessor company, Auto Union.</span></span><br></p>', 400.00, 430.00, 82.00, '{\"choices_0_S_variation\":\"decrease\",\"choices_0_S_price\":\"108\",\"choices_0_M_variation\":\"increase\",\"choices_0_M_price\":\"964\",\"choices_0_L_variation\":\"increase\",\"choices_0_L_price\":\"203\"}', 1, 1, 1, 0, 'PC', '[\"#000\",\"#0000ff\",\"#ff0000\"]', 10.00, 'percent', 98.00, 'percent', 'Ryder-Willis-tuIHs', '2018-10-04 05:02:39', '2018-10-17 06:28:08'),
-(2, 'Cole Mcfadden', 'admin', 1, 7, 4, 6, 2, '[\"uploads\\/hKBJF3ybnwPoqFb0tugQWD39ibxff5JDp86OXig2.png\",\"uploads\\/MTm5YPuXIALhFQeD4BivTJcgUAMQs0Dl4hs09RxW.jpeg\"]', '[\"Libero aperiam asperiores veritatis excepturi consequatur laborum Quia ex aliquam tempor optio dolor possimus,Autem voluptas et quod minus dolor corrupti\"]', NULL, 759.00, 849.00, 60.00, '{\"choices_0_S_variation\":\"decrease\",\"choices_0_S_price\":\"160\",\"choices_0_M_variation\":\"decrease\",\"choices_0_M_price\":\"119\",\"choices_0_L_variation\":\"decrease\",\"choices_0_L_price\":\"465\",\"choices_1_Cotton_variation\":\"decrease\",\"choices_1_Cotton_price\":\"274\",\"choices_1_Semi-Cotton_variation\":\"decrease\",\"choices_1_Semi-Cotton_price\":\"288\"}', 1, 1, 1, 0, 'PC', '[\"#3d85c6\",\"#cc0000\",\"#f1c232\"]', 20.00, 'percent', 53.00, 'percent', 'Cole-Mcfadden-4iIAk', '2018-10-07 02:03:37', '2018-10-21 01:07:25');
+INSERT INTO `products` (`id`, `name`, `added_by`, `user_id`, `category_id`, `subcategory_id`, `subsubcategory_id`, `brand_id`, `photos`, `thumbnail_img`, `featured_img`, `flash_deal_img`, `video_provider`, `video_link`, `tags`, `description`, `unit_price`, `purchase_price`, `price_variations`, `todays_deal`, `published`, `featured`, `current_stock`, `unit`, `colors`, `discount`, `discount_type`, `tax`, `tax_type`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 'Ryder Willis', 'seller', 3, 7, 4, 5, 3, '[\"uploads\\/aHYPnKoKTrNTb2VX7ld47vaadvKI04eSgAdniFED.jpeg\", \"uploads\\/PYakQfept0XJfeoYtvG6nqHLYwOwLl1HS88IFO5b.png\"]', NULL, NULL, NULL, NULL, NULL, '[\"fgfdg,kj\"]', '<p><span style=\"background-color: rgb(255, 255, 255);\"><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">The company name is based on the Latin translation of the surname of the founder, August Horch. \"Horch\", meaning \"listen\" in German, becomes \"</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">\" in Latin. The four rings of the&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;logo each represent one of four&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">car</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;companies that banded together to create&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi\'s</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;predecessor company, Auto Union.</span></span><br></p>', 400.00, 430.00, '{\"choices_0_S_variation\":\"decrease\",\"choices_0_S_price\":\"108\",\"choices_0_M_variation\":\"increase\",\"choices_0_M_price\":\"964\",\"choices_0_L_variation\":\"increase\",\"choices_0_L_price\":\"203\"}', 1, 1, 1, 0, 'PC', '[\"#000\",\"#0000ff\",\"#ff0000\"]', 10.00, 'percent', 98.00, 'percent', 'Ryder-Willis-tuIHs', '2018-10-04 05:02:39', '2018-10-17 06:28:08'),
+(2, 'Cole Mcfadden', 'admin', 1, 7, 4, 6, 2, '[\"uploads\\/hKBJF3ybnwPoqFb0tugQWD39ibxff5JDp86OXig2.png\",\"uploads\\/MTm5YPuXIALhFQeD4BivTJcgUAMQs0Dl4hs09RxW.jpeg\"]', NULL, NULL, NULL, 'youtube', 'https://www.youtube.com/watch?v=Kvl-JXkPoNo', '[\"Libero aperiam asperiores veritatis excepturi consequatur laborum Quia ex aliquam tempor optio dolor possimus,Autem voluptas et quod minus dolor corrupti\"]', '<p><span style=\"background-color: rgb(255, 255, 255);\"><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">The company name is based on the Latin translation of the surname of the founder, August Horch. \"Horch\", meaning \"listen\" in German, becomes \"</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">\" in Latin. The four rings of the&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;logo each represent one of four&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">car</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;companies that banded together to create&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi\'s</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;predecessor company, Auto Union.</span></span><br></p>', 759.00, 849.00, '{\"choices_0_S_variation\":\"decrease\",\"choices_0_S_price\":\"160\",\"choices_0_M_variation\":\"decrease\",\"choices_0_M_price\":\"119\",\"choices_0_L_variation\":\"decrease\",\"choices_0_L_price\":\"465\",\"choices_1_Cotton_variation\":\"decrease\",\"choices_1_Cotton_price\":\"274\",\"choices_1_Semi-Cotton_variation\":\"decrease\",\"choices_1_Semi-Cotton_price\":\"288\"}', 1, 1, 1, 0, 'PC', '[\"#3d85c6\",\"#cc0000\",\"#f1c232\"]', 20.00, 'percent', 53.00, 'percent', 'Cole-Mcfadden-9osOh', '2018-10-07 02:03:37', '2018-10-22 01:31:53');
 
 -- --------------------------------------------------------
 
@@ -389,7 +395,8 @@ INSERT INTO `sub_categories` (`id`, `name`, `category_id`, `banner`, `created_at
 (23, 'laptop Accessories', 10, 'uploads/vJZLPZREKv65KNwkC03VmwfrjRYMGiXaeaLzx7Hr.jpeg', '2018-10-14 23:50:05', '2018-10-14 23:50:40'),
 (24, 'Home Audio & video', 11, 'uploads/FoPIRgiq8ORhAIqmWEARacsodP4Q4VdrsBvU9ir2.jpeg', '2018-10-14 23:54:33', '2018-10-14 23:54:33'),
 (25, 'Smart Electronics', 11, 'uploads/4YI2ztpm3dzoz96a8Tq1dcX6fgclRdoxVD5kAHry.jpeg', '2018-10-14 23:54:58', '2018-10-14 23:54:58'),
-(26, 'Camera & photo', 11, 'uploads/tn0MOurgI1lfqoCdX1GcVhzXasU99wrozar4Nx0H.jpeg', '2018-10-14 23:55:36', '2018-10-14 23:55:36');
+(26, 'Camera & photo', 11, 'uploads/tn0MOurgI1lfqoCdX1GcVhzXasU99wrozar4Nx0H.jpeg', '2018-10-14 23:55:36', '2018-10-14 23:55:36'),
+(27, 'Racing Car', 17, 'uploads/sTGrTexnXHvU54l2bcIXF5QqIfiUtIQlOYqtg18M.jpeg', '2018-10-22 02:58:33', '2018-10-22 02:59:40');
 
 -- --------------------------------------------------------
 
@@ -418,7 +425,9 @@ INSERT INTO `sub_sub_categories` (`id`, `sub_category_id`, `name`, `banner`, `br
 (7, 5, 'Dresses', 'uploads/lIt4mtq48QLqKaMBdKVOAXz6Sa0fANWw4IRmds10.jpeg', '[\"2\"]', '[]', '2018-10-14 23:56:41', '2018-10-14 23:56:41'),
 (8, 10, 'Hoodie', 'uploads/0rAwm5yze0Qt2xeE33HuwptQzl75ix5FufmncaVV.jpeg', '[\"6\"]', '[]', '2018-10-15 00:03:37', '2018-10-15 00:03:37'),
 (9, 12, 'jackets  t-ahirt', 'uploads/IgX5hzUYEJwB0kepD3TztTkkUOgUoBwaXT3Rd86W.jpeg', '[\"7\"]', '[]', '2018-10-15 00:04:36', '2018-10-15 00:04:36'),
-(10, 9, 'Hats & Belts', 'uploads/7FyQgJOyVw2UCl7tYQmj3PsVFSSIIVz6tkLEphwm.jpeg', '[\"5\"]', '[]', '2018-10-15 00:06:08', '2018-10-15 00:06:08');
+(10, 9, 'Hats & Belts', 'uploads/7FyQgJOyVw2UCl7tYQmj3PsVFSSIIVz6tkLEphwm.jpeg', '[\"5\"]', '[]', '2018-10-15 00:06:08', '2018-10-15 00:06:08'),
+(11, 27, 'Test sub sub category', 'uploads/8wQQ5oWLJhjIZwPUH6meTSiYYujll75WDeDqVywk.png', '[\"3\"]', '[{\"name\":\"choices_0\",\"title\":\"Field 1\",\"type\":\"select\",\"options\":[\"select 1\",\"select 2\",\"select 3\",\"Select 4\",\"Radio 1\",\"Radio 2\",\"Radio 3\",\"Radio 4\",\"Select 5\"]},{\"name\":\"choices_1\",\"title\":\"Field 2\",\"type\":\"radio\",\"options\":[\"select 1\",\"select 2\",\"select 3\",\"Select 4\",\"Radio 1\",\"Radio 2\",\"Radio 3\",\"Radio 4\",\"Radio 5\"]},{\"name\":\"choices_2\",\"title\":\"Field 3\",\"type\":\"text\",\"options\":null}]', '2018-10-22 03:09:21', '2018-10-22 03:17:04'),
+(12, 3, 'Test', 'uploads/Axq44o3nPuJKEjrdHCCX8ZqL22QEQsKe5ZZS5XRj.jpeg', '[\"15\"]', '[{\"name\":\"choices_0\",\"title\":\"Text check\",\"type\":\"text\",\"options\":null},{\"name\":\"choices_1\",\"title\":\"Select check\",\"type\":\"select\",\"options\":[\"Select 1\",\"Select 2\",\"Select 3\",\"Select 4\"]},{\"name\":\"choices_2\",\"title\":\"Radio Check\",\"type\":\"radio\",\"options\":[\"Radio 1\",\"Radio 2\",\"Radio 3\",\"Radio 4\"]}]', '2018-10-22 03:20:37', '2018-10-22 03:20:37');
 
 -- --------------------------------------------------------
 
@@ -428,12 +437,15 @@ INSERT INTO `sub_sub_categories` (`id`, `sub_category_id`, `name`, `banner`, `br
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
+  `provider_id` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_type` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'customer',
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `avatar` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `avatar_original` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -442,11 +454,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `user_type`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'Admin', 'admin@example.com', NULL, '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', 'CLYOvH6cYBuZp3bFs8fuouPLTDI21IsFximtLnbszztjT9RjYOaxdLlP7ZOc', '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
-(3, 'seller', 'Seller 1', 'seller1@example.com', NULL, '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', NULL, '2018-10-07 04:42:57', '2018-10-07 04:48:43'),
-(8, 'customer', 'Mehedi Hasan', 'mehedi.iitdu@gmail.com', NULL, '$2y$10$OJcNcmIOM1./bjvsKlrUBOqj0IyKHQg1B3DqRdfGeVYiS9CttTuV.', 'ObH6Vso83SH6oJ07JMoXvWdmViEcGuigFIU7io8rbwJYpXaVdhNxTD0yssmo', '2018-10-17 02:35:55', '2018-10-17 02:35:55'),
-(9, 'staff', 'Mobin', 'mobin@gmail.com', NULL, '$2y$10$0NbLnWt7DAbrhqZrFZ7Nw.tvE.Jnff2Il/jrdgtqBiblKpgGwLyom', NULL, '2018-10-17 06:26:52', '2018-10-17 06:26:52');
+INSERT INTO `users` (`id`, `provider_id`, `user_type`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `avatar`, `avatar_original`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'admin', 'Admin', 'admin@example.com', NULL, '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', 'JD7bGffLWCFGB3rKUYnasVRnv1jBGEgDg5xhCsE8c0p5jQqEHVUTDxNZE9Sc', NULL, NULL, '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
+(3, NULL, 'seller', 'Seller 1', 'seller1@example.com', NULL, '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', NULL, NULL, NULL, '2018-10-07 04:42:57', '2018-10-07 04:48:43'),
+(9, NULL, 'staff', 'Mobin', 'mobin@gmail.com', NULL, '$2y$10$0NbLnWt7DAbrhqZrFZ7Nw.tvE.Jnff2Il/jrdgtqBiblKpgGwLyom', NULL, NULL, NULL, '2018-10-17 06:26:52', '2018-10-17 06:26:52'),
+(14, '103887660140114486052', 'customer', 'Md. Mehedi Hasan', 'bsse0607@iit.du.ac.bd', NULL, NULL, '4uWNYPwxgf5g42l2xt5ZZSTMS0hcyvEVZ9oumlwJc32c6XTUvmXL44z4ZRPF', 'https://lh4.googleusercontent.com/-xw_DuhMKF9k/AAAAAAAAAAI/AAAAAAAAACw/g4RUSLrD2Y0/photo.jpg?sz=50', 'https://lh4.googleusercontent.com/-xw_DuhMKF9k/AAAAAAAAAAI/AAAAAAAAACw/g4RUSLrD2Y0/photo.jpg', '2018-10-22 05:01:51', '2018-10-22 05:01:51');
 
 -- --------------------------------------------------------
 
@@ -461,6 +473,14 @@ CREATE TABLE `wishlists` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `wishlists`
+--
+
+INSERT INTO `wishlists` (`id`, `user_id`, `product_id`, `created_at`, `updated_at`) VALUES
+(1, 8, 1, '2018-10-22 02:18:58', '2018-10-22 02:18:58'),
+(2, 8, 2, '2018-10-22 02:18:59', '2018-10-22 02:18:59');
 
 --
 -- Indexes for dumped tables
@@ -573,7 +593,7 @@ ALTER TABLE `wishlists`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `business_settings`
@@ -585,7 +605,7 @@ ALTER TABLE `business_settings`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `currencies`
@@ -609,7 +629,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `product_stocks`
@@ -639,25 +659,25 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `sub_categories`
 --
 ALTER TABLE `sub_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `sub_sub_categories`
 --
 ALTER TABLE `sub_sub_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `wishlists`
 --
 ALTER TABLE `wishlists`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

@@ -52,9 +52,6 @@ class SubSubCategoryController extends Controller
 
         $options = array();
 
-        //$str = 'option_options_'.'1';
-        //dd($request[$str]);
-
         if($request->has('options')){
             foreach ($request->options as $key => $option) {
                 $str = 'choices_'.$option;

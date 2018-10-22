@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('/social-login/redirect/{provider}', 'Auth\LoginController@redirectToProvider')->name('social.login');
+Route::get('/social-login/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('social.callback');
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/products/{slug}', 'HomeController@product')->name('product');
 Route::post('/products/addtocart', 'ProductController@addToCart')->name('products.addToCart');

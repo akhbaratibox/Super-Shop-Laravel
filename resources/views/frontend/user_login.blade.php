@@ -70,15 +70,15 @@
                                     <span>or</span>
                                 </div>
 
-                                <button type="button" class="btn btn-styled btn-block btn-google btn-icon--2 btn-icon-left px-4">
+                                <a href="{{ route('social.login', ['provider' => 'google']) }}" class="btn btn-styled btn-block btn-google btn-icon--2 btn-icon-left px-4">
                                     <i class="icon ion-social-google"></i> Login with Google
-                                </button>
-                                <button type="button" class="btn btn-styled btn-block btn-facebook btn-icon--2 btn-icon-left px-4">
+                                </a>
+                                <a href="{{ route('social.login', ['provider' => 'facebook']) }}" class="btn btn-styled btn-block btn-facebook btn-icon--2 btn-icon-left px-4">
                                     <i class="icon ion-social-facebook"></i> Login with Facebook
-                                </button>
-                                <button type="button" class="btn btn-styled btn-block btn-twitter btn-icon--2 btn-icon-left px-4">
+                                </a>
+                                <a href="{{ route('social.login', ['provider' => 'twitter']) }}" class="btn btn-styled btn-block btn-twitter btn-icon--2 btn-icon-left px-4">
                                     <i class="icon ion-social-twitter"></i> Login with Twitter
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>

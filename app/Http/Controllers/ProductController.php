@@ -60,12 +60,25 @@ class ProductController extends Controller
 
         $product->photos = json_encode($photos);
 
+        if($request->hasFile('thumbnail_img')){
+            $product->thumbnail_img = $request->thumbnail_img->store('uploads');
+        }
+
+        if($request->hasFile('featured_img')){
+            $product->featured_img = $request->featured_img->store('uploads');
+        }
+
+        if($request->hasFile('flash_deal_img')){
+            $product->flash_deal_img = $request->flash_deal_img->store('uploads');
+        }
+
         $product->unit = $request->unit;
         $product->tags = json_encode($request->tags);
         $product->description = $request->description;
+        $product->video_provider = $request->video_provider;
+        $product->video_link = $request->video_link;
         $product->unit_price = $request->unit_price;
         $product->purchase_price = $request->purchase_price;
-        $product->shipping_cost = $request->shipping_cost;
         $product->tax = $request->tax;
         $product->tax_type = $request->tax_type;
         $product->discount = $request->discount;
@@ -142,22 +155,33 @@ class ProductController extends Controller
         $product->subsubcategory_id = $request->subsubcategory_id;
         $product->brand_id = $request->brand_id;
 
-        $photos = array();
-
         if($request->hasFile('photos')){
+            $photos = array();
             foreach ($request->photos as $key => $photo) {
                 array_push($photos, $photo->store('uploads'));
             }
+            $product->photos = json_encode($photos);
         }
 
-        $product->photos = json_encode($photos);
+        if($request->hasFile('thumbnail_img')){
+            $product->thumbnail_img = $request->thumbnail_img->store('uploads');
+        }
+
+        if($request->hasFile('featured_img')){
+            $product->featured_img = $request->featured_img->store('uploads');
+        }
+
+        if($request->hasFile('flash_deal_img')){
+            $product->flash_deal_img = $request->flash_deal_img->store('uploads');
+        }
 
         $product->unit = $request->unit;
         $product->tags = json_encode($request->tags);
         $product->description = $request->description;
+        $product->video_provider = $request->video_provider;
+        $product->video_link = $request->video_link;
         $product->unit_price = $request->unit_price;
         $product->purchase_price = $request->purchase_price;
-        $product->shipping_cost = $request->shipping_cost;
         $product->tax = $request->tax;
         $product->tax_type = $request->tax_type;
         $product->discount = $request->discount;

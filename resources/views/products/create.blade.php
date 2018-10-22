@@ -36,16 +36,13 @@
 				            <a data-toggle="tab" href="#demo-stk-lft-tab-7" aria-expanded="false">Customer Choice</a>
 				        </li>
 						<li class="">
-				            <a data-toggle="tab" href="#demo-stk-lft-tab-8" aria-expanded="false">Related Products</a>
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-8" aria-expanded="false">Display Settings</a>
 				        </li>
 						<li class="">
-				            <a data-toggle="tab" href="#demo-stk-lft-tab-9" aria-expanded="false">Display Settings</a>
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-9" aria-expanded="false">Shipping Info</a>
 				        </li>
 						<li class="">
-				            <a data-toggle="tab" href="#demo-stk-lft-tab-10" aria-expanded="false">Shipping Info</a>
-				        </li>
-						<li class="">
-				            <a data-toggle="tab" href="#demo-stk-lft-tab-11" aria-expanded="false">PDF Specs</a>
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-10" aria-expanded="false">PDF Specs</a>
 				        </li>
 				    </ul>
 
@@ -174,12 +171,6 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">{{__('web.shipping_cost')}}</label>
-								<div class="col-lg-7">
-									<input type="number" min="0" step="0.01" placeholder="{{__('web.shipping_cost')}}" name="shipping_cost" class="form-control">
-								</div>
-							</div>
-							<div class="form-group">
 								<label class="col-lg-2 control-label">{{__('web.tax')}}</label>
 								<div class="col-lg-7">
 									<input type="number" min="0" step="0.01" placeholder="{{__('web.tax')}}" name="tax" class="form-control">
@@ -228,15 +219,50 @@
 							</div>
 				        </div>
 						<div id="demo-stk-lft-tab-8" class="tab-pane fade">
-							<label class="col-lg-2 control-label">Related Products</label>
+
 				        </div>
 						<div id="demo-stk-lft-tab-9" class="tab-pane fade">
-
+							<div class="col-sm-4">
+						        <div class="panel">
+						            <div class="panel-heading">
+						                <h3 class="panel-title text-center">DHL</h3>
+						            </div>
+						            <div class="panel-body text-center">
+						                <label class="switch">
+						                    <input type="checkbox" name="dhl" value="1" checked>
+						                    <span class="slider round"></span>
+						                </label>
+						            </div>
+						        </div>
+						    </div>
+							<div class="col-sm-4">
+						        <div class="panel">
+						            <div class="panel-heading">
+						                <h3 class="panel-title text-center">FedX</h3>
+						            </div>
+						            <div class="panel-body text-center">
+						                <label class="switch">
+						                    <input type="checkbox" name="fedx" value="1" checked>
+						                    <span class="slider round"></span>
+						                </label>
+						            </div>
+						        </div>
+						    </div>
+							<div class="col-sm-4">
+						        <div class="panel">
+						            <div class="panel-heading">
+						                <h3 class="panel-title text-center">UPS</h3>
+						            </div>
+						            <div class="panel-body text-center">
+						                <label class="switch">
+						                    <input type="checkbox" name="ups" value="1" checked>
+						                    <span class="slider round"></span>
+						                </label>
+						            </div>
+						        </div>
+						    </div>
 				        </div>
 						<div id="demo-stk-lft-tab-10" class="tab-pane fade">
-
-				        </div>
-						<div id="demo-stk-lft-tab-11" class="tab-pane fade">
 
 				        </div>
 				    </div>
@@ -352,7 +378,7 @@
 		$('#container').removeClass('mainnav-lg').addClass('mainnav-sm');
 	    get_subcategories_by_category();
 		$("#photos").spartanMultiImagePicker({
-			fieldName:        'fileUpload[]',
+			fieldName:        'photos[]',
 			maxCount:         10,
 			rowHeight:        '200px',
 			groupClassName:   'col-md-4 col-sm-4 col-xs-6',

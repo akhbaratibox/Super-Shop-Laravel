@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2018 at 01:04 PM
+-- Generation Time: Oct 22, 2018 at 02:17 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -455,10 +455,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `provider_id`, `user_type`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `avatar`, `avatar_original`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'admin', 'Admin', 'admin@example.com', NULL, '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', 'JD7bGffLWCFGB3rKUYnasVRnv1jBGEgDg5xhCsE8c0p5jQqEHVUTDxNZE9Sc', NULL, NULL, '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
+(1, NULL, 'admin', 'Admin', 'admin@example.com', NULL, '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', 'KTgnj6ZVRQghtRh0XyD0aSn34nrFDujjldjEeYvtmU9bf9paWJ9BOrQTQadr', NULL, NULL, '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
 (3, NULL, 'seller', 'Seller 1', 'seller1@example.com', NULL, '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', NULL, NULL, NULL, '2018-10-07 04:42:57', '2018-10-07 04:48:43'),
 (9, NULL, 'staff', 'Mobin', 'mobin@gmail.com', NULL, '$2y$10$0NbLnWt7DAbrhqZrFZ7Nw.tvE.Jnff2Il/jrdgtqBiblKpgGwLyom', NULL, NULL, NULL, '2018-10-17 06:26:52', '2018-10-17 06:26:52'),
-(14, '103887660140114486052', 'customer', 'Md. Mehedi Hasan', 'bsse0607@iit.du.ac.bd', NULL, NULL, '4uWNYPwxgf5g42l2xt5ZZSTMS0hcyvEVZ9oumlwJc32c6XTUvmXL44z4ZRPF', 'https://lh4.googleusercontent.com/-xw_DuhMKF9k/AAAAAAAAAAI/AAAAAAAAACw/g4RUSLrD2Y0/photo.jpg?sz=50', 'https://lh4.googleusercontent.com/-xw_DuhMKF9k/AAAAAAAAAAI/AAAAAAAAACw/g4RUSLrD2Y0/photo.jpg', '2018-10-22 05:01:51', '2018-10-22 05:01:51');
+(14, '103887660140114486052', 'customer', 'Md. Mehedi Hasan', 'bsse0607@iit.du.ac.bd', NULL, NULL, '4uWNYPwxgf5g42l2xt5ZZSTMS0hcyvEVZ9oumlwJc32c6XTUvmXL44z4ZRPF', 'https://lh4.googleusercontent.com/-xw_DuhMKF9k/AAAAAAAAAAI/AAAAAAAAACw/g4RUSLrD2Y0/photo.jpg?sz=50', 'https://lh4.googleusercontent.com/-xw_DuhMKF9k/AAAAAAAAAAI/AAAAAAAAACw/g4RUSLrD2Y0/photo.jpg', '2018-10-22 05:01:51', '2018-10-22 05:01:51'),
+(15, '113510401900359638362', 'customer', 'Mehedi Hasan', 'mehedi.iitdu@gmail.com', NULL, NULL, 'inxR5LToqM36LNzRCFyWfrVFe9gypMQup77FfxvkcKTvlFIrnJtecdr3fT3Y', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', '2018-10-22 05:16:10', '2018-10-22 05:16:10');
 
 -- --------------------------------------------------------
 
@@ -671,13 +672,13 @@ ALTER TABLE `sub_sub_categories`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `wishlists`
 --
 ALTER TABLE `wishlists`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

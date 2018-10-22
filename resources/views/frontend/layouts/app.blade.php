@@ -36,6 +36,9 @@
 <link rel="stylesheet" href="{{ asset('frontend/fonts/linea/ecommerce/linea-icons.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('frontend/fonts/linea/software/linea-icons.css') }}" type="text/css">
 
+<link type="text/css" href="{{ asset('frontend/css/bootstrap-tagsinput.css') }}" rel="stylesheet">
+<link type="text/css" href="{{ asset('frontend/css/summernote.min.css') }}" rel="stylesheet">
+
 <!-- Global style (main) -->
 <link id="stylesheet" type="text/css" href="{{ asset('frontend/css/boomerang.min.css') }}" rel="stylesheet" media="screen">
 
@@ -106,6 +109,9 @@
 <!-- Isotope -->
 <script src="{{ asset('frontend/vendor/isotope/isotope.min.js') }}"></script>
 <script src="{{ asset('frontend/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+
+<script src="{{ asset('frontend/js/bootstrap-tagsinput.min.js') }}"></script>
+<script src="{{ asset('frontend/js/summernote.min.js') }}"></script>
 
 <!-- App JS -->
 <script src="{{ asset('frontend/js/boomerang.min.js') }}"></script>

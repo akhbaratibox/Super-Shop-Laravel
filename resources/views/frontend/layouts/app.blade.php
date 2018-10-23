@@ -110,13 +110,6 @@
 <script src="{{ asset('frontend/vendor/isotope/isotope.min.js') }}"></script>
 <script src="{{ asset('frontend/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
 
-<script src="{{ asset('frontend/js/bootstrap-tagsinput.min.js') }}"></script>
-<script src="{{ asset('frontend/js/summernote.min.js') }}"></script>
-
-<!-- App JS -->
-<script src="{{ asset('frontend/js/boomerang.min.js') }}"></script>
-<script src="{{ asset('frontend/js/main.js') }}"></script>
-
 <!-- Deso Slide -->
 <script src="{{ asset('frontend/vendor/deso-slide/js/jquery.desoslide.min.js') }}"></script>
 <script>
@@ -132,6 +125,13 @@
         },
     });
 </script>
+
+<script src="{{ asset('frontend/js/bootstrap-tagsinput.min.js') }}"></script>
+<script src="{{ asset('frontend/js/summernote.min.js') }}"></script>
+
+<!-- App JS -->
+<script src="{{ asset('frontend/js/boomerang.min.js') }}"></script>
+<script src="{{ asset('frontend/js/main.js') }}"></script>
 
 @yield('script')
 

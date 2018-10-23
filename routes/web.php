@@ -14,6 +14,16 @@
 Route::get('/social-login/redirect/{provider}', 'Auth\LoginController@redirectToProvider')->name('social.login');
 Route::get('/social-login/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('social.callback');
 
+Route::get('/seller/product', function(){
+	$categories = \App\Category::all();
+	return view('frontend.seller_product_upload', compact('categories'));
+});
+
+Route::post('/subcategories/get_subcategories_by_category', 'SubCategoryController@get_subcategories_by_category')->name('subcategories.get_subcategories_by_category');
+Route::post('/subsubcategories/get_subsubcategories_by_subcategory', 'SubSubCategoryController@get_subsubcategories_by_subcategory')->name('subsubcategories.get_subsubcategories_by_subcategory');
+Route::post('/subsubcategories/get_brands_by_subsubcategory', 'SubSubCategoryController@get_brands_by_subsubcategory')->name('subsubcategories.get_brands_by_subsubcategory');
+Route::post('/subsubcategories/get_price_variations_by_subsubcategory', 'SubSubCategoryController@get_price_variations_by_subsubcategory')->name('subsubcategories.get_price_variations_by_subsubcategory');
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/products/{slug}', 'HomeController@product')->name('product');
 Route::post('/products/addtocart', 'ProductController@addToCart')->name('products.addToCart');
@@ -36,13 +46,9 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 
 	Route::resource('subcategories','SubCategoryController');
 	Route::get('/subcategories/destroy/{id}', 'SubCategoryController@destroy')->name('subcategories.destroy');
-	Route::post('/subcategories/get_subcategories_by_category', 'SubCategoryController@get_subcategories_by_category')->name('subcategories.get_subcategories_by_category');
 
 	Route::resource('subsubcategories','SubSubCategoryController');
 	Route::get('/subsubcategories/destroy/{id}', 'SubSubCategoryController@destroy')->name('subsubcategories.destroy');
-	Route::post('/subsubcategories/get_subsubcategories_by_subcategory', 'SubSubCategoryController@get_subsubcategories_by_subcategory')->name('subsubcategories.get_subsubcategories_by_subcategory');
-	Route::post('/subsubcategories/get_brands_by_subsubcategory', 'SubSubCategoryController@get_brands_by_subsubcategory')->name('subsubcategories.get_brands_by_subsubcategory');
-	Route::post('/subsubcategories/get_price_variations_by_subsubcategory', 'SubSubCategoryController@get_price_variations_by_subsubcategory')->name('subsubcategories.get_price_variations_by_subsubcategory');
 
 	Route::resource('brands','BrandController');
 	Route::get('/brands/destroy/{id}', 'BrandController@destroy')->name('brands.destroy');

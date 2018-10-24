@@ -372,12 +372,12 @@
     </section>
 
     <!-- Modal -->
-    <div class="modal fade" id="categorySelectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="categorySelectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h6 class="modal-title" id="exampleModalLabel">Select Category</h6>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" onclick="closeModal()" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -443,7 +443,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
+                    <button type="button" class="btn btn-primary" onclick="closeModal()">Confirm</button>
                 </div>
             </div>
         </div>
@@ -473,6 +473,8 @@
         function get_subcategories_by_category(el, category_id){
             list_item_highlight(el);
             $('#category_id').val(category_id);
+            $('#subcategory_id').val(null);
+            $('#subsubcategory_id').val(null);
             category_name = $(el).html();
             $('#subcategories').html(null);
             $('#subsubcategory_list').hide();
@@ -487,6 +489,7 @@
         function get_subsubcategories_by_subcategory(el, subcategory_id){
             list_item_highlight(el);
             $('#subcategory_id').val(subcategory_id);
+            $('#subsubcategory_id').val(null);
             subcategory_name = $(el).html();
             $('#subsubcategories').html(null);
             $.post('{{ route('subsubcategories.get_subsubcategories_by_subcategory') }}',{_token:'{{ csrf_token() }}', subcategory_id:subcategory_id}, function(data){
@@ -529,6 +532,16 @@
                 } else {
                     $(li[i]).hide();
                 }
+            }
+        }
+
+        function closeModal(){
+            if($('#category_id').val() > 0 && $('#subcategory_id').val() > 0 && $('#subsubcategory_id').val() > 0){
+                $('#categorySelectModal').modal('hide');
+            }
+            else{
+                alert('Please choose categories...');
+                //showAlert();
             }
         }
     </script>

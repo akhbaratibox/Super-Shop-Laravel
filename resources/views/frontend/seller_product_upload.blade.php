@@ -125,6 +125,14 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-2">
+                                            <label>Product Unit <span class="required-star">*</span></label>
+                                        </div>
+                                        <div class="col-10">
+                                            <input type="text" class="form-control mb-3" placeholder="Product unit">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-2">
                                             <label>Product Tag <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">

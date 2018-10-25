@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
 use App\User;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -85,6 +86,28 @@ class LoginController extends Controller
         }
 
         return redirect()->route('home');
+    }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        if(auth()->user()->user_type == 'admin' || auth()->user()->user_type == 'staff'){
+            $redirect_route = 'login';
+        }
+        else{
+            $redirect_route = 'home';
+        }
+
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return $this->loggedOut($request) ?: redirect()->route($redirect_route);
     }
 
     /**

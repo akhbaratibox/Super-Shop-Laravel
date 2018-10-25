@@ -193,6 +193,9 @@
                                 <li class="{{ areActiveRoutes([])}}">
                                     <a class="nav-link" href="#">{{__('web.payment_mothod')}}</a>
                                 </li>
+                                <li class="{{ areActiveRoutes(['social_login.index'])}}">
+                                    <a class="nav-link" href="{{ route('social_login.index') }}">Social Media Login</a>
+                                </li>
                                 <li class="{{ areActiveRoutes(['currency.index'])}}">
                                     <a class="nav-link" href="{{route('currency.index')}}">{{__('web.currency')}}</a>
                                 </li>

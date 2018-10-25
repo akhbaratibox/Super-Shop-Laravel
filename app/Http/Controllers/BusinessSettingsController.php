@@ -13,6 +13,25 @@ class BusinessSettingsController extends Controller
     	return view('business_settings.activation');
     }
 
+    public function social_login(Request $request)
+    {
+        return view('business_settings.social_login');
+    }
+
+    public function env_key_update(Request $request)
+    {
+        $path = base_path('.env');
+        if (file_exists($path)) {
+            foreach ($request->types as $key => $type) {
+                file_put_contents($path, str_replace(
+                    $type.'='.env($type), $type.'='.$request[$type], file_get_contents($path)
+                ));
+            }
+        }
+        flash("Settings updated successfully")->success();
+        return back();
+    }
+
     public function currency(Request $request)
     {
     	$currencies = Currency::all();

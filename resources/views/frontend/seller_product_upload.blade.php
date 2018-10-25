@@ -361,10 +361,7 @@
                                 </div>
                                 <div class="form-box-content p-3">
                                     <div class="row">
-                                        <div class="col-2">
-                                            <label>Price Variations</label>
-                                        </div>
-                                        <div class="col-10">
+                                        <div class="col-12">
                                             <div class="mb-3" id="customer_choice_options">
 
                                             </div>
@@ -385,7 +382,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h6 class="modal-title" id="exampleModalLabel">Select Category</h6>
-                    <button type="button" class="close" onclick="closeModal()" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -451,6 +448,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-primary" onclick="closeModal()">Confirm</button>
                 </div>
             </div>
@@ -466,6 +464,10 @@
         var subcategory_name = "";
         var subsubcategory_name = "";
 
+        var category_id = null;
+        var subcategory_id = null;
+        var subsubcategory_id = null;
+
         $(document).ready(function(){
             $('#subcategory_list').hide();
             $('#subsubcategory_list').hide();
@@ -478,11 +480,11 @@
             $(el).addClass('selected');
         }
 
-        function get_subcategories_by_category(el, category_id){
+        function get_subcategories_by_category(el, cat_id){
             list_item_highlight(el);
-            $('#category_id').val(category_id);
-            $('#subcategory_id').val(null);
-            $('#subsubcategory_id').val(null);
+            category_id = cat_id;
+            subcategory_id = null;
+            subsubcategory_id = null;
             category_name = $(el).html();
             $('#subcategories').html(null);
             $('#subsubcategory_list').hide();
@@ -494,25 +496,27 @@
             });
         }
 
-        function get_subsubcategories_by_subcategory(el, subcategory_id){
+        function get_subsubcategories_by_subcategory(el, subcat_id){
             list_item_highlight(el);
-            $('#subcategory_id').val(subcategory_id);
-            $('#subsubcategory_id').val(null);
+            subcategory_id = subcat_id;
+            subsubcategory_id = null;
             subcategory_name = $(el).html();
             $('#subsubcategories').html(null);
             $.post('{{ route('subsubcategories.get_subsubcategories_by_subcategory') }}',{_token:'{{ csrf_token() }}', subcategory_id:subcategory_id}, function(data){
                 for (var i = 0; i < data.length; i++) {
-                    $('#subsubcategories').append('<li onclick="get_brands_by_subsubcategory(this, '+data[i].id+')">'+data[i].name+'</li>');
+                    $('#subsubcategories').append('<li onclick="confirm_subsubcategory(this, '+data[i].id+')">'+data[i].name+'</li>');
                 }
                 $('#subsubcategory_list').show();
             });
         }
 
-        function get_brands_by_subsubcategory(el, subsubcategory_id){
+        function confirm_subsubcategory(el, subsubcat_id){
             list_item_highlight(el);
-            $('#subsubcategory_id').val(subsubcategory_id);
+            subsubcategory_id = subsubcat_id;
             subsubcategory_name = $(el).html();
-            $('#product_category').html(category_name+'>'+subcategory_name+'>'+subsubcategory_name);
+    	}
+
+        function get_brands_by_subsubcategory(subsubcat_id){
             $('#brands').html(null);
     		$.post('{{ route('subsubcategories.get_brands_by_subsubcategory') }}',{_token:'{{ csrf_token() }}', subsubcategory_id:subsubcategory_id}, function(data){
     		    for (var i = 0; i < data.length; i++) {
@@ -526,7 +530,7 @@
     	}
 
         function get_price_variations_by_subsubcategory(subsubcategory_id){
-    		$.post('{{ route('subsubcategories.get_price_variations_by_subsubcategory') }}',{_token:'{{ csrf_token() }}', subsubcategory_id:subsubcategory_id}, function(data){
+    		$.post('{{ route('subsubcategories.get_price_variations_by_subsubcategory') }}',{_token:'{{ csrf_token() }}', view:'frontend', subsubcategory_id:subsubcategory_id}, function(data){
     		    $('#customer_choice_options').html(data);
     		});
     	}
@@ -544,11 +548,19 @@
         }
 
         function closeModal(){
-            if($('#category_id').val() > 0 && $('#subcategory_id').val() > 0 && $('#subsubcategory_id').val() > 0){
+            if(category_id > 0 && subcategory_id > 0 && subsubcategory_id > 0){
+                $('#category_id').val(category_id);
+                $('#subcategory_id').val(subcategory_id);
+                $('#subsubcategory_id').val(subsubcategory_id);
+                $('#product_category').html(category_name+'>'+subcategory_name+'>'+subsubcategory_name);
                 $('#categorySelectModal').modal('hide');
+                get_brands_by_subsubcategory(subsubcategory_id);
             }
             else{
                 alert('Please choose categories...');
+                console.log(category_id);
+                console.log(subcategory_id);
+                console.log(subsubcategory_id);
                 //showAlert();
             }
         }

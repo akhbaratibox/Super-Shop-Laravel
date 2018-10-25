@@ -1116,7 +1116,7 @@ section.home-banner-area {
 .modal-category-box {
     padding: 20px;
     border: 1px solid #eaeaea;
-    max-height: 400px;
+    height: 400px;
     overflow-y: auto;
 }
 

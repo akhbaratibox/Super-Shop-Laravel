@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2018 at 02:17 PM
+-- Generation Time: Oct 25, 2018 at 08:25 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -108,7 +108,7 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `banner`, `icon`, `created_at`, `updated_at`) VALUES
-(7, 'Men clothing', 'uploads/LntG9daqoJqQ077ZUzjjApqNygNgYVf2PZGVBnYd.jpeg', 'uploads/ftpL20ddrhYGvw8a9oAGfkxWHJc5FhMpfXhqv0Gl.png', '2018-10-13 05:39:15', '2018-10-12 23:39:15'),
+(7, 'Automobile', 'uploads/LntG9daqoJqQ077ZUzjjApqNygNgYVf2PZGVBnYd.jpeg', 'uploads/ftpL20ddrhYGvw8a9oAGfkxWHJc5FhMpfXhqv0Gl.png', '2018-10-24 09:19:43', '2018-10-12 23:39:15'),
 (8, 'Women\'s clothing', 'uploads/ae4aNYkbh5zqRvvryc3vimjPOuoAMMnRWShUuods.jpeg', 'uploads/dWBFvWcVSE7kkfdw3HWxbp72ok2Xjj4JXv5wBYLa.jpeg', '2018-10-13 05:38:55', '2018-10-12 23:38:55'),
 (9, 'Cellphone & Accessories', 'uploads/9Y0Z0sspWsZGrIbeBwqHI7WpaJwpHQzOcDr2nvna.jpeg', 'uploads/JO2gZJmfmzOEMoEy8FFHIzh0bwRsRp5klevRY0hl.png', '2018-10-14 19:54:43', '2018-10-14 19:54:43'),
 (10, 'Computer,Office, Security', 'uploads/D3y6VjYfpKKzZsgFT13DIjXOrIw0Iyu5XTscH6sh.jpeg', 'uploads/KvCl7flxmS9M52UQ4DXIvKbMoNrWWbeJdqE0JikI.png', '2018-10-14 21:48:07', '2018-10-14 21:48:07'),
@@ -117,8 +117,7 @@ INSERT INTO `categories` (`id`, `name`, `banner`, `icon`, `created_at`, `updated
 (13, 'Home Appliance', 'uploads/ZFiw5Xcrs6iIcFkj3K0TrSa8oIoy4pkhpnUukZhy.jpeg', 'uploads/xSIZbEpy3OsC6ANLSIJfP7ieaGP02E40rQVkjTOu.png', '2018-10-14 22:38:48', '2018-10-14 22:38:48'),
 (14, 'bags & Shoes', 'uploads/T7OdflyLppCVLfcQbrcNX2u5NplxZO6GxUXqYb5V.jpeg', 'uploads/4V6kp42dRmq9xWOChshL2lc5LHF55DsAjZlieBm7.png', '2018-10-14 22:39:57', '2018-10-14 22:39:57'),
 (15, 'Kids & Toys', 'uploads/uqSmE0jswOwy5nWd4yPSh4fT4bTgIFMyb0Z8zUdi.jpeg', 'uploads/bZxBw0f5vy4MFz9XoR7EQML3JMc8heT10ZbIAc5d.png', '2018-10-14 22:41:17', '2018-10-14 22:41:17'),
-(16, 'Health & Beauty', 'uploads/9C62APIf0N332pUqTXGIxSKeDhsmI5kLTC9YZ1OE.jpeg', 'uploads/QpFFOJvkYITZkIbeXnsHLsZbof7IfcW1z49YJ8uF.png', '2018-10-14 22:43:04', '2018-10-14 22:43:04'),
-(17, 'Automobile', 'uploads/4Jtu4NCz6WvBHeDg5tLbZSnVuJjX4xpwXk5GBDBU.png', 'uploads/wQ3X2O6o3LtLavBniVuCQ8FMoATVnf9YqKH3LGYb.png', '2018-10-22 09:01:29', '2018-10-22 03:01:29');
+(16, 'Health & Beauty', 'uploads/9C62APIf0N332pUqTXGIxSKeDhsmI5kLTC9YZ1OE.jpeg', 'uploads/QpFFOJvkYITZkIbeXnsHLsZbof7IfcW1z49YJ8uF.png', '2018-10-14 22:43:04', '2018-10-14 22:43:04');
 
 -- --------------------------------------------------------
 
@@ -395,8 +394,7 @@ INSERT INTO `sub_categories` (`id`, `name`, `category_id`, `banner`, `created_at
 (23, 'laptop Accessories', 10, 'uploads/vJZLPZREKv65KNwkC03VmwfrjRYMGiXaeaLzx7Hr.jpeg', '2018-10-14 23:50:05', '2018-10-14 23:50:40'),
 (24, 'Home Audio & video', 11, 'uploads/FoPIRgiq8ORhAIqmWEARacsodP4Q4VdrsBvU9ir2.jpeg', '2018-10-14 23:54:33', '2018-10-14 23:54:33'),
 (25, 'Smart Electronics', 11, 'uploads/4YI2ztpm3dzoz96a8Tq1dcX6fgclRdoxVD5kAHry.jpeg', '2018-10-14 23:54:58', '2018-10-14 23:54:58'),
-(26, 'Camera & photo', 11, 'uploads/tn0MOurgI1lfqoCdX1GcVhzXasU99wrozar4Nx0H.jpeg', '2018-10-14 23:55:36', '2018-10-14 23:55:36'),
-(27, 'Racing Car', 17, 'uploads/sTGrTexnXHvU54l2bcIXF5QqIfiUtIQlOYqtg18M.jpeg', '2018-10-22 02:58:33', '2018-10-22 02:59:40');
+(26, 'Camera & photo', 11, 'uploads/tn0MOurgI1lfqoCdX1GcVhzXasU99wrozar4Nx0H.jpeg', '2018-10-14 23:55:36', '2018-10-14 23:55:36');
 
 -- --------------------------------------------------------
 
@@ -426,7 +424,6 @@ INSERT INTO `sub_sub_categories` (`id`, `sub_category_id`, `name`, `banner`, `br
 (8, 10, 'Hoodie', 'uploads/0rAwm5yze0Qt2xeE33HuwptQzl75ix5FufmncaVV.jpeg', '[\"6\"]', '[]', '2018-10-15 00:03:37', '2018-10-15 00:03:37'),
 (9, 12, 'jackets  t-ahirt', 'uploads/IgX5hzUYEJwB0kepD3TztTkkUOgUoBwaXT3Rd86W.jpeg', '[\"7\"]', '[]', '2018-10-15 00:04:36', '2018-10-15 00:04:36'),
 (10, 9, 'Hats & Belts', 'uploads/7FyQgJOyVw2UCl7tYQmj3PsVFSSIIVz6tkLEphwm.jpeg', '[\"5\"]', '[]', '2018-10-15 00:06:08', '2018-10-15 00:06:08'),
-(11, 27, 'Test sub sub category', 'uploads/8wQQ5oWLJhjIZwPUH6meTSiYYujll75WDeDqVywk.png', '[\"3\"]', '[{\"name\":\"choices_0\",\"title\":\"Field 1\",\"type\":\"select\",\"options\":[\"select 1\",\"select 2\",\"select 3\",\"Select 4\",\"Radio 1\",\"Radio 2\",\"Radio 3\",\"Radio 4\",\"Select 5\"]},{\"name\":\"choices_1\",\"title\":\"Field 2\",\"type\":\"radio\",\"options\":[\"select 1\",\"select 2\",\"select 3\",\"Select 4\",\"Radio 1\",\"Radio 2\",\"Radio 3\",\"Radio 4\",\"Radio 5\"]},{\"name\":\"choices_2\",\"title\":\"Field 3\",\"type\":\"text\",\"options\":null}]', '2018-10-22 03:09:21', '2018-10-22 03:17:04'),
 (12, 3, 'Test', 'uploads/Axq44o3nPuJKEjrdHCCX8ZqL22QEQsKe5ZZS5XRj.jpeg', '[\"15\"]', '[{\"name\":\"choices_0\",\"title\":\"Text check\",\"type\":\"text\",\"options\":null},{\"name\":\"choices_1\",\"title\":\"Select check\",\"type\":\"select\",\"options\":[\"Select 1\",\"Select 2\",\"Select 3\",\"Select 4\"]},{\"name\":\"choices_2\",\"title\":\"Radio Check\",\"type\":\"radio\",\"options\":[\"Radio 1\",\"Radio 2\",\"Radio 3\",\"Radio 4\"]}]', '2018-10-22 03:20:37', '2018-10-22 03:20:37');
 
 -- --------------------------------------------------------
@@ -455,11 +452,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `provider_id`, `user_type`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `avatar`, `avatar_original`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'admin', 'Admin', 'admin@example.com', NULL, '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', 'KTgnj6ZVRQghtRh0XyD0aSn34nrFDujjldjEeYvtmU9bf9paWJ9BOrQTQadr', NULL, NULL, '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
+(1, NULL, 'admin', 'Admin', 'admin@example.com', NULL, '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', '2RATU78NOlvn3L5QYCOjit8Bdl4uOzKboTQjevJIUAntMmf88oWeudvwIyMu', NULL, NULL, '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
 (3, NULL, 'seller', 'Seller 1', 'seller1@example.com', NULL, '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', NULL, NULL, NULL, '2018-10-07 04:42:57', '2018-10-07 04:48:43'),
 (9, NULL, 'staff', 'Mobin', 'mobin@gmail.com', NULL, '$2y$10$0NbLnWt7DAbrhqZrFZ7Nw.tvE.Jnff2Il/jrdgtqBiblKpgGwLyom', NULL, NULL, NULL, '2018-10-17 06:26:52', '2018-10-17 06:26:52'),
 (14, '103887660140114486052', 'customer', 'Md. Mehedi Hasan', 'bsse0607@iit.du.ac.bd', NULL, NULL, '4uWNYPwxgf5g42l2xt5ZZSTMS0hcyvEVZ9oumlwJc32c6XTUvmXL44z4ZRPF', 'https://lh4.googleusercontent.com/-xw_DuhMKF9k/AAAAAAAAAAI/AAAAAAAAACw/g4RUSLrD2Y0/photo.jpg?sz=50', 'https://lh4.googleusercontent.com/-xw_DuhMKF9k/AAAAAAAAAAI/AAAAAAAAACw/g4RUSLrD2Y0/photo.jpg', '2018-10-22 05:01:51', '2018-10-22 05:01:51'),
-(15, '113510401900359638362', 'customer', 'Mehedi Hasan', 'mehedi.iitdu@gmail.com', NULL, NULL, 'inxR5LToqM36LNzRCFyWfrVFe9gypMQup77FfxvkcKTvlFIrnJtecdr3fT3Y', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', '2018-10-22 05:16:10', '2018-10-22 05:16:10');
+(15, '113510401900359638362', 'customer', 'Mehedi Hasan', 'mehedi.iitdu@gmail.com', NULL, NULL, 'CrzJ8pOSZi4e7kDDrCJtQLYioZjUcAJAdPAmE8LTztao5uIOlHA81qHniAf7', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', '2018-10-22 05:16:10', '2018-10-22 05:16:10');
 
 -- --------------------------------------------------------
 
@@ -606,7 +603,7 @@ ALTER TABLE `business_settings`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `currencies`
@@ -630,7 +627,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product_stocks`
@@ -660,7 +657,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `sub_categories`
 --
 ALTER TABLE `sub_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `sub_sub_categories`
@@ -678,7 +675,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `wishlists`
 --
 ALTER TABLE `wishlists`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

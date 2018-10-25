@@ -39,6 +39,18 @@
     </div>
 
     <div class="pad-all">
+        <table class="table table-responsive table-bordered">
+            <tbody>
+                <tr>
+                    <td>admin@example.com</td>
+                    <td>123456</td>
+                    <td><button class="btn btn-info btn-xs admina" onclick="autoFill()">copy</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pad-all">
         <a href="{{ route('password.request') }}" class="btn-link mar-rgt">Forgot password ?</a>
         <!--<a href="{{ route('register') }}" class="btn-link mar-lft">Create a new account</a>-->
 
@@ -55,4 +67,13 @@
     </div>
 </div>
 
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        function autoFill(){
+            $('#email').val('admin@example.com');
+            $('#password').val('123456');
+        }
+    </script>
 @endsection

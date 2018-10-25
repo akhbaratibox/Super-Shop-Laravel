@@ -26,7 +26,7 @@
 
     <!--Demo [ DEMONSTRATION ]-->
     <link href="{{ asset('css/demo/nifty-demo.min.css') }}" rel="stylesheet">
-    
+
     <!--Theme [ DEMONSTRATION ]-->
     <link href="{{ asset('css/themes/type-full/theme-dark-full.min.css') }}" rel="stylesheet">
 
@@ -34,7 +34,7 @@
 <body>
     <div id="container" class="cls-container">
         <div class="cls-content">
-            @yield('content')  
+            @yield('content')
         </div>
     </div>
 
@@ -54,6 +54,8 @@
 
     <!--Alerts [ SAMPLE ]-->
     <script src="{{asset('js/demo/ui-alerts.js') }}"></script>
+
+    @yield('script')
 
 </body>
 </html>

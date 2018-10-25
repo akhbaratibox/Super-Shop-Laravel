@@ -183,6 +183,9 @@ class SubSubCategoryController extends Controller
     public function get_price_variations_by_subsubcategory(Request $request)
     {
         $subsubcategory = SubSubCategory::findOrFail($request->subsubcategory_id);
+        if($request->has('view')){
+            return view('frontend.partials.price_variations', compact('subsubcategory'));
+        }
         return view('partials.price_variations', compact('subsubcategory'));
     }
 }

@@ -44,7 +44,7 @@
                 <tr>
                     <td>admin@example.com</td>
                     <td>123456</td>
-                    <td><button class="btn btn-info btn-xs admina" onclick="autoFill()">copy</button></td>
+                    <td><button class="btn btn-info btn-xs" onclick="autoFill()">copy</button></td>
                 </tr>
             </tbody>
         </table>

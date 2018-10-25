@@ -20,7 +20,7 @@
                                             <div class="form-group">
                                                 <label>{{ __('web.email') }}</label>
                                                 <div class="input-group input-group--style-1">
-                                                    <input type="email" class="form-control form-control-lg {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="Email" name="email">
+                                                    <input type="email" class="form-control form-control-lg {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="Email" name="email" id="email">
                                                     <span class="input-group-addon">
                                                         <i class="text-md ion-person"></i>
                                                     </span>
@@ -34,7 +34,7 @@
                                             <div class="form-group">
                                                 <label>{{ __('web.password') }}</label>
                                                 <div class="input-group input-group--style-1">
-                                                    <input type="password" class="form-control form-control-lg {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Password" name="password">
+                                                    <input type="password" class="form-control form-control-lg {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Password" name="password" id="password">
                                                     <span class="input-group-addon">
                                                         <i class="text-md ion-locked"></i>
                                                     </span>
@@ -68,6 +68,21 @@
 
                                 <div class="or or--1 mt-2">
                                     <span>or</span>
+                                </div>
+
+                                <div class="">
+                                    <table class="table table-responsive table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <td>Seller Account</td>
+                                                <td><button class="btn btn-info" onclick="autoFillSeller()">copy</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Customer Account</td>
+                                                <td><button class="btn btn-info" onclick="autoFillCustomer()">copy</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
 
                                 <a href="{{ route('social.login', ['provider' => 'google']) }}" class="btn btn-styled btn-block btn-google btn-icon--2 btn-icon-left px-4">
@@ -171,4 +186,17 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        function autoFillSeller(){
+            $('#email').val('seller@example.com');
+            $('#password').val('123456');
+        }
+        function autoFillCustomer(){
+            $('#email').val('customer@example.com');
+            $('#password').val('123456');
+        }
+    </script>
 @endsection

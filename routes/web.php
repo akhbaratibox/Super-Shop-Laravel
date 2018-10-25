@@ -14,14 +14,8 @@
 Auth::routes();
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::post('/language', 'languageController@changeLanguage')->name('language.change');
-
 Route::get('/social-login/redirect/{provider}', 'Auth\LoginController@redirectToProvider')->name('social.login');
 Route::get('/social-login/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('social.callback');
-
-Route::get('/seller/product', function(){
-	$categories = \App\Category::all();
-	return view('frontend.seller_product_upload', compact('categories'));
-});
 
 Route::post('/subcategories/get_subcategories_by_category', 'SubCategoryController@get_subcategories_by_category')->name('subcategories.get_subcategories_by_category');
 Route::post('/subsubcategories/get_subsubcategories_by_subcategory', 'SubSubCategoryController@get_subsubcategories_by_subcategory')->name('subsubcategories.get_subsubcategories_by_subcategory');
@@ -39,6 +33,13 @@ Route::group(['middleware' => ['customer']], function(){
 	Route::get('/wishlist', 'HomeController@wishlist')->name('wishlist');
 	Route::resource('wishlists','WishlistController');
 	Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
+});
+
+Route::group(['middleware' => ['seller']], function(){
+	Route::get('/seller/product', function(){
+		$categories = \App\Category::all();
+		return view('frontend.seller_product_upload', compact('categories'));
+	});
 });
 
 Route::get('/admin', 'HomeController@dashboard')->name('dashboard')->middleware(['auth', 'admin']);

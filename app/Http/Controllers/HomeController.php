@@ -18,7 +18,12 @@ class HomeController extends Controller
         $user = User::whereIn('user_type', ['customer', 'seller'])->where('email', $request->email)->first();
         if($user != null){
             if(Hash::check($request->password, $user->password)){
-                auth()->login($user, true);
+                if($request->has('remember')){
+                    auth()->login($user, true);
+                }
+                else{
+                    auth()->login($user, false);
+                }
                 return redirect()->route('home');
             }
         }

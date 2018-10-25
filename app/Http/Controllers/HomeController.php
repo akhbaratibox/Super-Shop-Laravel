@@ -6,10 +6,25 @@ use Illuminate\Http\Request;
 use Session;
 use App\Category;
 use App\Product;
+use App\User;
 use Auth;
+use Hash;
 
 class HomeController extends Controller
 {
+
+    public function user_login(Request $request)
+    {
+        $user = User::whereIn('user_type', ['customer', 'seller'])->where('email', $request->email)->first();
+        if($user != null){
+            if(Hash::check($request->password, $user->password)){
+                auth()->login($user, true);
+                return redirect()->route('home');
+            }
+        }
+        return back();
+    }
+
     /**
      * Create a new controller instance.
      *

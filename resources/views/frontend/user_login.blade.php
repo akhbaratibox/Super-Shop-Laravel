@@ -13,7 +13,7 @@
                                 </h3>
                             </div>
                             <div class="card-body px-4">
-                                <form class="form-default" role="form" action="{{ route('login') }}" method="POST">
+                                <form class="form-default" role="form" action="{{ route('user.login.submit') }}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="col-12">

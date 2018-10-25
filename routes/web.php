@@ -16,6 +16,8 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::post('/language', 'languageController@changeLanguage')->name('language.change');
 Route::get('/social-login/redirect/{provider}', 'Auth\LoginController@redirectToProvider')->name('social.login');
 Route::get('/social-login/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('social.callback');
+Route::get('/users/login', 'HomeController@login')->name('user.login');
+Route::post('/users/login', 'HomeController@user_login')->name('user.login.submit');
 
 Route::post('/subcategories/get_subcategories_by_category', 'SubCategoryController@get_subcategories_by_category')->name('subcategories.get_subcategories_by_category');
 Route::post('/subsubcategories/get_subsubcategories_by_subcategory', 'SubSubCategoryController@get_subsubcategories_by_subcategory')->name('subsubcategories.get_subsubcategories_by_subcategory');
@@ -27,7 +29,6 @@ Route::get('/products/{slug}', 'HomeController@product')->name('product');
 Route::post('/products/addtocart', 'ProductController@addToCart')->name('products.addToCart');
 Route::post('/products/removeFromCart', 'ProductController@removeFromCart')->name('products.removeFromCart');
 Route::post('/products/addToCompare', 'ProductController@addToCompare')->name('products.addToCompare');
-Route::get('/users/login', 'HomeController@login')->name('user.login');
 
 Route::group(['middleware' => ['customer']], function(){
 	Route::get('/wishlist', 'HomeController@wishlist')->name('wishlist');

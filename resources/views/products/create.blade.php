@@ -161,7 +161,7 @@
 							<div class="form-group">
 								<label class="col-lg-2 control-label">{{__('web.unit_price')}}</label>
 								<div class="col-lg-7">
-									<input type="text" placeholder="{{__('web.unit_price')}}" name="unit_price" class="form-control">
+									<input type="number" min="0" step="0.01" placeholder="{{__('web.unit_price')}}" name="unit_price" class="form-control">
 								</div>
 							</div>
 							<div class="form-group">

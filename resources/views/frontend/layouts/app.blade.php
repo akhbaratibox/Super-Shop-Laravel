@@ -42,6 +42,9 @@
 <!-- Global style (main) -->
 <link id="stylesheet" type="text/css" href="{{ asset('frontend/css/boomerang.min.css') }}" rel="stylesheet" media="screen">
 
+<!--Spectrum Stylesheet [ REQUIRED ]-->
+<link href="{{ asset('css/spectrum.css')}}" rel="stylesheet">
+
 <!-- Custom style - Remove if not necessary -->
 <link type="text/css" href="{{ asset('frontend/css/custom-style.css') }}" rel="stylesheet">
 
@@ -109,6 +112,9 @@
 <!-- Isotope -->
 <script src="{{ asset('frontend/vendor/isotope/isotope.min.js') }}"></script>
 <script src="{{ asset('frontend/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+
+<!--Spectrum JavaScript [ REQUIRED ]-->
+<script src="{{ asset('js/spectrum.js')}}"></script>
 
 <!-- Deso Slide -->
 <script src="{{ asset('frontend/vendor/deso-slide/js/jquery.desoslide.min.js') }}"></script>

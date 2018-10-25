@@ -85,8 +85,10 @@
                                 </div>
                             </div>
                         </div>
-                        <form class="" action="#" method="POST">
+                        <form class="" action="{{route('products.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
+                    		<input type="hidden" name="added_by" value="seller">
+
                             <div class="form-box bg-white mt-4">
                                 <div class="form-box-title px-3 py-2">
                                     General
@@ -94,10 +96,10 @@
                                 <div class="form-box-content p-3">
                                     <div class="row">
                                         <div class="col-2">
-                                            <label>Product Name <span class="required-star">*</span></label>
+                                            <label>{{__('web.product_name')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="text" class="form-control mb-3" placeholder="Product name">
+                                            <input type="text" class="form-control mb-3" name="name" placeholder="{{__('web.product_name')}}">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -117,7 +119,7 @@
                                         </div>
                                         <div class="col-10">
                                             <div class="mb-3">
-                                                <select class="form-control mb-3 selectpicker" data-placeholder="Select a brand" id="brands">
+                                                <select class="form-control mb-3 selectpicker" data-placeholder="Select a brand" id="brands" name="brand_id">
 
                                                 </select>
                                             </div>
@@ -128,7 +130,7 @@
                                             <label>Product Unit <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="text" class="form-control mb-3" placeholder="Product unit">
+                                            <input type="text" class="form-control mb-3" name="unit" placeholder="Product unit">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -136,7 +138,7 @@
                                             <label>Product Tag <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="text" class="form-control mb-3 tagsInput" placeholder="Type & hit enter" data-role="tagsinput">
+                                            <input type="text" class="form-control mb-3 tagsInput" name="tags[]" placeholder="Type & hit enter" data-role="tagsinput">
                                         </div>
                                     </div>
                                 </div>
@@ -151,7 +153,7 @@
                                             <label>Main Images <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="file" name="file-1[]" id="file-1" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" multiple accept="image/*" />
+                                            <input type="file" name="photos[]" id="file-1" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" multiple accept="image/*" />
                                             <label for="file-1" class="mw-100 mb-3">
                                                 <span></span>
                                                 <strong>
@@ -166,7 +168,7 @@
                                             <label>Thumbnail Image <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="file" name="file-2[]" id="file-2" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
+                                            <input type="file" name="thumbnail_img" id="file-2" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
                                             <label for="file-2" class="mw-100 mb-3">
                                                 <span></span>
                                                 <strong>
@@ -181,7 +183,7 @@
                                             <label>Featured <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="file" name="file-2[]" id="file-3" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
+                                            <input type="file" name="featured_img" id="file-3" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
                                             <label for="file-3" class="mw-100 mb-3">
                                                 <span></span>
                                                 <strong>
@@ -196,7 +198,7 @@
                                             <label>Flash Deal <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="file" name="file-2[]" id="file-4" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
+                                            <input type="file" name="flash_deal_img" id="file-4" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
                                             <label for="file-4" class="mw-100 mb-3">
                                                 <span></span>
                                                 <strong>
@@ -219,10 +221,10 @@
                                         </div>
                                         <div class="col-10">
                                             <div class="mb-3">
-                                                <select class="form-control selectpicker" data-minimum-results-for-search="Infinity">
-                                                    <option value="1">Youtube</option>
-                                                    <option value="2">Dailymotion</option>
-                                                    <option value="3">Vimeo</option>
+                                                <select class="form-control selectpicker" data-minimum-results-for-search="Infinity" name="video_provider">
+                                                    <option value="youtube">Youtube</option>
+            										<option value="dailymotion">Dailymotion</option>
+            										<option value="vimeo">Vimeo</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -232,7 +234,7 @@
                                             <label>Video URL</label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="text" class="form-control mb-3" placeholder="Video link">
+                                            <input type="text" class="form-control mb-3" name="video_link" placeholder="Video link">
                                         </div>
                                     </div>
                                 </div>
@@ -293,7 +295,7 @@
                                             <label>Unit Price (Base Price) <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="text" class="form-control mb-3" placeholder="Unit Price (Base Price)">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="unit_price" placeholder="Unit Price (Base Price)">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -301,7 +303,7 @@
                                             <label>Purchase Price</label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="text" class="form-control mb-3" placeholder="Purchase Price">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="purchase_price" placeholder="Purchase Price">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -309,11 +311,11 @@
                                             <label>Tax</label>
                                         </div>
                                         <div class="col-8">
-                                            <input type="text" class="form-control mb-3" placeholder="Tax">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="tax" placeholder="Tax">
                                         </div>
                                         <div class="col-2">
                                             <div class="mb-3">
-                                                <select class="form-control selectpicker" data-minimum-results-for-search="Infinity">
+                                                <select class="form-control selectpicker" name="tax_type" data-minimum-results-for-search="Infinity">
                                                     <option value="1">$</option>
                                                     <option value="2">%</option>
                                                 </select>
@@ -325,11 +327,11 @@
                                             <label>Discount</label>
                                         </div>
                                         <div class="col-8">
-                                            <input type="text" class="form-control mb-3" placeholder="Discount">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="discount" placeholder="Discount">
                                         </div>
                                         <div class="col-2">
                                             <div class="mb-3">
-                                                <select class="form-control selectpicker" data-minimum-results-for-search="Infinity">
+                                                <select class="form-control selectpicker" name="discount_type" data-minimum-results-for-search="Infinity">
                                                     <option value="1">$</option>
                                                     <option value="2">%</option>
                                                 </select>
@@ -361,6 +363,19 @@
                                 </div>
                                 <div class="form-box-content p-3">
                                     <div class="row">
+        								<label class="col-2 control-label">{{__('web.colors')}}</label>
+                                        <div class="col-10 increment">
+                                            <div class="row mb-3">
+                                                <div class="col-sm-5">
+                									<input type="text" name="colors[]" class="form-control color" value="#000" required>
+                								</div>
+                								<div class="col-sm-5">
+                									<button class="btn btn-styled btn-base-1 add-colors" type="button">{{__('web.add_more_color')}}</button>
+                								</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-12">
                                             <div class="mb-3" id="customer_choice_options">
 
@@ -368,6 +383,9 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="form-box mt-4 text-right">
+                                <button type="submit" class="btn btn-styled btn-base-1">{{ __('web.save') }}</button>
                             </div>
                         </form>
                     </div>
@@ -532,6 +550,7 @@
         function get_price_variations_by_subsubcategory(subsubcategory_id){
     		$.post('{{ route('subsubcategories.get_price_variations_by_subsubcategory') }}',{_token:'{{ csrf_token() }}', view:'frontend', subsubcategory_id:subsubcategory_id}, function(data){
     		    $('#customer_choice_options').html(data);
+                $('.selectpicker').select2();
     		});
     	}
 
@@ -564,5 +583,45 @@
                 //showAlert();
             }
         }
+
+        $('.color').spectrum({
+    		preferredFormat: "hex",
+    	    showPalette: true,
+    	    palette: [
+    	        ["#000","#444","#666","#999","#ccc","#eee","#f3f3f3","#fff"],
+                ["#f00","#f90","#ff0","#0f0","#0ff","#00f","#90f","#f0f"],
+                ["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
+                ["#ea9999","#f9cb9c","#ffe599","#b6d7a8","#a2c4c9","#9fc5e8","#b4a7d6","#d5a6bd"],
+                ["#e06666","#f6b26b","#ffd966","#93c47d","#76a5af","#6fa8dc","#8e7cc3","#c27ba0"],
+                ["#c00","#e69138","#f1c232","#6aa84f","#45818e","#3d85c6","#674ea7","#a64d79"],
+                ["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
+                ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
+    	    ]
+    	});
+
+        $(".add-colors").click(function(){
+    	    var html = '<div class="row control-group mb-3"><div class="col-sm-5"><input type="text" name="colors[]" class="form-control color" required></div><div class="col-sm-5"><button class="btn btn-danger btn-circle btn-sm remove-colors" type="button" style="margin-left:10px"><i class="ion-close-round"></i></button></div></div></div>';
+
+    	    $(".increment").append(html);
+
+        	$('.color').spectrum({
+        		preferredFormat: "hex",
+        	    showPalette: true,
+        	    palette: [
+        	        ["#000","#444","#666","#999","#ccc","#eee","#f3f3f3","#fff"],
+                    ["#f00","#f90","#ff0","#0f0","#0ff","#00f","#90f","#f0f"],
+                    ["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
+                    ["#ea9999","#f9cb9c","#ffe599","#b6d7a8","#a2c4c9","#9fc5e8","#b4a7d6","#d5a6bd"],
+                    ["#e06666","#f6b26b","#ffd966","#93c47d","#76a5af","#6fa8dc","#8e7cc3","#c27ba0"],
+                    ["#c00","#e69138","#f1c232","#6aa84f","#45818e","#3d85c6","#674ea7","#a64d79"],
+                    ["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
+                    ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
+        	    ]
+        	});
+    	});
+
+        $("body").on("click",".remove-colors",function(){
+    	    $(this).parents(".control-group").remove();
+    	});
     </script>
 @endsection

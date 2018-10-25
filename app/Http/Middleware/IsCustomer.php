@@ -20,7 +20,7 @@ class IsCustomer
             return $next($request);
         }
         else{
-            abort(404);
+            return redirect()->route('user.login');
         }
     }
 }

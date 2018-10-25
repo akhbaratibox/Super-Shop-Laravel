@@ -11,6 +11,10 @@
 |
 */
 
+Auth::routes();
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::post('/language', 'languageController@changeLanguage')->name('language.change');
+
 Route::get('/social-login/redirect/{provider}', 'Auth\LoginController@redirectToProvider')->name('social.login');
 Route::get('/social-login/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('social.callback');
 
@@ -30,14 +34,12 @@ Route::post('/products/addtocart', 'ProductController@addToCart')->name('product
 Route::post('/products/removeFromCart', 'ProductController@removeFromCart')->name('products.removeFromCart');
 Route::post('/products/addToCompare', 'ProductController@addToCompare')->name('products.addToCompare');
 Route::get('/users/login', 'HomeController@login')->name('user.login');
-Route::get('/wishlist', 'HomeController@wishlist')->name('wishlist')->middleware(['auth']);
 
-Route::resource('wishlists','WishlistController');
-Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove')->middleware(['auth']);
-
-Auth::routes();
-Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
-Route::post('/language', 'languageController@changeLanguage')->name('language.change');
+Route::group(['middleware' => ['customer']], function(){
+	Route::get('/wishlist', 'HomeController@wishlist')->name('wishlist');
+	Route::resource('wishlists','WishlistController');
+	Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
+});
 
 Route::get('/admin', 'HomeController@dashboard')->name('dashboard')->middleware(['auth', 'admin']);
 Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function(){

@@ -199,6 +199,10 @@
                                                 <h3 class="heading heading-6 strong-700">Your Cart is empty</h3>
                                             </div>
                                         @endif
+                                    @else
+                                        <div class="dc-header">
+                                            <h3 class="heading heading-6 strong-700">Your Cart is empty</h3>
+                                        </div>
                                     @endif
                                 </div>
                             </li>

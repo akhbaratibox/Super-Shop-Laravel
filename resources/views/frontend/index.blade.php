@@ -398,7 +398,7 @@
                                             <div class="card card-product z-depth-1-top z-depth-2--hover">
                                                 <div class="card-body">
                                                     <h2 class="heading heading-6 strong-600 mt-2 mb-3">
-                                                        <a href="#">{{ $product->name }}</a>
+                                                        <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
                                                     </h2>
 
                                                     <div class="card-image swiper-js-container">

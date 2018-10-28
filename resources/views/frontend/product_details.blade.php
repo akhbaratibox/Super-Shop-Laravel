@@ -361,6 +361,9 @@
                                 <li class="nav-item">
                                     <a href="#tab_default_2" data-toggle="tab" class="nav-link text-uppercase strong-600">Videos</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="#tab_default_3" data-toggle="tab" class="nav-link text-uppercase strong-600">Reviews</a>
+                                </li>
                             </ul>
 
                             <div class="tab-content pt-0">
@@ -380,16 +383,129 @@
                                     <div class="fluid-paragraph py-2">
                                         <!-- 16:9 aspect ratio -->
                                         <div class="embed-responsive embed-responsive-16by9 mb-5">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/4nMz2mDBd-0?rel=0&amp;controls=0&amp;showinfo=0"></iframe>
+                                            <iframe class="embed-responsive-item" src="{{ $product->video_link }}"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="tab_default_3">
+                                    <div class="fluid-paragraph py-4">
+                                        <div class="block block-comment">
+                                            <div class="block-image">
+                                                <img src="{{ asset('frontend/images/prv/people/person-1.jpg') }}" class="rounded-circle">
+                                            </div>
+                                            <div class="block-body">
+                                                <div class="block-body-inner">
+                                                    <div class="row no-gutters">
+                                                        <div class="col">
+                                                            <h3 class="heading heading-6">
+                                                                <a href="#">David Wally</a>
+                                                            </h3>
+                                                            <span class="comment-date">
+                                                                2 hours ago
+                                                            </span>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="rating text-right clearfix d-block">
+                                                                <span class="star-rating float-right">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <p class="comment-text">
+                                                        Gathered, fourth wherein air, is void gathering very image fruit under brought Bearing fill created fourth she'd appear days you unto light day under i face they're god spirit.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="block block-comment">
+                                            <div class="block-image">
+                                                <img src="{{ asset('frontend/images/prv/people/person-1.jpg') }}" class="rounded-circle">
+                                            </div>
+                                            <div class="block-body">
+                                                <div class="block-body-inner">
+                                                    <div class="row no-gutters">
+                                                        <div class="col">
+                                                            <h3 class="heading heading-6">
+                                                                <a href="#">David Wally</a>
+                                                            </h3>
+                                                            <span class="comment-date">
+                                                                2 hours ago
+                                                            </span>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="rating text-right clearfix d-block">
+                                                                <span class="star-rating float-right">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                    <i class="fa fa-star-o"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <p class="comment-text">
+                                                        Gathered, fourth wherein air, is void gathering very image fruit under brought Bearing fill created fourth she'd appear days you unto light day under i face they're god spirit.
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <!-- 16:9 aspect ratio -->
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/4nMz2mDBd-0?rel=0&amp;controls=0&amp;showinfo=0"></iframe>
+                                        <div class="leave-review">
+                                            <div class="section-title section-title--style-1">
+                                                <h3 class="section-title-inner heading-6 strong-600 text-uppercase">
+                                                    Write a review
+                                                </h3>
+                                            </div>
+                                            <form class="form-default" role="form">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="" class="text-uppercase c-gray-light">Your name</label>
+                                                            <input type="text" name="name" class="form-control" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="" class="text-uppercase c-gray-light">Email</label>
+                                                            <input type="text" name="name" class="form-control" required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="rating mt-1 mb-1">
+                                                            <span class="star voted" rel="1"></span>
+                                                            <span class="star voted" rel="2"></span>
+                                                            <span class="star voted" rel="3"></span>
+                                                            <span class="star voted" rel="4"></span>
+                                                            <span class="star voted" rel="5"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-3">
+                                                    <div class="col-sm-12">
+                                                        <textarea class="form-control" rows="4" placeholder="Your review"></textarea>
+                                                    </div>
+                                                </div>
+
+                                                <div class="text-right">
+                                                    <button type="submit" class="btn btn-styled btn-base-1 btn-circle mt-4">
+                                                        Send review
+                                                    </button>
+                                                </div>
+                                            </form>
                                         </div>
 
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>

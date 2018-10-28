@@ -91,4 +91,21 @@ class BusinessSettingsController extends Controller
         flash("Settings updated successfully")->success();
         return back();
     }
+
+    public function updateActivationSettings(Request $request)
+    {
+        $business_settings = BusinessSetting::where('type', $request->type)->first();
+        if($business_settings!=null){
+            $business_settings->value = $request->value;
+            $business_settings->save();
+        }
+        else{
+            $business_settings = new BusinessSetting;
+            $business_settings->type = $request->type;
+            $business_settings->value = $request->value;
+            $business_settings->save();
+        }
+        flash("Settings updated successfully")->success();
+        return '1';
+    }
 }

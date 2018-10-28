@@ -73,6 +73,9 @@ class HomeController extends Controller
 
     public function login()
     {
+        if(Auth::check()){
+            return redirect()->route('home');
+        }
         $categories = Category::all();
         return view('frontend.user_login', compact('categories'));
     }

@@ -79,6 +79,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::post('stocks/sku_combinations','ProductStockController@sku_combinations')->name('stocks.sku_combinations');
 
 	Route::post('/business-settings/update', 'BusinessSettingsController@update')->name('business_settings.update');
+	Route::post('/business-settings/update/activation', 'BusinessSettingsController@updateActivationSettings')->name('business_settings.update.activation');
 	Route::get('/activation', 'BusinessSettingsController@activation')->name('activation.index');
 	Route::get('/social-login', 'BusinessSettingsController@social_login')->name('social_login.index');
 	Route::post('/env_key_update', 'BusinessSettingsController@env_key_update')->name('env_key_update.update');

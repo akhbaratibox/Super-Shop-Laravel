@@ -73,15 +73,50 @@
                                 </div>
                             </div>
 
-                            <div class="row no-gutters mt-4">
-                                <div class="col-2">
-                                    <div class="product-description-label">Price:</div>
+                            @if($product->discount > 0)
+
+                                <div class="row no-gutters mt-4">
+                                    <div class="col-2">
+                                        <div class="product-description-label">Price:</div>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="product-price-old">
+                                            <del>
+                                                {{ home_price($product->id) }}
+                                                <span>/{{ $product->unit }}</span>
+                                            </del>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-10">
-                                    <div class="product-price"><small>{{ currency_symbol() }}</small><strong>{{ home_discounted_price($product->unit_price, $product->discount, $product->discount_type) }}</strong><span class="piece">/{{$product->unit}}</span></div>
-                                    <div class="product-price-old"><small>{{ currency_symbol() }}</small><strong>{{ home_price($product->unit_price) }}</strong></div>
+
+                                <div class="row no-gutters mt-3">
+                                    <div class="col-2">
+                                        <div class="product-description-label">Discount Price:</div>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="product-price">
+                                            <strong>
+                                                {{ home_discounted_price($product->id) }}
+                                            </strong>
+                                            <span class="piece">/{{ $product->unit }}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            @else
+                                <div class="row no-gutters mt-3">
+                                    <div class="col-2">
+                                        <div class="product-description-label">Price:</div>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="product-price">
+                                            <strong>
+                                                {{ home_price($product->id) }}
+                                            </strong>
+                                            <span class="piece">/{{ $product->unit }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
 
                             <hr>
                             @foreach (json_decode($product->subsubcategory->options) as $key => $option)

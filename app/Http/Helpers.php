@@ -89,11 +89,11 @@ if (! function_exists('home_discounted_price')) {
             }
         }
 
-        if($product->discount_type = 'percent'){
+        if($product->discount_type == 'percent'){
             $lowest_price -= ($lowest_price*$product->discount)/100;
             $highest_price -= ($highest_price*$product->discount)/100;
         }
-        elseif($type = 'amount'){
+        elseif($product->discount_type == 'amount'){
             $lowest_price -= $product->discount;
             $highest_price -= $product->discount;
         }

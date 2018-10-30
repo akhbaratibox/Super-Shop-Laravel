@@ -39,6 +39,13 @@ class CartController extends Controller
             }
         }
 
+        if($product->discount_type == 'percent'){
+            $price -= ($price*$product->discount)/100;
+        }
+        elseif($product->discount_type == 'amount'){
+            $price -= $product->discount;
+        }
+
         $data['color'] = $request['color'];
         $data['quantity'] = $request['quantity'];
         $data['price'] = $price * $request['quantity'];

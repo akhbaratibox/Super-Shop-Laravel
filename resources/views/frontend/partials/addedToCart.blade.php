@@ -19,7 +19,7 @@
                     <div class="col-10">
                         <div class="heading-6 text-danger">
                             <strong>
-                                {{ $product->unit_price }}
+                                {{ currency_symbol()}}{{ $data['price'] }}
                             </strong>
                         </div>
                     </div>

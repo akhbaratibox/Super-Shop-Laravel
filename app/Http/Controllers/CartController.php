@@ -28,10 +28,20 @@ class CartController extends Controller
         $data['id'] = $product->id;
         foreach (json_decode(Product::find($request->id)->subsubcategory->options) as $key => $option) {
             $data[$option->name] = $request[$option->name];
+            $price_variations = json_decode($product->price_variations);
+            $str_price = $option->name.'_'.$request[$option->name].'_price';
+            $str_variation = $option->name.'_'.$request[$option->name].'_variation';
+            if($price_variations->$str_variation == 'decrease'){
+                $price = $product->unit_price - $price_variations->$str_price;
+            }
+            else {
+                $price = $product->unit_price + $price_variations->$str_price;
+            }
         }
 
         $data['color'] = $request['color'];
         $data['quantity'] = $request['quantity'];
+        $data['price'] = $price * $request['quantity'];
 
         if($request->session()->has('cart')){
             $cart = $request->session()->get('cart', collect([]));
@@ -42,7 +52,7 @@ class CartController extends Controller
             $request->session()->put('cart', $cart);
         }
 
-        return view('frontend.partials.addedToCart', compact('product'));
+        return view('frontend.partials.addedToCart', compact('product', 'data'));
     }
 
     public function removeFromCart(Request $request)

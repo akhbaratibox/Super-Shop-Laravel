@@ -16,9 +16,13 @@
                         <h3 class="heading heading-6 strong-700">Cart Items</h3>
                     </div>
                     <div class="dropdown-cart-items c-scrollbar">
+                        @php
+                            $total = 0;
+                        @endphp
                         @foreach($cart as $key => $cartItem)
                             @php
                                 $product = \App\Product::find(json_decode($cartItem)->id);
+                                $total = $total + json_decode($cartItem)->price;
                             @endphp
                             <div class="dc-item">
                                 <div class="d-flex align-items-center">
@@ -34,8 +38,8 @@
                                             </a>
                                         </span>
 
-                                        <span class="dc-quantity">x1</span>
-                                        <span class="dc-price">{{ currency_symbol()}}{{ $product->unit_price }}</span>
+                                        <span class="dc-quantity">x{{ json_decode($cartItem)->quantity }}</span>
+                                        <span class="dc-price">{{ currency_symbol()}}{{ json_decode($cartItem)->price }}</span>
                                     </div>
                                     <div class="dc-actions">
                                         <button onclick="removeFromCart({{ $key }})">
@@ -48,7 +52,7 @@
                     </div>
                     <div class="dc-item py-3">
                         <span class="subtotal-text">Subtotal</span>
-                        <span class="subtotal-amount">$450.00</span>
+                        <span class="subtotal-amount">{{ currency_symbol() }}{{ $total }}</span>
                     </div>
                     <div class="py-2 text-center dc-btn">
                         <ul class="inline-links inline-links--style-3">

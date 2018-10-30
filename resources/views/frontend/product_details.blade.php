@@ -121,7 +121,6 @@
                             <hr>
                             @foreach (json_decode($product->subsubcategory->options) as $key => $option)
 
-                            @endforeach
                             <div class="row no-gutters">
                                 <div class="col-2">
                                     <div class="product-description-label">{{ $option->title }}:</div>
@@ -137,6 +136,8 @@
                                     </ul>
                                 </div>
                             </div>
+
+                            @endforeach
 
                             <div class="row no-gutters">
                                 <div class="col-2">

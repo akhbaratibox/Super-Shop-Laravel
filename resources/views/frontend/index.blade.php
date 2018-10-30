@@ -442,7 +442,7 @@
                                                                 </button>
                                                             </div>
                                                             <div class="col-8">
-                                                                <button type="button" class="btn btn-block btn-base-1 btn-circle btn-icon-left" onclick="addToCart(this, {{ $product->id }})">
+                                                                <button type="button" class="btn btn-block btn-base-1 btn-circle btn-icon-left" onclick="showAddToCartModal({{ $product->id }})">
                                                                     <i class="icon ion-android-cart"></i>Add to cart
                                                                 </button>
                                                             </div>
@@ -772,40 +772,69 @@
                 </div>
             </section>
 
+            <div class="modal fade" id="addToCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom product-modal" role="document">
+                    <div class="modal-content position-relative">
+                        <div class="c-preloader">
+                            <i class="fa fa-spin fa-spinner"></i>
+                        </div>
+                        <button type="button" class="close absolute-close-btn" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div id="addToCart-modal-body">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
         @endsection
 
         @section('script')
             <script type="text/javascript">
-                function addToCart(el, id){
-                    $.post('{{ route('products.addToCart') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
-                        $(el).html('Added to Cart');
-                        $('#cart_items').html(data);
+
+            function showAddToCartModal(id){
+                $('#addToCart').modal();
+                $.post('{{ route('cart.showCartModal') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
+                    $('.c-preloader').hide();
+                    $('#addToCart-modal-body').html(data);
+                    $('#slideshow').desoSlide({
+                        thumbs: $('#slideshow_thumbs .swiper-slide > a'),
+                        thumbEvent: 'click',
+                        first: 0,
+                        effect: 'none',
+                        overlay: 'none',
+                        controls: {
+                            show: false,
+                            keys: false
+                        },
+                    });
+                });
+            }
+
+            function removeFromCart(id){
+                $.post('{{ route('products.removeFromCart') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
+                    $('#cart_items').html(data);
+                });
+            }
+
+            function addToCompare(id){
+                $.post('{{ route('products.addToCompare') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
+                    $('#compare').html(data);
+                });
+            }
+
+            function addToWishList(id){
+                if('{{ Auth::check() }}'){
+                    $.post('{{ route('wishlists.store') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
+                        $('#wishlist').html(data);
                     });
                 }
-
-                function removeFromCart(id){
-                    $.post('{{ route('products.removeFromCart') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
-                        $('#cart_items').html(data);
-                    });
+                else{
+                    alert('Please login to continue...');
+                    //showAlert('warning', 'Please login to continue...');
                 }
-
-                function addToCompare(id){
-                    $.post('{{ route('products.addToCompare') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
-                        $('#compare').html(data);
-                    });
-                }
-
-                function addToWishList(id){
-                    if('{{ Auth::check() }}'){
-                        $.post('{{ route('wishlists.store') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
-                            $('#wishlist').html(data);
-                        });
-                    }
-                    else{
-                        alert('Please login to continue...');
-                        //showAlert('warning', 'Please login to continue...');
-                    }
-                }
+            }
             </script>
         @endsection

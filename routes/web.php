@@ -26,7 +26,10 @@ Route::post('/subsubcategories/get_price_variations_by_subsubcategory', 'SubSubC
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/products/{slug}', 'HomeController@product')->name('product');
-Route::post('/products/addtocart', 'ProductController@addToCart')->name('products.addToCart');
+
+Route::post('/cart/show-cart-modal', 'CartController@showCartModal')->name('cart.showCartModal');
+
+//Route::post('/products/addtocart', 'ProductController@addToCart')->name('products.addToCart');
 Route::post('/products/removeFromCart', 'ProductController@removeFromCart')->name('products.removeFromCart');
 Route::post('/products/addToCompare', 'ProductController@addToCompare')->name('products.addToCompare');
 

@@ -35,7 +35,7 @@
                                         </span>
 
                                         <span class="dc-quantity">x1</span>
-                                        <span class="dc-price">{{ currency_symbol()}}{{ home_price($product->unit_price) }}</span>
+                                        <span class="dc-price">{{ currency_symbol()}}{{ $product->unit_price }}</span>
                                     </div>
                                     <div class="dc-actions">
                                         <button onclick="removeFromCart({{ $product->id }})">

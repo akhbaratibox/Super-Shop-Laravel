@@ -4,6 +4,9 @@ body{
     overflow-x: hidden;
     font-size: 13px;
 }
+p:not(.lead) {
+    font-size: .8125rem;
+}
 .body-wrap{
     overflow-x: unset;
     z-index: auto;
@@ -71,7 +74,9 @@ input[type="submit"]{
 .btn-anim-primary:hover{
     color: #e62e04;
 }
-
+.btn-styled {
+    padding: 0.6rem 1.5rem;
+}
 
 .form-control:focus {
     border-color: #e62e04;
@@ -116,8 +121,35 @@ input[type="submit"]{
   border-color: #00aced;
   color: #00aced;
 }
+.absolute-close-btn{
+    position: absolute;
+    top: 7px;
+    right: 12px;
+    z-index: 1;
+}
+.c-preloader {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    background: #fff;
+    z-index: 9999;
+}
 
-
+.c-preloader i {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    left: calc(50% - 25px);
+    top: calc(50% - 25px);
+    line-height: 50px;
+    font-size: 30px;
+}
 .bootstrap-tagsinput {
     font-size: .875rem;
     font-weight: 400;
@@ -175,6 +207,20 @@ input[type="submit"]{
     padding: 0.4rem .75rem;
     font-weight: 400
 }
+
+
+
+.modal.fade .modal-dialog.modal-dialog-zoom {
+    -webkit-transform: translate(0,0)scale(.8);
+    transform: translate(0,0)scale(.8);
+    transition: -webkit-transform .2s ease-out;
+    transition: transform .2s ease-out;
+    transition: transform .2s ease-out,-webkit-transform .2s ease-out;
+}
+.modal.show .modal-dialog.modal-dialog-zoom {
+    -webkit-transform: translate(0,0)scale(1);
+    transform: translate(0,0)scale(1);
+}
 /* bootstrap extra container */
 
 @media (min-width:1500px){
@@ -211,6 +257,7 @@ select + .select2-container{
 .select2-dropdown {
     border: 1px solid #cbcbcb;
     padding: 5px 0;
+    z-index: 9999;
 }
 .select2-dropdown .select2-results__option{
     padding: 7px 10px;
@@ -763,11 +810,7 @@ section.home-banner-area {
 
 .product-description-wrapper .product-price-old {
     margin: 0;
-    font-size: 18px;
-    line-height: 24px;
-    text-decoration: line-through;
-    display: inline-block;
-    margin-left: 10px;
+    font-size: 14px;
     opacity: 0.7;
     font-weight: 500!important;
 }
@@ -779,7 +822,7 @@ section.home-banner-area {
     color: #e62e04;
 }
 .product-description-wrapper .product-price .piece {
-    font-size: 14px;
+    font-size: 13px;
     color: #777;
 }
 
@@ -1116,7 +1159,7 @@ section.home-banner-area {
 .modal-category-box {
     padding: 20px;
     border: 1px solid #eaeaea;
-    height: 400px;
+    max-height: 400px;
     overflow-y: auto;
 }
 
@@ -1192,7 +1235,12 @@ section.home-banner-area {
     border-top: 1px solid #f7f7f7;
 }
 .widget-profile-menu {
-    background: #f7f7f7;
+    background: #f7f7f7.btn-styled {
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: capitalize;
+    padding: 0.6rem 1.5rem;
+};
 }
 
 .widget-profile-menu a {
@@ -1209,4 +1257,90 @@ section.home-banner-area {
 .widget-profile-menu a.active {
     font-weight: inherit!important;
     background: rgba(0,0,0,0.05);
+}
+
+
+
+.table-cart tbody tr td {
+    padding: 1rem 0;
+}
+.table-cart tbody tr td.product-image a {
+    width: 60px;
+    height: 60px;
+}
+
+
+
+label.payment_option input {
+    opacity: 0;
+    position: absolute;
+}
+
+label.payment_option {
+    position: relative;
+    cursor: pointer;
+}
+
+label.payment_option span {
+    height: 60px;
+    width: 120px;
+    display: inline-block;
+    border: 1px solid #eeeeee;
+    border-radius: 4px;
+    padding: 8px 10px;
+    background: #f6f6f6;
+}
+
+label.payment_option span img {
+    width: auto;
+    height: auto;
+    max-height: 100%;
+}
+
+label.payment_option input:checked + span {
+    border-color: #e62e04;
+}
+
+
+
+
+
+
+.added-to-cart .product-box {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+    margin: 25px 0;
+}
+
+.added-to-cart .product-box .block-image {
+    display: table-cell;
+    width: 100px;
+    height: 100px;
+}
+
+.added-to-cart .product-box .block {
+    display: table;
+    width: 100%;
+}
+
+.added-to-cart .product-box .block-body {
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    padding: 0 0 0 2rem;
+}
+
+.added-to-cart .product-box .block-body h6 {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.added-to-cart .text-success i {
+    font-size: 18px;
+    height: 50px;
+    width: 50px;
+    line-height: 48px;
+    border: 2px solid #28a745;
+    border-radius: 50px;
+    margin-bottom: 15px;
 }

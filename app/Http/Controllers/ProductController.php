@@ -267,35 +267,6 @@ class ProductController extends Controller
         return 0;
     }
 
-    public function addToCart(Request $request)
-    {
-        if($request->session()->has('cart')){
-            $cart = $request->session()->get('cart', collect([]));
-            if(!$cart->contains($request->id)){
-                $cart->push($request->id);
-            }
-        }
-        else{
-            $cart = collect([$request->id]);
-            $request->session()->put('cart', $cart);
-        }
-
-        return view('frontend.partials.cart');
-    }
-
-    public function removeFromCart(Request $request)
-    {
-        if($request->session()->has('cart')){
-            $cart = $request->session()->get('cart', collect([]));
-            if($cart->contains($request->id)){
-                $cart->pop($request->id);
-                $request->session()->put('cart', $cart);
-            }
-        }
-
-        return view('frontend.partials.cart');
-    }
-
     public function addToCompare(Request $request)
     {
         if($request->session()->has('compare')){

@@ -56,75 +56,79 @@
 
                 <hr>
 
-                @foreach (json_decode($product->subsubcategory->options) as $key => $option)
+                <form id="option-choice-form">
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $product->id }}">
 
-                <div class="row no-gutters">
-                    <div class="col-2">
-                        <div class="product-description-label">{{ $option->title }}:</div>
-                    </div>
-                    <div class="col-10">
-                        <ul class="list-inline checkbox-alphanumeric checkbox-alphanumeric--style-1 mb-2">
-                            @foreach ($option->options as $key => $options)
-                                <li>
-                                    <input type="radio" id="{{ $option->name }}-{{ $options }}" name="{{ $option->name }}" <?php if($key == 0) echo "checked";?>>
-                                    <label for="{{ $option->name }}-{{ $options }}">{{ $options }}</label>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
+                    @foreach (json_decode($product->subsubcategory->options) as $key => $option)
 
-                @endforeach
-
-                <div class="row no-gutters">
-                    <div class="col-2">
-                        <div class="product-description-label">Color:</div>
-                    </div>
-                    <div class="col-10">
-                        <ul class="list-inline checkbox-color mb-1">
-                            @foreach (json_decode($product->colors) as $key => $color)
-                                <li>
-                                    <input type="radio" id="color-{{ $key }}" name="color" <?php if($key == 0) echo "checked";?> >
-                                    <label style="background: {{ $color }};" for="color-{{ $key }}" data-toggle="tooltip"></label>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-
-                <hr>
-
-                <!-- Quantity + Add to cart -->
-                <div class="row no-gutters pb-3">
-                    <div class="col-2">
-                        <div class="product-description-label">Quantity:</div>
-                    </div>
-                    <div class="col-10">
-                        <div class="product-quantity d-flex align-items-center">
-                            <div class="input-group input-group--style-2 pr-3" style="width: 160px;">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-number" type="button" data-type="minus" data-field="quantity[1]" disabled="disabled">
-                                        <i class="ion-minus"></i>
-                                    </button>
-                                </span>
-                                <input type="text" name="quantity[1]" class="form-control input-number text-center" placeholder="3" value="1" min="1" max="10">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-number" type="button" data-type="plus" data-field="quantity[1]">
-                                        <i class="ion-plus"></i>
-                                    </button>
-                                </span>
-                            </div>
-                            {{-- <div class="avialable-amount">(1298 pc available)</div> --}}
+                    <div class="row no-gutters">
+                        <div class="col-2">
+                            <div class="product-description-label">{{ $option->title }}:</div>
+                        </div>
+                        <div class="col-10">
+                            <ul class="list-inline checkbox-alphanumeric checkbox-alphanumeric--style-1 mb-2">
+                                @foreach ($option->options as $key => $options)
+                                    <li>
+                                        <input type="radio" id="{{ $option->name }}-{{ $options }}" name="{{ $option->name }}" value="{{ $options }}" <?php if($key == 0) echo "checked";?>>
+                                        <label for="{{ $option->name }}-{{ $options }}">{{ $options }}</label>
+                                    </li>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
-                </div>
 
+                    @endforeach
 
+                    <div class="row no-gutters">
+                        <div class="col-2">
+                            <div class="product-description-label">Color:</div>
+                        </div>
+                        <div class="col-10">
+                            <ul class="list-inline checkbox-color mb-1">
+                                @foreach (json_decode($product->colors) as $key => $color)
+                                    <li>
+                                        <input type="radio" id="color-{{ $key }}" name="color" value="{{ $color }}" <?php if($key == 0) echo "checked";?> >
+                                        <label style="background: {{ $color }};" for="color-{{ $key }}" data-toggle="tooltip"></label>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <!-- Quantity + Add to cart -->
+                    <div class="row no-gutters pb-3">
+                        <div class="col-2">
+                            <div class="product-description-label">Quantity:</div>
+                        </div>
+                        <div class="col-10">
+                            <div class="product-quantity d-flex align-items-center">
+                                <div class="input-group input-group--style-2 pr-3" style="width: 160px;">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-number" type="button" data-type="minus" data-field="quantity[1]" disabled="disabled">
+                                            <i class="ion-minus"></i>
+                                        </button>
+                                    </span>
+                                    <input type="text" name="quantity" class="form-control input-number text-center" placeholder="3" value="1" min="1" max="10">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-number" type="button" data-type="plus" data-field="quantity[1]">
+                                            <i class="ion-plus"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                {{-- <div class="avialable-amount">(1298 pc available)</div> --}}
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
 
                 <div class="d-table width-100 mt-3">
                     <div class="d-table-cell">
                         <!-- Add to cart button -->
-                        <button type="button" class="btn btn-base-1 btn-icon-left">
+                        <button type="button" class="btn btn-base-1 btn-icon-left" onclick="addToCart()">
                             <i class="icon ion-bag"></i> Add to cart
                         </button>
                     </div>

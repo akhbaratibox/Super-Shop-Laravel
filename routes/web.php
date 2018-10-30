@@ -27,10 +27,11 @@ Route::post('/subsubcategories/get_price_variations_by_subsubcategory', 'SubSubC
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/products/{slug}', 'HomeController@product')->name('product');
 
+Route::post('/cart/nav-cart-items', 'CartController@updateNavCart')->name('cart.nav_cart');
 Route::post('/cart/show-cart-modal', 'CartController@showCartModal')->name('cart.showCartModal');
+Route::post('/cart/addtocart', 'CartController@addToCart')->name('cart.addToCart');
+Route::post('/cart/removeFromCart', 'CartController@removeFromCart')->name('cart.removeFromCart');
 
-//Route::post('/products/addtocart', 'ProductController@addToCart')->name('products.addToCart');
-Route::post('/products/removeFromCart', 'ProductController@removeFromCart')->name('products.removeFromCart');
 Route::post('/products/addToCompare', 'ProductController@addToCompare')->name('products.addToCompare');
 
 Route::group(['middleware' => ['customer']], function(){

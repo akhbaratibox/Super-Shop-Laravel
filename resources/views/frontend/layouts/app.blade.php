@@ -130,6 +130,12 @@
             keys: false
         },
     });
+
+    function updateNavCart(){
+        $.post('{{ route('cart.nav_cart') }}', {_token:'{{ csrf_token() }}'}, function(data){
+            $('#cart_items').html(data);
+        });
+    }
 </script>
 
 <script src="{{ asset('frontend/js/bootstrap-tagsinput.min.js') }}"></script>

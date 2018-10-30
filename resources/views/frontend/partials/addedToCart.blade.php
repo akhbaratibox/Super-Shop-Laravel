@@ -6,11 +6,11 @@
     <div class="product-box">
         <div class="block">
             <div class="block-image">
-                <img src="assets/images/prv/people/person-1.jpg" class="">
+                <img src="{{ asset(json_decode($product->photos)[0]) }}" class="" alt="Product Image">
             </div>
             <div class="block-body">
                 <h6 class="strong-600">
-                    Macbook Pro Touch Bar and Touch ID 3.1GHz<br> Processor 256GB Storage
+                    {{ $product->name }}
                 </h6>
                 <div class="row no-gutters mt-2 mb-2">
                     <div class="col-2">
@@ -19,7 +19,7 @@
                     <div class="col-10">
                         <div class="heading-6 text-danger">
                             <strong>
-                                <small>$</small>120.00
+                                {{ $product->unit_price }}
                             </strong>
                         </div>
                     </div>

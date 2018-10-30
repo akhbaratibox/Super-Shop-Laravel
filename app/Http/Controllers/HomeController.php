@@ -57,6 +57,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //Session::flush();
         $categories = Category::all();
         return view('frontend.index', compact('categories'));
     }

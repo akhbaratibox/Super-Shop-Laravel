@@ -16,9 +16,9 @@
                         <h3 class="heading heading-6 strong-700">Cart Items</h3>
                     </div>
                     <div class="dropdown-cart-items c-scrollbar">
-                        @foreach($cart as $id)
+                        @foreach($cart as $key => $cartItem)
                             @php
-                                $product = \App\Product::find($id);
+                                $product = \App\Product::find(json_decode($cartItem)->id);
                             @endphp
                             <div class="dc-item">
                                 <div class="d-flex align-items-center">
@@ -38,7 +38,7 @@
                                         <span class="dc-price">{{ currency_symbol()}}{{ $product->unit_price }}</span>
                                     </div>
                                     <div class="dc-actions">
-                                        <button onclick="removeFromCart({{ $product->id }})">
+                                        <button onclick="removeFromCart({{ $key }})">
                                             <i class="ion-close"></i>
                                         </button>
                                     </div>
@@ -69,6 +69,10 @@
                         <h3 class="heading heading-6 strong-700">Your Cart is empty</h3>
                     </div>
                 @endif
+            @else
+                <div class="dc-header">
+                    <h3 class="heading heading-6 strong-700">Your Cart is empty</h3>
+                </div>
             @endif
         </div>
     </li>

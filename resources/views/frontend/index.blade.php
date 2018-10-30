@@ -773,7 +773,7 @@
             </section>
 
             <div class="modal fade" id="addToCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom product-modal" role="document">
+                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
                     <div class="modal-content position-relative">
                         <div class="c-preloader">
                             <i class="fa fa-spin fa-spinner"></i>
@@ -813,9 +813,24 @@
                 });
             }
 
-            function removeFromCart(id){
-                $.post('{{ route('products.removeFromCart') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
-                    $('#cart_items').html(data);
+            function addToCart(){
+                $('.c-preloader').show();
+                $.ajax({
+                   type:"POST",
+                   url:'{{ route('cart.addToCart') }}',
+                   data:$('#option-choice-form').serialize(),
+                   success: function(data){
+                       $('.c-preloader').hide();
+                       $('#modal-size').removeClass('modal-lg');
+                       $('#addToCart-modal-body').html(data);
+                       updateNavCart();
+                   }
+               });
+            }
+
+            function removeFromCart(key){
+                $.post('{{ route('cart.removeFromCart') }}', {_token:'{{ csrf_token() }}', key:key}, function(data){
+                    updateNavCart();
                 });
             }
 

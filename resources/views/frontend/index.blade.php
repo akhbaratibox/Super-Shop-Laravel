@@ -795,6 +795,9 @@
             <script type="text/javascript">
 
             function showAddToCartModal(id){
+                if(!$('#modal-size').hasClass('modal-lg')){
+                    $('#modal-size').addClass('modal-lg');
+                }
                 $('#addToCart').modal();
                 $.post('{{ route('cart.showCartModal') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
                     $('.c-preloader').hide();
@@ -828,28 +831,5 @@
                });
             }
 
-            function removeFromCart(key){
-                $.post('{{ route('cart.removeFromCart') }}', {_token:'{{ csrf_token() }}', key:key}, function(data){
-                    updateNavCart();
-                });
-            }
-
-            function addToCompare(id){
-                $.post('{{ route('products.addToCompare') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
-                    $('#compare').html(data);
-                });
-            }
-
-            function addToWishList(id){
-                if('{{ Auth::check() }}'){
-                    $.post('{{ route('wishlists.store') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
-                        $('#wishlist').html(data);
-                    });
-                }
-                else{
-                    alert('Please login to continue...');
-                    //showAlert('warning', 'Please login to continue...');
-                }
-            }
             </script>
         @endsection

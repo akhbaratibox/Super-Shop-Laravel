@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="text-center">
-        <button class="btn btn-styled btn-base-1 btn-outline" data-toggle="modal" data-target="#GuestCheckout">Back to shopping</button>
-        <button class="btn btn-styled btn-base-1" data-toggle="modal" data-target="#GuestCheckout">Proceed to Checkout</button>
+        <button class="btn btn-styled btn-base-1 btn-outline" data-dismiss="modal">Back to shopping</button>
+        <a href="{{ route('cart') }}"><button class="btn btn-styled btn-base-1">Proceed to Checkout</button></a>
     </div>
 </div>

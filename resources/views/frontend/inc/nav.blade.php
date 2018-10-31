@@ -151,8 +151,8 @@
                                                 @endphp
                                                 @foreach($cart as $key => $cartItem)
                                                     @php
-                                                        $product = \App\Product::find(json_decode($cartItem)->id);
-                                                        $total = $total + json_decode($cartItem)->price;
+                                                        $product = \App\Product::find($cartItem['id']);
+                                                        $total = $total + $cartItem['price']*$cartItem['quantity'];
                                                     @endphp
                                                     <div class="dc-item">
                                                         <div class="d-flex align-items-center">
@@ -168,8 +168,8 @@
                                                                     </a>
                                                                 </span>
 
-                                                                <span class="dc-quantity">x{{ json_decode($cartItem)->quantity }}</span>
-                                                                <span class="dc-price">{{ currency_symbol()}}{{ json_decode($cartItem)->price }}</span>
+                                                                <span class="dc-quantity">x{{ $cartItem['quantity'] }}</span>
+                                                                <span class="dc-price">{{ single_price($cartItem['price']*$cartItem['quantity']) }}</span>
                                                             </div>
                                                             <div class="dc-actions">
                                                                 <button onclick="removeFromCart({{ $key }})">
@@ -182,12 +182,12 @@
                                             </div>
                                             <div class="dc-item py-3">
                                                 <span class="subtotal-text">Subtotal</span>
-                                                <span class="subtotal-amount">{{ currency_symbol() }}{{ $total }}</span>
+                                                <span class="subtotal-amount">{{ single_price($total) }}</span>
                                             </div>
                                             <div class="py-2 text-center dc-btn">
                                                 <ul class="inline-links inline-links--style-3">
                                                     <li class="pr-3">
-                                                        <a href="#" class="link link--style-1 text-capitalize btn btn-outline btn-base-1 px-3 py-1">
+                                                        <a href="{{ route('cart') }}" class="link link--style-1 text-capitalize btn btn-outline btn-base-1 px-3 py-1">
                                                             <i class="ion-bag"></i> View cart
                                                         </a>
                                                     </li>

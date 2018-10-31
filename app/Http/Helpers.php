@@ -15,6 +15,24 @@ if (! function_exists('areActiveRoutes')) {
     }
 }
 
+if (! function_exists('single_price')) {
+    function single_price($price)
+    {
+        $business_settings = BusinessSetting::where('type', 'home_default_currency')->first();
+        if($business_settings!=null){
+            $currency = Currency::find($business_settings->value);
+            $price = floatval($price) * floatval($currency->exchange_rate);
+        }
+        if(BusinessSetting::where('type', 'symbol_format')->first()->value == 1){
+            return currency_symbol().$price;
+        }
+        else{
+            return $price.currency_symbol();
+        }
+    }
+}
+
+//Shows Price on page based on low to high
 if (! function_exists('home_price')) {
     function home_price($id)
     {
@@ -64,6 +82,7 @@ if (! function_exists('home_price')) {
     }
 }
 
+//Shows Price on page based on low to high with discount
 if (! function_exists('home_discounted_price')) {
     function home_discounted_price($id)
     {

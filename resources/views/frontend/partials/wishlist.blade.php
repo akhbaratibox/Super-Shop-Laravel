@@ -1,4 +1,4 @@
-<a href="" class="nav-box-link">
+<a href="{{ route('wishlists.index') }}" class="nav-box-link">
     <i class="ion-ios-heart-outline d-inline-block nav-box-icon"></i>
     <span class="nav-box-text d-none d-lg-inline-block">Wishlist</span>
     @if(Auth::check())

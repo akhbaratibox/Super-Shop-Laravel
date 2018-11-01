@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Wishlist;
+use App\Category;
 
 class WishlistController extends Controller
 {
@@ -15,7 +16,8 @@ class WishlistController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('frontend.view_wishlist', compact('categories'));
     }
 
     /**
@@ -43,6 +45,7 @@ class WishlistController extends Controller
             $wishlist->product_id = $request->id;
             $wishlist->save();
         }
+
         return view('frontend.partials.wishlist');
     }
 

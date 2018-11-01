@@ -102,7 +102,7 @@
             <div class="logo-bar-icons d-inline-block">
                 <div class="d-inline-block">
                     <div class="nav-compare-box" id="compare">
-                        <a href="" class="nav-box-link">
+                        <a href="{{ route('compare') }}" class="nav-box-link">
                             <i class="ion-ios-loop d-inline-block nav-box-icon"></i>
                             <span class="nav-box-text d-none d-lg-inline-block">Compare</span>
                             @if(Session::has('compare'))
@@ -115,7 +115,7 @@
                 </div>
                 <div class="d-inline-block">
                     <div class="nav-wishlist-box" id="wishlist">
-                        <a href="{{ route('wishlist') }}" class="nav-box-link">
+                        <a href="{{ route('wishlists.index') }}" class="nav-box-link">
                             <i class="ion-ios-heart-outline d-inline-block nav-box-icon"></i>
                             <span class="nav-box-text d-none d-lg-inline-block">Wishlist</span>
                             @if(Auth::check())

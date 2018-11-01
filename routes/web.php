@@ -34,6 +34,9 @@ Route::post('/cart/addtocart', 'CartController@addToCart')->name('cart.addToCart
 Route::post('/cart/removeFromCart', 'CartController@removeFromCart')->name('cart.removeFromCart');
 Route::post('/cart/updateQuantity', 'CartController@updateQuantity')->name('cart.updateQuantity');
 
+Route::get('/checkout', 'CheckoutController@get_shipping_info')->name('checkout.shipping_info');
+Route::post('/checkout/payment_info', 'CheckoutController@get_payment_info')->name('checkout.payment_info');
+
 Route::get('/compare', 'CompareController@index')->name('compare');
 Route::get('/compare/reset', 'CompareController@reset')->name('compare.reset');
 Route::post('/compare/addToCompare', 'CompareController@addToCompare')->name('compare.addToCompare');

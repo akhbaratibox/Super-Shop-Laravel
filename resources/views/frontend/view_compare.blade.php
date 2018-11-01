@@ -13,7 +13,7 @@
                 </div>
                 <div class="col">
                     <div class="text-right">
-                        <a href="{{ route('compare.reset') }}" class="btn btn-link btn-base-5 btn-sm">Reset Compare List</a>
+                        <a href="{{ route('compare.reset') }}" style="text-decoration: none;" class="btn btn-link btn-base-5 btn-sm">Reset Compare List</a>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                                                 </th>
                                                 @foreach (Session::get('compare') as $key => $item)
                                                     <th scope="col" style="width:28%" class="font-weight-bold">
-                                                        <a href="">{{ \App\Product::find($item)->name }}</a>
+                                                        <a href="{{ route('product', \App\Product::find($item)->slug) }}">{{ \App\Product::find($item)->name }}</a>
                                                     </th>
                                                 @endforeach
                                             </tr>

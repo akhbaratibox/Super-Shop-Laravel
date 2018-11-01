@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
 use App\User;
+use App\Customer;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -68,6 +69,11 @@ class LoginController extends Controller
             $newUser->avatar          = $user->avatar;
             $newUser->avatar_original = $user->avatar_original;
             $newUser->save();
+
+            $customer = new Customer;
+            $customer->user_id = $newUser->id;
+            $customer->save();
+
             auth()->login($newUser, true);
         }
         return redirect()->route('home');

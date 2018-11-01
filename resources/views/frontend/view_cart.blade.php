@@ -128,7 +128,11 @@
                                 </a>
                             </div>
                             <div class="col-6 text-right">
-                                <button class="btn btn-styled btn-base-1" data-toggle="modal" data-target="#GuestCheckout">Continue to Shipping</button>
+                                @if(Auth::check())
+                                    <a href="{{ route('checkout.shipping_info') }}" class="btn btn-styled btn-base-1">Continue to Shipping</a>
+                                @else
+                                    <button class="btn btn-styled btn-base-1" onclick="showCheckoutModal()">Continue to Shipping</button>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -292,7 +296,7 @@
                         <span>or</span>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-styled btn-base-1">Guest Checkout</button>
+                        <a href="{{ route('checkout.shipping_info') }}" class="btn btn-styled btn-base-1">Guest Checkout</a>
                     </div>
                 </div>
             </div>
@@ -313,6 +317,10 @@
             updateNavCart();
             $('#cart-summary').html(data);
         });
+    }
+
+    function showCheckoutModal(){
+        $('#GuestCheckout').modal();
     }
     </script>
 @endsection

@@ -27,13 +27,13 @@
                             <div class="dc-item">
                                 <div class="d-flex align-items-center">
                                     <div class="dc-image">
-                                        <a href="#">
+                                        <a href="{{ route('product', $product->slug) }}">
                                             <img src="{{ asset(json_decode($product->photos)[0]) }}" class="img-fluid" alt="">
                                         </a>
                                     </div>
                                     <div class="dc-content">
                                         <span class="d-block dc-product-name text-capitalize strong-600 mb-1">
-                                            <a href="#">
+                                            <a href="{{ route('product', $product->slug) }}">
                                                 {{ $product->name }}
                                             </a>
                                         </span>
@@ -62,7 +62,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="link link--style-1 text-capitalize btn btn-base-1 px-3 py-1 light-text">
+                                <a href="{{ route('checkout.shipping_info') }}" class="link link--style-1 text-capitalize btn btn-base-1 px-3 py-1 light-text">
                                     <i class="ion-forward"></i> Checkout
                                 </a>
                             </li>

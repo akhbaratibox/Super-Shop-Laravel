@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2018 at 09:48 AM
+-- Generation Time: Nov 01, 2018 at 01:46 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -82,10 +82,10 @@ CREATE TABLE `business_settings` (
 --
 
 INSERT INTO `business_settings` (`id`, `type`, `value`, `created_at`, `updated_at`) VALUES
-(1, 'home_default_currency', '1', '2018-10-16 01:35:52', '2018-10-16 01:37:16'),
+(1, 'home_default_currency', '1', '2018-10-16 01:35:52', '2018-10-31 04:20:07'),
 (2, 'system_default_currency', '1', '2018-10-16 01:36:58', '2018-10-16 01:36:58'),
 (3, 'currency_format', '1', '2018-10-17 03:01:59', '2018-10-17 03:01:59'),
-(4, 'symbol_format', '1', '2018-10-17 03:01:59', '2018-10-28 00:20:36'),
+(4, 'symbol_format', '1', '2018-10-17 03:01:59', '2018-10-31 04:21:06'),
 (5, 'no_of_decimals', '0', '2018-10-17 03:01:59', '2018-10-17 03:01:59'),
 (6, 'product_activation', '1', '2018-10-28 01:38:37', '2018-10-28 01:42:36'),
 (7, 'vendor_system_activation', '0', '2018-10-28 07:44:16', '2018-10-28 01:46:51'),
@@ -191,7 +191,8 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 8, '2018-10-17 02:35:55', '2018-10-17 02:35:55');
+(1, 8, '2018-10-17 02:35:55', '2018-10-17 02:35:55'),
+(2, 17, '2018-11-01 04:52:33', '2018-11-01 04:52:33');
 
 -- --------------------------------------------------------
 
@@ -278,8 +279,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `added_by`, `user_id`, `category_id`, `subcategory_id`, `subsubcategory_id`, `brand_id`, `photos`, `thumbnail_img`, `featured_img`, `flash_deal_img`, `video_provider`, `video_link`, `tags`, `description`, `unit_price`, `purchase_price`, `price_variations`, `todays_deal`, `published`, `featured`, `current_stock`, `unit`, `colors`, `discount`, `discount_type`, `tax`, `tax_type`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'Ryder Willis', 'seller', 3, 7, 4, 5, 3, '[\"uploads\\/aHYPnKoKTrNTb2VX7ld47vaadvKI04eSgAdniFED.jpeg\", \"uploads\\/PYakQfept0XJfeoYtvG6nqHLYwOwLl1HS88IFO5b.png\"]', NULL, NULL, NULL, NULL, NULL, '[\"fgfdg,kj\"]', '<p><span style=\"background-color: rgb(255, 255, 255);\"><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">The company name is based on the Latin translation of the surname of the founder, August Horch. \"Horch\", meaning \"listen\" in German, becomes \"</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">\" in Latin. The four rings of the&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;logo each represent one of four&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">car</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;companies that banded together to create&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi\'s</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;predecessor company, Auto Union.</span></span><br></p>', 400.00, 430.00, '{\"choices_0_S_variation\":\"decrease\",\"choices_0_S_price\":\"50\",\"choices_0_M_variation\":\"increase\",\"choices_0_M_price\":\"100\",\"choices_0_L_variation\":\"increase\",\"choices_0_L_price\":\"150\"}', 1, 1, 1, 0, 'PC', '[\"#000\",\"#0000ff\",\"#ff0000\"]', 10.00, 'percent', 98.00, 'percent', 'Ryder-Willis-tuIHs', '2018-10-04 05:02:39', '2018-10-17 06:28:08'),
-(2, 'Cole Mcfadden', 'admin', 1, 7, 4, 6, 2, '[\"uploads\\/hKBJF3ybnwPoqFb0tugQWD39ibxff5JDp86OXig2.png\",\"uploads\\/MTm5YPuXIALhFQeD4BivTJcgUAMQs0Dl4hs09RxW.jpeg\"]', NULL, NULL, NULL, 'youtube', 'https://www.youtube.com/watch?v=Kvl-JXkPoNo', '[\"Libero aperiam asperiores veritatis excepturi consequatur laborum Quia ex aliquam tempor optio dolor possimus,Autem voluptas et quod minus dolor corrupti\"]', '<p><span style=\"background-color: rgb(255, 255, 255);\"><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">The company name is based on the Latin translation of the surname of the founder, August Horch. \"Horch\", meaning \"listen\" in German, becomes \"</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">\" in Latin. The four rings of the&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;logo each represent one of four&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">car</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;companies that banded together to create&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi\'s</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;predecessor company, Auto Union.</span></span><br></p>', 759.00, 849.00, '{\"choices_0_S_variation\":\"decrease\",\"choices_0_S_price\":\"160\",\"choices_0_M_variation\":\"decrease\",\"choices_0_M_price\":\"119\",\"choices_0_L_variation\":\"decrease\",\"choices_0_L_price\":\"465\",\"choices_1_Cotton_variation\":\"decrease\",\"choices_1_Cotton_price\":\"274\",\"choices_1_Semi-Cotton_variation\":\"decrease\",\"choices_1_Semi-Cotton_price\":\"288\"}', 1, 1, 1, 0, 'PC', '[\"#3d85c6\",\"#cc0000\",\"#f1c232\"]', 20.00, 'percent', 53.00, 'percent', 'Cole-Mcfadden-qwidY', '2018-10-07 02:03:37', '2018-10-25 00:37:37');
+(1, 'Ryder Willis', 'seller', 3, 7, 4, 5, 3, '[\"uploads\\/aHYPnKoKTrNTb2VX7ld47vaadvKI04eSgAdniFED.jpeg\", \"uploads\\/PYakQfept0XJfeoYtvG6nqHLYwOwLl1HS88IFO5b.png\"]', NULL, NULL, NULL, NULL, 'https://www.youtube.com/embed/nB2X2kTtzZM', '[\"fgfdg,kj\"]', '<p><span style=\"background-color: rgb(255, 255, 255);\"><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">The company name is based on the Latin translation of the surname of the founder, August Horch. \"Horch\", meaning \"listen\" in German, becomes \"</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">\" in Latin. The four rings of the&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;logo each represent one of four&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">car</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;companies that banded together to create&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi\'s</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;predecessor company, Auto Union.</span></span><br></p>', 400.00, 430.00, '{\"choices_0_S_variation\":\"decrease\",\"choices_0_S_price\":\"50\",\"choices_0_M_variation\":\"increase\",\"choices_0_M_price\":\"100\",\"choices_0_L_variation\":\"increase\",\"choices_0_L_price\":\"150\"}', 1, 1, 1, 0, 'PC', '[\"#000\",\"#0000ff\",\"#ff0000\"]', 10.00, 'amount', 98.00, 'percent', 'Ryder-Willis-tuIHs', '2018-10-04 05:02:39', '2018-10-17 06:28:08'),
+(2, 'Cole Mcfadden', 'admin', 1, 7, 4, 6, 2, '[\"uploads\\/hKBJF3ybnwPoqFb0tugQWD39ibxff5JDp86OXig2.png\",\"uploads\\/MTm5YPuXIALhFQeD4BivTJcgUAMQs0Dl4hs09RxW.jpeg\"]', NULL, NULL, NULL, 'youtube', 'https://www.youtube.com/embed/nB2X2kTtzZM', '[\"Libero aperiam asperiores veritatis excepturi consequatur laborum Quia ex aliquam tempor optio dolor possimus,Autem voluptas et quod minus dolor corrupti\"]', '<p><span style=\"background-color: rgb(255, 255, 255);\"><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">The company name is based on the Latin translation of the surname of the founder, August Horch. \"Horch\", meaning \"listen\" in German, becomes \"</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">\" in Latin. The four rings of the&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;logo each represent one of four&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">car</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;companies that banded together to create&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi\'s</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;predecessor company, Auto Union.</span></span><br></p>', 759.00, 849.00, '{\"choices_0_S_variation\":\"decrease\",\"choices_0_S_price\":\"160\",\"choices_0_M_variation\":\"decrease\",\"choices_0_M_price\":\"119\",\"choices_0_L_variation\":\"decrease\",\"choices_0_L_price\":\"465\",\"choices_1_Cotton_variation\":\"decrease\",\"choices_1_Cotton_price\":\"274\",\"choices_1_Semi-Cotton_variation\":\"decrease\",\"choices_1_Semi-Cotton_price\":\"288\"}', 1, 1, 1, 0, 'PC', '[\"#3d85c6\",\"#cc0000\",\"#f1c232\"]', 20.00, 'percent', 53.00, 'percent', 'Cole-Mcfadden-qwidY', '2018-10-07 02:03:37', '2018-10-25 00:37:37');
 
 -- --------------------------------------------------------
 
@@ -450,6 +451,11 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `avatar` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `avatar_original` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `postal_code` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -458,12 +464,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `provider_id`, `user_type`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `avatar`, `avatar_original`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'admin', 'Admin', 'admin@example.com', NULL, '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', 'Fw07WJy5Vndql8xqvjNuK4F7L8D8AtfzVKGUpa23Nxow8vctA9tcc2CjKlgD', NULL, NULL, '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
-(3, NULL, 'seller', 'Seller ', 'seller@example.com', NULL, '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', 'bcaPsqMy96FQNW4ipv8MqoqOuAgGRz8csmF3Eaum1lvwrjsWwGwAwkT4EyoU', NULL, NULL, '2018-10-07 04:42:57', '2018-10-07 04:48:43'),
-(9, NULL, 'customer', 'Customer', 'customer@example.com', NULL, '$2y$10$0NbLnWt7DAbrhqZrFZ7Nw.tvE.Jnff2Il/jrdgtqBiblKpgGwLyom', 'XauKzQYmFg7mSBWbQ0ueCNcUQPRsKtmI4LnlkHIT8iLiU7rxdgvWNS57q4eJ', NULL, NULL, '2018-10-17 06:26:52', '2018-10-17 06:26:52'),
-(14, '103887660140114486052', 'customer', 'Md. Mehedi Hasan', 'bsse0607@iit.du.ac.bd', NULL, NULL, '4uWNYPwxgf5g42l2xt5ZZSTMS0hcyvEVZ9oumlwJc32c6XTUvmXL44z4ZRPF', 'https://lh4.googleusercontent.com/-xw_DuhMKF9k/AAAAAAAAAAI/AAAAAAAAACw/g4RUSLrD2Y0/photo.jpg?sz=50', 'https://lh4.googleusercontent.com/-xw_DuhMKF9k/AAAAAAAAAAI/AAAAAAAAACw/g4RUSLrD2Y0/photo.jpg', '2018-10-22 05:01:51', '2018-10-22 05:01:51'),
-(15, '113510401900359638362', 'customer', 'Mehedi Hasan', 'mehedi.iitdu@gmail.com', NULL, NULL, 'XLHbLxlttt5qWur9ZEVLgegVuvWA1KyScGGiTe86Nk2GZU95ZbGIL3jXEPyB', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', '2018-10-22 05:16:10', '2018-10-22 05:16:10');
+INSERT INTO `users` (`id`, `provider_id`, `user_type`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `avatar`, `avatar_original`, `address`, `country`, `city`, `postal_code`, `phone`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'admin', 'Admin', 'admin@example.com', NULL, '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', '95uWYyIM0D8qNzzpqExCYMtNPUBbxIolqIAsXdzBlaKqORztzl7DGN21Z8tI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
+(3, NULL, 'seller', 'Seller ', 'seller@example.com', NULL, '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', 'nkWZwAbGtC6MihOBIA3uunWWW9kpOoeU6n6gksljzseq5z6KpUuocltImcoR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-07 04:42:57', '2018-10-07 04:48:43'),
+(8, NULL, 'customer', 'Customer', 'customer@example.com', NULL, '$2y$10$0NbLnWt7DAbrhqZrFZ7Nw.tvE.Jnff2Il/jrdgtqBiblKpgGwLyom', 'Vi8auY3zGEPQWZMZK6sZexlxhCOoaOczCAur1Bg5nTmhZ8PgVyOriPKVlZ5I', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-17 06:26:52', '2018-10-17 06:26:52'),
+(17, '113510401900359638362', 'customer', 'Mehedi Hasan', 'mehedi.iitdu@gmail.com', NULL, NULL, '0q1qtndIw7cEjIZBYxv8TIjsK0oobA7Np84SGvljAGgj22r8elsgRgQLW7yj', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', NULL, NULL, NULL, NULL, NULL, '2018-11-01 04:52:33', '2018-11-01 04:52:33');
 
 -- --------------------------------------------------------
 
@@ -623,7 +628,7 @@ ALTER TABLE `currencies`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -677,13 +682,13 @@ ALTER TABLE `sub_sub_categories`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `wishlists`
 --
 ALTER TABLE `wishlists`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

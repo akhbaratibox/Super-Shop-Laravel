@@ -145,7 +145,7 @@
     }
 
     function addToCompare(id){
-        $.post('{{ route('products.addToCompare') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
+        $.post('{{ route('compare.addToCompare') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
             $('#compare').html(data);
         });
     }

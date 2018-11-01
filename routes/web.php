@@ -34,10 +34,11 @@ Route::post('/cart/addtocart', 'CartController@addToCart')->name('cart.addToCart
 Route::post('/cart/removeFromCart', 'CartController@removeFromCart')->name('cart.removeFromCart');
 Route::post('/cart/updateQuantity', 'CartController@updateQuantity')->name('cart.updateQuantity');
 
-Route::post('/products/addToCompare', 'ProductController@addToCompare')->name('products.addToCompare');
+Route::get('/compare', 'CompareController@index')->name('compare');
+Route::get('/compare/reset', 'CompareController@reset')->name('compare.reset');
+Route::post('/compare/addToCompare', 'CompareController@addToCompare')->name('compare.addToCompare');
 
 Route::group(['middleware' => ['customer']], function(){
-	Route::get('/wishlist', 'HomeController@wishlist')->name('wishlist');
 	Route::resource('wishlists','WishlistController');
 	Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
 });

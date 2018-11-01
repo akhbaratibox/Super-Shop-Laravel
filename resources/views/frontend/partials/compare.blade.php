@@ -1,4 +1,4 @@
-<a href="" class="nav-box-link">
+<a href="{{ route('compare') }}" class="nav-box-link">
     <i class="ion-ios-loop d-inline-block nav-box-icon"></i>
     <span class="nav-box-text d-none d-lg-inline-block">Compare</span>
     @if(Session::has('compare'))

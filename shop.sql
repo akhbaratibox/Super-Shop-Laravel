@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2018 at 01:46 PM
+-- Generation Time: Nov 05, 2018 at 01:46 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -82,16 +82,16 @@ CREATE TABLE `business_settings` (
 --
 
 INSERT INTO `business_settings` (`id`, `type`, `value`, `created_at`, `updated_at`) VALUES
-(1, 'home_default_currency', '1', '2018-10-16 01:35:52', '2018-10-31 04:20:07'),
+(1, 'home_default_currency', '1', '2018-10-16 01:35:52', '2018-11-03 23:45:08'),
 (2, 'system_default_currency', '1', '2018-10-16 01:36:58', '2018-10-16 01:36:58'),
 (3, 'currency_format', '1', '2018-10-17 03:01:59', '2018-10-17 03:01:59'),
-(4, 'symbol_format', '1', '2018-10-17 03:01:59', '2018-10-31 04:21:06'),
+(4, 'symbol_format', '1', '2018-10-17 03:01:59', '2018-11-03 23:45:25'),
 (5, 'no_of_decimals', '0', '2018-10-17 03:01:59', '2018-10-17 03:01:59'),
-(6, 'product_activation', '1', '2018-10-28 01:38:37', '2018-10-28 01:42:36'),
-(7, 'vendor_system_activation', '0', '2018-10-28 07:44:16', '2018-10-28 01:46:51'),
+(6, 'product_activation', '1', '2018-10-28 01:38:37', '2018-11-03 06:10:45'),
+(7, 'vendor_system_activation', '1', '2018-10-28 07:44:16', '2018-11-03 06:10:51'),
 (8, 'show_vendors', '1', '2018-10-28 07:44:47', '2018-10-28 01:46:34'),
 (9, 'paypal_payment', '1', '2018-10-28 07:45:16', '2018-10-28 01:46:40'),
-(10, 'stripe_payment', '1', '2018-10-28 07:45:47', '2018-10-28 01:46:39'),
+(10, 'stripe_payment', '1', '2018-10-28 07:45:47', '2018-11-03 06:10:59'),
 (11, 'cash_payment', '1', '2018-10-28 07:46:05', '2018-10-28 01:46:37'),
 (12, 'payumoney_payment', '0', '2018-10-28 07:46:27', '2018-10-28 01:46:47');
 
@@ -125,6 +125,169 @@ INSERT INTO `categories` (`id`, `name`, `banner`, `icon`, `created_at`, `updated
 (14, 'bags & Shoes', 'uploads/T7OdflyLppCVLfcQbrcNX2u5NplxZO6GxUXqYb5V.jpeg', 'uploads/4V6kp42dRmq9xWOChshL2lc5LHF55DsAjZlieBm7.png', '2018-10-14 22:39:57', '2018-10-14 22:39:57'),
 (15, 'Kids & Toys', 'uploads/uqSmE0jswOwy5nWd4yPSh4fT4bTgIFMyb0Z8zUdi.jpeg', 'uploads/bZxBw0f5vy4MFz9XoR7EQML3JMc8heT10ZbIAc5d.png', '2018-10-14 22:41:17', '2018-10-14 22:41:17'),
 (16, 'Health & Beauty', 'uploads/9C62APIf0N332pUqTXGIxSKeDhsmI5kLTC9YZ1OE.jpeg', 'uploads/QpFFOJvkYITZkIbeXnsHLsZbof7IfcW1z49YJ8uF.png', '2018-10-14 22:43:04', '2018-10-14 22:43:04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `colors`
+--
+
+CREATE TABLE `colors` (
+  `id` int(11) NOT NULL,
+  `name` varchar(30) DEFAULT NULL,
+  `code` varchar(10) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `colors`
+--
+
+INSERT INTO `colors` (`id`, `name`, `code`, `created_at`, `updated_at`) VALUES
+(1, 'IndianRed', '#CD5C5C', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(2, 'LightCoral', '#F08080', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(3, 'Salmon', '#FA8072', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(4, 'DarkSalmon', '#E9967A', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(5, 'LightSalmon', '#FFA07A', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(6, 'Crimson', '#DC143C', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(7, 'Red', '#FF0000', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(8, 'FireBrick', '#B22222', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(9, 'DarkRed', '#8B0000', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(10, 'Pink', '#FFC0CB', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(11, 'LightPink', '#FFB6C1', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(12, 'HotPink', '#FF69B4', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(13, 'DeepPink', '#FF1493', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(14, 'MediumVioletRed', '#C71585', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(15, 'PaleVioletRed', '#DB7093', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(16, 'LightSalmon', '#FFA07A', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(17, 'Coral', '#FF7F50', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(18, 'Tomato', '#FF6347', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(19, 'OrangeRed', '#FF4500', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(20, 'DarkOrange', '#FF8C00', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(21, 'Orange', '#FFA500', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(22, 'Gold', '#FFD700', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(23, 'Yellow', '#FFFF00', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(24, 'LightYellow', '#FFFFE0', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(25, 'LemonChiffon', '#FFFACD', '2018-11-05 02:12:26', '2018-11-05 02:12:26'),
+(26, 'LightGoldenrodYellow', '#FAFAD2', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(27, 'PapayaWhip', '#FFEFD5', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(28, 'Moccasin', '#FFE4B5', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(29, 'PeachPuff', '#FFDAB9', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(30, 'PaleGoldenrod', '#EEE8AA', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(31, 'Khaki', '#F0E68C', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(32, 'DarkKhaki', '#BDB76B', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(33, 'Lavender', '#E6E6FA', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(34, 'Thistle', '#D8BFD8', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(35, 'Plum', '#DDA0DD', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(36, 'Violet', '#EE82EE', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(37, 'Orchid', '#DA70D6', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(38, 'Fuchsia', '#FF00FF', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(39, 'Magenta', '#FF00FF', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(40, 'MediumOrchid', '#BA55D3', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(41, 'MediumPurple', '#9370DB', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(42, 'Amethyst', '#9966CC', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(43, 'BlueViolet', '#8A2BE2', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(44, 'DarkViolet', '#9400D3', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(45, 'DarkOrchid', '#9932CC', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(46, 'DarkMagenta', '#8B008B', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(47, 'Purple', '#800080', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(48, 'Indigo', '#4B0082', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(49, 'SlateBlue', '#6A5ACD', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(50, 'DarkSlateBlue', '#483D8B', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(51, 'MediumSlateBlue', '#7B68EE', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(52, 'GreenYellow', '#ADFF2F', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(53, 'Chartreuse', '#7FFF00', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(54, 'LawnGreen', '#7CFC00', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(55, 'Lime', '#00FF00', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(56, 'LimeGreen', '#32CD32', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(57, 'PaleGreen', '#98FB98', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(58, 'LightGreen', '#90EE90', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(59, 'MediumSpringGreen', '#00FA9A', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(60, 'SpringGreen', '#00FF7F', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(61, 'MediumSeaGreen', '#3CB371', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(62, 'SeaGreen', '#2E8B57', '2018-11-05 02:12:27', '2018-11-05 02:12:27'),
+(63, 'ForestGreen', '#228B22', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(64, 'Green', '#008000', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(65, 'DarkGreen', '#006400', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(66, 'YellowGreen', '#9ACD32', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(67, 'OliveDrab', '#6B8E23', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(68, 'Olive', '#808000', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(69, 'DarkOliveGreen', '#556B2F', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(70, 'MediumAquamarine', '#66CDAA', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(71, 'DarkSeaGreen', '#8FBC8F', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(72, 'LightSeaGreen', '#20B2AA', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(73, 'DarkCyan', '#008B8B', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(74, 'Teal', '#008080', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(75, 'Aqua', '#00FFFF', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(76, 'Cyan', '#00FFFF', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(77, 'LightCyan', '#E0FFFF', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(78, 'PaleTurquoise', '#AFEEEE', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(79, 'Aquamarine', '#7FFFD4', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(80, 'Turquoise', '#40E0D0', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(81, 'MediumTurquoise', '#48D1CC', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(82, 'DarkTurquoise', '#00CED1', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(83, 'CadetBlue', '#5F9EA0', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(84, 'SteelBlue', '#4682B4', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(85, 'LightSteelBlue', '#B0C4DE', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(86, 'PowderBlue', '#B0E0E6', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(87, 'LightBlue', '#ADD8E6', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(88, 'SkyBlue', '#87CEEB', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(89, 'LightSkyBlue', '#87CEFA', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(90, 'DeepSkyBlue', '#00BFFF', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(91, 'DodgerBlue', '#1E90FF', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(92, 'CornflowerBlue', '#6495ED', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(93, 'MediumSlateBlue', '#7B68EE', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(94, 'RoyalBlue', '#4169E1', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(95, 'Blue', '#0000FF', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(96, 'MediumBlue', '#0000CD', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(97, 'DarkBlue', '#00008B', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(98, 'Navy', '#000080', '2018-11-05 02:12:28', '2018-11-05 02:12:28'),
+(99, 'MidnightBlue', '#191970', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(100, 'Cornsilk', '#FFF8DC', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(101, 'BlanchedAlmond', '#FFEBCD', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(102, 'Bisque', '#FFE4C4', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(103, 'NavajoWhite', '#FFDEAD', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(104, 'Wheat', '#F5DEB3', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(105, 'BurlyWood', '#DEB887', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(106, 'Tan', '#D2B48C', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(107, 'RosyBrown', '#BC8F8F', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(108, 'SandyBrown', '#F4A460', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(109, 'Goldenrod', '#DAA520', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(110, 'DarkGoldenrod', '#B8860B', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(111, 'Peru', '#CD853F', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(112, 'Chocolate', '#D2691E', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(113, 'SaddleBrown', '#8B4513', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(114, 'Sienna', '#A0522D', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(115, 'Brown', '#A52A2A', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(116, 'Maroon', '#800000', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(117, 'White', '#FFFFFF', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(118, 'Snow', '#FFFAFA', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(119, 'Honeydew', '#F0FFF0', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(120, 'MintCream', '#F5FFFA', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(121, 'Azure', '#F0FFFF', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(122, 'AliceBlue', '#F0F8FF', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(123, 'GhostWhite', '#F8F8FF', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(124, 'WhiteSmoke', '#F5F5F5', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(125, 'Seashell', '#FFF5EE', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(126, 'Beige', '#F5F5DC', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(127, 'OldLace', '#FDF5E6', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(128, 'FloralWhite', '#FFFAF0', '2018-11-05 02:12:29', '2018-11-05 02:12:29'),
+(129, 'Ivory', '#FFFFF0', '2018-11-05 02:12:30', '2018-11-05 02:12:30'),
+(130, 'AntiqueWhite', '#FAEBD7', '2018-11-05 02:12:30', '2018-11-05 02:12:30'),
+(131, 'Linen', '#FAF0E6', '2018-11-05 02:12:30', '2018-11-05 02:12:30'),
+(132, 'LavenderBlush', '#FFF0F5', '2018-11-05 02:12:30', '2018-11-05 02:12:30'),
+(133, 'MistyRose', '#FFE4E1', '2018-11-05 02:12:30', '2018-11-05 02:12:30'),
+(134, 'Gainsboro', '#DCDCDC', '2018-11-05 02:12:30', '2018-11-05 02:12:30'),
+(135, 'LightGrey', '#D3D3D3', '2018-11-05 02:12:30', '2018-11-05 02:12:30'),
+(136, 'Silver', '#C0C0C0', '2018-11-05 02:12:30', '2018-11-05 02:12:30'),
+(137, 'DarkGray', '#A9A9A9', '2018-11-05 02:12:30', '2018-11-05 02:12:30'),
+(138, 'Gray', '#808080', '2018-11-05 02:12:30', '2018-11-05 02:12:30'),
+(139, 'DimGray', '#696969', '2018-11-05 02:12:30', '2018-11-05 02:12:30'),
+(140, 'LightSlateGray', '#778899', '2018-11-05 02:12:30', '2018-11-05 02:12:30'),
+(141, 'SlateGray', '#708090', '2018-11-05 02:12:30', '2018-11-05 02:12:30'),
+(142, 'DarkSlateGray', '#2F4F4F', '2018-11-05 02:12:30', '2018-11-05 02:12:30'),
+(143, 'Black', '#000000', '2018-11-05 02:12:30', '2018-11-05 02:12:30');
 
 -- --------------------------------------------------------
 
@@ -171,7 +334,7 @@ INSERT INTO `currencies` (`id`, `name`, `symbol`, `exchange_rate`, `status`, `co
 (23, 'Swedish Krona', 'kr', 8.19000, 0, 'SEK', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
 (24, 'Swiss Franc', 'CHF', 0.94000, 0, 'CHF', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
 (26, 'Thai Baht', '฿', 31.39000, 0, 'THB', '2018-10-09 11:35:08', '2018-10-09 11:35:08'),
-(27, 'Taka', '/-', 84.50000, 1, 'BDT', '2018-10-09 11:35:08', '2018-10-17 05:45:03');
+(27, 'Taka', '৳', 84.50000, 1, 'BDT', '2018-10-09 11:35:08', '2018-11-03 06:13:02');
 
 -- --------------------------------------------------------
 
@@ -258,13 +421,14 @@ CREATE TABLE `products` (
   `description` text,
   `unit_price` double(8,2) NOT NULL,
   `purchase_price` double(8,2) NOT NULL,
-  `price_variations` text NOT NULL,
+  `choice_options` text,
+  `colors` text,
+  `variations` text NOT NULL,
   `todays_deal` int(11) NOT NULL DEFAULT '0',
   `published` int(11) NOT NULL DEFAULT '0',
   `featured` int(11) NOT NULL DEFAULT '0',
   `current_stock` int(10) NOT NULL DEFAULT '0',
   `unit` varchar(20) NOT NULL,
-  `colors` text,
   `discount` double(8,2) DEFAULT NULL,
   `discount_type` varchar(10) DEFAULT NULL,
   `tax` double(8,2) DEFAULT NULL,
@@ -278,9 +442,9 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `added_by`, `user_id`, `category_id`, `subcategory_id`, `subsubcategory_id`, `brand_id`, `photos`, `thumbnail_img`, `featured_img`, `flash_deal_img`, `video_provider`, `video_link`, `tags`, `description`, `unit_price`, `purchase_price`, `price_variations`, `todays_deal`, `published`, `featured`, `current_stock`, `unit`, `colors`, `discount`, `discount_type`, `tax`, `tax_type`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'Ryder Willis', 'seller', 3, 7, 4, 5, 3, '[\"uploads\\/aHYPnKoKTrNTb2VX7ld47vaadvKI04eSgAdniFED.jpeg\", \"uploads\\/PYakQfept0XJfeoYtvG6nqHLYwOwLl1HS88IFO5b.png\"]', NULL, NULL, NULL, NULL, 'https://www.youtube.com/embed/nB2X2kTtzZM', '[\"fgfdg,kj\"]', '<p><span style=\"background-color: rgb(255, 255, 255);\"><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">The company name is based on the Latin translation of the surname of the founder, August Horch. \"Horch\", meaning \"listen\" in German, becomes \"</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">\" in Latin. The four rings of the&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;logo each represent one of four&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">car</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;companies that banded together to create&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi\'s</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;predecessor company, Auto Union.</span></span><br></p>', 400.00, 430.00, '{\"choices_0_S_variation\":\"decrease\",\"choices_0_S_price\":\"50\",\"choices_0_M_variation\":\"increase\",\"choices_0_M_price\":\"100\",\"choices_0_L_variation\":\"increase\",\"choices_0_L_price\":\"150\"}', 1, 1, 1, 0, 'PC', '[\"#000\",\"#0000ff\",\"#ff0000\"]', 10.00, 'amount', 98.00, 'percent', 'Ryder-Willis-tuIHs', '2018-10-04 05:02:39', '2018-10-17 06:28:08'),
-(2, 'Cole Mcfadden', 'admin', 1, 7, 4, 6, 2, '[\"uploads\\/hKBJF3ybnwPoqFb0tugQWD39ibxff5JDp86OXig2.png\",\"uploads\\/MTm5YPuXIALhFQeD4BivTJcgUAMQs0Dl4hs09RxW.jpeg\"]', NULL, NULL, NULL, 'youtube', 'https://www.youtube.com/embed/nB2X2kTtzZM', '[\"Libero aperiam asperiores veritatis excepturi consequatur laborum Quia ex aliquam tempor optio dolor possimus,Autem voluptas et quod minus dolor corrupti\"]', '<p><span style=\"background-color: rgb(255, 255, 255);\"><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">The company name is based on the Latin translation of the surname of the founder, August Horch. \"Horch\", meaning \"listen\" in German, becomes \"</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">\" in Latin. The four rings of the&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;logo each represent one of four&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">car</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;companies that banded together to create&nbsp;</span><b style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">Audi\'s</b><span style=\"color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px;\">&nbsp;predecessor company, Auto Union.</span></span><br></p>', 759.00, 849.00, '{\"choices_0_S_variation\":\"decrease\",\"choices_0_S_price\":\"160\",\"choices_0_M_variation\":\"decrease\",\"choices_0_M_price\":\"119\",\"choices_0_L_variation\":\"decrease\",\"choices_0_L_price\":\"465\",\"choices_1_Cotton_variation\":\"decrease\",\"choices_1_Cotton_price\":\"274\",\"choices_1_Semi-Cotton_variation\":\"decrease\",\"choices_1_Semi-Cotton_price\":\"288\"}', 1, 1, 1, 0, 'PC', '[\"#3d85c6\",\"#cc0000\",\"#f1c232\"]', 20.00, 'percent', 53.00, 'percent', 'Cole-Mcfadden-qwidY', '2018-10-07 02:03:37', '2018-10-25 00:37:37');
+INSERT INTO `products` (`id`, `name`, `added_by`, `user_id`, `category_id`, `subcategory_id`, `subsubcategory_id`, `brand_id`, `photos`, `thumbnail_img`, `featured_img`, `flash_deal_img`, `video_provider`, `video_link`, `tags`, `description`, `unit_price`, `purchase_price`, `choice_options`, `colors`, `variations`, `todays_deal`, `published`, `featured`, `current_stock`, `unit`, `discount`, `discount_type`, `tax`, `tax_type`, `slug`, `created_at`, `updated_at`) VALUES
+(7, 'Brandon Allen', 'admin', 1, 7, 4, 5, 2, '[\"uploads\\/T9P6ECfr4jkW24blSMfVRYOHSOtKiAqikByzs6Sv.jpeg\"]', 'uploads/zqfa562pIYzK1sLRkmUVTvSRvXkS40Pz09kElzgV.png', 'uploads/GGFIKYTfvhDQ3Vs2OcE1dvtDzwAJX6Ogm6lUdeqd.png', 'uploads/pdns0VNucRbEW4bm4bWAY8uEK1I9Bmxs0x7PWbNx.png', 'youtube', 'https://www.youtube.com/watch?v=uwxxQ9FZXow', '[\"aaaa,bbbb\"]', NULL, 400.00, 340.00, '[{\"name\":\"choice_0\",\"title\":\"Size\",\"options\":[\"S,M\"]}]', '[\"#000000\",\"#0000FF\",\"#FF0000\"]', '{\"price_Black-S\":\"400\",\"sku_Black-S\":\"BA-Black-S\",\"qty_Black-S\":\"10\",\"price_Black-M\":\"400\",\"sku_Black-M\":\"BA-Black-M\",\"qty_Black-M\":\"400\",\"price_Blue-S\":\"400\",\"sku_Blue-S\":\"BA-Blue-S\",\"qty_Blue-S\":\"400\",\"price_Blue-M\":\"400\",\"sku_Blue-M\":\"BA-Blue-M\",\"qty_Blue-M\":\"400\",\"price_Red-S\":\"400\",\"sku_Red-S\":\"BA-Red-S\",\"qty_Red-S\":\"400\",\"price_Red-M\":\"400\",\"sku_Red-M\":\"BA-Red-M\",\"qty_Red-M\":\"400\"}', 0, 0, 0, 0, 'PC', 10.00, 'amount', 10.00, 'amount', 'Brandon-Allen-ZXodO', '2018-11-05 06:22:11', '2018-11-05 06:44:10'),
+(11, 'Kelly Strickland', 'admin', 1, 7, 3, 12, 15, '[\"uploads\\/8DRwDNM9lN8Sq4P0qU5tYs8tCCHZLn8nyhnlap8L.png\"]', 'uploads/khae9EVNwywxcELFPw28WjxAcZCoEGbO81kbV21P.png', 'uploads/GZ6PW14G2rYGsZMypwfuxPLX9SPs5Hsjceivq2Wq.png', 'uploads/NxEPzuctrxkSXIC4j8AugrAv39uZQkwYbLDm8xgh.png', 'youtube', 'https://www.youtube.com/watch?v=Kvl-JXkPoNo', '[\"Qui distinctio Sit eaque totam similique quia nulla similique quis animi\"]', NULL, 892.00, 570.00, '[]', '[]', '[]', 0, 0, 0, 0, 'PC', 100.00, 'amount', 80.00, 'amount', 'Kelly-Strickland-cYqur', '2018-11-05 06:40:17', '2018-11-05 06:46:22');
 
 -- --------------------------------------------------------
 
@@ -416,7 +580,6 @@ CREATE TABLE `sub_sub_categories` (
   `name` varchar(50) NOT NULL,
   `banner` varchar(100) NOT NULL,
   `brands` varchar(100) NOT NULL,
-  `options` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -425,14 +588,14 @@ CREATE TABLE `sub_sub_categories` (
 -- Dumping data for table `sub_sub_categories`
 --
 
-INSERT INTO `sub_sub_categories` (`id`, `sub_category_id`, `name`, `banner`, `brands`, `options`, `created_at`, `updated_at`) VALUES
-(5, 4, 'Private Cars', 'uploads/sctkUXlTXuERQkNmhtXbFVeNwGSxeUIyL5OJ6Pnn.jpeg', '[\"2\",\"3\"]', '[{\"name\":\"choices_0\",\"title\":\"Size\",\"type\":\"radio\",\"options\":[\"S\",\"M\",\"L\"]}]', '2018-09-30 20:31:47', '2018-10-03 22:59:09'),
-(6, 4, 'Clio Baxter', 'uploads/RdBo95yeom3lO45zQ8I7qysodhtOHPbtF6RWJkwN.jpeg', '[\"2\",\"3\"]', '[{\"name\":\"choices_0\",\"title\":\"Size\",\"type\":\"radio\",\"options\":[\"S\",\"M\",\"L\"]},{\"name\":\"choices_1\",\"title\":\"Fabric\",\"type\":\"select\",\"options\":[\"Cotton\",\"Semi-Cotton\"]}]', '2018-10-02 23:19:27', '2018-10-03 22:59:30'),
-(7, 5, 'Dresses', 'uploads/lIt4mtq48QLqKaMBdKVOAXz6Sa0fANWw4IRmds10.jpeg', '[\"2\"]', '[]', '2018-10-14 23:56:41', '2018-10-14 23:56:41'),
-(8, 10, 'Hoodie', 'uploads/0rAwm5yze0Qt2xeE33HuwptQzl75ix5FufmncaVV.jpeg', '[\"6\"]', '[]', '2018-10-15 00:03:37', '2018-10-15 00:03:37'),
-(9, 12, 'jackets  t-ahirt', 'uploads/IgX5hzUYEJwB0kepD3TztTkkUOgUoBwaXT3Rd86W.jpeg', '[\"7\"]', '[]', '2018-10-15 00:04:36', '2018-10-15 00:04:36'),
-(10, 9, 'Hats & Belts', 'uploads/7FyQgJOyVw2UCl7tYQmj3PsVFSSIIVz6tkLEphwm.jpeg', '[\"5\"]', '[]', '2018-10-15 00:06:08', '2018-10-15 00:06:08'),
-(12, 3, 'Test', 'uploads/Axq44o3nPuJKEjrdHCCX8ZqL22QEQsKe5ZZS5XRj.jpeg', '[\"15\"]', '[{\"name\":\"choices_0\",\"title\":\"Text check\",\"type\":\"text\",\"options\":null},{\"name\":\"choices_1\",\"title\":\"Select check\",\"type\":\"select\",\"options\":[\"Select 1\",\"Select 2\",\"Select 3\",\"Select 4\"]},{\"name\":\"choices_2\",\"title\":\"Radio Check\",\"type\":\"radio\",\"options\":[\"Radio 1\",\"Radio 2\",\"Radio 3\",\"Radio 4\"]}]', '2018-10-22 03:20:37', '2018-10-22 03:20:37');
+INSERT INTO `sub_sub_categories` (`id`, `sub_category_id`, `name`, `banner`, `brands`, `created_at`, `updated_at`) VALUES
+(5, 4, 'Private Cars', 'uploads/sctkUXlTXuERQkNmhtXbFVeNwGSxeUIyL5OJ6Pnn.jpeg', '[\"2\",\"3\"]', '2018-09-30 20:31:47', '2018-10-03 22:59:09'),
+(6, 4, 'Clio Baxter', 'uploads/RdBo95yeom3lO45zQ8I7qysodhtOHPbtF6RWJkwN.jpeg', '[\"2\",\"3\"]', '2018-10-02 23:19:27', '2018-10-03 22:59:30'),
+(7, 5, 'Dresses', 'uploads/lIt4mtq48QLqKaMBdKVOAXz6Sa0fANWw4IRmds10.jpeg', '[\"2\"]', '2018-10-14 23:56:41', '2018-10-14 23:56:41'),
+(8, 10, 'Hoodie', 'uploads/0rAwm5yze0Qt2xeE33HuwptQzl75ix5FufmncaVV.jpeg', '[\"6\"]', '2018-10-15 00:03:37', '2018-10-15 00:03:37'),
+(9, 12, 'jackets  t-ahirt', 'uploads/IgX5hzUYEJwB0kepD3TztTkkUOgUoBwaXT3Rd86W.jpeg', '[\"7\"]', '2018-10-15 00:04:36', '2018-10-15 00:04:36'),
+(10, 9, 'Hats & Belts', 'uploads/7FyQgJOyVw2UCl7tYQmj3PsVFSSIIVz6tkLEphwm.jpeg', '[\"5\"]', '2018-10-15 00:06:08', '2018-10-15 00:06:08'),
+(12, 3, 'Test', 'uploads/Axq44o3nPuJKEjrdHCCX8ZqL22QEQsKe5ZZS5XRj.jpeg', '[\"15\"]', '2018-10-22 03:20:37', '2018-10-22 03:20:37');
 
 -- --------------------------------------------------------
 
@@ -465,7 +628,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `provider_id`, `user_type`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `avatar`, `avatar_original`, `address`, `country`, `city`, `postal_code`, `phone`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'admin', 'Admin', 'admin@example.com', NULL, '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', '95uWYyIM0D8qNzzpqExCYMtNPUBbxIolqIAsXdzBlaKqORztzl7DGN21Z8tI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
+(1, NULL, 'admin', 'Admin', 'admin@example.com', NULL, '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', '8c4E9L8vNaw8mCT9NoyioQQ83b1BCjnEVMqYIVXeUK1VG9kYFgXaavBUXVjg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
 (3, NULL, 'seller', 'Seller ', 'seller@example.com', NULL, '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', 'nkWZwAbGtC6MihOBIA3uunWWW9kpOoeU6n6gksljzseq5z6KpUuocltImcoR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-07 04:42:57', '2018-10-07 04:48:43'),
 (8, NULL, 'customer', 'Customer', 'customer@example.com', NULL, '$2y$10$0NbLnWt7DAbrhqZrFZ7Nw.tvE.Jnff2Il/jrdgtqBiblKpgGwLyom', 'Vi8auY3zGEPQWZMZK6sZexlxhCOoaOczCAur1Bg5nTmhZ8PgVyOriPKVlZ5I', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-17 06:26:52', '2018-10-17 06:26:52'),
 (17, '113510401900359638362', 'customer', 'Mehedi Hasan', 'mehedi.iitdu@gmail.com', NULL, NULL, '0q1qtndIw7cEjIZBYxv8TIjsK0oobA7Np84SGvljAGgj22r8elsgRgQLW7yj', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', NULL, NULL, NULL, NULL, NULL, '2018-11-01 04:52:33', '2018-11-01 04:52:33');
@@ -489,9 +652,9 @@ CREATE TABLE `wishlists` (
 --
 
 INSERT INTO `wishlists` (`id`, `user_id`, `product_id`, `created_at`, `updated_at`) VALUES
-(1, 8, 1, '2018-10-22 02:18:58', '2018-10-22 02:18:58'),
-(2, 8, 2, '2018-10-22 02:18:59', '2018-10-22 02:18:59'),
-(4, 1, 1, '2018-10-25 01:29:08', '2018-10-25 01:29:08');
+(4, 1, 1, '2018-10-25 01:29:08', '2018-10-25 01:29:08'),
+(5, 8, 1, '2018-11-03 06:16:11', '2018-11-03 06:16:11'),
+(6, 8, 2, '2018-11-03 06:16:12', '2018-11-03 06:16:12');
 
 --
 -- Indexes for dumped tables
@@ -513,6 +676,12 @@ ALTER TABLE `business_settings`
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `colors`
+--
+ALTER TABLE `colors`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -619,6 +788,12 @@ ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT for table `colors`
+--
+ALTER TABLE `colors`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
+
+--
 -- AUTO_INCREMENT for table `currencies`
 --
 ALTER TABLE `currencies`
@@ -640,7 +815,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `product_stocks`

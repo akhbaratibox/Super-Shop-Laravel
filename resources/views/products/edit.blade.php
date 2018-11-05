@@ -3,10 +3,10 @@
 @section('content')
 
 <div class="row">
-	<form class="form form-horizontal mar-top" action="{{route('products.update', $product->id)}}" method="POST" enctype="multipart/form-data">
-		<input name="_method" type="hidden" value="PATCH">
+	<form class="form form-horizontal mar-top" action="{{route('products.update', $product->id)}}" method="POST" enctype="multipart/form-data" id="choice_form">
+		<input name="_method" type="hidden" value="POST">
+		<input type="hidden" name="id" value="{{ $product->id }}">
 		@csrf
-		<input type="hidden" name="added_by" value="admin">
 		<div class="panel">
 			<div class="panel-heading">
 				<h3 class="panel-title">Product Information</h3>
@@ -15,7 +15,7 @@
 				<div class="tab-base tab-stacked-left">
 				    <!--Nav tabs-->
 				    <ul class="nav nav-tabs">
-				        <li class="active">
+						<li class="active">
 				            <a data-toggle="tab" href="#demo-stk-lft-tab-1" aria-expanded="true">General</a>
 				        </li>
 				        <li class="">
@@ -28,13 +28,13 @@
 				            <a data-toggle="tab" href="#demo-stk-lft-tab-4" aria-expanded="false">Meta Tags</a>
 				        </li>
 						<li class="">
-				            <a data-toggle="tab" href="#demo-stk-lft-tab-5" aria-expanded="false">Price</a>
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-5" aria-expanded="false">Customer Choice</a>
 				        </li>
 						<li class="">
-				            <a data-toggle="tab" href="#demo-stk-lft-tab-6" aria-expanded="false">Description</a>
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-6" aria-expanded="false">Price</a>
 				        </li>
 						<li class="">
-				            <a data-toggle="tab" href="#demo-stk-lft-tab-7" aria-expanded="false">Customer Choice</a>
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-7" aria-expanded="false">Description</a>
 				        </li>
 						<li class="">
 				            <a data-toggle="tab" href="#demo-stk-lft-tab-8" aria-expanded="false">Display Settings</a>
@@ -167,6 +167,48 @@
 				        </div>
 						<div id="demo-stk-lft-tab-5" class="tab-pane fade">
 							<div class="form-group">
+								<div class="col-lg-2">
+									<input type="text" class="form-control" value="{{__('web.colors')}}" disabled>
+								</div>
+								<div class="col-lg-7">
+									<select class="form-control demo-select2-placeholder" name="colors[]" id="colors" multiple>
+										@foreach (\App\Color::orderBy('name', 'asc')->get() as $key => $color)
+											<option value="{{ $color->code }}" <?php if(in_array($color->code, json_decode($product->colors))) echo 'selected'?> >{{ $color->name }}</option>
+										@endforeach
+									</select>
+								</div>
+								<div class="col-lg-2">
+									<label class="switch" style="margin-top:5px;">
+										<input value="1" type="checkbox" name="colors_active" <?php if(count(json_decode($product->colors)) > 0) echo "checked";?> >
+										<span class="slider round"></span>
+									</label>
+								</div>
+							</div>
+
+							<div class="customer_choice_options" id="customer_choice_options">
+								@foreach (json_decode($product->choice_options) as $key => $choice_option)
+									<div class="form-group">
+										<div class="col-lg-2">
+											<input type="hidden" name="choice_no[]" value="{{ explode('_', $choice_option->name)[1] }}">
+											<input type="text" class="form-control" name="choice[]" value="{{ $choice_option->title }}" placeholder="Choice Title">
+										</div>
+										<div class="col-lg-7">
+											<input type="text" class="form-control" name="choice_options_{{ explode('_', $choice_option->name)[1] }}[]" placeholder="Enter choice values" value="{{ implode('|', $choice_option->options) }}" data-role="tagsinput" onchange="update_sku()">
+										</div>
+										<div class="col-lg-2">
+											<button onclick="delete_row(this)" class="btn btn-danger btn-icon"><i class="demo-psi-recycling icon-lg"></i></button>
+										</div>
+									</div>
+								@endforeach
+							</div>
+							<div class="form-group">
+								<div class="col-lg-2">
+									<button type="button" class="btn btn-info" onclick="add_more_customer_choice_option()">{{ __('web.add_more_customer_choice_option') }}</button>
+								</div>
+							</div>
+				        </div>
+						<div id="demo-stk-lft-tab-6" class="tab-pane fade">
+							<div class="form-group">
 	                            <label class="col-lg-2 control-label">{{__('web.unit_price')}}</label>
 	                            <div class="col-lg-7">
 	                                <input type="text" placeholder="{{__('web.unit_price')}}" name="unit_price" class="form-control" value="{{$product->unit_price}}" required>
@@ -202,81 +244,18 @@
 	                                </select>
 	                            </div>
 	                        </div>
+							<br>
+							<div class="sku_combination" id="sku_combination">
+
+							</div>
 				        </div>
-						<div id="demo-stk-lft-tab-6" class="tab-pane fade">
+						<div id="demo-stk-lft-tab-7" class="tab-pane fade">
 							<div class="form-group">
 	                            <label class="col-lg-2 control-label">{{__('web.description')}}</label>
 	                            <div class="col-lg-7">
 	                                <textarea class="demo-summernote-long" name="description">{{$product->description}}</textarea>
 	                            </div>
 	                        </div>
-				        </div>
-						<div id="demo-stk-lft-tab-7" class="tab-pane fade">
-							@foreach(json_decode($product->colors) as $key=> $color)
-								@if($key == 0)
-									<div class="form-group increment">
-									    <label class="col-sm-3 control-label">{{__('web.colors')}}</label>
-									    <div class="col-sm-3">
-									        <input type="text" name="colors[]" class="form-control color" value="{{$color}}" required>
-									    </div>
-									    <div class="col-sm-3">
-									        <button class="btn btn-primary add-colors" type="button" style="margin-left:10px">{{__('web.add_more_color')}}</button>
-									    </div>
-									</div>
-								@else
-			                        <div class="form-group control-group">
-			                        	<label class="col-sm-3 control-label"></label>
-			                        	<div class="col-sm-3">
-			                        		<input type="text" name="colors[]" value="{{$color}}" class="form-control color" required>
-			                        	</div>
-			                        	<div class="col-sm-3">
-			                        		<button class="btn btn-danger btn-circle btn-sm remove-colors" type="button" style="margin-left:10px"><i class="glyphicon glyphicon-remove"></i>
-			                        		</button>
-			                        	</div>
-			                        </div>
-		                        @endif
-	                        @endforeach
-
-							<div class="customer_choice_options" id="customer_choice_options">
-
-								@foreach(json_decode($product->subsubcategory->options) as $key=> $option)
-								    <div class="form-group clearfix">
-								        <div class="col-sm-3 text-right">
-								            <label class="control-label">{{$option->title}}</label>
-								        </div>
-								        <div class="col-sm-6">
-								            <div class="customer_choice_options_types_wrap">
-								                <div class="customer_choice_options_types_wrap_child">
-								                    @if($option->type == 'radio' || $option->type == 'select')
-								                        @foreach($option->options as $options)
-								                            <div class="form-group clearfix">
-								                                <div class="col-sm-3">
-								                                    <input class="form-control" type="text" value="{{$options}}" disabled>
-								                                </div>
-								                                <div class="col-sm-3">
-								                                	@php
-								                                		$str_price = $option->name.'_'.$options.'_price';
-								                                		$str_variation = $option->name.'_'.$options.'_variation';
-								                                	@endphp
-								                                    <input class="form-control" type="number" min="0" step="0.01" name="{{$option->name}}_{{$options}}_price" value="{{json_decode($product->price_variations)->$str_price}}" required>
-								                                </div>
-								                                <div class="col-sm-3">
-								                                    <select class="form-control demo-select2" name="{{$option->name}}_{{$options}}_variation">
-								                                        <option value="increase" <?php if(json_decode($product->price_variations)->$str_variation == 'increase') echo "selected";?> >Increase</option>
-								                                        <option value="decrease" <?php if(json_decode($product->price_variations)->$str_variation == 'decrease') echo "selected";?> >Decrease</option>
-								                                    </select>
-								                                </div>
-								                            </div>
-								                        @endforeach
-
-								                    @endif
-								                </div>
-								            </div>
-								        </div>
-								    </div>
-								@endforeach
-
-							</div>
 				        </div>
 						<div id="demo-stk-lft-tab-8" class="tab-pane fade">
 
@@ -341,47 +320,43 @@
 
 <script type="text/javascript">
 
-	var i = 0;
+	var i = $('input[name="choice_no[]"').val();
 
-	$('.color').spectrum({
-		preferredFormat: "hex",
-	    showPalette: true,
-	    palette: [
-	        ["#000","#444","#666","#999","#ccc","#eee","#f3f3f3","#fff"],
-            ["#f00","#f90","#ff0","#0f0","#0ff","#00f","#90f","#f0f"],
-            ["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
-            ["#ea9999","#f9cb9c","#ffe599","#b6d7a8","#a2c4c9","#9fc5e8","#b4a7d6","#d5a6bd"],
-            ["#e06666","#f6b26b","#ffd966","#93c47d","#76a5af","#6fa8dc","#8e7cc3","#c27ba0"],
-            ["#c00","#e69138","#f1c232","#6aa84f","#45818e","#3d85c6","#674ea7","#a64d79"],
-            ["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
-            ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
-	    ]
+	function add_more_customer_choice_option(){
+		i++;
+		$('#customer_choice_options').append('<div class="form-group"><div class="col-lg-2"><input type="hidden" name="choice_no[]" value="'+i+'"><input type="text" class="form-control" name="choice[]" value="" placeholder="Choice Title"></div><div class="col-lg-7"><input type="text" class="form-control" name="choice_options_'+i+'[]" placeholder="Enter choice values" data-role="tagsinput" onchange="update_sku()"></div><div class="col-lg-2"><button onclick="delete_row(this)" class="btn btn-danger btn-icon"><i class="demo-psi-recycling icon-lg"></i></button></div></div>');
+		$("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
+	}
+
+	$('input[name="colors_active"]').on('change', function() {
+	    if(!$('input[name="colors_active"]').is(':checked')){
+			$('#colors').prop('disabled', true);
+		}
+		else{
+			$('#colors').prop('disabled', false);
+		}
+		update_sku();
 	});
 
-	$(".add-colors").click(function(){
-	    var html = '<div class="form-group control-group"><label class="col-sm-3 control-label"></label><div class="col-sm-3"><input type="text" name="colors[]" class="form-control color" required></div><div class="col-sm-3"><button class="btn btn-danger btn-circle btn-sm remove-colors" type="button" style="margin-left:10px"><i class="glyphicon glyphicon-remove"></i></button></div></div>';
-
-	    $(".increment").after(html);
-
-    	$('.color').spectrum({
-    		preferredFormat: "hex",
-    	    showPalette: true,
-    	    palette: [
-    	        ["#000","#444","#666","#999","#ccc","#eee","#f3f3f3","#fff"],
-                ["#f00","#f90","#ff0","#0f0","#0ff","#00f","#90f","#f0f"],
-                ["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
-                ["#ea9999","#f9cb9c","#ffe599","#b6d7a8","#a2c4c9","#9fc5e8","#b4a7d6","#d5a6bd"],
-                ["#e06666","#f6b26b","#ffd966","#93c47d","#76a5af","#6fa8dc","#8e7cc3","#c27ba0"],
-                ["#c00","#e69138","#f1c232","#6aa84f","#45818e","#3d85c6","#674ea7","#a64d79"],
-                ["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
-                ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
-    	    ]
-    	});
+	$('#colors').on('change', function() {
+	    update_sku();
 	});
 
-	$("body").on("click",".remove-colors",function(){
-	    $(this).parents(".control-group").remove();
-	});
+	function delete_row(em){
+		$(em).closest('.form-group').remove();
+		update_sku();
+	}
+
+	function update_sku(){
+		$.ajax({
+		   type:"POST",
+		   url:'{{ route('products.sku_combination_edit') }}',
+		   data:$('#choice_form').serialize(),
+		   success: function(data){
+			   $('#sku_combination').html(data);
+		   }
+	   });
+	}
 
 	function get_subcategories_by_category(){
 		var category_id = $('#category_id').val();
@@ -445,13 +420,6 @@
 
 		    $('.demo-select2').select2();
 
-		});
-	}
-
-	function get_price_variations_by_subsubcategory(){
-		var subsubcategory_id = $('#subsubcategory_id').val();
-		$.post('{{ route('subsubcategories.get_price_variations_by_subsubcategory') }}',{_token:'{{ csrf_token() }}', subsubcategory_id:subsubcategory_id}, function(data){
-		    $('#customer_choice_options').html(data);
 		});
 	}
 
@@ -533,13 +501,8 @@
 	});
 
 	$('#subsubcategory_id').on('change', function() {
-		if(i>1){
-			get_price_variations_by_subsubcategory();
-		}
 	    get_brands_by_subsubcategory();
-	    i++;
 	});
-
 
 </script>
 

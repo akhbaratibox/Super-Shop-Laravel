@@ -101,7 +101,7 @@ return [
     'sku' => 'Stock Keeping Unit',
     'subcategory_information' => 'Sub Category Information',
     'subsubcategory_information' => 'Sub Sub Category Information',
-    'add_more_customer_choice_option' => 'Add More Customer Choice Option',
+    'add_more_customer_choice_option' => 'Add More Option',
     'add_option' => 'Add Option',
     'payment_mothod' => 'Payment Method',
     'currency' => 'Currency',

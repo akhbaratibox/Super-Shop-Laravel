@@ -22,8 +22,6 @@ Route::post('/users/login', 'HomeController@user_login')->name('user.login.submi
 Route::post('/subcategories/get_subcategories_by_category', 'SubCategoryController@get_subcategories_by_category')->name('subcategories.get_subcategories_by_category');
 Route::post('/subsubcategories/get_subsubcategories_by_subcategory', 'SubSubCategoryController@get_subsubcategories_by_subcategory')->name('subsubcategories.get_subsubcategories_by_subcategory');
 Route::post('/subsubcategories/get_brands_by_subsubcategory', 'SubSubCategoryController@get_brands_by_subsubcategory')->name('subsubcategories.get_brands_by_subsubcategory');
-Route::post('/subsubcategories/get_price_variations_by_subsubcategory', 'SubSubCategoryController@get_price_variations_by_subsubcategory')->name('subsubcategories.get_price_variations_by_subsubcategory');
-
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/products/{slug}', 'HomeController@product')->name('product');
 
@@ -53,6 +51,9 @@ Route::group(['middleware' => ['seller']], function(){
 	});
 });
 
+Route::post('/products/sku_combination', 'ProductController@sku_combination')->name('products.sku_combination');
+Route::post('/products/sku_combination_edit', 'ProductController@sku_combination_edit')->name('products.sku_combination_edit');
+
 Route::get('/admin', 'HomeController@dashboard')->name('dashboard')->middleware(['auth', 'admin']);
 Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function(){
 	Route::resource('categories','CategoryController');
@@ -68,6 +69,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('/brands/destroy/{id}', 'BrandController@destroy')->name('brands.destroy');
 
 	Route::resource('products','ProductController');
+	Route::post('products/update/{id}','ProductController@update')->name('products.update');
 	Route::get('/products/destroy/{id}', 'ProductController@destroy')->name('products.destroy');
 	Route::post('/products/todays_deal', 'ProductController@updateTodaysDeal')->name('products.todays_deal');
 	Route::post('/products/published', 'ProductController@updatePublished')->name('products.published');

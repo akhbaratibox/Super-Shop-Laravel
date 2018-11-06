@@ -72,6 +72,44 @@ class HomeController extends Controller
         abort(404);
     }
 
+    public function listing(Request $request)
+    {
+        $categories = Category::all();
+        $products = Product::paginate(9);
+        return view('frontend.product_listing', compact('categories', 'products'));
+    }
+
+    public function listing_by_category($id)
+    {
+        $categories = Category::all();
+        $products = Product::where('category_id', $id)->paginate(9);
+        $category_id = $id;
+        return view('frontend.product_listing', compact('categories', 'products', 'category_id'));
+    }
+
+    public function listing_by_subcategory($id)
+    {
+        $categories = Category::all();
+        $products = Product::where('subcategory_id', $id)->paginate(9);
+        $subcategory_id = $id;
+        return view('frontend.product_listing', compact('categories', 'products', 'subcategory_id'));
+    }
+
+    public function listing_by_subsubcategory($id)
+    {
+        $categories = Category::all();
+        $products = Product::where('subsubcategory_id', $id)->paginate(9);
+        $subsubcategory_id = $id;
+        return view('frontend.product_listing', compact('categories', 'products', 'subsubcategory_id'));
+    }
+
+    public function listing_by_brand($id)
+    {
+        $categories = Category::all();
+        $products = Product::where('brand_id', $id)->paginate(9);
+        return view('frontend.product_listing', compact('categories', 'products'));
+    }
+
     public function login()
     {
         if(Auth::check()){

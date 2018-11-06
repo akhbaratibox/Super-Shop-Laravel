@@ -18,7 +18,7 @@
 
                             <!-- Profile details -->
                             <div class="profile-details mb-4">
-                                <h2 class="heading heading-6 strong-600 profile-name ">{{ Auth::user()->xml_set_end_namespace_decl_handler }}</h2>
+                                <h2 class="heading heading-6 strong-600 profile-name ">{{ Auth::user()->name }}</h2>
                             </div>
 
                             <hr>

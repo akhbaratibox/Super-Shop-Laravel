@@ -1,18 +1,22 @@
 @if(count($combinations[0]) > 0)
-	<div class="form-group">
-		<div class="col-lg-2 text-right">
-			<label for="" class="control-label">Variation</label>
-		</div>
-		<div class="col-lg-3 text-center">
-			<label for="" class="control-label">Variation Price</label>
-		</div>
-		<div class="col-lg-3 text-center">
-			<label for="" class="control-label">SKU</label>
-		</div>
-		<div class="col-lg-3 text-center">
-			<label for="" class="control-label">Quantity</label>
-		</div>
-	</div>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<td class="text-center">
+					<label for="" class="control-label">Variant</label>
+				</td>
+				<td class="text-center">
+					<label for="" class="control-label">Variant Price</label>
+				</td>
+				<td class="text-center">
+					<label for="" class="control-label">SKU</label>
+				</td>
+				<td class="text-center">
+					<label for="" class="control-label">Quantity</label>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
 @endif
 
 @foreach ($combinations as $key => $combination)
@@ -42,19 +46,21 @@
 		}
 	@endphp
 	@if(strlen($str) > 0)
-		<div class="form-group">
-			<div class="col-lg-2 text-right">
-				<label for="" class="control-label">{{ $str }}</label>
-			</div>
-			<div class="col-lg-3">
-				<input type="number" name="price_{{ $str }}" value="{{ $unit_price }}" min="0" step="0.01" class="form-control" required>
-			</div>
-			<div class="col-lg-3">
-				<input type="text" name="sku_{{ $str }}" value="{{ $sku }}" class="form-control" required>
-			</div>
-			<div class="col-lg-3">
-				<input type="number" name="qty_{{ $str }}" value="10" min="1" step="1" class="form-control" required>
-			</div>
-		</div>
+			<tr>
+				<td>
+					<label for="" class="control-label">{{ $str }}</label>
+				</td>
+				<td>
+					<input type="number" name="price_{{ $str }}" value="{{ $unit_price }}" min="0" step="0.01" class="form-control" required>
+				</td>
+				<td>
+					<input type="text" name="sku_{{ $str }}" value="{{ $sku }}" class="form-control" required>
+				</td>
+				<td>
+					<input type="number" name="qty_{{ $str }}" value="10" min="1" step="1" class="form-control" required>
+				</td>
+			</tr>
 	@endif
 @endforeach
+	</tbody>
+</table>

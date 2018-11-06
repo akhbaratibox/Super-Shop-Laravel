@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2018 at 08:21 AM
+-- Generation Time: Nov 06, 2018 at 12:59 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -116,7 +116,7 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`id`, `name`, `banner`, `icon`, `created_at`, `updated_at`) VALUES
 (7, 'Automobile', 'uploads/LntG9daqoJqQ077ZUzjjApqNygNgYVf2PZGVBnYd.jpeg', 'uploads/ftpL20ddrhYGvw8a9oAGfkxWHJc5FhMpfXhqv0Gl.png', '2018-10-24 09:19:43', '2018-10-12 23:39:15'),
-(8, 'Women\'s clothing', 'uploads/ae4aNYkbh5zqRvvryc3vimjPOuoAMMnRWShUuods.jpeg', 'uploads/dWBFvWcVSE7kkfdw3HWxbp72ok2Xjj4JXv5wBYLa.jpeg', '2018-10-13 05:38:55', '2018-10-12 23:38:55'),
+(8, 'Men\'s clothing', 'uploads/ae4aNYkbh5zqRvvryc3vimjPOuoAMMnRWShUuods.jpeg', 'uploads/dWBFvWcVSE7kkfdw3HWxbp72ok2Xjj4JXv5wBYLa.jpeg', '2018-11-06 07:53:08', '2018-11-06 01:53:08'),
 (9, 'Cellphone & Accessories', 'uploads/9Y0Z0sspWsZGrIbeBwqHI7WpaJwpHQzOcDr2nvna.jpeg', 'uploads/JO2gZJmfmzOEMoEy8FFHIzh0bwRsRp5klevRY0hl.png', '2018-10-14 19:54:43', '2018-10-14 19:54:43'),
 (10, 'Computer,Office, Security', 'uploads/D3y6VjYfpKKzZsgFT13DIjXOrIw0Iyu5XTscH6sh.jpeg', 'uploads/KvCl7flxmS9M52UQ4DXIvKbMoNrWWbeJdqE0JikI.png', '2018-10-14 21:48:07', '2018-10-14 21:48:07'),
 (11, 'Consumer Electronics', 'uploads/XBQehfa2gpybSpfXN9jpfXCC0LTJzeFX21g8gb9A.jpeg', 'uploads/CdXRyERshiQ6CQ2Cu8GoAVYkJWzMozYnQG6ZWTun.png', '2018-10-14 21:49:26', '2018-10-14 21:49:26'),
@@ -443,8 +443,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `added_by`, `user_id`, `category_id`, `subcategory_id`, `subsubcategory_id`, `brand_id`, `photos`, `thumbnail_img`, `featured_img`, `flash_deal_img`, `video_provider`, `video_link`, `tags`, `description`, `unit_price`, `purchase_price`, `choice_options`, `colors`, `variations`, `todays_deal`, `published`, `featured`, `current_stock`, `unit`, `discount`, `discount_type`, `tax`, `tax_type`, `slug`, `created_at`, `updated_at`) VALUES
-(7, 'Brandon Allen', 'admin', 1, 7, 4, 5, 2, '[\"uploads\\/T9P6ECfr4jkW24blSMfVRYOHSOtKiAqikByzs6Sv.jpeg\"]', 'uploads/zqfa562pIYzK1sLRkmUVTvSRvXkS40Pz09kElzgV.png', 'uploads/GGFIKYTfvhDQ3Vs2OcE1dvtDzwAJX6Ogm6lUdeqd.png', 'uploads/pdns0VNucRbEW4bm4bWAY8uEK1I9Bmxs0x7PWbNx.png', 'youtube', 'https://www.youtube.com/watch?v=uwxxQ9FZXow', '[\"aaaa,bbbb\"]', NULL, 400.00, 340.00, '[{\"name\":\"choice_0\",\"title\":\"Size\",\"options\":[\"S\",\"M\"]}]', '[\"#000000\",\"#0000FF\",\"#FF0000\"]', '{\"Black-S\":{\"price\":\"500\",\"sku\":\"BA-Black-S\",\"qty\":\"10\"},\"Black-M\":{\"price\":\"400\",\"sku\":\"BA-Black-M\",\"qty\":\"10\"},\"Blue-S\":{\"price\":\"400\",\"sku\":\"BA-Blue-S\",\"qty\":\"10\"},\"Blue-M\":{\"price\":\"400\",\"sku\":\"BA-Blue-M\",\"qty\":\"10\"},\"Red-S\":{\"price\":\"400\",\"sku\":\"BA-Red-S\",\"qty\":\"10\"},\"Red-M\":{\"price\":\"400\",\"sku\":\"BA-Red-M\",\"qty\":\"10\"}}', 0, 0, 0, 0, 'PC', 10.00, 'amount', 10.00, 'amount', 'Brandon-Allen-oKFHd', '2018-11-05 06:22:11', '2018-11-06 00:12:51'),
-(11, 'Kelly Strickland', 'admin', 1, 7, 3, 12, 15, '[\"uploads\\/8DRwDNM9lN8Sq4P0qU5tYs8tCCHZLn8nyhnlap8L.png\"]', 'uploads/khae9EVNwywxcELFPw28WjxAcZCoEGbO81kbV21P.png', 'uploads/GZ6PW14G2rYGsZMypwfuxPLX9SPs5Hsjceivq2Wq.png', 'uploads/NxEPzuctrxkSXIC4j8AugrAv39uZQkwYbLDm8xgh.png', 'youtube', 'https://www.youtube.com/watch?v=Kvl-JXkPoNo', '[\"Qui distinctio Sit eaque totam similique quia nulla similique quis animi\"]', NULL, 900.00, 870.00, '[{\"name\":\"choice_0\",\"title\":\"Size\",\"options\":[\"Small\",\"Large\"]}]', '[\"#9966CC\",\"#0000FF\",\"#00FFFF\"]', '{\"Amethyst-Small\":{\"price\":\"700\",\"sku\":\"KS-Amethyst-Small\",\"qty\":\"10\"},\"Amethyst-Large\":{\"price\":\"900\",\"sku\":\"KS-Amethyst-Large\",\"qty\":\"10\"},\"Blue-Small\":{\"price\":\"900\",\"sku\":\"KS-Blue-Small\",\"qty\":\"10\"},\"Blue-Large\":{\"price\":\"900\",\"sku\":\"KS-Blue-Large\",\"qty\":\"10\"},\"Aqua-Small\":{\"price\":\"800\",\"sku\":\"KS-Aqua-Small\",\"qty\":\"10\"},\"Aqua-Large\":{\"price\":\"900\",\"sku\":\"KS-Aqua-Large\",\"qty\":\"10\"}}', 0, 0, 0, 0, 'PC', 100.00, 'amount', 80.00, 'amount', 'Kelly-Strickland-cYqur', '2018-11-05 06:40:17', '2018-11-06 00:44:05');
+(7, 'Brandon Allen', 'admin', 1, 7, 4, 5, 2, '[\"uploads\\/OQcGouo2SRyHNtIKShdEkQYKYg060Wy6NDwFvQzq.jpeg\"]', 'uploads/zqfa562pIYzK1sLRkmUVTvSRvXkS40Pz09kElzgV.png', 'uploads/GGFIKYTfvhDQ3Vs2OcE1dvtDzwAJX6Ogm6lUdeqd.png', 'uploads/pdns0VNucRbEW4bm4bWAY8uEK1I9Bmxs0x7PWbNx.png', 'youtube', 'https://www.youtube.com/watch?v=uwxxQ9FZXow', '[\"aaaa,bbbb\"]', NULL, 400.00, 340.00, '[{\"name\":\"choice_0\",\"title\":\"Size\",\"options\":[\"S\",\"M\"]}]', '[\"#000000\",\"#0000FF\",\"#FF0000\"]', '{\"Black-S\":{\"price\":\"500\",\"sku\":\"BA-Black-S\",\"qty\":\"10\"},\"Black-M\":{\"price\":\"400\",\"sku\":\"BA-Black-M\",\"qty\":\"10\"},\"Blue-S\":{\"price\":\"380\",\"sku\":\"BA-Blue-S\",\"qty\":\"10\"},\"Blue-M\":{\"price\":\"400\",\"sku\":\"BA-Blue-M\",\"qty\":\"10\"},\"Red-S\":{\"price\":\"400\",\"sku\":\"BA-Red-S\",\"qty\":\"10\"},\"Red-M\":{\"price\":\"400\",\"sku\":\"BA-Red-M\",\"qty\":\"10\"}}', 0, 0, 0, 0, 'PC', 10.00, 'amount', 10.00, 'amount', 'Brandon-Allen-oKFHd', '2018-11-05 06:22:11', '2018-11-06 05:45:56'),
+(11, 'Kelly Strickland', 'admin', 1, 7, 3, 12, 15, '[\"uploads\\/OQcGouo2SRyHNtIKShdEkQYKYg060Wy6NDwFvQzq.jpeg\"]', 'uploads/khae9EVNwywxcELFPw28WjxAcZCoEGbO81kbV21P.png', 'uploads/GZ6PW14G2rYGsZMypwfuxPLX9SPs5Hsjceivq2Wq.png', 'uploads/NxEPzuctrxkSXIC4j8AugrAv39uZQkwYbLDm8xgh.png', 'youtube', 'https://www.youtube.com/watch?v=Kvl-JXkPoNo', '[\"Qui distinctio Sit eaque totam similique quia nulla similique quis animi\"]', NULL, 900.00, 870.00, '[{\"name\":\"choice_0\",\"title\":\"Size\",\"options\":[\"Small\",\"Large\"]}]', '[\"#9966CC\",\"#00FFFF\",\"#0000FF\",\"#00FFFF\"]', '{\"Amethyst-Small\":{\"price\":\"700\",\"sku\":\"KS-Amethyst-Small\",\"qty\":\"10\"},\"Amethyst-Large\":{\"price\":\"900\",\"sku\":\"KS-Amethyst-Large\",\"qty\":\"10\"},\"Aqua-Small\":{\"price\":\"800\",\"sku\":\"KS-Aqua-Small\",\"qty\":\"10\"},\"Aqua-Large\":{\"price\":\"900\",\"sku\":\"KS-Aqua-Large\",\"qty\":\"10\"},\"Blue-Small\":{\"price\":\"900\",\"sku\":\"KS-Blue-Small\",\"qty\":\"10\"},\"Blue-Large\":{\"price\":\"900\",\"sku\":\"KS-Blue-Large\",\"qty\":\"10\"}}', 0, 0, 0, 0, 'PC', 100.00, 'amount', 80.00, 'amount', 'Kelly-Strickland-cYqur', '2018-11-05 06:40:17', '2018-11-06 02:18:18'),
+(12, 'Casual Shirt Slim Fit', 'admin', 1, 8, 7, 13, 7, '[\"uploads\\/OQcGouo2SRyHNtIKShdEkQYKYg060Wy6NDwFvQzq.jpeg\"]', NULL, 'uploads/Mbm40lTUKaKTQ2PaZgx6WR4V3Xfr0XK4rawNWSy7.png', 'uploads/DddxkbGm7kQ2NauNxrgoyIhuPEFZH36mz2TDt2Ok.png', 'youtube', 'https://www.youtube.com/watch?v=Kvl-JXkPoNo', '[\"Shirt,Casual\"]', NULL, 80.00, 75.00, '[{\"name\":\"choice_0\",\"title\":\"Size\",\"options\":[\"Small\",\"Medium\",\"Large\",\"Extra Large\"]},{\"name\":\"choice_1\",\"title\":\"Fabric\",\"options\":[\"Cotton\",\"Semi-Cotton\"]}]', '[\"#000000\",\"#0000FF\"]', '{\"Black-Small-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Black-Small-Cotton\",\"qty\":\"10\"},\"Black-Small-Semi-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Black-Small-Semi-Cotton\",\"qty\":\"10\"},\"Black-Medium-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Black-Medium-Cotton\",\"qty\":\"10\"},\"Black-Medium-Semi-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Black-Medium-Semi-Cotton\",\"qty\":\"10\"},\"Black-Large-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Black-Large-Cotton\",\"qty\":\"10\"},\"Black-Large-Semi-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Black-Large-Semi-Cotton\",\"qty\":\"10\"},\"Black-Extra Large-Cotton\":{\"price\":null,\"sku\":null,\"qty\":null},\"Black-Extra Large-Semi-Cotton\":{\"price\":null,\"sku\":null,\"qty\":null},\"Blue-Small-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Blue-Small-Cotton\",\"qty\":\"10\"},\"Blue-Small-Semi-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Blue-Small-Semi-Cotton\",\"qty\":\"10\"},\"Blue-Medium-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Blue-Medium-Cotton\",\"qty\":\"10\"},\"Blue-Medium-Semi-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Blue-Medium-Semi-Cotton\",\"qty\":\"10\"},\"Blue-Large-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Blue-Large-Cotton\",\"qty\":\"10\"},\"Blue-Large-Semi-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Blue-Large-Semi-Cotton\",\"qty\":\"10\"},\"Blue-Extra Large-Cotton\":{\"price\":null,\"sku\":null,\"qty\":null},\"Blue-Extra Large-Semi-Cotton\":{\"price\":null,\"sku\":null,\"qty\":null}}', 0, 0, 0, 0, 'PC', 0.00, 'amount', 0.00, 'amount', 'Casual-Shirt-Slim-Fit-GHrDu', '2018-11-06 01:59:37', '2018-11-06 05:48:23');
 
 -- --------------------------------------------------------
 
@@ -545,9 +546,8 @@ CREATE TABLE `sub_categories` (
 INSERT INTO `sub_categories` (`id`, `name`, `category_id`, `banner`, `created_at`, `updated_at`) VALUES
 (3, 'Motor Cycle', 7, 'uploads/s9kAydCtyXRXF7CYkcCYQqf0BsZUY4NeDOouI2WE.jpeg', '2018-09-30 19:31:58', '2018-09-30 19:31:58'),
 (4, 'Cars', 7, 'uploads/ASt5PzynNc5wNgZ0IQ1HWe5kHiQ7OhwilZ7cuV7x.jpeg', '2018-09-30 19:43:54', '2018-09-30 19:43:54'),
-(5, 'Hot Categories', 8, 'uploads/FzADYY2fe864tPSw7wsjVjpyuJMC9URyKsdlIFqV.jpeg', '2018-10-14 22:45:14', '2018-10-14 22:45:14'),
 (6, 'Outwear & jackets', 8, 'uploads/FSqtkpSCQlDdkCfOizrQd1XpQ7bIlG94E7dDqpuI.jpeg', '2018-10-14 23:40:19', '2018-10-14 23:40:19'),
-(7, 'Tops & Sets', 8, 'uploads/NJzRF153uyDJeLmapTdEfHDJ7N65Ang5jckHfrSH.jpeg', '2018-10-14 23:40:45', '2018-10-14 23:40:45'),
+(7, 'Casual Wears', 8, 'uploads/H6U7LyNn5SJD8eTu0gRrzOaHfBx0gTNBPMeJM8ZX.jpeg', '2018-10-14 23:40:45', '2018-11-06 01:54:30'),
 (8, 'Bottoms', 8, 'uploads/jWMsEN01p7KnDPQYnYLxfwc7edVdgBvENdZDNp6s.jpeg', '2018-10-14 23:41:32', '2018-10-14 23:41:32'),
 (9, 'Wedding & Events', 8, 'uploads/5jtTozQajBWNyfzQ0ZojG6V0FNgOFgXQtQ9m7E1F.jpeg', '2018-10-14 23:42:43', '2018-10-14 23:42:43'),
 (10, 'Outwear & jackets', 7, 'uploads/0Jzlwavx2KTUWqYwKiUE7c8Z9I4PVF0SFecXXc6d.jpeg', '2018-10-14 23:43:32', '2018-10-14 23:43:32'),
@@ -591,11 +591,11 @@ CREATE TABLE `sub_sub_categories` (
 INSERT INTO `sub_sub_categories` (`id`, `sub_category_id`, `name`, `banner`, `brands`, `created_at`, `updated_at`) VALUES
 (5, 4, 'Private Cars', 'uploads/sctkUXlTXuERQkNmhtXbFVeNwGSxeUIyL5OJ6Pnn.jpeg', '[\"2\",\"3\"]', '2018-09-30 20:31:47', '2018-10-03 22:59:09'),
 (6, 4, 'Clio Baxter', 'uploads/RdBo95yeom3lO45zQ8I7qysodhtOHPbtF6RWJkwN.jpeg', '[\"2\",\"3\"]', '2018-10-02 23:19:27', '2018-10-03 22:59:30'),
-(7, 5, 'Dresses', 'uploads/lIt4mtq48QLqKaMBdKVOAXz6Sa0fANWw4IRmds10.jpeg', '[\"2\"]', '2018-10-14 23:56:41', '2018-10-14 23:56:41'),
 (8, 10, 'Hoodie', 'uploads/0rAwm5yze0Qt2xeE33HuwptQzl75ix5FufmncaVV.jpeg', '[\"6\"]', '2018-10-15 00:03:37', '2018-10-15 00:03:37'),
 (9, 12, 'jackets  t-ahirt', 'uploads/IgX5hzUYEJwB0kepD3TztTkkUOgUoBwaXT3Rd86W.jpeg', '[\"7\"]', '2018-10-15 00:04:36', '2018-10-15 00:04:36'),
 (10, 9, 'Hats & Belts', 'uploads/7FyQgJOyVw2UCl7tYQmj3PsVFSSIIVz6tkLEphwm.jpeg', '[\"5\"]', '2018-10-15 00:06:08', '2018-10-15 00:06:08'),
-(12, 3, 'Test', 'uploads/Axq44o3nPuJKEjrdHCCX8ZqL22QEQsKe5ZZS5XRj.jpeg', '[\"15\"]', '2018-10-22 03:20:37', '2018-10-22 03:20:37');
+(12, 3, 'Test', 'uploads/Axq44o3nPuJKEjrdHCCX8ZqL22QEQsKe5ZZS5XRj.jpeg', '[\"15\"]', '2018-10-22 03:20:37', '2018-10-22 03:20:37'),
+(13, 7, 'Shirts', 'uploads/e8zAZurwMos8ohOZNIOnBYbwrP3NuGbda09anSEo.jpeg', '[\"7\"]', '2018-11-06 01:56:56', '2018-11-06 01:56:56');
 
 -- --------------------------------------------------------
 
@@ -628,9 +628,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `provider_id`, `user_type`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `avatar`, `avatar_original`, `address`, `country`, `city`, `postal_code`, `phone`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'admin', 'Admin', 'admin@example.com', NULL, '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', 'qg6z3wffSbwOC80XvSAzaYAsRejsTO4yQYeBWyTxuGFc9dubbQNSbyVvlcba', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
+(1, NULL, 'admin', 'Admin', 'admin@example.com', NULL, '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', 'UuI12JOUubc6aHwOxx1gDbIxijdnIPkmyWAiVuy8xZZIaplDKZWzynmv2Zni', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
 (3, NULL, 'seller', 'Seller ', 'seller@example.com', NULL, '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', 'nkWZwAbGtC6MihOBIA3uunWWW9kpOoeU6n6gksljzseq5z6KpUuocltImcoR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-07 04:42:57', '2018-10-07 04:48:43'),
-(8, NULL, 'customer', 'Customer', 'customer@example.com', NULL, '$2y$10$0NbLnWt7DAbrhqZrFZ7Nw.tvE.Jnff2Il/jrdgtqBiblKpgGwLyom', 'Vi8auY3zGEPQWZMZK6sZexlxhCOoaOczCAur1Bg5nTmhZ8PgVyOriPKVlZ5I', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-17 06:26:52', '2018-10-17 06:26:52'),
+(8, NULL, 'customer', 'Customer', 'customer@example.com', NULL, '$2y$10$0NbLnWt7DAbrhqZrFZ7Nw.tvE.Jnff2Il/jrdgtqBiblKpgGwLyom', 'DSxMibu7e0S9jKaDG2L2wHZxeIenUzwCgQ9mhHPcB07ljrx64zjEzAJtbGgH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-17 06:26:52', '2018-10-17 06:26:52'),
 (17, '113510401900359638362', 'customer', 'Mehedi Hasan', 'mehedi.iitdu@gmail.com', NULL, NULL, '0q1qtndIw7cEjIZBYxv8TIjsK0oobA7Np84SGvljAGgj22r8elsgRgQLW7yj', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', NULL, NULL, NULL, NULL, NULL, '2018-11-01 04:52:33', '2018-11-01 04:52:33');
 
 -- --------------------------------------------------------
@@ -646,15 +646,6 @@ CREATE TABLE `wishlists` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `wishlists`
---
-
-INSERT INTO `wishlists` (`id`, `user_id`, `product_id`, `created_at`, `updated_at`) VALUES
-(4, 1, 1, '2018-10-25 01:29:08', '2018-10-25 01:29:08'),
-(5, 8, 1, '2018-11-03 06:16:11', '2018-11-03 06:16:11'),
-(6, 8, 2, '2018-11-03 06:16:12', '2018-11-03 06:16:12');
 
 --
 -- Indexes for dumped tables
@@ -815,7 +806,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `product_stocks`
@@ -851,7 +842,7 @@ ALTER TABLE `sub_categories`
 -- AUTO_INCREMENT for table `sub_sub_categories`
 --
 ALTER TABLE `sub_sub_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -23,7 +23,12 @@ Route::post('/subcategories/get_subcategories_by_category', 'SubCategoryControll
 Route::post('/subsubcategories/get_subsubcategories_by_subcategory', 'SubSubCategoryController@get_subsubcategories_by_subcategory')->name('subsubcategories.get_subsubcategories_by_subcategory');
 Route::post('/subsubcategories/get_brands_by_subsubcategory', 'SubSubCategoryController@get_brands_by_subsubcategory')->name('subsubcategories.get_brands_by_subsubcategory');
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/products/{slug}', 'HomeController@product')->name('product');
+Route::get('/product/{slug}', 'HomeController@product')->name('product');
+Route::get('/products', 'HomeController@listing')->name('products');
+Route::get('/products/category/{id}', 'HomeController@listing_by_category')->name('products.category');
+Route::get('/products/subcategory/{id}', 'HomeController@listing_by_subcategory')->name('products.subcategory');
+Route::get('/products/subsubcategory/{id}', 'HomeController@listing_by_subsubcategory')->name('products.subsubcategory');
+Route::get('/products/brand/{id}', 'HomeController@listing_by_brand')->name('products.brand');
 
 Route::get('/cart', 'CartController@index')->name('cart');
 Route::post('/cart/nav-cart-items', 'CartController@updateNavCart')->name('cart.nav_cart');

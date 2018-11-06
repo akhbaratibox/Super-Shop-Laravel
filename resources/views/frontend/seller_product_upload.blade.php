@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                         </div>
-                        <form class="" action="{{route('products.store')}}" method="POST" enctype="multipart/form-data">
+                        <form class="" action="{{route('products.store')}}" method="POST" enctype="multipart/form-data" id="choice_form">
                             @csrf
                     		<input type="hidden" name="added_by" value="seller">
 
@@ -287,6 +287,39 @@
                             </div>
                             <div class="form-box bg-white mt-4">
                                 <div class="form-box-title px-3 py-2">
+                                    Customer Choice
+                                </div>
+                                <div class="form-box-content p-3">
+                                    <div class="row mb-3">
+                                        <div class="col-2">
+        									<input type="text" class="form-control" value="{{__('web.colors')}}" disabled>
+        								</div>
+        								<div class="col-9">
+        									<select class="form-control selectpicker" name="colors[]" id="colors" multiple>
+        										@foreach (\App\Color::orderBy('name', 'asc')->get() as $key => $color)
+        											<option value="{{ $color->code }}">{{ $color->name }}</option>
+        										@endforeach
+        									</select>
+        								</div>
+        								<div class="col-1">
+        									<label class="switch" style="margin-top:5px;">
+        										<input value="1" type="checkbox" name="colors_active" checked>
+        										<span class="slider round"></span>
+        									</label>
+        								</div>
+                                    </div>
+                                    <div id="customer_choice_options">
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-2">
+        									<button type="button" class="btn btn-info" onclick="add_more_customer_choice_option()">{{ __('web.add_more_customer_choice_option') }}</button>
+        								</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-box bg-white mt-4">
+                                <div class="form-box-title px-3 py-2">
                                     Price
                                 </div>
                                 <div class="form-box-content p-3">
@@ -338,6 +371,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-12" id="sku_combination">
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-box bg-white mt-4">
@@ -352,33 +390,6 @@
                                         <div class="col-10">
                                             <div class="mb-3">
                                                 <textarea class="summernote" name="description" data-ghfgh="fgdgd"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-box bg-white mt-4">
-                                <div class="form-box-title px-3 py-2">
-                                    Customer Choice
-                                </div>
-                                <div class="form-box-content p-3">
-                                    <div class="row">
-        								<label class="col-2 control-label">{{__('web.colors')}}</label>
-                                        <div class="col-10 increment">
-                                            <div class="row mb-3">
-                                                <div class="col-sm-5">
-                									<input type="text" name="colors[]" class="form-control color" value="#000" required>
-                								</div>
-                								<div class="col-sm-5">
-                									<button class="btn btn-styled btn-base-1 add-colors" type="button">{{__('web.add_more_color')}}</button>
-                								</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="mb-3" id="customer_choice_options">
-
                                             </div>
                                         </div>
                                     </div>
@@ -544,14 +555,6 @@
     		        }));
     		    }
     		});
-            get_price_variations_by_subsubcategory(subsubcategory_id);
-    	}
-
-        function get_price_variations_by_subsubcategory(subsubcategory_id){
-    		$.post('{{ route('subsubcategories.get_price_variations_by_subsubcategory') }}',{_token:'{{ csrf_token() }}', view:'frontend', subsubcategory_id:subsubcategory_id}, function(data){
-    		    $('#customer_choice_options').html(data);
-                $('.selectpicker').select2();
-    		});
     	}
 
         function filterListItems(el, list){
@@ -584,44 +587,50 @@
             }
         }
 
-        $('.color').spectrum({
-    		preferredFormat: "hex",
-    	    showPalette: true,
-    	    palette: [
-    	        ["#000","#444","#666","#999","#ccc","#eee","#f3f3f3","#fff"],
-                ["#f00","#f90","#ff0","#0f0","#0ff","#00f","#90f","#f0f"],
-                ["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
-                ["#ea9999","#f9cb9c","#ffe599","#b6d7a8","#a2c4c9","#9fc5e8","#b4a7d6","#d5a6bd"],
-                ["#e06666","#f6b26b","#ffd966","#93c47d","#76a5af","#6fa8dc","#8e7cc3","#c27ba0"],
-                ["#c00","#e69138","#f1c232","#6aa84f","#45818e","#3d85c6","#674ea7","#a64d79"],
-                ["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
-                ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
-    	    ]
+        var i = 0;
+    	function add_more_customer_choice_option(){
+    		$('#customer_choice_options').append('<div class="row mb-3"><div class="col-2"><input type="hidden" name="choice_no[]" value="'+i+'"><input type="text" class="form-control" name="choice[]" value="" placeholder="Choice Title"></div><div class="col-9"><input type="text" class="form-control tagsInput" name="choice_options_'+i+'[]" placeholder="Enter choice values" onchange="update_sku()"></div><div class="col-1"><button type="button" onclick="delete_row(this)" class="btn btn-link btn-icon text-danger"><i class="fa fa-trash-o"></i></button></div></div>');
+    		i++;
+            $('.tagsInput').tagsinput('items');
+    	}
+
+    	$('input[name="colors_active"]').on('change', function() {
+    	    if(!$('input[name="colors_active"]').is(':checked')){
+    			$('#colors').prop('disabled', true);
+    		}
+    		else{
+    			$('#colors').prop('disabled', false);
+    		}
+    		update_sku();
     	});
 
-        $(".add-colors").click(function(){
-    	    var html = '<div class="row control-group mb-3"><div class="col-sm-5"><input type="text" name="colors[]" class="form-control color" required></div><div class="col-sm-5"><button class="btn btn-danger btn-circle btn-sm remove-colors" type="button" style="margin-left:10px"><i class="ion-close-round"></i></button></div></div></div>';
-
-    	    $(".increment").append(html);
-
-        	$('.color').spectrum({
-        		preferredFormat: "hex",
-        	    showPalette: true,
-        	    palette: [
-        	        ["#000","#444","#666","#999","#ccc","#eee","#f3f3f3","#fff"],
-                    ["#f00","#f90","#ff0","#0f0","#0ff","#00f","#90f","#f0f"],
-                    ["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
-                    ["#ea9999","#f9cb9c","#ffe599","#b6d7a8","#a2c4c9","#9fc5e8","#b4a7d6","#d5a6bd"],
-                    ["#e06666","#f6b26b","#ffd966","#93c47d","#76a5af","#6fa8dc","#8e7cc3","#c27ba0"],
-                    ["#c00","#e69138","#f1c232","#6aa84f","#45818e","#3d85c6","#674ea7","#a64d79"],
-                    ["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
-                    ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
-        	    ]
-        	});
+    	$('#colors').on('change', function() {
+    	    update_sku();
     	});
 
-        $("body").on("click",".remove-colors",function(){
-    	    $(this).parents(".control-group").remove();
+    	$('input[name="unit_price"]').on('keyup', function() {
+    	    update_sku();
     	});
+
+        $('input[name="name"]').on('keyup', function() {
+    	    update_sku();
+    	});
+
+    	function delete_row(em){
+    		$(em).closest('.row').remove();
+    		update_sku();
+    	}
+
+    	function update_sku(){
+            $.ajax({
+    		   type:"POST",
+    		   url:'{{ route('products.sku_combination') }}',
+    		   data:$('#choice_form').serialize(),
+    		   success: function(data){
+    			   $('#sku_combination').html(data);
+    		   }
+    	   });
+    	}
+
     </script>
 @endsection

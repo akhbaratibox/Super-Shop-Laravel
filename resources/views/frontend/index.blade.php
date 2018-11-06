@@ -9,12 +9,12 @@
                     <div class="category-sidebar">
                         <div class="all-category">
                             <span>CATEGORIES</span>
-                            <a href="">See All ></a>
+                            <a href="{{ route('products') }}">See All ></a>
                         </div>
                         <ul class="categories">
                             @foreach ($categories as $key => $category)
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ route('products.category', $category->id) }}">
                                         <i class="icon-electronics-001 cat-icon"></i>
                                         <span class="cat-name">{{ $category->name }}</span>
                                     </a>
@@ -28,9 +28,9 @@
                                                                 @foreach ($category->subcategories as $subcategory)
                                                                     <div class="card">
                                                                         <ul class="sub-cat-items">
-                                                                            <li class="sub-cat-name"><a href="">{{ $subcategory->name }}</a></li>
+                                                                            <li class="sub-cat-name"><a href="{{ route('products.subcategory', $subcategory->id) }}">{{ $subcategory->name }}</a></li>
                                                                             @foreach ($subcategory->subsubcategories as $subsubcategory)
-                                                                                <li><a href="">{{ $subsubcategory->name }}</a></li>
+                                                                                <li><a href="{{ route('products.subsubcategory', $subsubcategory->id) }}">{{ $subsubcategory->name }}</a></li>
                                                                             @endforeach
                                                                         </ul>
                                                                     </div>

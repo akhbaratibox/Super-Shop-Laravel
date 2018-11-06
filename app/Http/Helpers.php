@@ -5,6 +5,7 @@ use App\BusinessSetting;
 use App\Product;
 use App\SubSubCategory;
 
+//highlights the selected navigation
 if (! function_exists('areActiveRoutes')) {
     function areActiveRoutes(Array $routes, $output = "active-link")
     {
@@ -32,6 +33,7 @@ if (! function_exists('combinations')) {
     }
 }
 
+//converts price to home default price
 if (! function_exists('single_price')) {
     function single_price($price)
     {
@@ -56,24 +58,16 @@ if (! function_exists('home_price')) {
         $product = Product::findOrFail($id);
         $lowest_price = $product->unit_price;
         $highest_price = $product->unit_price;
-        foreach (json_decode($product->subsubcategory->options) as $key => $choice) {
-            if($choice->type != 'text'){
-                foreach ($choice->options as $key => $option) {
-                    $str_price = $choice->name.'_'.$option.'_price';
-                    $str_variation = $choice->name.'_'.$option.'_variation';
-                    if(json_decode($product->price_variations)->$str_variation == 'decrease'){
-                        if(($temp = floatval($product->unit_price) - floatval(json_decode($product->price_variations)->$str_price)) < $lowest_price){
-                            $lowest_price = $temp;
-                        }
-                    }
-                    else{
-                        if(($temp = floatval($product->unit_price) + floatval(json_decode($product->price_variations)->$str_price)) > $highest_price){
-                            $highest_price = $temp;
-                        }
-                    }
-                }
+
+        foreach (json_decode($product->variations) as $key => $variation) {
+            if($lowest_price > $variation->price){
+                $lowest_price = $variation->price;
+            }
+            if($highest_price < $variation->price){
+                $highest_price = $variation->price;
             }
         }
+
         $business_settings = BusinessSetting::where('type', 'home_default_currency')->first();
         if($business_settings!=null){
             $currency = Currency::find($business_settings->value);
@@ -106,22 +100,13 @@ if (! function_exists('home_discounted_price')) {
         $product = Product::findOrFail($id);
         $lowest_price = $product->unit_price;
         $highest_price = $product->unit_price;
-        foreach (json_decode($product->subsubcategory->options) as $key => $choice) {
-            if($choice->type != 'text'){
-                foreach ($choice->options as $key => $option) {
-                    $str_price = $choice->name.'_'.$option.'_price';
-                    $str_variation = $choice->name.'_'.$option.'_variation';
-                    if(json_decode($product->price_variations)->$str_variation == 'decrease'){
-                        if(($temp = floatval($product->unit_price) - floatval(json_decode($product->price_variations)->$str_price)) < $lowest_price){
-                            $lowest_price = $temp;
-                        }
-                    }
-                    else{
-                        if(($temp = floatval($product->unit_price) + floatval(json_decode($product->price_variations)->$str_price)) > $highest_price){
-                            $highest_price = $temp;
-                        }
-                    }
-                }
+
+        foreach (json_decode($product->variations) as $key => $variation) {
+            if($lowest_price > $variation->price){
+                $lowest_price = $variation->price;
+            }
+            if($highest_price < $variation->price){
+                $highest_price = $variation->price;
             }
         }
 

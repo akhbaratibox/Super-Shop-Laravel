@@ -48,9 +48,8 @@
 			</div>
 			<div class="col-lg-3">
 				<input type="number" name="price_{{ $str }}" value="@php
-                    $price_str = 'price_'.$str;
-                    if(isset(json_decode($product->variations)->$price_str)){
-                        echo json_decode($product->variations)->$price_str;
+                    if(isset(json_decode($product->variations)->$str->price)){
+                        echo json_decode($product->variations)->$str->price;
                     }
                     else{
                         echo $unit_price;
@@ -62,9 +61,8 @@
 			</div>
 			<div class="col-lg-3">
 				<input type="number" name="qty_{{ $str }}" value="@php
-                    $qty_str = 'qty_'.$str;
-                    if(isset(json_decode($product->variations)->$qty_str)){
-                        echo json_decode($product->variations)->$qty_str;
+                    if(isset(json_decode($product->variations)->str->qty)){
+                        echo json_decode($product->variations)->$str->qty;
                     }
                     else{
                         echo '10';

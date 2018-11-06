@@ -60,18 +60,18 @@
                     @csrf
                     <input type="hidden" name="id" value="{{ $product->id }}">
 
-                    @foreach (json_decode($product->subsubcategory->options) as $key => $option)
+                    @foreach (json_decode($product->choice_options) as $key => $choice)
 
                     <div class="row no-gutters">
                         <div class="col-2">
-                            <div class="product-description-label">{{ $option->title }}:</div>
+                            <div class="product-description-label">{{ $choice->title }}:</div>
                         </div>
                         <div class="col-10">
                             <ul class="list-inline checkbox-alphanumeric checkbox-alphanumeric--style-1 mb-2">
-                                @foreach ($option->options as $key => $options)
+                                @foreach ($choice->options as $key => $option)
                                     <li>
-                                        <input type="radio" id="{{ $option->name }}-{{ $options }}" name="{{ $option->name }}" value="{{ $options }}" <?php if($key == 0) echo "checked";?>>
-                                        <label for="{{ $option->name }}-{{ $options }}">{{ $options }}</label>
+                                        <input type="radio" id="{{ $choice->name }}-{{ $option }}" name="{{ $choice->name }}">
+                                        <label for="{{ $choice->name }}-{{ $option }}">{{ $option }}</label>
                                     </li>
                                 @endforeach
                             </ul>

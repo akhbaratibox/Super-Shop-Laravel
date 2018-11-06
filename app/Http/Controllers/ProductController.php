@@ -102,7 +102,7 @@ class ProductController extends Controller
                 $str = 'choice_options_'.$no;
                 $item['name'] = 'choice_'.$no;
                 $item['title'] = $request->choice[$key];
-                $item['options'] = $request[$str];
+                $item['options'] = explode(',', implode('|', $request[$str]));
                 array_push($choice_options, $item);
             }
         }
@@ -142,9 +142,11 @@ class ProductController extends Controller
             				}
                         }
                     }
-                    $variations['price_'.$str] = $request['price_'.$str];
-                    $variations['sku_'.$str] = $request['sku_'.$str];
-                    $variations['qty_'.$str] = $request['qty_'.$str];
+                    $item = array();
+                    $item['price'] = $request['price_'.$str];
+                    $item['sku'] = $request['sku_'.$str];
+                    $item['qty'] = $request['qty_'.$str];
+                    $variations[$str] = $item;
                 }
             }
         }
@@ -237,8 +239,6 @@ class ProductController extends Controller
         $product->discount = $request->discount;
         $product->discount_type = $request->discount_type;
 
-        $product->slug = preg_replace('/\s+/', '-', $request->name).'-'.str_random(5);
-
         if($request->has('colors_active')){
             if(count($request->colors) > 0){
                 $product->colors = json_encode($request->colors);
@@ -256,7 +256,7 @@ class ProductController extends Controller
                 $str = 'choice_options_'.$no;
                 $item['name'] = 'choice_'.$no;
                 $item['title'] = $request->choice[$key];
-                $item['options'] = $request[$str];
+                $item['options'] = explode(',', implode('|', $request[$str]));
                 array_push($choice_options, $item);
             }
         }
@@ -296,9 +296,11 @@ class ProductController extends Controller
             				}
                         }
                     }
-                    $variations['price_'.$str] = $request['price_'.$str];
-                    $variations['sku_'.$str] = $request['sku_'.$str];
-                    $variations['qty_'.$str] = $request['qty_'.$str];
+                    $item = array();
+                    $item['price'] = $request['price_'.$str];
+                    $item['sku'] = $request['sku_'.$str];
+                    $item['qty'] = $request['qty_'.$str];
+                    $variations[$str] = $item;
                 }
             }
         }

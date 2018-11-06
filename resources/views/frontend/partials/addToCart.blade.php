@@ -70,7 +70,7 @@
                             <ul class="list-inline checkbox-alphanumeric checkbox-alphanumeric--style-1 mb-2">
                                 @foreach ($choice->options as $key => $option)
                                     <li>
-                                        <input type="radio" id="{{ $choice->name }}-{{ $option }}" name="{{ $choice->name }}">
+                                        <input type="radio" id="{{ $choice->name }}-{{ $option }}" name="{{ $choice->name }}" value="{{ $option }}" <?php if($key == 0) echo "checked";?> >
                                         <label for="{{ $choice->name }}-{{ $option }}">{{ $option }}</label>
                                     </li>
                                 @endforeach
@@ -80,21 +80,23 @@
 
                     @endforeach
 
-                    <div class="row no-gutters">
-                        <div class="col-2">
-                            <div class="product-description-label">Color:</div>
+                    @if(count(json_decode($product->colors)) > 0)
+                        <div class="row no-gutters">
+                            <div class="col-2">
+                                <div class="product-description-label">Color:</div>
+                            </div>
+                            <div class="col-10">
+                                <ul class="list-inline checkbox-color mb-1">
+                                    @foreach (json_decode($product->colors) as $key => $color)
+                                        <li>
+                                            <input type="radio" id="{{ $product->id }}-color-{{ $key }}" name="color" value="{{ $color }}" <?php if($key == 0) echo "checked";?> >
+                                            <label style="background: {{ $color }};" for="{{ $product->id }}-color-{{ $key }}" data-toggle="tooltip"></label>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
-                        <div class="col-10">
-                            <ul class="list-inline checkbox-color mb-1">
-                                @foreach (json_decode($product->colors) as $key => $color)
-                                    <li>
-                                        <input type="radio" id="{{ $product->id }}-color-{{ $key }}" name="color" value="{{ $color }}" <?php if($key == 0) echo "checked";?> >
-                                        <label style="background: {{ $color }};" for="{{ $product->id }}-color-{{ $key }}" data-toggle="tooltip"></label>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
+                    @endif
 
                     <hr>
 

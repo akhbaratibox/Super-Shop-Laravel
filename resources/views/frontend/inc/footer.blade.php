@@ -144,43 +144,23 @@
 
                         <div class="photostream">
                             <span class="photo-wrapper">
-                                <a href="assets/images/prv/blog/img-1-200x200.jpg" data-fancybox>
-                                    <img src="assets/images/prv/blog/img-1-200x200.jpg">
+                                <a href="{{ asset('frontend/images/prv/blog/img-1-200x200.jpg') }}" data-fancybox>
+                                    <img src="{{ asset('frontend/images/prv/blog/img-1-200x200.jpg') }}">
                                 </a>
                             </span>
                             <span class="photo-wrapper">
-                                <a href="assets/images/prv/blog/img-2-200x200.jpg" data-fancybox>
-                                    <img src="assets/images/prv/blog/img-2-200x200.jpg">
+                                <a href="{{ asset('frontend/images/prv/blog/img-2-200x200.jpg') }}" data-fancybox>
+                                    <img src="{{ asset('frontend/images/prv/blog/img-2-200x200.jpg') }}">
                                 </a>
                             </span>
                             <span class="photo-wrapper">
-                                <a href="assets/images/prv/blog/img-3-200x200.jpg" data-fancybox>
-                                    <img src="assets/images/prv/blog/img-3-200x200.jpg">
+                                <a href="{{ asset('frontend/images/prv/blog/img-3-200x200.jpg') }}" data-fancybox>
+                                    <img src="{{ asset('frontend/images/prv/blog/img-3-200x200.jpg') }}">
                                 </a>
                             </span>
                             <span class="photo-wrapper">
-                                <a href="assets/images/prv/blog/img-4-200x200.jpg" data-fancybox>
-                                    <img src="assets/images/prv/blog/img-4-200x200.jpg">
-                                </a>
-                            </span>
-                            <span class="photo-wrapper">
-                                <a href="assets/images/prv/blog/img-5-200x200.jpg" data-fancybox>
-                                    <img src="assets/images/prv/blog/img-5-200x200.jpg">
-                                </a>
-                            </span>
-                            <span class="photo-wrapper">
-                                <a href="assets/images/prv/blog/img-6-200x200.jpg" data-fancybox>
-                                    <img src="assets/images/prv/blog/img-6-200x200.jpg">
-                                </a>
-                            </span>
-                            <span class="photo-wrapper">
-                                <a href="assets/images/prv/blog/img-7-200x200.jpg" data-fancybox>
-                                    <img src="assets/images/prv/blog/img-7-200x200.jpg">
-                                </a>
-                            </span>
-                            <span class="photo-wrapper">
-                                <a href="assets/images/prv/blog/img-8-200x200.jpg" data-fancybox>
-                                    <img src="assets/images/prv/blog/img-8-200x200.jpg">
+                                <a href="{{ asset('frontend/images/prv/blog/img-4-200x200.jpg') }}" data-fancybox>
+                                    <img src="{{ asset('frontend/images/prv/blog/img-4-200x200.jpg') }}">
                                 </a>
                             </span>
                         </div>

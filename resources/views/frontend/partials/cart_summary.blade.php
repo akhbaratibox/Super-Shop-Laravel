@@ -25,8 +25,11 @@
                                     $product = \App\Product::find($cartItem['id']);
                                     $total = $total + $cartItem['price']*$cartItem['quantity'];
                                     $product_name_with_choice = $product->name;
-                                    foreach (json_decode($product->subsubcategory->options) as $option){
-                                        $str = $option->name; // example $str =  choice_0
+                                    if(isset($cartItem['color'])){
+                                        $product_name_with_choice .= ' - '.\App\Color::where('code', $cartItem['color'])->first()->name;
+                                    }
+                                    foreach (json_decode($product->choice_options) as $choice){
+                                        $str = $choice->name; // example $str =  choice_0
                                         $product_name_with_choice .= ' - '.$cartItem[$str];
                                     }
                                     @endphp
@@ -123,8 +126,11 @@
                                 $product = \App\Product::find($cartItem['id']);
                                 $total = $total + $cartItem['price']*$cartItem['quantity'];
                                 $product_name_with_choice = $product->name;
-                                foreach (json_decode($product->subsubcategory->options) as $option){
-                                    $str = $option->name; // example $str =  choice_0
+                                if(isset($cartItem['color'])){
+                                    $product_name_with_choice .= ' - '.\App\Color::where('code', $cartItem['color'])->first()->name;
+                                }
+                                foreach (json_decode($product->choice_options) as $choice){
+                                    $str = $choice->name; // example $str =  choice_0
                                     $product_name_with_choice .= ' - '.$cartItem[$str];
                                 }
                                 @endphp

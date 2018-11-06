@@ -7,6 +7,7 @@ use App\Product;
 use App\SubSubCategory;
 use App\Category;
 use Session;
+use App\Color;
 
 class CartController extends Controller
 {
@@ -34,18 +35,19 @@ class CartController extends Controller
 
         $data = array();
         $data['id'] = $product->id;
-        foreach (json_decode(Product::find($request->id)->subsubcategory->options) as $key => $option) {
-            $data[$option->name] = $request[$option->name];
-            $price_variations = json_decode($product->price_variations);
-            $str_price = $option->name.'_'.$request[$option->name].'_price'; // price key, example choice_0_S_price
-            $str_variation = $option->name.'_'.$request[$option->name].'_variation'; // variation key, example choice_0_S_variation
-            if($price_variations->$str_variation == 'decrease'){
-                $price = $product->unit_price - $price_variations->$str_price;
-            }
-            else {
-                $price = $product->unit_price + $price_variations->$str_price;
-            }
+        $str = '';
+
+        if($request->has('color')){
+            $data['color'] = $request['color'];
+            $str = Color::where('code', $request['color'])->first()->name;
         }
+
+        foreach (json_decode(Product::find($request->id)->choice_options) as $key => $choice) {
+            $data[$choice->name] = $request[$choice->name];
+            $str .= '-'.$request[$choice->name];
+        }
+
+        $price = json_decode($product->variations)->$str->price;
 
         //discount calculation
         if($product->discount_type == 'percent'){
@@ -55,7 +57,6 @@ class CartController extends Controller
             $price -= $product->discount;
         }
 
-        $data['color'] = $request['color'];
         $data['quantity'] = $request['quantity'];
         $data['price'] = $price;
 

@@ -6,59 +6,11 @@
         <div class="container">
             <div class="row cols-xs-space cols-sm-space cols-md-space">
                 <div class="col-lg-3">
-                    <div class="sidebar sidebar--style-3 no-border stickyfill">
-                        <div class="widget">
-                            <!-- Profile picture -->
-                            <div class="profile-picture profile-picture--style-2">
-                                <img src="{{ asset('frontend/images/prv/people/person-7.jpg')}}" class="img-center">
-                                <a href="#" class="btn-aux">
-                                    <i class="ion ion-edit"></i>
-                                </a>
-                            </div>
-
-                            <!-- Profile details -->
-                            <div class="profile-details mb-4">
-                                <h2 class="heading heading-6 strong-600 profile-name ">{{ Auth::user()->name }}</h2>
-                            </div>
-
-                            <hr>
-
-                            <ul class="categories categories--style-3 mt-3">
-                                <li>
-                                    <a href="html/e-commerce/account-settings.html">
-                                        <i class="ion-gear-b"></i>
-                                        <span class="category-name">
-                                            Settings
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="html/e-commerce/account-orders.html">
-                                        <i class="ion-calendar"></i>
-                                        <span class="category-name">
-                                            Orders
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="html/e-commerce/account-wishlist.html" class="active">
-                                        <i class="ion-heart"></i>
-                                        <span class="category-name">
-                                            Wishlist
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="html/e-commerce/account-notifications.html">
-                                        <i class="ion-email-unread"></i>
-                                        <span class="category-name">
-                                            Notifications
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    @if(Auth::user()->user_type == 'seller')
+                        @include('frontend.inc.seller_side_nav')
+                    @elseif(Auth::user()->user_type == 'customer')
+                        @include('frontend.inc.customer_side_nav')
+                    @endif
                 </div>
 
                 <div class="col-lg-9">

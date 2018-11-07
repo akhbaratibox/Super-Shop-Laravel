@@ -41,13 +41,31 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the admin dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function admin_dashboard()
+    {
+        return view('dashboard');
+    }
+
+    /**
+     * Show the customer/seller dashboard.
      *
      * @return \Illuminate\Http\Response
      */
     public function dashboard()
     {
-        return view('dashboard');
+        if(Auth::user()->user_type == 'seller'){
+            return view('frontend.seller.dashboard');
+        }
+        elseif(Auth::user()->user_type == 'customer'){
+            return view('frontend.customer.dashboard');
+        }
+        else {
+            abort(404);
+        }
     }
 
     /**
@@ -57,57 +75,55 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //Session::flush();
-        $categories = Category::all();
-        return view('frontend.index', compact('categories'));
+        return view('frontend.index');
     }
 
     public function product($slug)
     {
         $product  = Product::where('slug', $slug)->first();
         if($product!=null){
-            $categories = Category::all();
-            return view('frontend.product_details', compact('categories', 'product'));
+            return view('frontend.product_details', compact('product'));
         }
         abort(404);
     }
 
     public function listing(Request $request)
     {
-        $categories = Category::all();
         $products = Product::paginate(9);
-        return view('frontend.product_listing', compact('categories', 'products'));
+        return view('frontend.product_listing', compact('products'));
     }
 
     public function listing_by_category($id)
     {
-        $categories = Category::all();
         $products = Product::where('category_id', $id)->paginate(9);
         $category_id = $id;
-        return view('frontend.product_listing', compact('categories', 'products', 'category_id'));
+        return view('frontend.product_listing', compact('products', 'category_id'));
     }
 
     public function listing_by_subcategory($id)
     {
-        $categories = Category::all();
         $products = Product::where('subcategory_id', $id)->paginate(9);
         $subcategory_id = $id;
-        return view('frontend.product_listing', compact('categories', 'products', 'subcategory_id'));
+        return view('frontend.product_listing', compact('products', 'subcategory_id'));
     }
 
     public function listing_by_subsubcategory($id)
     {
-        $categories = Category::all();
         $products = Product::where('subsubcategory_id', $id)->paginate(9);
         $subsubcategory_id = $id;
-        return view('frontend.product_listing', compact('categories', 'products', 'subsubcategory_id'));
+        return view('frontend.product_listing', compact('products', 'subsubcategory_id'));
     }
 
     public function listing_by_brand($id)
     {
-        $categories = Category::all();
         $products = Product::where('brand_id', $id)->paginate(9);
-        return view('frontend.product_listing', compact('categories', 'products'));
+        return view('frontend.product_listing', compact('products'));
+    }
+
+    public function show_product_upload_form(Request $request)
+    {
+        $categories = Category::all();
+        return view('frontend.seller_product_upload', compact('categories'));
     }
 
     public function login()
@@ -115,13 +131,6 @@ class HomeController extends Controller
         if(Auth::check()){
             return redirect()->route('home');
         }
-        $categories = Category::all();
-        return view('frontend.user_login', compact('categories'));
-    }
-
-    public function wishlist()
-    {
-        $categories = Category::all();
-        return view('frontend.wishlist', compact('categories'));
+        return view('frontend.user_login');
     }
 }

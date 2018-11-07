@@ -6,7 +6,7 @@
         <!--Brand logo & name-->
         <!--================================-->
         <div class="navbar-header">
-            <a href="{{route('dashboard')}}" class="navbar-brand">
+            <a href="{{route('admin.dashboard')}}" class="navbar-brand">
                 <img src="{{ asset('img/logo_shop.png') }}" alt="Nifty Logo" class="brand-icon">
                 <div class="brand-title">
                     <span class="brand-text">ActiveShop</span>

@@ -156,7 +156,12 @@ class ProductController extends Controller
 
         if($product->save()){
             flash('Product has been inserted successfully')->success();
-            return view('products.index');
+            if(Auth::user()->user_type == 'admin'){
+                return view('products.index');
+            }
+            else{
+                return redirect()->route('dashboard');
+            }
         }
         else{
             flash('Something went wrong')->danger();
@@ -310,7 +315,12 @@ class ProductController extends Controller
 
         if($product->save()){
             flash('Product has been updated successfully')->success();
-            return view('products.index');
+            if(Auth::user()->user_type == 'admin'){
+                return view('products.index');
+            }
+            else{
+                return redirect()->route('dashboard');
+            }
         }
         else{
             flash('Something went wrong')->danger();
@@ -328,7 +338,12 @@ class ProductController extends Controller
     {
         if(Product::destroy($id)){
             flash('Product has been deleted successfully')->success();
-            return redirect()->route('products.index');
+            if(Auth::user()->user_type == 'admin'){
+                return view('products.index');
+            }
+            else{
+                return redirect()->route('dashboard');
+            }
         }
         else{
             flash('Something went wrong')->danger();

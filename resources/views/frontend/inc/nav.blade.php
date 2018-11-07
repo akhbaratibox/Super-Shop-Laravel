@@ -50,7 +50,7 @@
                 <ul class="inline-links">
                     @auth
                     <li>
-                        <a href="#" class="top-bar-item">{{ Auth::user()->name }}</a>
+                        <a href="{{ route('dashboard') }}" class="top-bar-item">{{ Auth::user()->name }}</a>
                     </li>
                     <li>
                         <a href="{{ route('logout') }}" class="top-bar-item">Logout</a>
@@ -88,7 +88,7 @@
                     <div class="form-group category-select">
                         <select class="form-control selectpicker">
                             <option value="">All Categories</option>
-                            @foreach ($categories as $key => $category)
+                            @foreach (\App\Category::all() as $key => $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>

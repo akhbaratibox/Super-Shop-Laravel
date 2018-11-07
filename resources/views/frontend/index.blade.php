@@ -12,7 +12,7 @@
                             <a href="{{ route('products') }}">See All ></a>
                         </div>
                         <ul class="categories">
-                            @foreach ($categories as $key => $category)
+                            @foreach (\App\Category::all() as $key => $category)
                                 <li>
                                     <a href="{{ route('products.category', $category->id) }}">
                                         <i class="icon-electronics-001 cat-icon"></i>
@@ -394,7 +394,7 @@
                             <div class="row-wrapper">
                                 <div class="row cols-xs-space cols-sm-space cols-md-space">
                                     @foreach (\App\Product::all() as $key => $product)
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-4 mb-3">
                                             <div class="card card-product z-depth-1-top z-depth-2--hover">
                                                 <div class="card-body">
                                                     <h2 class="heading heading-6 strong-600 mt-2 mb-3">

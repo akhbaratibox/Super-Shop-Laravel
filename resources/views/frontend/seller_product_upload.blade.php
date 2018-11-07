@@ -6,61 +6,7 @@
         <div class="container">
             <div class="row cols-xs-space cols-sm-space cols-md-space">
                 <div class="col-lg-3">
-                    <div class="sidebar sidebar--style-3 no-border stickyfill">
-                        <div class="widget mb-0">
-                            <div class="widget-profile-box text-center">
-                                <div class="image" style="background-image:url('assets/images/prv/people/person-7.jpg')"></div>
-                                <div class="name">John Doe</div>
-                            </div>
-                            <div class="widget-profile-menu">
-                                <ul class="categories categories--style-3">
-                                    <li>
-                                        <a href="../../html/e-commerce/account-orders.html">
-                                            <i class="ion-calendar"></i>
-                                            <span class="category-name">
-                                                Dashboard
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="../../html/e-commerce/account-orders.html" class="active">
-                                            <i class="ion-calendar"></i>
-                                            <span class="category-name">
-                                                Purchase History
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="../../html/e-commerce/account-wishlist.html">
-                                            <i class="ion-heart"></i>
-                                            <span class="category-name">
-                                                Wishlist
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="../../html/e-commerce/account-wishlist.html">
-                                            <i class="ion-heart"></i>
-                                            <span class="category-name">
-                                                Payment Gateway
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="../../html/e-commerce/account-wishlist.html">
-                                            <i class="ion-heart"></i>
-                                            <span class="category-name">
-                                                Manage Profile
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="widget-seller-btn pt-4">
-                                <a href="" class="btn btn-anim-primary w-100">Be A Seller</a>
-                            </div>
-                        </div>
-                    </div>
+                    @include('frontend.inc.seller_side_nav')
                 </div>
 
                 <div class="col-lg-9">
@@ -235,29 +181,6 @@
                                         </div>
                                         <div class="col-10">
                                             <input type="text" class="form-control mb-3" name="video_link" placeholder="Video link">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-box bg-white mt-4">
-                                <div class="form-box-title px-3 py-2">
-                                    Meta Tags
-                                </div>
-                                <div class="form-box-content p-3">
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <label>Keywords</label>
-                                        </div>
-                                        <div class="col-10">
-                                            <input type="text" class="form-control mb-3" placeholder="keyword, keyword">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <label>Keywords</label>
-                                        </div>
-                                        <div class="col-10">
-                                            <input type="text" class="form-control mb-3" placeholder="keyword, keyword">
                                         </div>
                                     </div>
                                 </div>

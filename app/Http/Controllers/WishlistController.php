@@ -16,8 +16,7 @@ class WishlistController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('frontend.view_wishlist', compact('categories'));
+        return view('frontend.view_wishlist');
     }
 
     /**

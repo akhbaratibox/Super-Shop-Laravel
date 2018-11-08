@@ -384,7 +384,7 @@
                                     <div class="fluid-paragraph py-2">
                                         <!-- 16:9 aspect ratio -->
                                         <div class="embed-responsive embed-responsive-16by9 mb-5">
-                                            <iframe class="embed-responsive-item" src="{{ $product->video_link }}"></iframe>
+                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ explode('=', $product->video_link)[1] }}"></iframe>
                                         </div>
                                     </div>
                                 </div>

@@ -22,16 +22,18 @@
                                 <div class="col-lg-6 col-12">
                                     <div class="float-right">
                                         <ul class="breadcrumb">
-                                            <li><a href="">Home</a></li>
-                                            <li><a href="">Dashboard</a></li>
-                                            <li><a href="">Products</a></li>
-                                            <li class="active"><a href="">Add Product</a></li>
+                                            <li><a href="{{ route('home') }}">Home</a></li>
+                                            <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                            <li><a href="{{ route('seller.products') }}">Products</a></li>
+                                            <li class="active"><a href="{{ route('seller.products.edit', $product->id) }}">Edit Product</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <form class="" action="{{route('products.store')}}" method="POST" enctype="multipart/form-data" id="choice_form">
+                        <form class="" action="{{route('products.update', $product->id)}}" method="POST" enctype="multipart/form-data" id="choice_form">
+                            <input name="_method" type="hidden" value="POST">
+                            <input type="hidden" name="id" value="{{ $product->id }}">
                             @csrf
                     		<input type="hidden" name="added_by" value="seller">
 
@@ -45,7 +47,7 @@
                                             <label>{{__('web.product_name')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="text" class="form-control mb-3" name="name" placeholder="{{__('web.product_name')}}">
+                                            <input type="text" class="form-control mb-3" name="name" placeholder="{{__('web.product_name')}}" value="{{ $product->name }}">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -53,10 +55,10 @@
                                             <label>Product Category <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
-                                            <div class="form-control mb-3 c-pointer" data-toggle="modal" data-target="#categorySelectModal" id="product_category">Select a category</div>
-                                            <input type="hidden" name="category_id" id="category_id" value="" required>
-                                            <input type="hidden" name="subcategory_id" id="subcategory_id" value="" required>
-                                            <input type="hidden" name="subsubcategory_id" id="subsubcategory_id" value="" required>
+                                            <div class="form-control mb-3 c-pointer" data-toggle="modal" data-target="#categorySelectModal" id="product_category">{{ $product->category->name.'>'.$product->subcategory->name.'>'.$product->subsubcategory->name }}</div>
+                                            <input type="hidden" name="category_id" id="category_id" value="{{ $product->category_id }}" required>
+                                            <input type="hidden" name="subcategory_id" id="subcategory_id" value="{{ $product->subcategory_id }}" required>
+                                            <input type="hidden" name="subsubcategory_id" id="subsubcategory_id" value="{{ $product->subsubcategory_id }}" required>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -66,7 +68,9 @@
                                         <div class="col-10">
                                             <div class="mb-3">
                                                 <select class="form-control mb-3 selectpicker" data-placeholder="Select a brand" id="brands" name="brand_id">
-
+                                                    @foreach (json_decode($product->subsubcategory->brands) as $key => $brand_id)
+                                                        <option value="{{ \App\Brand::find($brand_id)->id }}" <?php if($brand_id == $product->brand_id) echo "selected";?> >{{ \App\Brand::find($brand_id)->name }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -76,7 +80,7 @@
                                             <label>Product Unit <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="text" class="form-control mb-3" name="unit" placeholder="Product unit">
+                                            <input type="text" class="form-control mb-3" name="unit" placeholder="Product unit" value="{{ $product->unit }}">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -84,7 +88,7 @@
                                             <label>Product Tag <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="text" class="form-control mb-3 tagsInput" name="tags[]" placeholder="Type & hit enter" data-role="tagsinput">
+                                            <input type="text" class="form-control mb-3 tagsInput" name="tags[]" placeholder="Type & hit enter" data-role="tagsinput" value="{{ implode(',', json_decode($product->tags)) }}">
                                         </div>
                                     </div>
                                 </div>
@@ -168,9 +172,9 @@
                                         <div class="col-10">
                                             <div class="mb-3">
                                                 <select class="form-control selectpicker" data-minimum-results-for-search="Infinity" name="video_provider">
-                                                    <option value="youtube">Youtube</option>
-            										<option value="dailymotion">Dailymotion</option>
-            										<option value="vimeo">Vimeo</option>
+                                                    <option value="youtube" <?php if($product->video_provider == 'youtube') echo "selected";?> >Youtube</option>
+            										<option value="dailymotion" <?php if($product->video_provider == 'dailymotion') echo "selected";?> >Dailymotion</option>
+            										<option value="vimeo" <?php if($product->video_provider == 'vimeo') echo "selected";?> >Vimeo</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -180,7 +184,7 @@
                                             <label>Video URL</label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="text" class="form-control mb-3" name="video_link" placeholder="Video link">
+                                            <input type="text" class="form-control mb-3" name="video_link" placeholder="Video link" value="{{ $product->video_link }}">
                                         </div>
                                     </div>
                                 </div>
@@ -219,20 +223,33 @@
         								</div>
         								<div class="col-9">
         									<select class="form-control selectpicker" name="colors[]" id="colors" multiple>
-        										@foreach (\App\Color::orderBy('name', 'asc')->get() as $key => $color)
-        											<option value="{{ $color->code }}">{{ $color->name }}</option>
+                                                @foreach (\App\Color::orderBy('name', 'asc')->get() as $key => $color)
+        											<option value="{{ $color->code }}" <?php if(in_array($color->code, json_decode($product->colors))) echo 'selected'?> >{{ $color->name }}</option>
         										@endforeach
         									</select>
         								</div>
         								<div class="col-1">
         									<label class="switch" style="margin-top:5px;">
-        										<input value="1" type="checkbox" name="colors_active" checked>
+                                                <input value="1" type="checkbox" name="colors_active" <?php if(count(json_decode($product->colors)) > 0) echo "checked";?> >
         										<span class="slider round"></span>
         									</label>
         								</div>
                                     </div>
                                     <div id="customer_choice_options">
-
+                                        @foreach (json_decode($product->choice_options) as $key => $choice_option)
+        									<div class="row mb-3">
+        										<div class="col-2">
+        											<input type="hidden" name="choice_no[]" value="{{ explode('_', $choice_option->name)[1] }}">
+        											<input type="text" class="form-control" name="choice[]" value="{{ $choice_option->title }}" placeholder="Choice Title">
+        										</div>
+        										<div class="col-9">
+        											<input type="text" class="form-control" name="choice_options_{{ explode('_', $choice_option->name)[1] }}[]" placeholder="Enter choice values" value="{{ implode(',', $choice_option->options) }}" data-role="tagsinput" onchange="update_sku()">
+        										</div>
+        										<div class="col-1">
+                                                    <button type="button" onclick="delete_row(this)" class="btn btn-link btn-icon text-danger"><i class="fa fa-trash-o"></i></button>
+                                                </div>
+        									</div>
+        								@endforeach
                                     </div>
                                     <div class="row">
                                         <div class="col-2">
@@ -251,7 +268,7 @@
                                             <label>Unit Price (Base Price) <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="unit_price" placeholder="Unit Price (Base Price)">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="unit_price" placeholder="Unit Price (Base Price)" value="{{$product->unit_price}}">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -259,7 +276,7 @@
                                             <label>Purchase Price</label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="purchase_price" placeholder="Purchase Price">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="purchase_price" placeholder="Purchase Price" value="{{$product->purchase_price}}">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -267,13 +284,13 @@
                                             <label>Tax</label>
                                         </div>
                                         <div class="col-8">
-                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="tax" placeholder="Tax">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="tax" placeholder="Tax" value="{{$product->tax}}">
                                         </div>
                                         <div class="col-2">
                                             <div class="mb-3">
                                                 <select class="form-control selectpicker" name="tax_type" data-minimum-results-for-search="Infinity">
-                                                    <option value="1">$</option>
-                                                    <option value="2">%</option>
+                                                    <option value="amount" <?php if($product->tax_type == 'amount') echo "selected";?> >$</option>
+                                                    <option value="percent" <?php if($product->tax_type == 'percent') echo "selected";?> >%</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -283,13 +300,13 @@
                                             <label>Discount</label>
                                         </div>
                                         <div class="col-8">
-                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="discount" placeholder="Discount">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="discount" placeholder="Discount" value="{{$product->discount}}">
                                         </div>
                                         <div class="col-2">
                                             <div class="mb-3">
                                                 <select class="form-control selectpicker" name="discount_type" data-minimum-results-for-search="Infinity">
-                                                    <option value="1">$</option>
-                                                    <option value="2">%</option>
+                                                    <option value="amount" <?php if($product->discount_type == 'amount') echo "selected";?> >$</option>
+            	                                	<option value="percent" <?php if($product->discount_type == 'percent') echo "selected";?> >%</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -312,7 +329,7 @@
                                         </div>
                                         <div class="col-10">
                                             <div class="mb-3">
-                                                <textarea class="summernote" name="description" data-ghfgh="fgdgd"></textarea>
+                                                <textarea class="summernote" name="description" data-ghfgh="fgdgd">{{$product->description}}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -547,7 +564,7 @@
     	function update_sku(){
             $.ajax({
     		   type:"POST",
-    		   url:'{{ route('products.sku_combination') }}',
+    		   url:'{{ route('products.sku_combination_edit') }}',
     		   data:$('#choice_form').serialize(),
     		   success: function(data){
     			   $('#sku_combination').html(data);

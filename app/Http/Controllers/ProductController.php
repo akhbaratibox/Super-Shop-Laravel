@@ -160,7 +160,7 @@ class ProductController extends Controller
                 return view('products.index');
             }
             else{
-                return redirect()->route('dashboard');
+                return redirect()->route('seller.products');
             }
         }
         else{
@@ -319,7 +319,7 @@ class ProductController extends Controller
                 return view('products.index');
             }
             else{
-                return redirect()->route('dashboard');
+                return redirect()->route('seller.products');
             }
         }
         else{
@@ -342,7 +342,7 @@ class ProductController extends Controller
                 return view('products.index');
             }
             else{
-                return redirect()->route('dashboard');
+                return redirect()->route('seller.products');
             }
         }
         else{

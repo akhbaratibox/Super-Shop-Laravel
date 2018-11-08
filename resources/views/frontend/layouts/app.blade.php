@@ -67,6 +67,8 @@
 
     @include('frontend.inc.footer')
 
+    @include('frontend.partials.modal')
+
 </div><!-- END: body-wrap -->
 
 <!-- SCRIPTS -->

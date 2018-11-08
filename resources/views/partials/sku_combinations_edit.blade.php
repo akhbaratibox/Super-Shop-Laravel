@@ -65,7 +65,7 @@
 			</td>
 			<td>
 				<input type="number" name="qty_{{ $str }}" value="@php
-                    if(isset(json_decode($product->variations)->str->qty)){
+                    if(isset(json_decode($product->variations)->$str->qty)){
                         echo json_decode($product->variations)->$str->qty;
                     }
                     else{

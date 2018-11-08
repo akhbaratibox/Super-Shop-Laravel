@@ -123,7 +123,20 @@ class HomeController extends Controller
     public function show_product_upload_form(Request $request)
     {
         $categories = Category::all();
-        return view('frontend.seller_product_upload', compact('categories'));
+        return view('frontend.seller.product_upload', compact('categories'));
+    }
+
+    public function show_product_edit_form(Request $request, $id)
+    {
+        $categories = Category::all();
+        $product = Product::find($id);
+        return view('frontend.seller.product_edit', compact('categories', 'product'));
+    }
+
+    public function seller_product_list(Request $request)
+    {
+        $products = Product::where('user_id', Auth::user()->id)->paginate(10);
+        return view('frontend.seller.products', compact('products'));
     }
 
     public function login()

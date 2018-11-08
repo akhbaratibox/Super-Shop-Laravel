@@ -48,7 +48,15 @@
                                         <td>{{$key+1}}</td>
                                         <td>{{$product->name}}</td>
                                         <td><img class="img-md" src="{{ asset(json_decode($product->photos)[0])}}" alt="Image"></td>
-                                        <td>{{$product->current_stock}}</td>
+                                        <td>
+                                            @php
+                                                $qty = 0;
+                                                foreach (json_decode($product->variations) as $key => $variation) {
+                                                    $qty += $variation->qty;
+                                                }
+                                                echo $qty;
+                                            @endphp
+                                        </td>
                                         <td>{{number_format($product->unit_price,2)}}</td>
                                         <td><label class="switch">
                                             <input onchange="update_todays_deal(this)" value="{{ $product->id }}" type="checkbox" <?php if($product->todays_deal == 1) echo "checked";?> >

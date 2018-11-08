@@ -100,13 +100,7 @@
 	                        <div class="form-group">
 	                            <label class="col-lg-2 control-label">{{__('web.tags')}}</label>
 	                            <div class="col-lg-7">
-	                            	@php
-	                            		$str = '';
-	                            		foreach (json_decode($product->tags) as $key => $tag) {
-	                            			$str .= $tag;
-	                            		}
-	                            	@endphp
-	                                <input type="text" class="form-control" name="tags[]" id="tags" value="{{$str}}" placeholder="Type to add a tag" data-role="tagsinput">
+	                                <input type="text" class="form-control" name="tags[]" id="tags" value="{{ implode(',', json_decode($product->tags)) }}" placeholder="Type to add a tag" data-role="tagsinput">
 	                            </div>
 	                        </div>
 				        </div>

@@ -7,7 +7,7 @@
         <div class="widget-profile-menu">
             <ul class="categories categories--style-3">
                 <li>
-                    <a href="{{ route('dashboard') }}" class="active">
+                    <a href="{{ route('dashboard') }}" class="{{ areActiveRoutesHome(['dashboard'])}}">
                         <i class="ion-calendar"></i>
                         <span class="category-name">
                             Dashboard
@@ -31,7 +31,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('seller.product.upload') }}">
+                    <a href="{{ route('seller.products') }}" class="{{ areActiveRoutesHome(['seller.products', 'seller.products.upload', 'seller.products.edit'])}}">
                         <i class="ion-heart"></i>
                         <span class="category-name">
                             Products

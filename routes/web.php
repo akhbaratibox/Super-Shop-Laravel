@@ -52,7 +52,9 @@ Route::group(['middleware' => ['auth']], function(){
 });
 
 Route::group(['prefix' =>'seller', 'middleware' => ['seller']], function(){
-	Route::get('/product/upload', 'HomeController@show_product_upload_form')->name('seller.product.upload');
+	Route::get('/products', 'HomeController@seller_product_list')->name('seller.products');
+	Route::get('/product/upload', 'HomeController@show_product_upload_form')->name('seller.products.upload');
+	Route::get('/product/{id}/edit', 'HomeController@show_product_edit_form')->name('seller.products.edit');
 });
 
 Route::post('/products/store/','ProductController@store')->name('products.store');

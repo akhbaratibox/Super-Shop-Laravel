@@ -26,10 +26,9 @@
                                 <div class="col-lg-6 col-12">
                                     <div class="float-right">
                                         <ul class="breadcrumb">
-                                            <li><a href="">Home</a></li>
-                                            <li><a href="">Dashboard</a></li>
-                                            <li><a href="">Products</a></li>
-                                            <li class="active"><a href="">Wishlist</a></li>
+                                            <li><a href="{{ route('home') }}">Home</a></li>
+                                            <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                            <li class="active"><a href="{{ route('wishlists.index') }}">Wishlist</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -39,7 +38,7 @@
                         <!-- Wishlist items -->
 
                         <div class="row shop-default-wrapper shop-cards-wrapper shop-tech-wrapper mt-4">
-                            @foreach (Auth::user()->wishlists as $key => $wishlist)
+                            @foreach ($wishlists as $key => $wishlist)
                                 <div class="col-lg-4" id="wishlist_{{ $wishlist->id }}">
                                     <div class="card card-product mb-3">
                                         <div class="card-body">
@@ -101,13 +100,7 @@
 
                         <div class="pagination-wrapper py-4">
                             <ul class="pagination justify-content-end">
-                                <li class="page-item"><a class="page-link" href="#">«</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                <li class="page-item"><a class="page-link" href="#">»</a></li>
+                                {{ $wishlists->links() }}
                             </ul>
                         </div>
 

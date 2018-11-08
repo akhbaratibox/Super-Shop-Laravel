@@ -16,7 +16,8 @@ class WishlistController extends Controller
      */
     public function index()
     {
-        return view('frontend.view_wishlist');
+        $wishlists = Wishlist::where('user_id', Auth::user()->id)->paginate(9);
+        return view('frontend.view_wishlist', compact('wishlists'));
     }
 
     /**

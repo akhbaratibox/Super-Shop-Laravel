@@ -76,7 +76,7 @@
                                 </li>
                                 <li>
                                     <label class="payment_option">
-                                        <input type="radio" id="" name="payment_option" checked>
+                                        <input type="radio" id="" name="payment_option" value="paypal" checked>
                                         <span>
                                             <img src="{{ asset('frontend/images/icons/cards/paypal-256x160.png')}}" class="img-fluid">
                                         </span>
@@ -133,8 +133,11 @@
                                     $product = \App\Product::find($cartItem['id']);
                                     $total = $total + $cartItem['price']*$cartItem['quantity'];
                                     $product_name_with_choice = $product->name;
-                                    foreach (json_decode($product->subsubcategory->options) as $option){
-                                        $str = $option->name; // example $str =  choice_0
+                                    if(isset($cartItem['color'])){
+                                        $product_name_with_choice .= ' - '.\App\Color::where('code', $cartItem['color'])->first()->name;
+                                    }
+                                    foreach (json_decode($product->choice_options) as $choice){
+                                        $str = $choice->name; // example $str =  choice_0
                                         $product_name_with_choice .= ' - '.$cartItem[$str];
                                     }
                                     @endphp

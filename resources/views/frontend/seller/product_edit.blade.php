@@ -440,6 +440,7 @@
         $(document).ready(function(){
             $('#subcategory_list').hide();
             $('#subsubcategory_list').hide();
+            update_sku();
         });
 
         function list_item_highlight(el){

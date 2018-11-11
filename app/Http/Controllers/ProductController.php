@@ -124,30 +124,31 @@ class ProductController extends Controller
                 $my_str = implode('|',$request[$name]);
                 array_push($options, explode(',', $my_str));
             }
-            $combinations = combinations($options);
-            if(count($combinations[0]) > 0){
-                foreach ($combinations as $key => $combination){
-                    $str = '';
-                    foreach ($combination as $key => $item){
-                        if($key > 0 ){
-                            $str .= '-'.$item;
+        }
+
+        $combinations = combinations($options);
+        if(count($combinations[0]) > 0){
+            foreach ($combinations as $key => $combination){
+                $str = '';
+                foreach ($combination as $key => $item){
+                    if($key > 0 ){
+                        $str .= '-'.$item;
+                    }
+                    else{
+                        if($request->has('colors_active')){
+                            $color_name = \App\Color::where('code', $item)->first()->name;
+                            $str .= $color_name;
                         }
                         else{
-                            if($request->has('colors_active')){
-                                $color_name = \App\Color::where('code', $item)->first()->name;
-                                $str .= $color_name;
-            				}
-            				else{
-            					$str .= $item;
-            				}
+                            $str .= $item;
                         }
                     }
-                    $item = array();
-                    $item['price'] = $request['price_'.$str];
-                    $item['sku'] = $request['sku_'.$str];
-                    $item['qty'] = $request['qty_'.$str];
-                    $variations[$str] = $item;
                 }
+                $item = array();
+                $item['price'] = $request['price_'.$str];
+                $item['sku'] = $request['sku_'.$str];
+                $item['qty'] = $request['qty_'.$str];
+                $variations[$str] = $item;
             }
         }
         //combinations end
@@ -283,30 +284,31 @@ class ProductController extends Controller
                 $my_str = implode('|',$request[$name]);
                 array_push($options, explode(',', $my_str));
             }
-            $combinations = combinations($options);
-            if(count($combinations[0]) > 0){
-                foreach ($combinations as $key => $combination){
-                    $str = '';
-                    foreach ($combination as $key => $item){
-                        if($key > 0 ){
-                            $str .= '-'.$item;
+        }
+
+        $combinations = combinations($options);
+        if(count($combinations[0]) > 0){
+            foreach ($combinations as $key => $combination){
+                $str = '';
+                foreach ($combination as $key => $item){
+                    if($key > 0 ){
+                        $str .= '-'.$item;
+                    }
+                    else{
+                        if($request->has('colors_active')){
+                            $color_name = \App\Color::where('code', $item)->first()->name;
+                            $str .= $color_name;
                         }
                         else{
-                            if($request->has('colors_active')){
-                                $color_name = \App\Color::where('code', $item)->first()->name;
-                                $str .= $color_name;
-            				}
-            				else{
-            					$str .= $item;
-            				}
+                            $str .= $item;
                         }
                     }
-                    $item = array();
-                    $item['price'] = $request['price_'.$str];
-                    $item['sku'] = $request['sku_'.$str];
-                    $item['qty'] = $request['qty_'.$str];
-                    $variations[$str] = $item;
                 }
+                $item = array();
+                $item['price'] = $request['price_'.$str];
+                $item['sku'] = $request['sku_'.$str];
+                $item['qty'] = $request['qty_'.$str];
+                $variations[$str] = $item;
             }
         }
         //combinations end

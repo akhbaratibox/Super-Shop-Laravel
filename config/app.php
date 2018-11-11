@@ -148,6 +148,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Netshell\Paypal\PaypalServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -211,6 +212,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Paypal' => Netshell\Paypal\Facades\Paypal::class,
 
     ],
 

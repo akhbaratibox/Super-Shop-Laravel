@@ -41,7 +41,8 @@
     <div class="container">
         <div class="row cols-xs-space cols-sm-space cols-md-space">
             <div class="col-lg-8">
-                <form class="form-default" data-toggle="validator" role="form">
+                <form action="{{ route('payment.checkout') }}" class="form-default" data-toggle="validator" role="form" method="POST">
+                    @csrf
                     <div class="card">
                         <div class="card-title px-4">
                             <h3 class="heading heading-5 strong-500">

@@ -45,7 +45,7 @@ Route::get('/compare', 'CompareController@index')->name('compare');
 Route::get('/compare/reset', 'CompareController@reset')->name('compare.reset');
 Route::post('/compare/addToCompare', 'CompareController@addToCompare')->name('compare.addToCompare');
 
-Route::group(['middleware' => ['auth']], function(){
+Route::group(['middleware' => ['user']], function(){
 	Route::resource('wishlists','WishlistController');
 	Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
 	Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');

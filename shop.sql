@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2018 at 01:51 PM
+-- Generation Time: Nov 12, 2018 at 11:00 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -292,6 +292,320 @@ INSERT INTO `colors` (`id`, `name`, `code`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `countries`
+--
+
+CREATE TABLE `countries` (
+  `id` int(11) NOT NULL,
+  `code` varchar(2) NOT NULL DEFAULT '',
+  `name` varchar(100) NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `countries`
+--
+
+INSERT INTO `countries` (`id`, `code`, `name`) VALUES
+(1, 'AF', 'Afghanistan'),
+(2, 'AL', 'Albania'),
+(3, 'DZ', 'Algeria'),
+(4, 'DS', 'American Samoa'),
+(5, 'AD', 'Andorra'),
+(6, 'AO', 'Angola'),
+(7, 'AI', 'Anguilla'),
+(8, 'AQ', 'Antarctica'),
+(9, 'AG', 'Antigua and Barbuda'),
+(10, 'AR', 'Argentina'),
+(11, 'AM', 'Armenia'),
+(12, 'AW', 'Aruba'),
+(13, 'AU', 'Australia'),
+(14, 'AT', 'Austria'),
+(15, 'AZ', 'Azerbaijan'),
+(16, 'BS', 'Bahamas'),
+(17, 'BH', 'Bahrain'),
+(18, 'BD', 'Bangladesh'),
+(19, 'BB', 'Barbados'),
+(20, 'BY', 'Belarus'),
+(21, 'BE', 'Belgium'),
+(22, 'BZ', 'Belize'),
+(23, 'BJ', 'Benin'),
+(24, 'BM', 'Bermuda'),
+(25, 'BT', 'Bhutan'),
+(26, 'BO', 'Bolivia'),
+(27, 'BA', 'Bosnia and Herzegovina'),
+(28, 'BW', 'Botswana'),
+(29, 'BV', 'Bouvet Island'),
+(30, 'BR', 'Brazil'),
+(31, 'IO', 'British Indian Ocean Territory'),
+(32, 'BN', 'Brunei Darussalam'),
+(33, 'BG', 'Bulgaria'),
+(34, 'BF', 'Burkina Faso'),
+(35, 'BI', 'Burundi'),
+(36, 'KH', 'Cambodia'),
+(37, 'CM', 'Cameroon'),
+(38, 'CA', 'Canada'),
+(39, 'CV', 'Cape Verde'),
+(40, 'KY', 'Cayman Islands'),
+(41, 'CF', 'Central African Republic'),
+(42, 'TD', 'Chad'),
+(43, 'CL', 'Chile'),
+(44, 'CN', 'China'),
+(45, 'CX', 'Christmas Island'),
+(46, 'CC', 'Cocos (Keeling) Islands'),
+(47, 'CO', 'Colombia'),
+(48, 'KM', 'Comoros'),
+(49, 'CG', 'Congo'),
+(50, 'CK', 'Cook Islands'),
+(51, 'CR', 'Costa Rica'),
+(52, 'HR', 'Croatia (Hrvatska)'),
+(53, 'CU', 'Cuba'),
+(54, 'CY', 'Cyprus'),
+(55, 'CZ', 'Czech Republic'),
+(56, 'DK', 'Denmark'),
+(57, 'DJ', 'Djibouti'),
+(58, 'DM', 'Dominica'),
+(59, 'DO', 'Dominican Republic'),
+(60, 'TP', 'East Timor'),
+(61, 'EC', 'Ecuador'),
+(62, 'EG', 'Egypt'),
+(63, 'SV', 'El Salvador'),
+(64, 'GQ', 'Equatorial Guinea'),
+(65, 'ER', 'Eritrea'),
+(66, 'EE', 'Estonia'),
+(67, 'ET', 'Ethiopia'),
+(68, 'FK', 'Falkland Islands (Malvinas)'),
+(69, 'FO', 'Faroe Islands'),
+(70, 'FJ', 'Fiji'),
+(71, 'FI', 'Finland'),
+(72, 'FR', 'France'),
+(73, 'FX', 'France, Metropolitan'),
+(74, 'GF', 'French Guiana'),
+(75, 'PF', 'French Polynesia'),
+(76, 'TF', 'French Southern Territories'),
+(77, 'GA', 'Gabon'),
+(78, 'GM', 'Gambia'),
+(79, 'GE', 'Georgia'),
+(80, 'DE', 'Germany'),
+(81, 'GH', 'Ghana'),
+(82, 'GI', 'Gibraltar'),
+(83, 'GK', 'Guernsey'),
+(84, 'GR', 'Greece'),
+(85, 'GL', 'Greenland'),
+(86, 'GD', 'Grenada'),
+(87, 'GP', 'Guadeloupe'),
+(88, 'GU', 'Guam'),
+(89, 'GT', 'Guatemala'),
+(90, 'GN', 'Guinea'),
+(91, 'GW', 'Guinea-Bissau'),
+(92, 'GY', 'Guyana'),
+(93, 'HT', 'Haiti'),
+(94, 'HM', 'Heard and Mc Donald Islands'),
+(95, 'HN', 'Honduras'),
+(96, 'HK', 'Hong Kong'),
+(97, 'HU', 'Hungary'),
+(98, 'IS', 'Iceland'),
+(99, 'IN', 'India'),
+(100, 'IM', 'Isle of Man'),
+(101, 'ID', 'Indonesia'),
+(102, 'IR', 'Iran (Islamic Republic of)'),
+(103, 'IQ', 'Iraq'),
+(104, 'IE', 'Ireland'),
+(105, 'IL', 'Israel'),
+(106, 'IT', 'Italy'),
+(107, 'CI', 'Ivory Coast'),
+(108, 'JE', 'Jersey'),
+(109, 'JM', 'Jamaica'),
+(110, 'JP', 'Japan'),
+(111, 'JO', 'Jordan'),
+(112, 'KZ', 'Kazakhstan'),
+(113, 'KE', 'Kenya'),
+(114, 'KI', 'Kiribati'),
+(115, 'KP', 'Korea, Democratic People\'s Republic of'),
+(116, 'KR', 'Korea, Republic of'),
+(117, 'XK', 'Kosovo'),
+(118, 'KW', 'Kuwait'),
+(119, 'KG', 'Kyrgyzstan'),
+(120, 'LA', 'Lao People\'s Democratic Republic'),
+(121, 'LV', 'Latvia'),
+(122, 'LB', 'Lebanon'),
+(123, 'LS', 'Lesotho'),
+(124, 'LR', 'Liberia'),
+(125, 'LY', 'Libyan Arab Jamahiriya'),
+(126, 'LI', 'Liechtenstein'),
+(127, 'LT', 'Lithuania'),
+(128, 'LU', 'Luxembourg'),
+(129, 'MO', 'Macau'),
+(130, 'MK', 'Macedonia'),
+(131, 'MG', 'Madagascar'),
+(132, 'MW', 'Malawi'),
+(133, 'MY', 'Malaysia'),
+(134, 'MV', 'Maldives'),
+(135, 'ML', 'Mali'),
+(136, 'MT', 'Malta'),
+(137, 'MH', 'Marshall Islands'),
+(138, 'MQ', 'Martinique'),
+(139, 'MR', 'Mauritania'),
+(140, 'MU', 'Mauritius'),
+(141, 'TY', 'Mayotte'),
+(142, 'MX', 'Mexico'),
+(143, 'FM', 'Micronesia, Federated States of'),
+(144, 'MD', 'Moldova, Republic of'),
+(145, 'MC', 'Monaco'),
+(146, 'MN', 'Mongolia'),
+(147, 'ME', 'Montenegro'),
+(148, 'MS', 'Montserrat'),
+(149, 'MA', 'Morocco'),
+(150, 'MZ', 'Mozambique'),
+(151, 'MM', 'Myanmar'),
+(152, 'NA', 'Namibia'),
+(153, 'NR', 'Nauru'),
+(154, 'NP', 'Nepal'),
+(155, 'NL', 'Netherlands'),
+(156, 'AN', 'Netherlands Antilles'),
+(157, 'NC', 'New Caledonia'),
+(158, 'NZ', 'New Zealand'),
+(159, 'NI', 'Nicaragua'),
+(160, 'NE', 'Niger'),
+(161, 'NG', 'Nigeria'),
+(162, 'NU', 'Niue'),
+(163, 'NF', 'Norfolk Island'),
+(164, 'MP', 'Northern Mariana Islands'),
+(165, 'NO', 'Norway'),
+(166, 'OM', 'Oman'),
+(167, 'PK', 'Pakistan'),
+(168, 'PW', 'Palau'),
+(169, 'PS', 'Palestine'),
+(170, 'PA', 'Panama'),
+(171, 'PG', 'Papua New Guinea'),
+(172, 'PY', 'Paraguay'),
+(173, 'PE', 'Peru'),
+(174, 'PH', 'Philippines'),
+(175, 'PN', 'Pitcairn'),
+(176, 'PL', 'Poland'),
+(177, 'PT', 'Portugal'),
+(178, 'PR', 'Puerto Rico'),
+(179, 'QA', 'Qatar'),
+(180, 'RE', 'Reunion'),
+(181, 'RO', 'Romania'),
+(182, 'RU', 'Russian Federation'),
+(183, 'RW', 'Rwanda'),
+(184, 'KN', 'Saint Kitts and Nevis'),
+(185, 'LC', 'Saint Lucia'),
+(186, 'VC', 'Saint Vincent and the Grenadines'),
+(187, 'WS', 'Samoa'),
+(188, 'SM', 'San Marino'),
+(189, 'ST', 'Sao Tome and Principe'),
+(190, 'SA', 'Saudi Arabia'),
+(191, 'SN', 'Senegal'),
+(192, 'RS', 'Serbia'),
+(193, 'SC', 'Seychelles'),
+(194, 'SL', 'Sierra Leone'),
+(195, 'SG', 'Singapore'),
+(196, 'SK', 'Slovakia'),
+(197, 'SI', 'Slovenia'),
+(198, 'SB', 'Solomon Islands'),
+(199, 'SO', 'Somalia'),
+(200, 'ZA', 'South Africa'),
+(201, 'GS', 'South Georgia South Sandwich Islands'),
+(202, 'SS', 'South Sudan'),
+(203, 'ES', 'Spain'),
+(204, 'LK', 'Sri Lanka'),
+(205, 'SH', 'St. Helena'),
+(206, 'PM', 'St. Pierre and Miquelon'),
+(207, 'SD', 'Sudan'),
+(208, 'SR', 'Suriname'),
+(209, 'SJ', 'Svalbard and Jan Mayen Islands'),
+(210, 'SZ', 'Swaziland'),
+(211, 'SE', 'Sweden'),
+(212, 'CH', 'Switzerland'),
+(213, 'SY', 'Syrian Arab Republic'),
+(214, 'TW', 'Taiwan'),
+(215, 'TJ', 'Tajikistan'),
+(216, 'TZ', 'Tanzania, United Republic of'),
+(217, 'TH', 'Thailand'),
+(218, 'TG', 'Togo'),
+(219, 'TK', 'Tokelau'),
+(220, 'TO', 'Tonga'),
+(221, 'TT', 'Trinidad and Tobago'),
+(222, 'TN', 'Tunisia'),
+(223, 'TR', 'Turkey'),
+(224, 'TM', 'Turkmenistan'),
+(225, 'TC', 'Turks and Caicos Islands'),
+(226, 'TV', 'Tuvalu'),
+(227, 'UG', 'Uganda'),
+(228, 'UA', 'Ukraine'),
+(229, 'AE', 'United Arab Emirates'),
+(230, 'GB', 'United Kingdom'),
+(231, 'US', 'United States'),
+(232, 'UM', 'United States minor outlying islands'),
+(233, 'UY', 'Uruguay'),
+(234, 'UZ', 'Uzbekistan'),
+(235, 'VU', 'Vanuatu'),
+(236, 'VA', 'Vatican City State'),
+(237, 'VE', 'Venezuela'),
+(238, 'VN', 'Vietnam'),
+(239, 'VG', 'Virgin Islands (British)'),
+(240, 'VI', 'Virgin Islands (U.S.)'),
+(241, 'WF', 'Wallis and Futuna Islands'),
+(242, 'EH', 'Western Sahara'),
+(243, 'YE', 'Yemen'),
+(244, 'ZR', 'Zaire'),
+(245, 'ZM', 'Zambia'),
+(246, 'ZW', 'Zimbabwe'),
+(247, 'AF', 'Afghanistan'),
+(248, 'AL', 'Albania'),
+(249, 'DZ', 'Algeria'),
+(250, 'DS', 'American Samoa'),
+(251, 'AD', 'Andorra'),
+(252, 'AO', 'Angola'),
+(253, 'AI', 'Anguilla'),
+(254, 'AQ', 'Antarctica'),
+(255, 'AG', 'Antigua and Barbuda'),
+(256, 'AR', 'Argentina'),
+(257, 'AM', 'Armenia'),
+(258, 'AW', 'Aruba'),
+(259, 'AU', 'Australia'),
+(260, 'AT', 'Austria'),
+(261, 'AZ', 'Azerbaijan'),
+(262, 'BS', 'Bahamas'),
+(263, 'BH', 'Bahrain'),
+(264, 'BD', 'Bangladesh'),
+(265, 'BB', 'Barbados'),
+(266, 'BY', 'Belarus'),
+(267, 'BE', 'Belgium'),
+(268, 'BZ', 'Belize'),
+(269, 'BJ', 'Benin'),
+(270, 'BM', 'Bermuda'),
+(271, 'BT', 'Bhutan'),
+(272, 'BO', 'Bolivia'),
+(273, 'BA', 'Bosnia and Herzegovina'),
+(274, 'BW', 'Botswana'),
+(275, 'BV', 'Bouvet Island'),
+(276, 'BR', 'Brazil'),
+(277, 'IO', 'British Indian Ocean Territory'),
+(278, 'BN', 'Brunei Darussalam'),
+(279, 'BG', 'Bulgaria'),
+(280, 'BF', 'Burkina Faso'),
+(281, 'BI', 'Burundi'),
+(282, 'KH', 'Cambodia'),
+(283, 'CM', 'Cameroon'),
+(284, 'CA', 'Canada'),
+(285, 'CV', 'Cape Verde'),
+(286, 'KY', 'Cayman Islands'),
+(287, 'CF', 'Central African Republic'),
+(288, 'TD', 'Chad'),
+(289, 'CL', 'Chile'),
+(290, 'CN', 'China'),
+(291, 'CX', 'Christmas Island'),
+(292, 'CC', 'Cocos (Keeling) Islands'),
+(293, 'CO', 'Colombia'),
+(294, 'KM', 'Comoros'),
+(295, 'CG', 'Congo'),
+(296, 'CK', 'Cook Islands');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `currencies`
 --
 
@@ -444,11 +758,12 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `added_by`, `user_id`, `category_id`, `subcategory_id`, `subsubcategory_id`, `brand_id`, `photos`, `thumbnail_img`, `featured_img`, `flash_deal_img`, `video_provider`, `video_link`, `tags`, `description`, `unit_price`, `purchase_price`, `choice_options`, `colors`, `variations`, `todays_deal`, `published`, `featured`, `current_stock`, `unit`, `discount`, `discount_type`, `tax`, `tax_type`, `slug`, `created_at`, `updated_at`) VALUES
-(7, 'Brandon Allen', 'admin', 1, 7, 4, 5, 2, '[\"uploads\\/OQcGouo2SRyHNtIKShdEkQYKYg060Wy6NDwFvQzq.jpeg\"]', 'uploads/zqfa562pIYzK1sLRkmUVTvSRvXkS40Pz09kElzgV.png', 'uploads/GGFIKYTfvhDQ3Vs2OcE1dvtDzwAJX6Ogm6lUdeqd.png', 'uploads/pdns0VNucRbEW4bm4bWAY8uEK1I9Bmxs0x7PWbNx.png', 'youtube', 'https://www.youtube.com/watch?v=uwxxQ9FZXow', '[\"aaaa,bbbb\"]', NULL, 400.00, 340.00, '[{\"name\":\"choice_0\",\"title\":\"Size\",\"options\":[\"S\",\"M\"]}]', '[\"#000000\",\"#0000FF\",\"#FF0000\"]', '{\"Black-S\":{\"price\":\"500\",\"sku\":\"BA-Black-S\",\"qty\":\"10\"},\"Black-M\":{\"price\":\"400\",\"sku\":\"BA-Black-M\",\"qty\":\"10\"},\"Blue-S\":{\"price\":\"380\",\"sku\":\"BA-Blue-S\",\"qty\":\"10\"},\"Blue-M\":{\"price\":\"400\",\"sku\":\"BA-Blue-M\",\"qty\":\"10\"},\"Red-S\":{\"price\":\"400\",\"sku\":\"BA-Red-S\",\"qty\":\"10\"},\"Red-M\":{\"price\":\"400\",\"sku\":\"BA-Red-M\",\"qty\":\"10\"}}', 0, 0, 0, 0, 'PC', 10.00, 'amount', 10.00, 'amount', 'Brandon-Allen-oKFHd', '2018-11-05 06:22:11', '2018-11-06 05:45:56'),
-(11, 'Kelly Strickland', 'admin', 1, 7, 3, 12, 15, '[\"uploads\\/OQcGouo2SRyHNtIKShdEkQYKYg060Wy6NDwFvQzq.jpeg\"]', 'uploads/khae9EVNwywxcELFPw28WjxAcZCoEGbO81kbV21P.png', 'uploads/GZ6PW14G2rYGsZMypwfuxPLX9SPs5Hsjceivq2Wq.png', 'uploads/NxEPzuctrxkSXIC4j8AugrAv39uZQkwYbLDm8xgh.png', 'youtube', 'https://www.youtube.com/watch?v=Kvl-JXkPoNo', '[\"Qui distinctio Sit eaque totam similique quia nulla similique quis animi\"]', NULL, 900.00, 870.00, '[{\"name\":\"choice_0\",\"title\":\"Size\",\"options\":[\"Small\",\"Large\"]}]', '[\"#9966CC\",\"#00FFFF\",\"#0000FF\",\"#00FFFF\"]', '{\"Amethyst-Small\":{\"price\":\"700\",\"sku\":\"KS-Amethyst-Small\",\"qty\":\"10\"},\"Amethyst-Large\":{\"price\":\"900\",\"sku\":\"KS-Amethyst-Large\",\"qty\":\"10\"},\"Aqua-Small\":{\"price\":\"800\",\"sku\":\"KS-Aqua-Small\",\"qty\":\"10\"},\"Aqua-Large\":{\"price\":\"900\",\"sku\":\"KS-Aqua-Large\",\"qty\":\"10\"},\"Blue-Small\":{\"price\":\"900\",\"sku\":\"KS-Blue-Small\",\"qty\":\"10\"},\"Blue-Large\":{\"price\":\"900\",\"sku\":\"KS-Blue-Large\",\"qty\":\"10\"}}', 0, 0, 0, 0, 'PC', 100.00, 'amount', 80.00, 'amount', 'Kelly-Strickland-cYqur', '2018-11-05 06:40:17', '2018-11-06 02:18:18'),
-(12, 'Casual Shirt Slim Fit', 'admin', 1, 8, 7, 13, 7, '[\"uploads\\/OQcGouo2SRyHNtIKShdEkQYKYg060Wy6NDwFvQzq.jpeg\"]', NULL, 'uploads/Mbm40lTUKaKTQ2PaZgx6WR4V3Xfr0XK4rawNWSy7.png', 'uploads/DddxkbGm7kQ2NauNxrgoyIhuPEFZH36mz2TDt2Ok.png', 'youtube', 'https://www.youtube.com/watch?v=Kvl-JXkPoNo', '[\"Shirt,Casual\"]', NULL, 80.00, 75.00, '[{\"name\":\"choice_0\",\"title\":\"Size\",\"options\":[\"Small\",\"Medium\",\"Large\",\"Extra Large\"]},{\"name\":\"choice_1\",\"title\":\"Fabric\",\"options\":[\"Cotton\",\"Semi-Cotton\"]}]', '[\"#000000\",\"#0000FF\"]', '{\"Black-Small-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Black-Small-Cotton\",\"qty\":\"10\"},\"Black-Small-Semi-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Black-Small-Semi-Cotton\",\"qty\":\"10\"},\"Black-Medium-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Black-Medium-Cotton\",\"qty\":\"10\"},\"Black-Medium-Semi-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Black-Medium-Semi-Cotton\",\"qty\":\"10\"},\"Black-Large-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Black-Large-Cotton\",\"qty\":\"10\"},\"Black-Large-Semi-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Black-Large-Semi-Cotton\",\"qty\":\"10\"},\"Black-Extra Large-Cotton\":{\"price\":null,\"sku\":null,\"qty\":null},\"Black-Extra Large-Semi-Cotton\":{\"price\":null,\"sku\":null,\"qty\":null},\"Blue-Small-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Blue-Small-Cotton\",\"qty\":\"10\"},\"Blue-Small-Semi-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Blue-Small-Semi-Cotton\",\"qty\":\"10\"},\"Blue-Medium-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Blue-Medium-Cotton\",\"qty\":\"10\"},\"Blue-Medium-Semi-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Blue-Medium-Semi-Cotton\",\"qty\":\"10\"},\"Blue-Large-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Blue-Large-Cotton\",\"qty\":\"10\"},\"Blue-Large-Semi-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Blue-Large-Semi-Cotton\",\"qty\":\"10\"},\"Blue-Extra Large-Cotton\":{\"price\":null,\"sku\":null,\"qty\":null},\"Blue-Extra Large-Semi-Cotton\":{\"price\":null,\"sku\":null,\"qty\":null}}', 0, 0, 0, 0, 'PC', 0.00, 'amount', 0.00, 'amount', 'Casual-Shirt-Slim-Fit-GHrDu', '2018-11-06 01:59:37', '2018-11-06 05:48:23'),
-(13, 'Tarik Stewart', 'seller', 3, 8, 7, 13, 7, '[\"uploads\\/L95p4MtXv65BqUOxJbNAhLdhFds7xEUxfkDnovir.jpeg\"]', 'uploads/RHQiM4mGoGCkz72LPxKx0rwk41085BwxYZtO0RGI.png', 'uploads/ML928PUJuPZkdMDaiauXfRTpkY0Hn0YZ7kOG3jsw.png', 'uploads/grmztPglL37hYxYWcFM6u7uol80X31E9Nm5QYTB4.png', 'youtube', 'https://www.youtube.com/watch?v=W_rWgQFsk_E', '[\"shirt\"]', NULL, 454.00, 45.00, '[{\"name\":\"choice_0\",\"title\":\"Size\",\"options\":[\"S\",\"M\",\"L\"]}]', '[\"#000000\",\"#0000FF\"]', '{\"Black-S\":{\"price\":\"454\",\"sku\":\"TS-Black-S\",\"qty\":\"10\"},\"Black-M\":{\"price\":\"454\",\"sku\":\"TS-Black-M\",\"qty\":\"10\"},\"Black-L\":{\"price\":\"454\",\"sku\":\"TS-Black-L\",\"qty\":\"10\"},\"Blue-S\":{\"price\":\"454\",\"sku\":\"TS-Blue-S\",\"qty\":\"10\"},\"Blue-M\":{\"price\":\"454\",\"sku\":\"TS-Blue-M\",\"qty\":\"10\"},\"Blue-L\":{\"price\":\"454\",\"sku\":\"TS-Blue-L\",\"qty\":\"10\"}}', 0, 0, 0, 0, 'PC', 789.00, '2', 154.00, '2', 'Tarik-Stewart-evAKZ', '2018-11-07 02:44:28', '2018-11-07 02:44:28'),
-(14, 'Alma Figueroa', 'seller', 3, 8, 7, 13, 7, '[\"uploads\\/40rtGsTBd3hcyteDIK52z3qkT5vwRzLSVa3hDVGY.jpeg\"]', 'uploads/DS0dVPw7cgAogSSOOmMIaB2pErvok05dgSVLc10Q.png', 'uploads/flj1EK2wZDlmbGlgETxZutsgLfu7CjTyI9Y2vI4c.png', 'uploads/KHxRIgIOVvvd79benEdHokhOqerliWo6XctM5Pn7.png', 'youtube', 'https://www.youtube.com/watch?v=zH6Ja_UPhkc', '[\"sfsfs\"]', NULL, 867.00, 446.00, '[{\"name\":\"choice_0\",\"title\":\"Size\",\"options\":[\"Small\",\"Large\"]}]', '[\"#7FFFD4\",\"#808080\",\"#FFFFF0\",\"#7CFC00\",\"#FFA07A\",\"#FFDAB9\"]', '{\"Aquamarine-Small\":{\"price\":\"867\",\"sku\":\"AF-Aquamarine-Small\",\"qty\":\"10\"},\"Aquamarine-Large\":{\"price\":\"867\",\"sku\":\"AF-Aquamarine-Large\",\"qty\":\"10\"},\"Gray-Small\":{\"price\":\"867\",\"sku\":\"AF-Gray-Small\",\"qty\":\"10\"},\"Gray-Large\":{\"price\":\"867\",\"sku\":\"AF-Gray-Large\",\"qty\":\"10\"},\"Ivory-Small\":{\"price\":\"867\",\"sku\":\"AF-Ivory-Small\",\"qty\":\"10\"},\"Ivory-Large\":{\"price\":\"867\",\"sku\":\"AF-Ivory-Large\",\"qty\":\"10\"},\"LawnGreen-Small\":{\"price\":\"867\",\"sku\":\"AF-LawnGreen-Small\",\"qty\":\"10\"},\"LawnGreen-Large\":{\"price\":\"867\",\"sku\":\"AF-LawnGreen-Large\",\"qty\":\"10\"},\"LightSalmon-Small\":{\"price\":\"867\",\"sku\":\"AF-LightSalmon-Small\",\"qty\":\"10\"},\"LightSalmon-Large\":{\"price\":\"867\",\"sku\":\"AF-LightSalmon-Large\",\"qty\":\"10\"},\"PeachPuff-Small\":{\"price\":\"867\",\"sku\":\"AF-PeachPuff-Small\",\"qty\":\"10\"},\"PeachPuff-Large\":{\"price\":\"867\",\"sku\":\"AF-PeachPuff-Large\",\"qty\":\"10\"}}', 0, 0, 0, 0, 'PC', 8.00, '2', 87.00, '2', 'Alma-Figueroa-qSNlO', '2018-11-07 03:23:52', '2018-11-07 03:23:52');
+(7, 'Brandon Allen', 'admin', 1, 7, 4, 5, 2, '[\"uploads\\/OQcGouo2SRyHNtIKShdEkQYKYg060Wy6NDwFvQzq.jpeg\"]', 'uploads/zqfa562pIYzK1sLRkmUVTvSRvXkS40Pz09kElzgV.png', 'uploads/GGFIKYTfvhDQ3Vs2OcE1dvtDzwAJX6Ogm6lUdeqd.png', 'uploads/pdns0VNucRbEW4bm4bWAY8uEK1I9Bmxs0x7PWbNx.png', 'youtube', 'https://www.youtube.com/watch?v=5hFd6zGkxLE', '[\"aaaa,bbbb\"]', NULL, 400.00, 340.00, '[{\"name\":\"choice_0\",\"title\":\"Size\",\"options\":[\"S\",\"M\"]}]', '[\"#000000\",\"#0000FF\",\"#FF0000\"]', '{\"Black-S\":{\"price\":\"500\",\"sku\":\"BA-Black-S\",\"qty\":\"10\"},\"Black-M\":{\"price\":\"400\",\"sku\":\"BA-Black-M\",\"qty\":\"10\"},\"Blue-S\":{\"price\":\"380\",\"sku\":\"BA-Blue-S\",\"qty\":\"10\"},\"Blue-M\":{\"price\":\"400\",\"sku\":\"BA-Blue-M\",\"qty\":\"10\"},\"Red-S\":{\"price\":\"400\",\"sku\":\"BA-Red-S\",\"qty\":\"10\"},\"Red-M\":{\"price\":\"400\",\"sku\":\"BA-Red-M\",\"qty\":\"10\"}}', 0, 0, 0, 0, 'PC', 10.00, 'amount', 10.00, 'amount', 'Brandon-Allen-oKFHd', '2018-11-05 06:22:11', '2018-11-08 03:01:53'),
+(11, 'Kelly Strickland', 'admin', 1, 7, 3, 12, 15, '[\"uploads\\/OQcGouo2SRyHNtIKShdEkQYKYg060Wy6NDwFvQzq.jpeg\"]', 'uploads/khae9EVNwywxcELFPw28WjxAcZCoEGbO81kbV21P.png', 'uploads/GZ6PW14G2rYGsZMypwfuxPLX9SPs5Hsjceivq2Wq.png', 'uploads/NxEPzuctrxkSXIC4j8AugrAv39uZQkwYbLDm8xgh.png', 'youtube', 'https://www.youtube.com/watch?v=5hFd6zGkxLE', '[\"Qui distinctio Sit eaque totam similique quia nulla similique quis animi\"]', NULL, 900.00, 870.00, '[{\"name\":\"choice_0\",\"title\":\"Size\",\"options\":[\"Small\",\"Large\"]}]', '[\"#9966CC\",\"#00FFFF\",\"#0000FF\",\"#00FFFF\"]', '{\"Amethyst-Small\":{\"price\":\"700\",\"sku\":\"KS-Amethyst-Small\",\"qty\":\"10\"},\"Amethyst-Large\":{\"price\":\"900\",\"sku\":\"KS-Amethyst-Large\",\"qty\":\"10\"},\"Aqua-Small\":{\"price\":\"800\",\"sku\":\"KS-Aqua-Small\",\"qty\":\"10\"},\"Aqua-Large\":{\"price\":\"900\",\"sku\":\"KS-Aqua-Large\",\"qty\":\"10\"},\"Blue-Small\":{\"price\":\"900\",\"sku\":\"KS-Blue-Small\",\"qty\":\"10\"},\"Blue-Large\":{\"price\":\"900\",\"sku\":\"KS-Blue-Large\",\"qty\":\"10\"}} ', 0, 0, 0, 0, 'PC', 100.00, 'amount', 80.00, 'amount', 'Kelly-Strickland-cYqur', '2018-11-05 06:40:17', '2018-11-08 03:02:11'),
+(12, 'Casual Shirt Slim Fit', 'admin', 1, 8, 7, 13, 7, '[\"uploads\\/OQcGouo2SRyHNtIKShdEkQYKYg060Wy6NDwFvQzq.jpeg\"]', NULL, 'uploads/Mbm40lTUKaKTQ2PaZgx6WR4V3Xfr0XK4rawNWSy7.png', 'uploads/DddxkbGm7kQ2NauNxrgoyIhuPEFZH36mz2TDt2Ok.png', 'youtube', 'https://www.youtube.com/watch?v=5hFd6zGkxLE', '[\"Shirt,Casual\"]', NULL, 80.00, 75.00, '[{\"name\":\"choice_0\",\"title\":\"Size\",\"options\":[\"Small\",\"Medium\",\"Large\",\"Extra Large\"]},{\"name\":\"choice_1\",\"title\":\"Fabric\",\"options\":[\"Cotton\",\"Semi-Cotton\"]}]', '[\"#000000\",\"#0000FF\"]', '{\"Black-Small-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Black-Small-Cotton\",\"qty\":\"10\"},\"Black-Small-Semi-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Black-Small-Semi-Cotton\",\"qty\":\"10\"},\"Black-Medium-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Black-Medium-Cotton\",\"qty\":\"10\"},\"Black-Medium-Semi-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Black-Medium-Semi-Cotton\",\"qty\":\"10\"},\"Black-Large-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Black-Large-Cotton\",\"qty\":\"10\"},\"Black-Large-Semi-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Black-Large-Semi-Cotton\",\"qty\":\"10\"},\"Black-Extra Large-Cotton\":{\"price\":null,\"sku\":null,\"qty\":null},\"Black-Extra Large-Semi-Cotton\":{\"price\":null,\"sku\":null,\"qty\":null},\"Blue-Small-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Blue-Small-Cotton\",\"qty\":\"10\"},\"Blue-Small-Semi-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Blue-Small-Semi-Cotton\",\"qty\":\"10\"},\"Blue-Medium-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Blue-Medium-Cotton\",\"qty\":\"10\"},\"Blue-Medium-Semi-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Blue-Medium-Semi-Cotton\",\"qty\":\"10\"},\"Blue-Large-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Blue-Large-Cotton\",\"qty\":\"10\"},\"Blue-Large-Semi-Cotton\":{\"price\":\"80\",\"sku\":\"CSSF-Blue-Large-Semi-Cotton\",\"qty\":\"10\"},\"Blue-Extra Large-Cotton\":{\"price\":null,\"sku\":null,\"qty\":null},\"Blue-Extra Large-Semi-Cotton\":{\"price\":null,\"sku\":null,\"qty\":null}}', 0, 0, 0, 0, 'PC', 0.00, 'amount', 0.00, 'amount', 'Casual-Shirt-Slim-Fit-GHrDu', '2018-11-06 01:59:37', '2018-11-06 05:48:23'),
+(13, 'Casual Shirt', 'seller', 3, 8, 7, 13, 7, '[\"uploads\\/L95p4MtXv65BqUOxJbNAhLdhFds7xEUxfkDnovir.jpeg\"]', 'uploads/RHQiM4mGoGCkz72LPxKx0rwk41085BwxYZtO0RGI.png', 'uploads/ML928PUJuPZkdMDaiauXfRTpkY0Hn0YZ7kOG3jsw.png', 'uploads/grmztPglL37hYxYWcFM6u7uol80X31E9Nm5QYTB4.png', 'youtube', 'https://www.youtube.com/watch?v=5hFd6zGkxLE', '[\"shirt\"]', '<p><b><u>Thanks</u></b></p>', 454.00, 45.00, '[{\"name\":\"choice_0\",\"title\":\"Size\",\"options\":[\"S\",\"M\",\"L\"]}]', '[\"#000000\",\"#0000FF\"]', '{\"Black-S\":{\"price\":\"400\",\"sku\":\"CS-Black-S\",\"qty\":\"10\"},\"Black-M\":{\"price\":\"455\",\"sku\":\"CS-Black-M\",\"qty\":\"10\"},\"Black-L\":{\"price\":\"454\",\"sku\":\"CS-Black-L\",\"qty\":\"10\"},\"Blue-S\":{\"price\":\"454\",\"sku\":\"CS-Blue-S\",\"qty\":\"10\"},\"Blue-M\":{\"price\":\"454\",\"sku\":\"CS-Blue-M\",\"qty\":\"10\"},\"Blue-L\":{\"price\":\"454\",\"sku\":\"CS-Blue-L\",\"qty\":\"100\"}}', 0, 0, 0, 0, 'PC', 10.00, 'amount', 10.00, 'amount', 'Tarik-Stewart-evAKZ', '2018-11-07 02:44:28', '2018-11-08 06:53:37'),
+(14, 'Men Striped Tuxedo Shirt', 'seller', 3, 8, 7, 13, 7, '[\"uploads\\/i1mEnQzQI5iMblTAxMykji8T0aLa58QRyMKauXkX.jpeg\",\"uploads\\/ZeXOZEd7wgsGjd9GyfsWEcNuh0NVe88pyTjtA8uA.jpeg\"]', 'uploads/AHhiU3I8eDfiaKl0tZ0xRb8bh5BmWrtbFjcOMppA.jpeg', 'uploads/LwyWKF0Q0vTdWOpvkMUY7VOULfsLaTFWVJmCQKNJ.jpeg', 'uploads/qDt1kyCTSN3JcY2EADaBTrYrzAR5TOMQIpjwxEqo.jpeg', 'youtube', 'https://www.youtube.com/watch?v=H1EB7SH4ZqM', '[\"shirt,polo\"]', '<div>Item specifics<br></div><ul class=\"product-property-list util-clearfix\" style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 10px 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; list-style-position: initial; list-style-image: initial; zoom: 1;\"><li class=\"property-item\" id=\"product-prop-2\" data-attr=\"201722811\" data-title=\"KK GEEZER\" style=\"margin: 0px; padding: 5px 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: 16px; vertical-align: baseline; position: relative; width: 465px; float: left; list-style: none;\"><span class=\"propery-title\" data-spm-anchor-id=\"2114.12010108.0.i6.374e5a36efuhGS\" style=\"margin: 0px 3px 0px 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left;\">Brand Name:</span><span class=\"propery-des\" title=\"KK GEEZER\" style=\"margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left; max-width: 300px; overflow: hidden; text-overflow: ellipsis;\">KK GEEZER</span></li><li class=\"property-item\" id=\"product-prop-200000137\" data-attr=\"3236\" data-title=\"Shirts\" style=\"margin: 0px; padding: 5px 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: 16px; vertical-align: baseline; position: relative; width: 465px; float: left; list-style: none;\"><span class=\"propery-title\" style=\"margin: 0px 3px 0px 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left;\">Item Type:</span><span class=\"propery-des\" title=\"Shirts\" style=\"margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left; max-width: 300px; overflow: hidden; text-overflow: ellipsis;\">Shirts</span></li><li class=\"property-item\" id=\"product-prop-284\" data-attr=\"493\" data-title=\"Men\" style=\"margin: 0px; padding: 5px 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: 16px; vertical-align: baseline; position: relative; width: 465px; float: left; list-style: none;\"><span class=\"propery-title\" style=\"margin: 0px 3px 0px 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left;\">Gender:</span><span class=\"propery-des\" title=\"Men\" style=\"margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left; max-width: 300px; overflow: hidden; text-overflow: ellipsis;\">Men</span></li><li class=\"property-item\" id=\"product-prop-100007732\" data-attr=\"200001500\" data-title=\"Full\" style=\"margin: 0px; padding: 5px 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: 16px; vertical-align: baseline; position: relative; width: 465px; float: left; list-style: none;\"><span class=\"propery-title\" style=\"margin: 0px 3px 0px 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left;\">Sleeve Length(cm):</span><span class=\"propery-des\" title=\"Full\" style=\"margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left; max-width: 300px; overflow: hidden; text-overflow: ellipsis;\">Full</span></li><li class=\"property-item\" id=\"product-prop-200000449\" data-attr=\"100006586\" data-title=\"Dress Shirts\" data-spm-anchor-id=\"2114.12010108.0.i5.374e5a36efuhGS\" style=\"margin: 0px; padding: 5px 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: 16px; vertical-align: baseline; position: relative; width: 465px; float: left; list-style: none;\"><span class=\"propery-title\" style=\"margin: 0px 3px 0px 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left;\">Shirts Type:</span><span class=\"propery-des\" title=\"Dress Shirts\" style=\"margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left; max-width: 300px; overflow: hidden; text-overflow: ellipsis;\">Dress Shirts</span></li><li class=\"property-item\" id=\"product-prop-200000329\" data-attr=\"519\" data-title=\"Striped\" style=\"margin: 0px; padding: 5px 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: 16px; vertical-align: baseline; position: relative; width: 465px; float: left; list-style: none;\"><span class=\"propery-title\" style=\"margin: 0px 3px 0px 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left;\">Pattern Type:</span><span class=\"propery-des\" title=\"Striped\" style=\"margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left; max-width: 300px; overflow: hidden; text-overflow: ellipsis;\">Striped</span></li><li class=\"property-item\" id=\"product-prop-200000457\" data-attr=\"200003574\" data-title=\"Turn-down Collar\" style=\"margin: 0px; padding: 5px 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: 16px; vertical-align: baseline; position: relative; width: 465px; float: left; list-style: none;\"><span class=\"propery-title\" style=\"margin: 0px 3px 0px 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left;\">Collar:</span><span class=\"propery-des\" title=\"Turn-down Collar\" style=\"margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left; max-width: 300px; overflow: hidden; text-overflow: ellipsis;\">Turn-down Collar</span></li><li class=\"property-item\" id=\"product-prop-100002012\" data-attr=\"100006537\" data-title=\"Broadcloth\" style=\"margin: 0px; padding: 5px 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: 16px; vertical-align: baseline; position: relative; width: 465px; float: left; list-style: none;\"><span class=\"propery-title\" style=\"margin: 0px 3px 0px 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left;\">Fabric Type:</span><span class=\"propery-des\" title=\"Broadcloth\" style=\"margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left; max-width: 300px; overflow: hidden; text-overflow: ellipsis;\">Broadcloth</span></li><li class=\"property-item\" id=\"product-prop-326\" data-attr=\"1893\" data-title=\"Formal\" style=\"margin: 0px; padding: 5px 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: 16px; vertical-align: baseline; position: relative; width: 465px; float: left; list-style: none;\"><span class=\"propery-title\" style=\"margin: 0px 3px 0px 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left;\">Style:</span><span class=\"propery-des\" title=\"Formal\" style=\"margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left; max-width: 300px; overflow: hidden; text-overflow: ellipsis;\">Formal</span></li><li class=\"property-item\" id=\"product-prop-10\" data-attr=\"47\" data-title=\"Cotton\" style=\"margin: 0px; padding: 5px 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: 16px; vertical-align: baseline; position: relative; width: 465px; float: left; list-style: none;\"><span class=\"propery-title\" style=\"margin: 0px 3px 0px 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left;\">Material:</span><span class=\"propery-des\" title=\"Cotton\" style=\"margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left; max-width: 300px; overflow: hidden; text-overflow: ellipsis;\">Cotton</span></li><li class=\"property-item\" id=\"product-prop-200000306\" data-attr=\"200001125\" data-title=\"Single Breasted\" style=\"margin: 0px; padding: 5px 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: 16px; vertical-align: baseline; position: relative; width: 465px; float: left; list-style: none;\"><span class=\"propery-title\" style=\"margin: 0px 3px 0px 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left;\">Closure Type:</span><span class=\"propery-des\" title=\"Single Breasted\" style=\"margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left; max-width: 300px; overflow: hidden; text-overflow: ellipsis;\">Single Breasted</span></li><li class=\"property-item\" id=\"product-prop-200000362\" data-attr=\"200013017\" data-title=\"Regular\" style=\"margin: 0px; padding: 5px 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: 16px; vertical-align: baseline; position: relative; width: 465px; float: left; list-style: none;\"><span class=\"propery-title\" style=\"margin: 0px 3px 0px 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left;\">Sleeve Style:</span><span class=\"propery-des\" title=\"Regular\" style=\"margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left; max-width: 300px; overflow: hidden; text-overflow: ellipsis;\">Regular</span></li><li class=\"property-item\" id=\"product-prop-3\" data-attr=\"\" data-title=\"SY1899\" style=\"margin: 0px; padding: 5px 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: 16px; vertical-align: baseline; position: relative; width: 465px; float: left; list-style: none;\"><span class=\"propery-title\" style=\"margin: 0px 3px 0px 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left;\">Model Number:</span><span class=\"propery-des\" title=\"SY1899\" style=\"margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; float: left; max-width: 300px; overflow: hidden; text-overflow: ellipsis;\">SY1899</span></li><li class=\"property-item\" id=\"product-prop-\" data-attr=\"\" data-title=\"Commerce Leisure\" style=\"margin: 0px; padding: 5px 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: 16px; vertical-align: baseline; position: relative; width: 465px; float: left; list-style: none;\"><span class=\"propery-title\" style=\"font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; margin: 0px 3px 0px 0px; padding: 0px; border: 0px; vertical-align: baseline; float: left;\">Style:</span><span class=\"propery-des\" title=\"Commerce Leisure\" style=\"font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; float: left; max-width: 300px; overflow: hidden; text-overflow: ellipsis;\">Commerce Leisure</span></li></ul>', 20.99, 11.96, '[]', '[\"#F0F8FF\",\"#FAEBD7\",\"#00FFFF\",\"#00FFFF\"]', '{\"AliceBlue\":{\"price\":\"20.99\",\"sku\":\"MSTS-AliceBlue\",\"qty\":\"10\"},\"AntiqueWhite\":{\"price\":\"20.99\",\"sku\":\"MSTS-AntiqueWhite\",\"qty\":\"10\"},\"Aqua\":{\"price\":\"20.99\",\"sku\":\"MSTS-Aqua\",\"qty\":\"10\"}}', 0, 0, 0, 0, 'pc', 5.00, 'amount', 0.00, 'amount', 'Men-Striped-Tuxedo-Shirt-u70Ih', '2018-11-11 00:52:10', '2018-11-11 02:03:47'),
+(15, 'Men Shirts', 'seller', 3, 8, 7, 13, 7, '[\"uploads\\/jckV7yL9FWHi3kV33RdMNlfOcpibmwWMqNsQck0N.jpeg\"]', 'uploads/EBehavfW4SH6rLz03fa3oDAe6epAnMfn7HDcpdLM.jpeg', 'uploads/90L7KUXtNTeKYr4B1IE2bz66TuT8TJKcgzfEEIw2.jpeg', 'uploads/N1KYwopzircLAFd4OK6rC8fDdfzv81hx39iQZANc.jpeg', 'youtube', 'https://www.youtube.com/watch?v=H1EB7SH4ZqM', '[\"shirt\"]', '<p>sddfghgjhkl</p>', 34.00, 21.00, '[{\"name\":\"choice_0\",\"title\":\"size\",\"options\":[\"m\",\"l\",\"xl\",\"xxl\"]}]', '[\"#9966CC\",\"#A52A2A\",\"#FFF8DC\"]', '{\"Amethyst-m\":{\"price\":\"34\",\"sku\":\"MS-Amethyst-m\",\"qty\":\"10\"},\"Amethyst-l\":{\"price\":\"34\",\"sku\":\"MS-Amethyst-l\",\"qty\":\"10\"},\"Amethyst-xl\":{\"price\":\"34\",\"sku\":\"MS-Amethyst-xl\",\"qty\":\"10\"},\"Amethyst-xxl\":{\"price\":\"34\",\"sku\":\"MS-Amethyst-xxl\",\"qty\":\"10\"},\"Brown-m\":{\"price\":\"34\",\"sku\":\"MS-Brown-m\",\"qty\":\"10\"},\"Brown-l\":{\"price\":\"34\",\"sku\":\"MS-Brown-l\",\"qty\":\"10\"},\"Brown-xl\":{\"price\":\"34\",\"sku\":\"MS-Brown-xl\",\"qty\":\"10\"},\"Brown-xxl\":{\"price\":\"34\",\"sku\":\"MS-Brown-xxl\",\"qty\":\"10\"},\"Cornsilk-m\":{\"price\":\"34\",\"sku\":\"MS-Cornsilk-m\",\"qty\":\"10\"},\"Cornsilk-l\":{\"price\":\"34\",\"sku\":\"MS-Cornsilk-l\",\"qty\":\"10\"},\"Cornsilk-xl\":{\"price\":\"34\",\"sku\":\"MS-Cornsilk-xl\",\"qty\":\"10\"},\"Cornsilk-xxl\":{\"price\":\"34\",\"sku\":\"MS-Cornsilk-xxl\",\"qty\":\"10\"}}', 0, 0, 0, 0, 'pc', 10.00, '2', 0.00, '1', 'Men-Shirts-23B39', '2018-11-11 02:10:51', '2018-11-11 02:10:51');
 
 -- --------------------------------------------------------
 
@@ -553,7 +868,6 @@ INSERT INTO `sub_categories` (`id`, `name`, `category_id`, `banner`, `created_at
 (7, 'Casual Wears', 8, 'uploads/H6U7LyNn5SJD8eTu0gRrzOaHfBx0gTNBPMeJM8ZX.jpeg', '2018-10-14 23:40:45', '2018-11-06 01:54:30'),
 (8, 'Bottoms', 8, 'uploads/jWMsEN01p7KnDPQYnYLxfwc7edVdgBvENdZDNp6s.jpeg', '2018-10-14 23:41:32', '2018-10-14 23:41:32'),
 (9, 'Wedding & Events', 8, 'uploads/5jtTozQajBWNyfzQ0ZojG6V0FNgOFgXQtQ9m7E1F.jpeg', '2018-10-14 23:42:43', '2018-10-14 23:42:43'),
-(10, 'Outwear & jackets', 7, 'uploads/0Jzlwavx2KTUWqYwKiUE7c8Z9I4PVF0SFecXXc6d.jpeg', '2018-10-14 23:43:32', '2018-10-14 23:43:32'),
 (11, 'Bottoms', 7, 'uploads/aKzZAmDyTMxRbvzSWznGfiH7sLowZousPJOdEiYM.jpeg', '2018-10-14 23:44:05', '2018-10-14 23:44:05'),
 (12, 'Accessories', 7, 'uploads/4LLm9FCvULwfZs3ih8rfF5CNXQ6fnOXAizdp5HtE.jpeg', '2018-10-14 23:44:29', '2018-10-14 23:44:29'),
 (13, 'Hot sale', 7, 'uploads/7nful2UIcbcVOzAc0HOSOjNug7w56KFHlVfgnTss.jpeg', '2018-10-14 23:44:49', '2018-10-14 23:44:49'),
@@ -594,7 +908,6 @@ CREATE TABLE `sub_sub_categories` (
 INSERT INTO `sub_sub_categories` (`id`, `sub_category_id`, `name`, `banner`, `brands`, `created_at`, `updated_at`) VALUES
 (5, 4, 'Private Cars', 'uploads/sctkUXlTXuERQkNmhtXbFVeNwGSxeUIyL5OJ6Pnn.jpeg', '[\"2\",\"3\"]', '2018-09-30 20:31:47', '2018-10-03 22:59:09'),
 (6, 4, 'Clio Baxter', 'uploads/RdBo95yeom3lO45zQ8I7qysodhtOHPbtF6RWJkwN.jpeg', '[\"2\",\"3\"]', '2018-10-02 23:19:27', '2018-10-03 22:59:30'),
-(8, 10, 'Hoodie', 'uploads/0rAwm5yze0Qt2xeE33HuwptQzl75ix5FufmncaVV.jpeg', '[\"6\"]', '2018-10-15 00:03:37', '2018-10-15 00:03:37'),
 (9, 12, 'jackets  t-ahirt', 'uploads/IgX5hzUYEJwB0kepD3TztTkkUOgUoBwaXT3Rd86W.jpeg', '[\"7\"]', '2018-10-15 00:04:36', '2018-10-15 00:04:36'),
 (10, 9, 'Hats & Belts', 'uploads/7FyQgJOyVw2UCl7tYQmj3PsVFSSIIVz6tkLEphwm.jpeg', '[\"5\"]', '2018-10-15 00:06:08', '2018-10-15 00:06:08'),
 (12, 3, 'Test', 'uploads/Axq44o3nPuJKEjrdHCCX8ZqL22QEQsKe5ZZS5XRj.jpeg', '[\"15\"]', '2018-10-22 03:20:37', '2018-10-22 03:20:37'),
@@ -631,9 +944,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `provider_id`, `user_type`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `avatar`, `avatar_original`, `address`, `country`, `city`, `postal_code`, `phone`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'admin', 'Admin', 'admin@example.com', NULL, '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', 'qXvx92TMSHsQsAlt820MKTlnaqp6V1ZXiDETYlrzKcnivkIo4lPqbOdbQkc4', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', NULL, NULL, NULL, NULL, NULL, '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
-(3, NULL, 'seller', 'Seller ', 'seller@example.com', NULL, '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', 'PlGOGHu4O8Wn2VlV0RRA4P0PjeEZqU6irmPvgHfuE30hQI1GYW7M72qTxYTY', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', NULL, NULL, NULL, NULL, NULL, '2018-10-07 04:42:57', '2018-10-07 04:48:43'),
-(8, NULL, 'customer', 'Customer', 'customer@example.com', NULL, '$2y$10$0NbLnWt7DAbrhqZrFZ7Nw.tvE.Jnff2Il/jrdgtqBiblKpgGwLyom', 'Q4ywkv3TI2u6zhaajsDo5tIvPk9HYK2tvlHUOA3Gzg6PXm4Ez8ZJrjSDlB7w', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', NULL, NULL, NULL, NULL, NULL, '2018-10-17 06:26:52', '2018-10-17 06:26:52'),
+(1, NULL, 'admin', 'Admin', 'admin@example.com', NULL, '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', 'euoMVq0jlLippUMD3ucYaA1avSUwA8d2GRdff90tdwWCxayHFx2VA1o3CCa5', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', '', NULL, NULL, NULL, NULL, '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
+(3, NULL, 'seller', 'Seller', 'seller@example.com', NULL, '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', 'fcZeHIlEX4RcKcMNefHaEnDEkxAGKPxZrDT1JJTPaY4EhobMZjdZ3tlk3EtF', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', 'Uttara', 'BD', 'Dhaka', '1230', '01642954885', '2018-10-07 04:42:57', '2018-11-12 03:58:48'),
+(8, NULL, 'customer', 'Customer', 'customer@example.com', NULL, '$2y$10$0NbLnWt7DAbrhqZrFZ7Nw.tvE.Jnff2Il/jrdgtqBiblKpgGwLyom', 'L6JGodOT4Z2u8RZ6id5YqdbhHq38fh5u1IdesJX5CjReyWdxyiNN3SIyUXet', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', NULL, NULL, NULL, NULL, NULL, '2018-10-17 06:26:52', '2018-10-17 06:26:52'),
 (17, '113510401900359638362', 'customer', 'Mehedi Hasan', 'mehedi.iitdu@gmail.com', NULL, NULL, '0q1qtndIw7cEjIZBYxv8TIjsK0oobA7Np84SGvljAGgj22r8elsgRgQLW7yj', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', NULL, NULL, NULL, NULL, NULL, '2018-11-01 04:52:33', '2018-11-01 04:52:33'),
 (18, '103887660140114486052', 'customer', 'Md. Mehedi Hasan', 'bsse0607@iit.du.ac.bd', NULL, NULL, 'QWxGkOrlVIxrABQ2Qj0xTPsVoZKgNc4OsRNGKdgYp3D7BaUeMJiNqia8otbx', 'https://lh4.googleusercontent.com/-xw_DuhMKF9k/AAAAAAAAAAI/AAAAAAAAACw/g4RUSLrD2Y0/photo.jpg?sz=50', 'https://lh4.googleusercontent.com/-xw_DuhMKF9k/AAAAAAAAAAI/AAAAAAAAACw/g4RUSLrD2Y0/photo.jpg', NULL, NULL, NULL, NULL, NULL, '2018-11-07 05:20:57', '2018-11-07 05:20:57');
 
@@ -650,13 +963,6 @@ CREATE TABLE `wishlists` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `wishlists`
---
-
-INSERT INTO `wishlists` (`id`, `user_id`, `product_id`, `created_at`, `updated_at`) VALUES
-(3, 3, 12, '2018-11-07 06:01:53', '2018-11-07 06:01:53');
 
 --
 -- Indexes for dumped tables
@@ -684,6 +990,12 @@ ALTER TABLE `categories`
 -- Indexes for table `colors`
 --
 ALTER TABLE `colors`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `countries`
+--
+ALTER TABLE `countries`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -796,6 +1108,12 @@ ALTER TABLE `colors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
 
 --
+-- AUTO_INCREMENT for table `countries`
+--
+ALTER TABLE `countries`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=297;
+
+--
 -- AUTO_INCREMENT for table `currencies`
 --
 ALTER TABLE `currencies`
@@ -817,7 +1135,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `product_stocks`
@@ -865,7 +1183,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `wishlists`
 --
 ALTER TABLE `wishlists`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

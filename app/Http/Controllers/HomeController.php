@@ -68,6 +68,36 @@ class HomeController extends Controller
         }
     }
 
+    public function profile(Request $request)
+    {
+        return view('frontend.profile');
+    }
+
+    public function update_profile(Request $request)
+    {
+        $user = Auth::user();
+        $user->name = $request->name;
+        $user->address = $request->address;
+        $user->country = $request->country;
+        $user->city = $request->city;
+        $user->postal_code = $request->postal_code;
+        $user->phone = $request->phone;
+
+        if($request->new_password != null && ($request->new_password == $request->confirm_password)){
+            $user->password = Hash::make($request->new_password);
+        }
+
+        if($request->hasFile('photo')){
+            $user->avatar_original = $request->photo->store('uploads');
+        }
+
+        if($user->save()){
+
+        }
+
+        return back();
+    }
+
     /**
      * Show the application frontend home.
      *

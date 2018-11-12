@@ -54,6 +54,8 @@ Route::group(['middleware' => ['user']], function(){
 	Route::resource('wishlists','WishlistController');
 	Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
 	Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+	Route::get('/profile', 'HomeController@profile')->name('profile');
+	Route::post('/update-profile', 'HomeController@update_profile')->name('profile.update');
 });
 
 Route::group(['prefix' =>'seller', 'middleware' => ['seller']], function(){

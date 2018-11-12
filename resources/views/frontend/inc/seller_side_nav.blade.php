@@ -23,7 +23,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('wishlists.index') }}">
+                    <a href="{{ route('wishlists.index') }}" class="{{ areActiveRoutesHome(['wishlists.index'])}}">
                         <i class="ion-heart"></i>
                         <span class="category-name">
                             Wishlist
@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('profile') }}" class="{{ areActiveRoutesHome(['profile'])}}">
                         <i class="ion-heart"></i>
                         <span class="category-name">
                             Manage Profile

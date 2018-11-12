@@ -1366,6 +1366,7 @@ label.payment_option input:checked + span {
     position: relative;
     display: block;
     margin-bottom: 15px;
+    padding: 0 12px;
 }
 
 .product-card-1 .product-details {
@@ -1378,8 +1379,9 @@ label.payment_option input:checked + span {
 
 .product-title {
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 600;
     padding: 0 15px;
+    line-height: 1.6
 }
 .product-title a{
     color: #111;
@@ -1670,4 +1672,233 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+
+
+
+
+.seller-shop-menu-bar {
+    background: #000;
+}
+
+.seller-shop-menu li a {
+    padding: 14px 20px;
+    display: inline-block;
+    font-size: 13px;
+    color: #fff!important;
+    font-weight: 600;
+}
+
+.seller-shop-menu li.active a,
+.seller-shop-menu li a:hover {
+    background: #e62e04;
+}
+
+
+
+
+.slick-carousel .slick-slide:focus {
+    outline: none;
+}
+.slick-carousel .slick-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9;
+    border: 0;
+    transition: all 0.3s;
+    width: 30px;
+    background: rgba(0,0,0,0.3);
+    height: 60px;
+}
+.slick-carousel .slick-arrow span{
+    position: absolute;
+    display: inline-block;
+    top: calc(50% - 8px);
+    width: 16px;
+    height: 16px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+}
+.slick-carousel .slick-prev {
+    left: 0;
+}
+.slick-carousel .slick-prev span{
+    -webkit-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    transform: rotate(135deg);
+    left: 10px;
+}
+.slick-carousel .slick-next {
+    right: 0;
+}
+.slick-carousel .slick-next span{
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    left: 4px;
+}
+.slick-carousel .slick-dots {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+.slick-carousel .slick-dots li {
+    display: inline-block;
+    margin: 0 3px;
+}
+.slick-carousel .slick-dots li button {
+    border: 0;
+    background: #fcf9f7;
+    font-size: 10px;
+    border-radius: 10px;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    line-height: 19px;
+    transition: all 0.3s;
+}
+.slick-carousel .slick-dots li.slick-active button,
+.slick-carousel .slick-dots li button:hover {
+    background: #e62e04;
+    color: #fff;
+}
+
+
+
+
+
+
+
+.flash-deal-box .countdown {
+    margin-top: 10px;
+}
+.flash-deal-box .countdown .countdown-item {
+    margin:0 3px!important;
+}
+.flash-deal-box .countdown .countdown-digit {
+    font-size: 13px;
+    background:#e62e04;
+    height: 26px;
+    width:26px;
+    line-height:26px
+}
+.flash-deal-box .countdown .countdown-label {
+    font-size: 10px;
+    width:100%;
+    padding: 0;
+    line-height: 1;
+}
+.flash-content.c-scrollbar {
+    height: 417px;
+    max-height: 417px;
+    min-height: 417px;
+    overflow-y: auto;
+    background: #e62e04;
+    padding: 8px;
+}
+
+.flash-deal-item {
+    background: #fff;
+    border-radius: 7px;
+    overflow: hidden;
+    padding: 7px;
+    margin-bottom: 10px;
+}
+
+.flash-deal-item .price {
+    font-size: 16px;
+    font-weight: 600;
+    color: #e62e04;
+    padding-left: 10px;
+    line-height: 1;
+}
+
+.flash-deal-item .price del {
+    font-weight: 400;
+    font-size: 15px;
+    color: #777;
+}
+
+
+.trending-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.trending-category ul li {
+    display: inline-block;
+    width: calc((100%/6) - 15px);
+    -webkit-transition: width .3s ease;
+    -moz-transition: width .3s ease;
+    -o-transition: width .3s ease;
+    transition: width .3s ease;
+}
+.trending-category ul li.active,
+.trending-category ul li:hover {
+    width: calc((100%/6) + 58px);
+}
+.trending-category ul li.active img,
+.trending-category ul li:hover img{
+    margin-left: 28px;
+}
+.trending-category ul:hover li.active{
+    width: calc((100%/6) - 15px);
+}
+.trending-category ul li.active:hover{
+    width: calc((100%/6) + 58px);
+}
+.trend-category-single {
+    overflow: hidden;
+    padding-top: 10px;
+}
+.trend-category-single img{
+    max-width: 140px;
+    max-height: 140px;
+    opacity: 1;
+    -webkit-transition: margin-left .3s ease;
+    -moz-transition: margin-left .3s ease;
+    -o-transition: margin-left .3s ease;
+    transition: margin-left .3s ease;
+}
+
+.trend-category-single .name {
+    padding: 5px;
+    color: #333;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+
+ul.seller-brand-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.seller-brand-list .brand-item {
+    display: inline-block;
+    border: 1px solid #eee;
+    margin: 4px 2px;
+    width: calc(50% - 6px);
+}
+
+.swal2-popup {
+    width: 350px;
+}
+
+.swal2-popup .swal2-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.swal2-icon {
+    transform: scale(0.6);
+    margin: 0;
+    margin-top: -10px;
 }

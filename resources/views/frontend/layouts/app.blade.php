@@ -39,6 +39,10 @@
 <link type="text/css" href="{{ asset('frontend/css/bootstrap-tagsinput.css') }}" rel="stylesheet">
 <link type="text/css" href="{{ asset('frontend/css/summernote.min.css') }}" rel="stylesheet">
 
+<link type="text/css" href="{{ asset('frontend/css/sweetalert2.min.css') }}" rel="stylesheet">
+
+<link type="text/css" href="{{ asset('frontend/css/slick.css') }}" rel="stylesheet">
+
 <!-- Global style (main) -->
 <link id="stylesheet" type="text/css" href="{{ asset('frontend/css/boomerang.min.css') }}" rel="stylesheet" media="screen">
 
@@ -120,7 +124,30 @@
 
 <!-- Deso Slide -->
 <script src="{{ asset('frontend/vendor/deso-slide/js/jquery.desoslide.min.js') }}"></script>
+
+<script src="{{ asset('frontend/js/sweetalert2.min.js') }}"></script>
+<script src="{{ asset('frontend/js/slick.min.js') }}"></script>
+
+<script type="text/javascript">
+    function showFrontendAlert(type, message){
+        swal({
+            position: 'top-end',
+            type: type,
+            title: message,
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+</script>
+
+@foreach (session('flash_notification', collect())->toArray() as $message)
+    <script type="text/javascript">
+        showFrontendAlert('{{ $message['level'] }}', '{{ $message['message'] }}');
+    </script>
+@endforeach
+
 <script>
+
     $('#slideshow').desoSlide({
         thumbs: $('#slideshow_thumbs .swiper-slide > a'),
         thumbEvent: 'click',
@@ -143,12 +170,14 @@
         $.post('{{ route('cart.removeFromCart') }}', {_token:'{{ csrf_token() }}', key:key}, function(data){
             updateNavCart();
             $('#cart-summary').html(data);
+            showFrontendAlert('success', 'Item has been removed from cart');
         });
     }
 
     function addToCompare(id){
         $.post('{{ route('compare.addToCompare') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
             $('#compare').html(data);
+            showFrontendAlert('success', 'Item has been added to compare list');
         });
     }
 
@@ -156,11 +185,11 @@
         if('{{ Auth::check() }}'){
             $.post('{{ route('wishlists.store') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
                 $('#wishlist').html(data);
+                showFrontendAlert('success', 'Item has been added to wishlist');
             });
         }
         else{
-            alert('Please login to continue...');
-            //showAlert('warning', 'Please login to continue...');
+            showFrontendAlert('warning: ', 'Please login first');
         }
     }
 

@@ -42,7 +42,9 @@ button,
 input[type="submit"]{
     cursor: pointer;
 }
-
+.opacity-5{
+    opacity: 0.5;
+}
 
 .btn-anim-primary{
     position: relative;
@@ -1901,4 +1903,7 @@ ul.seller-brand-list .brand-item {
     transform: scale(0.6);
     margin: 0;
     margin-top: -10px;
+}
+.contact-widget li:not(:last-child){
+    margin-bottom: 8px;
 }

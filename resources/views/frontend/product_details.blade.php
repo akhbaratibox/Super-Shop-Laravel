@@ -191,11 +191,11 @@
                                         <i class="icon ion-bag"></i> Add to cart
                                     </button>
                                     <!-- Add to wishlist button -->
-                                    <button type="button" class="btn btn-outline btn-base-1 btn-icon-left">
+                                    <button type="button" class="btn btn-outline btn-base-1 btn-icon-left" onclick="addToWishList({{ $product->id }})">
                                         <i class="icon ion-ios-heart-outline"></i> Add to wishlist
                                     </button>
                                     <!-- Add to compare button -->
-                                    <button type="button" class="btn btn-outline btn-base-1 btn-icon-left">
+                                    <button type="button" class="btn btn-outline btn-base-1 btn-icon-left" onclick="addToCompare({{ $product->id }})">
                                         <i class="icon ion-ios-loop"></i> Add to compare
                                     </button>
                                 </div>

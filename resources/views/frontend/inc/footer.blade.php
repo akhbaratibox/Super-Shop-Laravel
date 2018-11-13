@@ -5,7 +5,7 @@
             <div class="col-lg-3">
                 <div class="footer-top-box text-center">
                     <a href="">
-                        <i class="fa fa-gfg"></i>
+                        <i class="fa fa-tv"></i>
                         <h4 class="heading-5">Seller Policy</h4>
                     </a>
                 </div>

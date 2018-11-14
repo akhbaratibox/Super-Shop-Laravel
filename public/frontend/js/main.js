@@ -7,6 +7,66 @@ $(function () {
         $('#hover-category-menu').hide();
         $('#category-menu-icon').removeClass('active');
     });
+
+
+    $('.slick-carousel').each(function() {
+        var $this = $(this);
+
+        var slidesPerViewXs = $this.data('slick-xs-items');
+        var slidesPerViewSm = $this.data('slick-sm-items');
+        var slidesPerViewMd = $this.data('slick-md-items');
+        var slidesPerViewLg = $this.data('slick-lg-items');
+        var slidesPerViewXl = $this.data('slick-items');
+
+        slidesPerViewXs = !slidesPerViewXs ? slidesPerViewXl : slidesPerViewXs;
+        slidesPerViewSm = !slidesPerViewSm ? slidesPerViewXl : slidesPerViewSm;
+        slidesPerViewMd = !slidesPerViewMd ? slidesPerViewXl : slidesPerViewMd;
+        slidesPerViewLg = !slidesPerViewLg ? slidesPerViewXl : slidesPerViewLg;
+        slidesPerViewXl = !slidesPerViewXl ? 1 : slidesPerViewXl;
+
+        $('.slick-carousel').slick({
+            slidesToShow: slidesPerViewXl,
+            autoplay: false,
+            dots: false,
+            arrows: true,
+            infinite: true,
+            speed: 300,
+            prevArrow: '<button type="button" class="slick-prev"><span class="prev-icon"></span></button>',
+            nextArrow: '<button type="button" class="slick-next"><span class="next-icon"></span></button>',
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: slidesPerViewLg,
+                    }
+                },
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: slidesPerViewMd,
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: slidesPerViewSm,
+                        dots: true,
+                        arrows: false,
+                    }
+                },
+                {
+                    breakpoint: 576,
+                    settings: {
+                        slidesToShow: slidesPerViewXs,
+                        dots: true,
+                        arrows: false,
+                    }
+                }
+            ]
+        });
+    });
+
+
 });
 // Bootstrap selected
 $('.sortSelect').each(function(index, element) {

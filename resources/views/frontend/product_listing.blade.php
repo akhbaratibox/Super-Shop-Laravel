@@ -230,8 +230,8 @@
                                     <div class="col-4">
                                         <div class="product-card-1 mb-3">
                                             <figure class="product-image-container">
-                                                <a href="{{ route('product', $product->slug) }}" class="product-image">
-                                                    <img src="{{ asset(json_decode($product->photos)[0]) }}" alt="product" class="img-center img-fluid">
+                                                <a href="{{ route('product', $product->slug) }}" class="product-image d-block" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');">
+                                                    <!-- <img src="{{ asset(json_decode($product->photos)[0]) }}" alt="product" class="img-center img-fluid"> -->
                                                 </a>
                                                 <button class="btn-quickview"><i class="fa fa-eye"></i></button>
                                                 <span class="product-label label-hot">New</span>

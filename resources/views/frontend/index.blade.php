@@ -93,45 +93,358 @@
                 </div>
 
                 <div class="col-lg-7">
-                    <div class="swiper-js-container">
-                        <div class="swiper-container" data-swiper-items="1" data-swiper-space-between="0">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-item">
-                                    <div class="py-5 px-4">
-                                        <div class="">
-                                            <div class="row align-items-center cols-xs-space cols-sm-space cols-md-space">
-                                                <div class="col-md-5">
-                                                    <div class="">
-                                                        <h3 class="heading heading-3 strong-600">Need productivity?</h3>
+                    <div class="home-slide">
+                        <div id="home-slide" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#home-slide" data-slide-to="0" class="active"></li>
+                                <li data-target="#home-slide" data-slide-to="1"></li>
+                                <li data-target="#home-slide" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100" src="http://via.placeholder.com/850x380" alt="">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="http://via.placeholder.com/850x380" alt="">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="http://via.placeholder.com/850x380" alt="">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#home-slide" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </a>
+                            <a class="carousel-control-next" href="#home-slide" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="trending-category">
+                        <ul>
+                            <li class="active">
+                                <div class="trend-category-single">
+                                    <a href="" class="d-block">
+                                        <div class="name">Vehicles</div>
+                                        <img class="d-block w-100" src="http://via.placeholder.com/200x300" alt="">
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="trend-category-single">
+                                    <a href="" class="d-block">
+                                        <div class="name">Vehicles</div>
+                                        <img class="d-block w-100" src="http://via.placeholder.com/200x300" alt="">
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="trend-category-single">
+                                    <a href="" class="d-block">
+                                        <div class="name">Vehicles</div>
+                                        <img class="d-block w-100" src="http://via.placeholder.com/200x300" alt="">
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="trend-category-single">
+                                    <a href="" class="d-block">
+                                        <div class="name">Vehicles</div>
+                                        <img class="d-block w-100" src="http://via.placeholder.com/200x300" alt="">
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="trend-category-single">
+                                    <a href="" class="d-block">
+                                        <div class="name">Vehicles</div>
+                                        <img class="d-block w-100" src="http://via.placeholder.com/200x300" alt="">
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="trend-category-single">
+                                    <a href="" class="d-block">
+                                        <div class="name">Vehicles</div>
+                                        <img class="d-block w-100" src="http://via.placeholder.com/200x300" alt="">
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-                                                        <p class=" c-gray-light mt-2">
-                                                            Macbook Pro Touch Bar and Touch ID 3.1GHz Processor 256GB Storage
-                                                        </p>
-
-                                                        <div class="btn-container mt-4">
-                                                            <a href="#" class="link link-sm link--style-1 text-uppercase strong-600">
-                                                                <i class="icon-lg ion-android-cart"></i> Shop Macbook Pro
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-7">
-                                                    <img src="{{ asset('frontend/images/prv/shop/electronics/img-product-lg-1.jpg') }}" class="img-fluid">
-                                                </div>
-                                            </div>
+                <div class="col-lg-2">
+                    <div class="flash-deal-box bg-white h-100">
+                        <div class="title text-center p-2 gry-bg">
+                            <h3 class="heading-6 mb-0">
+                                Flash Deal
+                                <span class="badge badge-danger">Hot</span>
+                            </h3>
+                            <div class="countdown countdown--style-1 countdown--style-1-v1" data-countdown-date="07/10/2019" data-countdown-label="show"></div>
+                        </div>
+                        <div class="flash-content c-scrollbar">
+                            <a href="" class="d-block flash-deal-item">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-7">
+                                        <img class="d-block w-100" src="http://via.placeholder.com/400x300" alt="">
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="price">
+                                            <span class="d-block">$49.99</span>
+                                            <del class="d-block">$59.99</del>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
+                            <a href="" class="d-block flash-deal-item">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-7">
+                                        <img class="d-block w-100" src="http://via.placeholder.com/400x300" alt="">
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="price">
+                                            <span class="d-block">$49.99</span>
+                                            <del class="d-block">$59.99</del>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="" class="d-block flash-deal-item">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-7">
+                                        <img class="d-block w-100" src="http://via.placeholder.com/400x300" alt="">
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="price">
+                                            <span class="d-block">$49.99</span>
+                                            <del class="d-block">$59.99</del>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="" class="d-block flash-deal-item">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-7">
+                                        <img class="d-block w-100" src="http://via.placeholder.com/400x300" alt="">
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="price">
+                                            <span class="d-block">$49.99</span>
+                                            <del class="d-block">$59.99</del>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="" class="d-block flash-deal-item">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-7">
+                                        <img class="d-block w-100" src="http://via.placeholder.com/400x300" alt="">
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="price">
+                                            <span class="d-block">$49.99</span>
+                                            <del class="d-block">$59.99</del>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="" class="d-block flash-deal-item">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-7">
+                                        <img class="d-block w-100" src="http://via.placeholder.com/400x300" alt="">
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="price">
+                                            <span class="d-block">$49.99</span>
+                                            <del class="d-block">$59.99</del>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-2">fvdhfj thr hr rhyth yjyr rjhrv</div>
+
             </div>
         </div>
     </section>
+
+
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="media-banner">
+                        <a href="" class="banner-container" style="background-image:url('http://via.placeholder.com/850x420');"></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="media-banner">
+                        <a href="" class="banner-container" style="background-image:url('http://via.placeholder.com/850x420');"></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="media-banner">
+                        <a href="" class="banner-container" style="background-image:url('http://via.placeholder.com/850x420');"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="slice gry-bg">
+        <div class="container">
+            <div class="section-title section-title--style-1">
+                <h3 class="section-title-inner heading-4 strong-700 text-capitalize">
+                    <span class="mr-4">Flash Deal</span>
+                    <small class="countdown countdown-sm d-inline-block" data-countdown-date="10/30/2019" data-countdown-label="hide"></small>
+                </h3>
+            </div>
+            <div class="caorusel-box">
+                <div class="slick-carousel" data-slick-items="5" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="2" data-slick-xs-items="1">
+                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                        <div class="card-body p-0">
+
+                            <div class="card-image">
+                                <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
+                                </a>
+                            </div>
+
+                            <div class="p-3">
+                                <div class="price-box">
+                                    <del class="old-product-price strong-400">$49.99</del>
+                                    <span class="product-price strong-600">$35.99</span>
+                                </div>
+                                <h2 class="product-title p-0 mt-2">
+                                    <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                        <div class="card-body p-0">
+
+                            <div class="card-image">
+                                <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
+                                </a>
+                            </div>
+
+                            <div class="p-3">
+                                <div class="price-box">
+                                    <del class="old-product-price strong-400">$49.99</del>
+                                    <span class="product-price strong-600">$35.99</span>
+                                </div>
+                                <h2 class="product-title p-0 mt-2">
+                                    <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                        <div class="card-body p-0">
+
+                            <div class="card-image">
+                                <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
+                                </a>
+                            </div>
+
+                            <div class="p-3">
+                                <div class="price-box">
+                                    <del class="old-product-price strong-400">$49.99</del>
+                                    <span class="product-price strong-600">$35.99</span>
+                                </div>
+                                <h2 class="product-title p-0 mt-2">
+                                    <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                        <div class="card-body p-0">
+
+                            <div class="card-image">
+                                <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
+                                </a>
+                            </div>
+
+                            <div class="p-3">
+                                <div class="price-box">
+                                    <del class="old-product-price strong-400">$49.99</del>
+                                    <span class="product-price strong-600">$35.99</span>
+                                </div>
+                                <h2 class="product-title p-0 mt-2">
+                                    <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                        <div class="card-body p-0">
+
+                            <div class="card-image">
+                                <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
+                                </a>
+                            </div>
+
+                            <div class="p-3">
+                                <div class="price-box">
+                                    <del class="old-product-price strong-400">$49.99</del>
+                                    <span class="product-price strong-600">$35.99</span>
+                                </div>
+                                <h2 class="product-title p-0 mt-2">
+                                    <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                        <div class="card-body p-0">
+
+                            <div class="card-image">
+                                <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
+                                </a>
+                            </div>
+
+                            <div class="p-3">
+                                <div class="price-box">
+                                    <del class="old-product-price strong-400">$49.99</del>
+                                    <span class="product-price strong-600">$35.99</span>
+                                </div>
+                                <h2 class="product-title p-0 mt-2">
+                                    <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                        <div class="card-body p-0">
+
+                            <div class="card-image">
+                                <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
+                                </a>
+                            </div>
+
+                            <div class="p-3">
+                                <div class="price-box">
+                                    <del class="old-product-price strong-400">$49.99</del>
+                                    <span class="product-price strong-600">$35.99</span>
+                                </div>
+                                <h2 class="product-title p-0 mt-2">
+                                    <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
 
     <section class="slice sct-color-2">
         <div class="container swiper-js-container">

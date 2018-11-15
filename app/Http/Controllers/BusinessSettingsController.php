@@ -18,6 +18,11 @@ class BusinessSettingsController extends Controller
         return view('business_settings.social_login');
     }
 
+    public function payment_method(Request $request)
+    {
+        return view('business_settings.payment_method');
+    }
+
     public function env_key_update(Request $request)
     {
         $path = base_path('.env');

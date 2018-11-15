@@ -190,8 +190,8 @@
                                 <li class="{{ areActiveRoutes(['activation.index'])}}">
                                     <a class="nav-link" href="{{route('activation.index')}}">{{__('web.activation')}}</a>
                                 </li>
-                                <li class="{{ areActiveRoutes([])}}">
-                                    <a class="nav-link" href="#">{{__('web.payment_mothod')}}</a>
+                                <li class="{{ areActiveRoutes(['payment_method.index'])}}">
+                                    <a class="nav-link" href="{{ route('payment_method.index') }}">{{__('web.payment_mothod')}}</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['social_login.index'])}}">
                                     <a class="nav-link" href="{{ route('social_login.index') }}">Social Media Login</a>

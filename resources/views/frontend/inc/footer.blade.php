@@ -52,9 +52,10 @@
                         </a>
                         <p class="mt-3">Active Super Shop Multi vendor system is such a platform to build a border less marketplace both for physical and digital goods.</p>
                         <div>
-                            <form class="form-inline">
+                            <form class="form-inline" method="POST" action="{{ route('subscribers.store') }}">
+                                @csrf
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Your Email Address">
+                                    <input type="email" class="form-control" placeholder="Your Email Address" name="email" required>
                                 </div>
                                 <button type="submit" class="btn btn-base-1 btn-icon-left">
                                     Subscribe

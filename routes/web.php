@@ -50,6 +50,8 @@ Route::get('/compare', 'CompareController@index')->name('compare');
 Route::get('/compare/reset', 'CompareController@reset')->name('compare.reset');
 Route::post('/compare/addToCompare', 'CompareController@addToCompare')->name('compare.addToCompare');
 
+Route::resource('subscribers','SubscriberController');
+
 Route::group(['middleware' => ['user']], function(){
 	Route::resource('wishlists','WishlistController');
 	Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
@@ -109,6 +111,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::post('/business-settings/update', 'BusinessSettingsController@update')->name('business_settings.update');
 	Route::post('/business-settings/update/activation', 'BusinessSettingsController@updateActivationSettings')->name('business_settings.update.activation');
 	Route::get('/activation', 'BusinessSettingsController@activation')->name('activation.index');
+	Route::get('/payment-method', 'BusinessSettingsController@payment_method')->name('payment_method.index');
 	Route::get('/social-login', 'BusinessSettingsController@social_login')->name('social_login.index');
 	Route::post('/env_key_update', 'BusinessSettingsController@env_key_update')->name('env_key_update.update');
 	Route::get('/currency', 'BusinessSettingsController@currency')->name('currency.index');

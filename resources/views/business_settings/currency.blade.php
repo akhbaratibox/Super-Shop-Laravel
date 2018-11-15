@@ -18,7 +18,7 @@
                         <div class="col-lg-6">
                             <select class="form-control demo-select2-placeholder" name="home_default_currency">
                                 @foreach ($active_currencies as $key => $currency)
-                                    <option value="{{ $currency->id }}">{{ $currency->name }}</option>
+                                    <option value="{{ $currency->id }}" <?php if(\App\BusinessSetting::where('type', 'home_default_currency')->first()->value == $currency->id) echo 'selected'?> >{{ $currency->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -47,7 +47,7 @@
                         <div class="col-lg-6">
                             <select class="form-control demo-select2-placeholder" name="system_default_currency">
                                 @foreach ($active_currencies as $key => $currency)
-                                    <option value="{{ $currency->id }}">{{ $currency->name }}</option>
+                                    <option value="{{ $currency->id }}" <?php if(\App\BusinessSetting::where('type', 'system_default_currency')->first()->value == $currency->id) echo 'selected'?> >{{ $currency->name }}</option>
                                 @endforeach
                             </select>
                         </div>

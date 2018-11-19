@@ -44,7 +44,7 @@ class CartController extends Controller
 
         foreach (json_decode(Product::find($request->id)->choice_options) as $key => $choice) {
             $data[$choice->name] = $request[$choice->name];
-            $str .= '-'.$request[$choice->name];
+            $str .= '-'.str_replace(' ', '', $request[$choice->name]);
         }
 
         $price = json_decode($product->variations)->$str->price;

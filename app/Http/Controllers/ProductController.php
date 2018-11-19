@@ -132,7 +132,7 @@ class ProductController extends Controller
                 $str = '';
                 foreach ($combination as $key => $item){
                     if($key > 0 ){
-                        $str .= '-'.$item;
+                        $str .= '-'.str_replace(' ', '', $item);
                     }
                     else{
                         if($request->has('colors_active')){
@@ -140,7 +140,7 @@ class ProductController extends Controller
                             $str .= $color_name;
                         }
                         else{
-                            $str .= $item;
+                            $str .= str_replace(' ', '', $item);
                         }
                     }
                 }
@@ -292,7 +292,7 @@ class ProductController extends Controller
                 $str = '';
                 foreach ($combination as $key => $item){
                     if($key > 0 ){
-                        $str .= '-'.$item;
+                        $str .= '-'.str_replace(' ', '', $item);
                     }
                     else{
                         if($request->has('colors_active')){
@@ -300,7 +300,7 @@ class ProductController extends Controller
                             $str .= $color_name;
                         }
                         else{
-                            $str .= $item;
+                            $str .= str_replace(' ', '', $item);
                         }
                     }
                 }

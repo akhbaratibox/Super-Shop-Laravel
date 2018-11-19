@@ -35,7 +35,11 @@
                                 <div class="dashboard-widget text-center cart-widget mt-4">
                                     <a href="" class="d-block">
                                         <i class="fa fa-shopping-cart"></i>
-                                        <span class="d-block title">0 Product</span>
+                                        @if(Session::has('cart'))
+                                            <span class="d-block title">{{ count(Session::get('cart'))}} Product(s)</span>
+                                        @else
+                                            <span class="d-block title">0 Product</span>
+                                        @endif
                                         <span class="d-block sub-title">in your cart</span>
                                     </a>
                                 </div>
@@ -44,7 +48,7 @@
                                 <div class="dashboard-widget text-center wishlist-widget mt-4">
                                     <a href="" class="d-block">
                                         <i class="fa fa-heart"></i>
-                                        <span class="d-block title">0 Product</span>
+                                        <span class="d-block title">{{ count(Auth::user()->wishlists)}} Product(s)</span>
                                         <span class="d-block sub-title">in your wishlist</span>
                                     </a>
                                 </div>

@@ -314,7 +314,7 @@
 
 <script type="text/javascript">
 
-	var i = $('input[name="choice_no[]"').val();
+	var i = $('input[name="choice_no[]"').last().val();
 
 	function add_more_customer_choice_option(){
 		i++;

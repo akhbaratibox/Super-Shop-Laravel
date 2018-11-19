@@ -35,7 +35,11 @@
                                 <div class="dashboard-widget text-center cart-widget mt-4">
                                     <a href="" class="d-block">
                                         <i class="fa fa-shopping-cart"></i>
-                                        <span class="d-block title">0 Product</span>
+                                        @if(Session::has('cart'))
+                                            <span class="d-block title">{{ count(Session::get('cart'))}} Product(s)</span>
+                                        @else
+                                            <span class="d-block title">0 Product</span>
+                                        @endif
                                         <span class="d-block sub-title">in your cart</span>
                                     </a>
                                 </div>
@@ -44,7 +48,7 @@
                                 <div class="dashboard-widget text-center wishlist-widget mt-4">
                                     <a href="" class="d-block">
                                         <i class="fa fa-heart"></i>
-                                        <span class="d-block title">0 Product</span>
+                                        <span class="d-block title">{{ count(Auth::user()->wishlists)}} Product(s)</span>
                                         <span class="d-block sub-title">in your wishlist</span>
                                     </a>
                                 </div>
@@ -65,30 +69,30 @@
                                     <div class="form-box-title px-3 py-2 clearfix ">
                                         Saved Shipping Info
                                         <div class="float-right">
-                                            <a href="#" class="btn btn-link btn-sm">Edit</a>
+                                            <a href="{{ route('profile') }}" class="btn btn-link btn-sm">Edit</a>
                                         </div>
                                     </div>
                                     <div class="form-box-content p-3">
                                         <table>
                                             <tr>
                                                 <td>Address:</td>
-                                                <td class="p-2">1234 Street Name, City, England</td>
+                                                <td class="p-2">{{ Auth::user()->address }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Country:</td>
-                                                <td class="p-2">England</td>
+                                                <td class="p-2">{{ \App\Country::where('code', Auth::user()->country)->first()->name }}</td>
                                             </tr>
                                             <tr>
                                                 <td>City:</td>
-                                                <td class="p-2">Dhaka</td>
+                                                <td class="p-2">{{ Auth::user()->city }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Postal Code:</td>
-                                                <td class="p-2">1230</td>
+                                                <td class="p-2">{{ Auth::user()->postal_code }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Phone:</td>
-                                                <td class="p-2">880121515154</td>
+                                                <td class="p-2">{{ Auth::user()->phone }}</td>
                                             </tr>
                                         </table>
                                     </div>
@@ -96,7 +100,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

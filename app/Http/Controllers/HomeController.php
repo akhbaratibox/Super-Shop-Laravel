@@ -24,7 +24,7 @@ class HomeController extends Controller
                 else{
                     auth()->login($user, false);
                 }
-                return redirect()->route('home');
+                return redirect()->route('dashboard');
             }
         }
         return back();
@@ -95,7 +95,7 @@ class HomeController extends Controller
             flash('Your Profile has been updated successfully!')->success();
             return back();
         }
-        
+
         flash('Sorry! Something went wrong.')->danger();
         return back();
     }

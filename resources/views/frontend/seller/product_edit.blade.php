@@ -528,10 +528,11 @@
             }
         }
 
-        var i = 0;
+        var i = $('input[name="choice_no[]"').last().val();
+
     	function add_more_customer_choice_option(){
+            i++;
     		$('#customer_choice_options').append('<div class="row mb-3"><div class="col-2"><input type="hidden" name="choice_no[]" value="'+i+'"><input type="text" class="form-control" name="choice[]" value="" placeholder="Choice Title"></div><div class="col-9"><input type="text" class="form-control tagsInput" name="choice_options_'+i+'[]" placeholder="Enter choice values" onchange="update_sku()"></div><div class="col-1"><button type="button" onclick="delete_row(this)" class="btn btn-link btn-icon text-danger"><i class="fa fa-trash-o"></i></button></div></div>');
-    		i++;
             $('.tagsInput').tagsinput('items');
     	}
 

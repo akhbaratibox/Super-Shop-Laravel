@@ -1954,7 +1954,7 @@ ul.seller-brand-list .brand-item {
     width: 44px;
     height: 44px;
     line-height: 46px;
-    background: rgba(255, 255, 255, .5);
+    background: rgba(255, 255, 255, .3);
     border-radius: 50%;
     font-size: 16px;
     margin-bottom: 15px;
@@ -1971,24 +1971,15 @@ ul.seller-brand-list .brand-item {
     opacity: 0.7;
 }
 
-.wishlist-widget {
+.red-widget {
     background-color: #fa5c7c;
 }
-.wishlist-widget i{
-    /* background: rgba(250, 92, 124, .2); */
-    /* color: #fa5c7c; */
-}
-.order-widget {
+.blue-widget {
     background-color: #39afd1;
 }
-.order-widget i{
-    /* background: rgba(57, 175, 209, .2); */
-    /* color: #39afd1; */
-}
-.cart-widget {
+.green-widget {
     background-color: #0acf97;
 }
-.cart-widget i{
-    /* background: rgba(10, 207, 151, .2); */
-    /* color: #0acf97; */
+.yellow-widget {
+    background-color: #ffbc00;
 }

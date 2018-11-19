@@ -32,7 +32,7 @@
                     <div class="">
                         <div class="row">
                             <div class="col-md-4">
-                                <div class="dashboard-widget text-center cart-widget mt-4">
+                                <div class="dashboard-widget text-center green-widget mt-4">
                                     <a href="" class="d-block">
                                         <i class="fa fa-shopping-cart"></i>
                                         @if(Session::has('cart'))
@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="dashboard-widget text-center wishlist-widget mt-4">
+                                <div class="dashboard-widget text-center red-widget mt-4">
                                     <a href="" class="d-block">
                                         <i class="fa fa-heart"></i>
                                         <span class="d-block title">{{ count(Auth::user()->wishlists)}} Product(s)</span>
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="dashboard-widget text-center order-widget mt-4">
+                                <div class="dashboard-widget text-center yellow-widget mt-4">
                                     <a href="" class="d-block">
                                         <i class="fa fa-building"></i>
                                         <span class="d-block title">0 Product</span>

@@ -30,6 +30,9 @@ Route::get('/products/category/{id}', 'HomeController@listing_by_category')->nam
 Route::get('/products/subcategory/{id}', 'HomeController@listing_by_subcategory')->name('products.subcategory');
 Route::get('/products/subsubcategory/{id}', 'HomeController@listing_by_subsubcategory')->name('products.subsubcategory');
 Route::get('/products/brand/{id}', 'HomeController@listing_by_brand')->name('products.brand');
+Route::get('/seller/shop', function(){
+	return view('frontend.seller.seller_shop');
+});
 
 Route::get('/cart', 'CartController@index')->name('cart');
 Route::post('/cart/nav-cart-items', 'CartController@updateNavCart')->name('cart.nav_cart');

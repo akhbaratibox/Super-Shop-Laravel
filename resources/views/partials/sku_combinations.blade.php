@@ -30,7 +30,7 @@
 		foreach ($combination as $key => $item){
 			if($key > 0 ){
 				$str .= '-'.str_replace(' ', '', $item);
-				$sku .='-'.$item;
+				$sku .='-'.str_replace(' ', '', $item);
 			}
 			else{
 				if($colors_active == 1){
@@ -40,7 +40,7 @@
 				}
 				else{
 					$str .= str_replace(' ', '', $item);
-					$sku .='-'.$item;
+					$sku .='-'.str_replace(' ', '', $item);
 				}
 			}
 		}

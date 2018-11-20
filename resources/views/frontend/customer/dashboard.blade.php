@@ -80,7 +80,11 @@
                                             </tr>
                                             <tr>
                                                 <td>Country:</td>
-                                                <td class="p-2">{{ \App\Country::where('code', Auth::user()->country)->first()->name }}</td>
+                                                <td class="p-2">
+                                                    @if (Auth::user()->country != null)
+                                                        {{ \App\Country::where('code', Auth::user()->country)->first()->name }}
+                                                    @endif
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>City:</td>

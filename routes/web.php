@@ -122,6 +122,9 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
     Route::post('/your-currency/update', 'BusinessSettingsController@updateYourCurrency')->name('your_currency.update');
 	Route::get('/verification/form', 'BusinessSettingsController@seller_verification_form')->name('seller_verification_form.index');
 
+	Route::resource('sliders','SliderController');
+    Route::get('/sliders/destroy/{id}', 'SliderController@destroy')->name('sliders.destroy');
+
 	Route::resource('roles','RoleController');
     Route::get('/roles/destroy/{id}', 'RoleController@destroy')->name('roles.destroy');
 

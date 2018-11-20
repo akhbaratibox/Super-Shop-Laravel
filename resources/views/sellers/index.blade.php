@@ -24,7 +24,7 @@
                     <th>{{__('web.name')}}</th>
                     <th>{{__('web.email_address')}}</th>
                     <th>{{__('web.status')}}</th>
-                    <th width="10%">{{__('web.password')}}</th>
+                    <th width="10%">{{__('web.options')}}</th>
                 </tr>
             </thead>
             <tbody>

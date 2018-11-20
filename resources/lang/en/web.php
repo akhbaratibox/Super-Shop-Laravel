@@ -35,6 +35,8 @@ return [
     'newsletters' => 'Newsletters',
     'contact_messages' => 'Contact Messages',
     'business_settings' => 'Business Settings',
+    'frontend_settings' => 'Frontend Settings',
+    'home_slider' => 'Home Slider',
     'activation' => 'Activation',
 
     //Admin Top Nav Strings
@@ -128,5 +130,6 @@ return [
     'role_information' => 'Role Information',
     'todays_deal' => "Today's Deal",
     'published' => 'Published',
-    'featured' => 'Featured'
+    'featured' => 'Featured',
+    'slider_information' => 'Slider Information'
 ];

@@ -207,6 +207,21 @@
 
                         <li>
                             <a href="#">
+                                <i class="fa fa-desktop"></i>
+                                <span class="menu-title">{{__('web.frontend_settings')}}</span>
+                                <i class="arrow"></i>
+                            </a>
+
+                            <!--Submenu-->
+                            <ul class="collapse">
+                                <li class="{{ areActiveRoutes(['sliders.index'])}}">
+                                    <a class="nav-link" href="{{route('sliders.index')}}">{{__('web.home_slider')}}</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">
                                 <i class="fa fa-user"></i>
                                 <span class="menu-title">{{__('web.staffs')}}</span>
                                 <i class="arrow"></i>

@@ -104,11 +104,11 @@
                                 @foreach (\App\Slider::where('published', 1)->get() as $key => $slider)
                                     @if ($key == 0)
                                         <div class="carousel-item active">
-                                            <img class="d-block w-100" style="height:380px; width:850px;" src="{{ asset($slider->photo) }}" alt="Slider Image">
+                                            <img class="d-block w-100" style="height:330px; width:850px;" src="{{ asset($slider->photo) }}" alt="Slider Image">
                                         </div>
                                     @else
                                         <div class="carousel-item">
-                                            <img class="d-block w-100" style="height:380px; width:850px;" src="{{ asset($slider->photo) }}" alt="Slider Image">
+                                            <img class="d-block w-100" style="height:330px; width:850px;" src="{{ asset($slider->photo) }}" alt="Slider Image">
                                         </div>
                                     @endif
                                 @endforeach

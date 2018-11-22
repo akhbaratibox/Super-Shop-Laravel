@@ -18,11 +18,14 @@ $(function () {
         var slidesPerViewLg = $this.data('slick-lg-items');
         var slidesPerViewXl = $this.data('slick-items');
 
+        var slidesCenterMode = $this.data('slick-center');
+
         slidesPerViewXs = !slidesPerViewXs ? slidesPerViewXl : slidesPerViewXs;
         slidesPerViewSm = !slidesPerViewSm ? slidesPerViewXl : slidesPerViewSm;
         slidesPerViewMd = !slidesPerViewMd ? slidesPerViewXl : slidesPerViewMd;
         slidesPerViewLg = !slidesPerViewLg ? slidesPerViewXl : slidesPerViewLg;
         slidesPerViewXl = !slidesPerViewXl ? 1 : slidesPerViewXl;
+        slidesCenterMode = !slidesCenterMode ? false : slidesCenterMode;
 
         $('.slick-carousel').slick({
             slidesToShow: slidesPerViewXl,
@@ -30,6 +33,8 @@ $(function () {
             dots: false,
             arrows: true,
             infinite: true,
+            centerPadding: '0px',
+            centerMode: slidesCenterMode,
             speed: 300,
             prevArrow: '<button type="button" class="slick-prev"><span class="prev-icon"></span></button>',
             nextArrow: '<button type="button" class="slick-next"><span class="next-icon"></span></button>',
@@ -63,6 +68,15 @@ $(function () {
                     }
                 }
             ]
+        });
+    });
+
+    $('.slick-slider').each(function() {
+        var $this = $(this);
+        $this.slick({
+            slidesToShow: 1,
+            prevArrow: '<button type="button" class="slick-prev"><span class="prev-icon"></span></button>',
+            nextArrow: '<button type="button" class="slick-next"><span class="next-icon"></span></button>',
         });
     });
 

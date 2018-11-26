@@ -45,7 +45,9 @@ input[type="submit"]{
 .opacity-5{
     opacity: 0.5;
 }
-
+.slick-slide:focus{
+    outline: 0;
+}
 .btn-anim-primary{
     position: relative;
     color: #fff;
@@ -242,7 +244,9 @@ input[type="submit"]{
 .summernote + .note-editor.note-frame .note-toolbar.panel-heading{
     position: static!important;
 }
-
+.checkbox-alphanumeric input:checked ~ label {
+    transform: scale(1);
+}
 
 
 
@@ -808,6 +812,8 @@ section.home-banner-area {
 .product-description-wrapper .avialable-amount {
     font-size: 13px;
     color: #777;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .product-description-wrapper .product-price-old {
@@ -1573,45 +1579,66 @@ button.paction.add-wishlist:hover,button.paction.add-compare:hover {
 
 
 
-.home-slide .carousel-indicators {
-    bottom: 0;
-    -ms-flex-pack: flex-end;
-    justify-content: flex-end;
-    margin-right: 5%;
-    margin-left: 5%;
+.home-slide .slick-dots {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    right: 5%;
+    bottom: 20px;
 }
 
-.home-slide .carousel-indicators li {
+.home-slide .slick-dots li {
+    list-style: none;
+    display:inline-block;
+    margin: 0 5px;
+}
+.home-slide .slick-dots li button{
     background: #fff;
     height: 4px;
     width: 25px;
+    border: 0;
+    color: transparent;
+    font-size: 0;
 }
 
-.home-slide .carousel-indicators li.active {
+.home-slide .slick-dots li.slick-active button,
+.home-slide .slick-dots li button:hover{
     background: #e62e04;
 }
 
-.home-slide .carousel-control-next,
-.home-slide .carousel-control-prev {
-    opacity: 0;
+.home-slide .slick-prev,
+.home-slide .slick-next {
+    opacity: 0.3;
     transition: all 0.3s;
     width: 30px;
     background: rgba(0,0,0,0.1);
     height: 60px;
     top: calc(50% - 30px);
+    position: absolute;
+    border: 0;
+    z-index: 99;
 }
-.home-slide:hover .carousel-control-next,
-.home-slide:hover .carousel-control-prev {
+.home-slide .slick-prev{
+    left: 0;
+}
+.home-slide .slick-next{
+    right: 0;
+}
+.home-slide:hover .slick-prev,
+.home-slide:hover .slick-next {
     opacity: 1;
 }
-.home-slide .carousel-control-next .carousel-control-next-icon,
-.home-slide .carousel-control-prev .carousel-control-prev-icon{
+.home-slide .slick-next .next-icon,
+.home-slide .slick-prev .prev-icon{
     background:none;
     height: 30px;
-    position: relative;
+    width: 30px;
+    position: absolute;
+    top: calc(50% - 15px);
+    left: calc(50% - 15px);
 }
-.home-slide .carousel-control-next .carousel-control-next-icon:after,
-.home-slide .carousel-control-prev .carousel-control-prev-icon:after{
+.home-slide .slick-next .next-icon:after,
+.home-slide .slick-prev .prev-icon:after{
     position: absolute;
     content: "";
     top: 7px;
@@ -1620,17 +1647,17 @@ button.paction.add-wishlist:hover,button.paction.add-compare:hover {
     border: solid white;
     border-width: 0 2px 2px 0;
 }
-.home-slide .carousel-control-next .carousel-control-next-icon:after{
+.home-slide .slick-next .next-icon:after{
     -webkit-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg);
     transform: rotate(-45deg);
-    left: -2px;
+    left: 4px;
 }
-.home-slide .carousel-control-prev .carousel-control-prev-icon:after{
+.home-slide .slick-prev .prev-icon:after{
     -webkit-transform: rotate(135deg);
     -ms-transform: rotate(135deg);
     transform: rotate(135deg);
-    left: 6px;
+    left: 12px;
 }
 
 
@@ -2052,4 +2079,76 @@ ul.seller-brand-list .brand-item {
 
 .category-widget ul li a span {
     opacity: 0.5;
+}
+
+
+
+
+/* custom product box 1 */
+
+.product-box-1 {
+    background: #fff;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    -ms-webkit-transition: all 0.3s;
+}
+.product-box-1:hover {
+    box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    -ms-webkit-transform: translateY(-5px);
+}
+
+.product-box-1 .card-image a {
+    display: block;
+    height: 300px;
+    background-size: contain;
+    background-position: center;
+}
+
+.product-box-1 .price-bar {
+    padding: 10px 15px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.product-box-1 .title a {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111;
+}
+
+.product-box-1 .title a:hover {
+    color: #e85433;
+}
+
+.product-box-1 .price-bar .price {
+    color: #e85433;
+    font-size: 16px;
+}
+
+.product-box-1 .price-bar .price del {
+    color: #777;
+    font-size: 95%;
+}
+
+.product-box-1 .price-bar button {
+    border: 0;
+    padding: 0;
+    width: calc(50% - 2px);
+    background: none;
+    font-size: 20px;
+    line-height: 1;
+    margin-top: 2px;
+}
+
+.product-box-1 .cart-add .btn {
+    background: none;
+    padding: 12px;
+    font-weight: 600;
+}
+
+.product-box-1 .cart-add .btn:hover {
+    background: #e85433;
+    color: #fff;
 }

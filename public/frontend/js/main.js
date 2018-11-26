@@ -75,6 +75,7 @@ $(function () {
         var $this = $(this);
         $this.slick({
             slidesToShow: 1,
+            dots: true,
             prevArrow: '<button type="button" class="slick-prev"><span class="prev-icon"></span></button>',
             nextArrow: '<button type="button" class="slick-next"><span class="next-icon"></span></button>',
         });

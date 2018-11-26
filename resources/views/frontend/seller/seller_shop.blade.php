@@ -49,7 +49,7 @@
         <div class="container">
             <div class="section-title section-title--style-1 text-center mb-5">
                 <h3 class="section-title-inner heading-3 strong-600">
-                    New Arrival Products
+                    Featured Products
                 </h3>
             </div>
             <div class="row">
@@ -362,8 +362,217 @@
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <div class="bg-white">
+                    <h4 class="heading-5 strong-600 border-bottom pb-3 mb-4">New Arrival Products</h4>
+                    <div class="product-list row">
 
+                        <div class="col-lg-4">
+                            <div class="card product-box-1 mb-3">
+                                <div class="card-image">
+                                    <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/600x700');" tabindex="0">
+                                    </a>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="title p-3">
+                                        <a href="" >HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                    </div>
+                                    <div class="price-bar row no-gutters">
+                                        <div class="price col-8">
+                                            <del class="old-product-price strong-600">$49.99</del>
+                                            <span class="product-price strong-600">$35.99</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <button class="add-wishlist" title="Add to Wishlist">
+                                                <i class="ion-ios-heart-outline"></i>
+                                            </button>
+                                            <button class="add-compare" title="Add to Compare">
+                                                <i class="ion-ios-browsers-outline"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="cart-add">
+                                        <button type="button" class=" btn btn-block btn-icon-left">
+                                            <i class="icon ion-android-cart"></i>Add to cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card product-box-1 mb-3">
+                                <div class="card-image">
+                                    <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/600x700');" tabindex="0">
+                                    </a>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="title p-3">
+                                        <a href="" >HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                    </div>
+                                    <div class="price-bar row no-gutters">
+                                        <div class="price col-8">
+                                            <del class="old-product-price strong-600">$49.99</del>
+                                            <span class="product-price strong-600">$35.99</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <button class="add-wishlist" title="Add to Wishlist">
+                                                <i class="ion-ios-heart-outline"></i>
+                                            </button>
+                                            <button class="add-compare" title="Add to Compare">
+                                                <i class="ion-ios-browsers-outline"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="cart-add">
+                                        <button type="button" class=" btn btn-block btn-icon-left">
+                                            <i class="icon ion-android-cart"></i>Add to cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card product-box-1 mb-3">
+                                <div class="card-image">
+                                    <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/600x700');" tabindex="0">
+                                    </a>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="title p-3">
+                                        <a href="" >HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                    </div>
+                                    <div class="price-bar row no-gutters">
+                                        <div class="price col-8">
+                                            <del class="old-product-price strong-600">$49.99</del>
+                                            <span class="product-price strong-600">$35.99</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <button class="add-wishlist" title="Add to Wishlist">
+                                                <i class="ion-ios-heart-outline"></i>
+                                            </button>
+                                            <button class="add-compare" title="Add to Compare">
+                                                <i class="ion-ios-browsers-outline"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="cart-add">
+                                        <button type="button" class=" btn btn-block btn-icon-left">
+                                            <i class="icon ion-android-cart"></i>Add to cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card product-box-1 mb-3">
+                                <div class="card-image">
+                                    <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/600x700');" tabindex="0">
+                                    </a>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="title p-3">
+                                        <a href="" >HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                    </div>
+                                    <div class="price-bar row no-gutters">
+                                        <div class="price col-8">
+                                            <del class="old-product-price strong-600">$49.99</del>
+                                            <span class="product-price strong-600">$35.99</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <button class="add-wishlist" title="Add to Wishlist">
+                                                <i class="ion-ios-heart-outline"></i>
+                                            </button>
+                                            <button class="add-compare" title="Add to Compare">
+                                                <i class="ion-ios-browsers-outline"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="cart-add">
+                                        <button type="button" class=" btn btn-block btn-icon-left">
+                                            <i class="icon ion-android-cart"></i>Add to cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card product-box-1 mb-3">
+                                <div class="card-image">
+                                    <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/600x700');" tabindex="0">
+                                    </a>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="title p-3">
+                                        <a href="" >HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                    </div>
+                                    <div class="price-bar row no-gutters">
+                                        <div class="price col-8">
+                                            <del class="old-product-price strong-600">$49.99</del>
+                                            <span class="product-price strong-600">$35.99</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <button class="add-wishlist" title="Add to Wishlist">
+                                                <i class="ion-ios-heart-outline"></i>
+                                            </button>
+                                            <button class="add-compare" title="Add to Compare">
+                                                <i class="ion-ios-browsers-outline"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="cart-add">
+                                        <button type="button" class=" btn btn-block btn-icon-left">
+                                            <i class="icon ion-android-cart"></i>Add to cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card product-box-1 mb-3">
+                                <div class="card-image">
+                                    <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/600x700');" tabindex="0">
+                                    </a>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="title p-3">
+                                        <a href="" >HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                    </div>
+                                    <div class="price-bar row no-gutters">
+                                        <div class="price col-8">
+                                            <del class="old-product-price strong-600">$49.99</del>
+                                            <span class="product-price strong-600">$35.99</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <button class="add-wishlist" title="Add to Wishlist">
+                                                <i class="ion-ios-heart-outline"></i>
+                                            </button>
+                                            <button class="add-compare" title="Add to Compare">
+                                                <i class="ion-ios-browsers-outline"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="cart-add">
+                                        <button type="button" class=" btn btn-block btn-icon-left">
+                                            <i class="icon ion-android-cart"></i>Add to cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="products-pagination my-5">
+                                <nav aria-label="Center aligned pagination">
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item active"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -77,7 +77,7 @@
                                     </div>
                                 </div>
                                 <div class="single-category">
-                                    <button class="btn w-100 category-name" type="button" data-toggle="collapse" data-target="#categoryTwo" aria-expanded="false">
+                                    <button class="btn w-100 category-name collapsed" type="button" data-toggle="collapse" data-target="#categoryTwo" aria-expanded="false">
                                     Category name
                                     </button>
 

@@ -73,6 +73,22 @@
 
     @include('frontend.partials.modal')
 
+    <div class="modal fade" id="addToCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
+            <div class="modal-content position-relative">
+                <div class="c-preloader">
+                    <i class="fa fa-spin fa-spinner"></i>
+                </div>
+                <button type="button" class="close absolute-close-btn" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div id="addToCart-modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div><!-- END: body-wrap -->
 
 <!-- SCRIPTS -->
@@ -191,6 +207,43 @@
         else{
             showFrontendAlert('warning: ', 'Please login first');
         }
+    }
+
+    function showAddToCartModal(id){
+        if(!$('#modal-size').hasClass('modal-lg')){
+            $('#modal-size').addClass('modal-lg');
+        }
+        $('#addToCart').modal();
+        $.post('{{ route('cart.showCartModal') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
+            $('.c-preloader').hide();
+            $('#addToCart-modal-body').html(data);
+            $('#slideshow').desoSlide({
+                thumbs: $('#slideshow_thumbs .swiper-slide > a'),
+                thumbEvent: 'click',
+                first: 0,
+                effect: 'none',
+                overlay: 'none',
+                controls: {
+                    show: false,
+                    keys: false
+                },
+            });
+        });
+    }
+
+    function addToCart(){
+        $('.c-preloader').show();
+        $.ajax({
+           type:"POST",
+           url:'{{ route('cart.addToCart') }}',
+           data:$('#option-choice-form').serialize(),
+           success: function(data){
+               $('.c-preloader').hide();
+               $('#modal-size').removeClass('modal-lg');
+               $('#addToCart-modal-body').html(data);
+               updateNavCart();
+           }
+       });
     }
 
     function cartQuantityInitialize(){

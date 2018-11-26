@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2018 at 01:18 PM
+-- Generation Time: Nov 26, 2018 at 12:32 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `brands` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `logo` varchar(100) NOT NULL,
+  `logo` varchar(100) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -104,8 +104,8 @@ INSERT INTO `business_settings` (`id`, `type`, `value`, `created_at`, `updated_a
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `banner` varchar(100) NOT NULL,
-  `icon` varchar(100) NOT NULL,
+  `banner` varchar(100) DEFAULT NULL,
+  `icon` varchar(100) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -115,16 +115,19 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `banner`, `icon`, `created_at`, `updated_at`) VALUES
-(7, 'Automobile', 'uploads/LntG9daqoJqQ077ZUzjjApqNygNgYVf2PZGVBnYd.jpeg', 'uploads/ftpL20ddrhYGvw8a9oAGfkxWHJc5FhMpfXhqv0Gl.png', '2018-10-24 09:19:43', '2018-10-12 23:39:15'),
-(8, 'Men\'s clothing', 'uploads/ae4aNYkbh5zqRvvryc3vimjPOuoAMMnRWShUuods.jpeg', 'uploads/dWBFvWcVSE7kkfdw3HWxbp72ok2Xjj4JXv5wBYLa.jpeg', '2018-11-06 07:53:08', '2018-11-06 01:53:08'),
-(9, 'Cellphone & Accessories', 'uploads/9Y0Z0sspWsZGrIbeBwqHI7WpaJwpHQzOcDr2nvna.jpeg', 'uploads/JO2gZJmfmzOEMoEy8FFHIzh0bwRsRp5klevRY0hl.png', '2018-10-14 19:54:43', '2018-10-14 19:54:43'),
+(7, 'Automobiles & Motorcycles', 'uploads/LntG9daqoJqQ077ZUzjjApqNygNgYVf2PZGVBnYd.jpeg', 'uploads/ftpL20ddrhYGvw8a9oAGfkxWHJc5FhMpfXhqv0Gl.png', '2018-11-26 06:22:37', '2018-11-26 00:22:37'),
+(8, 'Men\'s Clothing & Accessories', 'uploads/94jfakFEbtBQdMz8dQeAxIk8pzaZjA7M1NPb4ehX.jpeg', 'uploads/TRKBVxQKnvNOIBs6fUrBsHXNk8DLLwxsfsSPsof9.jpeg', '2018-11-26 06:17:23', '2018-11-26 00:17:23'),
+(9, 'Phones & Accessories', 'uploads/9Y0Z0sspWsZGrIbeBwqHI7WpaJwpHQzOcDr2nvna.jpeg', 'uploads/JO2gZJmfmzOEMoEy8FFHIzh0bwRsRp5klevRY0hl.png', '2018-11-26 06:17:50', '2018-11-26 00:17:50'),
 (10, 'Computer,Office, Security', 'uploads/D3y6VjYfpKKzZsgFT13DIjXOrIw0Iyu5XTscH6sh.jpeg', 'uploads/KvCl7flxmS9M52UQ4DXIvKbMoNrWWbeJdqE0JikI.png', '2018-10-14 21:48:07', '2018-10-14 21:48:07'),
 (11, 'Consumer Electronics', 'uploads/XBQehfa2gpybSpfXN9jpfXCC0LTJzeFX21g8gb9A.jpeg', 'uploads/CdXRyERshiQ6CQ2Cu8GoAVYkJWzMozYnQG6ZWTun.png', '2018-10-14 21:49:26', '2018-10-14 21:49:26'),
-(12, 'Jewelry & Watches', 'uploads/lRYBHVrNo5opv0NVWbnfjtMGpW11kGr3ZOds7RYI.jpeg', 'uploads/iABztWhWCJZ8sq7nAnSqDxVne2pQ5BrfLaP1DLIJ.png', '2018-10-14 22:36:26', '2018-10-14 22:36:26'),
-(13, 'Home Appliance', 'uploads/ZFiw5Xcrs6iIcFkj3K0TrSa8oIoy4pkhpnUukZhy.jpeg', 'uploads/xSIZbEpy3OsC6ANLSIJfP7ieaGP02E40rQVkjTOu.png', '2018-10-14 22:38:48', '2018-10-14 22:38:48'),
-(14, 'bags & Shoes', 'uploads/T7OdflyLppCVLfcQbrcNX2u5NplxZO6GxUXqYb5V.jpeg', 'uploads/4V6kp42dRmq9xWOChshL2lc5LHF55DsAjZlieBm7.png', '2018-10-14 22:39:57', '2018-10-14 22:39:57'),
-(15, 'Kids & Toys', 'uploads/uqSmE0jswOwy5nWd4yPSh4fT4bTgIFMyb0Z8zUdi.jpeg', 'uploads/bZxBw0f5vy4MFz9XoR7EQML3JMc8heT10ZbIAc5d.png', '2018-10-14 22:41:17', '2018-10-14 22:41:17'),
-(16, 'Health & Beauty', 'uploads/9C62APIf0N332pUqTXGIxSKeDhsmI5kLTC9YZ1OE.jpeg', 'uploads/QpFFOJvkYITZkIbeXnsHLsZbof7IfcW1z49YJ8uF.png', '2018-10-14 22:43:04', '2018-10-14 22:43:04');
+(12, 'Jewelry & Accessories', 'uploads/lRYBHVrNo5opv0NVWbnfjtMGpW11kGr3ZOds7RYI.jpeg', 'uploads/iABztWhWCJZ8sq7nAnSqDxVne2pQ5BrfLaP1DLIJ.png', '2018-11-26 06:18:40', '2018-11-26 00:18:40'),
+(13, 'Home & Garden, Furniture', 'uploads/ZFiw5Xcrs6iIcFkj3K0TrSa8oIoy4pkhpnUukZhy.jpeg', 'uploads/xSIZbEpy3OsC6ANLSIJfP7ieaGP02E40rQVkjTOu.png', '2018-11-26 06:20:16', '2018-11-26 00:20:16'),
+(14, 'Bags & Shoes', 'uploads/T7OdflyLppCVLfcQbrcNX2u5NplxZO6GxUXqYb5V.jpeg', 'uploads/4V6kp42dRmq9xWOChshL2lc5LHF55DsAjZlieBm7.png', '2018-11-26 06:20:37', '2018-11-26 00:20:37'),
+(15, 'Toys, Kids & Baby', 'uploads/uqSmE0jswOwy5nWd4yPSh4fT4bTgIFMyb0Z8zUdi.jpeg', 'uploads/bZxBw0f5vy4MFz9XoR7EQML3JMc8heT10ZbIAc5d.png', '2018-11-26 06:20:56', '2018-11-26 00:20:56'),
+(16, 'Health & Beauty, Hair', 'uploads/9C62APIf0N332pUqTXGIxSKeDhsmI5kLTC9YZ1OE.jpeg', 'uploads/QpFFOJvkYITZkIbeXnsHLsZbof7IfcW1z49YJ8uF.png', '2018-11-26 06:22:21', '2018-11-26 00:22:21'),
+(17, 'Women\'s Clothing & Accessories', 'uploads/f59aKgiu2LCqazmCjTLr1uxMwe6CkcnY68zS8gUs.jpeg', 'uploads/v0mEGtvCrkuIitWWs8Yg153nbYkww56DlKs6NkKx.jpeg', '2018-11-26 00:15:24', '2018-11-26 00:15:24'),
+(18, 'Sports & Outdoors', 'uploads/PDFihTP747slUWwQn9NrZHSSpX12PT8bdiQwap60.jpeg', 'uploads/zI3qRpqyfkRfHHF5ILioexYT7delNEp6YsMYrPG8.jpeg', '2018-11-26 00:21:49', '2018-11-26 00:21:49'),
+(19, 'Home Improvement', 'uploads/4JlZPcnize4MuADLIHfKHSmjwQn4ldjQd0EneXpi.jpeg', 'uploads/inEQ8WXqQQQK96bvPiEmK5dC0lCjtSu7nC6EqA0g.jpeg', '2018-11-26 00:23:30', '2018-11-26 00:23:30');
 
 -- --------------------------------------------------------
 
@@ -696,6 +699,20 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `guest_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `password_resets`
 --
 
@@ -815,6 +832,7 @@ INSERT INTO `roles` (`id`, `name`, `permissions`, `created_at`, `updated_at`) VA
 CREATE TABLE `sellers` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `verification_status` int(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -823,8 +841,8 @@ CREATE TABLE `sellers` (
 -- Dumping data for table `sellers`
 --
 
-INSERT INTO `sellers` (`id`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 3, '2018-10-07 04:42:57', '2018-10-07 04:42:57');
+INSERT INTO `sellers` (`id`, `user_id`, `verification_status`, `created_at`, `updated_at`) VALUES
+(1, 3, 0, '2018-10-07 04:42:57', '2018-10-07 04:42:57');
 
 -- --------------------------------------------------------
 
@@ -846,7 +864,7 @@ CREATE TABLE `sliders` (
 
 INSERT INTO `sliders` (`id`, `photo`, `published`, `created_at`, `updated_at`) VALUES
 (1, 'sliders/hQVQIEwESpseaCO0nf3jUxJTT0pS0g9RaZH0BpmT.jpeg', 1, '2018-11-20 05:54:34', '2018-11-20 06:18:04'),
-(2, 'sliders/8OlMO4a2KNS2SdIlsNR1l0IpynCzYPNwcYWDUrGJ.png', 1, '2018-11-20 05:54:34', '2018-11-20 06:17:42');
+(2, 'sliders/8OlMO4a2KNS2SdIlsNR1l0IpynCzYPNwcYWDUrGJ.png', 1, '2018-11-20 05:54:34', '2018-11-20 23:35:58');
 
 -- --------------------------------------------------------
 
@@ -900,7 +918,7 @@ CREATE TABLE `sub_categories` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `category_id` int(11) NOT NULL,
-  `banner` varchar(100) NOT NULL,
+  `banner` varchar(100) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -916,22 +934,91 @@ INSERT INTO `sub_categories` (`id`, `name`, `category_id`, `banner`, `created_at
 (7, 'Casual Wears', 8, 'uploads/H6U7LyNn5SJD8eTu0gRrzOaHfBx0gTNBPMeJM8ZX.jpeg', '2018-10-14 23:40:45', '2018-11-06 01:54:30'),
 (8, 'Bottoms', 8, 'uploads/jWMsEN01p7KnDPQYnYLxfwc7edVdgBvENdZDNp6s.jpeg', '2018-10-14 23:41:32', '2018-10-14 23:41:32'),
 (9, 'Wedding & Events', 8, 'uploads/5jtTozQajBWNyfzQ0ZojG6V0FNgOFgXQtQ9m7E1F.jpeg', '2018-10-14 23:42:43', '2018-10-14 23:42:43'),
-(11, 'Bottoms', 7, 'uploads/aKzZAmDyTMxRbvzSWznGfiH7sLowZousPJOdEiYM.jpeg', '2018-10-14 23:44:05', '2018-10-14 23:44:05'),
 (12, 'Accessories', 7, 'uploads/4LLm9FCvULwfZs3ih8rfF5CNXQ6fnOXAizdp5HtE.jpeg', '2018-10-14 23:44:29', '2018-10-14 23:44:29'),
-(13, 'Hot sale', 7, 'uploads/7nful2UIcbcVOzAc0HOSOjNug7w56KFHlVfgnTss.jpeg', '2018-10-14 23:44:49', '2018-10-14 23:44:49'),
 (14, 'Shirts', 7, 'uploads/PKpcrQ9h5C8abFdzWDGDlQd0OjMGOaPqRuUaMcja.jpeg', '2018-10-14 23:45:14', '2018-10-14 23:45:14'),
-(15, 'Suits & blazers', 7, 'uploads/cZRJnQD2NzpWyZCnZnr7C8yn5ppRSBPlLGBEpnR1.jpeg', '2018-10-14 23:45:33', '2018-10-14 23:45:33'),
-(16, 'Tops & tees', 7, 'uploads/CfxdDitRuM06ba11uRf0th9NbXvCYx6pwNHKd0Hq.jpeg', '2018-10-14 23:46:01', '2018-10-14 23:46:01'),
 (17, 'Mobile Phones', 9, 'uploads/uMJ1jXLqq10L2br1K1SnzV4HS8HiL3wDVMdcGWqk.jpeg', '2018-10-14 23:46:43', '2018-10-14 23:51:29'),
 (18, 'Accessories', 9, 'uploads/dNpwR2FiLX8O3E014KTW12EHSIQOpmbSZBp8qIsH.jpeg', '2018-10-14 23:47:11', '2018-10-14 23:52:32'),
 (19, 'Phone Bags', 9, 'uploads/JD40WmhZ816wzWW769TulA9cC35RULrEy1e1OhXa.jpeg', '2018-10-14 23:47:39', '2018-10-14 23:52:55'),
 (20, 'Office Electronics', 9, 'uploads/v8xcEG9ctpbKOVFsYOBSefERARkbXP356PYEZ0Mt.jpeg', '2018-10-14 23:48:27', '2018-10-14 23:51:49'),
 (21, 'Computer PeriPherals', 9, 'uploads/zSYJnRZbYsaurNuMMTtSUAHgUw4xM0lG5QTWZPvg.jpeg', '2018-10-14 23:48:53', '2018-10-14 23:51:08'),
 (22, 'Mini PC', 9, 'uploads/mSSG48mEmbUQez9CXPLu2n6f8e0liTBloQ18jKPB.jpeg', '2018-10-14 23:49:17', '2018-10-14 23:50:57'),
-(23, 'laptop Accessories', 10, 'uploads/vJZLPZREKv65KNwkC03VmwfrjRYMGiXaeaLzx7Hr.jpeg', '2018-10-14 23:50:05', '2018-10-14 23:50:40'),
+(23, 'Laptops', 10, 'uploads/vJZLPZREKv65KNwkC03VmwfrjRYMGiXaeaLzx7Hr.jpeg', '2018-10-14 23:50:05', '2018-11-26 01:41:11'),
 (24, 'Home Audio & video', 11, 'uploads/FoPIRgiq8ORhAIqmWEARacsodP4Q4VdrsBvU9ir2.jpeg', '2018-10-14 23:54:33', '2018-10-14 23:54:33'),
 (25, 'Smart Electronics', 11, 'uploads/4YI2ztpm3dzoz96a8Tq1dcX6fgclRdoxVD5kAHry.jpeg', '2018-10-14 23:54:58', '2018-10-14 23:54:58'),
-(26, 'Camera & photo', 11, 'uploads/tn0MOurgI1lfqoCdX1GcVhzXasU99wrozar4Nx0H.jpeg', '2018-10-14 23:55:36', '2018-10-14 23:55:36');
+(26, 'Camera & photo', 11, 'uploads/tn0MOurgI1lfqoCdX1GcVhzXasU99wrozar4Nx0H.jpeg', '2018-10-14 23:55:36', '2018-10-14 23:55:36'),
+(27, 'Hot Categories', 17, 'uploads/lPDKmbCTwbWfZkWlTx9aYcJvTKBMeNtL9of8PWF0.jpeg', '2018-11-26 00:39:57', '2018-11-26 00:39:57'),
+(28, 'Bottoms', 17, 'uploads/4PBZLzGdzrcCNOqhma2rrOEThUe9dI0iTjN5r2qd.jpeg', '2018-11-26 00:40:34', '2018-11-26 00:40:34'),
+(30, 'Outwear & Jackets', 17, NULL, '2018-11-26 01:10:33', '2018-11-26 01:10:33'),
+(31, 'Tops & Sets', 17, NULL, '2018-11-26 01:10:54', '2018-11-26 01:10:54'),
+(32, 'Weddings & Events', 17, NULL, '2018-11-26 01:12:13', '2018-11-26 01:12:13'),
+(33, 'Accessories', 17, NULL, '2018-11-26 01:13:28', '2018-11-26 01:13:28'),
+(34, 'Hot Sale', 8, NULL, '2018-11-26 01:16:30', '2018-11-26 01:16:30'),
+(35, 'Underwear & Loungewear', 8, NULL, '2018-11-26 01:17:10', '2018-11-26 01:17:10'),
+(36, 'Accessories', 8, NULL, '2018-11-26 01:17:35', '2018-11-26 01:17:35'),
+(37, 'Novelty & Special Use', 8, NULL, '2018-11-26 01:18:01', '2018-11-26 01:18:01'),
+(38, 'Mobile Phone Parts', 9, NULL, '2018-11-26 01:33:29', '2018-11-26 01:33:29'),
+(39, 'Cases & Covers', 9, NULL, '2018-11-26 01:34:22', '2018-11-26 01:34:22'),
+(40, 'Mobile Phone Accessories', 9, NULL, '2018-11-26 01:40:26', '2018-11-26 01:40:26'),
+(41, 'Hot Categories', 9, NULL, '2018-11-26 01:40:38', '2018-11-26 01:40:38'),
+(42, 'Tablet & Laptop Accessories', 10, NULL, '2018-11-26 01:41:31', '2018-11-26 01:41:31'),
+(43, 'Security & Protection', 10, NULL, '2018-11-26 01:42:06', '2018-11-26 01:42:06'),
+(44, 'Storage Devices', 10, NULL, '2018-11-26 01:42:26', '2018-11-26 01:42:26'),
+(45, 'Office Electronics', 10, NULL, '2018-11-26 01:42:48', '2018-11-26 01:42:48'),
+(46, 'Networking', 10, NULL, '2018-11-26 01:43:01', '2018-11-26 01:43:01'),
+(47, 'Accessories & Parts', 11, NULL, '2018-11-26 01:43:44', '2018-11-26 01:43:44'),
+(48, 'Portable Audio & Video', 11, NULL, '2018-11-26 01:44:00', '2018-11-26 01:44:00'),
+(49, 'Video Games', 11, NULL, '2018-11-26 01:44:32', '2018-11-26 01:44:32'),
+(50, 'Fine Jewelry', 12, NULL, '2018-11-26 01:44:53', '2018-11-26 01:44:53'),
+(51, 'Wedding & Engagement', 12, NULL, '2018-11-26 01:45:09', '2018-11-26 01:45:09'),
+(52, 'Men\'s Watches', 12, NULL, '2018-11-26 01:45:26', '2018-11-26 01:45:26'),
+(53, 'Women\'s Watches', 12, NULL, '2018-11-26 01:46:03', '2018-11-26 01:46:03'),
+(54, 'Fashion Jewelry', 12, NULL, '2018-11-26 01:46:35', '2018-11-26 01:46:35'),
+(55, 'Beads & DIY Jewelry', 12, NULL, '2018-11-26 01:46:52', '2018-11-26 01:46:52'),
+(56, 'Arts', 13, NULL, '2018-11-26 01:47:17', '2018-11-26 01:47:17'),
+(57, 'Home Decor', 13, NULL, '2018-11-26 01:47:29', '2018-11-26 01:47:40'),
+(58, 'Home Textile', 13, NULL, '2018-11-26 01:47:55', '2018-11-26 01:47:55'),
+(59, 'Festival', 13, NULL, '2018-11-26 01:48:10', '2018-11-26 01:48:10'),
+(60, 'Home Storage', 13, NULL, '2018-11-26 01:48:33', '2018-11-26 01:48:33'),
+(61, 'Household Merchandises', 13, NULL, '2018-11-26 01:48:50', '2018-11-26 01:48:50'),
+(62, 'Kitchen', 13, NULL, '2018-11-26 01:49:12', '2018-11-26 01:49:12'),
+(63, 'Garden Supplies', 13, NULL, '2018-11-26 01:49:32', '2018-11-26 01:49:32'),
+(64, 'Furniture', 13, NULL, '2018-11-26 01:49:42', '2018-11-26 01:49:42'),
+(65, 'Women\'s Luggage & Bags', 14, NULL, '2018-11-26 01:50:27', '2018-11-26 01:50:27'),
+(66, 'Women\'s Shoes', 14, NULL, '2018-11-26 01:50:39', '2018-11-26 01:50:39'),
+(67, 'Men\'s Luggage & Bags', 14, NULL, '2018-11-26 01:50:49', '2018-11-26 01:50:49'),
+(68, 'Men\'s Shoes', 14, NULL, '2018-11-26 01:51:10', '2018-11-26 01:51:10'),
+(69, 'Other Bags & Accessories', 14, NULL, '2018-11-26 01:51:21', '2018-11-26 01:51:21'),
+(70, 'Bestselling Shoes', 14, NULL, '2018-11-26 01:51:34', '2018-11-26 01:51:34'),
+(71, 'Baby Clothing', 15, NULL, '2018-11-26 01:52:07', '2018-11-26 01:52:07'),
+(72, 'Toys & Hobbies', 15, NULL, '2018-11-26 01:52:20', '2018-11-26 01:52:20'),
+(73, 'Girls Clothing', 15, NULL, '2018-11-26 01:52:32', '2018-11-26 01:52:32'),
+(74, 'Shoes & Bags', 15, NULL, '2018-11-26 01:52:50', '2018-11-26 01:52:50'),
+(75, 'Boys Clothing', 15, NULL, '2018-11-26 01:53:07', '2018-11-26 01:53:07'),
+(76, 'Baby & Mother', 15, NULL, '2018-11-26 01:53:25', '2018-11-26 01:53:25'),
+(77, 'Swimming', 18, NULL, '2018-11-26 01:54:43', '2018-11-26 01:54:43'),
+(78, 'Cycling', 18, NULL, '2018-11-26 01:54:54', '2018-11-26 01:54:54'),
+(79, 'Sneakers', 18, NULL, '2018-11-26 01:55:06', '2018-11-26 01:55:06'),
+(80, 'Fishing', 18, NULL, '2018-11-26 01:55:22', '2018-11-26 01:55:22'),
+(81, 'Sportswear', 18, NULL, '2018-11-26 02:06:30', '2018-11-26 02:06:30'),
+(82, 'Other Sports Equipment', 18, NULL, '2018-11-26 02:06:50', '2018-11-26 02:06:50'),
+(83, 'Hair Weaves', 16, NULL, '2018-11-26 02:45:22', '2018-11-26 02:45:22'),
+(84, 'Lace Wigs', 16, NULL, '2018-11-26 02:45:33', '2018-11-26 02:45:33'),
+(85, 'Makeup', 16, NULL, '2018-11-26 02:45:44', '2018-11-26 02:45:44'),
+(86, 'Nail Art & Tools', 16, NULL, '2018-11-26 02:46:06', '2018-11-26 02:46:06'),
+(87, 'Beauty Tools', 16, NULL, '2018-11-26 03:07:43', '2018-11-26 03:07:43'),
+(88, 'Skin Care', 16, NULL, '2018-11-26 03:08:01', '2018-11-26 03:08:01'),
+(89, 'Auto Replacement Parts', 7, NULL, '2018-11-26 03:18:07', '2018-11-26 03:18:07'),
+(90, 'Tools, Maintenance & Care', 7, NULL, '2018-11-26 03:18:18', '2018-11-26 03:18:18'),
+(91, 'Car Electronics', 7, NULL, '2018-11-26 03:18:33', '2018-11-26 03:18:33'),
+(92, 'Exterior Accessories', 7, NULL, '2018-11-26 03:18:49', '2018-11-26 03:18:49'),
+(93, 'Motorcycle Accessories & Parts', 7, NULL, '2018-11-26 03:18:58', '2018-11-26 03:18:58'),
+(94, 'Interior Accessories', 7, NULL, '2018-11-26 03:19:07', '2018-11-26 03:19:07'),
+(95, 'Tools', 19, NULL, '2018-11-26 03:19:53', '2018-11-26 03:19:53'),
+(96, 'Indoor Lighting', 19, NULL, '2018-11-26 03:20:10', '2018-11-26 03:20:10'),
+(97, 'Machine Tools', 19, NULL, '2018-11-26 03:21:19', '2018-11-26 03:21:19'),
+(98, 'LED Lighting', 19, NULL, '2018-11-26 03:22:24', '2018-11-26 03:22:24'),
+(99, 'Home Improvements', 19, NULL, '2018-11-26 03:22:43', '2018-11-26 03:22:43'),
+(100, 'Outdoor Lighting', 19, NULL, '2018-11-26 03:22:52', '2018-11-26 03:22:52');
 
 -- --------------------------------------------------------
 
@@ -993,8 +1080,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `provider_id`, `user_type`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `avatar`, `avatar_original`, `address`, `country`, `city`, `postal_code`, `phone`, `created_at`, `updated_at`) VALUES
 (1, NULL, 'admin', 'Admin', 'admin@example.com', NULL, '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', 'M2db8IL59nTw6blVsgbT4acpEXbbZ9DWt7Yfx49H6Vyn6I2Puc63MOLsVBGZ', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', '', NULL, NULL, NULL, NULL, '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
-(3, NULL, 'seller', 'Seller', 'seller@example.com', NULL, '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', 'oPSZTesOR1m8GkeTGmthTB83pTUQZuXrZI1B1vmuTEAAAcyixWpGpPkFQaLB', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', 'Uttara', 'BD', 'Dhaka', '1230', '01642954885', '2018-10-07 04:42:57', '2018-11-12 03:58:48'),
-(8, NULL, 'customer', 'Mehedi Hasan', 'customer@example.com', NULL, '$2y$10$0NbLnWt7DAbrhqZrFZ7Nw.tvE.Jnff2Il/jrdgtqBiblKpgGwLyom', 'dqrNhsQqoVT1aCTcoIH77U4QosWkUCuEnoKvnM3xCDTSRvMfkejLzDyQflu6', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'uploads/rzeudqPXo5vT9oiar8LvHz4mMdQj3NHdCCIc3V70.png', 'House 86, Lake drive road\r\nUttara, Dhaka', 'BD', 'Uttara', '1230', '01642954885', '2018-10-17 06:26:52', '2018-11-19 05:09:32'),
+(3, NULL, 'seller', 'Seller', 'seller@example.com', NULL, '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', 'oNQFHf2mDPTLocosp6yXutZUrgLKqje6demcNCmISGvK7buqS1MKV24MBogQ', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', 'Uttara', 'BD', 'Dhaka', '1230', '01642954885', '2018-10-07 04:42:57', '2018-11-12 03:58:48'),
+(8, NULL, 'customer', 'Mehedi Hasan', 'customer@example.com', NULL, '$2y$10$0NbLnWt7DAbrhqZrFZ7Nw.tvE.Jnff2Il/jrdgtqBiblKpgGwLyom', 'Ff0qxpiylskur5Tynzx38XpB8unF1XHfv8kNztYhaAzDBQH6tR42HHIxHNva', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'uploads/rzeudqPXo5vT9oiar8LvHz4mMdQj3NHdCCIc3V70.png', 'House 86, Lake drive road\r\nUttara, Dhaka', 'BD', 'Uttara', '1230', '01642954885', '2018-10-17 06:26:52', '2018-11-19 05:09:32'),
 (17, '113510401900359638362', 'customer', 'Mehedi Hasan', 'mehedi.iitdu@gmail.com', NULL, NULL, '0q1qtndIw7cEjIZBYxv8TIjsK0oobA7Np84SGvljAGgj22r8elsgRgQLW7yj', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', NULL, NULL, NULL, NULL, NULL, '2018-11-01 04:52:33', '2018-11-01 04:52:33'),
 (18, '103887660140114486052', 'customer', 'Md. Mehedi Hasan', 'bsse0607@iit.du.ac.bd', NULL, NULL, 'QWxGkOrlVIxrABQ2Qj0xTPsVoZKgNc4OsRNGKdgYp3D7BaUeMJiNqia8otbx', 'https://lh4.googleusercontent.com/-xw_DuhMKF9k/AAAAAAAAAAI/AAAAAAAAACw/g4RUSLrD2Y0/photo.jpg?sz=50', 'https://lh4.googleusercontent.com/-xw_DuhMKF9k/AAAAAAAAAAI/AAAAAAAAACw/g4RUSLrD2Y0/photo.jpg', NULL, NULL, NULL, NULL, NULL, '2018-11-07 05:20:57', '2018-11-07 05:20:57'),
 (19, '107111794830756336948', 'customer', 'Developer Activeitzone', 'developer.activeitzone@gmail.com', NULL, NULL, 'WNZ4H9AwxAXBbxoLstNi6vOus90I1JNLs6ysQYBpviXpU9ctNYT7aKnhe4h8', 'https://lh3.googleusercontent.com/-316m8JIRelg/AAAAAAAAAAI/AAAAAAAAAAA/ABtNlbDPzMFwmZKm6TmHOPTU8dDhjXg-tA/mo/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-316m8JIRelg/AAAAAAAAAAI/AAAAAAAAAAA/ABtNlbDPzMFwmZKm6TmHOPTU8dDhjXg-tA/mo/photo.jpg', NULL, NULL, NULL, NULL, NULL, '2018-11-19 06:37:32', '2018-11-19 06:37:32');
@@ -1018,7 +1105,8 @@ CREATE TABLE `wishlists` (
 --
 
 INSERT INTO `wishlists` (`id`, `user_id`, `product_id`, `created_at`, `updated_at`) VALUES
-(1, 8, 7, '2018-11-19 04:56:41', '2018-11-19 04:56:41');
+(1, 8, 7, '2018-11-19 04:56:41', '2018-11-19 04:56:41'),
+(2, 3, 7, '2018-11-26 05:18:30', '2018-11-26 05:18:30');
 
 --
 -- Indexes for dumped tables
@@ -1070,6 +1158,12 @@ ALTER TABLE `customers`
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1168,7 +1262,7 @@ ALTER TABLE `business_settings`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `colors`
@@ -1201,6 +1295,12 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
@@ -1228,7 +1328,7 @@ ALTER TABLE `sellers`
 -- AUTO_INCREMENT for table `sliders`
 --
 ALTER TABLE `sliders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `staff`
@@ -1246,7 +1346,7 @@ ALTER TABLE `subscribers`
 -- AUTO_INCREMENT for table `sub_categories`
 --
 ALTER TABLE `sub_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `sub_sub_categories`
@@ -1264,7 +1364,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `wishlists`
 --
 ALTER TABLE `wishlists`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

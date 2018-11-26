@@ -709,61 +709,40 @@
                             <div class="row-wrapper">
                                 <div class="row cols-xs-space cols-sm-space cols-md-space">
                                     @foreach (\App\Product::all() as $key => $product)
-                                        <div class="col-lg-4 mb-3">
-                                            <div class="card card-product z-depth-1-top z-depth-2--hover">
-                                                <div class="card-body">
-                                                    <h2 class="heading heading-6 strong-600 mt-2 mb-3">
+                                        <div class="col-4">
+                                            <div class="product-card-1 mb-3">
+                                                <figure class="product-image-container">
+                                                    <a href="{{ route('product', $product->slug) }}" class="product-image d-block" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');">
+                                                        <!-- <img src="{{ asset(json_decode($product->photos)[0]) }}" alt="product" class="img-center img-fluid"> -->
+                                                    </a>
+                                                    <button class="btn-quickview" onclick="showAddToCartModal({{ $product->id }})"><i class="fa fa-eye"></i></button>
+                                                    @if (strtotime($product->created_at) > strtotime('-10 day'))
+                                                        <span class="product-label label-hot">New</span>
+                                                    @endif
+                                                </figure>
+                                                <div class="product-details text-center">
+                                                    <h2 class="product-title">
                                                         <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
                                                     </h2>
+                                                    <div class="price-box">
+                                                        <span class="old-product-price strong-300">{{ home_discounted_price($product->id) }}</span>
+                                                        <span class="product-price strong-300"><strong>{{ home_price($product->id) }}</strong></span>
+                                                    </div><!-- End .price-box -->
 
-                                                    <div class="card-image swiper-js-container">
-                                                        <div class="">
-                                                            <div class="swiper-container" data-swiper-items="1" data-swiper-space-between="0">
-                                                                <div class="swiper-wrapper">
-                                                                    @foreach (json_decode($product->photos) as $key => $photo)
-                                                                        <div class="swiper-slide">
-                                                                            <img src="{{ asset($photo) }}" class="img-fluid img-center img-primary">
-                                                                        </div>
-                                                                    @endforeach
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <div class="product-card-1-action">
+                                                        <button class="paction add-wishlist" title="Add to Wishlist" onclick="addToWishList({{ $product->id }})">
+                                                            <i class="ion-ios-heart-outline"></i>
+                                                        </button>
 
-                                                    <div class="mt-3">
-                                                        <div class="price-wrapper">
-                                                            <span class="price price-sm c-gray-dark">
-                                                                <span class="strong-300">$</span><span class="price-value strong-600">65.</span><small class="strong-300">00</small>
-                                                            </span>
-                                                            <span class="clearfix"></span>
-                                                        </div>
-                                                        <h6 class="heading heading-sm strong-400 c-red">Save 10%</h6>
-                                                        <p class="product-description mt-3 mb-0">
-                                                            Customize your Google Home to fit into your space.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="card-footer">
-                                                    <div class="product-buttons">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-2">
-                                                                <button type="button" class="btn-icon" data-toggle="tooltip" data-placement="top" title="Favorite" onclick="addToWishList({{ $product->id }})">
-                                                                    <i class="ion-ios-heart"></i>
-                                                                </button>
-                                                            </div>
-                                                            <div class="col-2">
-                                                                <button type="button" class="btn-icon" data-toggle="tooltip" data-placement="top" title="Compare" onclick="addToCompare({{ $product->id }})">
-                                                                    <i class="ion-ios-browsers-outline"></i>
-                                                                </button>
-                                                            </div>
-                                                            <div class="col-8">
-                                                                <button type="button" class="btn btn-block btn-base-1 btn-circle btn-icon-left" onclick="showAddToCartModal({{ $product->id }})">
-                                                                    <i class="icon ion-android-cart"></i>Add to cart
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                        <button type="button" class="paction add-cart btn btn-base-1 btn-circle btn-icon-left" onclick="showAddToCartModal({{ $product->id }})">
+                                                            <i class="icon ion-android-cart"></i>Add to cart
+                                                        </button>
+
+                                                        <button class="paction add-compare" title="Add to Compare" onclick="addToCompare({{ $product->id }})">
+                                                            <i class="ion-ios-browsers-outline"></i>
+                                                        </button>
+                                                    </div><!-- End .product-action -->
+                                                </div><!-- End .product-details -->
                                             </div>
                                         </div>
                                     @endforeach
@@ -1087,64 +1066,4 @@
                 </div>
             </section>
 
-            <div class="modal fade" id="addToCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
-                    <div class="modal-content position-relative">
-                        <div class="c-preloader">
-                            <i class="fa fa-spin fa-spinner"></i>
-                        </div>
-                        <button type="button" class="close absolute-close-btn" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <div id="addToCart-modal-body">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        @endsection
-
-        @section('script')
-            <script type="text/javascript">
-
-            function showAddToCartModal(id){
-                if(!$('#modal-size').hasClass('modal-lg')){
-                    $('#modal-size').addClass('modal-lg');
-                }
-                $('#addToCart').modal();
-                $.post('{{ route('cart.showCartModal') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
-                    $('.c-preloader').hide();
-                    $('#addToCart-modal-body').html(data);
-                    $('#slideshow').desoSlide({
-                        thumbs: $('#slideshow_thumbs .swiper-slide > a'),
-                        thumbEvent: 'click',
-                        first: 0,
-                        effect: 'none',
-                        overlay: 'none',
-                        controls: {
-                            show: false,
-                            keys: false
-                        },
-                    });
-                });
-            }
-
-            function addToCart(){
-                $('.c-preloader').show();
-                $.ajax({
-                   type:"POST",
-                   url:'{{ route('cart.addToCart') }}',
-                   data:$('#option-choice-form').serialize(),
-                   success: function(data){
-                       $('.c-preloader').hide();
-                       $('#modal-size').removeClass('modal-lg');
-                       $('#addToCart-modal-body').html(data);
-                       updateNavCart();
-                   }
-               });
-            }
-
-            </script>
         @endsection

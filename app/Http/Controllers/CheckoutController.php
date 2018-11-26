@@ -12,6 +12,7 @@ class CheckoutController extends Controller
 {
 
     private $_apiContext;
+
     public function __construct()
     {
         $this->_apiContext = PayPal::ApiContext(
@@ -23,7 +24,7 @@ class CheckoutController extends Controller
 			'service.EndPoint' => 'https://api.sandbox.paypal.com',
 			'http.ConnectionTimeOut' => 30,
 			'log.LogEnabled' => true,
-			'log.FileName' => storage_path('logs/paypal.log'),
+			'log.FileName' => public_path('logs/paypal.log'),
 			'log.LogLevel' => 'FINE'
 		));
     }
@@ -54,7 +55,7 @@ class CheckoutController extends Controller
     {
     	$payer = PayPal::Payer();
     	$payer->setPaymentMethod('paypal');
-    	$amount = PayPal:: Amount();
+    	$amount = PayPal::Amount();
     	$amount->setCurrency('USD');
     	$amount->setTotal(.05); // This is the simple way,
     	// you can alternatively describe everything in the order separately;

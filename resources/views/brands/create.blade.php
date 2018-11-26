@@ -22,7 +22,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="logo">{{__('web.logo')}}</label>
                     <div class="col-sm-9">
-                        <input type="file" id="logo" name="logo" class="form-control" required>
+                        <input type="file" id="logo" name="logo" class="form-control">
                     </div>
                 </div>
             </div>

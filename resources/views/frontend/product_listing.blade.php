@@ -233,8 +233,10 @@
                                                 <a href="{{ route('product', $product->slug) }}" class="product-image d-block" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');">
                                                     <!-- <img src="{{ asset(json_decode($product->photos)[0]) }}" alt="product" class="img-center img-fluid"> -->
                                                 </a>
-                                                <button class="btn-quickview"><i class="fa fa-eye"></i></button>
-                                                <span class="product-label label-hot">New</span>
+                                                <button class="btn-quickview" onclick="showAddToCartModal({{ $product->id }})"><i class="fa fa-eye"></i></button>
+                                                @if (strtotime($product->created_at) > strtotime('-10 day'))
+                                                    <span class="product-label label-hot">New</span>
+                                                @endif
                                             </figure>
                                             <div class="product-details text-center">
                                                 <h2 class="product-title">
@@ -246,15 +248,15 @@
                                                 </div><!-- End .price-box -->
 
                                                 <div class="product-card-1-action">
-                                                    <button class="paction add-wishlist" title="Add to Wishlist">
+                                                    <button class="paction add-wishlist" title="Add to Wishlist" onclick="addToWishList({{ $product->id }})">
                                                         <i class="ion-ios-heart-outline"></i>
                                                     </button>
 
-                                                    <button type="button" class="paction add-cart btn btn-base-1 btn-circle btn-icon-left">
+                                                    <button type="button" class="paction add-cart btn btn-base-1 btn-circle btn-icon-left" onclick="showAddToCartModal({{ $product->id }})">
                                                         <i class="icon ion-android-cart"></i>Add to cart
                                                     </button>
 
-                                                    <button class="paction add-compare" title="Add to Compare">
+                                                    <button class="paction add-compare" title="Add to Compare" onclick="addToCompare({{ $product->id }})">
                                                         <i class="ion-ios-browsers-outline"></i>
                                                     </button>
                                                 </div><!-- End .product-action -->

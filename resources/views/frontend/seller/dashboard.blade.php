@@ -35,7 +35,7 @@
                                 <div class="dashboard-widget text-center green-widget mt-4">
                                     <a href="" class="d-block">
                                         <i class="fa fa-upload"></i>
-                                        <span class="d-block title heading-3 strong-400">100</span>
+                                        <span class="d-block title heading-3 strong-400">{{ count(\App\Product::where('user_id', Auth::user()->id)->get()) }}</span>
                                         <span class="d-block sub-title">Products</span>
                                     </a>
                                 </div>
@@ -99,7 +99,11 @@
                             <div class="col-md-5">
                                 <div class="bg-white mt-4 p-5 text-center">
                                     <div class="mb-3">
-                                        <img src="{{ asset('frontend/images/icons/approved.svg') }}" alt="" width="130" class="img-grayscale alpha-4">
+                                        <img src="{{ asset('frontend/images/icons/approved.svg') }}" alt="" width="130"
+                                            @if(Auth::user()->seller->verification_status == 0)
+                                                class="img-grayscale alpha-4"
+                                            @endif
+                                        >
                                     </div>
                                     <a href="" class="btn btn-styled btn-base-1">Verify Now</a>
                                 </div>
@@ -113,21 +117,14 @@
                                     </div>
                                     <div class="form-box-content p-3 category-widget">
                                         <ul class="clearfix">
-                                            <li><a href="" target="">Category Name <span>(15)</span></a></li>
-                                            <li><a href="" target="">Category Name <span>(15)</span></a></li>
-                                            <li><a href="" target="">Category Name <span>(15)</span></a></li>
-                                            <li><a href="" target="">Category Name <span>(15)</span></a></li>
-                                            <li><a href="" target="">Category Name <span>(15)</span></a></li>
-                                            <li><a href="" target="">Category Name <span>(15)</span></a></li>
-                                            <li><a href="" target="">Category Name <span>(15)</span></a></li>
-                                            <li><a href="" target="">Category Name <span>(15)</span></a></li>
-                                            <li><a href="" target="">Category Name <span>(15)</span></a></li>
-                                            <li><a href="" target="">Category Name <span>(15)</span></a></li>
-                                            <li><a href="" target="">Category Name <span>(15)</span></a></li>
-                                            <li><a href="" target="">Category Name <span>(15)</span></a></li>
+                                            @foreach (\App\Category::all() as $key => $category)
+                                                @if(count($category->products->where('user_id', Auth::user()->id))>0)
+                                                    <li><a>{{ $category->name }}<span>({{ count($category->products->where('user_id', Auth::user()->id)) }})</span></a></li>
+                                                @endif
+                                            @endforeach
                                         </ul>
                                         <div class="text-center">
-                                            <a href="" class="btn pt-3 pb-1">Add New Product</a>
+                                            <a href="{{ route('seller.products.upload')}}" class="btn pt-3 pb-1">Add New Product</a>
                                         </div>
                                     </div>
                                 </div>

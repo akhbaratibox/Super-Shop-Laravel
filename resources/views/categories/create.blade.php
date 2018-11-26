@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="icon">{{__('web.icon')}}</label>
                     <div class="col-sm-9">
-                        <input type="file" id="icon" name="icon" class="form-control" required>
+                        <input type="file" id="icon" name="icon" class="form-control">
                     </div>
                 </div>
             </div>

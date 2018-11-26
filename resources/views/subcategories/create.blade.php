@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="banner">{{__('web.banner')}}</label>
                     <div class="col-sm-9">
-                        <input type="file" id="banner" name="banner" class="form-control" required>
+                        <input type="file" id="banner" name="banner" class="form-control">
                     </div>
                 </div>
             </div>

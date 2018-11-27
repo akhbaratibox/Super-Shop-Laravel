@@ -30,9 +30,7 @@ Route::get('/products/category/{id}', 'HomeController@listing_by_category')->nam
 Route::get('/products/subcategory/{id}', 'HomeController@listing_by_subcategory')->name('products.subcategory');
 Route::get('/products/subsubcategory/{id}', 'HomeController@listing_by_subsubcategory')->name('products.subsubcategory');
 Route::get('/products/brand/{id}', 'HomeController@listing_by_brand')->name('products.brand');
-Route::get('/seller/shop', function(){
-	return view('frontend.seller.seller_shop');
-});
+Route::get('/shop/{id}', 'HomeController@shop')->name('shop.visit');
 
 Route::get('/cart', 'CartController@index')->name('cart');
 Route::post('/cart/nav-cart-items', 'CartController@updateNavCart')->name('cart.nav_cart');
@@ -69,6 +67,7 @@ Route::group(['prefix' =>'seller', 'middleware' => ['seller']], function(){
 	Route::get('/products', 'HomeController@seller_product_list')->name('seller.products');
 	Route::get('/product/upload', 'HomeController@show_product_upload_form')->name('seller.products.upload');
 	Route::get('/product/{id}/edit', 'HomeController@show_product_edit_form')->name('seller.products.edit');
+	Route::resource('shop', 'ShopController');
 });
 
 Route::post('/products/store/','ProductController@store')->name('products.store');

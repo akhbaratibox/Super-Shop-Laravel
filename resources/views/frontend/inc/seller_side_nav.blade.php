@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('seller.products') }}" class="{{ areActiveRoutesHome(['seller.products', 'seller.products.upload', 'seller.products.edit'])}}">
+                    <a href="{{ route('seller.products') }}" class="{{ areActiveRoutesHome([])}}">
                         <i class="fa fa-shopping-basket"></i>
                         <span class="category-name">
                             Orders
@@ -50,7 +50,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('seller.products') }}" class="{{ areActiveRoutesHome(['seller.products', 'seller.products.upload', 'seller.products.edit'])}}">
+                    <a href="{{ route('shop.index') }}" class="{{ areActiveRoutesHome(['shop.index'])}}">
                         <i class="fa fa-cog"></i>
                         <span class="category-name">
                             Shop Setting
@@ -58,7 +58,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('seller.products') }}" class="{{ areActiveRoutesHome(['seller.products', 'seller.products.upload', 'seller.products.edit'])}}">
+                    <a href="{{ route('seller.products') }}" class="{{ areActiveRoutesHome([])}}">
                         <i class="fa fa-credit-card-alt"></i>
                         <span class="category-name">
                             Payment History
@@ -75,7 +75,7 @@
                 </li>
             </ul>
         </div>
-        
+
         <div class="sidebar-widget-title py-3">
             <span>Earinngs</span>
         </div>
@@ -105,7 +105,7 @@
                 </table>
             </div>
             <table>
-                
+
             </table>
         </div>
     </div>

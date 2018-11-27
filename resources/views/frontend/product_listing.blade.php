@@ -243,8 +243,8 @@
                                                     <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
                                                 </h2>
                                                 <div class="price-box">
-                                                    <span class="old-product-price strong-300">{{ home_discounted_price($product->id) }}</span>
-                                                    <span class="product-price strong-300"><strong>{{ home_price($product->id) }}</strong></span>
+                                                    <span class="old-product-price strong-300">{{ home_base_price($product->id) }}</span>
+                                                    <span class="product-price strong-300"><strong>{{ home_discounted_base_price($product->id) }}</strong></span>
                                                 </div><!-- End .price-box -->
 
                                                 <div class="product-card-1-action">

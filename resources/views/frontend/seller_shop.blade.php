@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col">
                     <div class="text-center">
-                        <img class="img-fluid" height="40" src="http://via.placeholder.com/210x70" alt="First slide">
+                        <img height="100" src="{{ asset($shop->logo) }}" alt="Shop Logo">
                     </div>
                 </div>
             </div>
@@ -33,15 +33,11 @@
     <section class="gry-bg">
         <div class="home-slide">
             <div class="slick-slider">
-                <div class="">
-                    <img class="d-block w-100" src="http://via.placeholder.com/2000x420" alt="First slide">
-                </div>
-                <div class="">
-                    <img class="d-block w-100" src="http://via.placeholder.com/2000x420" alt="Second slide">
-                </div>
-                <div class="">
-                    <img class="d-block w-100" src="http://via.placeholder.com/2000x420" alt="Third slide">
-                </div>
+                @foreach (json_decode($shop->sliders) as $key => $slide)
+                    <div class="">
+                        <img class="d-block w-100" src="{{ asset($slide) }}" alt="{{ $key }} slide" style="max-height:300px;">
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -186,7 +182,7 @@
                     </div>
                 </div>
             </div>
-            
+
 
         </div>
     </section>
@@ -208,8 +204,8 @@
                                 </svg>
                             </div>
                             <div class="title">Seller Info</div>
-                            <a href="" class="name d-block">amazfit Official Store</a>
-                            <div class="location">China (Guangdong)</div>
+                            <a href="" class="name d-block">{{ $shop->name }}</a>
+                            <div class="location">{{ $shop->address }}</div>
                             <div class="rating text-center d-block">
                                 <span class="star-rating star-rating-sm d-block">
                                     <i class="fa fa-star"></i>
@@ -223,10 +219,28 @@
                         </div>
                         <div class="row no-gutters">
                             <div class="col">
-                                <a href="" class="d-block store-btn">Visit Store</a>
-                            </div>
-                            <div class="col">
-                                <button type="button" name="button" class="follow-btn">Follow</button>
+                                <ul class="social-media social-media--style-1-v4 text-center">
+                                    <li>
+                                        <a href="{{ $shop->facebook }}" class="facebook" target="_blank" data-toggle="tooltip" data-original-title="Facebook">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ $shop->google }}" class="google" target="_blank" data-toggle="tooltip" data-original-title="Google">
+                                            <i class="fa fa-google"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ $shop->twitter }}" class="twitter" target="_blank" data-toggle="tooltip" data-original-title="Twitter">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ $shop->youtube }}" class="youtube" target="_blank" data-toggle="tooltip" data-original-title="Youtube">
+                                            <i class="fa fa-youtube"></i>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -274,7 +288,7 @@
                                     </div>
                                 </div>
                                 <div class="single-category">
-                                    <button class="btn w-100 category-name" type="button" data-toggle="collapse" data-target="#categoryTwo" aria-expanded="false">
+                                    <button class="btn w-100 category-name collapsed" type="button" data-toggle="collapse" data-target="#categoryTwo" aria-expanded="false">
                                     Category name
                                     </button>
 
@@ -364,211 +378,50 @@
                 <div class="col-lg-9">
                     <h4 class="heading-5 strong-600 border-bottom pb-3 mb-4">New Arrival Products</h4>
                     <div class="product-list row">
-
-                        <div class="col-lg-4">
-                            <div class="card product-box-1 mb-3">
-                                <div class="card-image">
-                                    <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/600x700');" tabindex="0">
-                                    </a>
-                                </div>
-                                <div class="card-body p-0">
-                                    <div class="title p-3">
-                                        <a href="" >HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                        @php
+                            $products = \App\Product::where('user_id', $shop->user->id)->where('created_at', '>=' , date('Y-m-d', strtotime('-10days')))->paginate(6);
+                        @endphp
+                        @foreach ($products as $key => $product)
+                            <div class="col-lg-4">
+                                <div class="card product-box-1 mb-3">
+                                    <div class="card-image">
+                                        <a href="" class="d-block" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');" tabindex="0">
+                                        </a>
                                     </div>
-                                    <div class="price-bar row no-gutters">
-                                        <div class="price col-8">
-                                            <del class="old-product-price strong-600">$49.99</del>
-                                            <span class="product-price strong-600">$35.99</span>
+                                    <div class="card-body p-0">
+                                        <div class="title p-3">
+                                            <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
                                         </div>
-                                        <div class="col-4">
-                                            <button class="add-wishlist" title="Add to Wishlist">
-                                                <i class="ion-ios-heart-outline"></i>
-                                            </button>
-                                            <button class="add-compare" title="Add to Compare">
-                                                <i class="ion-ios-browsers-outline"></i>
-                                            </button>
+                                        <div class="price-bar row no-gutters">
+                                            <div class="price col-8">
+                                                <del class="old-product-price strong-600">{{ home_base_price($product->id) }}</del>
+                                                <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                                            </div>
+                                            <div class="col-4">
+                                                <button class="add-wishlist" title="Add to Wishlist" onclick="addToWishList({{ $product->id }})">
+                                                    <i class="ion-ios-heart-outline"></i>
+                                                </button>
+                                                <button class="add-compare" title="Add to Compare" onclick="addToCompare({{ $product->id }})">
+                                                    <i class="ion-ios-browsers-outline"></i>
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="cart-add">
-                                        <button type="button" class=" btn btn-block btn-icon-left">
-                                            <i class="icon ion-android-cart"></i>Add to cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="card product-box-1 mb-3">
-                                <div class="card-image">
-                                    <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/600x700');" tabindex="0">
-                                    </a>
-                                </div>
-                                <div class="card-body p-0">
-                                    <div class="title p-3">
-                                        <a href="" >HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
-                                    </div>
-                                    <div class="price-bar row no-gutters">
-                                        <div class="price col-8">
-                                            <del class="old-product-price strong-600">$49.99</del>
-                                            <span class="product-price strong-600">$35.99</span>
-                                        </div>
-                                        <div class="col-4">
-                                            <button class="add-wishlist" title="Add to Wishlist">
-                                                <i class="ion-ios-heart-outline"></i>
-                                            </button>
-                                            <button class="add-compare" title="Add to Compare">
-                                                <i class="ion-ios-browsers-outline"></i>
+                                        <div class="cart-add">
+                                            <button type="button" class=" btn btn-block btn-icon-left" onclick="showAddToCartModal({{ $product->id }})">
+                                                <i class="icon ion-android-cart"></i>Add to cart
                                             </button>
                                         </div>
-                                    </div>
-                                    <div class="cart-add">
-                                        <button type="button" class=" btn btn-block btn-icon-left">
-                                            <i class="icon ion-android-cart"></i>Add to cart
-                                        </button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="card product-box-1 mb-3">
-                                <div class="card-image">
-                                    <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/600x700');" tabindex="0">
-                                    </a>
-                                </div>
-                                <div class="card-body p-0">
-                                    <div class="title p-3">
-                                        <a href="" >HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
-                                    </div>
-                                    <div class="price-bar row no-gutters">
-                                        <div class="price col-8">
-                                            <del class="old-product-price strong-600">$49.99</del>
-                                            <span class="product-price strong-600">$35.99</span>
-                                        </div>
-                                        <div class="col-4">
-                                            <button class="add-wishlist" title="Add to Wishlist">
-                                                <i class="ion-ios-heart-outline"></i>
-                                            </button>
-                                            <button class="add-compare" title="Add to Compare">
-                                                <i class="ion-ios-browsers-outline"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="cart-add">
-                                        <button type="button" class=" btn btn-block btn-icon-left">
-                                            <i class="icon ion-android-cart"></i>Add to cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="card product-box-1 mb-3">
-                                <div class="card-image">
-                                    <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/600x700');" tabindex="0">
-                                    </a>
-                                </div>
-                                <div class="card-body p-0">
-                                    <div class="title p-3">
-                                        <a href="" >HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
-                                    </div>
-                                    <div class="price-bar row no-gutters">
-                                        <div class="price col-8">
-                                            <del class="old-product-price strong-600">$49.99</del>
-                                            <span class="product-price strong-600">$35.99</span>
-                                        </div>
-                                        <div class="col-4">
-                                            <button class="add-wishlist" title="Add to Wishlist">
-                                                <i class="ion-ios-heart-outline"></i>
-                                            </button>
-                                            <button class="add-compare" title="Add to Compare">
-                                                <i class="ion-ios-browsers-outline"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="cart-add">
-                                        <button type="button" class=" btn btn-block btn-icon-left">
-                                            <i class="icon ion-android-cart"></i>Add to cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="card product-box-1 mb-3">
-                                <div class="card-image">
-                                    <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/600x700');" tabindex="0">
-                                    </a>
-                                </div>
-                                <div class="card-body p-0">
-                                    <div class="title p-3">
-                                        <a href="" >HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
-                                    </div>
-                                    <div class="price-bar row no-gutters">
-                                        <div class="price col-8">
-                                            <del class="old-product-price strong-600">$49.99</del>
-                                            <span class="product-price strong-600">$35.99</span>
-                                        </div>
-                                        <div class="col-4">
-                                            <button class="add-wishlist" title="Add to Wishlist">
-                                                <i class="ion-ios-heart-outline"></i>
-                                            </button>
-                                            <button class="add-compare" title="Add to Compare">
-                                                <i class="ion-ios-browsers-outline"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="cart-add">
-                                        <button type="button" class=" btn btn-block btn-icon-left">
-                                            <i class="icon ion-android-cart"></i>Add to cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="card product-box-1 mb-3">
-                                <div class="card-image">
-                                    <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/600x700');" tabindex="0">
-                                    </a>
-                                </div>
-                                <div class="card-body p-0">
-                                    <div class="title p-3">
-                                        <a href="" >HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
-                                    </div>
-                                    <div class="price-bar row no-gutters">
-                                        <div class="price col-8">
-                                            <del class="old-product-price strong-600">$49.99</del>
-                                            <span class="product-price strong-600">$35.99</span>
-                                        </div>
-                                        <div class="col-4">
-                                            <button class="add-wishlist" title="Add to Wishlist">
-                                                <i class="ion-ios-heart-outline"></i>
-                                            </button>
-                                            <button class="add-compare" title="Add to Compare">
-                                                <i class="ion-ios-browsers-outline"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="cart-add">
-                                        <button type="button" class=" btn btn-block btn-icon-left">
-                                            <i class="icon ion-android-cart"></i>Add to cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        @endforeach
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="products-pagination my-5">
                                 <nav aria-label="Center aligned pagination">
                                     <ul class="pagination justify-content-center">
-                                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                        {{ $products->links() }}
                                     </ul>
                                 </nav>
                             </div>

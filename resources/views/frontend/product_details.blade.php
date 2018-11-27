@@ -252,8 +252,12 @@
                                 </svg>
                             </div>
                             <div class="title">Sold By</div>
-                            <a href="" class="name d-block">{{ $product->user->name }}</a>
-                            <div class="location">China (Guangdong)</div>
+                            @if($product->added_by == 'seller')
+                                <a href="" class="name d-block">{{ $product->user->shop->name }}</a>
+                                <div class="location">{{ $product->user->shop->address }}</div>
+                            @else
+                                <a href="" class="name d-block">{{ $product->user->name }}</a>
+                            @endif
                             <div class="rating text-center d-block">
                                 <span class="star-rating star-rating-sm d-block">
                                     <i class="fa fa-star"></i>
@@ -266,12 +270,35 @@
                             </div>
                         </div>
                         <div class="row no-gutters">
-                            <div class="col">
-                                <a href="" class="d-block store-btn">Visit Store</a>
-                            </div>
-                            <div class="col">
-                                <button type="button" name="button" class="follow-btn">Follow</button>
-                            </div>
+                            @if($product->added_by == 'seller')
+                                <div class="col">
+                                    <a href="{{ route('shop.visit', $product->user->shop->id) }}" class="d-block store-btn">Visit Store</a>
+                                </div>
+                                <div class="col">
+                                    <ul class="social-media social-media--style-1-v4 text-center">
+                                        <li>
+                                            <a href="{{ $product->user->shop->facebook }}" class="facebook" target="_blank" data-toggle="tooltip" data-original-title="Facebook">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ $product->user->shop->google }}" class="google" target="_blank" data-toggle="tooltip" data-original-title="Google">
+                                                <i class="fa fa-google"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ $product->user->shop->twitter }}" class="twitter" target="_blank" data-toggle="tooltip" data-original-title="Twitter">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ $product->user->shop->youtube }}" class="youtube" target="_blank" data-toggle="tooltip" data-original-title="Youtube">
+                                                <i class="fa fa-youtube"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="seller-category-box bg-white sidebar-box mb-3">

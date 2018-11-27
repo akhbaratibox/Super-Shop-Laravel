@@ -155,6 +155,55 @@ if (! function_exists('home_discounted_price')) {
     }
 }
 
+//Shows Base Price with discount
+if (! function_exists('home_discounted_base_price')) {
+    function home_discounted_base_price($id)
+    {
+        $product = Product::findOrFail($id);
+        $price = $product->unit_price;
+
+        if($product->discount_type == 'percent'){
+            $price -= ($price*$product->discount)/100;
+        }
+        elseif($product->discount_type == 'amount'){
+            $price -= $product->discount;
+        }
+
+        $business_settings = BusinessSetting::where('type', 'home_default_currency')->first();
+        if($business_settings!=null){
+            $currency = Currency::find($business_settings->value);
+            $price = floatval($price) * floatval($currency->exchange_rate);
+        }
+        if(BusinessSetting::where('type', 'symbol_format')->first()->value == 1){
+            return currency_symbol().$price;
+        }
+        else{
+            return $price.currency_symbol();
+        }
+    }
+}
+
+//Shows Base Price
+if (! function_exists('home_base_price')) {
+    function home_base_price($id)
+    {
+        $product = Product::findOrFail($id);
+        $price = $product->unit_price;
+
+        $business_settings = BusinessSetting::where('type', 'home_default_currency')->first();
+        if($business_settings!=null){
+            $currency = Currency::find($business_settings->value);
+            $price = floatval($price) * floatval($currency->exchange_rate);
+        }
+        if(BusinessSetting::where('type', 'symbol_format')->first()->value == 1){
+            return currency_symbol().$price;
+        }
+        else{
+            return $price.currency_symbol();
+        }
+    }
+}
+
 if (! function_exists('system_price')) {
     function system_price(String $price)
     {

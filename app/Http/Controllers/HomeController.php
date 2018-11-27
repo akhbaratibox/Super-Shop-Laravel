@@ -9,6 +9,7 @@ use App\Product;
 use App\User;
 use Auth;
 use Hash;
+use App\Shop;
 
 class HomeController extends Controller
 {
@@ -115,6 +116,15 @@ class HomeController extends Controller
         $product  = Product::where('slug', $slug)->first();
         if($product!=null){
             return view('frontend.product_details', compact('product'));
+        }
+        abort(404);
+    }
+
+    public function shop($id)
+    {
+        $shop  = Shop::find($id);
+        if($shop!=null){
+            return view('frontend.seller_shop', compact('shop'));
         }
         abort(404);
     }

@@ -95,7 +95,7 @@
                 <div class="col-lg-7">
                     <div class="home-slide">
                         <div class="home-slide">
-                            <div class="slick-slider">
+                            <div class="slick-carousel" data-slick-arrows="true" data-slick-dots="true">
                                 @foreach (\App\Slider::where('published', 1)->get() as $key => $slider)
                                     
                                     <div class="">
@@ -428,6 +428,237 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <section class="bg-white py-5">
+        <div class="container">
+            <div class="section-title-1 clearfix">
+                <h3 class="heading-5 strong-700 mb-0 float-left">
+                    <span class="mr-4">Best Selling</span>
+                </h3>
+                <ul class="inline-links float-right">
+                    <li class="active"><a target="_blank" rel="">Top 20</a></li>
+                    <li><a href="" target="_blank" rel="">Category name</a></li>
+                    <li><a href="" target="_blank" rel="">Category name</a></li>
+                    <li><a href="" target="_blank" rel="">Category name</a></li>
+                </ul>
+            </div>
+            <div class="caorusel-box">
+                <div class="slick-carousel" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="2" data-slick-xs-items="1" data-slick-dots="true" data-slick-rows="2">
+                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                        <div class="card-body p-0">
+
+                            <div class="card-image">
+                                <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
+                                </a>
+                            </div>
+
+                            <div class="p-3">
+                                <div class="price-box">
+                                    <del class="old-product-price strong-400">$49.99</del>
+                                    <span class="product-price strong-600">$35.99</span>
+                                </div>
+                                <h2 class="product-title p-0 mt-2">
+                                    <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                        <div class="card-body p-0">
+
+                            <div class="card-image">
+                                <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
+                                </a>
+                            </div>
+
+                            <div class="p-3">
+                                <div class="price-box">
+                                    <del class="old-product-price strong-400">$49.99</del>
+                                    <span class="product-price strong-600">$35.99</span>
+                                </div>
+                                <h2 class="product-title p-0 mt-2">
+                                    <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                        <div class="card-body p-0">
+
+                            <div class="card-image">
+                                <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
+                                </a>
+                            </div>
+
+                            <div class="p-3">
+                                <div class="price-box">
+                                    <del class="old-product-price strong-400">$49.99</del>
+                                    <span class="product-price strong-600">$35.99</span>
+                                </div>
+                                <h2 class="product-title p-0 mt-2">
+                                    <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                        <div class="card-body p-0">
+
+                            <div class="card-image">
+                                <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
+                                </a>
+                            </div>
+
+                            <div class="p-3">
+                                <div class="price-box">
+                                    <del class="old-product-price strong-400">$49.99</del>
+                                    <span class="product-price strong-600">$35.99</span>
+                                </div>
+                                <h2 class="product-title p-0 mt-2">
+                                    <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                        <div class="card-body p-0">
+
+                            <div class="card-image">
+                                <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
+                                </a>
+                            </div>
+
+                            <div class="p-3">
+                                <div class="price-box">
+                                    <del class="old-product-price strong-400">$49.99</del>
+                                    <span class="product-price strong-600">$35.99</span>
+                                </div>
+                                <h2 class="product-title p-0 mt-2">
+                                    <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                        <div class="card-body p-0">
+
+                            <div class="card-image">
+                                <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
+                                </a>
+                            </div>
+
+                            <div class="p-3">
+                                <div class="price-box">
+                                    <del class="old-product-price strong-400">$49.99</del>
+                                    <span class="product-price strong-600">$35.99</span>
+                                </div>
+                                <h2 class="product-title p-0 mt-2">
+                                    <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                        <div class="card-body p-0">
+
+                            <div class="card-image">
+                                <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
+                                </a>
+                            </div>
+
+                            <div class="p-3">
+                                <div class="price-box">
+                                    <del class="old-product-price strong-400">$49.99</del>
+                                    <span class="product-price strong-600">$35.99</span>
+                                </div>
+                                <h2 class="product-title p-0 mt-2">
+                                    <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                        <div class="card-body p-0">
+
+                            <div class="card-image">
+                                <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
+                                </a>
+                            </div>
+
+                            <div class="p-3">
+                                <div class="price-box">
+                                    <del class="old-product-price strong-400">$49.99</del>
+                                    <span class="product-price strong-600">$35.99</span>
+                                </div>
+                                <h2 class="product-title p-0 mt-2">
+                                    <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                        <div class="card-body p-0">
+
+                            <div class="card-image">
+                                <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
+                                </a>
+                            </div>
+
+                            <div class="p-3">
+                                <div class="price-box">
+                                    <del class="old-product-price strong-400">$49.99</del>
+                                    <span class="product-price strong-600">$35.99</span>
+                                </div>
+                                <h2 class="product-title p-0 mt-2">
+                                    <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                        <div class="card-body p-0">
+
+                            <div class="card-image">
+                                <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
+                                </a>
+                            </div>
+
+                            <div class="p-3">
+                                <div class="price-box">
+                                    <del class="old-product-price strong-400">$49.99</del>
+                                    <span class="product-price strong-600">$35.99</span>
+                                </div>
+                                <h2 class="product-title p-0 mt-2">
+                                    <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                        <div class="card-body p-0">
+
+                            <div class="card-image">
+                                <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
+                                </a>
+                            </div>
+
+                            <div class="p-3">
+                                <div class="price-box">
+                                    <del class="old-product-price strong-400">$49.99</del>
+                                    <span class="product-price strong-600">$35.99</span>
+                                </div>
+                                <h2 class="product-title p-0 mt-2">
+                                    <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </section>
 
 @endsection

@@ -32,7 +32,7 @@
 
     <section class="gry-bg">
         <div class="home-slide">
-            <div class="slick-slider">
+            <div class="slick-carousel" data-slick-arrows="true" data-slick-dots="true">
                 @foreach (json_decode($shop->sliders) as $key => $slide)
                     <div class="">
                         <img class="d-block w-100" src="{{ asset($slide) }}" alt="{{ $key }} slide" style="max-height:300px;">

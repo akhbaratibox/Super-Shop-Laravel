@@ -512,8 +512,36 @@ select + .select2-container{
 
 
 
+.section-title-1 {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+    position: relative;
+}
 
+.section-title-1:before {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 2px;
+    background: #eb5836;
+    bottom: 0;
+    left: 0;
+}
+.section-title-1 li a {
+    font-size: 13px;
+    color: #333!important;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+}
 
+.section-title-1 li.active a,
+.section-title-1 li a:hover {
+    border: 1px solid #c12e0d;
+    background: #c12e0d;
+    color: #fff!important;
+}
 
 
 
@@ -1666,6 +1694,7 @@ button.paction.add-wishlist:hover,button.paction.add-compare:hover {
     display: block;
     background-size: cover;
     background-position: center center;
+    background-repeat: no-repeat;
 }
 
 .media-banner {
@@ -1767,10 +1796,10 @@ input:checked + .slider:before {
 
 
 
-.slick-carousel .slick-slide:focus {
+.caorusel-box .slick-slide:focus {
     outline: none;
 }
-.slick-carousel .slick-arrow {
+.caorusel-box .slick-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -1781,7 +1810,7 @@ input:checked + .slider:before {
     background: none;
     height: 60px;
 }
-.slick-carousel .slick-arrow span{
+.caorusel-box .slick-arrow span{
     position: absolute;
     display: inline-block;
     top: calc(50% - 8px);
@@ -1793,38 +1822,38 @@ input:checked + .slider:before {
     -webKit-transition: all 0.3s;
     -ms-transition: all 0.3s;
 }
-.slick-carousel .slick-arrow:hover span{
+.caorusel-box .slick-arrow:hover span{
     border-color: rgba(0,0,0,0.5);
 }
-.slick-carousel .slick-prev {
+.caorusel-box .slick-prev {
     left: -20px;
 }
-.slick-carousel .slick-prev span{
+.caorusel-box .slick-prev span{
     -webkit-transform: rotate(135deg);
     -ms-transform: rotate(135deg);
     transform: rotate(135deg);
     left: 10px;
 }
-.slick-carousel .slick-next {
+.caorusel-box .slick-next {
     right: -20px;
 }
-.slick-carousel .slick-next span{
+.caorusel-box .slick-next span{
     -webkit-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg);
     transform: rotate(-45deg);
     left: 4px;
 }
-.slick-carousel .slick-dots {
+.caorusel-box .slick-dots {
     margin: 0;
     padding: 0;
     list-style: none;
     text-align: center;
 }
-.slick-carousel .slick-dots li {
+.caorusel-box .slick-dots li {
     display: inline-block;
     margin: 0 3px;
 }
-.slick-carousel .slick-dots li button {
+.caorusel-box .slick-dots li button {
     border: 0;
     background: #fcf9f7;
     font-size: 10px;
@@ -1835,15 +1864,15 @@ input:checked + .slider:before {
     line-height: 19px;
     transition: all 0.3s;
 }
-.slick-carousel .slick-dots li.slick-active button,
-.slick-carousel .slick-dots li button:hover {
+.caorusel-box .slick-dots li.slick-active button,
+.caorusel-box .slick-dots li button:hover {
     background: #e62e04;
     color: #fff;
 }
-.slick-carousel.center-mode .card-body{
+.caorusel-box .center-mode .card-body{
     opacity: 0.7;
 }
-.slick-carousel.center-mode .slick-center .card{
+.caorusel-box .center-mode .slick-center .card{
     -moz-transform: scale(1.15);
     -ms-transform: scale(1.1)5;
     -o-transform: scale(1.15);
@@ -2102,8 +2131,9 @@ ul.seller-brand-list .brand-item {
 .product-box-1 .card-image a {
     display: block;
     height: 300px;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
 }
 
 .product-box-1 .price-bar {

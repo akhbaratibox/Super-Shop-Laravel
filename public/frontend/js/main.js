@@ -8,78 +8,87 @@ $(function () {
         $('#category-menu-icon').removeClass('active');
     });
 
+    if ($('.slick-carousel').length > 0) {
+        $('.slick-carousel').each(function() {
+            var $this = $(this);
 
-    $('.slick-carousel').each(function() {
-        var $this = $(this);
+            var slidesPerViewXs = $this.data('slick-xs-items');
+            var slidesPerViewSm = $this.data('slick-sm-items');
+            var slidesPerViewMd = $this.data('slick-md-items');
+            var slidesPerViewLg = $this.data('slick-lg-items');
+            var slidesPerViewXl = $this.data('slick-items');
 
-        var slidesPerViewXs = $this.data('slick-xs-items');
-        var slidesPerViewSm = $this.data('slick-sm-items');
-        var slidesPerViewMd = $this.data('slick-md-items');
-        var slidesPerViewLg = $this.data('slick-lg-items');
-        var slidesPerViewXl = $this.data('slick-items');
+            var slidesCenterMode = $this.data('slick-center');
+            var slidesArrows = $this.data('slick-arrows');
+            var slidesDots = $this.data('slick-dots');
+            var slidesRows = $this.data('slick-rows');
 
-        var slidesCenterMode = $this.data('slick-center');
+            slidesPerViewXs = !slidesPerViewXs ? slidesPerViewXl : slidesPerViewXs;
+            slidesPerViewSm = !slidesPerViewSm ? slidesPerViewXl : slidesPerViewSm;
+            slidesPerViewMd = !slidesPerViewMd ? slidesPerViewXl : slidesPerViewMd;
+            slidesPerViewLg = !slidesPerViewLg ? slidesPerViewXl : slidesPerViewLg;
+            slidesPerViewXl = !slidesPerViewXl ? 1 : slidesPerViewXl;
+            slidesCenterMode = !slidesCenterMode ? false : slidesCenterMode;
+            slidesArrows = !slidesArrows ? true : slidesArrows;
+            slidesDots = !slidesDots ? false : slidesDots;
+            slidesRows = !slidesRows ? 1 : slidesRows;
 
-        slidesPerViewXs = !slidesPerViewXs ? slidesPerViewXl : slidesPerViewXs;
-        slidesPerViewSm = !slidesPerViewSm ? slidesPerViewXl : slidesPerViewSm;
-        slidesPerViewMd = !slidesPerViewMd ? slidesPerViewXl : slidesPerViewMd;
-        slidesPerViewLg = !slidesPerViewLg ? slidesPerViewXl : slidesPerViewLg;
-        slidesPerViewXl = !slidesPerViewXl ? 1 : slidesPerViewXl;
-        slidesCenterMode = !slidesCenterMode ? false : slidesCenterMode;
-
-        $('.slick-carousel').slick({
-            slidesToShow: slidesPerViewXl,
-            autoplay: false,
-            dots: false,
-            arrows: true,
-            infinite: true,
-            centerPadding: '0px',
-            centerMode: slidesCenterMode,
-            speed: 300,
-            prevArrow: '<button type="button" class="slick-prev"><span class="prev-icon"></span></button>',
-            nextArrow: '<button type="button" class="slick-next"><span class="next-icon"></span></button>',
-            responsive: [
-                {
-                    breakpoint: 1200,
-                    settings: {
-                        slidesToShow: slidesPerViewLg,
+            $this.slick({
+                slidesToShow: slidesPerViewXl,
+                autoplay: false,
+                dots: slidesDots,
+                arrows: slidesArrows,
+                infinite: true,
+                rows: slidesRows,
+                centerPadding: '0px',
+                centerMode: slidesCenterMode,
+                speed: 300,
+                prevArrow: '<button type="button" class="slick-prev"><span class="prev-icon"></span></button>',
+                nextArrow: '<button type="button" class="slick-next"><span class="next-icon"></span></button>',
+                responsive: [
+                    {
+                        breakpoint: 1200,
+                        settings: {
+                            slidesToShow: slidesPerViewLg,
+                        }
+                    },
+                    {
+                        breakpoint: 992,
+                        settings: {
+                            slidesToShow: slidesPerViewMd,
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: slidesPerViewSm,
+                            dots: true,
+                            arrows: false,
+                        }
+                    },
+                    {
+                        breakpoint: 576,
+                        settings: {
+                            slidesToShow: slidesPerViewXs,
+                            dots: true,
+                            arrows: false,
+                        }
                     }
-                },
-                {
-                    breakpoint: 992,
-                    settings: {
-                        slidesToShow: slidesPerViewMd,
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: slidesPerViewSm,
-                        dots: true,
-                        arrows: false,
-                    }
-                },
-                {
-                    breakpoint: 576,
-                    settings: {
-                        slidesToShow: slidesPerViewXs,
-                        dots: true,
-                        arrows: false,
-                    }
-                }
-            ]
+                ]
+            });
         });
-    });
-
-    $('.slick-slider').each(function() {
-        var $this = $(this);
-        $this.slick({
-            slidesToShow: 1,
-            dots: true,
-            prevArrow: '<button type="button" class="slick-prev"><span class="prev-icon"></span></button>',
-            nextArrow: '<button type="button" class="slick-next"><span class="next-icon"></span></button>',
-        });
-    });
+    }
+    // if ($('.slick-slider').length > 0) {
+    //     $('.slick-slider').each(function() {
+    //         var $this = $(this);
+    //         $this.slick({
+    //             slidesToShow: 1,
+    //             dots: true,
+    //             prevArrow: '<button type="button" class="slick-prev"><span class="prev-icon"></span></button>',
+    //             nextArrow: '<button type="button" class="slick-next"><span class="next-icon"></span></button>',
+    //         });
+    //     });
+    // }
 
 
 });

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2018 at 12:32 PM
+-- Generation Time: Nov 27, 2018 at 10:18 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -41,14 +41,14 @@ CREATE TABLE `brands` (
 --
 
 INSERT INTO `brands` (`id`, `name`, `logo`, `created_at`, `updated_at`) VALUES
-(2, 'HP', 'uploads/mKAhZmLkVcP4Pr55M9WpPJCLVE8kin3gOLFlXHzE.jpeg', '2018-09-30 18:52:19', '2018-09-30 18:52:19'),
-(3, 'Audi', 'uploads/vMSmHD9hyzHNX3YnkzS8rAUsTbEE8KC6q44PeHM4.png', '2018-09-30 19:12:31', '2018-09-30 19:12:31'),
+(2, 'HP', 'uploads/Yw6e9H7dJbiK4nxQKkS7fvxoTY9mgGQGE5rDxxJk.png', '2018-09-30 18:52:19', '2018-11-27 01:54:33'),
+(3, 'Audi', 'uploads/TTjNIpkz6tBgUYPcH0x622lwN9lNDJzB8Fvz0RzN.jpeg', '2018-09-30 19:12:31', '2018-11-27 01:45:10'),
 (4, 'Brighton', 'uploads/9l2Vpq9NkvU6ESG2B3Wd0QhWKXRTVWFFgWnL4GM3.png', '2018-10-14 23:57:09', '2018-10-14 23:57:09'),
 (5, 'Tanishq', 'uploads/CtNGOBu2Shec7EfIQ31wkJ5yB98fG76MEIp8xA5I.png', '2018-10-14 23:57:26', '2018-10-14 23:57:26'),
 (6, 'Dior', 'uploads/NyDDkOdNaRfozGBy7zqqk4ckJt3BtgtKXa4FC8kL.png', '2018-10-14 23:57:41', '2018-10-14 23:57:41'),
 (7, 'Polo', 'uploads/GA7FfkRjAr2CeRRWOtGIWIbaqfRSq13yDWMHWn5t.png', '2018-10-14 23:58:09', '2018-10-14 23:58:09'),
 (8, 'Enor', 'uploads/slnJ9BrY92ZcNKz0jZvPpBDnOHnVayD52Sa5akL1.png', '2018-10-14 23:58:22', '2018-10-14 23:58:22'),
-(9, 'Aigner', 'uploads/90qOQc0Chqza2hTXcAFHXaW0hqdcOXYlhzgaM5lR.png', '2018-10-14 23:58:41', '2018-10-14 23:58:41'),
+(9, 'HP', 'uploads/90qOQc0Chqza2hTXcAFHXaW0hqdcOXYlhzgaM5lR.png', '2018-10-14 23:58:41', '2018-11-27 00:56:26'),
 (10, 'Axe', 'uploads/DOHSSffN8YvlNDKysV9wSx2bkvwYRMq2cK7wcyo0.png', '2018-10-14 23:58:53', '2018-10-14 23:58:53'),
 (11, 'Nike', 'uploads/vxs3U2KeTTLI8yimyVBsQgADMrKZL8rCtsNMleg8.png', '2018-10-14 23:59:05', '2018-10-14 23:59:05'),
 (12, 'Hudson', 'uploads/dOERC6qAk4DrHAh4HuYbCh9QPtxp747l5L5dvNE8.png', '2018-10-14 23:59:34', '2018-10-14 23:59:34'),
@@ -60,8 +60,13 @@ INSERT INTO `brands` (`id`, `name`, `logo`, `created_at`, `updated_at`) VALUES
 (18, 'Asus', 'uploads/A7ENkfpQkScm0q5NhzXZP5ExBZOgv5lOmu4cGAuh.png', '2018-10-15 00:00:53', '2018-10-15 00:00:53'),
 (19, 'Acer', 'uploads/vrRl90qPmzokSIxtemguNoqKMVFAPpsMNRA2osUM.png', '2018-10-15 00:01:14', '2018-10-15 00:01:14'),
 (20, 'Rolex', 'uploads/RXvzfbfK3iU6BfYHyBQE5ZleEZ4u3IovulaIAwzu.png', '2018-10-15 00:01:57', '2018-10-15 00:01:57'),
-(21, 'Rolex', 'uploads/BGNFZsaJXa4wtQa5MnIQ7my6YCFr8Us11AO2MoKG.png', '2018-10-15 00:01:58', '2018-10-15 00:01:58'),
-(22, 'Audi', 'uploads/7yt0r5jnSOc1w14mce2hrWXnHI1IbLvVBdSQMkqn.jpeg', '2018-10-22 03:04:18', '2018-10-22 03:04:51');
+(22, 'Audi', 'uploads/7yt0r5jnSOc1w14mce2hrWXnHI1IbLvVBdSQMkqn.jpeg', '2018-10-22 03:04:18', '2018-10-22 03:04:51'),
+(23, 'Toyota', 'uploads/KbgCnUBUACp3NFzpupRm0f2IGUjTDn8VX5ftM1Et.png', '2018-11-27 03:02:33', '2018-11-27 03:02:33'),
+(24, 'Nissan', 'uploads/zfyAgG3haf4yf4u2E3WaxUhl0rjuxqkrs7fd5uWD.png', '2018-11-27 03:05:53', '2018-11-27 03:05:53'),
+(25, 'Honda', 'uploads/3cSyYFACuBm5TQCf9CsJJRmsJJ09DXxno8kJEX1M.jpeg', '2018-11-27 03:06:10', '2018-11-27 03:06:10'),
+(26, 'Mitsubishi', 'uploads/V0MT4TdQ697pGILv936jU9x55Bi9QioHXnlpnpWp.png', '2018-11-27 03:09:36', '2018-11-27 03:09:36'),
+(27, 'Mercedes-Benz', 'uploads/XwUnprLJ2xxq0HA9o21SYi7WfWWpVheTffJvCVQb.png', '2018-11-27 03:10:02', '2018-11-27 03:10:02'),
+(28, 'BMW', 'uploads/8v7ylBY81ngDP5tgJm5vwreQ2e5dTKgH7s45xEUH.png', '2018-11-27 03:12:32', '2018-11-27 03:12:32');
 
 -- --------------------------------------------------------
 
@@ -706,6 +711,30 @@ CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `guest_id` int(11) DEFAULT NULL,
+  `shipping_address` mediumtext,
+  `payment_type` varchar(20) DEFAULT NULL,
+  `payment_status` varchar(20) DEFAULT NULL,
+  `payment_details` longtext,
+  `grand_total` double(8,2) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_details`
+--
+
+CREATE TABLE `order_details` (
+  `id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `variation` longtext,
+  `price` double(8,2) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `delivery_status` varchar(20) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1080,7 +1109,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `provider_id`, `user_type`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `avatar`, `avatar_original`, `address`, `country`, `city`, `postal_code`, `phone`, `created_at`, `updated_at`) VALUES
 (1, NULL, 'admin', 'Admin', 'admin@example.com', NULL, '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', 'M2db8IL59nTw6blVsgbT4acpEXbbZ9DWt7Yfx49H6Vyn6I2Puc63MOLsVBGZ', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', '', NULL, NULL, NULL, NULL, '2018-09-26 02:08:48', '2018-09-26 02:08:48'),
-(3, NULL, 'seller', 'Seller', 'seller@example.com', NULL, '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', 'oNQFHf2mDPTLocosp6yXutZUrgLKqje6demcNCmISGvK7buqS1MKV24MBogQ', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', 'Uttara', 'BD', 'Dhaka', '1230', '01642954885', '2018-10-07 04:42:57', '2018-11-12 03:58:48'),
+(3, NULL, 'seller', 'Seller', 'seller@example.com', NULL, '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', '2IuK7PgLv55FeJIyYzVhOUQRob0mt1rMGK5oYonxbTvU42ivNbkAs7doWIHU', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', 'Uttara', 'BD', 'Dhaka', '1230', '01642954885', '2018-10-07 04:42:57', '2018-11-12 03:58:48'),
 (8, NULL, 'customer', 'Mehedi Hasan', 'customer@example.com', NULL, '$2y$10$0NbLnWt7DAbrhqZrFZ7Nw.tvE.Jnff2Il/jrdgtqBiblKpgGwLyom', 'Ff0qxpiylskur5Tynzx38XpB8unF1XHfv8kNztYhaAzDBQH6tR42HHIxHNva', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'uploads/rzeudqPXo5vT9oiar8LvHz4mMdQj3NHdCCIc3V70.png', 'House 86, Lake drive road\r\nUttara, Dhaka', 'BD', 'Uttara', '1230', '01642954885', '2018-10-17 06:26:52', '2018-11-19 05:09:32'),
 (17, '113510401900359638362', 'customer', 'Mehedi Hasan', 'mehedi.iitdu@gmail.com', NULL, NULL, '0q1qtndIw7cEjIZBYxv8TIjsK0oobA7Np84SGvljAGgj22r8elsgRgQLW7yj', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', NULL, NULL, NULL, NULL, NULL, '2018-11-01 04:52:33', '2018-11-01 04:52:33'),
 (18, '103887660140114486052', 'customer', 'Md. Mehedi Hasan', 'bsse0607@iit.du.ac.bd', NULL, NULL, 'QWxGkOrlVIxrABQ2Qj0xTPsVoZKgNc4OsRNGKdgYp3D7BaUeMJiNqia8otbx', 'https://lh4.googleusercontent.com/-xw_DuhMKF9k/AAAAAAAAAAI/AAAAAAAAACw/g4RUSLrD2Y0/photo.jpg?sz=50', 'https://lh4.googleusercontent.com/-xw_DuhMKF9k/AAAAAAAAAAI/AAAAAAAAACw/g4RUSLrD2Y0/photo.jpg', NULL, NULL, NULL, NULL, NULL, '2018-11-07 05:20:57', '2018-11-07 05:20:57'),
@@ -1106,7 +1135,7 @@ CREATE TABLE `wishlists` (
 
 INSERT INTO `wishlists` (`id`, `user_id`, `product_id`, `created_at`, `updated_at`) VALUES
 (1, 8, 7, '2018-11-19 04:56:41', '2018-11-19 04:56:41'),
-(2, 3, 7, '2018-11-26 05:18:30', '2018-11-26 05:18:30');
+(2, 3, 12, '2018-11-27 01:57:21', '2018-11-27 01:57:21');
 
 --
 -- Indexes for dumped tables
@@ -1164,6 +1193,12 @@ ALTER TABLE `migrations`
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_details`
+--
+ALTER TABLE `order_details`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1250,7 +1285,7 @@ ALTER TABLE `wishlists`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `business_settings`
@@ -1298,6 +1333,12 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `order_details`
+--
+ALTER TABLE `order_details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

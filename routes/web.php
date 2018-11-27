@@ -41,9 +41,11 @@ Route::post('/cart/addtocart', 'CartController@addToCart')->name('cart.addToCart
 Route::post('/cart/removeFromCart', 'CartController@removeFromCart')->name('cart.removeFromCart');
 Route::post('/cart/updateQuantity', 'CartController@updateQuantity')->name('cart.updateQuantity');
 
-Route::post('/checkout/payment', 'CheckoutController@getCheckout')->name('payment.checkout');
-Route::get('/payment/done', 'CheckoutController@getDone')->name('payment.done');
-Route::get('/payment/cancel', 'CheckoutController@getCancel')->name('payment.cancel');
+Route::post('/checkout/payment', 'CheckoutController@checkout')->name('payment.checkout');
+
+//Paypal Payment
+Route::get('/payment/done', 'PaypalController@getDone')->name('payment.done');
+Route::get('/payment/cancel', 'PaypalController@getCancel')->name('payment.cancel');
 
 
 Route::get('/checkout', 'CheckoutController@get_shipping_info')->name('checkout.shipping_info');

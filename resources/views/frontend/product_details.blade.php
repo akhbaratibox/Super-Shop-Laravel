@@ -309,20 +309,20 @@
                             <div class="category-accordion">
                                 @foreach (\App\Product::where('user_id', $product->user_id)->select('category_id')->distinct()->get() as $key => $category)
                                     <div class="single-category">
-                                        <button class="btn w-100 category-name" type="button" data-toggle="collapse" data-target="#categoryOne" aria-expanded="true">
+                                        <button class="btn w-100 category-name" type="button" data-toggle="collapse" data-target="#category-{{ $key }}" aria-expanded="true">
                                         {{ App\Category::findOrFail($category->category_id)->name }}
                                         </button>
 
-                                        <div id="categoryOne" class="collapse show">
-                                            @foreach (\App\Product::where('user_id', $product->user_id)->where('category_id', $category->category_id)->select('subcategory_id')->distinct()->get() as $key => $subcategory)
+                                        <div id="category-{{ $key }}" class="collapse show">
+                                            @foreach (\App\Product::where('user_id', $product->user_id)->where('category_id', $category->category_id)->select('subcategory_id')->distinct()->get() as $subcategory)
                                                 <div class="single-sub-category">
-                                                    <button class="btn w-100 sub-category-name" type="button" data-toggle="collapse" data-target="#subCategoryOne" aria-expanded="true">
+                                                    <button class="btn w-100 sub-category-name" type="button" data-toggle="collapse" data-target="#subCategory-{{ $subcategory->subcategory_id }}" aria-expanded="true">
                                                     {{ App\SubCategory::findOrFail($subcategory->subcategory_id)->name }}
                                                     </button>
-                                                    <div id="subCategoryOne" class="collapse show">
+                                                    <div id="subCategory-{{ $subcategory->subcategory_id }}" class="collapse show">
                                                         <ul class="sub-sub-category-list">
-                                                            @foreach (\App\Product::where('user_id', $product->user_id)->where('category_id',            $category->category_id)->where('subcategory_id', $subcategory->subcategory_id)->select('subsubcategory_id')->distinct()->get() as $key => $subsubcategory)
-                                                                <li><a href="">{{ App\SubSubCategory::findOrFail($subsubcategory->subsubcategory_id)->name }}</a></li>
+                                                            @foreach (\App\Product::where('user_id', $product->user_id)->where('category_id',            $category->category_id)->where('subcategory_id', $subcategory->subcategory_id)->select('subsubcategory_id')->distinct()->get() as $subsubcategory)
+                                                                <li><a href="{{ route('products.subsubcategory', $subsubcategory->subsubcategory_id) }}">{{ App\SubSubCategory::findOrFail($subsubcategory->subsubcategory_id)->name }}</a></li>
                                                             @endforeach
                                                     </div>
                                                 </div>

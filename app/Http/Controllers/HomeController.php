@@ -120,9 +120,9 @@ class HomeController extends Controller
         abort(404);
     }
 
-    public function shop($id)
+    public function shop($slug)
     {
-        $shop  = Shop::find($id);
+        $shop  = Shop::where('slug', $slug)->first();
         if($shop!=null){
             return view('frontend.seller_shop', compact('shop'));
         }

@@ -91,6 +91,7 @@ class ShopController extends Controller
         $shop->google = $request->google;
         $shop->twitter = $request->twitter;
         $shop->youtube = $request->youtube;
+        $shop->slug = preg_replace('/\s+/', '-', $request->name).'-'.$shop->id;
 
         if($shop->save()){
             flash('Your Shop has been updated successfully!')->success();

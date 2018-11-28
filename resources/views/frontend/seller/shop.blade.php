@@ -17,7 +17,7 @@
                                 <div class="col-lg-6 col-12">
                                     <h2 class="heading heading-6 text-capitalize strong-600 mb-0">
                                         Shop Settings
-                                        <a href="{{ route('shop.visit', $shop->id) }}" class="btn btn-link btn-sm">(Visit Shop)</a>
+                                        <a href="{{ route('shop.visit', $shop->slug) }}" class="btn btn-link btn-sm">(Visit Shop)</a>
                                     </h2>
                                 </div>
                                 <div class="col-lg-6 col-12">

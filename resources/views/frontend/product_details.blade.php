@@ -253,7 +253,7 @@
                             </div>
                             <div class="title">Sold By</div>
                             @if($product->added_by == 'seller')
-                                <a href="{{ route('shop.visit', $product->user->shop->id) }}" class="name d-block">{{ $product->user->shop->name }}</a>
+                                <a href="{{ route('shop.visit', $product->user->shop->slug) }}" class="name d-block">{{ $product->user->shop->name }}</a>
                                 <div class="location">{{ $product->user->shop->address }}</div>
                             @else
                                 <a class="name d-block">{{ $product->user->name }}</a>
@@ -272,7 +272,7 @@
                         <div class="row no-gutters">
                             @if($product->added_by == 'seller')
                                 <div class="col">
-                                    <a href="{{ route('shop.visit', $product->user->shop->id) }}" class="d-block store-btn">Visit Store</a>
+                                    <a href="{{ route('shop.visit', $product->user->shop->slug) }}" class="d-block store-btn">Visit Store</a>
                                 </div>
                                 <div class="col">
                                     <ul class="social-media social-media--style-1-v4 text-center">

@@ -253,10 +253,10 @@
                             </div>
                             <div class="title">Sold By</div>
                             @if($product->added_by == 'seller')
-                                <a href="" class="name d-block">{{ $product->user->shop->name }}</a>
+                                <a href="{{ route('shop.visit', $product->user->shop->id) }}" class="name d-block">{{ $product->user->shop->name }}</a>
                                 <div class="location">{{ $product->user->shop->address }}</div>
                             @else
-                                <a href="" class="name d-block">{{ $product->user->name }}</a>
+                                <a class="name d-block">{{ $product->user->name }}</a>
                             @endif
                             <div class="rating text-center d-block">
                                 <span class="star-rating star-rating-sm d-block">

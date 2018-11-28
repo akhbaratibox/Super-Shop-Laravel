@@ -13,6 +13,9 @@
                         </div>
                         <ul class="categories">
                             @foreach (\App\Category::all() as $key => $category)
+                                @php
+                                    $brands = array();
+                                @endphp
                                 <li>
                                     <a href="{{ route('products.category', $category->id) }}">
                                         <i class="icon-electronics-001 cat-icon"></i>
@@ -30,6 +33,13 @@
                                                                         <ul class="sub-cat-items">
                                                                             <li class="sub-cat-name"><a href="{{ route('products.subcategory', $subcategory->id) }}">{{ $subcategory->name }}</a></li>
                                                                             @foreach ($subcategory->subsubcategories as $subsubcategory)
+                                                                                @php
+                                                                                    foreach (json_decode($subsubcategory->brands) as $brand) {
+                                                                                        if(!in_array($brand, $brands)){
+                                                                                            array_push($brands, $brand);
+                                                                                        }
+                                                                                    }
+                                                                                @endphp
                                                                                 <li><a href="{{ route('products.subsubcategory', $subsubcategory->id) }}">{{ $subsubcategory->name }}</a></li>
                                                                             @endforeach
                                                                         </ul>
@@ -71,9 +81,11 @@
                                                 <div class="col-3">
                                                     <div class="sub-cat-brand">
                                                         <ul class="sub-brand-list">
-                                                            <li class="sub-brand-item">
-                                                                <a href="" ><img src="{{ asset('frontend/images/brands/1.jpg') }}" class="img-fluid"></a>
-                                                            </li>
+                                                            @foreach ($brands as $brand_id)
+                                                                <li class="sub-brand-item">
+                                                                    <a href="{{ route('products.brand', $brand_id) }}" ><img src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid"></a>
+                                                                </li>
+                                                            @endforeach
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -97,11 +109,11 @@
                         <div class="home-slide">
                             <div class="slick-carousel" data-slick-arrows="true" data-slick-dots="true">
                                 @foreach (\App\Slider::where('published', 1)->get() as $key => $slider)
-                                    
+
                                     <div class="">
                                         <img class="d-block w-100" style="height:330px; width:850px;" src="{{ asset($slider->photo) }}" alt="Slider Image">
                                     </div>
-                                   
+
                                 @endforeach
                             </div>
                         </div>

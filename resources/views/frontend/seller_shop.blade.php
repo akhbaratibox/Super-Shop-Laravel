@@ -52,132 +52,29 @@
                 <div class="col-10 offset-1 col-lg-8 offset-lg-2">
                     <div class="caorusel-box">
                         <div class="slick-carousel center-mode" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="3" data-slick-sm-items="1" data-slick-xs-items="1" data-slick-center="true">
-                            <div class="">
-                                <div class="product-card-2 card card-product m-3 shop-cards shop-tech">
-                                    <div class="card-body p-0">
+                            @foreach ($shop->user->products->where('featured', 1) as $key => $product)
+                                <div class="">
+                                    <div class="product-card-2 card card-product m-3 shop-cards shop-tech">
+                                        <div class="card-body p-0">
 
-                                        <div class="card-image">
-                                            <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
-                                            </a>
-                                        </div>
-
-                                        <div class="p-3">
-                                            <div class="price-box">
-                                                <del class="old-product-price strong-400">$49.99</del>
-                                                <span class="product-price strong-600">$35.99</span>
+                                            <div class="card-image">
+                                                <a href="{{ route('product', $product->slug) }}" class="d-block" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');">
+                                                </a>
                                             </div>
-                                            <h2 class="product-title p-0 mt-2">
-                                                <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
-                                            </h2>
+
+                                            <div class="p-3">
+                                                <div class="price-box">
+                                                    <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
+                                                    <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                                                </div>
+                                                <h2 class="product-title p-0 mt-2">
+                                                    <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
+                                                </h2>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="">
-                                <div class="product-card-2 card card-product m-3 shop-cards shop-tech">
-                                    <div class="card-body p-0">
-
-                                        <div class="card-image">
-                                            <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
-                                            </a>
-                                        </div>
-
-                                        <div class="p-3">
-                                            <div class="price-box">
-                                                <del class="old-product-price strong-400">$49.99</del>
-                                                <span class="product-price strong-600">$35.99</span>
-                                            </div>
-                                            <h2 class="product-title p-0 mt-2">
-                                                <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
-                                            </h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div class="product-card-2 card card-product m-3 shop-cards shop-tech">
-                                    <div class="card-body p-0">
-
-                                        <div class="card-image">
-                                            <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
-                                            </a>
-                                        </div>
-
-                                        <div class="p-3">
-                                            <div class="price-box">
-                                                <del class="old-product-price strong-400">$49.99</del>
-                                                <span class="product-price strong-600">$35.99</span>
-                                            </div>
-                                            <h2 class="product-title p-0 mt-2">
-                                                <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
-                                            </h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div class="product-card-2 card card-product m-3 shop-cards shop-tech">
-                                    <div class="card-body p-0">
-
-                                        <div class="card-image">
-                                            <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
-                                            </a>
-                                        </div>
-
-                                        <div class="p-3">
-                                            <div class="price-box">
-                                                <del class="old-product-price strong-400">$49.99</del>
-                                                <span class="product-price strong-600">$35.99</span>
-                                            </div>
-                                            <h2 class="product-title p-0 mt-2">
-                                                <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
-                                            </h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div class="product-card-2 card card-product m-3 shop-cards shop-tech">
-                                    <div class="card-body p-0">
-
-                                        <div class="card-image">
-                                            <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
-                                            </a>
-                                        </div>
-
-                                        <div class="p-3">
-                                            <div class="price-box">
-                                                <del class="old-product-price strong-400">$49.99</del>
-                                                <span class="product-price strong-600">$35.99</span>
-                                            </div>
-                                            <h2 class="product-title p-0 mt-2">
-                                                <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
-                                            </h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div class="product-card-2 card card-product m-3 shop-cards shop-tech">
-                                    <div class="card-body p-0">
-
-                                        <div class="card-image">
-                                            <a href="" class="d-block" style="background-image:url('http://via.placeholder.com/440x500');">
-                                            </a>
-                                        </div>
-
-                                        <div class="p-3">
-                                            <div class="price-box">
-                                                <del class="old-product-price strong-400">$49.99</del>
-                                                <span class="product-price strong-600">$35.99</span>
-                                            </div>
-                                            <h2 class="product-title p-0 mt-2">
-                                                <a href="">HANQIU 2018 Parka Autumn Winter Warm Outwear Slim Coats Casual Windbreak Jackets Men</a>
-                                            </h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

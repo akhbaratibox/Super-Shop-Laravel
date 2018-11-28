@@ -147,6 +147,9 @@
                         </div>
                         <div class="box-content">
                             <div class="category-accordion">
+                                @php
+                                    $brands = array();
+                                @endphp
                                 @foreach (\App\Product::where('user_id', $shop->user->id)->select('category_id')->distinct()->get() as $key => $category)
                                     <div class="single-category">
                                         <button class="btn w-100 category-name" type="button" data-toggle="collapse" data-target="#category-{{ $key }}" aria-expanded="true">
@@ -162,7 +165,15 @@
                                                     <div id="subCategory-{{ $subcategory->subcategory_id }}" class="collapse show">
                                                         <ul class="sub-sub-category-list">
                                                             @foreach (\App\Product::where('user_id', $shop->user->id)->where('category_id',            $category->category_id)->where('subcategory_id', $subcategory->subcategory_id)->select('subsubcategory_id')->distinct()->get() as $subsubcategory)
-                                                                <li><a href="{{ route('products.subsubcategory', $subsubcategory->subsubcategory_id) }}">{{ App\SubSubCategory::findOrFail($subsubcategory->subsubcategory_id)->name }}</a></li>
+                                                                @php
+                                                                    $subsubcategory = App\SubSubCategory::findOrFail($subsubcategory->subsubcategory_id);
+                                                                    foreach (json_decode($subsubcategory->brands) as $brand) {
+                                                                        if(!in_array($brand, $brands)){
+                                                                            array_push($brands, $brand);
+                                                                        }
+                                                                    }
+                                                                @endphp
+                                                                <li><a href="{{ route('products.subsubcategory', $subsubcategory->id) }}">{{$subsubcategory->name }}</a></li>
                                                             @endforeach
                                                     </div>
                                                 </div>
@@ -180,42 +191,11 @@
                         <div class="box-content">
                             <div class="seller-brands">
                         		<ul class="seller-brand-list">
-                        			<li class="brand-item">
-                                        <a href=""><img src="assets/images/brands/1.jpg" class="img-fluid"></a>
-                                    </li>
-                        			<li class="brand-item">
-                                        <a href=""><img src="assets/images/brands/2.jpg" class="img-fluid"></a>
-                                    </li>
-                        			<li class="brand-item">
-                                        <a href=""><img src="assets/images/brands/3.jpg" class="img-fluid"></a>
-                                    </li>
-                        			<li class="brand-item">
-                                        <a href=""><img src="assets/images/brands/4.jpg" class="img-fluid"></a>
-                                    </li>
-                        			<li class="brand-item">
-                                        <a href=""><img src="assets/images/brands/1.jpg" class="img-fluid"></a>
-                                    </li>
-                        			<li class="brand-item">
-                                        <a href=""><img src="assets/images/brands/2.jpg" class="img-fluid"></a>
-                                    </li>
-                        			<li class="brand-item">
-                                        <a href=""><img src="assets/images/brands/3.jpg" class="img-fluid"></a>
-                                    </li>
-                        			<li class="brand-item">
-                                        <a href=""><img src="assets/images/brands/4.jpg" class="img-fluid"></a>
-                                    </li>
-                        			<li class="brand-item">
-                                        <a href=""><img src="assets/images/brands/1.jpg" class="img-fluid"></a>
-                                    </li>
-                        			<li class="brand-item">
-                                        <a href=""><img src="assets/images/brands/2.jpg" class="img-fluid"></a>
-                                    </li>
-                        			<li class="brand-item">
-                                        <a href=""><img src="assets/images/brands/3.jpg" class="img-fluid"></a>
-                                    </li>
-                        			<li class="brand-item">
-                                        <a href=""><img src="assets/images/brands/4.jpg" class="img-fluid"></a>
-                                    </li>
+                                    @foreach ($brands as $brand_id)
+                                        <li class="brand-item">
+                                            <a href="{{ route('products.brand', $brand_id) }}"><img src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid"></a>
+                                        </li>
+                                    @endforeach
                         		</ul>
                         	</div>
                         </div>

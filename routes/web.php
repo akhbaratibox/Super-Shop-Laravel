@@ -74,6 +74,7 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::post('/products/store/','ProductController@store')->name('products.store');
 	Route::post('/products/update/{id}','ProductController@update')->name('products.update');
 	Route::get('/products/destroy/{id}', 'ProductController@destroy')->name('products.destroy');
+	Route::get('/products/duplicate/{id}', 'ProductController@duplicate')->name('products.duplicate');
 	Route::post('/products/sku_combination', 'ProductController@sku_combination')->name('products.sku_combination');
 	Route::post('/products/sku_combination_edit', 'ProductController@sku_combination_edit')->name('products.sku_combination_edit');
 	Route::post('/products/featured', 'ProductController@updateFeatured')->name('products.featured');
@@ -110,9 +111,6 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::post('/newsletter/send', 'NewsletterController@send')->name('newsletters.send');
 
 	Route::resource('messages','ContactMessageController');
-
-	Route::resource('stocks','ProductStockController');
-	Route::post('stocks/sku_combinations','ProductStockController@sku_combinations')->name('stocks.sku_combinations');
 
 	Route::post('/business-settings/update', 'BusinessSettingsController@update')->name('business_settings.update');
 	Route::post('/business-settings/update/activation', 'BusinessSettingsController@updateActivationSettings')->name('business_settings.update.activation');

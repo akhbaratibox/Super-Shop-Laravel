@@ -117,9 +117,6 @@
                                 <li class="{{ areActiveRoutes(['products.index', 'products.create', 'products.edit'])}}">
                                     <a class="nav-link" href="{{route('products.index')}}">{{__('web.all_product')}}</a>
                                 </li>
-                                <li class="{{ areActiveRoutes(['stocks.index', 'stocks.create', 'stocks.edit'])}}">
-                                    <a class="nav-link" href="{{route('stocks.index')}}">{{__('web.product_stock')}}</a>
-                                </li>
                             </ul>
                         </li>
 

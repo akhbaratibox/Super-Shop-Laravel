@@ -32,7 +32,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>{{__('web.name')}}</th>
+                                    <th width="20%">{{__('web.name')}}</th>
                                     <th>{{__('web.photo')}}</th>
                                     <th>{{__('web.current_qty')}}</th>
                                     <th>{{__('web.base_price')}}</th>
@@ -73,9 +73,9 @@
 					                                Actions <i class="dropdown-caret"></i>
 					                            </button>
 					                            <ul class="dropdown-menu dropdown-menu-right">
-					                                <li><a href="{{route('products.edit', $product->id)}}" class="btn btn-mint">Edit</a></li>
-					                                <li><a onclick="confirm_modal('{{route('products.destroy', $product->id)}}');" class="btn btn-danger">Delete</a></li>
-                                                    <li><a onclick="" class="btn btn-purple">Discount</a></li>
+					                                <li><a href="{{route('products.edit', $product->id)}}">Edit</a></li>
+					                                <li><a onclick="confirm_modal('{{route('products.destroy', $product->id)}}');">Delete</a></li>
+                                                    <li><a href="{{route('products.duplicate', $product->id)}}">Duplicate</a></li>
 					                            </ul>
 					                        </div>
                                         </td>
@@ -94,7 +94,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>{{__('web.name')}}</th>
+                                    <th width="20%">{{__('web.name')}}</th>
                                     <th>{{__('web.photo')}}</th>
                                     <th>{{__('web.current_qty')}}</th>
                                     <th>{{__('web.base_price')}}</th>
@@ -122,8 +122,16 @@
                                             <input onchange="update_featured(this)" value="{{ $product->id }}" type="checkbox" <?php if($product->featured == 1) echo "checked";?> >
                                             <span class="slider round"></span></label></td>
                                         <td>
-                                            <a href="{{route('products.edit', $product->id)}}" class="btn btn-mint btn-icon"><i class="demo-psi-pen-5 icon-lg"></i></a>
-                                            <a onclick="confirm_modal('{{route('products.destroy', $product->id)}}');" class="btn btn-danger btn-icon"><i class="demo-psi-recycling icon-lg"></i></a>
+                                            <div class="btn-group dropdown">
+					                            <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
+					                                Actions <i class="dropdown-caret"></i>
+					                            </button>
+					                            <ul class="dropdown-menu dropdown-menu-right">
+					                                <li><a href="{{route('products.edit', $product->id)}}">Edit</a></li>
+					                                <li><a onclick="confirm_modal('{{route('products.destroy', $product->id)}}');">Delete</a></li>
+                                                    <li><a href="{{route('products.duplicate', $product->id)}}">Duplicate</a></li>
+					                            </ul>
+					                        </div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -144,7 +152,7 @@
     <script type="text/javascript">
 
         $(document).ready(function(){
-            $('#container').removeClass('mainnav-lg').addClass('mainnav-sm');
+            //$('#container').removeClass('mainnav-lg').addClass('mainnav-sm');
         });
 
         function update_todays_deal(el){

@@ -35,7 +35,7 @@
                         <div class="card no-border mt-4">
                             <div class="row">
                                 <div class="col-12">
-                                    <a href="{{ route('seller.products.upload')}}" class="btn btn-info pull-right mb-3 mt-3 mr-3">{{__('web.add_new')}}</a>
+                                    <a href="{{ route('seller.products.upload')}}" class="btn btn-base-1 pull-right mb-3 mt-3 mr-3">{{__('web.add_new')}}</a>
                                 </div>
                             </div>
                             <div>
@@ -73,11 +73,17 @@
                                                     <span class="slider round"></span></label>
                                                 </td>
                                                 <td>
-                                                    <ul class="inline-links">
-                                                        <li><a href="{{route('seller.products.edit', $product->id)}}" ><button class="btn btn-mint">Edit</button></a></li>
-    					                                <li><button onclick="confirm_modal('{{route('products.destroy', $product->id)}}');" class="btn btn-danger">Delete</button></li>
-                                                        <li><button onclick="" class="btn btn-purple">Discount</button></li>
-                                                    </ul>
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-base-1 dropdown-toggle" type="button" id="dropdownMenuButton-{{ $key }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            Actions
+                                                        </button>
+
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-{{ $key }}">
+                                                            <a href="{{route('seller.products.edit', $product->id)}}" class="dropdown-item">Edit</a>
+        					                                <button onclick="confirm_modal('{{route('products.destroy', $product->id)}}')" class="dropdown-item">Delete</button>
+                                                            <a href="{{route('products.duplicate', $product->id)}}" class="dropdown-item">Duplicate</a>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach

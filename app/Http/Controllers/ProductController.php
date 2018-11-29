@@ -353,6 +353,33 @@ class ProductController extends Controller
         }
     }
 
+    /**
+     * Duplicates the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function duplicate($id)
+    {
+        $product = Product::find($id);
+        $product_new = $product->replicate();
+        $product_new->slug = substr($product_new->slug, 0, -5).str_random(5);
+
+        if($product_new->save()){
+            flash('Product has been duplicated successfully')->success();
+            if(Auth::user()->user_type == 'admin'){
+                return view('products.index');
+            }
+            else{
+                return redirect()->route('seller.products');
+            }
+        }
+        else{
+            flash('Something went wrong')->danger();
+            return back();
+        }
+    }
+
     public function get_products_by_subsubcategory(Request $request)
     {
         $products = Product::where('subsubcategory_id', $request->subsubcategory_id)->get();

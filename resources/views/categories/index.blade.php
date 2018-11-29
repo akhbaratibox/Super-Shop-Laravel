@@ -24,6 +24,7 @@
                     <th>{{__('web.name')}}</th>
                     <th>{{__('web.banner')}}</th>
                     <th>{{__('web.icon')}}</th>
+                    <th>{{__('web.featured')}}</th>
                     <th width="10%">{{__('web.options')}}</th>
                 </tr>
             </thead>
@@ -34,6 +35,9 @@
                         <td>{{$category->name}}</td>
                         <td><img class="img-md" src="{{ asset($category->banner) }}" alt="{{__('web.banner')}}"></td>
                         <td><img class="img-md" src="{{ asset($category->icon) }}" alt="{{__('web.icon')}}"></td>
+                        <td><label class="switch">
+                            <input onchange="update_featured(this)" value="{{ $category->id }}" type="checkbox" <?php if($category->featured == 1) echo "checked";?> >
+                            <span class="slider round"></span></label></td>
                         <td>
                             <a href="{{route('categories.edit', $category->id)}}" class="btn btn-mint btn-icon"><i class="demo-psi-pen-5 icon-lg"></i></a>
                             <a onclick="confirm_modal('{{route('categories.destroy', $category->id)}}');" class="btn btn-danger btn-icon"><i class="demo-psi-recycling icon-lg"></i></a>
@@ -46,4 +50,25 @@
     </div>
 </div>
 
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        function update_featured(el){
+            if(el.checked){
+                var status = 1;
+            }
+            else{
+                var status = 0;
+            }
+            $.post('{{ route('categories.featured') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
+                if(data == 1){
+                    showAlert('success', 'Featured categories updated successfully');
+                }
+                else{
+                    showAlert('danger', 'Something went wrong');
+                }
+            });
+        }
+    </script>
 @endsection

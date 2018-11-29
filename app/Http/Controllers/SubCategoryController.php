@@ -43,7 +43,7 @@ class SubCategoryController extends Controller
         $subcategory->category_id = $request->category_id;
 
         if($request->hasFile('banner')){
-            $subcategory->banner = $request->file('banner')->store('uploads');
+            $subcategory->banner = $request->file('banner')->store('uploads/subcategories/banner');
         }
 
         if($subcategory->save()){
@@ -94,7 +94,7 @@ class SubCategoryController extends Controller
         $subcategory->category_id = $request->category_id;
 
         if($request->hasFile('banner')){
-            $subcategory->banner = $request->file('banner')->store('uploads');
+            $subcategory->banner = $request->file('banner')->store('uploads/subcategories/banner');
         }
 
         if($subcategory->save()){
@@ -115,7 +115,9 @@ class SubCategoryController extends Controller
      */
     public function destroy($id)
     {
+        $subcategory = SubCategory::findOrFail($id);
         if(SubCategory::destroy($id)){
+            unlink($subcategory->banner);
             flash('Subcategory has been deleted successfully')->success();
             return redirect()->route('subcategories.index');
         }

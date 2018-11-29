@@ -103,65 +103,25 @@
                         <div class="home-slide">
                             <div class="slick-carousel" data-slick-arrows="true" data-slick-dots="true">
                                 @foreach (\App\Slider::where('published', 1)->get() as $key => $slider)
-
                                     <div class="">
                                         <img class="d-block w-100" style="height:330px; width:850px;" src="{{ asset($slider->photo) }}" alt="Slider Image">
                                     </div>
-
                                 @endforeach
                             </div>
                         </div>
                     </div>
                     <div class="trending-category">
                         <ul>
-                            <li class="active">
-                                <div class="trend-category-single">
-                                    <a href="" class="d-block">
-                                        <div class="name">Vehicles</div>
-                                        <img class="d-block w-100" src="http://via.placeholder.com/200x300" alt="">
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="trend-category-single">
-                                    <a href="" class="d-block">
-                                        <div class="name">Vehicles</div>
-                                        <img class="d-block w-100" src="http://via.placeholder.com/200x300" alt="">
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="trend-category-single">
-                                    <a href="" class="d-block">
-                                        <div class="name">Vehicles</div>
-                                        <img class="d-block w-100" src="http://via.placeholder.com/200x300" alt="">
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="trend-category-single">
-                                    <a href="" class="d-block">
-                                        <div class="name">Vehicles</div>
-                                        <img class="d-block w-100" src="http://via.placeholder.com/200x300" alt="">
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="trend-category-single">
-                                    <a href="" class="d-block">
-                                        <div class="name">Vehicles</div>
-                                        <img class="d-block w-100" src="http://via.placeholder.com/200x300" alt="">
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="trend-category-single">
-                                    <a href="" class="d-block">
-                                        <div class="name">Vehicles</div>
-                                        <img class="d-block w-100" src="http://via.placeholder.com/200x300" alt="">
-                                    </a>
-                                </div>
-                            </li>
+                            @foreach (\App\Category::where('featured', 1)->get()->take(6) as $key => $category)
+                                <li @if ($key == 0) class="active" @endif>
+                                    <div class="trend-category-single">
+                                        <a href="{{ route('products.category', $category->id) }}" class="d-block">
+                                            <div class="name">{{ $category->name }}</div>
+                                            <img class="d-block w-100" style="height:120px;" src="{{ asset($category->banner) }}" alt="Category Banner">
+                                        </a>
+                                    </div>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

@@ -40,10 +40,10 @@ class CategoryController extends Controller
         $category->name = $request->name;
 
         if($request->hasFile('banner')){
-            $category->banner = $request->file('banner')->store('uploads');
+            $category->banner = $request->file('banner')->store('uploads/categories/banner');
         }
         if($request->hasFile('icon')){
-            $category->icon = $request->file('icon')->store('uploads');
+            $category->icon = $request->file('icon')->store('uploads/categories/icon');
         }
 
         if($category->save()){
@@ -91,10 +91,10 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->name = $request->name;
         if($request->hasFile('banner')){
-            $category->banner = $request->file('banner')->store('uploads');
+            $category->banner = $request->file('banner')->store('uploads/categories/banner');
         }
         if($request->hasFile('icon')){
-            $category->icon = $request->file('icon')->store('uploads');
+            $category->icon = $request->file('icon')->store('uploads/categories/icon');
         }
 
         if($category->save()){
@@ -115,7 +115,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
+        $category = Category::findOrFail($id);
         if(Category::destroy($id)){
+            unlink($category->banner);
+            unlink($category->icon);
             flash('Category has been deleted successfully')->success();
             return redirect()->route('categories.index');
         }
@@ -123,5 +126,15 @@ class CategoryController extends Controller
             flash('Something went wrong')->danger();
             return back();
         }
+    }
+
+    public function updateFeatured(Request $request)
+    {
+        $category = Category::findOrFail($request->id);
+        $category->featured = $request->status;
+        if($category->save()){
+            return 1;
+        }
+        return 0;
     }
 }

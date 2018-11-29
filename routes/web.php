@@ -84,6 +84,7 @@ Route::get('/admin', 'HomeController@admin_dashboard')->name('admin.dashboard')-
 Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function(){
 	Route::resource('categories','CategoryController');
 	Route::get('/categories/destroy/{id}', 'CategoryController@destroy')->name('categories.destroy');
+	Route::post('/categories/featured', 'CategoryController@updateFeatured')->name('categories.featured');
 
 	Route::resource('subcategories','SubCategoryController');
 	Route::get('/subcategories/destroy/{id}', 'SubCategoryController@destroy')->name('subcategories.destroy');

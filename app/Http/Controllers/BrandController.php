@@ -40,7 +40,7 @@ class BrandController extends Controller
         $brand->name = $request->name;
 
         if($request->hasFile('logo')){
-            $brand->logo = $request->file('logo')->store('uploads');
+            $brand->logo = $request->file('logo')->store('uploads/brands');
         }
 
         if($brand->save()){
@@ -88,7 +88,7 @@ class BrandController extends Controller
         $brand = Brand::findOrFail($id);
         $brand->name = $request->name;
         if($request->hasFile('logo')){
-            $brand->logo = $request->file('logo')->store('uploads');
+            $brand->logo = $request->file('logo')->store('uploads/brands');
         }
 
         if($brand->save()){
@@ -109,7 +109,9 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
+        $brand = Brand::findOrFail($id);
         if(Brand::destroy($id)){
+            unlink($brand->logo);
             flash('Brand has been deleted successfully')->success();
             return redirect()->route('brands.index');
         }

@@ -54,21 +54,21 @@ class ProductController extends Controller
 
         if($request->hasFile('photos')){
             foreach ($request->photos as $key => $photo) {
-                array_push($photos, $photo->store('uploads'));
+                array_push($photos, $photo->store('uploads/products/photos'));
             }
             $product->photos = json_encode($photos);
         }
 
         if($request->hasFile('thumbnail_img')){
-            $product->thumbnail_img = $request->thumbnail_img->store('uploads');
+            $product->thumbnail_img = $request->thumbnail_img->store('uploads/products/thumbnail');
         }
 
         if($request->hasFile('featured_img')){
-            $product->featured_img = $request->featured_img->store('uploads');
+            $product->featured_img = $request->featured_img->store('uploads/products/featured');
         }
 
         if($request->hasFile('flash_deal_img')){
-            $product->flash_deal_img = $request->flash_deal_img->store('uploads');
+            $product->flash_deal_img = $request->flash_deal_img->store('uploads/products/flash_deal');
         }
 
         $product->unit = $request->unit;
@@ -216,21 +216,21 @@ class ProductController extends Controller
 
         if($request->hasFile('photos')){
             foreach ($request->photos as $key => $photo) {
-                array_push($photos, $photo->store('uploads'));
+                array_push($photos, $photo->store('uploads/products/photos'));
             }
             $product->photos = json_encode($photos);
         }
 
         if($request->hasFile('thumbnail_img')){
-            $product->thumbnail_img = $request->thumbnail_img->store('uploads');
+            $product->thumbnail_img = $request->thumbnail_img->store('uploads/products/thumbnail');
         }
 
         if($request->hasFile('featured_img')){
-            $product->featured_img = $request->featured_img->store('uploads');
+            $product->featured_img = $request->featured_img->store('uploads/products/featured');
         }
 
         if($request->hasFile('flash_deal_img')){
-            $product->flash_deal_img = $request->flash_deal_img->store('uploads');
+            $product->flash_deal_img = $request->flash_deal_img->store('uploads/products/flash_deal');
         }
 
         $product->unit = $request->unit;
@@ -338,7 +338,14 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
+        $product = Product::findOrFail($id);
         if(Product::destroy($id)){
+            unlink($product->thumbnail_img);
+            unlink($product->featured_img);
+            unlink($product->flash_deal_img);
+            foreach (json_decode($product->photos) as $key => $photo) {
+                unlink($photo);
+            }
             flash('Product has been deleted successfully')->success();
             if(Auth::user()->user_type == 'admin'){
                 return view('products.index');

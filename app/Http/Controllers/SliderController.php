@@ -39,7 +39,7 @@ class SliderController extends Controller
         if($request->hasFile('photos')){
             foreach ($request->photos as $key => $photo) {
                 $slider = new Slider;
-                $slider->photo = $photo->store('sliders');
+                $slider->photo = $photo->store('uploads/sliders');
                 $slider->save();
             }
             flash('Slider has been inserted successfully')->success();
@@ -96,7 +96,9 @@ class SliderController extends Controller
      */
     public function destroy($id)
     {
+        $slider = Slider::findOrFail($id);
         if(Slider::destroy($id)){
+            unlink($slider->photo)
             flash('Slider has been deleted successfully')->success();
         }
         else{

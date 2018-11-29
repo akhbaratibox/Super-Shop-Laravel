@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2018 at 11:05 AM
+-- Generation Time: Nov 29, 2018 at 12:18 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -65,7 +65,6 @@ INSERT INTO `brands` (`id`, `name`, `logo`, `created_at`, `updated_at`) VALUES
 (25, 'Honda', 'uploads/3cSyYFACuBm5TQCf9CsJJRmsJJ09DXxno8kJEX1M.jpeg', '2018-11-27 03:06:10', '2018-11-27 03:06:10'),
 (26, 'Mitsubishi', 'uploads/V0MT4TdQ697pGILv936jU9x55Bi9QioHXnlpnpWp.png', '2018-11-27 03:09:36', '2018-11-27 03:09:36'),
 (27, 'Mercedes-Benz', 'uploads/XwUnprLJ2xxq0HA9o21SYi7WfWWpVheTffJvCVQb.png', '2018-11-27 03:10:02', '2018-11-27 03:10:02'),
-(28, 'BMW', 'uploads/8v7ylBY81ngDP5tgJm5vwreQ2e5dTKgH7s45xEUH.png', '2018-11-27 03:12:32', '2018-11-27 03:12:32'),
 (29, 'Mazda', 'uploads/Lg03OHRBwUERW0GKc3lPbwGwEZJuq5xVjUK4n9SI.png', '2018-11-27 23:55:29', '2018-11-27 23:55:29'),
 (30, 'Subaru', 'uploads/mh9I7KJhpvzIkmMjUKt1BqmAMcXBRmDoUaLkwQye.png', '2018-11-27 23:58:17', '2018-11-27 23:58:17'),
 (31, 'Volkswagen', 'uploads/K2jtYTiuStxSPAGjBN9K4P5DzNp0iO1j0AuE4q2S.jpeg', '2018-11-28 00:00:02', '2018-11-28 00:00:02'),
@@ -754,6 +753,55 @@ INSERT INTO `customers` (`id`, `user_id`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `flash_deals`
+--
+
+CREATE TABLE `flash_deals` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `start_date` int(20) DEFAULT NULL,
+  `end_date` int(20) DEFAULT NULL,
+  `status` int(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `flash_deals`
+--
+
+INSERT INTO `flash_deals` (`id`, `title`, `start_date`, `end_date`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Flash Deal 1', 1543363200, 1543968000, 0, '2018-11-29 05:02:29', '2018-11-29 05:02:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `flash_deal_products`
+--
+
+CREATE TABLE `flash_deal_products` (
+  `id` int(11) NOT NULL,
+  `flash_deal_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `flash_deal_products`
+--
+
+INSERT INTO `flash_deal_products` (`id`, `flash_deal_id`, `product_id`, `created_at`, `updated_at`) VALUES
+(3, 1, 7, '2018-11-29 05:18:14', '2018-11-29 05:18:14'),
+(4, 1, 15, '2018-11-29 05:18:14', '2018-11-29 05:18:14'),
+(5, 1, 18, '2018-11-29 05:18:14', '2018-11-29 05:18:14'),
+(6, 1, 19, '2018-11-29 05:18:14', '2018-11-29 05:18:14'),
+(7, 1, 20, '2018-11-29 05:18:14', '2018-11-29 05:18:14'),
+(8, 1, 21, '2018-11-29 05:18:14', '2018-11-29 05:18:14');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -1272,6 +1320,18 @@ ALTER TABLE `customers`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `flash_deals`
+--
+ALTER TABLE `flash_deals`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `flash_deal_products`
+--
+ALTER TABLE `flash_deal_products`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -1416,6 +1476,18 @@ ALTER TABLE `currencies`
 --
 ALTER TABLE `customers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `flash_deals`
+--
+ALTER TABLE `flash_deals`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `flash_deal_products`
+--
+ALTER TABLE `flash_deal_products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `migrations`

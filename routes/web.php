@@ -132,4 +132,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 
     Route::resource('staffs','StaffController');
     Route::get('/staffs/destroy/{id}', 'StaffController@destroy')->name('staffs.destroy');
+
+	Route::resource('flash_deals','FlashDealController');
+    Route::get('/flash_deals/destroy/{id}', 'FalshDealController@destroy')->name('flash_deals.destroy');
 });

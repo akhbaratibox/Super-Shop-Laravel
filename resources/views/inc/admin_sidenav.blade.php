@@ -121,7 +121,14 @@
                         </li>
 
                         <li>
-                            <a class="nav-link" href="sa">
+                            <a class="nav-link" href="{{ route('flash_deals.index') }}">
+                                <i class="fa fa-bolt"></i>
+                                <span class="menu-title">{{__('web.flash_deal')}}</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="nav-link" href="#">
                                 <i class="fa fa-money"></i>
                                 <span class="menu-title">{{__('web.sales')}}</span>
                             </a>

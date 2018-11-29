@@ -109,6 +109,9 @@
     <!--Bootstrap Wizard [ OPTIONAL ]-->
     <script src="{{ asset('plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
 
+    <!--Bootstrap Datepicker [ OPTIONAL ]-->
+    <script src="{{ asset('plugins/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+
     <!--Form Component [ SAMPLE ]-->
     <script src="{{asset('js/demo/form-wizard.js')}}"></script>
 

@@ -126,35 +126,42 @@
                     </div>
                 </div>
 
-                <div class="col-lg-2">
-                    <div class="flash-deal-box bg-white h-100">
-                        <div class="title text-center p-2 gry-bg">
-                            <h3 class="heading-6 mb-0">
-                                Flash Deal
-                                <span class="badge badge-danger">Hot</span>
-                            </h3>
-                            <div class="countdown countdown--style-1 countdown--style-1-v1" data-countdown-date="07/10/2019" data-countdown-label="show"></div>
-                        </div>
-                        <div class="flash-content c-scrollbar">
-                            @foreach (\App\Product::all() as $key => $product)
-                                <a href="{{ route('product', $product->slug) }}" class="d-block flash-deal-item">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col-7">
-                                            <img class="d-block w-100" src="{{ asset(json_decode($product->photos)[0]) }}" alt="">
-                                        </div>
-                                        <div class="col-5">
-                                            <div class="price">
-                                                <span class="d-block">{{ home_discounted_base_price($product->id) }}</span>
-                                                <del class="d-block">{{ home_base_price($product->id) }}</del>
+                @php
+                    $flash_deal = \App\FlashDeal::first();
+                @endphp
+                @if(strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date)
+                    <div class="col-lg-2">
+                        <div class="flash-deal-box bg-white h-100">
+                            <div class="title text-center p-2 gry-bg">
+                                <h3 class="heading-6 mb-0">
+                                    Flash Deal
+                                    <span class="badge badge-danger">Hot</span>
+                                </h3>
+                                <div class="countdown countdown--style-1 countdown--style-1-v1" data-countdown-date="{{ date('m/d/Y', $flash_deal->end_date) }}" data-countdown-label="show"></div>
+                            </div>
+                            <div class="flash-content c-scrollbar">
+                                @foreach ($flash_deal->flash_deal_products as $key => $flash_deal_product)
+                                    @php
+                                        $product = \App\Product::find($flash_deal_product->product_id);
+                                    @endphp
+                                    <a href="{{ route('product', $product->slug) }}" class="d-block flash-deal-item">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-7">
+                                                <img class="d-block w-100" src="{{ asset(json_decode($product->photos)[0]) }}" alt="">
+                                            </div>
+                                            <div class="col-5">
+                                                <div class="price">
+                                                    <span class="d-block">{{ home_discounted_base_price($product->id) }}</span>
+                                                    <del class="d-block">{{ home_base_price($product->id) }}</del>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-                            @endforeach
+                                    </a>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
-                </div>
-
+                @endif
 
             </div>
         </div>
@@ -184,42 +191,49 @@
         </div>
     </section>
 
+    @php
+        $flash_deal = \App\FlashDeal::first();
+    @endphp
+    @if(strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date)
+        <section class="slice gry-bg">
+            <div class="container">
+                <div class="section-title section-title--style-1">
+                    <h3 class="section-title-inner heading-4 strong-700 text-capitalize">
+                        <span class="mr-4">Flash Deal</span>
+                        <small class="countdown countdown-sm d-inline-block" data-countdown-date="{{ date('m/d/Y', $flash_deal->end_date) }}" data-countdown-label="hide"></small>
+                    </h3>
+                </div>
+                <div class="caorusel-box">
+                    <div class="slick-carousel" data-slick-items="5" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="2" data-slick-xs-items="1">
+                        @foreach ($flash_deal->flash_deal_products as $key => $flash_deal_product)
+                            @php
+                                $product = \App\Product::find($flash_deal_product->product_id);
+                            @endphp
+                            <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                                <div class="card-body p-0">
 
-    <section class="slice gry-bg">
-        <div class="container">
-            <div class="section-title section-title--style-1">
-                <h3 class="section-title-inner heading-4 strong-700 text-capitalize">
-                    <span class="mr-4">Flash Deal</span>
-                    <small class="countdown countdown-sm d-inline-block" data-countdown-date="10/30/2019" data-countdown-label="hide"></small>
-                </h3>
-            </div>
-            <div class="caorusel-box">
-                <div class="slick-carousel" data-slick-items="5" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="2" data-slick-xs-items="1">
-                    @foreach (\App\Product::all() as $key => $product)
-                        <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
-                            <div class="card-body p-0">
-
-                                <div class="card-image">
-                                    <a href="{{ route('product', $product->slug) }}" class="d-block" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');">
-                                    </a>
-                                </div>
-
-                                <div class="p-3">
-                                    <div class="price-box">
-                                        <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
-                                        <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                                    <div class="card-image">
+                                        <a href="{{ route('product', $product->slug) }}" class="d-block" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');">
+                                        </a>
                                     </div>
-                                    <h2 class="product-title p-0 mt-2">
-                                        <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
-                                    </h2>
+
+                                    <div class="p-3">
+                                        <div class="price-box">
+                                            <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
+                                            <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                                        </div>
+                                        <h2 class="product-title p-0 mt-2">
+                                            <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
+                                        </h2>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <section class="bg-white py-5">
         <div class="container">

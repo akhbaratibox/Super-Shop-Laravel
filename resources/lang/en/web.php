@@ -38,6 +38,7 @@ return [
     'frontend_settings' => 'Frontend Settings',
     'home_slider' => 'Home Slider',
     'activation' => 'Activation',
+    'flash_deal' => 'Flash Deal',
 
     //Admin Top Nav Strings
     'profile' => 'Profile',
@@ -131,5 +132,9 @@ return [
     'todays_deal' => "Today's Deal",
     'published' => 'Published',
     'featured' => 'Featured',
-    'slider_information' => 'Slider Information'
+    'slider_information' => 'Slider Information',
+    'flash_deal_information' => 'Flash Deal Information',
+    'title' => 'Title',
+    'start_date' => 'Start Date',
+    'end_date' => 'End Date'
 ];

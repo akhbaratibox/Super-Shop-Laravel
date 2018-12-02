@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Paypal;
 use Redirect;
+use App\Order;
 
 class PaypalController extends Controller
 {
@@ -70,6 +71,13 @@ class PaypalController extends Controller
     	$paymentExecution = PayPal::PaymentExecution();
     	$paymentExecution->setPayerId($payer_id);
     	$executePayment = $payment->execute($paymentExecution, $this->_apiContext);
+
+        $order = Order::findOrFail($request->session()->get('order_id'));
+        $order->payment_status = 'paid';
+        $order->payment_details = $payment;
+        $order->save();
+
+        $request->session()->put('cart', collect([]));
 
         flash("Payment completed")->success();
     	return redirect()->route('home');

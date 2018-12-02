@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Category;
 use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\OrderController;
 
 class CheckoutController extends Controller
 {
@@ -18,6 +19,9 @@ class CheckoutController extends Controller
     public function checkout(Request $request)
     {
         if($request->payment_option == 'paypal'){
+            $orderController = new OrderController;
+            $orderController->store($request);
+
             $paypal = new PaypalController;
             return $paypal->getCheckout();
         }
@@ -31,6 +35,16 @@ class CheckoutController extends Controller
 
     public function get_payment_info(Request $request)
     {
+        $data['name'] = $request->name;
+        $data['address'] = $request->address;
+        $data['country'] = $request->country;
+        $data['city'] = $request->city;
+        $data['postal_code'] = $request->postal_code;
+        $data['phone'] = $request->phone;
+        $data['checkout_type'] = $request->checkout_type;
+
+        $shipping_info = $data;
+        $request->session()->put('shipping_info', $shipping_info);
         return view('frontend.partials.payment_select');
     }
 }

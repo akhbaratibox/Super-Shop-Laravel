@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Order;
+use App\OrderDetail;
+use Auth;
+use Session;
 
 class OrderController extends Controller
 {
@@ -34,7 +38,44 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = new Order;
+        if(Auth::check()){
+            $order->user_id = Auth::user()->id;
+        }
+        else{
+            $order->guest_id = str_random(11);
+        }
+
+        $order->shipping_address = json_encode($request->session()->get('shipping_info'));
+        $order->payment_type = $request->payment_option;
+        if($order->save()){
+            $total = 0;
+            foreach (Session::get('cart') as $key => $cartItem){
+                $product = \App\Product::find($cartItem['id']);
+                $total = $total + $cartItem['price']*$cartItem['quantity'];
+                $product_variation = null;
+                if(isset($cartItem['color'])){
+                    $product_variation .= \App\Color::where('code', $cartItem['color'])->first()->name;
+                }
+                foreach (json_decode($product->choice_options) as $choice){
+                    $str = $choice->name; // example $str =  choice_0
+                    $product_variation .= '-'.str_replace(' ', '', $cartItem[$str]);
+                }
+
+                $order_detail = new OrderDetail;
+                $order_detail->order_id  =$order->id;
+                $order_detail->product_id = $product->id;
+                $order_detail->variation = $product_variation;
+                $order_detail->price = $cartItem['price'];
+                $order_detail->quantity = $cartItem['quantity'];
+                $order_detail->save();
+            }
+
+            $order->grand_total = $total;
+            $order->save();
+
+            $request->session()->put('order_id', $order->id);
+        }
     }
 
     /**

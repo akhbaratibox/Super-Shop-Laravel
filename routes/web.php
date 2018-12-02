@@ -55,6 +55,9 @@ Route::post('/compare/addToCompare', 'CompareController@addToCompare')->name('co
 
 Route::resource('subscribers','SubscriberController');
 
+Route::resource('orders','OrderController');
+Route::get('/orders/destroy/{id}', 'OrderController@destroy')->name('orders.destroy');
+
 Route::group(['middleware' => ['user']], function(){
 	Route::resource('wishlists','WishlistController');
 	Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');

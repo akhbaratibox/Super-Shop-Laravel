@@ -50,11 +50,25 @@ class CartController extends Controller
         $price = json_decode($product->variations)->$str->price;
 
         //discount calculation
-        if($product->discount_type == 'percent'){
-            $price -= ($price*$product->discount)/100;
-        }
-        elseif($product->discount_type == 'amount'){
-            $price -= $product->discount;
+        $flash_deal = \App\FlashDeal::where('status', 1)->first();
+        if ($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date) {
+            $flash_deal_product = \App\FlashDealProduct::where('flash_deal_id', $flash_deal->id)->where('product_id', $product->id)->first();
+            if($flash_deal_product != null){
+                if($flash_deal_product->discount_type == 'percent'){
+                    $price -= ($price*$flash_deal_product->discount)/100;
+                }
+                elseif($flash_deal_product->discount_type == 'amount'){
+                    $price -= $flash_deal_product->discount;
+                }
+            }
+            else{
+                if($product->discount_type == 'percent'){
+                    $price -= ($price*$product->discount)/100;
+                }
+                elseif($product->discount_type == 'amount'){
+                    $price -= $product->discount;
+                }
+            }
         }
 
         $data['quantity'] = $request['quantity'];

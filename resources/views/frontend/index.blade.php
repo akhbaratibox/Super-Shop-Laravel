@@ -152,7 +152,7 @@
                                             <div class="col-5">
                                                 <div class="price">
                                                     <span class="d-block">{{ home_discounted_base_price($product->id) }}</span>
-                                                    @if($product->discount > 0)
+                                                    @if(home_base_price($product->id) != home_discounted_base_price($product->id))
                                                         <del class="d-block">{{ home_base_price($product->id) }}</del>
                                                     @endif
                                                 </div>
@@ -221,7 +221,7 @@
 
                                     <div class="p-3">
                                         <div class="price-box">
-                                            @if($product->discount > 0)
+                                            @if(home_base_price($product->id) != home_discounted_base_price($product->id))
                                                 <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
                                             @endif
                                             <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
@@ -281,7 +281,7 @@
                                         </h2>
                                         <div class="clearfix">
                                             <div class="price-box float-left">
-                                                @if($product->discount > 0)
+                                                @if(home_base_price($product->id) != home_discounted_base_price($product->id))
                                                     <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
                                                 @endif
                                                 <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>

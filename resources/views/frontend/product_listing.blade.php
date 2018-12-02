@@ -243,7 +243,7 @@
                                                     <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
                                                 </h2>
                                                 <div class="price-box">
-                                                    @if($product->discount > 0)
+                                                    @if(home_base_price($product->id) != home_discounted_base_price($product->id))
                                                         <span class="old-product-price strong-300">{{ home_base_price($product->id) }}</span>
                                                     @endif
                                                     <span class="product-price strong-300"><strong>{{ home_discounted_base_price($product->id) }}</strong></span>

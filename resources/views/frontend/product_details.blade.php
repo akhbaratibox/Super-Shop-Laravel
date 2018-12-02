@@ -82,7 +82,7 @@
                                 </div>
                             </div>
 
-                            @if($product->discount > 0)
+                            @if(home_price($product->id) != home_discounted_price($product->id))
 
                                 <div class="row no-gutters mt-4">
                                     <div class="col-2">
@@ -119,7 +119,7 @@
                                     <div class="col-10">
                                         <div class="product-price">
                                             <strong>
-                                                {{ home_price($product->id) }}
+                                                {{ home_discounted_price($product->id) }}
                                             </strong>
                                             <span class="piece">/{{ $product->unit }}</span>
                                         </div>

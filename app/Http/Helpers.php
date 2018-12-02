@@ -134,13 +134,29 @@ if (! function_exists('home_discounted_price')) {
             }
         }
 
-        if($product->discount_type == 'percent'){
-            $lowest_price -= ($lowest_price*$product->discount)/100;
-            $highest_price -= ($highest_price*$product->discount)/100;
-        }
-        elseif($product->discount_type == 'amount'){
-            $lowest_price -= $product->discount;
-            $highest_price -= $product->discount;
+        $flash_deal = \App\FlashDeal::where('status', 1)->first();
+        if ($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date) {
+            $flash_deal_product = \App\FlashDealProduct::where('flash_deal_id', $flash_deal->id)->where('product_id', $id)->first();
+            if($flash_deal_product != null){
+                if($flash_deal_product->discount_type == 'percent'){
+                    $lowest_price -= ($lowest_price*$flash_deal_product->discount)/100;
+                    $highest_price -= ($highest_price*$flash_deal_product->discount)/100;
+                }
+                elseif($flash_deal_product->discount_type == 'amount'){
+                    $lowest_price -= $flash_deal_product->discount;
+                    $highest_price -= $flash_deal_product->discount;
+                }
+            }
+            else{
+                if($product->discount_type == 'percent'){
+                    $lowest_price -= ($lowest_price*$product->discount)/100;
+                    $highest_price -= ($highest_price*$product->discount)/100;
+                }
+                elseif($product->discount_type == 'amount'){
+                    $lowest_price -= $product->discount;
+                    $highest_price -= $product->discount;
+                }
+            }
         }
 
         $lowest_price = convert_price($lowest_price);
@@ -190,11 +206,25 @@ if (! function_exists('home_discounted_base_price')) {
         $product = Product::findOrFail($id);
         $price = $product->unit_price;
 
-        if($product->discount_type == 'percent'){
-            $price -= ($price*$product->discount)/100;
-        }
-        elseif($product->discount_type == 'amount'){
-            $price -= $product->discount;
+        $flash_deal = \App\FlashDeal::where('status', 1)->first();
+        if ($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date) {
+            $flash_deal_product = \App\FlashDealProduct::where('flash_deal_id', $flash_deal->id)->where('product_id', $id)->first();
+            if($flash_deal_product != null){
+                if($flash_deal_product->discount_type == 'percent'){
+                    $price -= ($price*$flash_deal_product->discount)/100;
+                }
+                elseif($flash_deal_product->discount_type == 'amount'){
+                    $price -= $flash_deal_product->discount;
+                }
+            }
+            else{
+                if($product->discount_type == 'percent'){
+                    $price -= ($price*$product->discount)/100;
+                }
+                elseif($product->discount_type == 'amount'){
+                    $price -= $product->discount;
+                }
+            }
         }
 
         $price = convert_price($price);

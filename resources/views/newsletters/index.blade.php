@@ -25,8 +25,10 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="name">{{__('web.emails')}} ({{__('web.subscribers')}})</label>
                     <div class="col-sm-10">
-                        <select class="form-control demo-select2-multiple-selects" name="subscriber_emails[]" multiple disabled>
-                            
+                        <select class="form-control demo-select2-multiple-selects" name="subscriber_emails[]" multiple>
+                            @foreach($subscribers as $subscriber)
+                                <option value="{{$subscriber->email}}">{{$subscriber->email}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

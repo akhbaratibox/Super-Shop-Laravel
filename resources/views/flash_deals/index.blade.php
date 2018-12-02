@@ -21,7 +21,9 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>{{__('web.name')}}</th>
+                    <th>{{__('web.title')}}</th>
+                    <th>{{ __('web.start_date') }}</th>
+                    <th>{{ __('web.end_date') }}</th>
                     <th>{{ __('web.status') }}</th>
                     <th width="10%">{{__('web.options')}}</th>
                 </tr>
@@ -31,6 +33,8 @@
                     <tr>
                         <td>{{$key+1}}</td>
                         <td>{{$flash_deal->title}}</td>
+                        <td>{{ date('d-m-Y', $flash_deal->start_date) }}</td>
+                        <td>{{ date('d-m-Y', $flash_deal->end_date) }}</td>
                         <td><label class="switch">
                             <input onchange="update_flash_deal_status(this)" value="{{ $flash_deal->id }}" type="checkbox" <?php if($flash_deal->status == 1) echo "checked";?> >
                             <span class="slider round"></span></label></td>

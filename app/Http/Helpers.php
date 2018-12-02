@@ -48,17 +48,33 @@ if (! function_exists('combinations')) {
 if (! function_exists('single_price')) {
     function single_price($price)
     {
-        $business_settings = BusinessSetting::where('type', 'home_default_currency')->first();
-        if($business_settings!=null){
-            $currency = Currency::find($business_settings->value);
-            $price = floatval($price) * floatval($currency->exchange_rate);
-        }
+        $price = convert_price($price);
+
         if(BusinessSetting::where('type', 'symbol_format')->first()->value == 1){
             return currency_symbol().$price;
         }
         else{
             return $price.currency_symbol();
         }
+    }
+}
+
+//converts currency
+if (! function_exists('convert_price')) {
+    function convert_price($price)
+    {
+        $business_settings = BusinessSetting::where('type', 'system_default_currency')->first();
+        if($business_settings!=null){
+            $currency = Currency::find($business_settings->value);
+            $price = floatval($price) / floatval($currency->exchange_rate);
+        }
+        $business_settings = BusinessSetting::where('type', 'home_default_currency')->first();
+        if($business_settings!=null){
+            $currency = Currency::find($business_settings->value);
+            $price = floatval($price) * floatval($currency->exchange_rate);
+        }
+
+        return $price;
     }
 }
 
@@ -79,12 +95,9 @@ if (! function_exists('home_price')) {
             }
         }
 
-        $business_settings = BusinessSetting::where('type', 'home_default_currency')->first();
-        if($business_settings!=null){
-            $currency = Currency::find($business_settings->value);
-            $lowest_price = floatval($lowest_price) * floatval($currency->exchange_rate);
-            $highest_price = floatval($highest_price) * floatval($currency->exchange_rate);
-        }
+        $lowest_price = convert_price($lowest_price);
+        $highest_price = convert_price($highest_price);
+
         if($lowest_price == $highest_price){
             if(BusinessSetting::where('type', 'symbol_format')->first()->value == 1){
                 return currency_symbol().$lowest_price;
@@ -130,12 +143,9 @@ if (! function_exists('home_discounted_price')) {
             $highest_price -= $product->discount;
         }
 
-        $business_settings = BusinessSetting::where('type', 'home_default_currency')->first();
-        if($business_settings!=null){
-            $currency = Currency::find($business_settings->value);
-            $lowest_price = floatval($lowest_price) * floatval($currency->exchange_rate);
-            $highest_price = floatval($highest_price) * floatval($currency->exchange_rate);
-        }
+        $lowest_price = convert_price($lowest_price);
+        $highest_price = convert_price($highest_price);
+
         if($lowest_price == $highest_price){
             if(BusinessSetting::where('type', 'symbol_format')->first()->value == 1){
                 return currency_symbol().$lowest_price;
@@ -155,6 +165,24 @@ if (! function_exists('home_discounted_price')) {
     }
 }
 
+//Shows Base Price
+if (! function_exists('home_base_price')) {
+    function home_base_price($id)
+    {
+        $product = Product::findOrFail($id);
+        $price = $product->unit_price;
+
+        $price = convert_price($price);
+
+        if(BusinessSetting::where('type', 'symbol_format')->first()->value == 1){
+            return currency_symbol().$price;
+        }
+        else{
+            return $price.currency_symbol();
+        }
+    }
+}
+
 //Shows Base Price with discount
 if (! function_exists('home_discounted_base_price')) {
     function home_discounted_base_price($id)
@@ -169,50 +197,14 @@ if (! function_exists('home_discounted_base_price')) {
             $price -= $product->discount;
         }
 
-        $business_settings = BusinessSetting::where('type', 'home_default_currency')->first();
-        if($business_settings!=null){
-            $currency = Currency::find($business_settings->value);
-            $price = floatval($price) * floatval($currency->exchange_rate);
-        }
+        $price = convert_price($price);
+
         if(BusinessSetting::where('type', 'symbol_format')->first()->value == 1){
             return currency_symbol().$price;
         }
         else{
             return $price.currency_symbol();
         }
-    }
-}
-
-//Shows Base Price
-if (! function_exists('home_base_price')) {
-    function home_base_price($id)
-    {
-        $product = Product::findOrFail($id);
-        $price = $product->unit_price;
-
-        $business_settings = BusinessSetting::where('type', 'home_default_currency')->first();
-        if($business_settings!=null){
-            $currency = Currency::find($business_settings->value);
-            $price = floatval($price) * floatval($currency->exchange_rate);
-        }
-        if(BusinessSetting::where('type', 'symbol_format')->first()->value == 1){
-            return currency_symbol().$price;
-        }
-        else{
-            return $price.currency_symbol();
-        }
-    }
-}
-
-if (! function_exists('system_price')) {
-    function system_price(String $price)
-    {
-        $business_settings = BusinessSetting::where('type', 'system_default_currency')->first();
-        if($business_settings!=null){
-            $currency = Currency::find($business_settings->value);
-            $price = floatval($price) * floatval($currency->exchange_rate);
-        }
-        return $price;
     }
 }
 

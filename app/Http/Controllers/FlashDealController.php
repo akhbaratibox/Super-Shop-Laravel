@@ -122,4 +122,19 @@ class FlashDealController extends Controller
     {
         //
     }
+
+    public function update_status(Request $request)
+    {
+        foreach (FlashDeal::all() as $key => $flash_deal) {
+            $flash_deal->status = 0;
+            $flash_deal->save();
+        }
+        $flash_deal = FlashDeal::findOrFail($request->id);
+        $flash_deal->status = $request->status;
+        if($flash_deal->save()){
+            flash('Flash deal ststua updated successfully')->success();
+            return 1;
+        }
+        return 0;
+    }
 }

@@ -124,7 +124,9 @@ class SubSubCategoryController extends Controller
     {
         $subsubcategory = SubSubCategory::findOrFail($id);
         if(SubSubCategory::destroy($id)){
-            unlink($subsubcategory->banner);
+            if($subsubcategory->banner != null){
+                unlink($subsubcategory->banner);
+            }
             flash('SubSubCategory has been deleted successfully')->success();
             return redirect()->route('subsubcategories.index');
         }

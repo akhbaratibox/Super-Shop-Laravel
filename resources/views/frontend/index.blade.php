@@ -127,7 +127,7 @@
                 </div>
 
                 @php
-                    $flash_deal = \App\FlashDeal::first();
+                    $flash_deal = \App\FlashDeal::where('status', 1)->first();
                 @endphp
                 @if(strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date)
                     <div class="col-lg-2">
@@ -152,7 +152,9 @@
                                             <div class="col-5">
                                                 <div class="price">
                                                     <span class="d-block">{{ home_discounted_base_price($product->id) }}</span>
-                                                    <del class="d-block">{{ home_base_price($product->id) }}</del>
+                                                    @if($product->discount > 0)
+                                                        <del class="d-block">{{ home_base_price($product->id) }}</del>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -192,7 +194,7 @@
     </section>
 
     @php
-        $flash_deal = \App\FlashDeal::first();
+        $flash_deal = \App\FlashDeal::where('status', 1)->first();
     @endphp
     @if(strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date)
         <section class="slice gry-bg">
@@ -219,7 +221,9 @@
 
                                     <div class="p-3">
                                         <div class="price-box">
-                                            <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
+                                            @if($product->discount > 0)
+                                                <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
+                                            @endif
                                             <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
                                         </div>
                                         <h2 class="product-title p-0 mt-2">
@@ -277,7 +281,9 @@
                                         </h2>
                                         <div class="clearfix">
                                             <div class="price-box float-left">
-                                                <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
+                                                @if($product->discount > 0)
+                                                    <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
+                                                @endif
                                                 <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
                                             </div>
                                             <div class="float-right">

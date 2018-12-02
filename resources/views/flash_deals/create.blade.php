@@ -63,3 +63,13 @@
 </div>
 
 @endsection
+
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#products').on('change', function(){
+                alert($('#products').val());
+            });
+        });
+    </script>
+@endsection

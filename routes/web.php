@@ -134,5 +134,6 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
     Route::get('/staffs/destroy/{id}', 'StaffController@destroy')->name('staffs.destroy');
 
 	Route::resource('flash_deals','FlashDealController');
-    Route::get('/flash_deals/destroy/{id}', 'FalshDealController@destroy')->name('flash_deals.destroy');
+    Route::get('/flash_deals/destroy/{id}', 'FlashDealController@destroy')->name('flash_deals.destroy');
+	Route::post('/flash_deals/update_status', 'FlashDealController@update_status')->name('flash_deals.update_status');
 });

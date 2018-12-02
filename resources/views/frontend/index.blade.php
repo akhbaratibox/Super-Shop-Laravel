@@ -129,7 +129,7 @@
                 @php
                     $flash_deal = \App\FlashDeal::where('status', 1)->first();
                 @endphp
-                @if(strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date)
+                @if($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date)
                     <div class="col-lg-2">
                         <div class="flash-deal-box bg-white h-100">
                             <div class="title text-center p-2 gry-bg">
@@ -196,7 +196,7 @@
     @php
         $flash_deal = \App\FlashDeal::where('status', 1)->first();
     @endphp
-    @if(strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date)
+    @if($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date)
         <section class="slice gry-bg">
             <div class="container">
                 <div class="section-title section-title--style-1">

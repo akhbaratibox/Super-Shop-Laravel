@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label class="col-sm-3 control-label" for="products">{{__('web.products')}}</label>
                     <div class="col-sm-9">
                         <select name="products[]" id="products" class="form-control demo-select2" multiple required data-placeholder="Choose Products">
@@ -50,6 +50,10 @@
                             @endforeach
                         </select>
                     </div>
+                </div>
+                <br>
+                <div class="form-group" id="discount_table">
+
                 </div>
             </div>
             <div class="panel-footer text-right">
@@ -68,7 +72,16 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $('#products').on('change', function(){
-                alert($('#products').val());
+                var product_ids = $('#products').val();
+                if(product_ids.length > 0){
+                    $.post('{{ route('flash_deals.product_discount') }}', {_token:'{{ csrf_token() }}', product_ids:product_ids}, function(data){
+                        $('#discount_table').html(data);
+                        $('.demo-select2').select2();
+                    });
+                }
+                else{
+                    $('#discount_table').html(null);
+                }
             });
         });
     </script>

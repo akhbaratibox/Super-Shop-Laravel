@@ -46,6 +46,8 @@ class FlashDealController extends Controller
                 $flash_deal_product = new FlashDealProduct;
                 $flash_deal_product->flash_deal_id = $flash_deal->id;
                 $flash_deal_product->product_id = $product;
+                $flash_deal_product->discount = $request['discount_'.$product];
+                $flash_deal_product->discount_type = $request['discount_type_'.$product];
                 $flash_deal_product->save();
             }
             flash('Flash Deal has been inserted successfully')->success();
@@ -101,6 +103,8 @@ class FlashDealController extends Controller
                 $flash_deal_product = new FlashDealProduct;
                 $flash_deal_product->flash_deal_id = $flash_deal->id;
                 $flash_deal_product->product_id = $product;
+                $flash_deal_product->discount = $request['discount_'.$product];
+                $flash_deal_product->discount_type = $request['discount_type_'.$product];
                 $flash_deal_product->save();
             }
             flash('Flash Deal has been updated successfully')->success();
@@ -136,5 +140,16 @@ class FlashDealController extends Controller
             return 1;
         }
         return 0;
+    }
+
+    public function product_discount(Request $request){
+        $product_ids = $request->product_ids;
+        return view('partials.flash_deal_discount', compact('product_ids'));
+    }
+
+    public function product_discount_edit(Request $request){
+        $product_ids = $request->product_ids;
+        $flash_deal_id = $request->flash_deal_id;
+        return view('partials.flash_deal_discount_edit', compact('product_ids', 'flash_deal_id'));
     }
 }

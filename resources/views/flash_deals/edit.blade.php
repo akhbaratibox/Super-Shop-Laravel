@@ -47,10 +47,17 @@
                     <div class="col-sm-9">
                         <select name="products[]" id="products" class="form-control demo-select2" multiple required data-placeholder="Choose Products">
                             @foreach(\App\Product::all() as $product)
-                                <option value="{{$product->id}}">{{$product->name}}</option>
+                                @php
+                                    $flash_deal_product = \App\FlashDealProduct::where('flash_deal_id', $flash_deal->id)->where('product_id', $product->id)->first();
+                                @endphp
+                                <option value="{{$product->id}}" <?php if($flash_deal_product != null) echo "selected";?> >{{$product->name}}</option>
                             @endforeach
                         </select>
                     </div>
+                </div>
+                <br>
+                <div class="form-group" id="discount_table">
+
                 </div>
             </div>
             <div class="panel-footer text-right">
@@ -63,4 +70,30 @@
     </div>
 </div>
 
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            get_flash_deal_discount();
+
+            $('#products').on('change', function(){
+                get_flash_deal_discount();
+            });
+
+            function get_flash_deal_discount(){
+                var product_ids = $('#products').val();
+                if(product_ids.length > 0){
+                    $.post('{{ route('flash_deals.product_discount_edit') }}', {_token:'{{ csrf_token() }}', product_ids:product_ids, flash_deal_id:{{ $flash_deal->id }}}, function(data){
+                        $('#discount_table').html(data);
+                        $('.demo-select2').select2();
+                    });
+                }
+                else{
+                    $('#discount_table').html(null);
+                }
+            }
+        });
+    </script>
 @endsection

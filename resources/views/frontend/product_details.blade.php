@@ -63,12 +63,21 @@
                                 </div>
                                 <div class="col-6 text-right">
                                     <ul class="inline-links inline-links--style-1">
-                                        {{-- <li class="">
-                							<span class="badge badge-md badge-pill bg-blue">SKU: #548970</span>
-                                        </li> --}}
-                                        <li>
-                                            <span class="badge badge-md badge-pill bg-green">In stock</span>
-                                        </li>
+                                        @php
+                                            $qty = 0;
+                                            foreach (json_decode($product->variations) as $key => $variation) {
+                                                $qty += $variation->qty;
+                                            }
+                                        @endphp
+                                        @if ($qty > 0)
+                                            <li>
+                                                <span class="badge badge-md badge-pill bg-green">In stock</span>
+                                            </li>
+                                        @else
+                                            <li>
+                                                <span class="badge badge-md badge-pill bg-red">Out of stock</span>
+                                            </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
@@ -177,7 +186,7 @@
                                                 </button>
                                             </span>
                                         </div>
-                                        <div class="avialable-amount">(1298 pc available)</div>
+                                        <div class="avialable-amount">({{ $qty }} pc available)</div>
                                     </div>
                                 </div>
                             </div>

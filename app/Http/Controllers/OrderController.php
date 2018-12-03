@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
-use App\Productr;
+use App\Product;
 use App\Color;
 use App\OrderDetail;
 use Auth;
@@ -56,6 +56,9 @@ class OrderController extends Controller
 
         $order->shipping_address = json_encode($request->session()->get('shipping_info'));
         $order->payment_type = $request->payment_option;
+        $order->code = mt_rand(1000000, 9999999);
+        $order->date = strtotime(date('d-m-Y'));
+
         if($order->save()){
             $total = 0;
             foreach (Session::get('cart') as $key => $cartItem){
@@ -81,7 +84,6 @@ class OrderController extends Controller
             }
 
             $order->grand_total = $total;
-            $order->code = mt_rand(1000000, 9999999);
             $order->save();
 
             $request->session()->put('order_id', $order->id);

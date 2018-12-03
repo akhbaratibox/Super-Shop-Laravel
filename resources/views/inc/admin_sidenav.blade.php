@@ -120,10 +120,17 @@
                             </ul>
                         </li>
 
-                        <li>
+                        <li class="{{ areActiveRoutes(['flash_deals.index'])}}">
                             <a class="nav-link" href="{{ route('flash_deals.index') }}">
                                 <i class="fa fa-bolt"></i>
                                 <span class="menu-title">{{__('web.flash_deal')}}</span>
+                            </a>
+                        </li>
+
+                        <li class="{{ areActiveRoutes(['orders.index.admin'])}}">
+                            <a class="nav-link" href="{{ route('orders.index.admin') }}">
+                                <i class="fa fa-shopping-basket"></i>
+                                <span class="menu-title">{{__('web.orders')}}</span>
                             </a>
                         </li>
 

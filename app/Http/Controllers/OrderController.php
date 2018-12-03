@@ -13,19 +13,25 @@ use Session;
 class OrderController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource to seller.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        if(Auth::user()->user_type == 'admin'){
+        $orderDetails = OrderDetail::where('seller_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(9);
+        return view('frontend.seller.orders', compact('orderDetails'));
+    }
 
-        }
-        elseif(Auth::user()->user_type == 'seller'){
-            $orderDetails = OrderDetail::where('seller_id', Auth::user()->id)->paginate(9);
-            return view('frontend.seller.orders', compact('orderDetails'));
-        }
+    /**
+     * Display a listing of the resource to admin.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function admin_orders(Request $request)
+    {
+        $orderDetails = OrderDetail::where('seller_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        return view('orders.index', compact('orderDetails'));
     }
 
     /**

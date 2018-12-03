@@ -71,6 +71,9 @@ Route::group(['middleware' => ['user']], function(){
 
 	Route::resource('purchase_history','PurchaseHistoryController');
 	Route::get('/purchase_history/destroy/{id}', 'PurchaseHistoryController@destroy')->name('purchase_history.destroy');
+
+	Route::resource('orders','OrderController');
+	Route::get('/orders/destroy/{id}', 'OrderController@destroy')->name('orders.destroy');
 });
 
 Route::group(['prefix' =>'seller', 'middleware' => ['seller']], function(){
@@ -148,4 +151,6 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::post('/flash_deals/update_status', 'FlashDealController@update_status')->name('flash_deals.update_status');
 	Route::post('/flash_deals/product_discount', 'FlashDealController@product_discount')->name('flash_deals.product_discount');
 	Route::post('/flash_deals/product_discount_edit', 'FlashDealController@product_discount_edit')->name('flash_deals.product_discount_edit');
+
+	Route::get('/orders', 'OrderController@admin_orders')->name('orders.index.admin');
 });

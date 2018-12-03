@@ -39,6 +39,7 @@ return [
     'home_slider' => 'Home Slider',
     'activation' => 'Activation',
     'flash_deal' => 'Flash Deal',
+    'orders' => 'Orders',
 
     //Admin Top Nav Strings
     'profile' => 'Profile',

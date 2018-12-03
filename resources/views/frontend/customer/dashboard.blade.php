@@ -57,7 +57,14 @@
                                 <div class="dashboard-widget text-center yellow-widget mt-4">
                                     <a href="" class="d-block">
                                         <i class="fa fa-building"></i>
-                                        <span class="d-block title">0 Product</span>
+                                        @php
+                                            $orders = \App\Order::where('user_id', Auth::user()->id)->get();
+                                            $total = 0;
+                                            foreach ($orders as $key => $order) {
+                                                $total += count($order->orderDetails);
+                                            }
+                                        @endphp
+                                        <span class="d-block title">{{ $total }} Product(s)</span>
                                         <span class="d-block sub-title">you ordered</span>
                                     </a>
                                 </div>

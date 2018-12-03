@@ -44,7 +44,7 @@
                                 <div class="dashboard-widget text-center red-widget mt-4">
                                     <a href="" class="d-block">
                                         <i class="fa fa-cart-plus"></i>
-                                        <span class="d-block title heading-3 strong-400">130</span>
+                                        <span class="d-block title heading-3 strong-400">{{ count(\App\OrderDetail::where('seller_id', Auth::user()->id)->where('delivery_status', 'delivered')->get()) }}</span>
                                         <span class="d-block sub-title">Total sale</span>
                                     </a>
                                 </div>
@@ -53,7 +53,16 @@
                                 <div class="dashboard-widget text-center blue-widget mt-4">
                                     <a href="" class="d-block">
                                         <i class="fa fa-dollar"></i>
-                                        <span class="d-block title heading-3 strong-400">$1500</span>
+                                        @php
+                                            $orderDetails = \App\OrderDetail::where('seller_id', Auth::user()->id)->get();
+                                            $total = 0;
+                                            foreach ($orderDetails as $key => $orderDetail) {
+                                                if($orderDetail->order->payment_status == 'paid'){
+                                                    $total += $orderDetail->price;
+                                                }
+                                            }
+                                        @endphp
+                                        <span class="d-block title heading-3 strong-400">{{ single_price($total) }}</span>
                                         <span class="d-block sub-title">Total earnings</span>
                                     </a>
                                 </div>
@@ -62,7 +71,7 @@
                                 <div class="dashboard-widget text-center yellow-widget mt-4">
                                     <a href="" class="d-block">
                                         <i class="fa fa-check-square-o"></i>
-                                        <span class="d-block title heading-3 strong-400">$1200</span>
+                                        <span class="d-block title heading-3 strong-400">{{ count(\App\OrderDetail::where('seller_id', Auth::user()->id)->where('delivery_status', 'delivered')->get()) }}</span>
                                         <span class="d-block sub-title">Successful orders</span>
                                     </a>
                                 </div>
@@ -78,19 +87,19 @@
                                         <table class="table mb-0 table-bordered" style="font-size:14px;">
                                             <tr>
                                                 <td>Total orders:</td>
-                                                <td><strong class="heading-6">60</strong></td>
+                                                <td><strong class="heading-6">{{ count(\App\OrderDetail::where('seller_id', Auth::user()->id)->get()) }}</strong></td>
                                             </tr>
                                             <tr >
                                                 <td>Pending orders:</td>
-                                                <td><strong class="heading-6">60</strong></td>
+                                                <td><strong class="heading-6">{{ count(\App\OrderDetail::where('seller_id', Auth::user()->id)->where('delivery_status', 'pending')->get()) }}</strong></td>
                                             </tr>
                                             <tr >
                                                 <td>Cancelled orders:</td>
-                                                <td><strong class="heading-6">60</strong></td>
+                                                <td><strong class="heading-6">{{ count(\App\OrderDetail::where('seller_id', Auth::user()->id)->where('delivery_status', 'cancelled')->get()) }}</strong></td>
                                             </tr>
                                             <tr >
                                                 <td>Successful orders:</td>
-                                                <td><strong class="heading-6">60</strong></td>
+                                                <td><strong class="heading-6">{{ count(\App\OrderDetail::where('seller_id', Auth::user()->id)->where('delivery_status', 'delivered')->get()) }}</strong></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -133,7 +142,7 @@
                                 <div class="bg-white mt-4 p-4 text-center">
                                     <div class="heading-4 strong-700">Shop</div>
                                     <p>Manage & organize your shop</p>
-                                    <a href="" class="btn btn-styled btn-base-1 btn-outline btn-sm">Go to setting</a>
+                                    <a href="{{ route('shop.index') }}" class="btn btn-styled btn-base-1 btn-outline btn-sm">Go to setting</a>
                                 </div>
                                 <div class="bg-white mt-4 p-4 text-center">
                                     <div class="heading-4 strong-700">Payment</div>

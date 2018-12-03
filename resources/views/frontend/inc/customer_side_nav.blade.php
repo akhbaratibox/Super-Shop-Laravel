@@ -26,10 +26,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="ion-calendar"></i>
+                    <a href="{{ route('purchase_history.index') }}" class="{{ areActiveRoutesHome(['purchase_history.index'])}}">
+                        <i class="fa fa-cart-plus"></i>
                         <span class="category-name">
-                            Orders
+                            Purchase History
                         </span>
                     </a>
                 </li>

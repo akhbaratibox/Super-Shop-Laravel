@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use App\Productr;
+use App\Color;
 use App\OrderDetail;
 use Auth;
 use Session;
@@ -17,7 +19,13 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        if(Auth::user()->user_type == 'admin'){
+
+        }
+        elseif(Auth::user()->user_type == 'seller'){
+            $orderDetails = OrderDetail::where('seller_id', Auth::user()->id)->paginate(9);
+            return view('frontend.seller.orders', compact('orderDetails'));
+        }
     }
 
     /**
@@ -51,11 +59,11 @@ class OrderController extends Controller
         if($order->save()){
             $total = 0;
             foreach (Session::get('cart') as $key => $cartItem){
-                $product = \App\Product::find($cartItem['id']);
+                $product = Product::find($cartItem['id']);
                 $total = $total + $cartItem['price']*$cartItem['quantity'];
                 $product_variation = null;
                 if(isset($cartItem['color'])){
-                    $product_variation .= \App\Color::where('code', $cartItem['color'])->first()->name;
+                    $product_variation .= Color::where('code', $cartItem['color'])->first()->name;
                 }
                 foreach (json_decode($product->choice_options) as $choice){
                     $str = $choice->name; // example $str =  choice_0
@@ -64,6 +72,7 @@ class OrderController extends Controller
 
                 $order_detail = new OrderDetail;
                 $order_detail->order_id  =$order->id;
+                $order_detail->seller_id = $product->user_id;
                 $order_detail->product_id = $product->id;
                 $order_detail->variation = $product_variation;
                 $order_detail->price = $cartItem['price'];
@@ -72,6 +81,7 @@ class OrderController extends Controller
             }
 
             $order->grand_total = $total;
+            $order->code = mt_rand(1000000, 9999999);
             $order->save();
 
             $request->session()->put('order_id', $order->id);

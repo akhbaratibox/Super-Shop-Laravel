@@ -18,7 +18,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('purchase_history.index') }}" class="{{ areActiveRoutesHome(['purchase_history.index'])}}">
                         <i class="fa fa-cart-plus"></i>
                         <span class="category-name">
                             Purchase History
@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('seller.products') }}" class="{{ areActiveRoutesHome([])}}">
+                    <a href="{{ route('orders.index') }}" class="{{ areActiveRoutesHome(['orders.index'])}}">
                         <i class="fa fa-shopping-basket"></i>
                         <span class="category-name">
                             Orders

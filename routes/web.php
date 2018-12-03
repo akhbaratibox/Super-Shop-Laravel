@@ -64,6 +64,9 @@ Route::group(['middleware' => ['user']], function(){
 	Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 	Route::get('/profile', 'HomeController@profile')->name('profile');
 	Route::post('/update-profile', 'HomeController@update_profile')->name('profile.update');
+
+	Route::resource('purchase_history','PurchaseHistoryController');
+	Route::get('/purchase_history/destroy/{id}', 'PurchaseHistoryController@destroy')->name('purchase_history.destroy');
 });
 
 Route::group(['prefix' =>'seller', 'middleware' => ['seller']], function(){

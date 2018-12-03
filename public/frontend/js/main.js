@@ -91,6 +91,26 @@ $(function () {
     // }
 
 
+    /*
+        Smooth scroll functionality for anchor links (animates the scroll
+        rather than a sudden jump in the page)
+    */
+    $('.all-category-menu a').bind('click', function(e) {
+        e.preventDefault(); // prevent hard jump, the default behavior
+
+        var target = $(this).attr("href"); // Set the target as variable
+
+        $('html, body').stop().animate({
+                scrollTop: $(target).offset().top - 120
+        }, 600, function() {
+                // location.hash = target; //attach the hash (#jumptarget) to the pageurl
+        });
+
+        return false;
+    });
+    
+
+
 });
 // Bootstrap selected
 $('.sortSelect').each(function(index, element) {
@@ -122,3 +142,13 @@ $(document).ready(function() {
         }
     });
 });
+
+$(window).scroll(function() {
+    var scrollDistance = $(window).scrollTop();
+    $('.sub-category-menu').each(function(i) {
+            if ($(this).position().top <= scrollDistance) {
+                    $('.all-category-menu li.active').removeClass('active');
+                    $('.all-category-menu li').eq(i).addClass('active');
+            }
+    });
+}).scroll();

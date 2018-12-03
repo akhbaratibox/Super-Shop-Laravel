@@ -58,6 +58,10 @@ Route::resource('subscribers','SubscriberController');
 Route::resource('orders','OrderController');
 Route::get('/orders/destroy/{id}', 'OrderController@destroy')->name('orders.destroy');
 
+Route::get('/all-category', function(){
+	return view('frontend.all_category');
+});
+
 Route::group(['middleware' => ['user']], function(){
 	Route::resource('wishlists','WishlistController');
 	Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');

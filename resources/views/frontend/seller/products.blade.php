@@ -74,11 +74,11 @@
                                                 </td>
                                                 <td>
                                                     <div class="dropdown">
-                                                        <button class="btn btn-base-1 dropdown-toggle" type="button" id="dropdownMenuButton-{{ $key }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            Actions
+                                                        <button class="btn" type="button" id="dropdownMenuButton-{{ $key }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fa fa-ellipsis-v"></i>
                                                         </button>
 
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-{{ $key }}">
+                                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton-{{ $key }}">
                                                             <a href="{{route('seller.products.edit', $product->id)}}" class="dropdown-item">Edit</a>
         					                                <button onclick="confirm_modal('{{route('products.destroy', $product->id)}}')" class="dropdown-item">Delete</button>
                                                             <a href="{{route('products.duplicate', $product->id)}}" class="dropdown-item">Duplicate</a>

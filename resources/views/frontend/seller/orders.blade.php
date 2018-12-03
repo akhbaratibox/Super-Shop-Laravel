@@ -45,6 +45,7 @@
                                                 <th>Amount</th>
                                                 <th>Delivery Status</th>
                                                 <th>Payment Status</th>
+                                                <th>Options</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -81,6 +82,18 @@
                                                                 <i class="bg-red"></i> Unpaid
                                                             @endif
                                                         </span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="dropdown">
+                                                            <button class="btn" type="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="fa fa-ellipsis-v"></i>
+                                                            </button>
+
+                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="">
+                                                                <button onclick="" class="dropdown-item">Cancel Order</button>
+                                                                <a href="" class="dropdown-item">Order Details</a>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             @endforeach

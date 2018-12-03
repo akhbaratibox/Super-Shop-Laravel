@@ -47,6 +47,7 @@
                                                 <th>Amount</th>
                                                 <th>Delivery Status</th>
                                                 <th>Payment Status</th>
+                                                <th>Options</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -79,6 +80,18 @@
                                                             @endif
                                                         </span>
                                                     </td>
+                                                    <td>
+                                                        <div class="dropdown">
+                                                            <button class="btn" type="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <i class="fa fa-ellipsis-v"></i>
+                                                            </button>
+
+                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="">
+                                                                <button onclick="show_order_details()" class="dropdown-item">Order Details</button>
+                                                                <button onclick="" class="dropdown-item">Cancel Order</button>
+                                                            </div>
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -98,4 +111,38 @@
         </div>
     </section>
 
+    <div class="modal fade" id="order_details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
+            <div class="modal-content position-relative">
+                <div class="c-preloader">
+                    <i class="fa fa-spin fa-spinner"></i>
+                </div>
+                <button type="button" class="close absolute-close-btn" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div id="order-details-modal-body">
+                    <div class="modal-body p-4">
+                        <div class="row no-gutters cols-xs-space cols-sm-space cols-md-space">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection
+
+
+@section('script')
+    <script type="text/javascript">
+        function show_order_details()
+        {
+            if(!$('#modal-size').hasClass('modal-lg')){
+                $('#modal-size').addClass('modal-lg');
+            }
+            $('#order_details').modal();
+            $('.c-preloader').hide();
+        }
+    </script>
 @endsection

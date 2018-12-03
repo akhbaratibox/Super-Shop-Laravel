@@ -11,17 +11,9 @@
             <ul class="categories categories--style-3">
                 <li>
                     <a href="{{ route('dashboard') }}" class="{{ areActiveRoutesHome(['dashboard'])}}">
-                        <i class="ion-calendar"></i>
+                        <i class="fa fa-dashboard"></i>
                         <span class="category-name">
                             Dashboard
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="ion-gear-b"></i>
-                        <span class="category-name">
-                            Settings
                         </span>
                     </a>
                 </li>
@@ -35,7 +27,7 @@
                 </li>
                 <li>
                     <a href="{{ route('wishlists.index') }}" class="{{ areActiveRoutesHome(['wishlists.index'])}}">
-                        <i class="ion-heart"></i>
+                        <i class="fa fa-heart"></i>
                         <span class="category-name">
                             Wishlist
                         </span>
@@ -43,7 +35,7 @@
                 </li>
                 <li>
                     <a href="{{ route('profile') }}" class="{{ areActiveRoutesHome(['profile'])}}">
-                        <i class="ion-heart"></i>
+                        <i class="fa fa-user-circle-o"></i>
                         <span class="category-name">
                             Manage Profile
                         </span>

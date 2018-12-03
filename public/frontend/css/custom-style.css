@@ -1304,7 +1304,8 @@ section.home-banner-area {
     padding: 0.55rem 1.2rem!important;
     font-size: 13px!important;
     font-weight: 500 !important;
-    color: #777 !important
+    color: #777 !important;
+    border-left: 3px solid transparent;
 }
 
 .widget-profile-menu a i {
@@ -1315,6 +1316,8 @@ section.home-banner-area {
     height: 18px;
     text-align: center;
     line-height: 18px;
+    display: inline-block;
+    margin-right: 0.5rem !important;
 }
 
 .widget-profile-menu a.active {

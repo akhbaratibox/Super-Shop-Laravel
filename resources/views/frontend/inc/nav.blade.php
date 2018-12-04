@@ -98,6 +98,9 @@
                         <i class="ion-ios-search"></i>
                     </button>
                     <div class="typed-search-box">
+                        <div class="search-preloader">
+                            <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                        </div>
                         <div class="keyword">
                             <div class="title">Popular Suggestions</div>
                             <ul>
@@ -133,8 +136,54 @@
                                                         <span class="product-price strong-600">47218.5$</span>
                                                     </div>
                                                     <div class="stock-box float-right">
-                                                        <span class="in-stock">In stock</span>
-                                                        <!-- <span class="out-of-stock">Out of stock</span> -->
+                                                        <span class="badge badge-pill bg-green">In stock</span>
+                                                        <!-- <span class="badge badge badge-pill bg-red">Out of stock</span> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <div class="d-flex search-product align-items-center">
+                                            <div class="image" style="background-image:url('http://localhost/shop/public/uploads/jckV7yL9FWHi3kV33RdMNlfOcpibmwWMqNsQck0N.jpeg');">
+                                            </div>
+                                            <div class="w-100">
+                                                <div class="product-name">
+                                                    Apple iMac 4K Retina 21.5 Inch (2017) Quad Core Intel Core i5 (3.4-3.8GHz, 8GB 2400MHz DDR4 Onboard
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="price-box float-left">
+                                                        <del class="old-product-price strong-400">52465$</del>
+                                                        <span class="product-price strong-600">47218.5$</span>
+                                                    </div>
+                                                    <div class="stock-box float-right">
+                                                        <span class="badge badge-pill bg-green">In stock</span>
+                                                        <!-- <span class="badge badge badge-pill bg-red">Out of stock</span> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <div class="d-flex search-product align-items-center">
+                                            <div class="image" style="background-image:url('http://localhost/shop/public/uploads/jckV7yL9FWHi3kV33RdMNlfOcpibmwWMqNsQck0N.jpeg');">
+                                            </div>
+                                            <div class="w-100">
+                                                <div class="product-name">
+                                                    Apple iMac 4K Retina 21.5 Inch (2017) Quad Core Intel Core i5 (3.4-3.8GHz, 8GB 2400MHz DDR4 Onboard
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="price-box float-left">
+                                                        <del class="old-product-price strong-400">52465$</del>
+                                                        <span class="product-price strong-600">47218.5$</span>
+                                                    </div>
+                                                    <div class="stock-box float-right">
+                                                        <span class="badge badge-pill bg-green">In stock</span>
+                                                        <!-- <span class="badge badge badge-pill bg-red">Out of stock</span> -->
                                                     </div>
                                                 </div>
                                             </div>

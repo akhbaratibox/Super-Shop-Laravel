@@ -216,6 +216,10 @@ class HomeController extends Controller
         }
         $products = Product::where('name', 'like', '%'.$request->search.'%')->get()->take(3);
         $subsubcategories = SubSubCategory::where('name', 'like', '%'.$request->search.'%')->get()->take(3);
-        return view('frontend.partials.search_content', compact('products', 'subsubcategories', 'keywords'));
+
+        if(sizeof($keywords)>0 || sizeof($subsubcategories)>0 || sizeof($products)>0){
+            return view('frontend.partials.search_content', compact('products', 'subsubcategories', 'keywords'));
+        }
+        return '0';
     }
 }

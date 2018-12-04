@@ -170,8 +170,13 @@
             $('.typed-search-box').removeClass('d-none');
             $('.search-preloader').removeClass('d-none');
             $.post('{{ route('search.ajax') }}', { _token: '{{ @csrf_token() }}', search:search}, function(data){
-                $('#search-content').html(data);
-                $('.search-preloader').addClass('d-none');
+                if(data == '0'){
+                    $('.typed-search-box').addClass('d-none');
+                }
+                else{
+                    $('#search-content').html(data);
+                    $('.search-preloader').addClass('d-none');
+                }
             });
         }
         else {

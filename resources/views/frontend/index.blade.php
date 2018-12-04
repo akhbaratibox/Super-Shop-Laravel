@@ -117,7 +117,8 @@
                                     <div class="trend-category-single">
                                         <a href="{{ route('products.category', $category->id) }}" class="d-block">
                                             <div class="name">{{ $category->name }}</div>
-                                            <img class="d-block w-100" style="height:120px;" src="{{ asset($category->banner) }}" alt="Category Banner">
+                                            <div class="img" style="background-image:url('{{ asset($category->banner) }}')">
+                                            </div>
                                         </a>
                                     </div>
                                 </li>
@@ -146,10 +147,11 @@
                                     @endphp
                                     <a href="{{ route('product', $product->slug) }}" class="d-block flash-deal-item">
                                         <div class="row no-gutters align-items-center">
-                                            <div class="col-7">
-                                                <img class="d-block w-100" src="{{ asset(json_decode($product->photos)[0]) }}" alt="">
+                                            <div class="col">
+                                                <div class="img" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}')">
+                                                </div>
                                             </div>
-                                            <div class="col-5">
+                                            <div class="col">
                                                 <div class="price">
                                                     <span class="d-block">{{ home_discounted_base_price($product->id) }}</span>
                                                     @if(home_base_price($product->id) != home_discounted_base_price($product->id))

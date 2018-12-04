@@ -72,7 +72,7 @@ class ProductController extends Controller
         }
 
         $product->unit = $request->unit;
-        $product->tags = $request->tags;
+        $product->tags = implode('|',$request->tags);
         $product->description = $request->description;
         $product->video_provider = $request->video_provider;
         $product->video_link = $request->video_link;
@@ -234,7 +234,7 @@ class ProductController extends Controller
         }
 
         $product->unit = $request->unit;
-        $product->tags = $request->tags;
+        $product->tags = implode('|',$request->tags);
         $product->description = $request->description;
         $product->video_provider = $request->video_provider;
         $product->video_link = $request->video_link;

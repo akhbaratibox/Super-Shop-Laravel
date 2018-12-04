@@ -207,8 +207,8 @@ class HomeController extends Controller
                         break;
                     }
                     else{
-                        if(!in_array($tag, $keywords)){
-                            array_push($keywords, $tag);
+                        if(!in_array(strtolower($tag), $keywords)){
+                            array_push($keywords, strtolower($tag));
                         }
                     }
                 }
@@ -229,7 +229,7 @@ class HomeController extends Controller
             $products = Product::where('category_id', $request->category)->where('name', 'like', '%'.$request->q.'%')->paginate(9);
         }
         else {
-            $products = Product::where('name', 'like', '%'.$request->q.'%')->paginate(9);
+            $products = Product::where('name', 'like', '%'.$request->q.'%')->orWhere('tags', 'like', '%'.$request->q.'%')->paginate(9);
         }
         return view('frontend.product_listing', compact('products'));
     }

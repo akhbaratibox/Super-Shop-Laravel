@@ -88,7 +88,7 @@
                                             <label>Product Tag <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="text" class="form-control mb-3 tagsInput" name="tags[]" placeholder="Type & hit enter" data-role="tagsinput" value="{{ implode(',', json_decode($product->tags)) }}">
+                                            <input type="text" class="form-control mb-3 tagsInput" name="tags[]" placeholder="Type & hit enter" data-role="tagsinput" value="{{ $product->tags }}">
                                         </div>
                                     </div>
                                 </div>

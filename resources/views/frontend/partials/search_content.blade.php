@@ -3,7 +3,7 @@
         <div class="title">Popular Suggestions</div>
         <ul>
             @foreach ($keywords as $key => $keyword)
-                <li><a href="">{{ $keyword }}</a></li>
+                <li><a href="{{ route('suggestion.search', $keyword) }}">{{ $keyword }}</a></li>
             @endforeach
         </ul>
     @endif

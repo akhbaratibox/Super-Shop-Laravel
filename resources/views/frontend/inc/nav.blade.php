@@ -82,10 +82,10 @@
             </a>
 
             <div class="search-box flex-grow-1">
-                <form action="">
+                <form action="{{ route('search') }}" method="GET">
                     <div class="d-flex position-relative">
                         <div class="w-100">
-                            <input type="text" aria-label="Search" id="search" name="search" class="w-100" placeholder="I'm shopping for...">
+                            <input type="text" aria-label="Search" id="search" name="q" class="w-100" placeholder="I'm shopping for...">
                         </div>
                         <div class="form-group category-select">
                             <select class="form-control selectpicker" name="category">

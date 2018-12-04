@@ -398,6 +398,9 @@ select + .select2-container{
     border-radius: 3px 0 0 3px;
     font-size: 13px;
 }
+.search-box button {
+    width: 48px;
+}
 .logo-bar-area .category-select {
     width: 160px;
     min-width: 160px;
@@ -642,9 +645,9 @@ section.home-banner-area {
     position: absolute;
     width: calc(100% - 25%);
     left: 25%;
-    height: calc(100% - 49px);
+    height: 100%;
     overflow: hidden;
-    top: 49px;
+    top: 0;
     z-index: 998;
     background-color: #fff;
     border: 1px solid #eee;
@@ -2317,6 +2320,12 @@ ul.seller-brand-list .brand-item {
     opacity: 0.5;
     line-height: 1
 }
+.all-category-menu ul li a .cat-image{
+    max-width: 27px;
+    min-width: 27px;
+    padding-left: 5px;
+    height: auto;
+}
 .all-category-menu ul li a .cat-name{
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2363,3 +2372,4 @@ ul.seller-brand-list .brand-item {
     font-size: 22px;
     margin-bottom: 22px;
 }
+

@@ -82,7 +82,7 @@
             </a>
 
             <div class="search-box flex-grow-1">
-                <div class="d-flex">
+                <div class="d-flex position-relative">
                     <div class="w-100">
                         <input type="text" aria-label="Search" value="" class="w-100" placeholder="I'm shopping for...">
                     </div>
@@ -97,6 +97,53 @@
                     <button class="" aria-label="Submit search">
                         <i class="ion-ios-search"></i>
                     </button>
+                    <div class="typed-search-box">
+                        <div class="keyword">
+                            <div class="title">Popular Suggestions</div>
+                            <ul>
+                                <li><a href="">Keyword</a></li>
+                                <li><a href="">Keyword</a></li>
+                                <li><a href="">Keyword</a></li>
+                                <li><a href="">Keyword</a></li>
+                            </ul>
+                        </div>
+                        <div class="category">
+                            <div class="title">Category Suggestions</div>
+                            <ul>
+                                <li><a href="">Category</a></li>
+                                <li><a href="">Sub Category</a></li>
+                                <li><a href="">Sub Sub Category</a></li>
+                            </ul>
+                        </div>
+                        <div class="product">
+                            <div class="title">Products</div>
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        <div class="d-flex search-product align-items-center">
+                                            <div class="image" style="background-image:url('http://localhost/shop/public/uploads/jckV7yL9FWHi3kV33RdMNlfOcpibmwWMqNsQck0N.jpeg');">
+                                            </div>
+                                            <div class="w-100">
+                                                <div class="product-name">
+                                                    Apple iMac 4K Retina 21.5 Inch (2017) Quad Core Intel Core i5 (3.4-3.8GHz, 8GB 2400MHz DDR4 Onboard
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="price-box float-left">
+                                                        <del class="old-product-price strong-400">52465$</del>
+                                                        <span class="product-price strong-600">47218.5$</span>
+                                                    </div>
+                                                    <div class="stock-box float-right">
+                                                        <span class="in-stock">In stock</span>
+                                                        <!-- <span class="out-of-stock">Out of stock</span> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 

@@ -14,7 +14,7 @@
                                     <li class="@php if($i == 0) echo 'active' @endphp">
                                         <a href="#{{ $i }}" class="row no-gutters align-items-center">
                                             <div class="col-3">
-                                                <i class="icon-electronics-001 cat-icon"></i>
+                                                <img class="cat-image" src="">
                                             </div>
                                             <div class="col-9">
                                                 <div class="cat-name">{{ $categories[$i]->name }}</div>
@@ -25,10 +25,10 @@
                                 <li class="">
                                     <a href="#more" class="row no-gutters align-items-center">
                                         <div class="col-3">
-
+                                            <i class="fa fa-ellipsis-h cat-icon"></i>
                                         </div>
                                         <div class="col-9">
-                                            <div class="cat-name">...More Categories</div>
+                                            <div class="cat-name">More Categories</div>
                                         </div>
                                     </a>
                                 </li>
@@ -37,7 +37,7 @@
                                     <li class="@php if($key == 0) echo 'active' @endphp">
                                         <a href="#{{ $key }}" class="row no-gutters align-items-center">
                                             <div class="col-3">
-                                                <i class="icon-electronics-001 cat-icon"></i>
+                                                <img class="cat-image" src="">
                                             </div>
                                             <div class="col-9">
                                                 <div class="cat-name">{{ $category->name }}</div>

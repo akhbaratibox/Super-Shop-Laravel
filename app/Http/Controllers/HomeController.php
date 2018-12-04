@@ -222,4 +222,15 @@ class HomeController extends Controller
         }
         return '0';
     }
+
+    public function search(Request $request)
+    {
+        if($request->category != null){
+            $products = Product::where('category_id', $request->category)->where('name', 'like', '%'.$request->q.'%')->paginate(9);
+        }
+        else {
+            $products = Product::where('name', 'like', '%'.$request->q.'%')->paginate(9);
+        }
+        return view('frontend.product_listing', compact('products'));
+    }
 }

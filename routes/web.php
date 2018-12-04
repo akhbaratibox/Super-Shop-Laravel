@@ -59,6 +59,8 @@ Route::resource('orders','OrderController');
 Route::get('/orders/destroy/{id}', 'OrderController@destroy')->name('orders.destroy');
 
 Route::get('/categories', 'HomeController@all_categories')->name('categories.all');
+Route::get('/search', 'HomeController@search')->name('search');
+Route::get('/search?q={search}', 'HomeController@search')->name('suggestion.search');
 Route::post('/search', 'HomeController@ajax_search')->name('search.ajax');
 
 Route::group(['middleware' => ['user']], function(){

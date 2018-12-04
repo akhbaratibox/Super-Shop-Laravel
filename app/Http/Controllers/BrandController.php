@@ -111,7 +111,9 @@ class BrandController extends Controller
     {
         $brand = Brand::findOrFail($id);
         if(Brand::destroy($id)){
-            unlink($brand->logo);
+            if($brand->logo != null){
+                unlink($brand->logo);
+            }
             flash('Brand has been deleted successfully')->success();
             return redirect()->route('brands.index');
         }

@@ -33,11 +33,13 @@
     <section class="gry-bg">
         <div class="home-slide">
             <div class="slick-carousel" data-slick-arrows="true" data-slick-dots="true">
-                @foreach (json_decode($shop->sliders) as $key => $slide)
-                    <div class="">
-                        <img class="d-block w-100" src="{{ asset($slide) }}" alt="{{ $key }} slide" style="max-height:300px;">
-                    </div>
-                @endforeach
+                @if ($shop->sliders != null)
+                    @foreach (json_decode($shop->sliders) as $key => $slide)
+                        <div class="">
+                            <img class="d-block w-100" src="{{ asset($slide) }}" alt="{{ $key }} slide" style="max-height:300px;">
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </section>

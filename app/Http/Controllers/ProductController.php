@@ -72,7 +72,7 @@ class ProductController extends Controller
         }
 
         $product->unit = $request->unit;
-        $product->tags = json_encode($request->tags);
+        $product->tags = $request->tags;
         $product->description = $request->description;
         $product->video_provider = $request->video_provider;
         $product->video_link = $request->video_link;
@@ -234,7 +234,7 @@ class ProductController extends Controller
         }
 
         $product->unit = $request->unit;
-        $product->tags = json_encode($request->tags);
+        $product->tags = $request->tags;
         $product->description = $request->description;
         $product->video_provider = $request->video_provider;
         $product->video_link = $request->video_link;
@@ -340,9 +340,15 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         if(Product::destroy($id)){
-            unlink($product->thumbnail_img);
-            unlink($product->featured_img);
-            unlink($product->flash_deal_img);
+            if($product->thumbnail_img != null){
+                unlink($product->thumbnail_img);
+            }
+            if($product->featured_img != null){
+                unlink($product->featured_img);
+            }
+            if($product->flash_deal_img != null){
+                unlink($product->flash_deal_img);
+            }
             foreach (json_decode($product->photos) as $key => $photo) {
                 unlink($photo);
             }

@@ -14,7 +14,7 @@
                                     <li class="@php if($i == 0) echo 'active' @endphp">
                                         <a href="#{{ $i }}" class="row no-gutters align-items-center">
                                             <div class="col-3">
-                                                <img class="cat-image" src="">
+                                                <img class="cat-image" src="{{ asset($categories[$i]->icon) }}">
                                             </div>
                                             <div class="col-9">
                                                 <div class="cat-name">{{ $categories[$i]->name }}</div>
@@ -37,7 +37,7 @@
                                     <li class="@php if($key == 0) echo 'active' @endphp">
                                         <a href="#{{ $key }}" class="row no-gutters align-items-center">
                                             <div class="col-3">
-                                                <img class="cat-image" src="">
+                                                <img class="cat-image" src="{{ asset($category->icon) }}">
                                             </div>
                                             <div class="col-9">
                                                 <div class="cat-name">{{ $category->name }}</div>

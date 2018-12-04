@@ -164,6 +164,21 @@
 
 <script>
 
+    $('#search').on('keyup', function(){
+        var search = $('#search').val();
+        if(search.length > 0){
+            $('.typed-search-box').removeClass('d-none');
+            $('.search-preloader').removeClass('d-none');
+            $.post('{{ route('search.ajax') }}', { _token: '{{ @csrf_token() }}', search:search}, function(data){
+                $('#search-content').html(data);
+                $('.search-preloader').addClass('d-none');
+            });
+        }
+        else {
+            $('.typed-search-box').addClass('d-none');
+        }
+    });
+
     $('#slideshow').desoSlide({
         thumbs: $('#slideshow_thumbs .swiper-slide > a'),
         thumbEvent: 'click',

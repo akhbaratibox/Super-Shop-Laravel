@@ -117,8 +117,12 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         if(Category::destroy($id)){
-            unlink($category->banner);
-            unlink($category->icon);
+            if($category->banner != null){
+                unlink($category->banner);
+            }
+            if($category->icon != null){
+                unlink($category->icon);
+            }
             flash('Category has been deleted successfully')->success();
             return redirect()->route('categories.index');
         }

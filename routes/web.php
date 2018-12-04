@@ -59,6 +59,7 @@ Route::resource('orders','OrderController');
 Route::get('/orders/destroy/{id}', 'OrderController@destroy')->name('orders.destroy');
 
 Route::get('/categories', 'HomeController@all_categories')->name('categories.all');
+Route::post('/search', 'HomeController@ajax_search')->name('search.ajax');
 
 Route::group(['middleware' => ['user']], function(){
 	Route::resource('wishlists','WishlistController');

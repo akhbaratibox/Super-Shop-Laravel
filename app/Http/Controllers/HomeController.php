@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use App\Category;
+use App\SubSubCategory;
 use App\Product;
 use App\User;
 use Auth;
@@ -193,5 +194,26 @@ class HomeController extends Controller
             return redirect()->route('home');
         }
         return view('frontend.user_login');
+    }
+
+    public function ajax_search(Request $request)
+    {
+        $keywords = array();
+        $products = Product::where('tags', 'like', '%'.$request->search.'%')->get();
+        foreach ($products as $key => $product) {
+            foreach (explode(',',$product->tags) as $key => $tag) {
+                if(stripos($tag, $request->search) !== false){
+                    if(sizeof($keywords) > 5){
+                        break;
+                    }
+                    else{
+                        array_push($keywords, $tag);
+                    }
+                }
+            }
+        }
+        $products = Product::where('name', 'like', '%'.$request->search.'%')->get()->take(3);
+        $subsubcategories = SubSubCategory::where('name', 'like', '%'.$request->search.'%')->get()->take(3);
+        return view('frontend.partials.search_content', compact('products', 'subsubcategories', 'keywords'));
     }
 }

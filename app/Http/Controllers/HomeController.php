@@ -207,7 +207,9 @@ class HomeController extends Controller
                         break;
                     }
                     else{
-                        array_push($keywords, $tag);
+                        if(!in_array($tag, $keywords)){
+                            array_push($keywords, $tag);
+                        }
                     }
                 }
             }

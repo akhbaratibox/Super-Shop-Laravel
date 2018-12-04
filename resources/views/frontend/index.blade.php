@@ -9,7 +9,7 @@
                     <div class="category-sidebar">
                         <div class="all-category">
                             <span>CATEGORIES</span>
-                            <a href="{{ route('products') }}">See All ></a>
+                            <a href="{{ route('categories.all') }}">See All ></a>
                         </div>
                         <ul class="categories">
                             @foreach (\App\Category::all()->take(11) as $key => $category)

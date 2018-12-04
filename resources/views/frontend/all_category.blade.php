@@ -9,126 +9,43 @@
                 <div class="col">
                     <div class="bg-white all-category-menu">
                         <ul class="clearfix">
-                            <li class="active">
-                                <a href="#1" class="row no-gutters align-items-center">
-                                    <div class="col-3">
-                                        <i class="icon-electronics-001 cat-icon"></i>
-                                    </div>
-                                    <div class="col-9">
-                                        <div class="cat-name">Women's Clothing & Accessories</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="#2" class="row no-gutters align-items-center">
-                                    <div class="col-3">
-                                        <i class="icon-electronics-001 cat-icon"></i>
-                                    </div>
-                                    <div class="col-9">
-                                        <div class="cat-name">Women's Clothing & Accessories</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="#3" class="row no-gutters align-items-center">
-                                    <div class="col-3">
-                                        <i class="icon-electronics-001 cat-icon"></i>
-                                    </div>
-                                    <div class="col-9">
-                                        <div class="cat-name">Women's Clothing & Accessories</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="#4" class="row no-gutters align-items-center">
-                                    <div class="col-3">
-                                        <i class="icon-electronics-001 cat-icon"></i>
-                                    </div>
-                                    <div class="col-9">
-                                        <div class="cat-name">Women's Clothing & Accessories</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="#5" class="row no-gutters align-items-center">
-                                    <div class="col-3">
-                                        <i class="icon-electronics-001 cat-icon"></i>
-                                    </div>
-                                    <div class="col-9">
-                                        <div class="cat-name">Women's Clothing & Accessories</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="#6" class="row no-gutters align-items-center">
-                                    <div class="col-3">
-                                        <i class="icon-electronics-001 cat-icon"></i>
-                                    </div>
-                                    <div class="col-9">
-                                        <div class="cat-name">Women's Clothing & Accessories</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="#7" class="row no-gutters align-items-center">
-                                    <div class="col-3">
-                                        <i class="icon-electronics-001 cat-icon"></i>
-                                    </div>
-                                    <div class="col-9">
-                                        <div class="cat-name">Women's Clothing & Accessories</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="#8" class="row no-gutters align-items-center">
-                                    <div class="col-3">
-                                        <i class="icon-electronics-001 cat-icon"></i>
-                                    </div>
-                                    <div class="col-9">
-                                        <div class="cat-name">Women's Clothing & Accessories</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="#9" class="row no-gutters align-items-center">
-                                    <div class="col-3">
-                                        <i class="icon-electronics-001 cat-icon"></i>
-                                    </div>
-                                    <div class="col-9">
-                                        <div class="cat-name">Women's Clothing & Accessories</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="#10" class="row no-gutters align-items-center">
-                                    <div class="col-3">
-                                        <i class="icon-electronics-001 cat-icon"></i>
-                                    </div>
-                                    <div class="col-9">
-                                        <div class="cat-name">Women's Clothing & Accessories</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="#11" class="row no-gutters align-items-center">
-                                    <div class="col-3">
-                                        <i class="icon-electronics-001 cat-icon"></i>
-                                    </div>
-                                    <div class="col-9">
-                                        <div class="cat-name">Women's Clothing & Accessories</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="#12" class="row no-gutters align-items-center">
-                                    <div class="col-3">
-                                        <i class="ion ion-ios-more cat-icon"></i>
-                                    </div>
-                                    <div class="col-9">
-                                        <div class="cat-name">More Categories</div>
-                                    </div>
-                                </a>
-                            </li>
+                            @if(count($categories) > 12)
+                                @for ($i = 0; $i < 11; $i++)
+                                    <li class="@php if($i == 0) echo 'active' @endphp">
+                                        <a href="#{{ $i }}" class="row no-gutters align-items-center">
+                                            <div class="col-3">
+                                                <i class="icon-electronics-001 cat-icon"></i>
+                                            </div>
+                                            <div class="col-9">
+                                                <div class="cat-name">{{ $categories[$i]->name }}</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                @endfor
+                                <li class="">
+                                    <a href="#more" class="row no-gutters align-items-center">
+                                        <div class="col-3">
+
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="cat-name">...More Categories</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            @else
+                                @foreach ($categories as $key => $category)
+                                    <li class="@php if($key == 0) echo 'active' @endphp">
+                                        <a href="#{{ $key }}" class="row no-gutters align-items-center">
+                                            <div class="col-3">
+                                                <i class="icon-electronics-001 cat-icon"></i>
+                                            </div>
+                                            <div class="col-9">
+                                                <div class="cat-name">{{ $category->name }}</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -140,246 +57,31 @@
             <div class="row">
                 <div class="col">
                     <div class="bg-white">
-                        <div class="sub-category-menu" id="1">
-                            <h3 class="category-name"><a href="" >Women's Clothing & Accessories</a></h3>
-                            <ul>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                            </ul>
-                        </div>
-                        <div class="sub-category-menu" id="2">
-                            <h3 class="category-name"><a href="" >Women's Clothing & Accessories</a></h3>
-                            <ul>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                            </ul>
-                        </div>
-                        <div class="sub-category-menu" id="3">
-                            <h3 class="category-name"><a href="" >Women's Clothing & Accessories</a></h3>
-                            <ul>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                            </ul>
-                        </div>
-                        <div class="sub-category-menu" id="4">
-                            <h3 class="category-name"><a href="" >Women's Clothing & Accessories</a></h3>
-                            <ul>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                            </ul>
-                        </div>
-                        <div class="sub-category-menu" id="5">
-                            <h3 class="category-name"><a href="" >Women's Clothing & Accessories</a></h3>
-                            <ul>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                            </ul>
-                        </div>
-                        <div class="sub-category-menu" id="6">
-                            <h3 class="category-name"><a href="" >Women's Clothing & Accessories</a></h3>
-                            <ul>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                            </ul>
-                        </div>
-                        <div class="sub-category-menu" id="7">
-                            <h3 class="category-name"><a href="" >Women's Clothing & Accessories</a></h3>
-                            <ul>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                            </ul>
-                        </div>
-                        <div class="sub-category-menu" id="8">
-                            <h3 class="category-name"><a href="" >Women's Clothing & Accessories</a></h3>
-                            <ul>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                            </ul>
-                        </div>
-                        <div class="sub-category-menu" id="9">
-                            <h3 class="category-name"><a href="" >Women's Clothing & Accessories</a></h3>
-                            <ul>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                            </ul>
-                        </div>
-                        <div class="sub-category-menu" id="10">
-                            <h3 class="category-name"><a href="" >Women's Clothing & Accessories</a></h3>
-                            <ul>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                            </ul>
-                        </div>
-                        <div class="sub-category-menu" id="11">
-                            <h3 class="category-name"><a href="" >Women's Clothing & Accessories</a></h3>
-                            <ul>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                            </ul>
-                        </div>
-                        <div class="sub-category-menu" id="12">
-                            <h3 class="category-name"><a href="" >Women's Clothing & Accessories</a></h3>
-                            <ul>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                                <li><a href="" >Dresses</a></li>
-                                <li><a href="" >Blouses & Shirts</a></li>
-                                <li><a href="" >Hoodies & Sweatshirts</a></li>
-                                <li><a href="" >Sweaters</a></li>
-                                <li><a href="" >Jackets & Coats</a></li>
-                            </ul>
-                        </div>
+                        @foreach ($categories as $key => $category)
+                            @if(count($categories)>12 && $key == 11)
+                                <div class="sub-category-menu" id="more">
+                                    <h3 class="category-name"><a href="{{ route('products.category', $category->id) }}">{{ $category->name }}</a></h3>
+                                    <ul>
+                                        @foreach ($category->subcategories as $key => $subcategory)
+                                            @foreach ($subcategory->subsubcategories as $key => $subsubcategory)
+                                                <li><a href="{{ route('products.subsubcategory', $subsubcategory->id) }}" >{{ $subsubcategory->name }}</a></li>
+                                            @endforeach
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @else
+                                <div class="sub-category-menu" id="{{ $key }}">
+                                    <h3 class="category-name"><a href="{{ route('products.category', $category->id) }}" >{{ $category->name }}</a></h3>
+                                    <ul>
+                                        @foreach ($category->subcategories as $key => $subcategory)
+                                            @foreach ($subcategory->subsubcategories as $key => $subsubcategory)
+                                                <li><a href="{{ route('products.subsubcategory', $subsubcategory->id) }}" >{{ $subsubcategory->name }}</a></li>
+                                            @endforeach
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>

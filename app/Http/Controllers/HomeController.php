@@ -135,6 +135,12 @@ class HomeController extends Controller
         return view('frontend.product_listing', compact('products'));
     }
 
+    public function all_categories(Request $request)
+    {
+        $categories = Category::all();
+        return view('frontend.all_category', compact('categories'));
+    }
+
     public function listing_by_category($id)
     {
         $products = Product::where('category_id', $id)->paginate(9);

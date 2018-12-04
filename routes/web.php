@@ -58,9 +58,7 @@ Route::resource('subscribers','SubscriberController');
 Route::resource('orders','OrderController');
 Route::get('/orders/destroy/{id}', 'OrderController@destroy')->name('orders.destroy');
 
-Route::get('/all-category', function(){
-	return view('frontend.all_category');
-});
+Route::get('/categories', 'HomeController@all_categories')->name('categories.all');
 
 Route::group(['middleware' => ['user']], function(){
 	Route::resource('wishlists','WishlistController');

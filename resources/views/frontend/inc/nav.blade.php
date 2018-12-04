@@ -82,30 +82,33 @@
             </a>
 
             <div class="search-box flex-grow-1">
-                <div class="d-flex position-relative">
-                    <div class="w-100">
-                        <input type="text" aria-label="Search" id="search" name="search" class="w-100" placeholder="I'm shopping for...">
-                    </div>
-                    <div class="form-group category-select">
-                        <select class="form-control selectpicker" name="category">
-                            <option value="">All Categories</option>
-                            @foreach (\App\Category::all() as $key => $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <button class="" aria-label="Submit search">
-                        <i class="ion-ios-search"></i>
-                    </button>
-                    <div class="typed-search-box d-none">
-                        <div class="search-preloader">
-                            <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                <form action="">
+                    <div class="d-flex position-relative">
+                        <div class="w-100">
+                            <input type="text" aria-label="Search" id="search" name="search" class="w-100" placeholder="I'm shopping for...">
                         </div>
-                        <div id="search-content">
+                        <div class="form-group category-select">
+                            <select class="form-control selectpicker" name="category">
+                                <option value="">All Categories</option>
+                                @foreach (\App\Category::all() as $key => $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button class="" type="submit">
+                            <i class="ion-ios-search"></i>
+                        </button>
+                        <div class="typed-search-box d-none">
+                            <div class="search-preloader">
+                                <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                            </div>
+                            <div id="search-content">
 
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
+
             </div>
 
             <div class="logo-bar-icons d-inline-block">

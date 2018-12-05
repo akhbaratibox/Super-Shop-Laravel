@@ -171,9 +171,14 @@
             $('.search-preloader').removeClass('d-none');
             $.post('{{ route('search.ajax') }}', { _token: '{{ @csrf_token() }}', search:search}, function(data){
                 if(data == '0'){
-                    $('.typed-search-box').addClass('d-none');
+                    // $('.typed-search-box').addClass('d-none');
+                    $('#search-content').html(null);
+                    $('.typed-search-box .search-nothing').removeClass('d-none').html('Sorry, nothing found for <strong>"'+search+'"</strong>');
+                    $('.search-preloader').addClass('d-none');
+
                 }
                 else{
+                    $('.typed-search-box .search-nothing').addClass('d-none').html(null);
                     $('#search-content').html(data);
                     $('.search-preloader').addClass('d-none');
                 }

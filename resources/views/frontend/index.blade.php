@@ -248,10 +248,10 @@
                     <span class="mr-4">Best Selling</span>
                 </h3>
                 <ul class="inline-links float-right">
-                    <li class="active"><a target="_blank" rel="">Top 20</a></li>
-                    <li><a href="" target="_blank" rel="">Category name</a></li>
-                    <li><a href="" target="_blank" rel="">Category name</a></li>
-                    <li><a href="" target="_blank" rel="">Category name</a></li>
+                    <li><a  class="active">Top 20</a></li>
+                    <li><a href="" >Category name</a></li>
+                    <li><a href="" >Category name</a></li>
+                    <li><a href="" >Category name</a></li>
                 </ul>
             </div>
             <div class="caorusel-box">
@@ -305,6 +305,54 @@
         </div>
 
     </section>
+
+    <section class="gry-bg py-5">
+        <div class="container">
+            <div class="section-title-1 clearfix">
+                <h3 class="heading-5 strong-700 mb-0 float-left">
+                    <span class="mr-4">Category Name</span>
+                </h3>
+                <ul class="inline-links float-right nav">
+                    <li class="active"><a href="#subsubcat-1" data-toggle="tab" class="active">Sub sub category</a></li>
+                    <li><a href="#subsubcat-2" data-toggle="tab">Sub sub category</a></li>
+                    <li><a href="#subsubcat-3" data-toggle="tab">Sub sub category</a></li>
+                    <li><a href="#subsubcat-4" data-toggle="tab">Sub sub category</a></li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="row tab-pane fade show active" id="subsubcat-1">
+                    <div class="col-lg-3">
+                        <div class="product-box-3">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row tab-pane fade" id="subsubcat-2">
+                    <div class="col-lg-3">
+                        <div class="product-box-3">
+                        2
+                        </div>
+                    </div>
+                </div>
+                <div class="row tab-pane fade" id="subsubcat-3">
+                    <div class="col-lg-3">
+                        <div class="product-box-3">
+                        3
+                        </div>
+                    </div>
+                </div>
+                <div class="row tab-pane fade" id="subsubcat-4">
+                    <div class="col-lg-3">
+                        <div class="product-box-3">
+                        4
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 
 
 @endsection

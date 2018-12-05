@@ -141,14 +141,17 @@ $(document).ready(function() {
             air: []
         }
     });
+    $(".nav-tabs a").click(function(){
+        $(this).tab('show');
+    });
 });
 
 $(window).scroll(function() {
     var scrollDistance = $(window).scrollTop();
-    $('.sub-category-menu').each(function(i) {
-            if ($(this).position().top <= scrollDistance) {
-                    $('.all-category-menu li.active').removeClass('active');
-                    $('.all-category-menu li').eq(i).addClass('active');
+    $('.sub-category-menu.active').each(function(i) {
+            if (($(this).position().top + 120) <= scrollDistance) {
+                $('.all-category-menu li.active').removeClass('active');
+                $('.all-category-menu li').eq(i).addClass('active');
             }
     });
 }).scroll();

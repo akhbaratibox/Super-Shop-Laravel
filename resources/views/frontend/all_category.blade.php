@@ -59,7 +59,7 @@
                     <div class="bg-white">
                         @foreach ($categories as $key => $category)
                             @if(count($categories)>12 && $key == 11)
-                                <div class="sub-category-menu" id="more">
+                                <div class="sub-category-menu active" id="more">
                                     <h3 class="category-name"><a href="{{ route('products.category', $category->id) }}">{{ $category->name }}</a></h3>
                                     <ul>
                                         @foreach ($category->subcategories as $key => $subcategory)
@@ -70,7 +70,7 @@
                                     </ul>
                                 </div>
                             @else
-                                <div class="sub-category-menu" id="{{ $key }}">
+                                <div class="sub-category-menu @php if($key < 12) echo 'active'; @endphp" id="{{ $key }}">
                                     <h3 class="category-name"><a href="{{ route('products.category', $category->id) }}" >{{ $category->name }}</a></h3>
                                     <ul>
                                         @foreach ($category->subcategories as $key => $subcategory)

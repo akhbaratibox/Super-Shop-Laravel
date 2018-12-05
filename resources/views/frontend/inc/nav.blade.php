@@ -85,7 +85,7 @@
                 <form action="{{ route('search') }}" method="GET">
                     <div class="d-flex position-relative">
                         <div class="w-100">
-                            <input type="text" aria-label="Search" id="search" name="q" class="w-100" placeholder="I'm shopping for...">
+                            <input type="text" aria-label="Search" id="search" name="q" class="w-100" placeholder="I'm shopping for..." autocomplete="off">
                         </div>
                         <div class="form-group category-select">
                             <select class="form-control selectpicker" name="category">
@@ -100,7 +100,10 @@
                         </button>
                         <div class="typed-search-box d-none">
                             <div class="search-preloader">
-                                <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                                <div class="loader"><div></div><div></div><div></div></div>
+                            </div>
+                            <div class="search-nothing d-none">
+                                
                             </div>
                             <div id="search-content">
 
@@ -247,7 +250,7 @@
                 <div class="collapse navbar-collapse align-items-center justify-content-center" id="navbar_main">
                     <!-- Navbar links -->
                     <ul class="navbar-nav">
-                        @foreach (\App\Search::orderBy('count')->get()->take(5) as $key => $search)
+                        @foreach (\App\Search::orderBy('count', 'desc')->get()->take(5) as $key => $search)
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('suggestion.search', $search->query) }}">{{ $search->query }}</a>
                             </li>

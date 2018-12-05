@@ -61,7 +61,7 @@
                         <a href="{{ route('user.login') }}" class="top-bar-item">Login</a>
                     </li>
                     <li>
-                        <a href="" class="top-bar-item">Registration</a>
+                        <a href="{{ route('user.login') }}" class="top-bar-item">Registration</a>
                     </li>
                     @endauth
                 </ul>
@@ -241,57 +241,20 @@
 </div>
 <!-- Navbar -->
 
-<div class="main-nav-area">
-    <nav class="navbar navbar-expand-lg navbar--bold navbar--style-2 navbar-light bg-default">
-        <div class="container">
-            <div class="collapse navbar-collapse align-items-center justify-content-center" id="navbar_main">
-
-                <!-- Navbar links -->
-                <ul class="navbar-nav">
-                            <!-- <li class="nav-item active">
-                                <a class="nav-link" href="">Overview</a>
-                            </li> -->
+    <div class="main-nav-area">
+        <nav class="navbar navbar-expand-lg navbar--bold navbar--style-2 navbar-light bg-default">
+            <div class="container">
+                <div class="collapse navbar-collapse align-items-center justify-content-center" id="navbar_main">
+                    <!-- Navbar links -->
+                    <ul class="navbar-nav">
+                        @foreach (\App\Search::orderBy('count')->get()->take(5) as $key => $search)
                             <li class="nav-item">
-                                <a class="nav-link" href="">Overview</a>
+                                <a class="nav-link" href="{{ route('suggestion.search', $search->query) }}">{{ $search->query }}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">Demos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">Demos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">Demos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">Demos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">Demos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">Demos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">Demos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">Demos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">Demos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">Demos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">Demos</a>
-                            </li>
-                        </ul>
-
-                    </div>
+                        @endforeach
+                    </ul>
                 </div>
-
-            </nav>
-        </div>
+            </div>
+        </nav>
     </div>
+</div>

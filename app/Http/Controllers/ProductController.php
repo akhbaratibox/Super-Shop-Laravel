@@ -145,9 +145,9 @@ class ProductController extends Controller
                     }
                 }
                 $item = array();
-                $item['price'] = $request['price_'.$str];
-                $item['sku'] = $request['sku_'.$str];
-                $item['qty'] = $request['qty_'.$str];
+                $item['price'] = $request['price_'.str_replace('.', '_', $str)];
+                $item['sku'] = $request['sku_'.str_replace('.', '_', $str)];
+                $item['qty'] = $request['qty_'.str_replace('.', '_', $str)];
                 $variations[$str] = $item;
             }
         }
@@ -305,9 +305,9 @@ class ProductController extends Controller
                     }
                 }
                 $item = array();
-                $item['price'] = $request['price_'.$str];
-                $item['sku'] = $request['sku_'.$str];
-                $item['qty'] = $request['qty_'.$str];
+                $item['price'] = $request['price_'.str_replace('.', '_', $str)];
+                $item['sku'] = $request['sku_'.str_replace('.', '_', $str)];
+                $item['qty'] = $request['qty_'.str_replace('.', '_', $str)];
                 $variations[$str] = $item;
             }
         }

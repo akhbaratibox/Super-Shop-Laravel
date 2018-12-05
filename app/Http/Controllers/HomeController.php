@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
+use Auth;
+use Hash;
 use App\Category;
 use App\SubSubCategory;
 use App\Product;
 use App\User;
-use Auth;
-use Hash;
 use App\Shop;
+use App\Http\Controllers\SearchController;
 
 class HomeController extends Controller
 {
@@ -225,6 +226,9 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
+        $searchController = new SearchController;
+        $searchController->store($request);
+
         if($request->category != null){
             $products = Product::where('category_id', $request->category)->where('name', 'like', '%'.$request->q.'%')->paginate(9);
         }

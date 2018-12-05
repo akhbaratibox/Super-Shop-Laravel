@@ -2267,8 +2267,27 @@ ul.seller-brand-list .brand-item {
     background: #eb5836;
     color: #fff;
 }
-
-
+.product-box-2.alt-box .product-image{
+    min-height: 260px;
+}
+.product-box-2.alt-box .product-btns{
+    right:auto;
+    left: 0;
+    top: auto;
+    bottom: -32px;
+    height: 32px;
+    width: 100%;
+}
+.product-box-2.alt-box:hover .product-btns{
+    right:auto;
+    left: 0;
+    bottom: 0;
+}
+.product-box-2 .product-btns .btn{
+    width: 33.333%;
+    float: left;
+    height: 32px;
+}
 .all-category-menu ul {
     margin: 0;
     padding: 0;

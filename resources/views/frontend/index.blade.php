@@ -322,8 +322,37 @@
             <div class="tab-content">
                 <div class="row tab-pane fade show active" id="subsubcat-1">
                     <div class="col-lg-3">
-                        <div class="product-box-3">
-                            
+                        <div class="product-box-2 bg-white alt-box">
+                            <div class="position-relative overflow-hidden">
+                                <a href="" class="d-block product-image h-100" style="background-image:url('http://localhost/shop/public/uploads/toWd1kIdW8NVXoLNfMEByr75mkpuDiS11DRr2ZuA.jpeg');" tabindex="0">
+                                </a>
+                                <div class="product-btns clearfix">
+                                    <button class="btn add-wishlist" title="Add to Wishlist" onclick="addToWishList(20)" tabindex="0">
+                                        <i class="ion-ios-heart-outline"></i>
+                                    </button>
+                                    <button class="btn add-compare" title="Add to Compare" onclick="addToCompare(20)" tabindex="0">
+                                        <i class="ion-ios-browsers-outline"></i>
+                                    </button>
+                                    <button class="btn quick-view" title="Quick view" onclick="showAddToCartModal(20)" tabindex="0">
+                                        <i class="ion-ios-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <h2 class="product-title mb-3 p-0">
+                                    <a href="" tabindex="0">Apple iMac 4K Retina 21.5 Inch (2017) Quad Core Intel Core i5 (3.4-3.8GHz, 8GB 2400MHz DDR4 Onboard</a>
+                                </h2>
+                                <div class="clearfix">
+                                    <div class="price-box float-left">
+                                        <span class="product-price strong-600">1000$</span>
+                                    </div>
+                                    <div class="float-right">
+                                        <button class="add-to-cart btn" title="Add to Cart" onclick="showAddToCartModal(20)" tabindex="0">
+                                            <i class="icon ion-android-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

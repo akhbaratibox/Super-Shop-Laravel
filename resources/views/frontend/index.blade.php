@@ -249,14 +249,23 @@
                 </h3>
                 <ul class="inline-links float-right">
                     <li><a  class="active">Top 20</a></li>
+                    {{-- <li><a href="" >Category name</a></li>
                     <li><a href="" >Category name</a></li>
-                    <li><a href="" >Category name</a></li>
-                    <li><a href="" >Category name</a></li>
+                    <li><a href="" >Category name</a></li> --}}
                 </ul>
             </div>
             <div class="caorusel-box">
                 <div class="slick-carousel" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="2" data-slick-xs-items="1" data-slick-dots="true" data-slick-rows="2">
-                    @foreach (\App\Product::all() as $key => $product)
+                    @php
+                        $products = DB::table('products')
+                                            ->leftJoin('order_details', 'products.id', '=', 'order_details.product_id')
+                                            ->select('products.*', DB::raw('COUNT(order_details.product_id) as sells'))
+                                            ->groupBy('products.id')
+                                            ->orderBy('sells', 'desc')
+                                            ->limit(20)
+                                            ->get();
+                    @endphp
+                    @foreach ($products as $key => $product)
                         <div class="p-2">
                             <div class="row no-gutters product-box-2">
                                 <div class="col-4">
@@ -306,82 +315,70 @@
 
     </section>
 
-    <section class="gry-bg py-5">
-        <div class="container">
-            <div class="section-title-1 clearfix">
-                <h3 class="heading-5 strong-700 mb-0 float-left">
-                    <span class="mr-4">Category Name</span>
-                </h3>
-                <ul class="inline-links float-right nav">
-                    <li class="active"><a href="#subsubcat-1" data-toggle="tab" class="active">Sub sub category</a></li>
-                    <li><a href="#subsubcat-2" data-toggle="tab">Sub sub category</a></li>
-                    <li><a href="#subsubcat-3" data-toggle="tab">Sub sub category</a></li>
-                    <li><a href="#subsubcat-4" data-toggle="tab">Sub sub category</a></li>
-                </ul>
-            </div>
-            <div class="tab-content">
-                <div class="row tab-pane fade show active" id="subsubcat-1">
-                    <div class="col-lg-3">
-                        <div class="product-box-2 bg-white alt-box">
-                            <div class="position-relative overflow-hidden">
-                                <a href="" class="d-block product-image h-100" style="background-image:url('http://localhost/shop/public/uploads/toWd1kIdW8NVXoLNfMEByr75mkpuDiS11DRr2ZuA.jpeg');" tabindex="0">
-                                </a>
-                                <div class="product-btns clearfix">
-                                    <button class="btn add-wishlist" title="Add to Wishlist" onclick="addToWishList(20)" tabindex="0">
-                                        <i class="ion-ios-heart-outline"></i>
-                                    </button>
-                                    <button class="btn add-compare" title="Add to Compare" onclick="addToCompare(20)" tabindex="0">
-                                        <i class="ion-ios-browsers-outline"></i>
-                                    </button>
-                                    <button class="btn quick-view" title="Quick view" onclick="showAddToCartModal(20)" tabindex="0">
-                                        <i class="ion-ios-eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="p-3">
-                                <h2 class="product-title mb-3 p-0">
-                                    <a href="" tabindex="0">Apple iMac 4K Retina 21.5 Inch (2017) Quad Core Intel Core i5 (3.4-3.8GHz, 8GB 2400MHz DDR4 Onboard</a>
-                                </h2>
-                                <div class="clearfix">
-                                    <div class="price-box float-left">
-                                        <span class="product-price strong-600">1000$</span>
+    @foreach (\App\HomeCategory::where('status', 1)->get() as $key => $homeCategory)
+        <section class="gry-bg py-5">
+            <div class="container">
+                <div class="section-title-1 clearfix">
+                    <h3 class="heading-5 strong-700 mb-0 float-left">
+                        <span class="mr-4">{{ $homeCategory->category->name }}</span>
+                    </h3>
+                    <ul class="inline-links float-right nav">
+                        @foreach (json_decode($homeCategory->subsubcategories) as $key => $subsubcategory)
+                            <li class="@php if($key == 0) echo 'active'; @endphp"><a href="#subsubcat-{{ $subsubcategory }}" data-toggle="tab" class="@php if($key == 0) echo 'active'; @endphp">{{ \App\SubSubCategory::find($subsubcategory)->name }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    @foreach (json_decode($homeCategory->subsubcategories) as $key => $subsubcategory)
+                        <div class="row tab-pane fade @php if($key == 0) echo 'show active'; @endphp" id="subsubcat-{{ $subsubcategory }}">
+                            @php
+                                $products = \App\Product::where('subsubcategory_id', $subsubcategory)->limit(4)->get();
+                            @endphp
+                            @foreach ($products as $key => $product)
+                                <div class="col-3">
+                                    <div class="product-box-2 bg-white alt-box">
+                                        <div class="position-relative overflow-hidden">
+                                            <a href="" class="d-block product-image h-100" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');" tabindex="0">
+                                            </a>
+                                            <div class="product-btns clearfix">
+                                                <button class="btn add-wishlist" title="Add to Wishlist" onclick="addToWishList({{ $product->id }})" tabindex="0">
+                                                    <i class="ion-ios-heart-outline"></i>
+                                                </button>
+                                                <button class="btn add-compare" title="Add to Compare" onclick="addToCompare({{ $product->id }})" tabindex="0">
+                                                    <i class="ion-ios-browsers-outline"></i>
+                                                </button>
+                                                <button class="btn quick-view" title="Quick view" onclick="showAddToCartModal({{ $product->id }})" tabindex="0">
+                                                    <i class="ion-ios-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="p-3">
+                                            <h2 class="product-title mb-3 p-0">
+                                                <a href="" tabindex="0">{{ $product->name }}</a>
+                                            </h2>
+                                            <div class="clearfix">
+                                                <div class="price-box float-left">
+                                                    @if(home_base_price($product->id) != home_discounted_base_price($product->id))
+                                                        <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
+                                                    @endif
+                                                    <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                                                </div>
+                                                <div class="float-right">
+                                                    <button class="add-to-cart btn" title="Add to Cart" onclick="showAddToCartModal({{ $product->id }})" tabindex="0">
+                                                        <i class="icon ion-android-cart"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="float-right">
-                                        <button class="add-to-cart btn" title="Add to Cart" onclick="showAddToCartModal(20)" tabindex="0">
-                                            <i class="icon ion-android-cart"></i>
-                                        </button>
-                                    </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
-                    </div>
-                </div>
-                <div class="row tab-pane fade" id="subsubcat-2">
-                    <div class="col-lg-3">
-                        <div class="product-box-3">
-                        2
-                        </div>
-                    </div>
-                </div>
-                <div class="row tab-pane fade" id="subsubcat-3">
-                    <div class="col-lg-3">
-                        <div class="product-box-3">
-                        3
-                        </div>
-                    </div>
-                </div>
-                <div class="row tab-pane fade" id="subsubcat-4">
-                    <div class="col-lg-3">
-                        <div class="product-box-3">
-                        4
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
-    </section>
-
-
+        </section>
+    @endforeach
 
 
 @endsection

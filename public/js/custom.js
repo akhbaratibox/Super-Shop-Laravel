@@ -8,6 +8,14 @@ $(document).on('nifty.ready', function() {
 	$(".demo-select2").select2();
 
 
+	// SELECT2 Maximum Limit 4
+	// =================================================================
+	// Require Select2
+	// https://github.com/select2/select2
+	// =================================================================
+	$(".demo-select2-max-4").select2({
+        maximumSelectionLength: 4
+    });
 
 
 	// SELECT2 PLACEHOLDER

@@ -136,7 +136,7 @@ class FlashDealController extends Controller
         $flash_deal = FlashDeal::findOrFail($request->id);
         $flash_deal->status = $request->status;
         if($flash_deal->save()){
-            flash('Flash deal ststua updated successfully')->success();
+            flash('Flash deal status updated successfully')->success();
             return 1;
         }
         return 0;

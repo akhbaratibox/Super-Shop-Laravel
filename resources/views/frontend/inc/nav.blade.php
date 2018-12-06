@@ -103,7 +103,7 @@
                                 <div class="loader"><div></div><div></div><div></div></div>
                             </div>
                             <div class="search-nothing d-none">
-                                
+
                             </div>
                             <div id="search-content">
 

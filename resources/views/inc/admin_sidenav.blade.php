@@ -120,7 +120,7 @@
                             </ul>
                         </li>
 
-                        <li class="{{ areActiveRoutes(['flash_deals.index'])}}">
+                        <li class="{{ areActiveRoutes(['flash_deals.index', 'flash_deals.create', 'flash_deals.edit'])}}">
                             <a class="nav-link" href="{{ route('flash_deals.index') }}">
                                 <i class="fa fa-bolt"></i>
                                 <span class="menu-title">{{__('web.flash_deal')}}</span>
@@ -227,6 +227,9 @@
                             <ul class="collapse">
                                 <li class="{{ areActiveRoutes(['sliders.index'])}}">
                                     <a class="nav-link" href="{{route('sliders.index')}}">{{__('web.home_slider')}}</a>
+                                </li>
+                                <li class="{{ areActiveRoutes(['home_categories.index', 'home_categories.create', 'home_categories.edit'])}}">
+                                    <a class="nav-link" href="{{route('home_categories.index')}}">{{__('web.home_categories')}}</a>
                                 </li>
                             </ul>
                         </li>

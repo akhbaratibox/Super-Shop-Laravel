@@ -98,7 +98,7 @@ class SliderController extends Controller
     {
         $slider = Slider::findOrFail($id);
         if(Slider::destroy($id)){
-            unlink($slider->photo)
+            unlink($slider->photo);
             flash('Slider has been deleted successfully')->success();
         }
         else{

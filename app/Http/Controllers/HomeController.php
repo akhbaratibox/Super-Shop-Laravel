@@ -226,8 +226,10 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $searchController = new SearchController;
-        $searchController->store($request);
+        if($request->q != null){
+            $searchController = new SearchController;
+            $searchController->store($request);
+        }
 
         if($request->category != null){
             $products = Product::where('category_id', $request->category)->where('name', 'like', '%'.$request->q.'%')->paginate(9);

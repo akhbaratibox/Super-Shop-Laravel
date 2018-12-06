@@ -8,6 +8,75 @@ $(function () {
         $('#category-menu-icon').removeClass('active');
     });
 
+    // if ($('.slick-slider').length > 0) {
+    //     $('.slick-slider').each(function() {
+    //         var $this = $(this);
+    //         $this.slick({
+    //             slidesToShow: 1,
+    //             dots: true,
+    //             prevArrow: '<button type="button" class="slick-prev"><span class="prev-icon"></span></button>',
+    //             nextArrow: '<button type="button" class="slick-next"><span class="next-icon"></span></button>',
+    //         });
+    //     });
+    // }
+
+
+    /*
+        Smooth scroll functionality for anchor links (animates the scroll
+        rather than a sudden jump in the page)
+    */
+    $('.all-category-menu a').bind('click', function(e) {
+        e.preventDefault(); // prevent hard jump, the default behavior
+
+        var target = $(this).attr("href"); // Set the target as variable
+
+        $('html, body').stop().animate({
+                scrollTop: $(target).offset().top - 120
+        }, 600, function() {
+                // location.hash = target; //attach the hash (#jumptarget) to the pageurl
+        });
+
+        return false;
+    });
+
+
+
+});
+
+
+// Bootstrap selected
+$('.sortSelect').each(function(index, element) {
+    $('.sortSelect').select2({
+        theme: "default sortSelectCustom"
+    });
+});
+function morebrands(em){
+    if($(em).hasClass('on')){
+        $(em).removeClass('on');
+        $('#brands-collapse-box').removeClass('full');
+        $(em).children('i').addClass('fa-plus').removeClass('fa-minus');
+        $(em).children('span').html('More');
+    }else {
+        $(em).addClass('on');
+        $('#brands-collapse-box').addClass('full');
+        $(em).children('i').removeClass('fa-plus').addClass('fa-minus');
+        $(em).children('span').html('Less');
+    }
+}
+$(document).ready(function() {
+    $('.tagsInput').tagsinput('items');
+    $('.summernote').summernote({
+        height: 500,
+        popover: {
+            image: [],
+            link: [],
+            air: []
+        }
+    });
+    $(".nav-tabs a").click(function(){
+        $(this).tab('show');
+    });
+
     if ($('.slick-carousel').length > 0) {
         $('.slick-carousel').each(function() {
             var $this = $(this);
@@ -78,72 +147,7 @@ $(function () {
             });
         });
     }
-    // if ($('.slick-slider').length > 0) {
-    //     $('.slick-slider').each(function() {
-    //         var $this = $(this);
-    //         $this.slick({
-    //             slidesToShow: 1,
-    //             dots: true,
-    //             prevArrow: '<button type="button" class="slick-prev"><span class="prev-icon"></span></button>',
-    //             nextArrow: '<button type="button" class="slick-next"><span class="next-icon"></span></button>',
-    //         });
-    //     });
-    // }
 
-
-    /*
-        Smooth scroll functionality for anchor links (animates the scroll
-        rather than a sudden jump in the page)
-    */
-    $('.all-category-menu a').bind('click', function(e) {
-        e.preventDefault(); // prevent hard jump, the default behavior
-
-        var target = $(this).attr("href"); // Set the target as variable
-
-        $('html, body').stop().animate({
-                scrollTop: $(target).offset().top - 120
-        }, 600, function() {
-                // location.hash = target; //attach the hash (#jumptarget) to the pageurl
-        });
-
-        return false;
-    });
-    
-
-
-});
-// Bootstrap selected
-$('.sortSelect').each(function(index, element) {
-    $('.sortSelect').select2({
-        theme: "default sortSelectCustom"
-    });
-});
-function morebrands(em){
-    if($(em).hasClass('on')){
-        $(em).removeClass('on');
-        $('#brands-collapse-box').removeClass('full');
-        $(em).children('i').addClass('fa-plus').removeClass('fa-minus');
-        $(em).children('span').html('More');
-    }else {
-        $(em).addClass('on');
-        $('#brands-collapse-box').addClass('full');
-        $(em).children('i').removeClass('fa-plus').addClass('fa-minus');
-        $(em).children('span').html('Less');
-    }
-}
-$(document).ready(function() {
-    $('.tagsInput').tagsinput('items');
-    $('.summernote').summernote({
-        height: 300,
-        popover: {
-            image: [],
-            link: [],
-            air: []
-        }
-    });
-    $(".nav-tabs a").click(function(){
-        $(this).tab('show');
-    });
 });
 
 $(window).scroll(function() {

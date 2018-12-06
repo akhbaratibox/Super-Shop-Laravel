@@ -1295,7 +1295,7 @@ section.home-banner-area {
     font-weight: 600;
     margin-top: 12px;
 }
-/* 
+/*
 .btn-styled {
     font-weight: 600;
     letter-spacing: 0;
@@ -2283,7 +2283,7 @@ ul.seller-brand-list .brand-item {
     left: 0;
     bottom: 0;
 }
-.product-box-2 .product-btns .btn{
+.product-box-2.alt-box .product-btns .btn{
     width: 33.333%;
     float: left;
     height: 32px;
@@ -2546,5 +2546,3 @@ ul.seller-brand-list .brand-item {
 .typed-search-box .search-product .price-box {
     margin-left: 20px;
 }
-
-  

@@ -87,6 +87,9 @@ class OrderController extends Controller
                 $order_detail->price = $cartItem['price'];
                 $order_detail->quantity = $cartItem['quantity'];
                 $order_detail->save();
+
+                $product->num_of_sale++;
+                $product->save();
             }
 
             $order->grand_total = $total;

@@ -256,16 +256,7 @@
             </div>
             <div class="caorusel-box">
                 <div class="slick-carousel" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="2" data-slick-xs-items="1" data-slick-dots="true" data-slick-rows="2">
-                    @php
-                        $products = DB::table('products')
-                                            ->leftJoin('order_details', 'products.id', '=', 'order_details.product_id')
-                                            ->select('products.*', DB::raw('COUNT(order_details.product_id) as sells'))
-                                            ->groupBy('products.id')
-                                            ->orderBy('sells', 'desc')
-                                            ->limit(20)
-                                            ->get();
-                    @endphp
-                    @foreach ($products as $key => $product)
+                    @foreach (\App\Product::orderBy('num_of_sale', 'desc')->limit(20)->get() as $key => $product)
                         <div class="p-2">
                             <div class="row no-gutters product-box-2">
                                 <div class="col-4">

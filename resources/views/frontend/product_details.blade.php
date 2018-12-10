@@ -425,7 +425,7 @@
                                             @elseif ($product->video_provider == 'dailymotion')
                                                 <iframe class="embed-responsive-item" src="https://www.dailymotion.com/embed/video/{{ explode('video/', $product->video_link)[1] }}"></iframe>
                                             @elseif ($product->video_provider == 'vimeo')
-                                                <iframe src="https://player.vimeo.com/video/{{ explode('video/', $product->video_link)[1] }}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                                <iframe src="https://player.vimeo.com/video/{{ explode('vimeo.com/', $product->video_link)[1] }}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                                             @endif
                                         </div>
                                     </div>

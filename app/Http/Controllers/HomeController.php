@@ -12,6 +12,7 @@ use App\Product;
 use App\User;
 use App\Shop;
 use App\Http\Controllers\SearchController;
+use ImageOptimizer;
 
 class HomeController extends Controller
 {
@@ -110,6 +111,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // $files = scandir(base_path('public/uploads/categories'));
+        // foreach($files as $file) {
+        //     ImageOptimizer::optimize(base_path('public/uploads/categories/').$file);
+        // }
         return view('frontend.index');
     }
 

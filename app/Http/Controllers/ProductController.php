@@ -8,6 +8,7 @@ use App\Category;
 use Auth;
 use App\SubSubCategory;
 use Session;
+use ImageOptimizer;
 
 class ProductController extends Controller
 {
@@ -54,21 +55,26 @@ class ProductController extends Controller
 
         if($request->hasFile('photos')){
             foreach ($request->photos as $key => $photo) {
-                array_push($photos, $photo->store('uploads/products/photos'));
+                $path = $photo->store('uploads/products/photos');
+                array_push($photos, $path);
+                ImageOptimizer::optimize(base_path('public/').$path);
             }
             $product->photos = json_encode($photos);
         }
 
         if($request->hasFile('thumbnail_img')){
             $product->thumbnail_img = $request->thumbnail_img->store('uploads/products/thumbnail');
+            ImageOptimizer::optimize(base_path('public/').$product->thumbnail_img);
         }
 
         if($request->hasFile('featured_img')){
             $product->featured_img = $request->featured_img->store('uploads/products/featured');
+            ImageOptimizer::optimize(base_path('public/').$product->featured_img);
         }
 
         if($request->hasFile('flash_deal_img')){
             $product->flash_deal_img = $request->flash_deal_img->store('uploads/products/flash_deal');
+            ImageOptimizer::optimize(base_path('public/').$product->flash_deal_img);
         }
 
         $product->unit = $request->unit;
@@ -216,21 +222,26 @@ class ProductController extends Controller
 
         if($request->hasFile('photos')){
             foreach ($request->photos as $key => $photo) {
-                array_push($photos, $photo->store('uploads/products/photos'));
+                $path = $photo->store('uploads/products/photos');
+                array_push($photos, $path);
+                ImageOptimizer::optimize(base_path('public/').$path);
             }
             $product->photos = json_encode($photos);
         }
 
         if($request->hasFile('thumbnail_img')){
             $product->thumbnail_img = $request->thumbnail_img->store('uploads/products/thumbnail');
+            ImageOptimizer::optimize(base_path('public/').$product->thumbnail_img);
         }
 
         if($request->hasFile('featured_img')){
             $product->featured_img = $request->featured_img->store('uploads/products/featured');
+            ImageOptimizer::optimize(base_path('public/').$product->featured_img);
         }
 
         if($request->hasFile('flash_deal_img')){
             $product->flash_deal_img = $request->flash_deal_img->store('uploads/products/flash_deal');
+            ImageOptimizer::optimize(base_path('public/').$product->flash_deal_img);
         }
 
         $product->unit = $request->unit;

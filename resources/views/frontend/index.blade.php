@@ -321,49 +321,51 @@
                 </div>
                 <div class="tab-content">
                     @foreach (json_decode($homeCategory->subsubcategories) as $key => $subsubcategory)
-                        <div class="row tab-pane fade @php if($key == 0) echo 'show active'; @endphp" id="subsubcat-{{ $subsubcategory }}">
-                            @php
-                                $products = \App\Product::where('subsubcategory_id', $subsubcategory)->limit(4)->get();
-                            @endphp
-                            @foreach ($products as $key => $product)
-                                <div class="col-3">
-                                    <div class="product-box-2 bg-white alt-box">
-                                        <div class="position-relative overflow-hidden">
-                                            <a href="" class="d-block product-image h-100" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');" tabindex="0">
-                                            </a>
-                                            <div class="product-btns clearfix">
-                                                <button class="btn add-wishlist" title="Add to Wishlist" onclick="addToWishList({{ $product->id }})" tabindex="0">
-                                                    <i class="ion-ios-heart-outline"></i>
-                                                </button>
-                                                <button class="btn add-compare" title="Add to Compare" onclick="addToCompare({{ $product->id }})" tabindex="0">
-                                                    <i class="ion-ios-browsers-outline"></i>
-                                                </button>
-                                                <button class="btn quick-view" title="Quick view" onclick="showAddToCartModal({{ $product->id }})" tabindex="0">
-                                                    <i class="ion-ios-eye"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="p-3">
-                                            <h2 class="product-title mb-3 p-0">
-                                                <a href="" tabindex="0">{{ $product->name }}</a>
-                                            </h2>
-                                            <div class="clearfix">
-                                                <div class="price-box float-left">
-                                                    @if(home_base_price($product->id) != home_discounted_base_price($product->id))
-                                                        <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
-                                                    @endif
-                                                    <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
-                                                </div>
-                                                <div class="float-right">
-                                                    <button class="add-to-cart btn" title="Add to Cart" onclick="showAddToCartModal({{ $product->id }})" tabindex="0">
-                                                        <i class="icon ion-android-cart"></i>
+                        <div class="tab-pane fade @php if($key == 0) echo 'show active'; @endphp" id="subsubcat-{{ $subsubcategory }}">
+                            <div class="row">
+                                @php
+                                    $products = \App\Product::where('subsubcategory_id', $subsubcategory)->limit(4)->get();
+                                @endphp
+                                @foreach ($products as $key => $product)
+                                    <div class="col-lg-3">
+                                        <div class="product-box-2 bg-white alt-box">
+                                            <div class="position-relative overflow-hidden">
+                                                <a href="" class="d-block product-image h-100" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');" tabindex="0">
+                                                </a>
+                                                <div class="product-btns clearfix">
+                                                    <button class="btn add-wishlist" title="Add to Wishlist" onclick="addToWishList({{ $product->id }})" tabindex="0">
+                                                        <i class="ion-ios-heart-outline"></i>
                                                     </button>
+                                                    <button class="btn add-compare" title="Add to Compare" onclick="addToCompare({{ $product->id }})" tabindex="0">
+                                                        <i class="ion-ios-browsers-outline"></i>
+                                                    </button>
+                                                    <button class="btn quick-view" title="Quick view" onclick="showAddToCartModal({{ $product->id }})" tabindex="0">
+                                                        <i class="ion-ios-eye"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="p-3">
+                                                <h2 class="product-title mb-3 p-0">
+                                                    <a href="" tabindex="0">{{ $product->name }}</a>
+                                                </h2>
+                                                <div class="clearfix">
+                                                    <div class="price-box float-left">
+                                                        @if(home_base_price($product->id) != home_discounted_base_price($product->id))
+                                                            <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
+                                                        @endif
+                                                        <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                                                    </div>
+                                                    <div class="float-right">
+                                                        <button class="add-to-cart btn" title="Add to Cart" onclick="showAddToCartModal({{ $product->id }})" tabindex="0">
+                                                            <i class="icon ion-android-cart"></i>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            </div>
                         </div>
                     @endforeach
                 </div>

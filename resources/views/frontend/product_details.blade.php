@@ -413,7 +413,6 @@
                                         </div>
                                         <span class="space-md-md"></span>
                                     </div>
-
                                 </div>
 
                                 <div class="tab-pane" id="tab_default_2">

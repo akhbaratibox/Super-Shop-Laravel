@@ -383,70 +383,26 @@
                         </h3>
                     </div>
                     <div class="pt-3">
-                        <div class="mb-4 product-box-3">
-                            <div class="clearfix">
-                                <div class="product-image float-left">
-                                    <a href="" style="background-image:url('http://localhost/shop/public/uploads/jckV7yL9FWHi3kV33RdMNlfOcpibmwWMqNsQck0N.jpeg');"></a>
-                                </div>
-                                <div class="product-details float-left">
-                                    <h4 class="title text-truncate-2">
-                                        <a href="" class="d-block">Apple iMac 4K Retina 21.5 Inch (2017) Quads Core Intel Core i5 (3.4-3.8GHz, 8GB 2400MHz DDR4 Onboard</a>
-                                    </h4>
-                                    <div class="price-box">
-                                        <del class="old-product-price strong-400">16000$</del>
-                                        <span class="product-price strong-600">15500$</span>
+                        @foreach (\App\Product::orderBy('num_of_sale', 'desc')->limit(4)->get() as $key => $product)
+                            <div class="mb-4 product-box-3">
+                                <div class="clearfix">
+                                    <div class="product-image float-left">
+                                        <a href="{{ route('product', $product->slug) }}" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');"></a>
+                                    </div>
+                                    <div class="product-details float-left">
+                                        <h4 class="title text-truncate-2">
+                                            <a href="" class="d-block">{{ $product->name }}</a>
+                                        </h4>
+                                        <div class="price-box">
+                                            @if(home_base_price($product->id) != home_discounted_base_price($product->id))
+                                                <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
+                                            @endif
+                                            <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mb-4 product-box-3">
-                            <div class="clearfix">
-                                <div class="product-image float-left">
-                                    <a href="" style="background-image:url('http://localhost/shop/public/uploads/jckV7yL9FWHi3kV33RdMNlfOcpibmwWMqNsQck0N.jpeg');"></a>
-                                </div>
-                                <div class="product-details float-left">
-                                    <h4 class="title text-truncate-2">
-                                        <a href="" class="d-block">Apple iMac 4K Retina 21.5 Inch (2017) Quads Core Intel Core i5 (3.4-3.8GHz, 8GB 2400MHz DDR4 Onboard</a>
-                                    </h4>
-                                    <div class="price-box">
-                                        <del class="old-product-price strong-400">16000$</del>
-                                        <span class="product-price strong-600">15500$</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-4 product-box-3">
-                            <div class="clearfix">
-                                <div class="product-image float-left">
-                                    <a href="" style="background-image:url('http://localhost/shop/public/uploads/jckV7yL9FWHi3kV33RdMNlfOcpibmwWMqNsQck0N.jpeg');"></a>
-                                </div>
-                                <div class="product-details float-left">
-                                    <h4 class="title text-truncate-2">
-                                        <a href="" class="d-block">Apple iMac 4K Retina 21.5 Inch (2017) Quads Core Intel Core i5 (3.4-3.8GHz, 8GB 2400MHz DDR4 Onboard</a>
-                                    </h4>
-                                    <div class="price-box">
-                                        <del class="old-product-price strong-400">16000$</del>
-                                        <span class="product-price strong-600">15500$</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-4 product-box-3">
-                            <div class="clearfix">
-                                <div class="product-image float-left">
-                                    <a href="" style="background-image:url('http://localhost/shop/public/uploads/jckV7yL9FWHi3kV33RdMNlfOcpibmwWMqNsQck0N.jpeg');"></a>
-                                </div>
-                                <div class="product-details float-left">
-                                    <h4 class="title text-truncate-2">
-                                        <a href="" class="d-block">Apple iMac 4K Retina 21.5 Inch (2017) Quads Core Intel Core i5 (3.4-3.8GHz, 8GB 2400MHz DDR4 Onboard</a>
-                                    </h4>
-                                    <div class="price-box">
-                                        <del class="old-product-price strong-400">16000$</del>
-                                        <span class="product-price strong-600">15500$</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -456,143 +412,55 @@
                         </h3>
                     </div>
                     <div class="pt-3">
-                        <div class="mb-4 product-box-3">
-                            <div class="clearfix">
-                                <div class="product-image float-left">
-                                    <a href="" style="background-image:url('http://localhost/shop/public/uploads/jckV7yL9FWHi3kV33RdMNlfOcpibmwWMqNsQck0N.jpeg');"></a>
-                                </div>
-                                <div class="product-details float-left">
-                                    <h4 class="title text-truncate-2">
-                                        <a href="" class="d-block">Apple iMac 4K Retina 21.5 Inch (2017) Quads Core Intel Core i5 (3.4-3.8GHz, 8GB 2400MHz DDR4 Onboard</a>
-                                    </h4>
-                                    <div class="price-box">
-                                        <del class="old-product-price strong-400">16000$</del>
-                                        <span class="product-price strong-600">15500$</span>
+                        @foreach (\App\Product::where('featured', '1')->limit(4)->get() as $key => $product)
+                            <div class="mb-4 product-box-3">
+                                <div class="clearfix">
+                                    <div class="product-image float-left">
+                                        <a href="{{ route('product', $product->slug) }}" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');"></a>
+                                    </div>
+                                    <div class="product-details float-left">
+                                        <h4 class="title text-truncate-2">
+                                            <a href="" class="d-block">{{ $product->name }}</a>
+                                        </h4>
+                                        <div class="price-box">
+                                            @if(home_base_price($product->id) != home_discounted_base_price($product->id))
+                                                <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
+                                            @endif
+                                            <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mb-4 product-box-3">
-                            <div class="clearfix">
-                                <div class="product-image float-left">
-                                    <a href="" style="background-image:url('http://localhost/shop/public/uploads/jckV7yL9FWHi3kV33RdMNlfOcpibmwWMqNsQck0N.jpeg');"></a>
-                                </div>
-                                <div class="product-details float-left">
-                                    <h4 class="title text-truncate-2">
-                                        <a href="" class="d-block">Apple iMac 4K Retina 21.5 Inch (2017) Quads Core Intel Core i5 (3.4-3.8GHz, 8GB 2400MHz DDR4 Onboard</a>
-                                    </h4>
-                                    <div class="price-box">
-                                        <del class="old-product-price strong-400">16000$</del>
-                                        <span class="product-price strong-600">15500$</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-4 product-box-3">
-                            <div class="clearfix">
-                                <div class="product-image float-left">
-                                    <a href="" style="background-image:url('http://localhost/shop/public/uploads/jckV7yL9FWHi3kV33RdMNlfOcpibmwWMqNsQck0N.jpeg');"></a>
-                                </div>
-                                <div class="product-details float-left">
-                                    <h4 class="title text-truncate-2">
-                                        <a href="" class="d-block">Apple iMac 4K Retina 21.5 Inch (2017) Quads Core Intel Core i5 (3.4-3.8GHz, 8GB 2400MHz DDR4 Onboard</a>
-                                    </h4>
-                                    <div class="price-box">
-                                        <del class="old-product-price strong-400">16000$</del>
-                                        <span class="product-price strong-600">15500$</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-4 product-box-3">
-                            <div class="clearfix">
-                                <div class="product-image float-left">
-                                    <a href="" style="background-image:url('http://localhost/shop/public/uploads/jckV7yL9FWHi3kV33RdMNlfOcpibmwWMqNsQck0N.jpeg');"></a>
-                                </div>
-                                <div class="product-details float-left">
-                                    <h4 class="title text-truncate-2">
-                                        <a href="" class="d-block">Apple iMac 4K Retina 21.5 Inch (2017) Quads Core Intel Core i5 (3.4-3.8GHz, 8GB 2400MHz DDR4 Onboard</a>
-                                    </h4>
-                                    <div class="price-box">
-                                        <del class="old-product-price strong-400">16000$</del>
-                                        <span class="product-price strong-600">15500$</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="section-title-1 clearfix">
                         <h3 class="heading-5 strong-700 mb-0 float-left">
-                            <span class="mr-4">On-sale Products</span>
+                            <span class="mr-4">Today's Deal</span>
                         </h3>
                     </div>
                     <div class="pt-3">
-                        <div class="mb-4 product-box-3">
-                            <div class="clearfix">
-                                <div class="product-image float-left">
-                                    <a href="" style="background-image:url('http://localhost/shop/public/uploads/jckV7yL9FWHi3kV33RdMNlfOcpibmwWMqNsQck0N.jpeg');"></a>
-                                </div>
-                                <div class="product-details float-left">
-                                    <h4 class="title text-truncate-2">
-                                        <a href="" class="d-block">Apple iMac 4K Retina 21.5 Inch (2017) Quads Core Intel Core i5 (3.4-3.8GHz, 8GB 2400MHz DDR4 Onboard</a>
-                                    </h4>
-                                    <div class="price-box">
-                                        <del class="old-product-price strong-400">16000$</del>
-                                        <span class="product-price strong-600">15500$</span>
+                        @foreach (\App\Product::where('todays_deal', '1')->limit(4)->get() as $key => $product)
+                            <div class="mb-4 product-box-3">
+                                <div class="clearfix">
+                                    <div class="product-image float-left">
+                                        <a href="{{ route('product', $product->slug) }}" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');"></a>
+                                    </div>
+                                    <div class="product-details float-left">
+                                        <h4 class="title text-truncate-2">
+                                            <a href="" class="d-block">{{ $product->name }}</a>
+                                        </h4>
+                                        <div class="price-box">
+                                            @if(home_base_price($product->id) != home_discounted_base_price($product->id))
+                                                <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
+                                            @endif
+                                            <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mb-4 product-box-3">
-                            <div class="clearfix">
-                                <div class="product-image float-left">
-                                    <a href="" style="background-image:url('http://localhost/shop/public/uploads/jckV7yL9FWHi3kV33RdMNlfOcpibmwWMqNsQck0N.jpeg');"></a>
-                                </div>
-                                <div class="product-details float-left">
-                                    <h4 class="title text-truncate-2">
-                                        <a href="" class="d-block">Apple iMac 4K Retina 21.5 Inch (2017) Quads Core Intel Core i5 (3.4-3.8GHz, 8GB 2400MHz DDR4 Onboard</a>
-                                    </h4>
-                                    <div class="price-box">
-                                        <del class="old-product-price strong-400">16000$</del>
-                                        <span class="product-price strong-600">15500$</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-4 product-box-3">
-                            <div class="clearfix">
-                                <div class="product-image float-left">
-                                    <a href="" style="background-image:url('http://localhost/shop/public/uploads/jckV7yL9FWHi3kV33RdMNlfOcpibmwWMqNsQck0N.jpeg');"></a>
-                                </div>
-                                <div class="product-details float-left">
-                                    <h4 class="title text-truncate-2">
-                                        <a href="" class="d-block">Apple iMac 4K Retina 21.5 Inch (2017) Quads Core Intel Core i5 (3.4-3.8GHz, 8GB 2400MHz DDR4 Onboard</a>
-                                    </h4>
-                                    <div class="price-box">
-                                        <del class="old-product-price strong-400">16000$</del>
-                                        <span class="product-price strong-600">15500$</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-4 product-box-3">
-                            <div class="clearfix">
-                                <div class="product-image float-left">
-                                    <a href="" style="background-image:url('http://localhost/shop/public/uploads/jckV7yL9FWHi3kV33RdMNlfOcpibmwWMqNsQck0N.jpeg');"></a>
-                                </div>
-                                <div class="product-details float-left">
-                                    <h4 class="title text-truncate-2">
-                                        <a href="" class="d-block">Apple iMac 4K Retina 21.5 Inch (2017) Quads Core Intel Core i5 (3.4-3.8GHz, 8GB 2400MHz DDR4 Onboard</a>
-                                    </h4>
-                                    <div class="price-box">
-                                        <del class="old-product-price strong-400">16000$</del>
-                                        <span class="product-price strong-600">15500$</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

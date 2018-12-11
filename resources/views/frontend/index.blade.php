@@ -228,7 +228,7 @@
                                             @endif
                                             <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
                                         </div>
-                                        <h2 class="product-title p-0 mt-2">
+                                        <h2 class="product-title p-0 mt-2 text-truncate-2">
                                             <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
                                         </h2>
                                     </div>
@@ -278,7 +278,7 @@
                                 </div>
                                 <div class="col-8">
                                     <div class="p-3">
-                                        <h2 class="product-title mb-3 p-0">
+                                        <h2 class="product-title mb-3 p-0 text-truncate-2">
                                             <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
                                         </h2>
                                         <div class="clearfix">

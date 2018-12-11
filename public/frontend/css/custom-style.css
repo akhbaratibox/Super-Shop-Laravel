@@ -536,7 +536,7 @@ select + .select2-container{
     width: 150px;
     height: 2px;
     background: #eb5836;
-    bottom: 0;
+    bottom: -1px;
     left: 0;
 }
 .section-title-1 li a {
@@ -2296,15 +2296,27 @@ ul.seller-brand-list .brand-item {
     float: left;
     height: 32px;
 }
+.product-box-3{
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    background: #fff;
+}
+.product-box-3:hover {
+    box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    -ms-webkit-transform: translateY(-5px);
+}
 .product-box-3 .product-image {
-    width: 80px;
-    min-width: 80px;
-    max-width: 80px;
+    width: 90px;
+    min-width: 90px;
+    max-width: 90px;
 }
 .product-box-3 .product-details {
-    width: calc(100% - 80px);
-    min-width: calc(100% - 80px);
-    max-width: calc(100% - 80px);
+    width: calc(100% - 90px);
+    min-width: calc(100% - 90px);
+    max-width: calc(100% - 90px);
+    padding: 10px;
 }
 
 .product-box-3 .product-image a {
@@ -2586,4 +2598,82 @@ ul.seller-brand-list .brand-item {
 
 .typed-search-box .search-product .price-box {
     margin-left: 20px;
+}
+
+
+
+.process-steps {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.process-steps li {
+    width: 25%;
+    float: left;
+    text-align: center;
+    position: relative;
+}
+
+.process-steps li .title {
+    font-weight: 600;
+    font-size: 13px;
+    color: #777;
+    margin-top: 8px;
+}
+
+.process-steps li .icon {
+    height: 30px;
+    width: 30px;
+    margin: auto;
+    background: #fff;
+    border-radius: 50%;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #adadad;
+    position: relative;
+}
+
+.process-steps li+li:after {
+    position: absolute;
+    content: "";
+    height: 3px;
+    width: calc(100% - 30px);
+    background: #fff;
+    top: 14px;
+    z-index: 0;
+    right: calc(50% + 15px);
+}
+
+.process-steps li.done .title,
+.process-steps li.active .title{
+    color: #e62e04;
+}
+.process-steps li.done .icon{
+    color: transparent;
+    background: #e62e04;
+}
+.process-steps li.done:after,
+.process-steps li.active:after,
+.process-steps li.active .icon{
+    color: #fff;
+    background: #e62e04;
+}
+.process-steps li.done .icon:before{
+    position: absolute;
+    content: "";
+    left: 11px;
+    top: 7px;
+    width: 8px;
+    height: 14px;
+    border: solid #fff;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.details-table tr td{
+    color: #333;
+    padding: 5px;
 }

@@ -347,22 +347,22 @@
                             Top Selling Products From This Seller
                         </div>
                         <div class="box-content">
-                            @foreach (\App\Product::where('user_id', $product->user_id)->orderBy('num_of_sale', 'desc')->limit(4)->get() as $key => $product)
+                            @foreach (\App\Product::where('user_id', $product->user_id)->orderBy('num_of_sale', 'desc')->limit(4)->get() as $key => $top_product)
                                 <div class="product-box-1 mb-3">
                                 <div class="block product">
                                     <div class="block-image">
                                         <div class="view view-first">
-                                            <a href="{{ route('product', $product->slug) }}">
-                                                <img src="{{ asset(json_decode($product->photos)[0]) }}" class="img-fluid img-center img-primary">
+                                            <a href="{{ route('product', $top_product->slug) }}">
+                                                <img src="{{ asset(json_decode($top_product->photos)[0]) }}" class="img-fluid img-center img-primary">
                                             </a>
                                         </div>
                                     </div>
                                     <div class="text-center pb-2">
                                         <h2 class="heading heading-6 product-title text-normal strong-500 text-truncate-2">
-                                            <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
+                                            <a href="{{ route('product', $top_product->slug) }}">{{ $top_product->name }}</a>
                                         </h2>
                                         <div class="price-wrapper">
-                                            <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span></span>
+                                            <span class="product-price strong-600">{{ home_discounted_base_price($top_product->id) }}</span></span>
                                         </div>
                                     </div>
                                 </div>

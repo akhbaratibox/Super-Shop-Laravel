@@ -341,7 +341,7 @@
                                                 </div>
                                             </div>
                                             <div class="p-3">
-                                                <h2 class="product-title mb-3 p-0">
+                                                <h2 class="product-title mb-3 p-0 text-truncate-2">
                                                     <a href="" tabindex="0">{{ $product->name }}</a>
                                                 </h2>
                                                 <div class="clearfix">

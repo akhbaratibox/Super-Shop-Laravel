@@ -239,7 +239,7 @@
                                                 @endif
                                             </figure>
                                             <div class="product-details text-center">
-                                                <h2 class="product-title">
+                                                <h2 class="product-title text-truncate-2">
                                                     <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
                                                 </h2>
                                                 <div class="price-box">

@@ -58,7 +58,7 @@
 
                                     <div class="row align-items-center">
                                         <div class="col-md-6">
-                                            <a href="#" class="link link-xs link--style-3">Forgot password?</a>
+                                            <a href="{{ route('password.request') }}" class="link link-xs link--style-3">Forgot password?</a>
                                         </div>
                                         <div class="col-md-6 text-right">
                                             <button type="submit" class="btn btn-styled btn-base-1 px-4">{{ __('web.login') }}</button>

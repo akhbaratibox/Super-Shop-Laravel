@@ -24,7 +24,7 @@
             </div>
         </form>
         <div class="pad-top">
-            <a href="{{route('login')}}" class="btn-link text-bold text-main">Back to Login</a>
+            <a href="{{route('user.login')}}" class="btn-link text-bold text-main">Back to Login</a>
         </div>
     </div>
 </div>

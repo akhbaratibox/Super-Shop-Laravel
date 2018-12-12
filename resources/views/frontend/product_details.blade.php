@@ -100,7 +100,7 @@
 
                                 <div class="row no-gutters mt-3">
                                     <div class="col-2">
-                                        <div class="product-description-label">Discount Price:</div>
+                                        <div class="product-description-label mt-1">Discount Price:</div>
                                     </div>
                                     <div class="col-10">
                                         <div class="product-price">
@@ -132,7 +132,7 @@
 
                             <div class="row no-gutters">
                                 <div class="col-2">
-                                    <div class="product-description-label">{{ $choice->title }}:</div>
+                                    <div class="product-description-label mt-2 ">{{ $choice->title }}:</div>
                                 </div>
                                 <div class="col-10">
                                     <ul class="list-inline checkbox-alphanumeric checkbox-alphanumeric--style-1 mb-2">
@@ -150,7 +150,7 @@
 
                             <div class="row no-gutters">
                                 <div class="col-2">
-                                    <div class="product-description-label">Color:</div>
+                                    <div class="product-description-label mt-2">Color:</div>
                                 </div>
                                 <div class="col-10">
                                     <ul class="list-inline checkbox-color mb-1">
@@ -169,7 +169,7 @@
                             <!-- Quantity + Add to cart -->
                             <div class="row no-gutters pb-3">
                                 <div class="col-2">
-                                    <div class="product-description-label">Quantity:</div>
+                                    <div class="product-description-label mt-2">Quantity:</div>
                                 </div>
                                 <div class="col-10">
                                     <div class="product-quantity d-flex align-items-center">
@@ -211,7 +211,7 @@
                             </div>
                             <div class="row no-gutters mt-4">
                                 <div class="col-2">
-                                    <div class="product-description-label">Share:</div>
+                                    <div class="product-description-label mt-2">Share:</div>
                                 </div>
                                 <div class="col-10">
                                     <ul class="social-media social-media--style-1-v4">

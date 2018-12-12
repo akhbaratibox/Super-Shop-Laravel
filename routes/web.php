@@ -11,7 +11,7 @@
 |
 */
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::post('/language', 'languageController@changeLanguage')->name('language.change');
 Route::get('/social-login/redirect/{provider}', 'Auth\LoginController@redirectToProvider')->name('social.login');
@@ -63,7 +63,7 @@ Route::get('/search', 'HomeController@search')->name('search');
 Route::get('/search?q={search}', 'HomeController@search')->name('suggestion.search');
 Route::post('/search', 'HomeController@ajax_search')->name('search.ajax');
 
-Route::group(['middleware' => ['user']], function(){
+Route::group(['middleware' => ['user', 'verified']], function(){
 	Route::resource('wishlists','WishlistController');
 	Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
 	Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
@@ -77,7 +77,7 @@ Route::group(['middleware' => ['user']], function(){
 	Route::get('/orders/destroy/{id}', 'OrderController@destroy')->name('orders.destroy');
 });
 
-Route::group(['prefix' =>'seller', 'middleware' => ['seller']], function(){
+Route::group(['prefix' =>'seller', 'middleware' => ['seller', 'verified']], function(){
 	Route::get('/products', 'HomeController@seller_product_list')->name('seller.products');
 	Route::get('/product/upload', 'HomeController@show_product_upload_form')->name('seller.products.upload');
 	Route::get('/product/{id}/edit', 'HomeController@show_product_edit_form')->name('seller.products.edit');

@@ -30,8 +30,8 @@ class OrderController extends Controller
      */
     public function admin_orders(Request $request)
     {
-        $orderDetails = OrderDetail::where('seller_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
-        return view('orders.index', compact('orderDetails'));
+        $orders = Order::orderBy('created_at', 'desc')->get();
+        return view('orders.index', compact('orders'));
     }
 
     /**

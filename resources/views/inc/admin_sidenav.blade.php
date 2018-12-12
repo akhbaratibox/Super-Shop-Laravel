@@ -228,6 +228,9 @@
                                 <li class="{{ areActiveRoutes(['sliders.index'])}}">
                                     <a class="nav-link" href="{{route('sliders.index')}}">{{__('web.home_slider')}}</a>
                                 </li>
+                                <li class="{{ areActiveRoutes(['home_banners.index'])}}">
+                                    <a class="nav-link" href="{{route('home_banners.index')}}">{{__('web.home_banner')}}</a>
+                                </li>
                                 <li class="{{ areActiveRoutes(['home_categories.index', 'home_categories.create', 'home_categories.edit'])}}">
                                     <a class="nav-link" href="{{route('home_categories.index')}}">{{__('web.home_categories')}}</a>
                                 </li>

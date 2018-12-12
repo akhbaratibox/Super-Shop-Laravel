@@ -22,8 +22,8 @@
                 <tr>
                     <th>#</th>
                     <th>Order Code</th>
-                    <th>Product</th>
-                    <th>Quantity</th>
+                    <th>Num. of Products</th>
+                    <th>Customer</th>
                     <th>Amount</th>
                     <th>Delivery Status</th>
                     <th>Payment Status</th>
@@ -31,39 +31,57 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($orderDetails as $key => $orderDetail)
+                @foreach ($orders as $key => $order)
                     <tr>
                         <td>
                             {{ $key+1 }}
                         </td>
                         <td>
-                            {{ $orderDetail->order->code }}
+                            {{ $order->code }}
                         </td>
                         <td>
-                            {{ $orderDetail->product->name }}   ({{ $orderDetail->variation }})
+                            {{ count($order->orderDetails) }}
                         </td>
                         <td>
-                            {{ $orderDetail->quantity }}
+                            @if ($order->user_id != null)
+                                {{ $order->user->name }}
+                            @else
+                                Guest ({{ $order->guest_id }})
+                            @endif
                         </td>
                         <td>
-                            {{ single_price($orderDetail->price) }}
+                            {{ single_price($order->grand_total) }}
                         </td>
                         <td>
                             @php
-                                if($orderDetail->delivery_status == 'pending'){
-                                    $status = 'Pending';
+                                $status = 'Delivered';
+                                foreach ($order->orderDetails as $key => $orderDetail) {
+                                    if($orderDetail->delivery_status != 'Delivered'){
+                                        $status = 'Pending';
+                                    }
                                 }
                             @endphp
                             {{ $status }}
                         </td>
                         <td>
                             <span class="badge badge--2 mr-4">
-                                @if ($orderDetail->order->payment_status == 'paid')
+                                @if ($order->payment_status == 'paid')
                                     <i class="bg-green"></i> Paid
                                 @else
                                     <i class="bg-red"></i> Unpaid
                                 @endif
                             </span>
+                        </td>
+                        <td>
+                            <div class="btn-group dropdown">
+                                <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
+                                    Actions <i class="dropdown-caret"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="{{route('orders.show', $order->id)}}">View</a></li>
+                                    <li><a onclick="confirm_modal('{{route('orders.destroy', $order->id)}}');">Delete</a></li>
+                                </ul>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

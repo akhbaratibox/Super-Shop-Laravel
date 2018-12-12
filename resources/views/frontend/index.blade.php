@@ -176,21 +176,13 @@
     <section class="py-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="media-banner">
-                        <a href="" class="banner-container" style="background-image:url('http://via.placeholder.com/850x420');"></a>
+                @foreach (\App\Banner::where('published', 1)->get() as $key => $banner)
+                    <div class="col-md-4">
+                        <div class="media-banner">
+                            <a href="" class="banner-container" style="background-image:url('{{ asset($banner->photo) }}');"></a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="media-banner">
-                        <a href="" class="banner-container" style="background-image:url('http://via.placeholder.com/850x420');"></a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="media-banner">
-                        <a href="" class="banner-container" style="background-image:url('http://via.placeholder.com/850x420');"></a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

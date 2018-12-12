@@ -14,7 +14,7 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $sliders = Slider::where('published', 1)->get();
+        $sliders = Slider::all();
         return view('sliders.index', compact('sliders'));
     }
 

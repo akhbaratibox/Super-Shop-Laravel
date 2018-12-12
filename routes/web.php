@@ -141,6 +141,9 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::resource('sliders','SliderController');
     Route::get('/sliders/destroy/{id}', 'SliderController@destroy')->name('sliders.destroy');
 
+	Route::resource('home_banners','BannerController');
+    Route::get('/home_banners/destroy/{id}', 'BannerController@destroy')->name('home_banners.destroy');
+
 	Route::resource('home_categories','HomeCategoryController');
     Route::get('/home_categories/destroy/{id}', 'HomeCategoryController@destroy')->name('home_categories.destroy');
 	Route::post('/home_categories/update_status', 'HomeCategoryController@update_status')->name('home_categories.update_status');

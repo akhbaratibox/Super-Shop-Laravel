@@ -145,22 +145,24 @@
                                     @php
                                         $product = \App\Product::find($flash_deal_product->product_id);
                                     @endphp
-                                    <a href="{{ route('product', $product->slug) }}" class="d-block flash-deal-item">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col">
-                                                <div class="img" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}')">
+                                    @if ($product != null)
+                                        <a href="{{ route('product', $product->slug) }}" class="d-block flash-deal-item">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col">
+                                                    <div class="img" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}')">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="price">
+                                                        <span class="d-block">{{ home_discounted_base_price($product->id) }}</span>
+                                                        @if(home_base_price($product->id) != home_discounted_base_price($product->id))
+                                                            <del class="d-block">{{ home_base_price($product->id) }}</del>
+                                                        @endif
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col">
-                                                <div class="price">
-                                                    <span class="d-block">{{ home_discounted_base_price($product->id) }}</span>
-                                                    @if(home_base_price($product->id) != home_discounted_base_price($product->id))
-                                                        <del class="d-block">{{ home_base_price($product->id) }}</del>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
+                                        </a>
+                                    @endif
                                 @endforeach
                             </div>
                         </div>
@@ -205,27 +207,29 @@
                             @php
                                 $product = \App\Product::find($flash_deal_product->product_id);
                             @endphp
-                            <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
-                                <div class="card-body p-0">
+                            @if ($product != null)
+                                <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                                    <div class="card-body p-0">
 
-                                    <div class="card-image">
-                                        <a href="{{ route('product', $product->slug) }}" class="d-block" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');">
-                                        </a>
-                                    </div>
-
-                                    <div class="p-3">
-                                        <div class="price-box">
-                                            @if(home_base_price($product->id) != home_discounted_base_price($product->id))
-                                                <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
-                                            @endif
-                                            <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                                        <div class="card-image">
+                                            <a href="{{ route('product', $product->slug) }}" class="d-block" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');">
+                                            </a>
                                         </div>
-                                        <h2 class="product-title p-0 mt-2 text-truncate-2">
-                                            <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
-                                        </h2>
+
+                                        <div class="p-3">
+                                            <div class="price-box">
+                                                @if(home_base_price($product->id) != home_discounted_base_price($product->id))
+                                                    <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
+                                                @endif
+                                                <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                                            </div>
+                                            <h2 class="product-title p-0 mt-2 text-truncate-2">
+                                                <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
+                                            </h2>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
                         @endforeach
                     </div>
                 </div>
@@ -383,7 +387,7 @@
                                     </div>
                                     <div class="product-details float-left">
                                         <h4 class="title text-truncate-2">
-                                            <a href="" class="d-block">{{ $product->name }}</a>
+                                            <a href="{{ route('product', $product->slug) }}" class="d-block">{{ $product->name }}</a>
                                         </h4>
                                         <div class="price-box">
                                             @if(home_base_price($product->id) != home_discounted_base_price($product->id))

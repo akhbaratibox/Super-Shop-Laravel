@@ -31,7 +31,7 @@
                             </div>
                         </div>
 
-                        @if (count($orderDetails) > 0)
+                        @if (count($orders) > 0)
                             <!-- Order history table -->
                             <div class="card no-border mt-4">
                                 <div>
@@ -40,8 +40,8 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Order Code</th>
-                                                <th>Product</th>
-                                                <th>Quantity</th>
+                                                <th>Num. of Products</th>
+                                                <th>Customer</th>
                                                 <th>Amount</th>
                                                 <th>Delivery Status</th>
                                                 <th>Payment Status</th>
@@ -49,53 +49,65 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($orderDetails as $key => $orderDetail)
-                                                <tr>
-                                                    <td>
-                                                        {{ $key+1 }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $orderDetail->order->code }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $orderDetail->product->name }}   ({{ $orderDetail->variation }})
-                                                    </td>
-                                                    <td>
-                                                        {{ $orderDetail->quantity }}
-                                                    </td>
-                                                    <td>
-                                                        {{ single_price($orderDetail->price) }}
-                                                    </td>
-                                                    <td>
-                                                        @php
-                                                            if($orderDetail->delivery_status == 'pending'){
-                                                                $status = 'Pending';
-                                                            }
-                                                        @endphp
-                                                        {{ $status }}
-                                                    </td>
-                                                    <td>
-                                                        <span class="badge badge--2 mr-4">
-                                                            @if ($orderDetail->order->payment_status == 'paid')
-                                                                <i class="bg-green"></i> Paid
+                                            @foreach ($orders as $key => $order_id)
+                                                @php
+                                                    $order = \App\Order::find($order_id->id);
+                                                @endphp
+                                                @if($order != null)
+                                                    <tr>
+                                                        <td>
+                                                            {{ $key+1 }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $order->code }}
+                                                        </td>
+                                                        <td>
+                                                            {{ count($order->orderDetails->where('seller_id', Auth::user()->id)) }}
+                                                        </td>
+                                                        <td>
+                                                            @if ($order->user_id != null)
+                                                                {{ $order->user->name }}
                                                             @else
-                                                                <i class="bg-red"></i> Unpaid
+                                                                Guest ({{ $order->guest_id }})
                                                             @endif
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="dropdown">
-                                                            <button class="btn" type="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                <i class="fa fa-ellipsis-v"></i>
-                                                            </button>
+                                                        </td>
+                                                        <td>
+                                                            {{ single_price($order->orderDetails->where('seller_id', Auth::user()->id)->sum('price')) }}
+                                                        </td>
+                                                        <td>
+                                                            @php
+                                                                $status = 'Delivered';
+                                                                foreach ($order->orderDetails as $key => $orderDetail) {
+                                                                    if($orderDetail->delivery_status != 'Delivered'){
+                                                                        $status = 'Pending';
+                                                                    }
+                                                                }
+                                                            @endphp
+                                                            {{ $status }}
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge badge--2 mr-4">
+                                                                @if ($order->payment_status == 'paid')
+                                                                    <i class="bg-green"></i> Paid
+                                                                @else
+                                                                    <i class="bg-red"></i> Unpaid
+                                                                @endif
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="dropdown">
+                                                                <button class="btn" type="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="fa fa-ellipsis-v"></i>
+                                                                </button>
 
-                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="">
-                                                                <button onclick="show_order_details()" class="dropdown-item">Order Details</button>
-                                                                <button onclick="" class="dropdown-item">Cancel Order</button>
+                                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="">
+                                                                    <button onclick="show_order_details()" class="dropdown-item">Order Details</button>
+                                                                    {{-- <button onclick="" class="dropdown-item">Cancel Order</button> --}}
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                        </td>
+                                                    </tr>
+                                                @endif
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -105,7 +117,7 @@
 
                         <div class="pagination-wrapper py-4">
                             <ul class="pagination justify-content-end">
-                                {{ $orderDetails->links() }}
+                                {{ $orders->links() }}
                             </ul>
                         </div>
                     </div>

@@ -2332,6 +2332,7 @@ ul.seller-brand-list .brand-item {
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 12px;
+    min-height: 40px;
 }
 
 .product-box-3 .title a {

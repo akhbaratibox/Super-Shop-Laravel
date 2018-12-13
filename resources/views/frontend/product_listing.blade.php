@@ -39,80 +39,30 @@
                         </div>
                         <div class="box-content">
                             <div class="category-accordion">
+                                @foreach (\App\Category::all() as $key => $category)
+                                    <div class="single-category">
+                                        <button class="btn w-100 category-name collapsed" type="button" data-toggle="collapse" data-target="#category-{{ $key }}" aria-expanded="true">
+                                            {{ $category->name }}
+                                        </button>
 
-                                <div class="single-category">
-                                    <button class="btn w-100 category-name" type="button" data-toggle="collapse" data-target="#categoryOne" aria-expanded="true">
-                                    Category name
-                                    </button>
-
-                                    <div id="categoryOne" class="collapse show">
-                                        <div class="single-sub-category">
-                                            <button class="btn w-100 sub-category-name" type="button" data-toggle="collapse" data-target="#subCategoryOne" aria-expanded="true">
-                                            Sub category name
-                                            </button>
-                                            <div id="subCategoryOne" class="collapse show">
-                                                <ul class="sub-sub-category-list">
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="single-sub-category">
-                                            <button class="btn w-100 sub-category-name" type="button" data-toggle="collapse" data-target="#subCategoryTwo" aria-expanded="false">
-                                            Sub category name
-                                            </button>
-                                            <div id="subCategoryTwo" class="collapse ">
-                                                <ul class="sub-sub-category-list">
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                </ul>
-                                            </div>
+                                        <div id="category-{{ $key }}" class="collapse">
+                                            @foreach ($category->subcategories as $key2 => $subcategory)
+                                                <div class="single-sub-category">
+                                                    <button class="btn w-100 sub-category-name" type="button" data-toggle="collapse" data-target="#subCategory-{{ $key }}-{{ $key2 }}" aria-expanded="true">
+                                                        {{ $subcategory->name }}
+                                                    </button>
+                                                    <div id="subCategory-{{ $key }}-{{ $key2 }}" class="collapse">
+                                                        <ul class="sub-sub-category-list">
+                                                            @foreach ($subcategory->subsubcategories as $key3 => $subsubcategory)
+                                                                <li><a href="{{ route('products.subsubcategory', $subsubcategory->id) }}">{{ $subsubcategory->name }}</a></li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
-                                </div>
-                                <div class="single-category">
-                                    <button class="btn w-100 category-name collapsed" type="button" data-toggle="collapse" data-target="#categoryTwo" aria-expanded="false">
-                                    Category name
-                                    </button>
-
-                                    <div id="categoryTwo" class="collapse">
-                                        <div class="single-sub-category">
-                                            <button class="btn w-100 sub-category-name" type="button" data-toggle="collapse" data-target="#subCategorythree" aria-expanded="false">
-                                            Sub category name
-                                            </button>
-                                            <div id="subCategorythree" class="collapse">
-                                                <ul class="sub-sub-category-list">
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="single-sub-category">
-                                            <button class="btn w-100 sub-category-name" type="button" data-toggle="collapse" data-target="#subCategoryfour" aria-expanded="false">
-                                            Sub category name
-                                            </button>
-                                            <div id="subCategoryfour" class="collapse ">
-                                                <ul class="sub-sub-category-list">
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                    <li><a href="">Sub sub category name</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                @endforeach
                             </div>
                         </div>
                     </div>

@@ -402,11 +402,11 @@
                                     <div class="fluid-paragraph py-2">
                                         <!-- 16:9 aspect ratio -->
                                         <div class="embed-responsive embed-responsive-16by9 mb-5">
-                                            @if ($product->video_provider == 'youtube')
+                                            @if ($product->video_provider == 'youtube' && $product->video_link != null)
                                                 <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ explode('=', $product->video_link)[1] }}"></iframe>
-                                            @elseif ($product->video_provider == 'dailymotion')
+                                            @elseif ($product->video_provider == 'dailymotion' && $product->video_link != null)
                                                 <iframe class="embed-responsive-item" src="https://www.dailymotion.com/embed/video/{{ explode('video/', $product->video_link)[1] }}"></iframe>
-                                            @elseif ($product->video_provider == 'vimeo')
+                                            @elseif ($product->video_provider == 'vimeo' && $product->video_link != null)
                                                 <iframe src="https://player.vimeo.com/video/{{ explode('vimeo.com/', $product->video_link)[1] }}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                                             @endif
                                         </div>

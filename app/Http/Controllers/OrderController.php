@@ -9,6 +9,7 @@ use App\Color;
 use App\OrderDetail;
 use Auth;
 use Session;
+use DB;
 
 class OrderController extends Controller
 {
@@ -19,8 +20,14 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orderDetails = OrderDetail::where('seller_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(9);
-        return view('frontend.seller.orders', compact('orderDetails'));
+        $orders = DB::table('orders')
+                    ->join('order_details', 'orders.id', '=', 'order_details.order_id')
+                    ->where('order_details.seller_id', Auth::user()->id)
+                    ->select('orders.id')
+                    ->distinct()
+                    ->paginate(9);
+                    
+        return view('frontend.seller.orders', compact('orders'));
     }
 
     /**

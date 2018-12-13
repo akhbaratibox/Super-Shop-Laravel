@@ -326,7 +326,7 @@
                                     <div class="col-lg-3">
                                         <div class="product-box-2 bg-white alt-box">
                                             <div class="position-relative overflow-hidden">
-                                                <a href="" class="d-block product-image h-100" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');" tabindex="0">
+                                                <a href="{{ route('product', $product->slug) }}" class="d-block product-image h-100" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');" tabindex="0">
                                                 </a>
                                                 <div class="product-btns clearfix">
                                                     <button class="btn add-wishlist" title="Add to Wishlist" onclick="addToWishList({{ $product->id }})" tabindex="0">
@@ -342,7 +342,7 @@
                                             </div>
                                             <div class="p-3">
                                                 <h2 class="product-title mb-3 p-0 text-truncate-2">
-                                                    <a href="" tabindex="0">{{ $product->name }}</a>
+                                                    <a href="{{ route('product', $product->slug) }}" tabindex="0">{{ $product->name }}</a>
                                                 </h2>
                                                 <div class="clearfix">
                                                     <div class="price-box float-left">

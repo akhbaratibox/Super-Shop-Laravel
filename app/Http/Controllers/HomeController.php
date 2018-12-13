@@ -138,7 +138,7 @@ class HomeController extends Controller
 
     public function listing(Request $request)
     {
-        $products = Product::paginate(9);
+        $products = Product::orderBy('created_at', 'desc')->paginate(9);
         return view('frontend.product_listing', compact('products'));
     }
 
@@ -150,28 +150,28 @@ class HomeController extends Controller
 
     public function listing_by_category($id)
     {
-        $products = Product::where('category_id', $id)->paginate(9);
+        $products = Product::where('category_id', $id)->orderBy('created_at', 'desc')->paginate(9);
         $category_id = $id;
         return view('frontend.product_listing', compact('products', 'category_id'));
     }
 
     public function listing_by_subcategory($id)
     {
-        $products = Product::where('subcategory_id', $id)->paginate(9);
+        $products = Product::where('subcategory_id', $id)->orderBy('created_at', 'desc')->paginate(9);
         $subcategory_id = $id;
         return view('frontend.product_listing', compact('products', 'subcategory_id'));
     }
 
     public function listing_by_subsubcategory($id)
     {
-        $products = Product::where('subsubcategory_id', $id)->paginate(9);
+        $products = Product::where('subsubcategory_id', $id)->orderBy('created_at', 'desc')->paginate(9);
         $subsubcategory_id = $id;
         return view('frontend.product_listing', compact('products', 'subsubcategory_id'));
     }
 
     public function listing_by_brand($id)
     {
-        $products = Product::where('brand_id', $id)->paginate(9);
+        $products = Product::where('brand_id', $id)->orderBy('created_at', 'desc')->paginate(9);
         return view('frontend.product_listing', compact('products'));
     }
 

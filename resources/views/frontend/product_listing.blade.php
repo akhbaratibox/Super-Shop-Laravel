@@ -226,51 +226,6 @@
                             </nav>
                         </div>
 
-                        <div class="mt-3 sidebar-box bg-white">
-                            <div class="box-title text-center">
-                                Related products
-                            </div>
-                            <div class="box-content">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="block product no-radius">
-                                            <div class="product-image">
-                                                <div class="view view-first">
-                                                    <a href="#">
-                                                        <img src="{{ asset('frontend/images/prv/shop/accessories/img-1a.png') }}">
-                                                    </a>
-                                                </div>
-
-                                                <div class="product-actions--a product-actions--2" data-animation-in="slideInRight" data-animation-out="slideOutRight">
-                                                    <button type="button" class="btn-product-action">
-                                                        <i class="ion-bag"></i>
-                                                    </button>
-
-                                                    <button type="button" class="btn-product-action">
-                                                        <i class="ion-ios-heart-outline"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                            <div class="block-body px-0">
-                                                <h3 class="heading heading-6 strong-500 text-capitalize mb-0">Wood phone case</h3>
-                                                <span class="star-rating star-rating-sm">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </span>
-                                                <div class="price-wrapper">
-                                                    <span class="price heading-6 c-gray-light strong-400">$<span class="price-value">80.00</span></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     <!-- </div> -->
                 </div>
             </div>

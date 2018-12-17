@@ -1,4 +1,23 @@
 
+
+var searchOpen = function () {
+
+	return {
+		//main function to initiate the module
+		init: function () {
+
+			$('.search-box').on('click', function (e) {
+				e.stopPropagation();
+			});
+
+			$(document).on('click', '.typed-search-box-shown', function (e) {
+                $(this).removeClass("typed-search-box-shown");
+                $('.typed-search-box').addClass('d-none');
+			});
+		}
+	};
+}();
+
 $(function () {
     $('#category-menu-icon, #category-sidebar').on('mouseover', function (event) {
         $('#hover-category-menu').show();
@@ -64,6 +83,8 @@ function morebrands(em){
     }
 }
 $(document).ready(function() {
+    searchOpen.init();
+
     $('.tagsInput').tagsinput('items');
     $('.summernote').summernote({
         height: 500,

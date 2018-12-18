@@ -104,10 +104,12 @@ $(document).ready(function() {
     //     }
     // });
 
-	var editor = new Jodit(".editor", {
-	  "uploader": {
-	    "insertImageAsBase64URI": true
-	  }
+	$('.editor').each(function(el){
+		var editor = new Jodit(el, {
+		  "uploader": {
+		    "insertImageAsBase64URI": true
+		  }
+		});
 	});
 
     $(".nav-tabs a").click(function(){

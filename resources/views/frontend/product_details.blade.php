@@ -540,24 +540,28 @@
                         </div>
                         <div class="caorusel-box">
                             <div class="slick-carousel" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="2" data-slick-xs-items="1">
-                                <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
-                                    <div class="card-body p-0">
-                                        <div class="card-image">
-                                            <a href="" class="d-block" style="background-image:url('');">
-                                            </a>
-                                        </div>
-
-                                        <div class="p-3">
-                                            <div class="price-box">
-                                                <del class="old-product-price strong-400"></del>
-                                                <span class="product-price strong-600"></span>
+                                @foreach (\App\Product::where('subcategory_id', $product->subcategory_id)->where('id', '!=', $product->id)->limit(10)->get() as $key => $related_product)
+                                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                                        <div class="card-body p-0">
+                                            <div class="card-image">
+                                                <a href="{{ route('product', $related_product->slug) }}" class="d-block" style="background-image:url('{{ asset(json_decode($related_product->photos)[0]) }}');">
+                                                </a>
                                             </div>
-                                            <h2 class="product-title p-0 mt-2 text-truncate-2">
-                                                <a href=""></a>
-                                            </h2>
+
+                                            <div class="p-3">
+                                                <div class="price-box">
+                                                    @if(home_base_price($related_product->id) != home_discounted_base_price($related_product->id))
+                                                        <del class="old-product-price strong-400">{{ home_base_price($related_product->id) }}</del>
+                                                    @endif
+                                                    <span class="product-price strong-600">{{ home_discounted_base_price($related_product->id) }}</span>
+                                                </div>
+                                                <h2 class="product-title p-0 mt-2 text-truncate-2">
+                                                    <a href="{{ route('product', $related_product->slug) }}">{{ $related_product->name }}</a>
+                                                </h2>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

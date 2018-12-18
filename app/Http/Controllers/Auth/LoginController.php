@@ -65,6 +65,7 @@ class LoginController extends Controller
             $newUser                  = new User;
             $newUser->name            = $user->name;
             $newUser->email           = $user->email;
+            $newUser->email_verified_at = date('Y-m-d H:m:s');
             $newUser->provider_id     = $user->id;
             $newUser->avatar          = $user->avatar;
             $newUser->avatar_original = $user->avatar_original;

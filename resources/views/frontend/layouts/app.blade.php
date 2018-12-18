@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="{{ asset('frontend/fonts/linea/software/linea-icons.css') }}" type="text/css">
 
 <link type="text/css" href="{{ asset('frontend/css/bootstrap-tagsinput.css') }}" rel="stylesheet">
-<link type="text/css" href="{{ asset('frontend/css/summernote.min.css') }}" rel="stylesheet">
+<link type="text/css" href="{{ asset('frontend/css/jodit.min.css') }}" rel="stylesheet">
 
 <link type="text/css" href="{{ asset('frontend/css/sweetalert2.min.css') }}" rel="stylesheet">
 
@@ -363,8 +363,7 @@
 </script>
 
 <script src="{{ asset('frontend/js/bootstrap-tagsinput.min.js') }}"></script>
-<script src="{{ asset('frontend/js/summernote.min.js') }}"></script>
-<script src="{{ asset('frontend/js/xzoom.min.js') }}"></script>
+<script src="{{ asset('frontend/js/jodit.min.js') }}"></script>
 
 <!-- App JS -->
 <script src="{{ asset('frontend/js/boomerang.js') }}"></script>

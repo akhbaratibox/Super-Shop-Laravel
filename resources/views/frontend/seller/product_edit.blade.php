@@ -329,7 +329,7 @@
                                         </div>
                                         <div class="col-10">
                                             <div class="mb-3">
-                                                <textarea class="summernote" name="description" data-ghfgh="fgdgd">{{$product->description}}</textarea>
+                                                <textarea class="editor" name="description">{{$product->description}}</textarea>
                                             </div>
                                         </div>
                                     </div>

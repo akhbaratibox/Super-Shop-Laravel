@@ -94,14 +94,22 @@ $(document).ready(function() {
 
 
     $('.tagsInput').tagsinput('items');
-    $('.summernote').summernote({
-        height: 500,
-        popover: {
-            image: [],
-            link: [],
-            air: []
-        }
-    });
+
+	// $('.summernote').summernote({
+    //     height: 500,
+    //     popover: {
+    //         image: [],
+    //         link: [],
+    //         air: []
+    //     }
+    // });
+
+	var editor = new Jodit(".editor", {
+	  "uploader": {
+	    "insertImageAsBase64URI": true
+	  }
+	});
+
     $(".nav-tabs a").click(function(){
         $(this).tab('show');
     });

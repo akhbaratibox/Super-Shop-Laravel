@@ -312,7 +312,7 @@
                                         </div>
                                         <div class="col-10">
                                             <div class="mb-3">
-                                                <textarea class="summernote" name="description" data-ghfgh="fgdgd"></textarea>
+                                                <textarea class="editor" name="description"></textarea>
                                             </div>
                                         </div>
                                     </div>

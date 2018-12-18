@@ -207,6 +207,59 @@
                                     </button>
                                 </div>
                             </div>
+
+                            <hr class="mt-4">
+                            <div class="row no-gutters mt-3">
+                                <div class="col-2">
+                                    <div class="product-description-label alpha-6">Return Policy:</div>
+                                </div>
+                                <div class="col-10">
+                                    Returns accepted if product not as described, buyer pays return shipping fee; or keep the product & agree refund with seller. <a href="" class="ml-2">View details</a>
+                                </div>
+                            </div>
+                            <div class="row no-gutters mt-3">
+                                <div class="col-2">
+                                    <div class="product-description-label alpha-6">Seller Guarantees:</div>
+                                </div>
+                                <div class="col-10">
+                                    On-time Delivery <a href="" class="ml-2">View details</a>
+                                </div>
+                            </div>
+                            <div class="row no-gutters mt-3">
+                                <div class="col-2">
+                                    <div class="product-description-label alpha-6">Payment:</div>
+                                </div>
+                                <div class="col-10">
+                                    <ul class="inline-links">
+                                        <li>
+                                            <img src="{{ asset('frontend/images/icons/cards/visa.png') }}" width="30" class="">
+                                        </li>
+                                        <li>
+                                            <img src="{{ asset('frontend/images/icons/cards/mastercard.png') }}" width="30" class="">
+                                        </li>
+                                        <li>
+                                            <img src="{{ asset('frontend/images/icons/cards/maestro.png') }}" width="30" class="">
+                                        </li>
+                                        <li>
+                                            <img src="{{ asset('frontend/images/icons/cards/paypal.png') }}" width="30" class="">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row no-gutters mt-3">
+                                <div class="col-2">
+                                    <img src="{{ asset('frontend/images/icons/buyer-protection.png') }}" width="40" class="">
+                                </div>
+                                <div class="col-10">
+                                    <div class="heading-6 strong-700 text-info d-inline-block">Buyer protection</div><a href="" class="ml-2">View details</a>
+                                    <ul class="list-symbol--1 pl-4 mb-0 mt-2">
+                                        <li><strong>Full Refund</strong> if you don't receive your order</li>
+                                        <li><strong>Full or Partial Refund</strong>, if the item is not as described</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <hr class="mt-4">
                             <div class="row no-gutters mt-4">
                                 <div class="col-2">
                                     <div class="product-description-label mt-2">Share:</div>

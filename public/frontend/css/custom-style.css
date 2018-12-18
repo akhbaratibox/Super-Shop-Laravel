@@ -2679,3 +2679,52 @@ ul.seller-brand-list .brand-item {
     color: #333;
     padding: 5px;
 }
+
+
+
+
+
+.product-gal {
+    padding: 20px 15px;
+}
+
+.product-gal-thumb {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.product-gal-thumb .xzoom-thumbs {
+    margin-bottom: 0;
+}
+
+.product-gal-thumb a {
+    display: block;
+}
+
+.product-gal-thumb a img {
+    max-width: 100%;
+    margin: 0;
+    margin-bottom: 10px;
+    border-radius: 2px;
+}
+
+.product-gal-thumb a img.xactive {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: 2px solid #e62e04;
+}
+
+.product-gal-img {
+    width: calc(100% - 60px);
+}
+.xzoom-source{
+    z-index: 999;
+}
+.xzoom,
+.xzoom-lens,
+.xzoom-preview {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}

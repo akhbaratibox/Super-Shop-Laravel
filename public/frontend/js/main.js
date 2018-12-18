@@ -82,8 +82,16 @@ function morebrands(em){
         $(em).children('span').html('Less');
     }
 }
+
+
 $(document).ready(function() {
     searchOpen.init();
+    $('.xzoom, .xzoom-gallery').xzoom({
+        Xoffset: 20,
+        bg: true,
+        tint: '#000'
+    });
+
 
     $('.tagsInput').tagsinput('items');
     $('.summernote').summernote({

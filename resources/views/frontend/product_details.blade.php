@@ -10,19 +10,17 @@
                 <!-- Product gallery and Description -->
                 <div class="row no-gutters cols-xs-space cols-sm-space cols-md-space">
                     <div class="col-lg-6">
-                        <div class="gallery-container product-gallery sticky-top">
-                            <div id="slideshow" class="gallery-top no-padding bg-transparent"></div>
-                            <div id="slideshow_thumbs" class="swiper-js-container gallery-thumbs gallery-thumbs--style-1 mt-4">
-                                <div class="swiper-container" data-swiper-items="7" data-swiper-space-between="10" data-swiper-xs-items="3" data-swiper-xs-space-between="10" data-swiper-sm-items="4" data-swiper-sm-space-between="10">
-                                    <div class="swiper-wrapper">
-                                        @foreach (json_decode($product->photos) as $key => $photo)
-                                            <div class="swiper-slide">
-                                                <a href="{{ asset($photo) }}" data-desoslide-index="{{ $key }}">
-                                                    <img src="{{ asset($photo) }}" alt="Image">
-                                                </a>
-                                            </div>
-                                        @endforeach
-                                    </div>
+                        <div class="product-gal sticky-top d-flex flex-row-reverse">
+                            <div class="product-gal-img">
+                                <img class="xzoom img-fluid" src="{{ asset(json_decode($product->photos)[0]) }}" xoriginal="{{ asset(json_decode($product->photos)[0]) }}" />
+                            </div>
+                            <div class="product-gal-thumb">
+                                <div class="xzoom-thumbs">
+                                    @foreach (json_decode($product->photos) as $key => $photo)
+                                        <a href="{{ asset($photo) }}">
+                                            <img class="xzoom-gallery" width="80" src="{{ asset($photo) }}"  @if($key == 0) xpreview="{{ asset($photo) }}" @endif>
+                                        </a>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -278,7 +276,7 @@
                                 <span class="rating-count d-block ml-0">(2 customer reviews)</span>
                             </div>
                         </div>
-                        <div class="row no-gutters">
+                        <div class="row no-gutters align-items-center">
                             @if($product->added_by == 'seller')
                                 <div class="col">
                                     <a href="{{ route('shop.visit', $product->user->shop->slug) }}" class="d-block store-btn">Visit Store</a>
@@ -348,7 +346,7 @@
                         </div>
                         <div class="box-content">
                             @foreach (\App\Product::where('user_id', $product->user_id)->orderBy('num_of_sale', 'desc')->limit(4)->get() as $key => $top_product)
-                                <div class="product-box-1 mb-3">
+                            <div class="product-box-1 mb-3">
                                 <div class="block product">
                                     <div class="block-image">
                                         <div class="view view-first">

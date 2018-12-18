@@ -42,6 +42,7 @@
 <link type="text/css" href="{{ asset('frontend/css/sweetalert2.min.css') }}" rel="stylesheet">
 
 <link type="text/css" href="{{ asset('frontend/css/slick.css') }}" rel="stylesheet">
+<link type="text/css" href="{{ asset('frontend/css/xzoom.css') }}" rel="stylesheet">
 
 <!-- Global style (main) -->
 <link id="stylesheet" type="text/css" href="{{ asset('frontend/css/boomerang.min.css') }}" rel="stylesheet" media="screen">
@@ -363,6 +364,7 @@
 
 <script src="{{ asset('frontend/js/bootstrap-tagsinput.min.js') }}"></script>
 <script src="{{ asset('frontend/js/summernote.min.js') }}"></script>
+<script src="{{ asset('frontend/js/xzoom.min.js') }}"></script>
 
 <!-- App JS -->
 <script src="{{ asset('frontend/js/boomerang.js') }}"></script>

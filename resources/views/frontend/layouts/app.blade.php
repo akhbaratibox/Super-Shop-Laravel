@@ -364,6 +364,7 @@
 
 <script src="{{ asset('frontend/js/bootstrap-tagsinput.min.js') }}"></script>
 <script src="{{ asset('frontend/js/jodit.min.js') }}"></script>
+<script src="{{ asset('frontend/js/xzoom.min.js') }}"></script>
 
 <!-- App JS -->
 <script src="{{ asset('frontend/js/boomerang.js') }}"></script>

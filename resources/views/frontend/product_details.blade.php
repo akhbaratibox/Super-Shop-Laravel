@@ -532,6 +532,35 @@
                             </div>
                         </div>
                     </div>
+                    <div class="my-4 bg-white p-3">
+                        <div class="section-title-1">
+                            <h3 class="heading-5 strong-700 mb-0">
+                                <span class="mr-4">Related products</span>
+                            </h3>
+                        </div>
+                        <div class="caorusel-box">
+                            <div class="slick-carousel" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="2" data-slick-xs-items="1">
+                                <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                                    <div class="card-body p-0">
+                                        <div class="card-image">
+                                            <a href="" class="d-block" style="background-image:url('');">
+                                            </a>
+                                        </div>
+
+                                        <div class="p-3">
+                                            <div class="price-box">
+                                                <del class="old-product-price strong-400"></del>
+                                                <span class="product-price strong-600"></span>
+                                            </div>
+                                            <h2 class="product-title p-0 mt-2 text-truncate-2">
+                                                <a href=""></a>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

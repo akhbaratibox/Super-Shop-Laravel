@@ -105,7 +105,7 @@ $(document).ready(function() {
     // });
 
 	$('.editor').each(function(el){
-		var editor = new Jodit(el, {
+		var editor = new Jodit(this, {
 		  "uploader": {
 		    "insertImageAsBase64URI": true
 		  }

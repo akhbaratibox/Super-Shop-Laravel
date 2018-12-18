@@ -272,7 +272,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-8">
+                                <div class="col-8 border-left">
                                     <div class="p-3">
                                         <h2 class="product-title mb-3 p-0 text-truncate-2">
                                             <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
@@ -340,7 +340,7 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                            <div class="p-3">
+                                            <div class="p-3 border-top">
                                                 <h2 class="product-title mb-3 p-0 text-truncate-2">
                                                     <a href="{{ route('product', $product->slug) }}" tabindex="0">{{ $product->name }}</a>
                                                 </h2>

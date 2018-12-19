@@ -139,6 +139,10 @@ input[type="submit"]{
     right: 12px;
     z-index: 1;
 }
+.slick-carousel:not(.slick-initialized) > :nth-child(n+2), {
+    display: none;
+}
+
 .c-preloader {
     position: absolute;
     height: 100%;

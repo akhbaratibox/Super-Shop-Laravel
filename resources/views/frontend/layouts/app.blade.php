@@ -10,6 +10,9 @@
 <meta name="keywords" content="bootstrap, responsive, template, website, html, theme, ux, ui, web, design, developer, support, business, corporate, real estate, education, medical, school, education, demo, css, framework">
 <meta name="author" content="Webpixels">
 
+<!-- Favicon -->
+<link href="{{ asset('frontend/images/favicon.png') }}" rel="icon" type="image/png">
+
 <title>Active Shop</title>
 
 <!-- Bootstrap -->
@@ -18,29 +21,13 @@
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 
-<!-- Plugins -->
-<link rel="stylesheet" href="{{ asset('frontend/vendor/swiper/css/swiper.min.css') }}">
-<link rel="stylesheet" href="{{ asset('frontend/vendor/hamburgers/hamburgers.min.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('frontend/vendor/animate/animate.min.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('frontend/vendor/fancybox/css/jquery.fancybox.min.css') }}">
-
 <!-- Icons -->
-<link rel="stylesheet" href="{{ asset('frontend/fonts/font-awesome/css/font-awesome.min.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('frontend/fonts/ionicons/css/ionicons.min.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('frontend/fonts/line-icons/line-icons.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('frontend/fonts/line-icons-pro/line-icons-pro.css') }}" type="text/css">
-
-<!-- Linea Icons -->
-<link rel="stylesheet" href="{{ asset('frontend/fonts/linea/arrows/linea-icons.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('frontend/fonts/linea/basic/linea-icons.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('frontend/fonts/linea/ecommerce/linea-icons.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('frontend/fonts/linea/software/linea-icons.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('frontend/css/line-awesome.min.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}" type="text/css">
 
 <link type="text/css" href="{{ asset('frontend/css/bootstrap-tagsinput.css') }}" rel="stylesheet">
 <link type="text/css" href="{{ asset('frontend/css/jodit.min.css') }}" rel="stylesheet">
-
 <link type="text/css" href="{{ asset('frontend/css/sweetalert2.min.css') }}" rel="stylesheet">
-
 <link type="text/css" href="{{ asset('frontend/css/slick.css') }}" rel="stylesheet">
 <link type="text/css" href="{{ asset('frontend/css/xzoom.css') }}" rel="stylesheet">
 
@@ -50,11 +37,9 @@
 <!--Spectrum Stylesheet [ REQUIRED ]-->
 <link href="{{ asset('css/spectrum.css')}}" rel="stylesheet">
 
-<!-- Custom style - Remove if not necessary -->
+<!-- Custom style -->
 <link type="text/css" href="{{ asset('frontend/css/custom-style.css') }}" rel="stylesheet">
 
-<!-- Favicon -->
-<link href="{{ asset('frontend/images/favicon.png') }}" rel="icon" type="image/png">
 <!-- jQuery -->
 <script src="{{ asset('frontend/vendor/jquery/jquery.min.js') }}"></script>
 
@@ -98,12 +83,6 @@
 <!-- Core -->
 <script src="{{ asset('frontend/vendor/popper/popper.min.js') }}"></script>
 <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('frontend/js/slidebar/slidebar.js') }}"></script>
-<script src="{{ asset('frontend/js/classie.js') }}"></script>
-
-<!-- Bootstrap Extensions -->
-<script src="{{ asset('frontend/vendor/bootstrap-notify/bootstrap-growl.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/scrollpos-styler/scrollpos-styler.js') }}"></script>
 
 <!-- Plugins: Sorted A-Z -->
 <script src="{{ asset('frontend/vendor/adaptive-backgrounds/adaptive-backgrounds.js') }}"></script>

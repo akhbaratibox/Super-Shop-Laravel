@@ -18,7 +18,7 @@
                                 @endphp
                                 <li>
                                     <a href="{{ route('products.category', $category->id) }}">
-                                        <i class="icon-electronics-001 cat-icon"></i>
+                                        <img class="cat-image" src="{{ asset($category->icon) }}" width="30">
                                         <span class="cat-name">{{ $category->name }}</span>
                                     </a>
                                     @if(count($category->subcategories)>0)

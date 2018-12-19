@@ -50,7 +50,7 @@
     <link href="{{ asset('plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.css') }}" rel="stylesheet">
 
     <!--Summernote [ OPTIONAL ]-->
-    <link href="{{ asset('plugins/summernote/summernote.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/jodit.min.css') }}" rel="stylesheet">
 
     <!--Theme [ DEMONSTRATION ]-->
     <link href="{{ asset('css/themes/type-full/theme-dark-full.min.css') }}" rel="stylesheet">
@@ -94,11 +94,7 @@
     <script src="{{ asset('plugins/select2/js/select2.min.js')}}"></script>
 
     <!--Summernote [ OPTIONAL ]-->
-    <script src="{{ asset('plugins/summernote/summernote.min.js') }}"></script>
-
-
-    <!--Form File Upload [ SAMPLE ]-->
-    <script src="{{ asset('js/demo/form-text-editor.js') }}"></script>
+    <script src="{{ asset('js/jodit.min.js') }}"></script>
 
     <!--Bootstrap Tags Input [ OPTIONAL ]-->
     <script src="{{ asset('plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js')}}"></script>

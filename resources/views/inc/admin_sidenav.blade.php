@@ -225,14 +225,8 @@
 
                             <!--Submenu-->
                             <ul class="collapse">
-                                <li class="{{ areActiveRoutes(['sliders.index'])}}">
-                                    <a class="nav-link" href="{{route('sliders.index')}}">{{__('web.home_slider')}}</a>
-                                </li>
-                                <li class="{{ areActiveRoutes(['home_banners.index'])}}">
-                                    <a class="nav-link" href="{{route('home_banners.index')}}">{{__('web.home_banner')}}</a>
-                                </li>
-                                <li class="{{ areActiveRoutes(['home_categories.index', 'home_categories.create', 'home_categories.edit'])}}">
-                                    <a class="nav-link" href="{{route('home_categories.index')}}">{{__('web.home_categories')}}</a>
+                                <li class="{{ areActiveRoutes(['home_settings.index', 'home_banners.index', 'sliders.index', 'home_categories.index', 'home_banners.create', 'home_categories.create', 'home_categories.edit', 'sliders.create'])}}">
+                                    <a class="nav-link" href="{{route('home_settings.index')}}">{{__('web.home')}}</a>
                                 </li>
                             </ul>
                         </li>

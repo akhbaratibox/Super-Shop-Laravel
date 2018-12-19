@@ -138,16 +138,20 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
     Route::post('/your-currency/update', 'BusinessSettingsController@updateYourCurrency')->name('your_currency.update');
 	Route::get('/verification/form', 'BusinessSettingsController@seller_verification_form')->name('seller_verification_form.index');
 
-	Route::resource('sliders','SliderController');
-    Route::get('/sliders/destroy/{id}', 'SliderController@destroy')->name('sliders.destroy');
+	Route::get('/frontend_settings/home', 'HomeController@home_settings')->name('home_settings.index');
 
-	Route::resource('home_banners','BannerController');
-    Route::get('/home_banners/destroy/{id}', 'BannerController@destroy')->name('home_banners.destroy');
+	Route::group(['prefix' => 'frontend_settings'], function(){
+		Route::resource('sliders','SliderController');
+	    Route::get('/sliders/destroy/{id}', 'SliderController@destroy')->name('sliders.destroy');
 
-	Route::resource('home_categories','HomeCategoryController');
-    Route::get('/home_categories/destroy/{id}', 'HomeCategoryController@destroy')->name('home_categories.destroy');
-	Route::post('/home_categories/update_status', 'HomeCategoryController@update_status')->name('home_categories.update_status');
-	Route::post('/home_categories/get_subsubcategories_by_category', 'HomeCategoryController@getSubSubCategories')->name('home_categories.get_subsubcategories_by_category');
+		Route::resource('home_banners','BannerController');
+	    Route::get('/home_banners/destroy/{id}', 'BannerController@destroy')->name('home_banners.destroy');
+
+		Route::resource('home_categories','HomeCategoryController');
+	    Route::get('/home_categories/destroy/{id}', 'HomeCategoryController@destroy')->name('home_categories.destroy');
+		Route::post('/home_categories/update_status', 'HomeCategoryController@update_status')->name('home_categories.update_status');
+		Route::post('/home_categories/get_subsubcategories_by_category', 'HomeCategoryController@getSubSubCategories')->name('home_categories.get_subsubcategories_by_category');
+	});
 
 	Route::resource('roles','RoleController');
     Route::get('/roles/destroy/{id}', 'RoleController@destroy')->name('roles.destroy');

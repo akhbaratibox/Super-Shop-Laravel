@@ -247,7 +247,7 @@
 							<div class="form-group">
 	                            <label class="col-lg-2 control-label">{{__('web.description')}}</label>
 	                            <div class="col-lg-9">
-	                                <textarea class="demo-summernote-long" name="description">{{$product->description}}</textarea>
+	                                <textarea class="editor" name="description">{{$product->description}}</textarea>
 	                            </div>
 	                        </div>
 				        </div>

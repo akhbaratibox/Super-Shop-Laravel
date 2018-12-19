@@ -244,4 +244,9 @@ class HomeController extends Controller
         }
         return view('frontend.product_listing', compact('products'));
     }
+
+    public function home_settings(Request $request)
+    {
+        return view('home_settings.index');
+    }
 }

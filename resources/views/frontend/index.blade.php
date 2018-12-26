@@ -261,13 +261,13 @@
                                         </a>
                                         <div class="product-btns">
                                             <button class="btn add-wishlist" title="Add to Wishlist" onclick="addToWishList({{ $product->id }})">
-                                                <i class="ion-ios-heart-outline"></i>
+                                                <i class="la la-heart-o"></i>
                                             </button>
                                             <button class="btn add-compare" title="Add to Compare" onclick="addToCompare({{ $product->id }})">
-                                                <i class="ion-ios-browsers-outline"></i>
+                                                <i class="la la-refresh"></i>
                                             </button>
                                             <button class="btn quick-view" title="Quick view" onclick="showAddToCartModal({{ $product->id }})">
-                                                <i class="ion-ios-eye"></i>
+                                                <i class="la la-eye"></i>
                                             </button>
                                         </div>
                                     </div>
@@ -286,7 +286,7 @@
                                             </div>
                                             <div class="float-right">
                                                 <button class="add-to-cart btn" title="Add to Cart" onclick="showAddToCartModal({{ $product->id }})">
-                                                    <i class="icon ion-android-cart"></i>
+                                                    <i class="la la-shopping-cart"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -330,13 +330,13 @@
                                                 </a>
                                                 <div class="product-btns clearfix">
                                                     <button class="btn add-wishlist" title="Add to Wishlist" onclick="addToWishList({{ $product->id }})" tabindex="0">
-                                                        <i class="ion-ios-heart-outline"></i>
+                                                        <i class="la la-heart-o"></i>
                                                     </button>
                                                     <button class="btn add-compare" title="Add to Compare" onclick="addToCompare({{ $product->id }})" tabindex="0">
-                                                        <i class="ion-ios-browsers-outline"></i>
+                                                        <i class="la la-refresh"></i>
                                                     </button>
                                                     <button class="btn quick-view" title="Quick view" onclick="showAddToCartModal({{ $product->id }})" tabindex="0">
-                                                        <i class="ion-ios-eye"></i>
+                                                        <i class="la la-eye"></i>
                                                     </button>
                                                 </div>
                                             </div>
@@ -353,7 +353,7 @@
                                                     </div>
                                                     <div class="float-right">
                                                         <button class="add-to-cart btn" title="Add to Cart" onclick="showAddToCartModal({{ $product->id }})" tabindex="0">
-                                                            <i class="icon ion-android-cart"></i>
+                                                            <i class="la la-shopping-cart"></i>
                                                         </button>
                                                     </div>
                                                 </div>

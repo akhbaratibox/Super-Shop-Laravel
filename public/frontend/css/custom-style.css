@@ -482,6 +482,7 @@ select + .select2-container{
     font-size: 32px;
     width: 32px;
     line-height: 32px;
+    color: #777;
 }
 .logo-bar-icons .nav-compare-box .nav-box-number,
 .logo-bar-icons .nav-wishlist-box .nav-box-number,

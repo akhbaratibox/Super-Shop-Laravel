@@ -201,15 +201,15 @@
 
                                                 <div class="product-card-1-action">
                                                     <button class="paction add-wishlist" title="Add to Wishlist" onclick="addToWishList({{ $product->id }})">
-                                                        <i class="ion-ios-heart-outline"></i>
+                                                        <i class="la la-heart-o"></i>
                                                     </button>
 
                                                     <button type="button" class="paction add-cart btn btn-base-1 btn-circle btn-icon-left" onclick="showAddToCartModal({{ $product->id }})">
-                                                        <i class="icon ion-android-cart"></i>Add to cart
+                                                        <i class="fa la la-shopping-cart"></i>Add to cart
                                                     </button>
 
                                                     <button class="paction add-compare" title="Add to Compare" onclick="addToCompare({{ $product->id }})">
-                                                        <i class="ion-ios-browsers-outline"></i>
+                                                        <i class="la la-refresh"></i>
                                                     </button>
                                                 </div><!-- End .product-action -->
                                             </div><!-- End .product-details -->

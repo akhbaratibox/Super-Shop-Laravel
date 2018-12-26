@@ -118,7 +118,7 @@
                 <div class="d-inline-block">
                     <div class="nav-compare-box" id="compare">
                         <a href="{{ route('compare') }}" class="nav-box-link">
-                            <i class="ion-ios-loop d-inline-block nav-box-icon"></i>
+                            <i class="la la-refresh d-inline-block nav-box-icon"></i>
                             <span class="nav-box-text d-none d-lg-inline-block">Compare</span>
                             @if(Session::has('compare'))
                                 <span class="nav-box-number">{{ count(Session::get('compare'))}}</span>
@@ -131,7 +131,7 @@
                 <div class="d-inline-block">
                     <div class="nav-wishlist-box" id="wishlist">
                         <a href="{{ route('wishlists.index') }}" class="nav-box-link">
-                            <i class="ion-ios-heart-outline d-inline-block nav-box-icon"></i>
+                            <i class="la la-heart-o d-inline-block nav-box-icon"></i>
                             <span class="nav-box-text d-none d-lg-inline-block">Wishlist</span>
                             @if(Auth::check())
                                 <span class="nav-box-number">{{ count(Auth::user()->wishlists)}}</span>
@@ -144,7 +144,7 @@
                 <div class="d-inline-block" data-hover="dropdown">
                     <div class="nav-cart-box dropdown" id="cart_items">
                         <a href="" class="nav-box-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="ion-ios-cart-outline d-inline-block nav-box-icon"></i>
+                            <i class="la la-shopping-cart d-inline-block nav-box-icon"></i>
                             <span class="nav-box-text d-none d-lg-inline-block">Cart</span>
                             @if(Session::has('cart'))
                                 <span class="nav-box-number">{{ count(Session::get('cart'))}}</span>

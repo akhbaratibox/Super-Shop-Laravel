@@ -22,8 +22,8 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 
 <!-- Icons -->
-<link rel="stylesheet" href="{{ asset('frontend/css/line-awesome.min.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('frontend/css/line-awesome.min.css') }}" type="text/css">
 
 <link type="text/css" href="{{ asset('frontend/css/bootstrap-tagsinput.css') }}" rel="stylesheet">
 <link type="text/css" href="{{ asset('frontend/css/jodit.min.css') }}" rel="stylesheet">

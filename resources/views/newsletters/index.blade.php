@@ -47,7 +47,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="name">{{__('web.newsletter_content')}}</label>
                     <div class="col-sm-10">
-                        <textarea class="demo-summernote-long" name="content" required></textarea>
+                        <textarea class="editor" name="content" required></textarea>
                     </div>
                 </div>
             </div>

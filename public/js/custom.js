@@ -2,9 +2,10 @@ $(document).on('nifty.ready', function() {
 
 	$('.editor').each(function(el){
 		var editor = new Jodit(this, {
-		  "uploader": {
+		  	"uploader": {
 		    "insertImageAsBase64URI": true
-		  }
+		},
+			"toolbarAdaptive": false
 		});
 	});
 

@@ -15,6 +15,9 @@
             <li class="">
                 <a data-toggle="tab" href="#demo-lft-tab-3" aria-expanded="false">{{ __('web.home_categories') }}</a>
             </li>
+            <li class="">
+                <a data-toggle="tab" href="#demo-lft-tab-4" aria-expanded="false">{{ __('web.best_selling') }}</a>
+            </li>
         </ul>
 
         <!--Tabs Content-->
@@ -23,7 +26,7 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <a href="{{ route('sliders.create')}}" class="btn btn-info pull-right">{{__('web.add_new')}}</a>
+                        <a onclick="add_slider()" class="btn btn-info pull-right">{{__('web.add_new')}}</a>
                     </div>
                 </div>
 
@@ -64,7 +67,7 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <a href="{{ route('home_banners.create')}}" class="btn btn-info pull-right">{{__('web.add_new')}}</a>
+                        <a onclick="add_banner()" class="btn btn-info pull-right">{{__('web.add_new')}}</a>
                     </div>
                 </div>
 
@@ -105,7 +108,7 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <a href="{{ route('home_categories.create')}}" class="btn btn-info pull-right">{{__('web.add_new')}}</a>
+                        <a onclick="add_home_category()" class="btn btn-info pull-right">{{__('web.add_new')}}</a>
                     </div>
                 </div>
 
@@ -138,7 +141,7 @@
                                             <input onchange="update_home_category_status(this)" value="{{ $home_category->id }}" type="checkbox" <?php if($home_category->status == 1) echo "checked";?> >
                                             <span class="slider round"></span></label></td>
                                         <td>
-                                            <a href="{{route('home_categories.edit', $home_category->id)}}" class="btn btn-mint btn-icon"><i class="demo-psi-pen-5 icon-lg"></i></a>
+                                            <a onclick="edit_home_category({{ $home_category->id }})" class="btn btn-mint btn-icon"><i class="demo-psi-pen-5 icon-lg"></i></a>
                                             <a onclick="confirm_modal('{{route('home_categories.destroy', $home_category->id)}}');" class="btn btn-danger btn-icon"><i class="demo-psi-recycling icon-lg"></i></a>
                                         </td>
                                     </tr>
@@ -146,6 +149,19 @@
                             </tbody>
                         </table>
 
+                    </div>
+                </div>
+            </div>
+            <div id="demo-lft-tab-4" class="tab-pane fade">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">{{ __('web.best_selling') }}</h3>
+                    </div>
+                    <div class="panel-body text-center">
+                        <label class="switch">
+                            <input type="checkbox" onchange="updateSettings(this, 'best_selling')" <?php if(\App\BusinessSetting::where('type', 'best_selling')->first()->value == 1) echo "checked";?> >
+                            <span class="slider round"></span>
+                        </label>
                     </div>
                 </div>
             </div>
@@ -157,6 +173,50 @@
 @section('script')
 
 <script type="text/javascript">
+
+    function updateSettings(el, type){
+        if($(el).is(':checked')){
+            var value = 1;
+        }
+        else{
+            var value = 0;
+        }
+        $.post('{{ route('business_settings.update.activation') }}', {_token:'{{ csrf_token() }}', type:type, value:value}, function(data){
+            if(data == 1){
+                showAlert('success', 'Settings updated successfully');
+            }
+            else{
+                showAlert('danger', 'Something went wrong');
+            }
+        });
+    }
+
+    function add_slider(){
+        $.get('{{ route('sliders.create')}}', {}, function(data){
+            $('#demo-lft-tab-1').html(data);
+        });
+    }
+
+    function add_banner(){
+        $.get('{{ route('home_banners.create')}}', {}, function(data){
+            $('#demo-lft-tab-2').html(data);
+        });
+    }
+
+    function add_home_category(){
+        $.get('{{ route('home_categories.create')}}', {}, function(data){
+            $('#demo-lft-tab-3').html(data);
+        });
+    }
+
+    function edit_home_category(id){
+        var url = '{{ route("home_categories.edit", "home_category_id") }}';
+        url = url.replace('home_category_id', id);
+        $.get(url, {}, function(data){
+            $('#demo-lft-tab-3').html(data);
+        });
+    }
+
     function update_home_category_status(el){
         if(el.checked){
             var status = 1;

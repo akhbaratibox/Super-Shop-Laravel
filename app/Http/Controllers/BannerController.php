@@ -44,7 +44,7 @@ class BannerController extends Controller
             }
             flash('Banner has been inserted successfully')->success();
         }
-        return redirect()->route('home_banners.index');
+        return redirect()->route('home_settings.index');
     }
 
     /**
@@ -119,6 +119,6 @@ class BannerController extends Controller
         else{
             flash('Something went wrong')->danger();
         }
-        return redirect()->route('home_banners.index');
+        return redirect()->route('home_settings.index');
     }
 }

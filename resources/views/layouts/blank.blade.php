@@ -28,7 +28,7 @@
     <link href="{{ asset('css/demo/nifty-demo.min.css') }}" rel="stylesheet">
 
     <!--Theme [ DEMONSTRATION ]-->
-    <link href="{{ asset('css/themes/type-full/theme-dark-full.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/themes/type-full/theme-light-full.min.css') }}" rel="stylesheet">
 
 </head>
 <body>

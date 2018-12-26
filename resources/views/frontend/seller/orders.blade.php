@@ -101,7 +101,7 @@
                                                                 </button>
 
                                                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="">
-                                                                    <button onclick="show_order_details()" class="dropdown-item">Order Details</button>
+                                                                    <button onclick="show_order_details({{ $order->id }})" class="dropdown-item">Order Details</button>
                                                                     {{-- <button onclick="" class="dropdown-item">Cancel Order</button> --}}
                                                                 </div>
                                                             </div>
@@ -133,147 +133,7 @@
                     <i class="fa fa-spin fa-spinner"></i>
                 </div>
                 <div id="order-details-modal-body">
-                    <div class="modal-header">
-                        <h5 class="modal-title strong-600 heading-5">Order id: 1651vdfvdfd51</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body gry-bg px-3 pt-0">
-                        <div class="pt-4">
-                            <ul class="process-steps clearfix">
-                                <li class="done">
-                                    <div class="icon">1</div>
-                                    <div class="title">Order placed</div>
-                                </li>
-                                <li class="done">
-                                    <div class="icon">2</div>
-                                    <div class="title">On review</div>
-                                </li>
-                                <li class="active">
-                                    <div class="icon">3</div>
-                                    <div class="title">On delivery</div>
-                                </li>
-                                <li class="">
-                                    <div class="icon">4</div>
-                                    <div class="title">Delivered</div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card mt-4">
-                            <div class="card-header py-2 px-3 heading-6 strong-600">Order Summary</div>
-                            <div class="card-body pb-0">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <table class="details-table table">
-                                            <tr>
-                                                <td class="w-50 strong-600">Order ID:</td>
-                                                <td>1651vdfvdfd51</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-50 strong-600">Customer:</td>
-                                                <td>John Doe</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-50 strong-600">Email:</td>
-                                                <td>john@gmail.com</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-50 strong-600">Shipping address:</td>
-                                                <td>1234 Street Name, City, England, dfgdf, fgdgfd, gdfgdf</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <table class="details-table table">
-                                            <tr>
-                                                <td class="w-50 strong-600">Order date:</td>
-                                                <td>7-12-2018 8:00 pm</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-50 strong-600">Order status:</td>
-                                                <td>On delivery</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-50 strong-600">Total order amount:</td>
-                                                <td>$900.53</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-50 strong-600">Shipping method:</td>
-                                                <td>Flat shipping rate</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-50 strong-600">Payment method:</td>
-                                                <td>Cash on delivery</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-9">
-                                <div class="card mt-4">
-                                    <div class="card-header py-2 px-3 heading-6 strong-600">Order Details</div>
-                                    <div class="card-body pb-0">
-                                        <table class="details-table table">
-                                            <tr>
-                                                <td class="w-50 strong-600">Order ID:</td>
-                                                <td>1651vdfvdfd51</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-50 strong-600">Customer:</td>
-                                                <td>John Doe</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-50 strong-600">Email:</td>
-                                                <td>john@gmail.com</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-50 strong-600">Shipping address:</td>
-                                                <td>1234 Street Name, City, England, dfgdf, fgdgfd, gdfgdf</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="card mt-4">
-                                    <div class="card-header py-2 px-3 heading-6 strong-600">Order Ammount</div>
-                                    <div class="card-body pb-0">
-                                        <table class="table details-table">
-                                            <tbody>
-                                                <tr>
-                                                    <th>Subtotal</th>
-                                                    <td class="text-right">
-                                                        <span class="strong-600">587.14$</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Shipping</th>
-                                                    <td class="text-right">
-                                                        <span class="text-italic">0.00$</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Tax</th>
-                                                    <td class="text-right">
-                                                        <span class="text-italic">0.00$</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th><span class="strong-600">Total</span></th>
-                                                    <td class="text-right">
-                                                        <strong><span>587.14$</span></strong>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -284,13 +144,19 @@
 
 @section('script')
     <script type="text/javascript">
-        function show_order_details()
+        function show_order_details(order_id)
         {
+            $('#order-details-modal-body').html(null);
+
             if(!$('#modal-size').hasClass('modal-lg')){
                 $('#modal-size').addClass('modal-lg');
             }
-            $('#order_details').modal();
-            $('.c-preloader').hide();
+
+            $.post('{{ route('orders.details') }}', { _token : '{{ @csrf_token() }}', order_id : order_id}, function(data){
+                $('#order-details-modal-body').html(data);
+                $('#order_details').modal();
+                $('.c-preloader').hide();
+            });
         }
     </script>
 @endsection

@@ -44,7 +44,7 @@ class SliderController extends Controller
             }
             flash('Slider has been inserted successfully')->success();
         }
-        return redirect()->route('sliders.index');
+        return redirect()->route('home_settings.index');
     }
 
     /**
@@ -104,6 +104,6 @@ class SliderController extends Controller
         else{
             flash('Something went wrong')->danger();
         }
-        return redirect()->route('sliders.index');
+        return redirect()->route('home_settings.index');
     }
 }

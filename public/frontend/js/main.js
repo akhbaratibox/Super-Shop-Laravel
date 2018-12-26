@@ -115,7 +115,6 @@ $(document).ready(function() {
     $(".nav-tabs a").click(function(){
         $(this).tab('show');
     });
-
     if ($('.slick-carousel').length > 0) {
         $('.slick-carousel').each(function() {
             var $this = $(this);
@@ -187,6 +186,9 @@ $(document).ready(function() {
         });
     }
 
+});
+$(window).on('load', function() {
+    
 });
 
 $(window).scroll(function() {

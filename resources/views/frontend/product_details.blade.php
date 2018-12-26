@@ -174,13 +174,13 @@
                                         <div class="input-group input-group--style-2 pr-3" style="width: 160px;">
                                             <span class="input-group-btn">
                                                 <button class="btn btn-number" type="button" data-type="minus" data-field="quantity[1]" disabled="disabled">
-                                                    <i class="ion-minus"></i>
+                                                    <i class="la la-minus"></i>
                                                 </button>
                                             </span>
                                             <input type="text" name="quantity[1]" class="form-control input-number text-center" placeholder="3" value="1" min="1" max="10">
                                             <span class="input-group-btn">
                                                 <button class="btn btn-number" type="button" data-type="plus" data-field="quantity[1]">
-                                                     <i class="ion-plus"></i>
+                                                     <i class="la la-plus"></i>
                                                 </button>
                                             </span>
                                         </div>

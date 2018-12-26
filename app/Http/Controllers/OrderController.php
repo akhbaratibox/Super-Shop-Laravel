@@ -26,7 +26,7 @@ class OrderController extends Controller
                     ->select('orders.id')
                     ->distinct()
                     ->paginate(9);
-                    
+
         return view('frontend.seller.orders', compact('orders'));
     }
 
@@ -149,5 +149,11 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function order_details(Request $request)
+    {
+        $order = Order::findOrFail($request->order_id);
+        return view('frontend.partials.order_details', compact('order'));
     }
 }

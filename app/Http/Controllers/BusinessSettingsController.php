@@ -110,7 +110,7 @@ class BusinessSettingsController extends Controller
             $business_settings->value = $request->value;
             $business_settings->save();
         }
-        flash("Settings updated successfully")->success();
+        //flash("Settings updated successfully")->success();
         return '1';
     }
 }

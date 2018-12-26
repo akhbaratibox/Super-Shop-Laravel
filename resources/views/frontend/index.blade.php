@@ -237,6 +237,7 @@
         </section>
     @endif
 
+<<<<<<< HEAD
     <section class="bg-white py-5">
         <div class="container">
             <div class="section-title-1 clearfix">
@@ -288,19 +289,74 @@
                                                 <button class="add-to-cart btn" title="Add to Cart" onclick="showAddToCartModal({{ $product->id }})">
                                                     <i class="la la-shopping-cart"></i>
                                                 </button>
+=======
+    @if (\App\BusinessSetting::where('type', 'best_selling')->first()->value == 1)
+        <section class="bg-white py-5">
+            <div class="container">
+                <div class="section-title-1 clearfix">
+                    <h3 class="heading-5 strong-700 mb-0 float-left">
+                        <span class="mr-4">Best Selling</span>
+                    </h3>
+                    <ul class="inline-links float-right">
+                        <li><a  class="active">Top 20</a></li>
+                        {{-- <li><a href="" >Category name</a></li>
+                        <li><a href="" >Category name</a></li>
+                        <li><a href="" >Category name</a></li> --}}
+                    </ul>
+                </div>
+                <div class="caorusel-box">
+                    <div class="slick-carousel" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="2" data-slick-xs-items="1" data-slick-dots="true" data-slick-rows="2">
+                        @foreach (\App\Product::orderBy('num_of_sale', 'desc')->limit(20)->get() as $key => $product)
+                            <div class="p-2">
+                                <div class="row no-gutters product-box-2">
+                                    <div class="col-4">
+                                        <div class="position-relative overflow-hidden h-100">
+                                            <a href="{{ route('product', $product->slug) }}" class="d-block product-image h-100" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');">
+                                            </a>
+                                            <div class="product-btns">
+                                                <button class="btn add-wishlist" title="Add to Wishlist" onclick="addToWishList({{ $product->id }})">
+                                                    <i class="ion-ios-heart-outline"></i>
+                                                </button>
+                                                <button class="btn add-compare" title="Add to Compare" onclick="addToCompare({{ $product->id }})">
+                                                    <i class="ion-ios-browsers-outline"></i>
+                                                </button>
+                                                <button class="btn quick-view" title="Quick view" onclick="showAddToCartModal({{ $product->id }})">
+                                                    <i class="ion-ios-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-8 border-left">
+                                        <div class="p-3">
+                                            <h2 class="product-title mb-3 p-0 text-truncate-2">
+                                                <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
+                                            </h2>
+                                            <div class="clearfix">
+                                                <div class="price-box float-left">
+                                                    @if(home_base_price($product->id) != home_discounted_base_price($product->id))
+                                                        <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
+                                                    @endif
+                                                    <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                                                </div>
+                                                <div class="float-right">
+                                                    <button class="add-to-cart btn" title="Add to Cart" onclick="showAddToCartModal({{ $product->id }})">
+                                                        <i class="icon ion-android-cart"></i>
+                                                    </button>
+                                                </div>
+>>>>>>> master
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
+
             </div>
 
-        </div>
-
-    </section>
+        </section>
+    @endif
 
     @foreach (\App\HomeCategory::where('status', 1)->get() as $key => $homeCategory)
         <section class="gry-bg py-5">

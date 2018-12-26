@@ -42,7 +42,7 @@ class HomeCategoryController extends Controller
         $home_category->subsubcategories = json_encode($request->subsubcategories);
         if($home_category->save()){
             flash('Home Page Category has been inserted successfully')->success();
-            return redirect()->route('home_categories.index');
+            return redirect()->route('home_settings.index');
         }
 
         flash('Something went wrong')->danger();
@@ -86,7 +86,7 @@ class HomeCategoryController extends Controller
         $home_category->subsubcategories = json_encode($request->subsubcategories);
         if($home_category->save()){
             flash('Home Page Category has been inserted successfully')->success();
-            return redirect()->route('home_categories.index');
+            return redirect()->route('home_settings.index');
         }
 
         flash('Something went wrong')->danger();

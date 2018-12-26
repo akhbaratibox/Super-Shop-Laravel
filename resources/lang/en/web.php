@@ -39,6 +39,7 @@ return [
     'home_slider' => 'Top Slider',
     'home_banner' => 'Banners',
     'home_categories' => 'Category Wise Products',
+    'best_selling' => 'Best Selling',
     'home' => 'Home Page',
     'activation' => 'Activation',
     'flash_deal' => 'Flash Deal',

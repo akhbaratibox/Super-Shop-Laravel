@@ -139,7 +139,7 @@ input[type="submit"]{
     right: 12px;
     z-index: 1;
 }
-.slick-carousel:not(.slick-initialized) > :nth-child(n+2), {
+.slick-carousel:not(.slick-initialized) > div {
     display: none;
 }
 
@@ -644,8 +644,8 @@ section.home-banner-area {
 .category-sidebar .categories>li:hover >a{
     border-color: #eee;
 }
-.category-sidebar .categories>li>a .cat-icon{
-    font-size: 16px;
+.category-sidebar .categories>li>a .cat-image{
+    width: 16px;
     opacity: 0.6;
     margin-right: 10px;
 }
@@ -2732,4 +2732,13 @@ ul.seller-brand-list .brand-item {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+}
+
+.btn-back-to-top:before {
+    font-family: "LineAwesome";
+    content: "\f113";
+}
+.checkbox-color input:checked ~ label:after {
+    content: "\f17b";
+    font-family: "LineAwesome";
 }

@@ -141,134 +141,7 @@ $(window).on('load resize', function() {
         });
     }
 
-    // Swiper
-    if ($(".swiper-js-container").length > 0) {
-        $('.swiper-js-container').each(function(i, swiperContainer) {
-
-            var $swiperContainer = $(swiperContainer);
-            var $swiper = $swiperContainer.find('.swiper-container');
-
-            var swiperEffect = $swiper.data('swiper-effect');
-
-            var slidesPerViewXs = $swiper.data('swiper-xs-items');
-            var slidesPerViewSm = $swiper.data('swiper-sm-items');
-            var slidesPerViewMd = $swiper.data('swiper-md-items');
-            var slidesPerViewLg = $swiper.data('swiper-items');
-            var spaceBetweenSlidesXs = $swiper.data('swiper-xs-space-between');
-            var spaceBetweenSlidesSm = $swiper.data('swiper-sm-space-between');
-            var spaceBetweenSlidesMd = $swiper.data('swiper-md-space-between');
-            var spaceBetweenSlidesLg = $swiper.data('swiper-space-between');
-
-
-            // Slides per view written in data attributes for adaptive resoutions
-            slidesPerViewXs = !slidesPerViewXs ? slidesPerViewLg : slidesPerViewXs;
-            slidesPerViewSm = !slidesPerViewSm ? slidesPerViewLg : slidesPerViewSm;
-            slidesPerViewMd = !slidesPerViewMd ? slidesPerViewLg : slidesPerViewMd;
-            slidesPerViewLg = !slidesPerViewLg ? 1 : slidesPerViewLg;
-
-            // Space between slides written in data attributes for adaptive resoutions
-            spaceBetweenSlidesXs = !spaceBetweenSlidesXs ? 0 : spaceBetweenSlidesXs;
-            spaceBetweenSlidesSm = !spaceBetweenSlidesSm ? 0 : spaceBetweenSlidesSm;
-            spaceBetweenSlidesMd = !spaceBetweenSlidesMd ? 0 : spaceBetweenSlidesMd;
-            spaceBetweenSlidesLg = !spaceBetweenSlidesLg ? 0 : spaceBetweenSlidesLg;
-
-
-            var animEndEv = 'webkitAnimationEnd animationend';
-
-            var $swiper = new Swiper($swiper, {
-                pagination: $swiperContainer.find('.swiper-pagination'),
-                nextButton: $swiperContainer.find('.swiper-button-next'),
-                prevButton: $swiperContainer.find('.swiper-button-prev'),
-                slidesPerView: slidesPerViewLg,
-                spaceBetween: spaceBetweenSlidesLg,
-                autoplay: $swiper.data('swiper-autoplay'),
-                autoHeight: $swiper.data('swiper-autoheight'),
-                effect: swiperEffect,
-                speed: 800,
-                paginationClickable: true,
-                direction: 'horizontal',
-                preventClicks: true,
-                preventClicksPropagation: true,
-                observer: true,
-                observeParents: true,
-                breakpoints: {
-                    460: {
-                        slidesPerView: slidesPerViewXs,
-                        spaceBetweenSlides: spaceBetweenSlidesXs
-                    },
-                    767: {
-                        slidesPerView: slidesPerViewSm,
-                        spaceBetweenSlides: spaceBetweenSlidesSm
-                    },
-                    991: {
-                        slidesPerView: slidesPerViewMd,
-                        spaceBetweenSlides: spaceBetweenSlidesMd
-                    },
-                    1100: {
-                        slidesPerView: slidesPerViewLg,
-                        spaceBetweenSlides: spaceBetweenSlidesLg
-                    }
-                },
-                onInit: function(s) {
-
-                    var currentSlide = $(s.slides[s.activeIndex]);
-                    var elems = currentSlide.find(".animated");
-
-                    elems.each(function() {
-                        var $this = $(this);
-
-                        if (!$this.hasClass('animation-ended')) {
-                            var animationInType = $this.data('animation-in');
-                            var animationOutType = $this.data('animation-out');
-                            var animationDelay = $this.data('animation-delay');
-
-                            setTimeout(function() {
-                                $this.addClass('animation-ended ' + animationInType, 100).on(animEndEv, function() {
-                                    $this.removeClass(animationInType);
-                                });
-                            }, animationDelay);
-                        }
-                    });
-                },
-                onSlideChangeStart: function(s) {
-
-                    var currentSlide = $(s.slides[s.activeIndex]);
-                    var elems = currentSlide.find(".animated");
-
-                    elems.each(function() {
-                        var $this = $(this);
-
-                        if (!$this.hasClass('animation-ended')) {
-                            var animationInType = $this.data('animation-in');
-                            var animationOutType = $this.data('animation-out');
-                            var animationDelay = $this.data('animation-delay');
-
-                            setTimeout(function() {
-                                $this.addClass('animation-ended ' + animationInType, 100).on(animEndEv, function() {
-                                    $this.removeClass(animationInType);
-                                });
-                            }, animationDelay);
-                        }
-                    });
-                },
-                onSlideChangeEnd: function(s) {
-
-                    var previousSlide = $(s.slides[s.previousIndex]);
-                    var elems = previousSlide.find(".animated");
-
-                    elems.each(function() {
-                        var $this = $(this);
-                        var animationOneTime = $this.data('animation-onetime');
-
-                        if (!animationOneTime || animationOneTime == false) {
-                            $this.removeClass('animation-ended');
-                        }
-                    });
-                }
-            });
-        });
-    }
-
+    
     // Headroom
     if ($(window).width() > 0) {
         if ($("[data-toggle='headroom']").length > 0) {
@@ -378,16 +251,6 @@ $(document).ready(function() {
             zIndex: -101
         });
     }
-
-    // Adaptive backgrounds
-    $.adaptiveBackground.run({
-        'parent': '.adaptive-background',
-        'normalizeTextColor': true,
-        'exclude': [
-            'rgb(0,0,0)',
-            'rgba(255,255,255)'
-        ],
-    });
 
     // Input group - plus minus
     $('.btn-number').click(function(e) {
@@ -660,9 +523,6 @@ $(document).ready(function() {
         });
     }
 
-    // Sticky sidebar
-    $('[data-stick-in-parent="true"]').stick_in_parent();
-
     // Isotope
     // for each container
     $('.masonry-container').each(function(i, masonryContainer) {
@@ -801,50 +661,7 @@ $(document).ready(function() {
         });
     }
 
-    // Parallax
-    if ($(".paraxify").length > 0) {
-        var myParaxify = paraxify('.paraxify', {
-            speed: 1,
-            boost: 1
-        });
-    }
 
-    // Viewport animations
-    $('.milestone-count').viewportChecker({
-        callbackFunction: function(elem, action) {
-            setTimeout(function() {
-                $('.milestone-count').countTo({
-                    formatter: function(value, options) {
-                        return value.toFixed(options.decimals);
-                    },
-                    onUpdate: function(value) {
-                        console.debug(this);
-                    },
-                    onComplete: function(value) {
-                        console.debug(this);
-                    }
-                });
-            }, 500);
-        }
-    });
-
-    // Typed JS
-    if ($('.type-this').length > 0) {
-        $('.type-this').each(function() {
-
-            var element = $(this).attr('id');
-            var strings = $(this).data('type-this');
-
-            strings = strings.split(',');
-
-            var typed = new Typed('#' + element, {
-                strings: strings,
-                typeSpeed: 100,
-                backSpeed: 70,
-                loop: true
-            });
-        })
-    }
 
     if ($('.countdown').length > 0) {
         $('.countdown').each(function() {

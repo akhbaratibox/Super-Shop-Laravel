@@ -85,41 +85,10 @@
 <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 
 <!-- Plugins: Sorted A-Z -->
-<script src="{{ asset('frontend/vendor/adaptive-backgrounds/adaptive-backgrounds.js') }}"></script>
 <script src="{{ asset('frontend/vendor/countdown/js/jquery.countdown.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/dropzone/dropzone.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/fancybox/js/jquery.fancybox.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/flatpickr/flatpickr.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/flip/flip.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/footer-reveal/footer-reveal.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/gradientify/jquery.gradientify.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/headroom/headroom.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/headroom/jquery.headroom.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/input-mask/input-mask.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/instafeed/instafeed.js') }}"></script>
-<script src="{{ asset('frontend/vendor/milestone-counter/jquery.countTo.js') }}"></script>
-<script src="{{ asset('frontend/vendor/nouislider/js/nouislider.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/paraxify/paraxify.min.js') }}"></script>
 <script src="{{ asset('frontend/vendor/select2/js/select2.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/sticky-kit/sticky-kit.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/swiper/js/swiper.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/textarea-autosize/autosize.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/typeahead/typeahead.bundle.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/typed/typed.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/vide/vide.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/viewport-checker/viewportchecker.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/wow/wow.min.js') }}"></script>
+<script src="{{ asset('frontend/vendor/nouislider/js/nouislider.min.js') }}"></script>
 
-<!-- Isotope -->
-<script src="{{ asset('frontend/vendor/isotope/isotope.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
-
-<!--Spectrum JavaScript [ REQUIRED ]-->
-<script src="{{ asset('js/spectrum.js')}}"></script>
-
-<!-- Deso Slide -->
-<script src="{{ asset('frontend/vendor/deso-slide/js/jquery.desoslide.min.js') }}"></script>
 
 <script src="{{ asset('frontend/js/sweetalert2.min.js') }}"></script>
 <script src="{{ asset('frontend/js/slick.min.js') }}"></script>
@@ -150,18 +119,6 @@
 
     $('#search').on('focus', function(){
         search();
-    });
-
-    $('#slideshow').desoSlide({
-        thumbs: $('#slideshow_thumbs .swiper-slide > a'),
-        thumbEvent: 'click',
-        first: 0,
-        effect: 'none',
-        overlay: 'none',
-        controls: {
-            show: false,
-            keys: false
-        },
     });
 
     function search(){

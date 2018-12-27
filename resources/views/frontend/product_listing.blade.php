@@ -183,7 +183,7 @@
                                                 <a href="{{ route('product', $product->slug) }}" class="product-image d-block" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');">
                                                     <!-- <img src="{{ asset(json_decode($product->photos)[0]) }}" alt="product" class="img-center img-fluid"> -->
                                                 </a>
-                                                <button class="btn-quickview" onclick="showAddToCartModal({{ $product->id }})"><i class="fa fa-eye"></i></button>
+                                                <button class="btn-quickview" onclick="showAddToCartModal({{ $product->id }})"><i class="la la-eye"></i></button>
                                                 @if (strtotime($product->created_at) > strtotime('-10 day'))
                                                     <span class="product-label label-hot">New</span>
                                                 @endif

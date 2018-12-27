@@ -23,20 +23,20 @@ class CompareController extends Controller
     public function addToCompare(Request $request)
     {
         if($request->session()->has('compare')){
-            $cart = $request->session()->get('compare', collect([]));
-            if(!$cart->contains($request->id)){
-                if(count($cart) == 3){
-                    $cart->forget(0);
-                    $cart->push($request->id);
+            $compare = $request->session()->get('compare', collect([]));
+            if(!$compare->contains($request->id)){
+                if(count($compare) == 3){
+                    $compare->forget(0);
+                    $compare->push($request->id);
                 }
                 else{
-                    $cart->push($request->id);
+                    $compare->push($request->id);
                 }
             }
         }
         else{
-            $cart = collect([$request->id]);
-            $request->session()->put('compare', $cart);
+            $compare = collect([$request->id]);
+            $request->session()->put('compare', $compare);
         }
 
         return view('frontend.partials.compare');

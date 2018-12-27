@@ -1,5 +1,5 @@
 <a href="" class="nav-box-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="ion-ios-cart-outline d-inline-block nav-box-icon"></i>
+    <i class="la la-shopping-cart d-inline-block nav-box-icon"></i>
     <span class="nav-box-text d-none d-lg-inline-block">Cart</span>
     @if(Session::has('cart'))
         <span class="nav-box-number">{{ count(Session::get('cart'))}}</span>

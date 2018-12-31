@@ -81,6 +81,12 @@
                 <img src="{{ asset('frontend/images/logo/logo.svg') }}" class="" alt="active shop" height="40">
             </a>
 
+            <div class="d-inlin-block">
+                <div class="dropdown-toggle navbar-light category-menu-icon" id="category-menu-icon">
+                    <span class="navbar-toggler-icon"></span>
+                </div>
+            </div>
+
             <div class="search-box flex-grow-1">
                 <form action="{{ route('search') }}" method="GET">
                     <div class="d-flex position-relative">
@@ -239,7 +245,440 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="hover-category-menu" id="hover-category-menu">
+        <div class="container">
+            <div class="row no-gutters position-relative">
+                <div class="col-lg-3 position-static">
+                    <div class="category-sidebar" id="category-sidebar">
+                        <div style="height:4px;"></div>
+                        <div class="all-category">
+                            <span>CATEGORIES</span>
+                            <a href="">See All ></a>
+                        </div>
+                        <ul class="categories">
+                            <li>
+                                <a href="#">
+                                    <i class="icon-electronics-001 cat-icon"></i>
+                                    <span class="cat-name">TV & Video</span>
+                                </a>
+                                <div class="sub-cat-menu c-scrollbar">
+                                    <div class="sub-cat-main row no-gutters">
+                                        <div class="col-9">
+                                            <div class="sub-cat-content">
+                                                <div class="sub-cat-list">
+                                                    <div class="card-columns">
+                                                        <div class="card">
+                                                            <ul class="sub-cat-items">
+                                                                <li class="sub-cat-name"><a href="">Hot Categories</a></li>
+                                                                <li><a href="">Dresses</a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Jeans</a></li>
+                                                                <li><a href="">Suits</a></li>
+                                                                <li><a href="">Blouses & Shirts</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="card">
+                                                            <ul class="sub-cat-items">
+                                                                <li class="sub-cat-name"><a href="">Hot Categories</a></li>
+                                                                <li><a href="">Dresses</a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Jeans</a></li>
+                                                                <li><a href="">Jeans</a></li>
+                                                                <li><a href="">Jeans</a></li>
+                                                                <li><a href="">Jeans</a></li>
+                                                                <li><a href="">Suits</a></li>
+                                                                <li><a href="">Blouses & Shirts</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="card">
+                                                            <ul class="sub-cat-items">
+                                                                <li class="sub-cat-name"><a href="">Hot Categories</a></li>
+                                                                <li><a href="">Dresses</a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Jeans</a></li>
+                                                                <li><a href="">Suits</a></li>
+                                                                <li><a href="">Blouses & Shirts</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="card">
+                                                            <ul class="sub-cat-items">
+                                                                <li class="sub-cat-name"><a href="">Hot Categories</a></li>
+                                                                <li><a href="">Dresses</a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Jeans</a></li>
+                                                                <li><a href="">Suits</a></li>
+                                                                <li><a href="">Blouses & Shirts</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="card">
+                                                            <ul class="sub-cat-items">
+                                                                <li class="sub-cat-name"><a href="">Hot Categories</a></li>
+                                                                <li><a href="">Dresses</a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Jeans</a></li>
+                                                                <li><a href="">Suits</a></li>
+                                                                <li><a href="">Blouses & Shirts</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="card">
+                                                            <ul class="sub-cat-items">
+                                                                <li class="sub-cat-name"><a href="">Hot Categories</a></li>
+                                                                <li><a href="">Dresses</a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Jeans</a></li>
+                                                                <li><a href="">Suits</a></li>
+                                                                <li><a href="">Blouses & Shirts</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="sub-cat-featured">
+                                                    <ul class="sub-cat-featured-list inline-links d-flex">
+                                                        <li class="col">
+                                                            <a href="" >
+                                                                <span class="featured-name">New arrival plus size</span>
+                                                                <span class="featured-img">
+                                                                    <img src="assets/images/girls/1.png" class="img-fluid">
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="col">
+                                                            <a href="" >
+                                                                <span class="featured-name">Sweater Collection</span>
+                                                                <span class="featured-img">
+                                                                    <img src="assets/images/girls/2.png" class="img-fluid">
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="col">
+                                                            <a href="" >
+                                                                <span class="featured-name">High Quality Formal Dresses</span>
+                                                                <span class="featured-img">
+                                                                    <img src="assets/images/girls/3.png" class="img-fluid">
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
 
+                                        <div class="col-3">
+                                            <div class="sub-cat-brand">
+                                                <ul class="sub-brand-list">
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/1.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/2.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/3.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/4.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/1.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/2.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/3.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/4.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/1.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/2.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/3.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/4.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/1.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/2.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/3.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/4.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/1.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/2.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#" class="active">
+                                    <i class="icon-electronics-005 cat-icon"></i>
+                                    <span class="cat-name">Smartphones</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-electronics-097 cat-icon"></i>
+                                    <span class="cat-name">Photo cameras</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-electronics-033 cat-icon"></i>
+                                    <span class="cat-name">Laptops</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-electronics-021 cat-icon"></i>
+                                    <span class="cat-name">Home electronics</span>
+                                </a>
+                                <div class="sub-cat-menu c-scrollbar">
+                                    <div class="sub-cat-main row no-gutters">
+                                        <div class="col-9">
+                                            <div class="sub-cat-content">
+                                                <div class="sub-cat-list">
+                                                    <div class="card-columns">
+                                                        <div class="card">
+                                                            <ul class="sub-cat-items">
+                                                                <li class="sub-cat-name"><a href="">Hot Categories</a></li>
+                                                                <li><a href="">Dresses</a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Jeans</a></li>
+                                                                <li><a href="">Suits</a></li>
+                                                                <li><a href="">Blouses & Shirts</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="card">
+                                                            <ul class="sub-cat-items">
+                                                                <li class="sub-cat-name"><a href="">Hot Categories</a></li>
+                                                                <li><a href="">Dresses</a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Jeans</a></li>
+                                                                <li><a href="">Jeans</a></li>
+                                                                <li><a href="">Jeans</a></li>
+                                                                <li><a href="">Jeans</a></li>
+                                                                <li><a href="">Suits</a></li>
+                                                                <li><a href="">Blouses & Shirts</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="card">
+                                                            <ul class="sub-cat-items">
+                                                                <li class="sub-cat-name"><a href="">Hot Categories</a></li>
+                                                                <li><a href="">Dresses</a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Jeans</a></li>
+                                                                <li><a href="">Suits</a></li>
+                                                                <li><a href="">Blouses & Shirts</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="card">
+                                                            <ul class="sub-cat-items">
+                                                                <li class="sub-cat-name"><a href="">Hot Categories</a></li>
+                                                                <li><a href="">Dresses</a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Jeans</a></li>
+                                                                <li><a href="">Suits</a></li>
+                                                                <li><a href="">Blouses & Shirts</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="card">
+                                                            <ul class="sub-cat-items">
+                                                                <li class="sub-cat-name"><a href="">Hot Categories</a></li>
+                                                                <li><a href="">Dresses</a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Jeans</a></li>
+                                                                <li><a href="">Suits</a></li>
+                                                                <li><a href="">Blouses & Shirts</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="card">
+                                                            <ul class="sub-cat-items">
+                                                                <li class="sub-cat-name"><a href="">Hot Categories</a></li>
+                                                                <li><a href="">Dresses</a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Sweaters</a></li>
+                                                                <li><a href="">Jeans</a></li>
+                                                                <li><a href="">Suits</a></li>
+                                                                <li><a href="">Blouses & Shirts</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="sub-cat-featured">
+                                                    <ul class="sub-cat-featured-list inline-links d-flex">
+                                                        <li class="col">
+                                                            <a href="" >
+                                                                <span class="featured-name">New arrival plus size</span>
+                                                                <span class="featured-img">
+                                                                    <img src="assets/images/girls/1.png" class="img-fluid">
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="col">
+                                                            <a href="" >
+                                                                <span class="featured-name">Sweater Collection</span>
+                                                                <span class="featured-img">
+                                                                    <img src="assets/images/girls/2.png" class="img-fluid">
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="col">
+                                                            <a href="" >
+                                                                <span class="featured-name">High Quality Formal Dresses</span>
+                                                                <span class="featured-img">
+                                                                    <img src="assets/images/girls/3.png" class="img-fluid">
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-3">
+                                            <div class="sub-cat-brand">
+                                                <ul class="sub-brand-list">
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/1.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/2.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/3.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/4.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/1.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/2.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/3.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/4.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/1.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/2.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/3.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/4.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/1.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/2.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/3.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/4.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/1.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                    <li class="sub-brand-item">
+                                                        <a href="" ><img src="assets/images/brands/2.jpg" class="img-fluid"></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-electronics-024 cat-icon"></i>
+                                    <span class="cat-name">Headphones & Audio</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-electronics-145 cat-icon"></i>
+                                    <span class="cat-name">Gaming & Consoles</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-electronics-014 cat-icon"></i>
+                                    <span class="cat-name">PC Accessories</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-electronics-001 cat-icon"></i>
+                                    <span class="cat-name">TV & Video</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-electronics-005 cat-icon"></i>
+                                    <span class="cat-name">Smartphones</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-electronics-097 cat-icon"></i>
+                                    <span class="cat-name">Photo cameras</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
 <!-- Navbar -->

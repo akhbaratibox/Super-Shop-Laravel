@@ -99,13 +99,13 @@
                 </div>
                 <div class="col-xl-9 col-6">
                     <div class="d-flex w-100">
-                        <div class="search-box flex-grow-1 d-none d-xl-block px-4">
+                        <div class="search-box flex-grow-1 px-4">
                             <form action="{{ route('search') }}" method="GET">
                                 <div class="d-flex position-relative">
                                     <div class="w-100">
                                         <input type="text" aria-label="Search" id="search" name="q" class="w-100" placeholder="I'm shopping for..." autocomplete="off">
                                     </div>
-                                    <div class="form-group category-select">
+                                    <div class="form-group category-select d-none d-xl-block">
                                         <select class="form-control selectpicker" name="category">
                                             <option value="">All Categories</option>
                                             @foreach (\App\Category::all() as $key => $category)
@@ -113,7 +113,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <button class="" type="submit">
+                                    <button class="d-none d-xl-block" type="submit">
                                         <i class="la la-search la-flip-horizontal"></i>
                                     </button>
                                     <div class="typed-search-box d-none">
@@ -133,16 +133,10 @@
                         </div>
 
                         <div class="logo-bar-icons d-inline-block ml-auto">
-                            <div class="d-inline-block">
-                                <div class="nav-search-box" id="compare">
-                                    <a href="{{ route('compare') }}" class="nav-box-link">
-                                        <i class="la la-refresh d-inline-block nav-box-icon"></i>
-                                        <span class="nav-box-text d-none d-xl-inline-block">Compare</span>
-                                        @if(Session::has('compare'))
-                                            <span class="nav-box-number">{{ count(Session::get('compare'))}}</span>
-                                        @else
-                                            <span class="nav-box-number">0</span>
-                                        @endif
+                            <div class="d-inline-block d-xl-none">
+                                <div class="nav-search-box" id="mobile-sear">
+                                    <a href="" class="nav-box-link">
+                                        <i class="la la-search la-flip-horizontal d-inline-block nav-box-icon"></i>
                                     </a>
                                 </div>
                             </div>

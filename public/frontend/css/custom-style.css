@@ -495,6 +495,7 @@ select + .select2-container{
 .logo-bar-icons>div:not(:first-of-type) {
     margin-left: 10px;
 }
+.logo-bar-icons .nav-search-box .nav-box-link,
 .logo-bar-icons .nav-compare-box .nav-box-link,
 .logo-bar-icons .nav-wishlist-box .nav-box-link,
 .logo-bar-icons .nav-cart-box .nav-box-link{
@@ -503,11 +504,13 @@ select + .select2-container{
     color: #333;
     padding: 3px 0;
 }
+.logo-bar-icons .nav-search-box .nav-box-link:hover,
 .logo-bar-icons .nav-compare-box .nav-box-link:hover,
 .logo-bar-icons .nav-wishlist-box .nav-box-link:hover,
 .logo-bar-icons .nav-cart-box .nav-box-link:hover{
     color: #e62e04;
 }
+.logo-bar-icons .nav-search-box .nav-box-icon,
 .logo-bar-icons .nav-compare-box .nav-box-icon,
 .logo-bar-icons .nav-wishlist-box .nav-box-icon,
 .logo-bar-icons .nav-cart-box .nav-box-icon{
@@ -516,6 +519,7 @@ select + .select2-container{
     line-height: 32px;
     color: #777;
 }
+.logo-bar-icons .nav-search-box .nav-box-number,
 .logo-bar-icons .nav-compare-box .nav-box-number,
 .logo-bar-icons .nav-wishlist-box .nav-box-number,
 .logo-bar-icons .nav-cart-box .nav-box-number{
@@ -531,6 +535,7 @@ select + .select2-container{
     color: #fff;
     font-size: 12px;
 }
+.logo-bar-icons .nav-search-box .nav-box-text,
 .logo-bar-icons .nav-compare-box .nav-box-text,
 .logo-bar-icons .nav-wishlist-box .nav-box-text,
 .logo-bar-icons .nav-cart-box .nav-box-text{

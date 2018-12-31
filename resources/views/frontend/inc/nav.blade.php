@@ -96,7 +96,7 @@
                             </select>
                         </div>
                         <button class="" type="submit">
-                            <i class="ion-ios-search"></i>
+                            <i class="la la-search la-flip-horizontal"></i>
                         </button>
                         <div class="typed-search-box d-none">
                             <div class="search-preloader">

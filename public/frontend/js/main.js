@@ -89,7 +89,8 @@ $(document).ready(function() {
     $('.xzoom, .xzoom-gallery').xzoom({
         Xoffset: 20,
         bg: true,
-        tint: '#000'
+        tint: '#000',
+        defaultScale: -1
     });
 
 

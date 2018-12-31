@@ -11,7 +11,7 @@
             <div class="form-group">
                 <div class="col-sm-3">
                     <label class="control-label">Slider Images</label>
-                    <strong>(850px*330px)</strong>
+                    <strong>(850px*315px)</strong>
                 </div>
                 <div class="col-sm-9">
                     <div id="photos">

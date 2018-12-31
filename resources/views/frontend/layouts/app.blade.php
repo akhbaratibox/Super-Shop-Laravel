@@ -15,11 +15,11 @@
 
 <title>Active Shop</title>
 
-<!-- Bootstrap -->
-<link rel="stylesheet" href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}" type="text/css">
-
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}" type="text/css">
 
 <!-- Icons -->
 <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}" type="text/css">
@@ -41,7 +41,7 @@
 <link type="text/css" href="{{ asset('frontend/css/custom-style.css') }}" rel="stylesheet">
 
 <!-- jQuery -->
-<script src="{{ asset('frontend/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('frontend/js/vendor/jquery.min.js') }}"></script>
 
 </head>
 <body>
@@ -81,13 +81,13 @@
 <a href="#" class="back-to-top btn-back-to-top"></a>
 
 <!-- Core -->
-<script src="{{ asset('frontend/vendor/popper/popper.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('frontend/js/vendor/popper.min.js') }}"></script>
+<script src="{{ asset('frontend/js/vendor/bootstrap.min.js') }}"></script>
 
 <!-- Plugins: Sorted A-Z -->
-<script src="{{ asset('frontend/vendor/countdown/js/jquery.countdown.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/select2/js/select2.min.js') }}"></script>
-<script src="{{ asset('frontend/vendor/nouislider/js/nouislider.min.js') }}"></script>
+<script src="{{ asset('frontend/js/jquery.countdown.min.js') }}"></script>
+<script src="{{ asset('frontend/js/select2.min.js') }}"></script>
+<script src="{{ asset('frontend/js/nouislider.min.js') }}"></script>
 
 
 <script src="{{ asset('frontend/js/sweetalert2.min.js') }}"></script>

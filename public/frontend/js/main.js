@@ -18,6 +18,7 @@ var searchOpen = function () {
 	};
 }();
 
+
 $(function () {
     $('#category-menu-icon, #category-sidebar').on('mouseover', function (event) {
         $('#hover-category-menu').show();
@@ -25,6 +26,14 @@ $(function () {
     }).on('mouseout', function (event) {
         $('#hover-category-menu').hide();
         $('#category-menu-icon').removeClass('active');
+    });
+
+    $('.nav-search-box a').on('click', function(){
+        $('.search-box').addClass('show');
+        $('.search-box input[type="text"]').focus();
+    });
+    $('.search-box-back button').on('click', function(){
+        $('.search-box').removeClass('show');
     });
 
     // if ($('.slick-slider').length > 0) {
@@ -82,7 +91,27 @@ function morebrands(em){
         $(em).children('span').html('Less');
     }
 }
-
+function sideMenuOpen(e){
+    event.preventDefault();
+    $(e).find('.hamburger-icon').toggleClass('open');
+    if ($(e).find('.hamburger-icon').hasClass('open')) {
+        $('.side-menu-wrap,.side-menu-overlay').removeClass('opacity-0').addClass('opacity-1');
+        $('.side-menu').removeClass('closed').addClass('open');
+        $('body').addClass('side-menu-open');
+    }else {
+        $('.side-menu-wrap,.side-menu-overlay').removeClass('opacity-1').addClass('opacity-0');
+        $('.side-menu').removeClass('open').addClass('closed');
+        $('body').removeClass('side-menu-open');
+    }
+}
+function sideMenuClose(){
+    $('.side-menu-wrap,.side-menu-overlay').removeClass('opacity-1').addClass('opacity-0');
+    $('.side-menu').removeClass('open').addClass('closed');
+    if ($('.hamburger-icon').hasClass('open')) {
+        $('.hamburger-icon').removeClass('open');
+        $('body').removeClass('side-menu-open');
+    }
+}
 
 $(document).ready(function() {
     searchOpen.init();

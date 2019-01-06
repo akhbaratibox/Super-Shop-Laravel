@@ -102,7 +102,7 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        
+
                         <li>
                             <a href="">
                                 <i class="la la-file-text"></i>
@@ -163,11 +163,13 @@
                                 <img src="{{ asset('frontend/images/logo/logo.png') }}" class="" alt="active shop">
                             </a>
 
-                            <div class="d-none d-xl-block category-menu-icon-box">
-                                <div class="dropdown-toggle navbar-light category-menu-icon" id="category-menu-icon">
-                                    <span class="navbar-toggler-icon"></span>
+                            @if(Route::currentRouteName() != 'home' && Route::currentRouteName() != 'categories.all')
+                                <div class="d-none d-xl-block category-menu-icon-box">
+                                    <div class="dropdown-toggle navbar-light category-menu-icon" id="category-menu-icon">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-xl-9 col-md-6 col-4 position-static">

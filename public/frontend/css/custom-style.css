@@ -3025,4 +3025,69 @@ ul.seller-brand-list .brand-item {
     .side-booking-option.open {
         left: 0;
     }
+
+
+
+    .side-menu-header {
+        position: relative;
+        background: #e62e04;
+        color: #fff;
+    }
+    
+    .side-menu-close {
+        position: absolute;
+        color: #fff;
+        font-size: 24px;
+        right: 0;
+        top: 0;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        cursor: pointer;
+    }
+    
+    .side-menu-header .widget-profile-box .image {
+        margin: 0;
+        height: 60px;
+        width: 60px;
+        border: 3px solid #da8471;
+    }
+    
+    .side-menu-header .widget-profile-box .name {
+        margin-left: 10px;
+        font-weight: 700;
+        margin-top: 0;
+    }
+    
+    .side-menu-header .side-login a {
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 14px;
+    }
+    
+    .side-menu-header .side-login a:not(:first-child) {
+        margin-left: 10px;
+        border-left: 1px solid #fff;
+        padding-left: 10px;
+    }
+    .side-menu-list ul {
+        padding: 20px 0;
+        margin: 0;
+        list-style: none;
+    }
+    
+    .side-menu-list ul li a {
+        color: #5a5a5a;
+        font-size: 14px;
+        padding: 5px 0;
+        display: block;
+        font-weight: 600;
+    }
+    
+    .side-menu-list ul li a i {
+        opacity: 0.6;
+        margin-right: 8px;
+    }
 }

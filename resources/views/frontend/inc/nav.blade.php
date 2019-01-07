@@ -76,18 +76,24 @@
         <div class="side-menu-overlay opacity-0" onclick="sideMenuClose()"></div>
         <div class="side-menu-wrap opacity-0">
             <div class="side-menu closed">
-                <div class="side-menu-header">
+                <div class="side-menu-header ">
                     <div class="side-menu-close" onclick="sideMenuClose()">
                         <i class="la la-close"></i>
                     </div>
-                    <div class="widget-profile-box p-3">
-                        <div class="image" style="background-image:url('{{ asset('frontend/images/icons/user-placeholder.jpg') }}')"></div>
 
+                    <div class="widget-profile-box px-3 py-4 d-flex align-items-center">
+                        <div class="image " style="background-image:url('{{ asset('frontend/images/icons/user-placeholder.jpg') }}')"></div>
+                        <!-- <div class="name">John Doe</div> -->
+                    </div>
+                    <div class="side-login px-3 pb-3">
+                        <a href="">Sign In</a>
+                        <a href="">Registration</a>
+                        <!-- <a href="">Sign Out</a> -->
                     </div>
 
                 </div>
-                <div class="side-menu-list">
-                    <ul class="">
+                <div class="side-menu-list px-3">
+                    <ul class="side-user-menu">
                         <li>
                             <a href="">
                                 <i class="la la-home"></i>
@@ -95,7 +101,6 @@
                             </a>
                         </li>
 
-                        <!-- only when logged in -->
                         <li>
                             <a href="">
                                 <i class="la la-dashboard"></i>
@@ -109,7 +114,6 @@
                                 <span>Purchase History</span>
                             </a>
                         </li>
-                        <!-- end only when logged in -->
 
                         <li>
                             <a href="">
@@ -124,16 +128,75 @@
                             </a>
                         </li>
 
-                        <!-- only when logged in -->
                         <li>
                             <a href="">
                                 <i class="la la-user"></i>
                                 <span>Manage Profile</span>
                             </a>
                         </li>
-                        <!-- end only when logged in -->
 
                     </ul>
+                    <div class="sidebar-widget-title py-0">
+                        <span>Shop Options</span>
+                    </div>
+                    <ul class="side-seller-menu">
+                        <li>
+                            <a href="">
+                                <i class="la la-diamond"></i>
+                                <span>Products</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                <i class="la la-file-text"></i>
+                                <span>Orders</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                <i class="la la-cog"></i>
+                                <span>Shop Setting</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                <i class="la la-cc-mastercard"></i>
+                                <span>Payment History</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="sidebar-widget-title py-0">
+                        <span>Earinngs</span>
+                    </div>
+                    <div class="widget-balance py-3">
+                        <div class="text-center">
+                            <div class="heading-4 strong-700 mb-4">
+                                <small class="d-block text-sm alpha-5 mb-2">your earnings</small>
+                                <span class="p-2 bg-base-1 rounded">$526.51</span>
+                            </div>
+                            <table class="text-left mb-0 table w-75 m-auto">
+                                <tbody><tr>
+                                    <td class="p-1 text-sm">
+                                        Total earnings:
+                                    </td>
+                                    <td class="p-1">
+                                        $1500.26
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-1 text-sm">
+                                        Last Month earnings:
+                                    </td>
+                                    <td class="p-1">
+                                        $756.75
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

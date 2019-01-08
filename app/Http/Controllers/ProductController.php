@@ -89,7 +89,7 @@ class ProductController extends Controller
         $product->discount = $request->discount;
         $product->discount_type = $request->discount_type;
 
-        $product->slug = preg_replace('/\s+/', '-', $request->name).'-'.str_random(5);
+        $product->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->name)).'-'.str_random(5);
 
         if($request->has('colors_active')){
             if(count($request->colors) > 0){

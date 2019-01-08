@@ -205,6 +205,7 @@
     }
 
     function addToCart(){
+        $('#addToCart').modal();
         $('.c-preloader').show();
         $.ajax({
            type:"POST",

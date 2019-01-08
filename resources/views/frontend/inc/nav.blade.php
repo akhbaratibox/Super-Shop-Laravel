@@ -3,8 +3,8 @@
     <div class="top-navbar">
         <div class="container">
             <div class="row">
-                <div class="col-7">
-                    <ul class="inline-links">
+                <div class="col-lg-7 col">
+                    <ul class="inline-links d-lg-inline-block d-flex justify-content-between">
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle top-bar-item" data-toggle="dropdown">
                                 <img src="{{ asset('frontend/images/icons/flags/ro.png') }}" class="flag"><span class="language">English</span>
@@ -46,7 +46,7 @@
                     </ul>
                 </div>
 
-                <div class="col-5 text-right">
+                <div class="col-5 text-right d-none d-lg-block">
                     <ul class="inline-links">
                         @auth
                         <li>
@@ -72,7 +72,7 @@
     <!-- END Top Bar -->
 
     <!-- mobile menu -->
-    <div class="mobile-side-menu d-xl-none">
+    <div class="mobile-side-menu d-lg-none">
         <div class="side-menu-overlay opacity-0" onclick="sideMenuClose()"></div>
         <div class="side-menu-wrap opacity-0">
             <div class="side-menu closed">
@@ -117,8 +117,16 @@
 
                         <li>
                             <a href="">
+                                <i class="la la-refresh"></i>
+                                <span>Compare</span>
+                                <span class="badge">3</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
                                 <i class="la la-shopping-cart"></i>
                                 <span>Cart</span>
+                                <span class="badge">25</span>
                             </a>
                         </li>
                         <li>
@@ -207,9 +215,9 @@
         <div class="">
             <div class="container">
                 <div class="row no-gutters align-items-center">
-                    <div class="col-xl-3 col-md-6 col-8">
+                    <div class="col-lg-3 col-9">
                         <div class="d-flex">
-                            <div class="d-block d-xl-none mobile-menu-icon-box">
+                            <div class="d-block d-lg-none mobile-menu-icon-box">
                                 <!-- Navbar toggler  -->
                                 <a href="" onclick="sideMenuOpen(this)">
                                     <div class="hamburger-icon">
@@ -235,12 +243,12 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-xl-9 col-md-6 col-4 position-static">
+                    <div class="col-lg-9 col-3 position-static">
                         <div class="d-flex w-100">
                             <div class="search-box flex-grow-1 px-4">
                                 <form action="{{ route('search') }}" method="GET">
                                     <div class="d-flex position-relative">
-                                        <div class="d-xl-none search-box-back">
+                                        <div class="d-lg-none search-box-back">
                                             <button class="" type="button"><i class="la la-long-arrow-left"></i></button>
                                         </div>
                                         <div class="w-100">
@@ -254,7 +262,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <button class="d-none d-xl-block" type="submit">
+                                        <button class="d-none d-lg-block" type="submit">
                                             <i class="la la-search la-flip-horizontal"></i>
                                         </button>
                                         <div class="typed-search-box d-none">
@@ -274,14 +282,14 @@
                             </div>
 
                             <div class="logo-bar-icons d-inline-block ml-auto">
-                                <div class="d-inline-block d-xl-none">
+                                <div class="d-inline-block d-lg-none">
                                     <div class="nav-search-box">
                                         <a href="#" class="nav-box-link">
                                             <i class="la la-search la-flip-horizontal d-inline-block nav-box-icon"></i>
                                         </a>
                                     </div>
                                 </div>
-                                <div class="d-inline-block">
+                                <div class="d-none d-lg-inline-block">
                                     <div class="nav-compare-box" id="compare">
                                         <a href="{{ route('compare') }}" class="nav-box-link">
                                             <i class="la la-refresh d-inline-block nav-box-icon"></i>
@@ -294,7 +302,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="d-none d-xl-inline-block">
+                                <div class="d-none d-lg-inline-block">
                                     <div class="nav-wishlist-box" id="wishlist">
                                         <a href="{{ route('wishlists.index') }}" class="nav-box-link">
                                             <i class="la la-heart-o d-inline-block nav-box-icon"></i>
@@ -307,7 +315,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="d-inline-block" data-hover="dropdown">
+                                <div class="d-none d-lg-inline-block" data-hover="dropdown">
                                     <div class="nav-cart-box dropdown" id="cart_items">
                                         <a href="" class="nav-box-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="la la-shopping-cart d-inline-block nav-box-icon"></i>
@@ -502,7 +510,7 @@
     </div>
     <!-- Navbar -->
 
-    <div class="main-nav-area d-none d-xl-block">
+    <div class="main-nav-area d-none d-lg-block">
         <nav class="navbar navbar-expand-lg navbar--bold navbar--style-2 navbar-light bg-default">
             <div class="container">
                 <div class="collapse navbar-collapse align-items-center justify-content-center" id="navbar_main">

@@ -666,6 +666,9 @@ section.home-banner-area {
     font-size: 13px;
     border: 1px solid transparent;
     position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .category-sidebar .categories>li:hover >a::before{
     position: absolute;
@@ -2881,30 +2884,9 @@ ul.seller-brand-list .brand-item {
 }
 /* lg */
 @media (max-width: 991px){
-
-}
-/* xl */
-@media (max-width: 1199px){
     .logo-bar-area {
         padding: 12px 0;
         box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    }
-    .logo-bar-icons .nav-search-box .nav-box-link,
-    .logo-bar-icons .nav-compare-box .nav-box-link,
-    .logo-bar-icons .nav-wishlist-box .nav-box-link,
-    .logo-bar-icons .nav-cart-box .nav-box-link {
-        padding: 4px 5px;
-    }
-    .logo-bar-icons .nav-search-box .nav-box-number,
-    .logo-bar-icons .nav-compare-box .nav-box-number,
-    .logo-bar-icons .nav-wishlist-box .nav-box-number,
-    .logo-bar-icons .nav-cart-box .nav-box-number {
-        left: auto;
-        right: 0;
-        min-width: 20px;
-        height: 14px;
-        line-height: 13px;
-        font-size: 10px;
     }
     .mobile-menu-icon-box {
         padding: 8px 0;
@@ -2942,13 +2924,6 @@ ul.seller-brand-list .brand-item {
         width: calc(100% + 30px);
         left: -15px;
     }
-    .logo-bar-icons .nav-search-box .nav-box-icon,
-    .logo-bar-icons .nav-compare-box .nav-box-icon,
-    .logo-bar-icons .nav-wishlist-box .nav-box-icon,
-    .logo-bar-icons .nav-cart-box .nav-box-icon {
-        font-size: 24px;
-        text-align: center;
-    }
 
 
 
@@ -2962,9 +2937,9 @@ ul.seller-brand-list .brand-item {
         max-width: 80vw;
         height: 100%;
         z-index: 999;
-        transition: opacity .6s cubic-bezier(.77,0,.175,1),visibility .6s cubic-bezier(.77,0,.175,1);
-        -webkit-transition: opacity .6s cubic-bezier(.77,0,.175,1),visibility .6s cubic-bezier(.77,0,.175,1);
-        -ms-webkit-transition: opacity .6s cubic-bezier(.77,0,.175,1),visibility .6s cubic-bezier(.77,0,.175,1);
+        transition: opacity .4s cubic-bezier(.77,0,.175,1),visibility .4s cubic-bezier(.77,0,.175,1);
+        -webkit-transition: opacity .4s cubic-bezier(.77,0,.175,1),visibility .4s cubic-bezier(.77,0,.175,1);
+        -ms-webkit-transition: opacity .4s cubic-bezier(.77,0,.175,1),visibility .4s cubic-bezier(.77,0,.175,1);
     }
     .side-menu-overlay {
         position: fixed;
@@ -2999,9 +2974,9 @@ ul.seller-brand-list .brand-item {
         height: 100%;
         width: 300px;
         max-width: 80vw;
-        transition: left .6s cubic-bezier(.77,0,.175,1);
-        -webkit-transition: left .6s cubic-bezier(.77,0,.175,1);
-        -ms-webkit-transition: left .6s cubic-bezier(.77,0,.175,1);
+        transition: left .4s cubic-bezier(.77,0,.175,1);
+        -webkit-transition: left .4s cubic-bezier(.77,0,.175,1);
+        -ms-webkit-transition: left .4s cubic-bezier(.77,0,.175,1);
         background: #fff;
         color: #777;
         z-index: 99;
@@ -3089,5 +3064,44 @@ ul.seller-brand-list .brand-item {
     .side-menu-list ul li a i {
         opacity: 0.6;
         margin-right: 8px;
+    }
+    .side-menu-list ul li .badge {
+        border-radius: 8px;
+        background-color: #e62e04;
+        color: #fff;
+        min-width: 20px;
+        height: 13px;
+        line-height: 12px;
+        padding: 0;
+        position: relative;
+        top: -4px;
+        font-size: 10px;
+    }
+}
+/* xl */
+@media (max-width: 1199px){
+    .logo-bar-icons .nav-search-box .nav-box-link,
+    .logo-bar-icons .nav-compare-box .nav-box-link,
+    .logo-bar-icons .nav-wishlist-box .nav-box-link,
+    .logo-bar-icons .nav-cart-box .nav-box-link {
+        padding: 4px 5px;
+    }
+    .logo-bar-icons .nav-search-box .nav-box-number,
+    .logo-bar-icons .nav-compare-box .nav-box-number,
+    .logo-bar-icons .nav-wishlist-box .nav-box-number,
+    .logo-bar-icons .nav-cart-box .nav-box-number {
+        left: auto;
+        right: 0;
+        min-width: 20px;
+        height: 14px;
+        line-height: 13px;
+        font-size: 10px;
+    }
+    .logo-bar-icons .nav-search-box .nav-box-icon,
+    .logo-bar-icons .nav-compare-box .nav-box-icon,
+    .logo-bar-icons .nav-wishlist-box .nav-box-icon,
+    .logo-bar-icons .nav-cart-box .nav-box-icon {
+        font-size: 24px;
+        text-align: center;
     }
 }

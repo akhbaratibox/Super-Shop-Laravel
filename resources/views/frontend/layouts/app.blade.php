@@ -186,7 +186,9 @@
         if(!$('#modal-size').hasClass('modal-lg')){
             $('#modal-size').addClass('modal-lg');
         }
+        $('#addToCart-modal-body').html(null);
         $('#addToCart').modal();
+        $('.c-preloader').show();
         $.post('{{ route('cart.showCartModal') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
             $('.c-preloader').hide();
             $('#addToCart-modal-body').html(data);
@@ -200,6 +202,7 @@
     }
 
     function addToCart(){
+        $('#addToCart-modal-body').html(null);
         $('#addToCart').modal();
         $('.c-preloader').show();
         $.ajax({

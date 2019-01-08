@@ -1,19 +1,17 @@
 <div class="modal-body p-4">
     <div class="row no-gutters cols-xs-space cols-sm-space cols-md-space">
         <div class="col-lg-6">
-            <div class="gallery-container product-gallery sticky-top">
-                <div id="slideshow" class="gallery-top no-padding bg-transparent"><div class="desoslide-wrapper"><img alt="Bird" class="img-responsive" src="{{ asset(json_decode($product->photos)[0]) }}" style="opacity: 1;"></div></div>
-                <div id="slideshow_thumbs" class="swiper-js-container gallery-thumbs gallery-thumbs--style-1 mt-4">
-                    <div class="swiper-container swiper-container-horizontal swiper-container-undefined" data-swiper-items="7" data-swiper-space-between="10" data-swiper-xs-items="3" data-swiper-xs-space-between="10" data-swiper-sm-items="4" data-swiper-sm-space-between="10">
-                        <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-                            @foreach (json_decode($product->photos) as $key => $photo)
-                                <div class="swiper-slide swiper-slide-active" style="width: 65px; margin-right: 10px;">
-                                    <a href="{{ asset($photo) }}" data-desoslide-index="{{ $key }}">
-                                        <img src="{{ asset($photo) }}" alt="Product Image">
-                                    </a>
-                                </div>
-                            @endforeach
-                        </div>
+            <div class="product-gal d-flex flex-row-reverse">
+                <div class="product-gal-img">
+                    <img class="xzoom img-fluid" src="{{ asset(json_decode($product->photos)[0]) }}" xoriginal="{{ asset(json_decode($product->photos)[0]) }}" />
+                </div>
+                <div class="product-gal-thumb">
+                    <div class="xzoom-thumbs">
+                        @foreach (json_decode($product->photos) as $key => $photo)
+                            <a href="{{ asset($photo) }}">
+                                <img class="xzoom-gallery" width="80" src="{{ asset($photo) }}"  @if($key == 0) xpreview="{{ asset($photo) }}" @endif>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -110,13 +108,13 @@
                                 <div class="input-group input-group--style-2 pr-3" style="width: 160px;">
                                     <span class="input-group-btn">
                                         <button class="btn btn-number" type="button" data-type="minus" data-field="quantity" disabled="disabled">
-                                            <i class="ion-minus"></i>
+                                            <i class="la la-minus"></i>
                                         </button>
                                     </span>
                                     <input type="text" name="quantity" class="form-control input-number text-center" placeholder="1" value="1" min="1" max="10">
                                     <span class="input-group-btn">
                                         <button class="btn btn-number" type="button" data-type="plus" data-field="quantity">
-                                            <i class="ion-plus"></i>
+                                            <i class="la la-plus"></i>
                                         </button>
                                     </span>
                                 </div>
@@ -140,7 +138,3 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    cartQuantityInitialize();
-</script>

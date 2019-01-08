@@ -97,13 +97,13 @@
                                                     <div class="input-group input-group--style-2 pr-4" style="width: 130px;">
                                                         <span class="input-group-btn">
                                                             <button class="btn btn-number" type="button" data-type="minus" data-field="quantity[{{ $key }}]">
-                                                                <i class="ion-minus"></i>
+                                                                <i class="la la-minus"></i>
                                                             </button>
                                                         </span>
                                                         <input type="text" name="quantity[{{ $key }}]" class="form-control input-number" placeholder="1" value="{{ $cartItem['quantity'] }}" min="1" max="10" onchange="updateQuantity({{ $key }}, this)">
                                                         <span class="input-group-btn">
                                                             <button class="btn btn-number" type="button" data-type="plus" data-field="quantity[{{ $key }}]">
-                                                                <i class="ion-plus"></i>
+                                                                <i class="la la-plus"></i>
                                                             </button>
                                                         </span>
                                                     </div>
@@ -113,7 +113,7 @@
                                                 </td>
                                                 <td class="product-remove">
                                                     <a href="#" onclick="removeFromCartView(event, {{ $key }})" class="text-right pl-4">
-                                                        <i class="ion-trash-a"></i>
+                                                        <i class="la la-trash"></i>
                                                     </a>
                                                 </td>
                                             </tr>
@@ -126,7 +126,7 @@
                         <div class="row align-items-center pt-4">
                             <div class="col-6">
                                 <a href="{{ route('home') }}" class="link link--style-3">
-                                    <i class="ion-android-arrow-back"></i>
+                                    <i class="la la-mail-reply"></i>
                                     Return to shop
                                 </a>
                             </div>

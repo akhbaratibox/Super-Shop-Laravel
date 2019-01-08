@@ -1,6 +1,6 @@
 <a href="" class="nav-box-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <i class="la la-shopping-cart d-inline-block nav-box-icon"></i>
-    <span class="nav-box-text d-none d-lg-inline-block">Cart</span>
+    <span class="nav-box-text d-none d-xl-inline-block">Cart</span>
     @if(Session::has('cart'))
         <span class="nav-box-number">{{ count(Session::get('cart'))}}</span>
     @else
@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="dc-actions">
                                         <button onclick="removeFromCart({{ $key }})">
-                                            <i class="ion-close"></i>
+                                            <i class="la la-close"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -58,12 +58,12 @@
                         <ul class="inline-links inline-links--style-3">
                             <li class="pr-3">
                                 <a href="{{ route('cart') }}" class="link link--style-1 text-capitalize btn btn-outline btn-base-1 px-3 py-1">
-                                    <i class="ion-bag"></i> View cart
+                                    <i class="la la-shopping-cart"></i> View cart
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('checkout.shipping_info') }}" class="link link--style-1 text-capitalize btn btn-base-1 px-3 py-1 light-text">
-                                    <i class="ion-forward"></i> Checkout
+                                    <i class="la la-mail-forward"></i> Checkout
                                 </a>
                             </li>
                         </ul>

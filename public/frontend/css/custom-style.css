@@ -2746,7 +2746,7 @@ ul.seller-brand-list .brand-item {
     width: calc(100% - 60px);
 }
 .xzoom-source{
-    z-index: 999;
+    z-index: 1060;
 }
 .xzoom,
 .xzoom-lens,
@@ -2754,6 +2754,7 @@ ul.seller-brand-list .brand-item {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+    z-index: 1055;
 }
 
 .btn-back-to-top:before {
@@ -2991,7 +2992,7 @@ ul.seller-brand-list .brand-item {
         background:transparent
     }
     .side-menu::-webkit-scrollbar-thumb{
-        background:rgba(255,255,255,0.4);
+        background:rgba(0,0,0,0.3);
         border-radius:2px
     }
     .side-menu.closed {

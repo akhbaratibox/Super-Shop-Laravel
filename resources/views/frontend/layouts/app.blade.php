@@ -190,16 +190,11 @@
         $.post('{{ route('cart.showCartModal') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
             $('.c-preloader').hide();
             $('#addToCart-modal-body').html(data);
-            $('#slideshow').desoSlide({
-                thumbs: $('#slideshow_thumbs .swiper-slide > a'),
-                thumbEvent: 'click',
-                first: 0,
-                effect: 'none',
-                overlay: 'none',
-                controls: {
-                    show: false,
-                    keys: false
-                },
+            $('.xzoom, .xzoom-gallery').xzoom({
+                Xoffset: 20,
+                bg: true,
+                tint: '#000',
+                defaultScale: -1
             });
         });
     }
@@ -296,6 +291,8 @@
             }
         });
     }
+
+    cartQuantityInitialize();
 
 </script>
 

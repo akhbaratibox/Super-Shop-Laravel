@@ -298,8 +298,6 @@
         });
     }
 
-    cartQuantityInitialize();
-
 </script>
 
 <script src="{{ asset('frontend/js/bootstrap-tagsinput.min.js') }}"></script>

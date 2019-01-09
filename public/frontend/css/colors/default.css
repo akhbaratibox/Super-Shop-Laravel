@@ -1,0 +1,112 @@
+
+a,
+a:hover,
+.btn-anim-primary:hover,
+.required-star,
+.top-navbar .active a,
+.top-navbar a:hover,
+.logo-bar-icons .nav-search-box .nav-box-link:hover,
+.logo-bar-icons .nav-compare-box .nav-box-link:hover,
+.logo-bar-icons .nav-wishlist-box .nav-box-link:hover,
+.logo-bar-icons .nav-cart-box .nav-box-link:hover,
+.main-nav-area .navbar-nav .nav-item.active .nav-link,
+.main-nav-area .navbar-nav .nav-item .nav-link:hover,
+.category-sidebar .all-category a:hover,
+.card .sub-cat-items li a:hover,
+.product-description-wrapper .product-price,
+.breadcrumb li a:hover,
+.widget-profile-menu a.active i,
+.product-title a:hover,
+.price-box .product-price,
+.footer-top-box i,
+.flash-deal-item .price,
+.category-widget ul li a:hover,
+.product-box-3 .title a:hover,
+.all-category-menu ul li a:hover,
+.typed-search-box .category a,
+.process-steps li.done .title,
+.process-steps li.active .title
+
+{
+    color: #e62e04;
+}
+
+
+
+
+
+
+
+
+
+.search-box button,
+.widget-profile-menu a:hover,
+button.paction.add-wishlist:hover,
+button.paction.add-compare:hover,
+.home-slide .slick-dots li.slick-active button,
+.home-slide .slick-dots li button:hover,
+.seller-shop-menu li.active a,
+.seller-shop-menu li a:hover,
+.caorusel-box .slick-dots li.slick-active button,
+.caorusel-box .slick-dots li button:hover,
+.flash-deal-box .countdown .countdown-digit,
+.flash-content.c-scrollbar,
+.process-steps li.done .icon,
+.process-steps li.done:after,
+.process-steps li.active:after,
+.process-steps li.active .icon,
+.side-menu-header
+
+{
+    background: #e62e04;
+}
+
+
+
+
+
+
+
+
+
+
+
+.btn-anim-primary:before,
+.bootstrap-tagsinput .label,
+.logo-bar-icons .nav-search-box .nav-box-number,
+.logo-bar-icons .nav-compare-box .nav-box-number,
+.logo-bar-icons .nav-wishlist-box .nav-box-number,
+.logo-bar-icons .nav-cart-box .nav-box-number,
+.side-menu-list ul li .badge
+
+{
+    background-color: #e62e04;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.btn-anim-primary,
+.form-control:focus,
+.sub-cat-featured a:hover,
+.brands-collapse-box li:hover,
+.widget-profile-menu a.active,
+button.paction.add-wishlist:hover,
+button.paction.add-compare:hover,
+.all-category-menu ul li.active,
+.all-category-menu ul li.active:before,
+.product-gal-thumb a img.xactive,
+label.payment_option input:checked + span
+
+{
+    border-color: #e62e04;
+}

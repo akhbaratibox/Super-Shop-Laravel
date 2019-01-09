@@ -5,13 +5,21 @@
     <section class="home-banner-area">
         <div class="container">
             <div class="row no-gutters position-relative">
-                <div class="col-lg-3 position-static">
+                <div class="col-lg-3 position-static order-2 order-lg-0">
                     <div class="category-sidebar">
-                        <div class="all-category">
-                            <span>CATEGORIES</span>
-                            <a href="{{ route('categories.all') }}">See All ></a>
+                        <div class="all-category d-none d-lg-block">
+                            <span >CATEGORIES</span>
+                            <a href="{{ route('categories.all') }}">
+                                <span class="d-none d-lg-inline-block">See All ></span>
+                            </a>
                         </div>
-                        <ul class="categories">
+                        <ul class="categories no-scrollbar">
+                            <li class="d-lg-none">
+                                <a href="{{ route('categories.all') }}">
+                                    <img class="cat-image" src="{{ asset('frontend/images/icons/list.png') }}" width="30">
+                                    <span class="cat-name">All <br> Categories</span>
+                                </a>
+                            </li>
                             @foreach (\App\Category::all()->take(11) as $key => $category)
                                 @php
                                     $brands = array();
@@ -98,7 +106,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-7">
+                <div class="col-lg-7 order-1 order-lg-0">
                     <div class="home-slide">
                         <div class="home-slide">
                             <div class="slick-carousel" data-slick-arrows="true" data-slick-dots="true">
@@ -110,7 +118,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="trending-category">
+                    <div class="trending-category  d-none d-lg-block">
                         <ul>
                             @foreach (\App\Category::where('featured', 1)->get()->take(7) as $key => $category)
                                 <li @if ($key == 0) class="active" @endif>
@@ -131,7 +139,7 @@
                     $flash_deal = \App\FlashDeal::where('status', 1)->first();
                 @endphp
                 @if($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date)
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 d-none d-lg-block">
                         <div class="flash-deal-box bg-white h-100">
                             <div class="title text-center p-2 gry-bg">
                                 <h3 class="heading-6 mb-0">
@@ -179,7 +187,7 @@
         <div class="container">
             <div class="row">
                 @foreach (\App\Banner::where('published', 1)->get() as $key => $banner)
-                    <div class="col-md-4">
+                    <div class="col-lg-4">
                         <div class="media-banner">
                             <a href="" class="banner-container" style="background-image:url('{{ asset($banner->photo) }}');"></a>
                         </div>

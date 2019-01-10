@@ -564,7 +564,6 @@ select + .select2-container{
     position: absolute;
     width: 150px;
     height: 2px;
-    background: #eb5836;
     bottom: -1px;
     left: 0;
 }
@@ -578,8 +577,7 @@ select + .select2-container{
 
 .section-title-1 li a.active,
 .section-title-1 li a:hover {
-    border: 1px solid #c12e0d;
-    background: #c12e0d;
+    border: 1px solid transparent;
     color: #fff!important;
 }
 

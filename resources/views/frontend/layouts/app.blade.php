@@ -32,7 +32,7 @@
 <link type="text/css" href="{{ asset('frontend/css/xzoom.css') }}" rel="stylesheet">
 
 <!-- Global style (main) -->
-<link type="text/css" href="{{ asset('frontend/css/boomerang.min.css') }}" rel="stylesheet" media="screen">
+<link type="text/css" href="{{ asset('frontend/css/boomerang.css') }}" rel="stylesheet" media="screen">
 
 <!--Spectrum Stylesheet [ REQUIRED ]-->
 <link href="{{ asset('css/spectrum.css')}}" rel="stylesheet">

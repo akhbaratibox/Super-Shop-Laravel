@@ -205,14 +205,14 @@
     }
 
     function addToCart(){
-        $('#addToCart-modal-body').html(null);
         $('#addToCart').modal();
         $('.c-preloader').show();
         $.ajax({
            type:"POST",
-           url:'{{ route('cart.addToCart') }}',
-           data:$('#option-choice-form').serialize(),
+           url: '{{ route('cart.addToCart') }}',
+           data: $('#option-choice-form').serializeArray(),
            success: function(data){
+               $('#addToCart-modal-body').html(null);
                $('.c-preloader').hide();
                $('#modal-size').removeClass('modal-lg');
                $('#addToCart-modal-body').html(data);

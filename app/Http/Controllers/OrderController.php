@@ -21,6 +21,7 @@ class OrderController extends Controller
     public function index()
     {
         $orders = DB::table('orders')
+                    ->orderBy('code', 'desc')
                     ->join('order_details', 'orders.id', '=', 'order_details.order_id')
                     ->where('order_details.seller_id', Auth::user()->id)
                     ->select('orders.id')
@@ -37,8 +38,26 @@ class OrderController extends Controller
      */
     public function admin_orders(Request $request)
     {
-        $orders = Order::orderBy('created_at', 'desc')->get();
+        $orders = DB::table('orders')
+                    ->orderBy('code', 'desc')
+                    ->join('order_details', 'orders.id', '=', 'order_details.order_id')
+                    ->where('order_details.seller_id', Auth::user()->id)
+                    ->select('orders.id')
+                    ->distinct()
+                    ->paginate(9);
+
         return view('orders.index', compact('orders'));
+    }
+
+    /**
+     * Display a listing of the sales to admin.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function sales(Request $request)
+    {
+        $orders = Order::orderBy('code', 'desc')->get();
+        return view('sales.index', compact('orders'));
     }
 
     /**
@@ -64,12 +83,12 @@ class OrderController extends Controller
             $order->user_id = Auth::user()->id;
         }
         else{
-            $order->guest_id = str_random(11);
+            $order->guest_id = mt_rand(100000, 999999);
         }
 
         $order->shipping_address = json_encode($request->session()->get('shipping_info'));
         $order->payment_type = $request->payment_option;
-        $order->code = mt_rand(1000000, 9999999);
+        $order->code = date('Ymd-his');
         $order->date = strtotime(date('d-m-Y'));
 
         if($order->save()){

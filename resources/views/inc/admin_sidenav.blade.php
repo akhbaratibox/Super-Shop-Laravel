@@ -134,8 +134,8 @@
                             </a>
                         </li>
 
-                        <li>
-                            <a class="nav-link" href="#">
+                        <li class="{{ areActiveRoutes(['sales.index'])}}">
+                            <a class="nav-link" href="{{ route('sales.index') }}">
                                 <i class="fa fa-money"></i>
                                 <span class="menu-title">{{__('web.sales')}}</span>
                             </a>

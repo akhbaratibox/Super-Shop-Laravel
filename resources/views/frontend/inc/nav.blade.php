@@ -215,7 +215,7 @@
         <div class="">
             <div class="container">
                 <div class="row no-gutters align-items-center">
-                    <div class="col-lg-3 col-9">
+                    <div class="col-lg-3 col-10">
                         <div class="d-flex">
                             <div class="d-block d-lg-none mobile-menu-icon-box">
                                 <!-- Navbar toggler  -->
@@ -243,7 +243,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-lg-9 col-3 position-static">
+                    <div class="col-lg-9 col-2 position-static">
                         <div class="d-flex w-100">
                             <div class="search-box flex-grow-1 px-4">
                                 <form action="{{ route('search') }}" method="GET">

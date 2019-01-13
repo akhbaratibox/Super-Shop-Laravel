@@ -188,7 +188,7 @@
             <div class="row">
                 @foreach (\App\Banner::where('published', 1)->get() as $key => $banner)
                     <div class="col-lg-4">
-                        <div class="media-banner">
+                        <div class="media-banner mb-3 mb-lg-0">
                             <a href="" class="banner-container" style="background-image:url('{{ asset($banner->photo) }}');"></a>
                         </div>
                     </div>
@@ -319,7 +319,7 @@
                     <h3 class="heading-5 strong-700 mb-0 float-left">
                         <span class="mr-4">{{ $homeCategory->category->name }}</span>
                     </h3>
-                    <ul class="inline-links float-right nav">
+                    <ul class="inline-links float-right nav d-none d-lg-inline-block">
                         @foreach (json_decode($homeCategory->subsubcategories) as $key => $subsubcategory)
                             <li class="@php if($key == 0) echo 'active'; @endphp"><a href="#subsubcat-{{ $subsubcategory }}" data-toggle="tab" class="@php if($key == 0) echo 'active'; @endphp">{{ \App\SubSubCategory::find($subsubcategory)->name }}</a></li>
                         @endforeach

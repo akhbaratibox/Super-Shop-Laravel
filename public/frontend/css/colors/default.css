@@ -121,7 +121,10 @@ ul.categories--style-3 > li > ul > li > a.active,
 .link-menu--style-1 > a:hover,
 .tabs--style-2 .nav-tabs .nav-item.show .nav-link,
 .tabs--style-2 .nav-tabs .nav-link.active,
-.tabs--style-2 .nav-tabs .nav-link:hover
+.tabs--style-2 .nav-tabs .nav-link:hover,
+.product-box-1 .title a:hover,
+.product-box-1 .price-bar .price,
+.sub-category-menu ul li a:hover
 
 {
     color: #e62e04;
@@ -223,7 +226,9 @@ input:checked + .toggle-switch-slider:before,
 .link-menu--style-3 > a.active,
 .link-menu--style-3 > a:hover,
 .section-title-1 li a.active,
-.section-title-1 li a:hover
+.section-title-1 li a:hover,
+.product-box-1 .cart-add .btn:hover
+
 {
     background: #e62e04;
 }

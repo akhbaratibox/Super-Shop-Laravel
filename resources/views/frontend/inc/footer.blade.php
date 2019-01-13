@@ -2,7 +2,7 @@
 <section class="slice-sm footer-top-bar">
     <div class="container sct-inner">
         <div class="row no-gutters">
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-6">
                 <div class="footer-top-box text-center">
                     <a href="">
                         <i class="fa fa-tv"></i>
@@ -10,7 +10,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-6">
                 <div class="footer-top-box text-center">
                     <a href="">
                         <i class="fa fa-tv"></i>
@@ -18,7 +18,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-6">
                 <div class="footer-top-box text-center">
                     <a href="">
                         <i class="fa fa-tv"></i>
@@ -26,7 +26,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-6">
                 <div class="footer-top-box text-center">
                     <a href="">
                         <i class="fa fa-tv"></i>
@@ -45,16 +45,16 @@
         <div class="container">
             <div class="row cols-xs-space cols-sm-space cols-md-space">
 
-                <div class="col-md-4 col-lg-4">
+                <div class="col-lg-5 col-xl-4 text-center text-md-left">
                     <div class="col">
                         <a href="#" class="d-block">
                             <img src="{{ asset('frontend/images/logo/logo.svg') }}" class="" height="44">
                         </a>
                         <p class="mt-3">Active Super Shop Multi vendor system is such a platform to build a border less marketplace both for physical and digital goods.</p>
-                        <div>
+                        <div class="d-inline-block d-md-block">
                             <form class="form-inline" method="POST" action="{{ route('subscribers.store') }}">
                                 @csrf
-                                <div class="form-group">
+                                <div class="form-group mb-0">
                                     <input type="email" class="form-control" placeholder="Your Email Address" name="email" required>
                                 </div>
                                 <button type="submit" class="btn btn-base-1 btn-icon-left">
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 offset-lg-1">
+                <div class="col-lg-3 offset-xl-1 col-md-4">
                     <div class="col text-center text-md-left">
                         <h4 class="heading heading-xs strong-600 text-uppercase mb-2">
                             Contact Info
@@ -87,7 +87,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-2 col-md-4">
                     <div class="col text-center text-md-left">
                         <h4 class="heading heading-xs strong-600 text-uppercase mb-2">
                             Useful Link
@@ -164,8 +164,8 @@
     <div class="footer-bottom py-3 sct-color-3">
         <div class="container">
             <div class="row row-cols-xs-spaced flex flex-items-xs-middle">
-                <div class="col col-sm-4 col-xs-12">
-                    <div class="copyright text-xs-center text-sm-left">
+                <div class="col-md-4">
+                    <div class="copyright text-center text-md-left">
                         <ul class="copy-links no-margin">
                             <li>
                                 © 2018 Active Super Shop
@@ -179,8 +179,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col col-sm-4 col-xs-12">
-                    <ul class="social-media social-media--style-1-v4 text-center">
+                <div class="col-md-4">
+                    <ul class="social-media social-media--style-1-v4 text-center my-3 my-md-0">
                         <li>
                             <a href="#" class="facebook" target="_blank" data-toggle="tooltip" data-original-title="Facebook">
                                 <i class="fa fa-facebook"></i>
@@ -203,8 +203,8 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col col-sm-4 col-xs-12">
-                    <div class="text-xs-center text-sm-right">
+                <div class="col-md-4">
+                    <div class="text-center text-md-right">
                         <ul class="inline-links">
                             <li>
                                 <img src="{{ asset('frontend/images/icons/cards/visa.png') }}" width="30" class="img-grayscale">

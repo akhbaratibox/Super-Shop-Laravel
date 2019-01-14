@@ -65,9 +65,10 @@ Route::get('/search', 'HomeController@search')->name('search');
 Route::get('/search?q={search}', 'HomeController@search')->name('suggestion.search');
 Route::post('/search', 'HomeController@ajax_search')->name('search.ajax');
 
+Route::resource('wishlists','WishlistController');
+Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
+
 Route::group(['middleware' => ['user', 'verified']], function(){
-	Route::resource('wishlists','WishlistController');
-	Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
 	Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 	Route::get('/profile', 'HomeController@profile')->name('profile');
 	Route::post('/update-profile', 'HomeController@update_profile')->name('profile.update');

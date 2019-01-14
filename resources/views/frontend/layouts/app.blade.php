@@ -174,15 +174,15 @@
     }
 
     function addToWishList(id){
-        if('{{ Auth::check() }}'){
-            $.post('{{ route('wishlists.store') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
+        $.post('{{ route('wishlists.store') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
+            if(data != 0){
                 $('#wishlist').html(data);
                 showFrontendAlert('success', 'Item has been added to wishlist');
-            });
-        }
-        else{
-            showFrontendAlert('warning', 'Please login first');
-        }
+            }
+            else{
+                showFrontendAlert('warning', 'Please login first');
+            }
+        });
     }
 
     function showAddToCartModal(id){

@@ -36,7 +36,7 @@
                                 {{ $order->code }}
                             </td>
                             <td>
-                                {{ count($order->orderDetails) }}
+                                {{ count($order->orderDetails->where('seller_id', Auth::user()->id)) }}
                             </td>
                             <td>
                                 @if ($order->user_id != null)
@@ -46,13 +46,13 @@
                                 @endif
                             </td>
                             <td>
-                                {{ single_price($order->grand_total) }}
+                                {{ single_price($order->orderDetails->where('seller_id', Auth::user()->id)->sum('price')) }}
                             </td>
                             <td>
                                 @php
                                     $status = 'Delivered';
-                                    foreach ($order->orderDetails as $key => $orderDetail) {
-                                        if($orderDetail->delivery_status != 'Delivered'){
+                                    foreach ($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail) {
+                                        if($orderDetail->delivery_status != 'delivered'){
                                             $status = 'Pending';
                                         }
                                     }

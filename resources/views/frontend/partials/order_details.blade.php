@@ -1,9 +1,19 @@
 <div class="modal-header">
-    <h5 class="modal-title strong-600 heading-5">Order id: 1651vdfvdfd51</h5>
+    <h5 class="modal-title strong-600 heading-5">Order id: {{ $order->code }}</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
+
+@php
+    $status = 'Delivered';
+    foreach ($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail) {
+        if($orderDetail->delivery_status != 'delivered'){
+            $status = 'Pending';
+        }
+    }
+@endphp
+
 <div class="modal-body gry-bg px-3 pt-0">
     <div class="pt-4">
         <ul class="process-steps clearfix">
@@ -11,7 +21,7 @@
                 <div class="icon">1</div>
                 <div class="title">Order placed</div>
             </li>
-            <li class="done">
+            <li @if($status == 'Pending') class="active" @else class="done" @endif>
                 <div class="icon">2</div>
                 <div class="title">On review</div>
             </li>
@@ -59,14 +69,6 @@
                         </tr>
                         <tr>
                             <td class="w-50 strong-600">Order status:</td>
-                            @php
-                                $status = 'Delivered';
-                                foreach ($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail) {
-                                    if($orderDetail->delivery_status != 'Delivered'){
-                                        $status = 'Pending';
-                                    }
-                                }
-                            @endphp
                             <td>{{ $status }}</td>
                         </tr>
                         <tr>

@@ -77,7 +77,7 @@
                                                         <td>
                                                             @php
                                                                 $status = 'Delivered';
-                                                                foreach ($order->orderDetails as $key => $orderDetail) {
+                                                                foreach ($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail) {
                                                                     if($orderDetail->delivery_status != 'Delivered'){
                                                                         $status = 'Pending';
                                                                     }

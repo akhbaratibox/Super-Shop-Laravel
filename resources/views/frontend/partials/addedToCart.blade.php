@@ -19,7 +19,7 @@
                     <div class="col-10">
                         <div class="heading-6 text-danger">
                             <strong>
-                                {{ single_price($data['price']) }}
+                                {{ single_price($data['price']*$data['quantity']) }}
                             </strong>
                         </div>
                     </div>

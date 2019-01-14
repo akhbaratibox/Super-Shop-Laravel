@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <meta name="robots" content="index, follow">
-<meta name="description" content="Boomerang is a responsive website template based on the well known Bootstrap framework. It's very well structured with lots of features and demos ready to be used.">
+<meta name="description" content="Active Super Shop Multi vendor system is such a platform to build a border less marketplace both for physical and digital goods.">
 <meta name="keywords" content="bootstrap, responsive, template, website, html, theme, ux, ui, web, design, developer, support, business, corporate, real estate, education, medical, school, education, demo, css, framework">
 <meta name="author" content="Webpixels">
 
@@ -181,7 +181,7 @@
             });
         }
         else{
-            showFrontendAlert('warning: ', 'Please login first');
+            showFrontendAlert('warning', 'Please login first');
         }
     }
 
@@ -204,21 +204,59 @@
         });
     }
 
+    $('#option-choice-form input').on('change', function(){
+        getVariantPrice();
+    });
+
+    function getVariantPrice(){
+        if($('#option-choice-form input[name=quantity]').val() > 0 && checkAddToCartValidity()){
+            $.ajax({
+               type:"POST",
+               url: '{{ route('products.variant_price') }}',
+               data: $('#option-choice-form').serializeArray(),
+               success: function(data){
+                   $('#option-choice-form #chosen_price_div').removeClass('d-none');
+                   $('#option-choice-form #chosen_price_div #chosen_price').html(data);
+               }
+           });
+        }
+    }
+
+    function checkAddToCartValidity(){
+        var names = {};
+        $('#option-choice-form input:radio').each(function() { // find unique names
+              names[$(this).attr('name')] = true;
+        });
+        var count = 0;
+        $.each(names, function() { // then count them
+              count++;
+        });
+        if($('input:radio:checked').length == count){
+            return true;
+        }
+        return false;
+    }
+
     function addToCart(){
-        $('#addToCart').modal();
-        $('.c-preloader').show();
-        $.ajax({
-           type:"POST",
-           url: '{{ route('cart.addToCart') }}',
-           data: $('#option-choice-form').serializeArray(),
-           success: function(data){
-               $('#addToCart-modal-body').html(null);
-               $('.c-preloader').hide();
-               $('#modal-size').removeClass('modal-lg');
-               $('#addToCart-modal-body').html(data);
-               updateNavCart();
-           }
-       });
+        if(checkAddToCartValidity()) {
+            $('#addToCart').modal();
+            $('.c-preloader').show();
+            $.ajax({
+               type:"POST",
+               url: '{{ route('cart.addToCart') }}',
+               data: $('#option-choice-form').serializeArray(),
+               success: function(data){
+                   $('#addToCart-modal-body').html(null);
+                   $('.c-preloader').hide();
+                   $('#modal-size').removeClass('modal-lg');
+                   $('#addToCart-modal-body').html(data);
+                   updateNavCart();
+               }
+           });
+        }
+        else{
+            showFrontendAlert('warning', 'Please choose all the options');
+        }
     }
 
     function cartQuantityInitialize(){

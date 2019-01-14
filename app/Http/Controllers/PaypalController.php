@@ -40,7 +40,7 @@ class PaypalController extends Controller
     	$transaction->setAmount($amount);
     	$transaction->setDescription('Payment for verification');
     	$redirectUrls = PayPal:: RedirectUrls();
-    	$redirectUrls->setReturnUrl(url('payment/done/'));
+    	$redirectUrls->setReturnUrl(url('payment/done'));
     	$redirectUrls->setCancelUrl(url('payment/cancel'));
     	$payment = PayPal::Payment();
     	$payment->setIntent('sale');

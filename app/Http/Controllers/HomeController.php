@@ -11,6 +11,7 @@ use App\SubSubCategory;
 use App\Product;
 use App\User;
 use App\Shop;
+use App\Color;
 use App\Http\Controllers\SearchController;
 use ImageOptimizer;
 
@@ -248,5 +249,45 @@ class HomeController extends Controller
     public function home_settings(Request $request)
     {
         return view('home_settings.index');
+    }
+
+    public function variant_price(Request $request)
+    {
+        $product = Product::find($request->id);
+        $str = '';
+
+        if($request->has('color')){
+            $data['color'] = $request['color'];
+            $str = Color::where('code', $request['color'])->first()->name;
+        }
+
+        foreach (json_decode(Product::find($request->id)->choice_options) as $key => $choice) {
+            $str .= '-'.str_replace(' ', '', $request[$choice->name]);
+        }
+
+        $price = json_decode($product->variations)->$str->price;
+
+        //discount calculation
+        $flash_deal = \App\FlashDeal::where('status', 1)->first();
+        if ($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date) {
+            $flash_deal_product = \App\FlashDealProduct::where('flash_deal_id', $flash_deal->id)->where('product_id', $product->id)->first();
+            if($flash_deal_product != null){
+                if($flash_deal_product->discount_type == 'percent'){
+                    $price -= ($price*$flash_deal_product->discount)/100;
+                }
+                elseif($flash_deal_product->discount_type == 'amount'){
+                    $price -= $flash_deal_product->discount;
+                }
+            }
+            else{
+                if($product->discount_type == 'percent'){
+                    $price -= ($price*$product->discount)/100;
+                }
+                elseif($product->discount_type == 'amount'){
+                    $price -= $product->discount;
+                }
+            }
+        }
+        return single_price($price*$request->quantity);
     }
 }

@@ -30,6 +30,7 @@ Route::get('/products/category/{id}', 'HomeController@listing_by_category')->nam
 Route::get('/products/subcategory/{id}', 'HomeController@listing_by_subcategory')->name('products.subcategory');
 Route::get('/products/subsubcategory/{id}', 'HomeController@listing_by_subsubcategory')->name('products.subsubcategory');
 Route::get('/products/brand/{id}', 'HomeController@listing_by_brand')->name('products.brand');
+Route::post('/product/variant_price', 'HomeController@variant_price')->name('products.variant_price');
 Route::get('/shop/{slug}', 'HomeController@shop')->name('shop.visit');
 
 Route::get('/cart', 'CartController@index')->name('cart');

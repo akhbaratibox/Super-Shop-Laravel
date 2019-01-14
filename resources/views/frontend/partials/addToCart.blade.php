@@ -68,7 +68,7 @@
                             <ul class="list-inline checkbox-alphanumeric checkbox-alphanumeric--style-1 mb-2">
                                 @foreach ($choice->options as $key => $option)
                                     <li>
-                                        <input type="radio" id="{{ $choice->name }}-{{ $option }}" name="{{ $choice->name }}" value="{{ $option }}" <?php if($key == 0) echo "checked";?> >
+                                        <input type="radio" id="{{ $choice->name }}-{{ $option }}" name="{{ $choice->name }}" value="{{ $option }}">
                                         <label for="{{ $choice->name }}-{{ $option }}">{{ $option }}</label>
                                     </li>
                                 @endforeach
@@ -87,7 +87,7 @@
                                 <ul class="list-inline checkbox-color mb-1">
                                     @foreach (json_decode($product->colors) as $key => $color)
                                         <li>
-                                            <input type="radio" id="{{ $product->id }}-color-{{ $key }}" name="color" value="{{ $color }}" <?php if($key == 0) echo "checked";?> >
+                                            <input type="radio" id="{{ $product->id }}-color-{{ $key }}" name="color" value="{{ $color }}">
                                             <label style="background: {{ $color }};" for="{{ $product->id }}-color-{{ $key }}" data-toggle="tooltip"></label>
                                         </li>
                                     @endforeach
@@ -99,7 +99,7 @@
                     <hr>
 
                     <!-- Quantity + Add to cart -->
-                    <div class="row no-gutters pb-3">
+                    <div class="row no-gutters">
                         <div class="col-2">
                             <div class="product-description-label">Quantity:</div>
                         </div>
@@ -123,6 +123,21 @@
                         </div>
                     </div>
 
+                    <hr>
+
+                    <div class="row no-gutters pb-3 d-none" id="chosen_price_div">
+                        <div class="col-2">
+                            <div class="product-description-label">Total Price:</div>
+                        </div>
+                        <div class="col-10">
+                            <div class="product-price">
+                                <strong id="chosen_price">
+
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+
                 </form>
 
                 <div class="d-table width-100 mt-3">
@@ -141,4 +156,7 @@
 
 <script type="text/javascript">
     cartQuantityInitialize();
+    $('#option-choice-form input').on('change', function(){
+        getVariantPrice();
+    });
 </script>

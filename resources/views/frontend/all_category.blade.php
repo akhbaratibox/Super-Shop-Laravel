@@ -8,15 +8,15 @@
             <div class="row">
                 <div class="col">
                     <div class="bg-white all-category-menu">
-                        <ul class="clearfix">
+                        <ul class="clearfix no-scrollbar">
                             @if(count($categories) > 12)
                                 @for ($i = 0; $i < 11; $i++)
                                     <li class="@php if($i == 0) echo 'active' @endphp">
                                         <a href="#{{ $i }}" class="row no-gutters align-items-center">
-                                            <div class="col-3">
+                                            <div class="col-md-3">
                                                 <img class="cat-image" src="{{ asset($categories[$i]->icon) }}">
                                             </div>
-                                            <div class="col-9">
+                                            <div class="col-md-9">
                                                 <div class="cat-name">{{ $categories[$i]->name }}</div>
                                             </div>
                                         </a>
@@ -24,10 +24,10 @@
                                 @endfor
                                 <li class="">
                                     <a href="#more" class="row no-gutters align-items-center">
-                                        <div class="col-3">
+                                        <div class="col-md-3">
                                             <i class="fa fa-ellipsis-h cat-icon"></i>
                                         </div>
-                                        <div class="col-9">
+                                        <div class="col-md-9">
                                             <div class="cat-name">More Categories</div>
                                         </div>
                                     </a>
@@ -36,10 +36,10 @@
                                 @foreach ($categories as $key => $category)
                                     <li class="@php if($key == 0) echo 'active' @endphp">
                                         <a href="#{{ $key }}" class="row no-gutters align-items-center">
-                                            <div class="col-3">
+                                            <div class="col-md-3">
                                                 <img class="cat-image" src="{{ asset($category->icon) }}">
                                             </div>
-                                            <div class="col-9">
+                                            <div class="col-md-9">
                                                 <div class="cat-name">{{ $category->name }}</div>
                                             </div>
                                         </a>

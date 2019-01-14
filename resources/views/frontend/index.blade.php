@@ -109,7 +109,7 @@
                 <div class="col-lg-7 order-1 order-lg-0">
                     <div class="home-slide">
                         <div class="home-slide">
-                            <div class="slick-carousel" data-slick-arrows="true" data-slick-dots="true">
+                            <div class="slick-carousel" data-slick-arrows="true" data-slick-dots="true" data-slick-autoplay="true">
                                 @foreach (\App\Slider::where('published', 1)->get() as $key => $slider)
                                     <div class="" style="height:275px;">
                                         <img class="d-block w-100 h-100" src="{{ asset($slider->photo) }}" alt="Slider Image">

@@ -159,6 +159,7 @@ $(document).ready(function() {
             var slidesArrows = $this.data('slick-arrows');
             var slidesDots = $this.data('slick-dots');
             var slidesRows = $this.data('slick-rows');
+            var slidesAutoplay = $this.data('slick-autoplay');
 
             slidesPerViewXs = !slidesPerViewXs ? slidesPerViewXl : slidesPerViewXs;
             slidesPerViewSm = !slidesPerViewSm ? slidesPerViewXl : slidesPerViewSm;
@@ -169,10 +170,11 @@ $(document).ready(function() {
             slidesArrows = !slidesArrows ? true : slidesArrows;
             slidesDots = !slidesDots ? false : slidesDots;
             slidesRows = !slidesRows ? 1 : slidesRows;
+            slidesAutoplay = !slidesAutoplay ? false : slidesAutoplay;
 
             $this.slick({
                 slidesToShow: slidesPerViewXl,
-                autoplay: false,
+                autoplay: slidesAutoplay,
                 dots: slidesDots,
                 arrows: slidesArrows,
                 infinite: true,
@@ -230,3 +232,11 @@ $(window).scroll(function() {
             }
     });
 }).scroll();
+
+$(document).ajaxComplete(function(){
+    $('.selectpicker').each(function(index, element) {
+        $('.selectpicker').select2({
+
+        });
+    });
+});

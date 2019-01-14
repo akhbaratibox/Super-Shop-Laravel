@@ -36,7 +36,17 @@
         </ul>
     </div>
     <div class="card mt-4">
-        <div class="card-header py-2 px-3 heading-6 strong-600">Order Summary</div>
+        <div class="card-header py-2 px-3 heading-6 strong-600 clearfix">
+            <div class="float-left">Order Summary</div>
+            <div class="float-right form-inline">
+                <select class="form-control selectpicker form-control-sm"  data-minimum-results-for-search="Infinity">
+                    <option value="1">Order placed</option>
+                    <option value="2">On review</option>
+                    <option value="3">On delivery</option>
+                    <option value="4">Delivered</option>
+                </select>
+            </div>
+        </div>
         <div class="card-body pb-0">
             <div class="row">
                 <div class="col-lg-6">

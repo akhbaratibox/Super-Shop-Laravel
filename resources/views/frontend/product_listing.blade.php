@@ -31,7 +31,7 @@
     <section class="gry-bg py-4">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-xl-3 d-none d-xl-block">
 
                     <div class="bg-white sidebar-box mb-3">
                         <div class="box-title text-center">
@@ -89,7 +89,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-9">
+                <div class="col-xl-9">
                     <!-- <div class="bg-white"> -->
                         <div class="brands-bar row no-gutters pb-3 bg-white p-3">
                             <div class="col-11">
@@ -110,12 +110,12 @@
                             <div class="col-1">
                                 <button type="button" name="button" onclick="morebrands(this)" class="more-brands-btn">
                                     <i class="fa fa-plus"></i>
-                                    <span>More</span>
+                                    <span class="d-none d-md-inline-block">More</span>
                                 </button>
                             </div>
                         </div>
                         <div class="sort-by-bar row no-gutters bg-white mb-3 px-3">
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-5">
                                 <div class="sort-by-box">
                                     <div class="form-group">
                                         <label>Search</label>
@@ -128,7 +128,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-7 offset-col-1 ml-auto">
+                            <div class="col-md-7 offset-lg-1">
                                 <div class="row no-gutters">
                                     <div class="col-4">
                                         <div class="sort-by-box px-1">
@@ -177,7 +177,7 @@
                         <div class="products-box-bar p-3 bg-white">
                             <div class="row">
                                 @foreach ($products as $key => $product)
-                                    <div class="col-4">
+                                    <div class="col-lg-4 col-md-6">
                                         <div class="product-card-1 mb-3">
                                             <figure class="product-image-container">
                                                 <a href="{{ route('product', $product->slug) }}" class="product-image d-block" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');">

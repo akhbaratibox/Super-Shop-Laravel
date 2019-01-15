@@ -64,7 +64,7 @@
                                                         @php
                                                             $status = "Delivered";
                                                             foreach ($order->orderDetails as $key => $orderDetail) {
-                                                                if($orderDetail->delivery_status == 'pending'){
+                                                                if($orderDetail->delivery_status != 'delivered'){
                                                                     $status = 'Pending';
                                                                 }
                                                             }

@@ -59,6 +59,7 @@ Route::resource('subscribers','SubscriberController');
 Route::resource('orders','OrderController');
 Route::get('/orders/destroy/{id}', 'OrderController@destroy')->name('orders.destroy');
 Route::post('/orders/details', 'OrderController@order_details')->name('orders.details');
+Route::post('/orders/update_status', 'OrderController@update_status')->name('orders.update_status');
 
 Route::get('/categories', 'HomeController@all_categories')->name('categories.all');
 Route::get('/search', 'HomeController@search')->name('search');

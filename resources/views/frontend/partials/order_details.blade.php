@@ -6,12 +6,7 @@
 </div>
 
 @php
-    $status = 'Delivered';
-    foreach ($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail) {
-        if($orderDetail->delivery_status != 'delivered'){
-            $status = 'Pending';
-        }
-    }
+    $status = $order->orderDetails->first()->delivery_status;
 @endphp
 
 <div class="modal-body gry-bg px-3 pt-0">
@@ -21,15 +16,15 @@
                 <div class="icon">1</div>
                 <div class="title">Order placed</div>
             </li>
-            <li @if($status == 'Pending') class="active" @else class="done" @endif>
+            <li @if($status == 'pending') class="active" @else class="done" @endif>
                 <div class="icon">2</div>
                 <div class="title">On review</div>
             </li>
-            <li class="active">
+            <li @if($status == 'delivered' || $status == 'on_delivery') class="done" @else class="active" @endif>
                 <div class="icon">3</div>
                 <div class="title">On delivery</div>
             </li>
-            <li class="">
+            <li @if($status == 'delivered') class="done" @else class="active" @endif>
                 <div class="icon">4</div>
                 <div class="title">Delivered</div>
             </li>
@@ -39,11 +34,11 @@
         <div class="card-header py-2 px-3 heading-6 strong-600 clearfix">
             <div class="float-left">Order Summary</div>
             <div class="float-right form-inline">
-                <select class="form-control selectpicker form-control-sm"  data-minimum-results-for-search="Infinity">
-                    <option value="1">Order placed</option>
-                    <option value="2">On review</option>
-                    <option value="3">On delivery</option>
-                    <option value="4">Delivered</option>
+                <select class="form-control selectpicker form-control-sm"  data-minimum-results-for-search="Infinity" id="order_status">
+                    <option value="pending" @if ($status == 'pending') selected @endif>Pending</option>
+                    <option value="on_review" @if ($status == 'on_review') selected @endif>On review</option>
+                    <option value="on_delivery" @if ($status == 'on_delivery') selected @endif>On delivery</option>
+                    <option value="delivered" @if ($status == 'delivered') selected @endif>Delivered</option>
                 </select>
             </div>
         </div>
@@ -169,3 +164,14 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $('#order_status').on('change', function(){
+        var order_id = {{ $order->id }};
+        var status = $('#order_status').val();
+        $.post('{{ route('orders.update_status') }}', {_token:'{{ @csrf_token() }}',order_id:order_id,status:status}, function(data){
+            $('#order_details').modal('hide');
+            showFrontendAlert('success', 'Order status has been updated');
+        });
+    });
+</script>

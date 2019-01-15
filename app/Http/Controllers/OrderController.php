@@ -175,4 +175,14 @@ class OrderController extends Controller
         $order = Order::findOrFail($request->order_id);
         return view('frontend.partials.order_details', compact('order'));
     }
+
+    public function update_status(Request $request)
+    {
+        $order = Order::findOrFail($request->order_id);
+        foreach($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail){
+            $orderDetail->delivery_status = $request->status;
+            $orderDetail->save();
+        }
+        return 1;
+    }
 }

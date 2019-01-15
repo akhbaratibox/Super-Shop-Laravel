@@ -76,14 +76,9 @@
                                                         </td>
                                                         <td>
                                                             @php
-                                                                $status = 'Delivered';
-                                                                foreach ($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail) {
-                                                                    if($orderDetail->delivery_status != 'Delivered'){
-                                                                        $status = 'Pending';
-                                                                    }
-                                                                }
+                                                                $status = $order->orderDetails->first()->delivery_status;
                                                             @endphp
-                                                            {{ $status }}
+                                                            {{ ucfirst(str_replace('_', ' ', $status)) }}
                                                         </td>
                                                         <td>
                                                             <span class="badge badge--2 mr-4">
@@ -139,24 +134,4 @@
         </div>
     </div>
 
-@endsection
-
-
-@section('script')
-    <script type="text/javascript">
-        function show_order_details(order_id)
-        {
-            $('#order-details-modal-body').html(null);
-
-            if(!$('#modal-size').hasClass('modal-lg')){
-                $('#modal-size').addClass('modal-lg');
-            }
-
-            $.post('{{ route('orders.details') }}', { _token : '{{ @csrf_token() }}', order_id : order_id}, function(data){
-                $('#order-details-modal-body').html(data);
-                $('#order_details').modal();
-                $('.c-preloader').hide();
-            });
-        }
-    </script>
 @endsection

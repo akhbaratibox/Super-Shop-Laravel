@@ -319,7 +319,7 @@
     <section class="gry-bg">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-xl-3 order-2 order-xl-0 d-none d-xl-block">
                     <div class="seller-info-box mb-3">
                         <div class="sold-by position-relative">
                             <div class="position-absolute medal-badge">
@@ -413,7 +413,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="seller-top-products-box bg-white sidebar-box">
+                    <div class="seller-top-products-box bg-white sidebar-box mb-3">
                         <div class="box-title">
                             Top Selling Products From This Seller
                         </div>
@@ -442,7 +442,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-9">
+                <div class="col-xl-9 order-1 order-xl-0">
                     <div class="product-desc-tab bg-white">
                         <div class="tabs tabs--style-2">
                             <ul class="nav nav-tabs justify-content-center sticky-top bg-white">

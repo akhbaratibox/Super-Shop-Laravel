@@ -200,11 +200,6 @@ $(document).ready(function() {
         }
     });
 
-    // Textarea autosize
-    if ($('.textarea-autogrow')[0]) {
-        autosize($('.textarea-autogrow'));
-    }
-
     // Floating label
     $('.has-floating-label .form-control').on('focus blur', function(e) {
         $(this).parents('.form-group').toggleClass('focused', (e.type === 'focus' || this.value.length > 0));

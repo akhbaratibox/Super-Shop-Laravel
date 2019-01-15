@@ -879,6 +879,10 @@ section.home-banner-area {
     max-width: 100%;
     height: auto;
 }
+.product-desc-tab table{
+    width: 100%!Important;
+    max-width: 100%!Important;
+}
 
 
 /* breadcrumb */
@@ -2054,7 +2058,8 @@ ul.seller-brand-list .brand-item {
     transform: translateY(-5px);
 }
 
-.dashboard-widget a {
+.dashboard-widget a,
+.dashboard-widget a:hover {
     color: #fff;
 }
 

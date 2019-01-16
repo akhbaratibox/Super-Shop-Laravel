@@ -163,6 +163,7 @@
             updateNavCart();
             $('#cart-summary').html(data);
             showFrontendAlert('success', 'Item has been removed from cart');
+            $('#cart_items_sidenav').html(parseInt($('#cart_items_sidenav').html())-1);
         });
     }
 
@@ -170,6 +171,7 @@
         $.post('{{ route('compare.addToCompare') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
             $('#compare').html(data);
             showFrontendAlert('success', 'Item has been added to compare list');
+            $('#compare_items_sidenav').html(parseInt($('#compare_items_sidenav').html())+1);
         });
     }
 
@@ -251,6 +253,7 @@
                    $('#modal-size').removeClass('modal-lg');
                    $('#addToCart-modal-body').html(data);
                    updateNavCart();
+                   $('#cart_items_sidenav').html(parseInt($('#cart_items_sidenav').html())+1);
                }
            });
         }

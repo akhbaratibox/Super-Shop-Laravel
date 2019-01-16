@@ -50,7 +50,6 @@
                     <ul class="inline-links">
                         @auth
                         <li>
-                            <!-- <a href="{{ route('dashboard') }}" class="top-bar-item">{{ Auth::user()->name }}</a> -->
                             <a href="{{ route('dashboard') }}" class="top-bar-item">My Profile</a>
                         </li>
                         <li>
@@ -81,130 +80,147 @@
                         <i class="la la-close"></i>
                     </div>
 
-                    <div class="widget-profile-box px-3 py-4 d-flex align-items-center">
-                        <div class="image " style="background-image:url('{{ asset('frontend/images/icons/user-placeholder.jpg') }}')"></div>
-                        <!-- <div class="name">John Doe</div> -->
-                    </div>
-                    <div class="side-login px-3 pb-3">
-                        <a href="">Sign In</a>
-                        <a href="">Registration</a>
-                        <!-- <a href="">Sign Out</a> -->
-                    </div>
-
+                    @auth
+                        <div class="widget-profile-box px-3 py-4 d-flex align-items-center">
+                                <div class="image " style="background-image:url('{{ Auth::user()->avatar_original }}')"></div>
+                                <div class="name">{{ Auth::user()->name }}</div>
+                        </div>
+                        <div class="side-login px-3 pb-3">
+                            <a href="{{ route('logout') }}">Sign Out</a>
+                        </div>
+                    @else
+                        <div class="widget-profile-box px-3 py-4 d-flex align-items-center">
+                                <div class="image " style="background-image:url('{{ asset('frontend/images/icons/user-placeholder.jpg') }}')"></div>
+                        </div>
+                        <div class="side-login px-3 pb-3">
+                            <a href="{{ route('user.login') }}">Sign In</a>
+                            <a href="{{ route('user.login') }}">Registration</a>
+                        </div>
+                    @endauth
                 </div>
                 <div class="side-menu-list px-3">
                     <ul class="side-user-menu">
                         <li>
-                            <a href="">
+                            <a href="{{ route('home') }}">
                                 <i class="la la-home"></i>
                                 <span>Home</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="">
+                            <a href="{{ route('dashboard') }}">
                                 <i class="la la-dashboard"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="">
+                            <a href="{{ route('purchase_history.index') }}">
                                 <i class="la la-file-text"></i>
                                 <span>Purchase History</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="">
+                            <a href="{{ route('compare') }}">
                                 <i class="la la-refresh"></i>
                                 <span>Compare</span>
-                                <span class="badge">3</span>
+                                @if(Session::has('compare'))
+                                    <span class="badge" id="compare_items_sidenav">{{ count(Session::get('compare'))}}</span>
+                                @else
+                                    <span class="badge" id="compare_items_sidenav">0</span>
+                                @endif
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="{{ route('cart') }}">
                                 <i class="la la-shopping-cart"></i>
                                 <span>Cart</span>
-                                <span class="badge">25</span>
+                                @if(Session::has('cart'))
+                                    <span class="badge" id="cart_items_sidenav">{{ count(Session::get('cart'))}}</span>
+                                @else
+                                    <span class="badge" id="cart_items_sidenav">0</span>
+                                @endif
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="{{ route('wishlists.index') }}">
                                 <i class="la la-heart-o"></i>
                                 <span>Wishlist</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="">
+                            <a href="{{ route('profile') }}">
                                 <i class="la la-user"></i>
                                 <span>Manage Profile</span>
                             </a>
                         </li>
 
                     </ul>
-                    <div class="sidebar-widget-title py-0">
-                        <span>Shop Options</span>
-                    </div>
-                    <ul class="side-seller-menu">
-                        <li>
-                            <a href="">
-                                <i class="la la-diamond"></i>
-                                <span>Products</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="">
-                                <i class="la la-file-text"></i>
-                                <span>Orders</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="">
-                                <i class="la la-cog"></i>
-                                <span>Shop Setting</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="">
-                                <i class="la la-cc-mastercard"></i>
-                                <span>Payment History</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="sidebar-widget-title py-0">
-                        <span>Earinngs</span>
-                    </div>
-                    <div class="widget-balance py-3">
-                        <div class="text-center">
-                            <div class="heading-4 strong-700 mb-4">
-                                <small class="d-block text-sm alpha-5 mb-2">your earnings</small>
-                                <span class="p-2 bg-base-1 rounded">$526.51</span>
-                            </div>
-                            <table class="text-left mb-0 table w-75 m-auto">
-                                <tbody><tr>
-                                    <td class="p-1 text-sm">
-                                        Total earnings:
-                                    </td>
-                                    <td class="p-1">
-                                        $1500.26
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="p-1 text-sm">
-                                        Last Month earnings:
-                                    </td>
-                                    <td class="p-1">
-                                        $756.75
-                                    </td>
-                                </tr>
-                            </tbody></table>
+                    @if (Auth::check() && Auth::user()->user_type == 'seller')
+                        <div class="sidebar-widget-title py-0">
+                            <span>Shop Options</span>
                         </div>
-                    </div>
+                        <ul class="side-seller-menu">
+                            <li>
+                                <a href="{{ route('seller.products') }}">
+                                    <i class="la la-diamond"></i>
+                                    <span>Products</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('orders.index') }}">
+                                    <i class="la la-file-text"></i>
+                                    <span>Orders</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('shop.index') }}">
+                                    <i class="la la-cog"></i>
+                                    <span>Shop Setting</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="">
+                                    <i class="la la-cc-mastercard"></i>
+                                    <span>Payment History</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="sidebar-widget-title py-0">
+                            <span>Earinngs</span>
+                        </div>
+                        <div class="widget-balance py-3">
+                            <div class="text-center">
+                                <div class="heading-4 strong-700 mb-4">
+                                    <small class="d-block text-sm alpha-5 mb-2">your earnings</small>
+                                    <span class="p-2 bg-base-1 rounded">$526.51</span>
+                                </div>
+                                <table class="text-left mb-0 table w-75 m-auto">
+                                    <tbody><tr>
+                                        <td class="p-1 text-sm">
+                                            Total earnings:
+                                        </td>
+                                        <td class="p-1">
+                                            $1500.26
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-1 text-sm">
+                                            Last Month earnings:
+                                        </td>
+                                        <td class="p-1">
+                                            $756.75
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

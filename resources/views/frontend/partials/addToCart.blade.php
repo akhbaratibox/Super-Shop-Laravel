@@ -101,7 +101,7 @@
                     <!-- Quantity + Add to cart -->
                     <div class="row no-gutters">
                         <div class="col-2">
-                            <div class="product-description-label">Quantity:</div>
+                            <div class="product-description-label mt-2">Quantity:</div>
                         </div>
                         <div class="col-10">
                             <div class="product-quantity d-flex align-items-center">

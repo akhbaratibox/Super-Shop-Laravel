@@ -44,7 +44,8 @@
 
     <section class="py-4 gry-bg" id="cart-summary">
         <div class="container">
-            <div class="row cols-xs-space cols-sm-space cols-md-space">
+            @if(Session::has('cart'))
+                <div class="row cols-xs-space cols-sm-space cols-md-space">
                 <div class="col-lg-8">
                     <!-- <form class="form-default bg-white p-4" data-toggle="validator" role="form"> -->
                     <div class="form-default bg-white p-4">
@@ -224,6 +225,11 @@
 
                 </div>
             </div>
+            @else
+                <div class="dc-header">
+                    <h3 class="heading heading-6 strong-700">Your Cart is empty</h3>
+                </div>
+            @endif
         </div>
     </section>
 

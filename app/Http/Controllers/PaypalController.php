@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Paypal;
 use Redirect;
 use App\Order;
+use App\BusinessSetting;
 
 class PaypalController extends Controller
 {
@@ -17,8 +18,15 @@ class PaypalController extends Controller
             env('PAYPAL_CLIENT_ID'),
             env('PAYPAL_CLIENT_SECRET'));
 
+        if(BusinessSetting::where('type', 'paypal_sandbox')->first()->value == 1){
+            $mode = 'sandbox';
+        }
+        else{
+            $mode = 'live';
+        }
+
 		$this->_apiContext->setConfig(array(
-			'mode' => 'sandbox',
+			'mode' => $mode,
 			'service.EndPoint' => 'https://api.sandbox.paypal.com',
 			'http.ConnectionTimeOut' => 30,
 			'log.LogEnabled' => true,
@@ -40,8 +48,8 @@ class PaypalController extends Controller
     	$transaction->setAmount($amount);
     	$transaction->setDescription('Payment for verification');
     	$redirectUrls = PayPal:: RedirectUrls();
-    	$redirectUrls->setReturnUrl(url('payment/done'));
-    	$redirectUrls->setCancelUrl(url('payment/cancel'));
+    	$redirectUrls->setReturnUrl(url('paypal/payment/done'));
+    	$redirectUrls->setCancelUrl(url('paypal/payment/cancel'));
     	$payment = PayPal::Payment();
     	$payment->setIntent('sale');
     	$payment->setPayer($payer);
@@ -57,6 +65,7 @@ class PaypalController extends Controller
     public function getCancel()
     {
         // Curse and humiliate the user for cancelling this most sacred payment (yours)
+        $request->session()->forget('order_id');
         flash("Payment cancelled")->success();
     	return redirect()->url()->previous();
     }
@@ -78,6 +87,7 @@ class PaypalController extends Controller
         $order->save();
 
         $request->session()->put('cart', collect([]));
+        $request->session()->forget('order_id');
 
         flash("Payment completed")->success();
     	return redirect()->route('home');

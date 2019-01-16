@@ -9,7 +9,8 @@
                 <h3 class="panel-title text-center">Paypal Credential</h3>
             </div>
             <div class="panel-body">
-                <form class="form-horizontal" action="{{ route('env_key_update.update') }}" method="POST">
+                <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <input type="hidden" name="payment_method" value="paypal">
                     @csrf
                     <div class="form-group">
                         <input type="hidden" name="types[]" value="PAYPAL_CLIENT_ID">
@@ -27,6 +28,69 @@
                         </div>
                         <div class="col-lg-6">
                             <input type="text" class="form-control" name="PAYPAL_CLIENT_SECRET" value="{{  env('PAYPAL_CLIENT_SECRET') }}" placeholder="Paypal Client Secret" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-3">
+                            <label class="control-label">Paypal Sandbox Mode</label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="switch">
+                                <input value="1" name="paypal_sandbox" type="checkbox" @if (\App\BusinessSetting::where('type', 'paypal_sandbox')->first()->value == 1)
+                                    checked
+                                @endif>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-12 text-right">
+                            <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">SSlCommerz Credential</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="payment_method" value="sslcommerz">
+                    <div class="form-group">
+                        <input type="hidden" name="types[]" value="SSLCZ_STORE_ID">
+                        <div class="col-lg-3">
+                            <label class="control-label">SSLCZ STORE ID</label>
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" name="SSLCZ_STORE_ID" value="{{  env('SSLCZ_STORE_ID') }}" placeholder="SSLCZ STORE ID" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="types[]" value="SSLCZ_STORE_PASSWD">
+                        <div class="col-lg-3">
+                            <label class="control-label">SSLCZ STORE PASSWORD</label>
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" name="SSLCZ_STORE_PASSWD" value="{{  env('SSLCZ_STORE_PASSWD') }}" placeholder="SSLCZ STORE PASSWORD" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-3">
+                            <label class="control-label">SSlCommerz Sandbox Mode</label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="switch">
+                                <input value="1" name="sslcommerz_sandbox" type="checkbox" @if (\App\BusinessSetting::where('type', 'sslcommerz_sandbox')->first()->value == 1)
+                                    checked
+                                @endif>
+                                <span class="slider round"></span>
+                            </label>
                         </div>
                     </div>
                     <div class="form-group">

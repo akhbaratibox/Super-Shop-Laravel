@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Category;
 use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\PublicSslCommerzPaymentController;
 use App\Http\Controllers\OrderController;
 
 class CheckoutController extends Controller
@@ -24,6 +25,13 @@ class CheckoutController extends Controller
 
             $paypal = new PaypalController;
             return $paypal->getCheckout();
+        }
+        elseif ($request->payment_option == 'sslcommerz') {
+            $orderController = new OrderController;
+            $orderController->store($request);
+
+            $sslcommerz = new PublicSslCommerzPaymentController;
+            return $sslcommerz->index($request);
         }
     }
 

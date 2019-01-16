@@ -23,6 +23,31 @@ class BusinessSettingsController extends Controller
         return view('business_settings.payment_method');
     }
 
+    public function payment_method_update(Request $request)
+    {
+        $path = base_path('.env');
+        if (file_exists($path)) {
+            foreach ($request->types as $key => $type) {
+                file_put_contents($path, str_replace(
+                    $type.'='.env($type), $type.'='.$request[$type], file_get_contents($path)
+                ));
+            }
+        }
+
+        $business_settings = BusinessSetting::where('type', $request->payment_method.'_sandbox')->first();
+        if ($request->has($request->payment_method.'_sandbox')) {
+            $business_settings->value = 1;
+            $business_settings->save();
+        }
+        else{
+            $business_settings->value = 0;
+            $business_settings->save();
+        }
+
+        flash("Settings updated successfully")->success();
+        return back();
+    }
+
     public function env_key_update(Request $request)
     {
         $path = base_path('.env');

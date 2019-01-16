@@ -50,6 +50,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('/payment-method', 'BusinessSettingsController@payment_method')->name('payment_method.index');
 	Route::get('/social-login', 'BusinessSettingsController@social_login')->name('social_login.index');
 	Route::post('/env_key_update', 'BusinessSettingsController@env_key_update')->name('env_key_update.update');
+	Route::post('/payment_method_update', 'BusinessSettingsController@payment_method_update')->name('payment_method.update');
 	Route::get('/currency', 'BusinessSettingsController@currency')->name('currency.index');
     Route::post('/currency/update', 'BusinessSettingsController@updateCurrency')->name('currency.update');
     Route::post('/your-currency/update', 'BusinessSettingsController@updateYourCurrency')->name('your_currency.update');

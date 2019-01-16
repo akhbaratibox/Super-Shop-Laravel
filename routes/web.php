@@ -41,14 +41,21 @@ Route::post('/cart/removeFromCart', 'CartController@removeFromCart')->name('cart
 Route::post('/cart/updateQuantity', 'CartController@updateQuantity')->name('cart.updateQuantity');
 
 Route::post('/checkout/payment', 'CheckoutController@checkout')->name('payment.checkout');
-
-//Paypal Payment
-Route::get('/payment/done', 'PaypalController@getDone')->name('payment.done');
-Route::get('/payment/cancel', 'PaypalController@getCancel')->name('payment.cancel');
-
-
 Route::get('/checkout', 'CheckoutController@get_shipping_info')->name('checkout.shipping_info');
 Route::post('/checkout/payment_info', 'CheckoutController@get_payment_info')->name('checkout.payment_info');
+
+//Paypal START
+Route::get('/paypal/payment/done', 'PaypalController@getDone')->name('payment.done');
+Route::get('/paypal/payment/cancel', 'PaypalController@getCancel')->name('payment.cancel');
+//Paypal END
+
+// SSLCOMMERZ Start
+Route::get('/sslcommerz/pay', 'PublicSslCommerzPaymentController@index');
+Route::POST('/sslcommerz/success', 'PublicSslCommerzPaymentController@success');
+Route::POST('/sslcommerz/fail', 'PublicSslCommerzPaymentController@fail');
+Route::POST('/sslcommerz/cancel', 'PublicSslCommerzPaymentController@cancel');
+Route::POST('/sslcommerz/ipn', 'PublicSslCommerzPaymentController@ipn');
+//SSLCOMMERZ END
 
 Route::get('/compare', 'CompareController@index')->name('compare');
 Route::get('/compare/reset', 'CompareController@reset')->name('compare.reset');

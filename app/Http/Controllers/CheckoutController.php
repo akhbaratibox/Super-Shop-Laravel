@@ -19,19 +19,18 @@ class CheckoutController extends Controller
 
     public function checkout(Request $request)
     {
-        if($request->payment_option == 'paypal'){
-            $orderController = new OrderController;
-            $orderController->store($request);
+        $orderController = new OrderController;
+        $orderController->store($request);
 
-            $paypal = new PaypalController;
-            return $paypal->getCheckout();
-        }
-        elseif ($request->payment_option == 'sslcommerz') {
-            $orderController = new OrderController;
-            $orderController->store($request);
-
-            $sslcommerz = new PublicSslCommerzPaymentController;
-            return $sslcommerz->index($request);
+        if($request->session()->get('order_id') != null){
+            if($request->payment_option == 'paypal'){
+                $paypal = new PaypalController;
+                return $paypal->getCheckout();
+            }
+            elseif ($request->payment_option == 'sslcommerz') {
+                $sslcommerz = new PublicSslCommerzPaymentController;
+                return $sslcommerz->index($request);
+            }
         }
     }
 

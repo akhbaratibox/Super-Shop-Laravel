@@ -52,7 +52,7 @@ class PublicSslCommerzPaymentController extends Controller
             // $post_data['ship_country'] = "Bangladesh";
 
             # OPTIONAL PARAMETERS
-            // $post_data['value_a'] = "ref001";
+            $post_data['value_a'] = $request->session()->get('order_id');
             // $post_data['value_b'] = "ref002";
             // $post_data['value_c'] = "ref003";
             // $post_data['value_d'] = "ref004";
@@ -70,27 +70,23 @@ class PublicSslCommerzPaymentController extends Controller
 
     public function success(Request $request)
     {
-        echo "Transaction is Successful";
+        //echo "Transaction is Successful";
 
         $sslc = new SSLCommerz();
         #Start to received these value from session. which was saved in index function.
         $tran_id = $_SESSION['payment_values']['tran_id'];
         #End to received these value from session. which was saved in index function.
+        //dd($request->value_a);
+        $order = Order::find($request->value_a);
+        $order->payment_status = 'paid';
+        $order->payment_details = json_encode($request->all());
+        $order->save();
 
-        $order = Order::findOrFail($request->session()->get('order_id'));
+        Session::put('cart', collect([]));
+        Session::forget('order_id');
 
-        if($order->payment_status == 'unpaid')
-        {
-            $order->payment_status = 'paid';
-            $order->payment_details = json_encode($request->all());
-            $order->save();
-
-            $request->session()->put('cart', collect([]));
-            $request->session()->forget('order_id');
-
-            flash("Payment completed")->success();
-            return redirect()->route('home');
-        }
+        flash("Payment completed")->success();
+    	return redirect()->route('home');
     }
 
     public function fail(Request $request)

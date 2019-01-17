@@ -151,28 +151,28 @@ class HomeController extends Controller
 
     public function listing_by_category($id)
     {
-        $products = Product::where('category_id', $id)->orderBy('created_at', 'desc')->paginate(9);
+        $products = Product::where('published', 1)->where('category_id', $id)->orderBy('created_at', 'desc')->paginate(9);
         $category_id = $id;
         return view('frontend.product_listing', compact('products', 'category_id'));
     }
 
     public function listing_by_subcategory($id)
     {
-        $products = Product::where('subcategory_id', $id)->orderBy('created_at', 'desc')->paginate(9);
+        $products = Product::where('published', 1)->where('subcategory_id', $id)->orderBy('created_at', 'desc')->paginate(9);
         $subcategory_id = $id;
         return view('frontend.product_listing', compact('products', 'subcategory_id'));
     }
 
     public function listing_by_subsubcategory($id)
     {
-        $products = Product::where('subsubcategory_id', $id)->orderBy('created_at', 'desc')->paginate(9);
+        $products = Product::where('published', 1)->where('subsubcategory_id', $id)->orderBy('created_at', 'desc')->paginate(9);
         $subsubcategory_id = $id;
         return view('frontend.product_listing', compact('products', 'subsubcategory_id'));
     }
 
     public function listing_by_brand($id)
     {
-        $products = Product::where('brand_id', $id)->orderBy('created_at', 'desc')->paginate(9);
+        $products = Product::where('published', 1)->where('brand_id', $id)->orderBy('created_at', 'desc')->paginate(9);
         return view('frontend.product_listing', compact('products'));
     }
 
@@ -206,7 +206,7 @@ class HomeController extends Controller
     public function ajax_search(Request $request)
     {
         $keywords = array();
-        $products = Product::where('tags', 'like', '%'.$request->search.'%')->get();
+        $products = Product::where('published', 1)->where('tags', 'like', '%'.$request->search.'%')->get();
         foreach ($products as $key => $product) {
             foreach (explode(',',$product->tags) as $key => $tag) {
                 if(stripos($tag, $request->search) !== false){
@@ -221,7 +221,7 @@ class HomeController extends Controller
                 }
             }
         }
-        $products = Product::where('name', 'like', '%'.$request->search.'%')->get()->take(3);
+        $products = Product::where('published', 1)->where('name', 'like', '%'.$request->search.'%')->get()->take(3);
         $subsubcategories = SubSubCategory::where('name', 'like', '%'.$request->search.'%')->get()->take(3);
 
         if(sizeof($keywords)>0 || sizeof($subsubcategories)>0 || sizeof($products)>0){
@@ -238,10 +238,10 @@ class HomeController extends Controller
         }
 
         if($request->category != null){
-            $products = Product::where('category_id', $request->category)->where('name', 'like', '%'.$request->q.'%')->paginate(9);
+            $products = Product::where('published', 1)->where('category_id', $request->category)->where('name', 'like', '%'.$request->q.'%')->paginate(9);
         }
         else {
-            $products = Product::where('name', 'like', '%'.$request->q.'%')->orWhere('tags', 'like', '%'.$request->q.'%')->paginate(9);
+            $products = Product::where('published', 1)->where('name', 'like', '%'.$request->q.'%')->orWhere('tags', 'like', '%'.$request->q.'%')->paginate(9);
         }
         return view('frontend.product_listing', compact('products'));
     }

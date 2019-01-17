@@ -261,7 +261,7 @@
                 </div>
                 <div class="caorusel-box">
                     <div class="slick-carousel" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="2" data-slick-xs-items="1" data-slick-dots="true" data-slick-rows="2">
-                        @foreach (\App\Product::orderBy('num_of_sale', 'desc')->limit(20)->get() as $key => $product)
+                        @foreach (\App\Product::where('published', 1)->orderBy('num_of_sale', 'desc')->limit(20)->get() as $key => $product)
                             <div class="p-2">
                                 <div class="row no-gutters product-box-2">
                                     <div class="col-4">
@@ -330,7 +330,7 @@
                         <div class="tab-pane fade @php if($key == 0) echo 'show active'; @endphp" id="subsubcat-{{ $subsubcategory }}">
                             <div class="row">
                                 @php
-                                    $products = \App\Product::where('subsubcategory_id', $subsubcategory)->limit(4)->get();
+                                    $products = \App\Product::where('published', 1)->where('subsubcategory_id', $subsubcategory)->limit(4)->get();
                                 @endphp
                                 @foreach ($products as $key => $product)
                                     <div class="col-lg-3 col-md-6">
@@ -389,7 +389,7 @@
                         </h3>
                     </div>
                     <div class="pt-3 row">
-                        @foreach (\App\Product::orderBy('num_of_sale', 'desc')->limit(4)->get() as $key => $product)
+                        @foreach (\App\Product::where('published', 1)->orderBy('num_of_sale', 'desc')->limit(4)->get() as $key => $product)
                             <div class="mb-4 product-box-3 col-md-6 col-lg-12">
                                 <div class="clearfix">
                                     <div class="product-image float-left">
@@ -418,7 +418,7 @@
                         </h3>
                     </div>
                     <div class="pt-3 row">
-                        @foreach (\App\Product::where('featured', '1')->limit(4)->get() as $key => $product)
+                        @foreach (\App\Product::where('published', 1)->where('featured', '1')->limit(4)->get() as $key => $product)
                             <div class="mb-4 product-box-3 col-md-6 col-lg-12">
                                 <div class="clearfix">
                                     <div class="product-image float-left">
@@ -447,7 +447,7 @@
                         </h3>
                     </div>
                     <div class="pt-3 row">
-                        @foreach (\App\Product::where('todays_deal', '1')->limit(4)->get() as $key => $product)
+                        @foreach (\App\Product::where('published', 1)->where('todays_deal', '1')->limit(4)->get() as $key => $product)
                             <div class="mb-4 product-box-3 col-md-6 col-lg-12">
                                 <div class="clearfix">
                                     <div class="product-image float-left">

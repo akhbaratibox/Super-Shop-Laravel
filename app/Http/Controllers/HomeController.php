@@ -265,7 +265,12 @@ class HomeController extends Controller
             $str .= '-'.str_replace(' ', '', $request[$choice->name]);
         }
 
-        $price = json_decode($product->variations)->$str->price;
+        if($str != null){
+            $price = json_decode($product->variations)->$str->price;
+        }
+        else{
+            $price = $product->unit_price;
+        }
 
         //discount calculation
         $flash_deal = \App\FlashDeal::where('status', 1)->first();

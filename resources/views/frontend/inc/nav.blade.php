@@ -392,7 +392,7 @@
                                                             <div class="py-2 text-center dc-btn">
                                                                 <ul class="inline-links inline-links--style-3">
                                                                     <li class="pr-3">
-                                                                        <a href="{{ route('cart') }}" class="link link--style-1 text-capitalize btn btn-outline btn-base-1 px-3 py-1">
+                                                                        <a href="{{ route('cart') }}" class="link link--style-1 text-capitalize btn btn-base-1 px-3 py-1">
                                                                             <i class="la la-shopping-cart"></i> View cart
                                                                         </a>
                                                                     </li>

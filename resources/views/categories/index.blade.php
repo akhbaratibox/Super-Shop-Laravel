@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <a href="{{ route('categories.create')}}" class="btn btn-info pull-right">{{__('web.add_new')}}</a>
+        <a href="{{ route('categories.create')}}" class="btn btn-info pull-right">{{__('add_new')}}</a>
     </div>
 </div>
 
@@ -14,18 +14,18 @@
 <!--===================================================-->
 <div class="panel">
     <div class="panel-heading">
-        <h3 class="panel-title">{{__('web.categories')}}</h3>
+        <h3 class="panel-title">{{__('categories')}}</h3>
     </div>
     <div class="panel-body">
         <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>{{__('web.name')}}</th>
-                    <th>{{__('web.banner')}}</th>
-                    <th>{{__('web.icon')}}</th>
-                    <th>{{__('web.featured')}}</th>
-                    <th width="10%">{{__('web.options')}}</th>
+                    <th>{{__('name')}}</th>
+                    <th>{{__('banner')}}</th>
+                    <th>{{__('icon')}}</th>
+                    <th>{{__('featured')}}</th>
+                    <th width="10%">{{__('options')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,8 +33,8 @@
                     <tr>
                         <td>{{$key+1}}</td>
                         <td>{{$category->name}}</td>
-                        <td><img class="img-md" src="{{ asset($category->banner) }}" alt="{{__('web.banner')}}"></td>
-                        <td><img class="img-md" src="{{ asset($category->icon) }}" alt="{{__('web.icon')}}"></td>
+                        <td><img class="img-md" src="{{ asset($category->banner) }}" alt="{{__('banner')}}"></td>
+                        <td><img class="img-md" src="{{ asset($category->icon) }}" alt="{{__('icon')}}"></td>
                         <td><label class="switch">
                             <input onchange="update_featured(this)" value="{{ $category->id }}" type="checkbox" <?php if($category->featured == 1) echo "checked";?> >
                             <span class="slider round"></span></label></td>

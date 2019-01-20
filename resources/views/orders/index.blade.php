@@ -6,7 +6,7 @@
 <!--===================================================-->
 <div class="panel">
     <div class="panel-heading">
-        <h3 class="panel-title">{{__('web.orders')}}</h3>
+        <h3 class="panel-title">{{__('orders')}}</h3>
     </div>
     <div class="panel-body">
         <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
@@ -19,7 +19,7 @@
                     <th>Amount</th>
                     <th>Delivery Status</th>
                     <th>Payment Status</th>
-                    <th width="10%">{{__('web.options')}}</th>
+                    <th width="10%">{{__('options')}}</th>
                 </tr>
             </thead>
             <tbody>

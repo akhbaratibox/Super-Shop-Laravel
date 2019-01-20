@@ -50,13 +50,13 @@
 				    <div class="tab-content">
 				        <div id="demo-stk-lft-tab-1" class="tab-pane fade active in">
 							<div class="form-group">
-								<label class="col-lg-2 control-label">{{__('web.product_name')}}</label>
+								<label class="col-lg-2 control-label">{{__('product_name')}}</label>
 								<div class="col-lg-7">
-									<input type="text" class="form-control" name="name" placeholder="{{__('web.product_name')}}" onchange="update_sku()" required>
+									<input type="text" class="form-control" name="name" placeholder="{{__('product_name')}}" onchange="update_sku()" required>
 								</div>
 							</div>
 							<div class="form-group" id="category">
-								<label class="col-lg-2 control-label">{{__('web.category')}}</label>
+								<label class="col-lg-2 control-label">{{__('category')}}</label>
 								<div class="col-lg-7">
 									<select class="form-control demo-select2-placeholder" name="category_id" id="category_id" required>
 										@foreach($categories as $category)
@@ -66,7 +66,7 @@
 								</div>
 							</div>
 							<div class="form-group" id="subcategory">
-								<label class="col-lg-2 control-label">{{__('web.subcategory')}}</label>
+								<label class="col-lg-2 control-label">{{__('subcategory')}}</label>
 								<div class="col-lg-7">
 									<select class="form-control demo-select2-placeholder" name="subcategory_id" id="subcategory_id" required>
 
@@ -74,7 +74,7 @@
 								</div>
 							</div>
 							<div class="form-group" id="subsubcategory">
-								<label class="col-lg-2 control-label">{{__('web.subsubcategory')}}</label>
+								<label class="col-lg-2 control-label">{{__('subsubcategory')}}</label>
 								<div class="col-lg-7">
 									<select class="form-control demo-select2-placeholder" name="subsubcategory_id" id="subsubcategory_id" required>
 
@@ -82,7 +82,7 @@
 								</div>
 							</div>
 							<div class="form-group" id="brand">
-								<label class="col-lg-2 control-label">{{__('web.brand')}}</label>
+								<label class="col-lg-2 control-label">{{__('brand')}}</label>
 								<div class="col-lg-7">
 									<select class="form-control demo-select2-placeholder" name="brand_id" id="brand_id" required>
 
@@ -90,13 +90,13 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">{{__('web.unit')}}</label>
+								<label class="col-lg-2 control-label">{{__('unit')}}</label>
 								<div class="col-lg-7">
 									<input type="text" class="form-control" name="unit" placeholder="Unit (e.g. KG, Pc etc)" required>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">{{__('web.tags')}}</label>
+								<label class="col-lg-2 control-label">{{__('tags')}}</label>
 								<div class="col-lg-7">
 									<input type="text" class="form-control" name="tags[]" placeholder="Type to add a tag" data-role="tagsinput">
 								</div>
@@ -161,7 +161,7 @@
 						<div id="demo-stk-lft-tab-5" class="tab-pane fade">
 							<div class="form-group">
 								<div class="col-lg-2">
-									<input type="text" class="form-control" value="{{__('web.colors')}}" disabled>
+									<input type="text" class="form-control" value="{{__('colors')}}" disabled>
 								</div>
 								<div class="col-lg-7">
 									<select class="form-control demo-select2-placeholder" name="colors[]" id="colors" multiple>
@@ -183,28 +183,28 @@
 							</div>
 							<div class="form-group">
 								<div class="col-lg-2">
-									<button type="button" class="btn btn-info" onclick="add_more_customer_choice_option()">{{ __('web.add_more_customer_choice_option') }}</button>
+									<button type="button" class="btn btn-info" onclick="add_more_customer_choice_option()">{{ __('add_more_customer_choice_option') }}</button>
 								</div>
 							</div>
 				        </div>
 
 						<div id="demo-stk-lft-tab-6" class="tab-pane fade">
 							<div class="form-group">
-								<label class="col-lg-2 control-label">{{__('web.unit_price')}}</label>
+								<label class="col-lg-2 control-label">{{__('unit_price')}}</label>
 								<div class="col-lg-7">
-									<input type="number" min="0" step="0.01" placeholder="{{__('web.unit_price')}}" name="unit_price" class="form-control">
+									<input type="number" min="0" step="0.01" placeholder="{{__('unit_price')}}" name="unit_price" class="form-control">
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">{{__('web.purchase_price')}}</label>
+								<label class="col-lg-2 control-label">{{__('purchase_price')}}</label>
 								<div class="col-lg-7">
-									<input type="number" min="0" step="0.01" placeholder="{{__('web.purchase_price')}}" name="purchase_price" class="form-control">
+									<input type="number" min="0" step="0.01" placeholder="{{__('purchase_price')}}" name="purchase_price" class="form-control">
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">{{__('web.tax')}}</label>
+								<label class="col-lg-2 control-label">{{__('tax')}}</label>
 								<div class="col-lg-7">
-									<input type="number" min="0" step="0.01" placeholder="{{__('web.tax')}}" name="tax" class="form-control">
+									<input type="number" min="0" step="0.01" placeholder="{{__('tax')}}" name="tax" class="form-control">
 								</div>
 								<div class="col-lg-1">
 									<select class="demo-select2" name="tax_type">
@@ -214,9 +214,9 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">{{__('web.discount')}}</label>
+								<label class="col-lg-2 control-label">{{__('discount')}}</label>
 								<div class="col-lg-7">
-									<input type="number" min="0" step="0.01" placeholder="{{__('web.discount')}}" name="discount" class="form-control">
+									<input type="number" min="0" step="0.01" placeholder="{{__('discount')}}" name="discount" class="form-control">
 								</div>
 								<div class="col-lg-1">
 									<select class="demo-select2" name="discount_type">
@@ -232,7 +232,7 @@
 				        </div>
 						<div id="demo-stk-lft-tab-7" class="tab-pane fade">
 							<div class="form-group">
-								<label class="col-lg-2 control-label">{{__('web.description')}}</label>
+								<label class="col-lg-2 control-label">{{__('description')}}</label>
 								<div class="col-lg-9">
 									<textarea class="editor" name="description"></textarea>
 								</div>
@@ -291,7 +291,7 @@
 				</div>
 			</div>
 			<div class="panel-footer text-right">
-				<button type="submit" name="button" class="btn btn-purple">{{ __('web.save') }}</button>
+				<button type="submit" name="button" class="btn btn-purple">{{ __('save') }}</button>
 			</div>
 		</div>
 	</form>

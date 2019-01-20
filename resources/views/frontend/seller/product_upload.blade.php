@@ -42,10 +42,10 @@
                                 <div class="form-box-content p-3">
                                     <div class="row">
                                         <div class="col-2">
-                                            <label>{{__('web.product_name')}} <span class="required-star">*</span></label>
+                                            <label>{{__('product_name')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
-                                            <input type="text" class="form-control mb-3" name="name" placeholder="{{__('web.product_name')}}">
+                                            <input type="text" class="form-control mb-3" name="name" placeholder="{{__('product_name')}}">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -215,7 +215,7 @@
                                 <div class="form-box-content p-3">
                                     <div class="row mb-3">
                                         <div class="col-2">
-        									<input type="text" class="form-control" value="{{__('web.colors')}}" disabled>
+        									<input type="text" class="form-control" value="{{__('colors')}}" disabled>
         								</div>
         								<div class="col-9">
         									<select class="form-control selectpicker" name="colors[]" id="colors" multiple>
@@ -236,7 +236,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-2">
-        									<button type="button" class="btn btn-info" onclick="add_more_customer_choice_option()">{{ __('web.add_more_customer_choice_option') }}</button>
+        									<button type="button" class="btn btn-info" onclick="add_more_customer_choice_option()">{{ __('add_more_customer_choice_option') }}</button>
         								</div>
                                     </div>
                                 </div>
@@ -319,7 +319,7 @@
                                 </div>
                             </div>
                             <div class="form-box mt-4 text-right">
-                                <button type="submit" class="btn btn-styled btn-base-1">{{ __('web.save') }}</button>
+                                <button type="submit" class="btn btn-styled btn-base-1">{{ __('save') }}</button>
                             </div>
                         </form>
                     </div>

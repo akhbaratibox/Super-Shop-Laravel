@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <a href="{{ route('flash_deals.create')}}" class="btn btn-info pull-right">{{__('web.add_new')}}</a>
+        <a href="{{ route('flash_deals.create')}}" class="btn btn-info pull-right">{{__('add_new')}}</a>
     </div>
 </div>
 
@@ -14,18 +14,18 @@
 <!--===================================================-->
 <div class="panel">
     <div class="panel-heading">
-        <h3 class="panel-title">{{__('web.flash_deal')}}</h3>
+        <h3 class="panel-title">{{__('flash_deal')}}</h3>
     </div>
     <div class="panel-body">
         <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>{{__('web.title')}}</th>
-                    <th>{{ __('web.start_date') }}</th>
-                    <th>{{ __('web.end_date') }}</th>
-                    <th>{{ __('web.status') }}</th>
-                    <th width="10%">{{__('web.options')}}</th>
+                    <th>{{__('title')}}</th>
+                    <th>{{ __('start_date') }}</th>
+                    <th>{{ __('end_date') }}</th>
+                    <th>{{ __('status') }}</th>
+                    <th width="10%">{{__('options')}}</th>
                 </tr>
             </thead>
             <tbody>

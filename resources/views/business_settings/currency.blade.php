@@ -6,14 +6,14 @@
     <div class="col-lg-6">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">{{__('web.home_default_currency')}}</h3>
+                <h3 class="panel-title text-center">{{__('home_default_currency')}}</h3>
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" action="{{ route('business_settings.update') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <div class="col-lg-3">
-                            <label class="control-label">{{__('web.home_default_currency')}}</label>
+                            <label class="control-label">{{__('home_default_currency')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <select class="form-control demo-select2-placeholder" name="home_default_currency">
@@ -24,7 +24,7 @@
                         </div>
                         <input type="hidden" name="types[]" value="home_default_currency">
                         <div class="col-lg-3">
-                            <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
+                            <button class="btn btn-purple" type="submit">{{__('save')}}</button>
                         </div>
                     </div>
                 </form>
@@ -35,14 +35,14 @@
     <div class="col-lg-6">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">{{__('web.system_default_currency')}}</h3>
+                <h3 class="panel-title text-center">{{__('system_default_currency')}}</h3>
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" action="{{ route('business_settings.update') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <div class="col-lg-3">
-                            <label class="control-label">{{__('web.system_default_currency')}}</label>
+                            <label class="control-label">{{__('system_default_currency')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <select class="form-control demo-select2-placeholder" name="system_default_currency">
@@ -53,7 +53,7 @@
                         </div>
                         <input type="hidden" name="types[]" value="system_default_currency">
                         <div class="col-lg-3">
-                            <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
+                            <button class="btn btn-purple" type="submit">{{__('save')}}</button>
                         </div>
                     </div>
                 </form>
@@ -64,7 +64,7 @@
     <div class="col-lg-6">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">{{__('web.set_currency_formats')}}</h3>
+                <h3 class="panel-title text-center">{{__('set_currency_formats')}}</h3>
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" action="{{ route('business_settings.update') }}" method="POST">
@@ -72,7 +72,7 @@
                     <div class="form-group">
                         <input type="hidden" name="types[]" value="currency_format">
                         <div class="col-lg-3">
-                            <label class="control-label">{{__('web.currency_format')}}</label>
+                            <label class="control-label">{{__('currency_format')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <select class="form-control demo-select2-placeholder" name="currency_format">
@@ -84,7 +84,7 @@
                     <div class="form-group">
                         <input type="hidden" name="types[]" value="symbol_format">
                         <div class="col-lg-3">
-                            <label class="control-label">{{__('web.symbol_format')}}</label>
+                            <label class="control-label">{{__('symbol_format')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <select class="form-control demo-select2-placeholder" name="symbol_format">
@@ -96,7 +96,7 @@
                     <div class="form-group">
                         <input type="hidden" name="types[]" value="no_of_decimals">
                         <div class="col-lg-3">
-                            <label class="control-label">{{__('web.no_of_decimals')}}</label>
+                            <label class="control-label">{{__('no_of_decimals')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <select class="form-control demo-select2-placeholder" name="no_of_decimals">
@@ -109,7 +109,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-12 text-right">
-                            <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
+                            <button class="btn btn-purple" type="submit">{{__('save')}}</button>
                         </div>
                     </div>
                 </form>
@@ -121,19 +121,19 @@
 <div class="row">
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">{{__('web.all_currency')}}</h3>
+            <h3 class="panel-title">{{__('all_currency')}}</h3>
         </div>
         <div class="panel-body">
             <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>{{__('web.currency_name')}}</th>
-                        <th>{{__('web.currency_symbol')}}</th>
-                        <th>{{__('web.currency_code')}}</th>
-                        <th>{{__('web.exchange_rate')}}</th>
-                        <th>{{__('web.status')}}</th>
-                        <th width="10%">{{__('web.options')}}</th>
+                        <th>{{__('currency_name')}}</th>
+                        <th>{{__('currency_symbol')}}</th>
+                        <th>{{__('currency_code')}}</th>
+                        <th>{{__('exchange_rate')}}</th>
+                        <th>{{__('status')}}</th>
+                        <th width="10%">{{__('options')}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -145,7 +145,7 @@
                             <td>{{$currencies[$i]->code}}</td>
                             <td><input id="exchange_rate_{{ $currencies[$i]->id }}" class="form-control" type="number" min="0" step="0.01" value="{{$currencies[$i]->exchange_rate}}"></td>
                             <td><label class="switch"><input id="status_{{ $currencies[$i]->id }}" type="checkbox" <?php if($currencies[$i]->status == 1) echo "checked";?> ><span class="slider round"></span></label></td>
-                            <td><button class="btn btn-purple" type="submit" onclick="updateCurrency({{ $currencies[$i]->id }})">{{__('web.save')}}</button></td>
+                            <td><button class="btn btn-purple" type="submit" onclick="updateCurrency({{ $currencies[$i]->id }})">{{__('save')}}</button></td>
                         </tr>
                     @endfor
                     <tr>
@@ -155,7 +155,7 @@
                         <td><input id="code_{{ $currencies[count($currencies)-1]->id }}" class="form-control" type="text" value="{{$currencies[count($currencies)-1]->code}}"></td>
                         <td><input id="exchange_rate_{{ $currencies[count($currencies)-1]->id }}" class="form-control" type="number" min="0" step="0.01" value="{{$currencies[count($currencies)-1]->exchange_rate}}"></td>
                         <td><label class="switch"><input id="status_{{ $currencies[count($currencies)-1]->id }}" class="demo-sw" type="checkbox" <?php if($currencies[count($currencies)-1]->status == 1) echo "checked";?> ><span class="slider round"></span></label></td>
-                        <td><button class="btn btn-purple" type="submit" onclick="updateYourCurrency({{ $currencies[count($currencies)-1]->id }})" >{{__('web.save')}}</button></td>
+                        <td><button class="btn btn-purple" type="submit" onclick="updateYourCurrency({{ $currencies[count($currencies)-1]->id }})" >{{__('save')}}</button></td>
                     </tr>
                 </tbody>
             </table>

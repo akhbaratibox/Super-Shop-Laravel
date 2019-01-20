@@ -6,17 +6,17 @@
 <!--===================================================-->
 <div class="panel">
     <div class="panel-heading">
-        <h3 class="panel-title">{{__('web.contact_messages')}}</h3>
+        <h3 class="panel-title">{{__('contact_messages')}}</h3>
     </div>
     <div class="panel-body">
         <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>{{__('web.name')}}</th>
-                    <th>{{__('web.subject')}}</th>
-                    <th>{{__('web.date')}}</th>
-                    <th width="10%">{{__('web.options')}}</th>
+                    <th>{{__('name')}}</th>
+                    <th>{{__('subject')}}</th>
+                    <th>{{__('date')}}</th>
+                    <th width="10%">{{__('options')}}</th>
                 </tr>
             </thead>
             <tbody>

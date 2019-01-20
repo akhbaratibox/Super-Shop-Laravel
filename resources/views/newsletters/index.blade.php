@@ -5,7 +5,7 @@
 <div class="col-sm-12">
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">{{__('web.send_newsletter')}}</h3>
+            <h3 class="panel-title">{{__('send_newsletter')}}</h3>
         </div>
         <!--Horizontal Form-->
         <!--===================================================-->
@@ -13,7 +13,7 @@
         	@csrf
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="name">{{__('web.emails')}} ({{__('web.users')}})</label>
+                    <label class="col-sm-2 control-label" for="name">{{__('emails')}} ({{__('users')}})</label>
                     <div class="col-sm-10">
                         <select class="form-control demo-select2-multiple-selects" name="user_emails[]" multiple required>
                             @foreach($users as $user)
@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="name">{{__('web.emails')}} ({{__('web.subscribers')}})</label>
+                    <label class="col-sm-2 control-label" for="name">{{__('emails')}} ({{__('subscribers')}})</label>
                     <div class="col-sm-10">
                         <select class="form-control demo-select2-multiple-selects" name="subscriber_emails[]" multiple>
                             @foreach($subscribers as $subscriber)
@@ -33,26 +33,26 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="mail_from">{{__('web.from')}} : {{__('web.email_address')}}</label>
+                    <label class="col-sm-2 control-label" for="mail_from">{{__('from')}} : {{__('email_address')}}</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="mail_from" id="mail_from" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="subject">{{__('web.newsletter_subject')}}</label>
+                    <label class="col-sm-2 control-label" for="subject">{{__('newsletter_subject')}}</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="subject" id="subject" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="name">{{__('web.newsletter_content')}}</label>
+                    <label class="col-sm-2 control-label" for="name">{{__('newsletter_content')}}</label>
                     <div class="col-sm-10">
                         <textarea class="editor" name="content" required></textarea>
                     </div>
                 </div>
             </div>
             <div class="panel-footer text-right">
-                <button class="btn btn-purple" type="submit">{{__('web.send')}}</button>
+                <button class="btn btn-purple" type="submit">{{__('send')}}</button>
             </div>
         </form>
         <!--===================================================-->

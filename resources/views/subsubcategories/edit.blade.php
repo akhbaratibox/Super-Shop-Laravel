@@ -5,7 +5,7 @@
 <div class="col-sm-12">
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">{{__('web.subsubcategory_information')}}</h3>
+            <h3 class="panel-title">{{__('subsubcategory_information')}}</h3>
         </div>
 
         <!--Horizontal Form-->
@@ -15,13 +15,13 @@
             @csrf
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">{{__('web.name')}}</label>
+                    <label class="col-sm-3 control-label" for="name">{{__('name')}}</label>
                     <div class="col-sm-9">
-                        <input type="text" placeholder="{{__('web.name')}}" id="name" name="name" class="form-control" required value="{{$subsubcategory->name}}">
+                        <input type="text" placeholder="{{__('name')}}" id="name" name="name" class="form-control" required value="{{$subsubcategory->name}}">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">{{__('web.category')}}</label>
+                    <label class="col-sm-3 control-label" for="name">{{__('category')}}</label>
                     <div class="col-sm-9">
                         <select name="category_id" id="category_id" class="form-control demo-select2" required>
                             @foreach($categories as $category)
@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">{{__('web.subcategory')}}</label>
+                    <label class="col-sm-3 control-label" for="name">{{__('subcategory')}}</label>
                     <div class="col-sm-9">
                         <select name="sub_category_id" id="sub_category_id" class="form-control demo-select2" required>
 
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">{{__('web.brands')}}</label>
+                    <label class="col-sm-3 control-label" for="name">{{__('brands')}}</label>
                     <div class="col-sm-9">
                         <select name="brands[]" id="brands" class="form-control demo-select2" multiple  required data-placeholder="Choose Brands">
                             @foreach($brands as $brand)
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="banner">{{__('web.banner')}}</label>
+                    <label class="col-sm-3 control-label" for="banner">{{__('banner')}}</label>
                     <div class="col-sm-9">
                         <input type="file" id="banner" name="banner" class="form-control">
                     </div>
@@ -57,7 +57,7 @@
             </div>
 
             <div class="panel-footer text-right">
-                <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
+                <button class="btn btn-purple" type="submit">{{__('save')}}</button>
             </div>
         </form>
         <!--===================================================-->

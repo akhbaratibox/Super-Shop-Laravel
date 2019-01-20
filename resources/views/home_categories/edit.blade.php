@@ -1,6 +1,6 @@
 <div class="panel">
     <div class="panel-heading">
-        <h3 class="panel-title">{{__('web.home_categories')}}</h3>
+        <h3 class="panel-title">{{__('home_categories')}}</h3>
     </div>
 
     <!--Horizontal Form-->
@@ -10,7 +10,7 @@
         <input type="hidden" name="_method" value="PATCH">
         <div class="panel-body">
             <div class="form-group" id="category">
-                <label class="col-lg-2 control-label">{{__('web.category')}}</label>
+                <label class="col-lg-2 control-label">{{__('category')}}</label>
                 <div class="col-lg-7">
                     <select class="form-control demo-select2-placeholder" name="category_id" id="category_id" required>
                         @foreach(\App\Category::all() as $category)
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="form-group" id="subsubcategory">
-                <label class="col-lg-2 control-label">{{__('web.subsubcategory')}}</label>
+                <label class="col-lg-2 control-label">{{__('subsubcategory')}}</label>
                 <div class="col-lg-7">
                     <select class="form-control demo-select2-max-4" name="subsubcategories[]" id="subsubcategory_id" data-placeholder="Choose Options (max 4)" multiple required>
 
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="panel-footer text-right">
-            <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
+            <button class="btn btn-purple" type="submit">{{__('save')}}</button>
         </div>
     </form>
     <!--===================================================-->

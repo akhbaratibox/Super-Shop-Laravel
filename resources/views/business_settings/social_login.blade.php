@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-12 text-right">
-                            <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
+                            <button class="btn btn-purple" type="submit">{{__('save')}}</button>
                         </div>
                     </div>
                 </form>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-12 text-right">
-                            <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
+                            <button class="btn btn-purple" type="submit">{{__('save')}}</button>
                         </div>
                     </div>
                 </form>
@@ -104,7 +104,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-12 text-right">
-                            <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
+                            <button class="btn btn-purple" type="submit">{{__('save')}}</button>
                         </div>
                     </div>
                 </form>

@@ -1,6 +1,6 @@
 <div class="panel">
     <div class="panel-heading">
-        <h3 class="panel-title">{{__('web.slider_information')}}</h3>
+        <h3 class="panel-title">{{__('slider_information')}}</h3>
     </div>
 
     <!--Horizontal Form-->
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="panel-footer text-right">
-            <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
+            <button class="btn btn-purple" type="submit">{{__('save')}}</button>
         </div>
     </form>
     <!--===================================================-->

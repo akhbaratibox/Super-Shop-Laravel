@@ -7,16 +7,16 @@
         <!--Nav Tabs-->
         <ul class="nav nav-tabs">
             <li class="active">
-                <a data-toggle="tab" href="#demo-lft-tab-1" aria-expanded="true">{{ __('web.home_slider') }}</a>
+                <a data-toggle="tab" href="#demo-lft-tab-1" aria-expanded="true">{{ __('home_slider') }}</a>
             </li>
             <li class="">
-                <a data-toggle="tab" href="#demo-lft-tab-2" aria-expanded="false">{{ __('web.home_banner') }}</a>
+                <a data-toggle="tab" href="#demo-lft-tab-2" aria-expanded="false">{{ __('home_banner') }}</a>
             </li>
             <li class="">
-                <a data-toggle="tab" href="#demo-lft-tab-3" aria-expanded="false">{{ __('web.home_categories') }}</a>
+                <a data-toggle="tab" href="#demo-lft-tab-3" aria-expanded="false">{{ __('home_categories') }}</a>
             </li>
             <li class="">
-                <a data-toggle="tab" href="#demo-lft-tab-4" aria-expanded="false">{{ __('web.best_selling') }}</a>
+                <a data-toggle="tab" href="#demo-lft-tab-4" aria-expanded="false">{{ __('best_selling') }}</a>
             </li>
         </ul>
 
@@ -26,22 +26,22 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <a onclick="add_slider()" class="btn btn-info pull-right">{{__('web.add_new')}}</a>
+                        <a onclick="add_slider()" class="btn btn-info pull-right">{{__('add_new')}}</a>
                     </div>
                 </div>
 
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">{{__('web.home_slider')}}</h3>
+                        <h3 class="panel-title">{{__('home_slider')}}</h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>{{__('web.photo')}}</th>
-                                    <th>{{__('web.published')}}</th>
-                                    <th width="10%">{{__('web.options')}}</th>
+                                    <th>{{__('photo')}}</th>
+                                    <th>{{__('published')}}</th>
+                                    <th width="10%">{{__('options')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -67,22 +67,22 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <a onclick="add_banner()" class="btn btn-info pull-right">{{__('web.add_new')}}</a>
+                        <a onclick="add_banner()" class="btn btn-info pull-right">{{__('add_new')}}</a>
                     </div>
                 </div>
 
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">{{__('web.home_banner')}} (Max 3 published)</h3>
+                        <h3 class="panel-title">{{__('home_banner')}} (Max 3 published)</h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>{{__('web.photo')}}</th>
-                                    <th>{{__('web.published')}}</th>
-                                    <th width="10%">{{__('web.options')}}</th>
+                                    <th>{{__('photo')}}</th>
+                                    <th>{{__('published')}}</th>
+                                    <th width="10%">{{__('options')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -108,23 +108,23 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <a onclick="add_home_category()" class="btn btn-info pull-right">{{__('web.add_new')}}</a>
+                        <a onclick="add_home_category()" class="btn btn-info pull-right">{{__('add_new')}}</a>
                     </div>
                 </div>
 
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">{{__('web.home_categories')}}</h3>
+                        <h3 class="panel-title">{{__('home_categories')}}</h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>{{__('web.category')}}</th>
-                                    <th>{{__('web.subsubcategories')}}</th>
-                                    <th>{{ __('web.status') }}</th>
-                                    <th width="10%">{{__('web.options')}}</th>
+                                    <th>{{__('category')}}</th>
+                                    <th>{{__('subsubcategories')}}</th>
+                                    <th>{{ __('status') }}</th>
+                                    <th width="10%">{{__('options')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -155,7 +155,7 @@
             <div id="demo-lft-tab-4" class="tab-pane fade">
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title text-center">{{ __('web.best_selling') }}</h3>
+                        <h3 class="panel-title text-center">{{ __('best_selling') }}</h3>
                     </div>
                     <div class="panel-body text-center">
                         <label class="switch">

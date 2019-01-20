@@ -35,7 +35,7 @@
                         <div class="card no-border mt-4">
                             <div class="row">
                                 <div class="col-12">
-                                    <a href="{{ route('seller.products.upload')}}" class="btn btn-base-1 pull-right mb-3 mt-3 mr-3">{{__('web.add_new')}}</a>
+                                    <a href="{{ route('seller.products.upload')}}" class="btn btn-base-1 pull-right mb-3 mt-3 mr-3">{{__('add_new')}}</a>
                                 </div>
                             </div>
                             <div>
@@ -43,12 +43,12 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>{{__('web.name')}}</th>
-                                            <th>{{__('web.subsubcategory')}}</th>
-                                            <th>{{__('web.current_qty')}}</th>
-                                            <th>{{__('web.base_price')}}</th>
-                                            <th>{{__('web.featured')}}</th>
-                                            <th>{{__('web.options')}}</th>
+                                            <th>{{__('name')}}</th>
+                                            <th>{{__('subsubcategory')}}</th>
+                                            <th>{{__('current_qty')}}</th>
+                                            <th>{{__('base_price')}}</th>
+                                            <th>{{__('featured')}}</th>
+                                            <th>{{__('options')}}</th>
                                         </tr>
                                     </thead>
 

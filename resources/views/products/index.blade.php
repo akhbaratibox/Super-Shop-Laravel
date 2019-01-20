@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <a href="{{ route('products.create')}}" class="btn btn-info pull-right">{{__('web.add_new')}}</a>
+        <a href="{{ route('products.create')}}" class="btn btn-info pull-right">{{__('add_new')}}</a>
     </div>
 </div>
 
@@ -16,10 +16,10 @@
         <!--Nav Tabs-->
         <ul class="nav nav-tabs">
             <li class="active">
-                <a data-toggle="tab" href="#demo-lft-tab-1" aria-expanded="true">{{__('web.admin_products')}} <span class="badge badge-info">{{count(\App\Product::where('added_by','admin')->get())}}</span></a>
+                <a data-toggle="tab" href="#demo-lft-tab-1" aria-expanded="true">{{__('admin_products')}} <span class="badge badge-info">{{count(\App\Product::where('added_by','admin')->get())}}</span></a>
             </li>
             <li class="">
-                <a data-toggle="tab" href="#demo-lft-tab-2" aria-expanded="false">{{__('web.seller_products')}} <span class="badge badge-purple">{{count(\App\Product::where('added_by','seller')->get())}}</span></a>
+                <a data-toggle="tab" href="#demo-lft-tab-2" aria-expanded="false">{{__('seller_products')}} <span class="badge badge-purple">{{count(\App\Product::where('added_by','seller')->get())}}</span></a>
             </li>
         </ul>
 
@@ -32,14 +32,14 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th width="20%">{{__('web.name')}}</th>
-                                    <th>{{__('web.photo')}}</th>
-                                    <th>{{__('web.current_qty')}}</th>
-                                    <th>{{__('web.base_price')}}</th>
-                                    <th>{{__('web.todays_deal')}}</th>
-                                    <th>{{__('web.published')}}</th>
-                                    <th>{{__('web.featured')}}</th>
-                                    <th>{{__('web.options')}}</th>
+                                    <th width="20%">{{__('name')}}</th>
+                                    <th>{{__('photo')}}</th>
+                                    <th>{{__('current_qty')}}</th>
+                                    <th>{{__('base_price')}}</th>
+                                    <th>{{__('todays_deal')}}</th>
+                                    <th>{{__('published')}}</th>
+                                    <th>{{__('featured')}}</th>
+                                    <th>{{__('options')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -94,14 +94,14 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th width="20%">{{__('web.name')}}</th>
-                                    <th>{{__('web.photo')}}</th>
-                                    <th>{{__('web.current_qty')}}</th>
-                                    <th>{{__('web.base_price')}}</th>
-                                    <th>{{__('web.todays_deal')}}</th>
-                                    <th>{{__('web.published')}}</th>
-                                    <th>{{__('web.featured')}}</th>
-                                    <th>{{__('web.options')}}</th>
+                                    <th width="20%">{{__('name')}}</th>
+                                    <th>{{__('photo')}}</th>
+                                    <th>{{__('current_qty')}}</th>
+                                    <th>{{__('base_price')}}</th>
+                                    <th>{{__('todays_deal')}}</th>
+                                    <th>{{__('published')}}</th>
+                                    <th>{{__('featured')}}</th>
+                                    <th>{{__('options')}}</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -18,7 +18,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label>{{ __('web.email') }}</label>
+                                                <label>{{ __('email') }}</label>
                                                 <div class="input-group input-group--style-1">
                                                     <input type="email" class="form-control form-control-lg {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="Email" name="email" id="email">
                                                     <span class="input-group-addon">
@@ -32,7 +32,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label>{{ __('web.password') }}</label>
+                                                <label>{{ __('password') }}</label>
                                                 <div class="input-group input-group--style-1">
                                                     <input type="password" class="form-control form-control-lg {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Password" name="password" id="password">
                                                     <span class="input-group-addon">
@@ -61,7 +61,7 @@
                                             <a href="{{ route('password.request') }}" class="link link-xs link--style-3">Forgot password?</a>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                            <button type="submit" class="btn btn-styled btn-base-1 px-4">{{ __('web.login') }}</button>
+                                            <button type="submit" class="btn btn-styled btn-base-1 px-4">{{ __('login') }}</button>
                                         </div>
                                     </div>
                                 </form>
@@ -102,7 +102,7 @@
                         <div class="card">
                             <div class="card-title px-4">
                                 <h3 class="heading heading-5 strong-500">
-                                    {{ __('web.create_account') }}
+                                    {{ __('create_account') }}
                                 </h3>
                             </div>
                             <div class="card-body px-4">
@@ -111,9 +111,9 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label>{{ __('web.name') }}</label>
+                                                <label>{{ __('name') }}</label>
                                                 <div class="input-group input-group--style-1">
-                                                    <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }} form-control-lg" value="{{ old('name') }}" placeholder="{{ __('web.name') }}" name="name">
+                                                    <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }} form-control-lg" value="{{ old('name') }}" placeholder="{{ __('name') }}" name="name">
                                                     <span class="input-group-addon">
                                                         <i class="text-md ion-person"></i>
                                                     </span>
@@ -125,9 +125,9 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label>{{ __('web.email') }}</label>
+                                                <label>{{ __('email') }}</label>
                                                 <div class="input-group input-group--style-1">
-                                                    <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }} form-control-lg" value="{{ old('email') }}" placeholder="{{ __('web.email') }}" name="email">
+                                                    <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }} form-control-lg" value="{{ old('email') }}" placeholder="{{ __('email') }}" name="email">
                                                     <span class="input-group-addon">
                                                         <i class="text-md ion-email"></i>
                                                     </span>
@@ -139,9 +139,9 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label>{{ __('web.password') }}</label>
+                                                <label>{{ __('password') }}</label>
                                                 <div class="input-group input-group--style-1">
-                                                    <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }} form-control-lg" placeholder="{{ __('web.password') }}" name="password">
+                                                    <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }} form-control-lg" placeholder="{{ __('password') }}" name="password">
                                                     <span class="input-group-addon">
                                                         <i class="text-md ion-locked"></i>
                                                     </span>
@@ -153,9 +153,9 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label>{{ __('web.confirm_password') }}</label>
+                                                <label>{{ __('confirm_password') }}</label>
                                                 <div class="input-group input-group--style-1">
-                                                    <input type="password" class="form-control form-control-lg" placeholder="{{ __('web.confirm_password') }}" name="password_confirmation">
+                                                    <input type="password" class="form-control form-control-lg" placeholder="{{ __('confirm_password') }}" name="password_confirmation">
                                                     <span class="input-group-addon">
                                                         <i class="text-md ion-locked"></i>
                                                     </span>
@@ -175,7 +175,7 @@
 
                                     <div class="row align-items-center">
                                         <div class="col-md-12 text-right">
-                                            <button type="submit" class="btn btn-styled btn-base-1">{{ __('web.create_account') }}</button>
+                                            <button type="submit" class="btn btn-styled btn-base-1">{{ __('create_account') }}</button>
                                         </div>
                                     </div>
                                 </form>

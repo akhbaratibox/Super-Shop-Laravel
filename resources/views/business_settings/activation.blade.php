@@ -3,11 +3,11 @@
 @section('content')
 
 <div class="row">
-    <h3 class="text-center">Business Related</h3>
+    <h3 class="text-center">{{__('business_related')}}</h3>
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">Product Activation</h3>
+                <h3 class="panel-title text-center">{{__('product_activation')}}</h3>
             </div>
             <div class="panel-body text-center">
                 <label class="switch">
@@ -20,7 +20,7 @@
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">Vendor System Activation</h3>
+                <h3 class="panel-title text-center">{{__('vendor_system_activation')}}</h3>
             </div>
             <div class="panel-body text-center">
                 <label class="switch">
@@ -33,7 +33,7 @@
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">Show Vendors</h3>
+                <h3 class="panel-title text-center">{{__('show_vendor')}}</h3>
             </div>
             <div class="panel-body text-center">
                 <label class="switch">
@@ -46,11 +46,11 @@
 </div>
 
 <div class="row">
-    <h3 class="text-center">Payment Related</h3>
+    <h3 class="text-center">{{__('payment_related')}}</h3>
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">Paypal Payment Activation</h3>
+                <h3 class="panel-title text-center">{{__('paypal_payment_activation')}}</h3>
             </div>
             <div class="panel-body text-center">
                 <label class="switch">
@@ -63,7 +63,7 @@
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">Stripe Payment Activation</h3>
+                <h3 class="panel-title text-center">{{__('stripe_payment_activation')}}</h3>
             </div>
             <div class="panel-body text-center">
                 <label class="switch">
@@ -76,7 +76,7 @@
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">Cash Payment Activation</h3>
+                <h3 class="panel-title text-center">{{__('cash_payment_activation')}}</h3>
             </div>
             <div class="panel-body text-center">
                 <label class="switch">
@@ -89,7 +89,7 @@
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">Pay U Money Activation</h3>
+                <h3 class="panel-title text-center">{{__('pay_u_money_activation')}}</h3>
             </div>
             <div class="panel-body text-center">
                 <label class="switch">
@@ -113,7 +113,12 @@
                 var value = 0;
             }
             $.post('{{ route('business_settings.update.activation') }}', {_token:'{{ csrf_token() }}', type:type, value:value}, function(data){
-                location.reload();
+                if(data == '1'){
+                    showAlert('success', 'Settings updated successfully');
+                }
+                else{
+                    showAlert('danger', 'Something went wrong');
+                }
             });
         }
     </script>

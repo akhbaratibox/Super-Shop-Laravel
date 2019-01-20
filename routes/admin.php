@@ -56,6 +56,10 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
     Route::post('/your-currency/update', 'BusinessSettingsController@updateYourCurrency')->name('your_currency.update');
 	Route::get('/verification/form', 'BusinessSettingsController@seller_verification_form')->name('seller_verification_form.index');
 
+	Route::resource('/languages', 'LanguageController');
+	Route::get('/languages/destroy/{id}', 'LanguageController@destroy')->name('languages.destroy');
+	Route::post('/languages/key_value_store', 'LanguageController@key_value_store')->name('languages.key_value_store');
+
 	Route::get('/frontend_settings/home', 'HomeController@home_settings')->name('home_settings.index');
 
 	Route::group(['prefix' => 'frontend_settings'], function(){

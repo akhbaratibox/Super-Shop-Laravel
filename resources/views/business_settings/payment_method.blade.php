@@ -6,7 +6,7 @@
     <div class="col-lg-6">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">Paypal Credential</h3>
+                <h3 class="panel-title text-center">{{__('paypal_credential')}}</h3>
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
@@ -15,7 +15,7 @@
                     <div class="form-group">
                         <input type="hidden" name="types[]" value="PAYPAL_CLIENT_ID">
                         <div class="col-lg-3">
-                            <label class="control-label">Paypal Client ID</label>
+                            <label class="control-label">{{__('paypal_client_id')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <input type="text" class="form-control" name="PAYPAL_CLIENT_ID" value="{{  env('PAYPAL_CLIENT_ID') }}" placeholder="Paypal Client ID" required>
@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <input type="hidden" name="types[]" value="PAYPAL_CLIENT_SECRET">
                         <div class="col-lg-3">
-                            <label class="control-label">Paypal Client Secret</label>
+                            <label class="control-label">{{__('paypal_client_secret')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <input type="text" class="form-control" name="PAYPAL_CLIENT_SECRET" value="{{  env('PAYPAL_CLIENT_SECRET') }}" placeholder="Paypal Client Secret" required>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-3">
-                            <label class="control-label">Paypal Sandbox Mode</label>
+                            <label class="control-label">{{__('paypal_sandbox_mode')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <label class="switch">
@@ -45,7 +45,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-12 text-right">
-                            <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
+                            <button class="btn btn-purple" type="submit">{{__('save')}}</button>
                         </div>
                     </div>
                 </form>
@@ -56,7 +56,7 @@
     <div class="col-lg-6">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">SSlCommerz Credential</h3>
+                <h3 class="panel-title text-center">{{__('sslcommerz_credential')}}</h3>
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
@@ -65,7 +65,7 @@
                     <div class="form-group">
                         <input type="hidden" name="types[]" value="SSLCZ_STORE_ID">
                         <div class="col-lg-3">
-                            <label class="control-label">SSLCZ STORE ID</label>
+                            <label class="control-label">{{__('sslcz_store_id')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <input type="text" class="form-control" name="SSLCZ_STORE_ID" value="{{  env('SSLCZ_STORE_ID') }}" placeholder="SSLCZ STORE ID" required>
@@ -74,7 +74,7 @@
                     <div class="form-group">
                         <input type="hidden" name="types[]" value="SSLCZ_STORE_PASSWD">
                         <div class="col-lg-3">
-                            <label class="control-label">SSLCZ STORE PASSWORD</label>
+                            <label class="control-label">{{__('sslcz_store_password')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <input type="text" class="form-control" name="SSLCZ_STORE_PASSWD" value="{{  env('SSLCZ_STORE_PASSWD') }}" placeholder="SSLCZ STORE PASSWORD" required>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-3">
-                            <label class="control-label">SSlCommerz Sandbox Mode</label>
+                            <label class="control-label">{{__('sslcommerz_sandbox_mode')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <label class="switch">
@@ -95,7 +95,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-12 text-right">
-                            <button class="btn btn-purple" type="submit">{{__('web.save')}}</button>
+                            <button class="btn btn-purple" type="submit">{{__('save')}}</button>
                         </div>
                     </div>
                 </form>

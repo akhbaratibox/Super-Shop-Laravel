@@ -8,16 +8,16 @@
                 <div class="col-lg-3 position-static order-2 order-lg-0">
                     <div class="category-sidebar">
                         <div class="all-category d-none d-lg-block">
-                            <span >CATEGORIES</span>
+                            <span >{{__('categories')}}</span>
                             <a href="{{ route('categories.all') }}">
-                                <span class="d-none d-lg-inline-block">See All ></span>
+                                <span class="d-none d-lg-inline-block">{{__('See All')}} ></span>
                             </a>
                         </div>
                         <ul class="categories no-scrollbar">
                             <li class="d-lg-none">
                                 <a href="{{ route('categories.all') }}">
                                     <img class="cat-image" src="{{ asset('frontend/images/icons/list.png') }}" width="30">
-                                    <span class="cat-name">All <br> Categories</span>
+                                    <span class="cat-name">{{__('All')}} <br> {{__('categories')}}</span>
                                 </a>
                             </li>
                             @foreach (\App\Category::all()->take(11) as $key => $category)
@@ -250,7 +250,7 @@
             <div class="container">
                 <div class="section-title-1 clearfix">
                     <h3 class="heading-5 strong-700 mb-0 float-left">
-                        <span class="mr-4">Best Selling</span>
+                        <span class="mr-4">{{__('Best Selling')}}</span>
                     </h3>
                     <ul class="inline-links float-right">
                         <li><a  class="active">Top 20</a></li>
@@ -385,7 +385,7 @@
                 <div class="col-lg-4">
                     <div class="section-title-1 clearfix">
                         <h3 class="heading-5 strong-700 mb-0 float-left">
-                            <span class="mr-4">Top Selling Products</span>
+                            <span class="mr-4">{{__('Top Selling Products')}}</span>
                         </h3>
                     </div>
                     <div class="pt-3 row">
@@ -414,7 +414,7 @@
                 <div class="col-lg-4">
                     <div class="section-title-1 clearfix">
                         <h3 class="heading-5 strong-700 mb-0 float-left">
-                            <span class="mr-4">Featured Products</span>
+                            <span class="mr-4">{{__('Featured Products')}}</span>
                         </h3>
                     </div>
                     <div class="pt-3 row">
@@ -443,7 +443,7 @@
                 <div class="col-lg-4">
                     <div class="section-title-1 clearfix">
                         <h3 class="heading-5 strong-700 mb-0 float-left">
-                            <span class="mr-4">Today's Deal</span>
+                            <span class="mr-4">{{__('Todays Deal')}}</span>
                         </h3>
                     </div>
                     <div class="pt-3 row">

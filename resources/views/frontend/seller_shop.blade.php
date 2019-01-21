@@ -19,10 +19,10 @@
                 <div class="col">
                     <div class="seller-shop-menu text-center">
                         <ul class="inline-links">
-                            <li class="active"><a href="">Store Home</a></li>
-                            <li><a href="">New Arrival</a></li>
-                            <li><a href="">Top Selling</a></li>
-                            <li><a href="">All Products</a></li>
+                            <li class="active"><a href="">{{__('Store Home')}}</a></li>
+                            <li><a href="">{{__('New Arrival')}}</a></li>
+                            <li><a href="">{{__('Top Selling')}}</a></li>
+                            <li><a href="">{{__('All Products')}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
         <div class="container">
             <div class="section-title section-title--style-1 text-center mb-5">
                 <h3 class="section-title-inner heading-3 strong-600">
-                    Featured Products
+                    {{__('Featured Products')}}
                 </h3>
             </div>
             <div class="row">
@@ -102,7 +102,7 @@
                                     60,116.6 124.1,116.6 "/>
                                 </svg>
                             </div>
-                            <div class="title">Seller Info</div>
+                            <div class="title">{{__('Seller Info')}}</div>
                             <a href="" class="name d-block">{{ $shop->name }}</a>
                             <div class="location">{{ $shop->address }}</div>
                             <div class="rating text-center d-block">
@@ -145,7 +145,7 @@
                     </div>
                     <div class="seller-category-box bg-white sidebar-box mb-3">
                         <div class="box-title">
-                            This Seller's Categories
+                            {{__('This Sellers Categories')}}
                         </div>
                         <div class="box-content">
                             <div class="category-accordion">
@@ -188,7 +188,7 @@
                     </div>
                     <div class="seller-top-products-box bg-white sidebar-box mb-4">
                         <div class="box-title">
-                            Brands
+                            {{__('Brands')}}
                         </div>
                         <div class="box-content">
                             <div class="seller-brands">
@@ -204,7 +204,7 @@
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <h4 class="heading-5 strong-600 border-bottom pb-3 mb-4">New Arrival Products</h4>
+                    <h4 class="heading-5 strong-600 border-bottom pb-3 mb-4">{{__('New Arrival Products')}}</h4>
                     <div class="product-list row">
                         @php
                             $products = \App\Product::where('user_id', $shop->user->id)->where('created_at', '>=' , date('Y-m-d', strtotime('-10days')))->paginate(6);

@@ -7,13 +7,13 @@
             <div class="row">
                 <div class="col">
                     <ul class="breadcrumb">
-                        <li><a href="{{ route('home') }}">Home</a></li>
-                        <li class="active"><a href="{{ route('compare') }}">Compare</a></li>
+                        <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
+                        <li class="active"><a href="{{ route('compare') }}">{{__('Compare')}}</a></li>
                     </ul>
                 </div>
                 <div class="col">
                     <div class="text-right">
-                        <a href="{{ route('compare.reset') }}" style="text-decoration: none;" class="btn btn-link btn-base-5 btn-sm">Reset Compare List</a>
+                        <a href="{{ route('compare.reset') }}" style="text-decoration: none;" class="btn btn-link btn-base-5 btn-sm">{{__('Reset Compare List')}}</a>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                 <div class="col">
                     <div class="card mb-4">
                         <div class="card-header text-center p-2">
-                            <div class="heading-5">Comparison</div>
+                            <div class="heading-5">{{__('Comparison')}}</div>
                         </div>
                         @if(Session::has('compare'))
                             @if(count(Session::get('compare')) > 0)
@@ -36,7 +36,7 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col" style="width:16%" class="font-weight-bold">
-                                                    Name
+                                                    {{__('Name')}}
                                                 </th>
                                                 @foreach (Session::get('compare') as $key => $item)
                                                     <th scope="col" style="width:28%" class="font-weight-bold">
@@ -47,7 +47,7 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">Image</th>
+                                                <th scope="row">{{__('Image')}}</th>
                                                 @foreach (Session::get('compare') as $key => $item)
                                                     <td>
                                                         <img src="{{ asset(json_decode(\App\Product::find($item)->photos)[0]) }}" alt="Product Image" class="img-fluid py-4">
@@ -55,25 +55,25 @@
                                                 @endforeach
                                             </tr>
                                             <tr>
-                                                <th scope="row">Price</th>
+                                                <th scope="row">{{__('Price')}}</th>
                                                 @foreach (Session::get('compare') as $key => $item)
                                                     <td>{{ single_price(\App\Product::find($item)->unit_price) }}</td>
                                                 @endforeach
                                             </tr>
                                             <tr>
-                                                <th scope="row">Brand</th>
+                                                <th scope="row">{{__('brand')}}</th>
                                                 @foreach (Session::get('compare') as $key => $item)
                                                     <td>{{ \App\Product::find($item)->brand->name }}</td>
                                                 @endforeach
                                             </tr>
                                             <tr>
-                                                <th scope="row">Sub Sub Category</th>
+                                                <th scope="row">{{__('Sub Sub Category')}}</th>
                                                 @foreach (Session::get('compare') as $key => $item)
                                                     <td>{{ \App\Product::find($item)->subsubcategory->name }}</td>
                                                 @endforeach
                                             </tr>
                                             <tr>
-                                                <th scope="row">Description</th>
+                                                <th scope="row">{{__('Description')}}</th>
                                                 @foreach (Session::get('compare') as $key => $item)
                                                     <td><?php echo \App\Product::find($item)->description; ?></td>
                                                 @endforeach
@@ -94,7 +94,7 @@
                             @endif
                         @else
                             <div class="card-body">
-                                <p>Your comparison list is empty</p>
+                                <p>{{__('Your comparison list is empty')}}</p>
                             </div>
                         @endif
                     </div>

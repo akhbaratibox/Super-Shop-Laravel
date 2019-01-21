@@ -28,7 +28,7 @@
                                             <i class="fa fa-ellipsis-h cat-icon"></i>
                                         </div>
                                         <div class="col-md-9">
-                                            <div class="cat-name">More Categories</div>
+                                            <div class="cat-name">{{__('More Categories')}}</div>
                                         </div>
                                     </a>
                                 </li>

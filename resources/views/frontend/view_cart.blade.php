@@ -55,10 +55,10 @@
                                     <thead>
                                         <tr>
                                             <th class="product-image"></th>
-                                            <th class="product-name">Product</th>
-                                            <th class="product-price d-none d-lg-table-cell">Price</th>
-                                            <th class="product-quanity d-none d-md-table-cell">Quantity</th>
-                                            <th class="product-total">Total</th>
+                                            <th class="product-name">{{__('product')}}</th>
+                                            <th class="product-price d-none d-lg-table-cell">{{__('Price')}}</th>
+                                            <th class="product-quanity d-none d-md-table-cell">{{__('Quantity')}}</th>
+                                            <th class="product-total">{{__('Total')}}</th>
                                             <th class="product-remove"></th>
                                         </tr>
                                     </thead>
@@ -128,14 +128,14 @@
                             <div class="col-6">
                                 <a href="{{ route('home') }}" class="link link--style-3">
                                     <i class="la la-mail-reply"></i>
-                                    Return to shop
+                                    {{__('Return to shop')}}
                                 </a>
                             </div>
                             <div class="col-6 text-right">
                                 @if(Auth::check())
-                                    <a href="{{ route('checkout.shipping_info') }}" class="btn btn-styled btn-base-1">Continue to Shipping</a>
+                                    <a href="{{ route('checkout.shipping_info') }}" class="btn btn-styled btn-base-1">{{__('Continue to Shipping')}}</a>
                                 @else
-                                    <button class="btn btn-styled btn-base-1" onclick="showCheckoutModal()">Continue to Shipping</button>
+                                    <button class="btn btn-styled btn-base-1" onclick="showCheckoutModal()">{{__('Continue to Shipping')}}</button>
                                 @endif
                             </div>
                         </div>
@@ -149,7 +149,7 @@
                             <div class="row align-items-center">
                                 <div class="col-6">
                                     <h3 class="heading heading-3 strong-400 mb-0">
-                                        <span>Summary</span>
+                                        <span>{{__('Summary')}}</span>
                                     </h3>
                                 </div>
 
@@ -163,8 +163,8 @@
                             <table class="table-cart table-cart-review">
                                 <thead>
                                     <tr>
-                                        <th class="product-name">Product</th>
-                                        <th class="product-total text-right">Total</th>
+                                        <th class="product-name">{{__('product')}}</th>
+                                        <th class="product-total text-right">{{__('Total')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -198,7 +198,7 @@
 
                                 <tfoot>
                                     <tr class="cart-subtotal no-border">
-                                        <th>Subtotal</th>
+                                        <th>{{__('Subtotal')}}</th>
                                         <td class="text-right">
                                             <span class="strong-600">{{ single_price($total) }}</span>
                                         </td>
@@ -207,12 +207,12 @@
                                     <tr class="cart-shipping">
                                         <th>Shipping</th>
                                         <td class="text-right">
-                                            <span class="text-italic">Not selected</span>
+                                            <span class="text-italic">{{__('Not selected')}}</span>
                                         </td>
                                     </tr>
 
                                     <tr class="cart-total">
-                                        <th><span class="strong-600">Total</span></th>
+                                        <th><span class="strong-600">{{__('Total')}}</span></th>
                                         <td class="text-right">
                                             <strong><span>{{ single_price($total) }}</span></strong>
                                         </td>
@@ -227,7 +227,7 @@
             </div>
             @else
                 <div class="dc-header">
-                    <h3 class="heading heading-6 strong-700">Your Cart is empty</h3>
+                    <h3 class="heading heading-6 strong-700">{{__('Your Cart is empty')}}</h3>
                 </div>
             @endif
         </div>
@@ -238,7 +238,7 @@
         <div class="modal-dialog modal-lg modal-dialog-zoom" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 class="modal-title" id="exampleModalLabel">Login</h6>
+                    <h6 class="modal-title" id="exampleModalLabel">{{__('login')}}</h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -277,10 +277,10 @@
 
                                         <div class="row align-items-center">
                                             <div class="col-md-6">
-                                                <a href="#" class="link link-xs link--style-3">Forgot password?</a>
+                                                <a href="#" class="link link-xs link--style-3">{{__('Forgot password?')}}</a>
                                             </div>
                                             <div class="col-md-6 text-right">
-                                                <button type="submit" class="btn btn-styled btn-base-1 px-4">Sign in</button>
+                                                <button type="submit" class="btn btn-styled btn-base-1 px-4">{{__('Sign in')}}</button>
                                             </div>
                                         </div>
                                     </form>
@@ -292,13 +292,13 @@
                             <div class="card">
                                 <div class="card-body px-4">
                                     <button type="button" class="btn btn-styled btn-block btn-google btn-icon--2 btn-icon-left px-4">
-                                        <i class="icon ion-social-google"></i> Login with Google
+                                        <i class="icon ion-social-google"></i> {{__('Login with Google')}}
                                     </button>
                                     <button type="button" class="btn btn-styled btn-block btn-facebook btn-icon--2 btn-icon-left px-4 mt-3">
-                                        <i class="icon ion-social-facebook"></i> Login with Facebook
+                                        <i class="icon ion-social-facebook"></i> {{__('Login with Facebook')}}
                                     </button>
                                     <button type="button" class="btn btn-styled btn-block btn-twitter btn-icon--2 btn-icon-left px-4 mt-3">
-                                        <i class="icon ion-social-twitter"></i> Login with Twitter
+                                        <i class="icon ion-social-twitter"></i> {{__('Login with Twitter')}}
                                     </button>
                                 </div>
                             </div>
@@ -308,7 +308,7 @@
                         <span>or</span>
                     </div>
                     <div class="text-center">
-                        <a href="{{ route('checkout.shipping_info') }}" class="btn btn-styled btn-base-1">Guest Checkout</a>
+                        <a href="{{ route('checkout.shipping_info') }}" class="btn btn-styled btn-base-1">{{__('Guest Checkout')}}</a>
                     </div>
                 </div>
             </div>

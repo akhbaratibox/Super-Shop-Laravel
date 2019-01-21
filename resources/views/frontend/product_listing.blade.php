@@ -7,8 +7,8 @@
             <div class="row">
                 <div class="col">
                     <ul class="breadcrumb">
-                        <li><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="{{ route('products') }}">All Categories</a></li>
+                        <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
+                        <li><a href="{{ route('products') }}">{{__('All Categories')}}</a></li>
                         @if(isset($category_id))
                             <li class="active"><a href="{{ route('products.category', $category_id) }}">{{ \App\Category::find($category_id)->name }}</a></li>
                         @endif
@@ -35,7 +35,7 @@
 
                     <div class="bg-white sidebar-box mb-3">
                         <div class="box-title text-center">
-                            Categories
+                            {{__('categories')}}
                         </div>
                         <div class="box-content">
                             <div class="category-accordion">
@@ -68,7 +68,7 @@
                     </div>
                     <div class="bg-white sidebar-box mb-3">
                         <div class="box-title text-center">
-                            Price range
+                            {{__('Price range')}}
                         </div>
                         <div class="box-content">
                             <div class="range-slider-wrapper mt-3">
@@ -110,7 +110,7 @@
                             <div class="col-1">
                                 <button type="button" name="button" onclick="morebrands(this)" class="more-brands-btn">
                                     <i class="fa fa-plus"></i>
-                                    <span class="d-none d-md-inline-block">More</span>
+                                    <span class="d-none d-md-inline-block">{{__('More')}}</span>
                                 </button>
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                             <div class="col-lg-4 col-md-5">
                                 <div class="sort-by-box">
                                     <div class="form-group">
-                                        <label>Search</label>
+                                        <label>{{__('Search')}}</label>
                                         <form role="form" class="search-widget">
                                             <input class="form-control input-lg" type="text" placeholder="Search products">
                                             <button type="button" class="btn-inner">
@@ -133,13 +133,13 @@
                                     <div class="col-4">
                                         <div class="sort-by-box px-1">
                                             <div class="form-group">
-                                                <label>Sort by</label>
+                                                <label>{{__('Sort by')}}</label>
                                                 <select class="form-control sortSelect" data-minimum-results-for-search="Infinity">
-                                                    <option value="1">Newest</option>
-                                                    <option value="2">Oldest</option>
-                                                    <option value="3">Price low to high</option>
-                                                    <option value="4">Price high to low</option>
-                                                    <option value="5">Most viewed</option>
+                                                    <option value="1">{{__('Newest')}}</option>
+                                                    <option value="2">{{__('Oldest')}}</option>
+                                                    <option value="3">{{__('Price low to high')}}</option>
+                                                    <option value="4">{{__('Price high to low')}}</option>
+                                                    <option value="5">{{__('Most viewed')}}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -147,9 +147,9 @@
                                     <div class="col-4">
                                         <div class="sort-by-box px-1">
                                             <div class="form-group">
-                                                <label>Brands</label>
+                                                <label>{{__('brands')}}</label>
                                                 <select class="form-control sortSelect" data-placeholder="This is a placeholder">
-                                                    <option>All Brands</option>
+                                                    <option>{{__('All Brands')}}</option>
                                                     @foreach (\App\Brand::all() as $key => $brand)
                                                         <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                                                     @endforeach
@@ -160,9 +160,9 @@
                                     <div class="col-4">
                                         <div class="sort-by-box px-1">
                                             <div class="form-group">
-                                                <label>Sellers</label>
+                                                <label>{{__('sellers')}}</label>
                                                 <select class="form-control sortSelect" data-placeholder="This is a placeholder">
-                                                    <option>All Sellers</option>
+                                                    <option>{{__('All Sellers')}}</option>
                                                     <option value="1">Seller Name</option>
                                                     <option value="2">Brand Name</option>
                                                     <option value="3">Seller Name ffdv fd fdvgfdgf </option>
@@ -185,7 +185,7 @@
                                                 </a>
                                                 <button class="btn-quickview" onclick="showAddToCartModal({{ $product->id }})"><i class="la la-eye"></i></button>
                                                 @if (strtotime($product->created_at) > strtotime('-10 day'))
-                                                    <span class="product-label label-hot">New</span>
+                                                    <span class="product-label label-hot">{{__('New')}}</span>
                                                 @endif
                                             </figure>
                                             <div class="product-details text-center">

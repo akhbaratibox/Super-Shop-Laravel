@@ -9,7 +9,7 @@
                         <div class="card">
                             <div class="card-title px-4">
                                 <h3 class="heading heading-5 strong-500">
-                                    Login
+                                    {{__('login')}}
                                 </h3>
                             </div>
                             <div class="card-body px-4">
@@ -58,7 +58,7 @@
 
                                     <div class="row align-items-center">
                                         <div class="col-md-6">
-                                            <a href="{{ route('password.request') }}" class="link link-xs link--style-3">Forgot password?</a>
+                                            <a href="{{ route('password.request') }}" class="link link-xs link--style-3">{{__('Forgot password?')}}</a>
                                         </div>
                                         <div class="col-md-6 text-right">
                                             <button type="submit" class="btn btn-styled btn-base-1 px-4">{{ __('login') }}</button>
@@ -67,7 +67,7 @@
                                 </form>
 
                                 <div class="or or--1 mt-2">
-                                    <span>or</span>
+                                    <span>{{__('or')}}</span>
                                 </div>
 
                                 <div class="">
@@ -86,13 +86,13 @@
                                 </div>
 
                                 <a href="{{ route('social.login', ['provider' => 'google']) }}" class="btn btn-styled btn-block btn-google btn-icon--2 btn-icon-left px-4">
-                                    <i class="icon ion-social-google"></i> Login with Google
+                                    <i class="icon ion-social-google"></i> {{__('Login with Google')}}
                                 </a>
                                 <a href="{{ route('social.login', ['provider' => 'facebook']) }}" class="btn btn-styled btn-block btn-facebook btn-icon--2 btn-icon-left px-4">
-                                    <i class="icon ion-social-facebook"></i> Login with Facebook
+                                    <i class="icon ion-social-facebook"></i> {{__('Login with Facebook')}}
                                 </a>
                                 <a href="{{ route('social.login', ['provider' => 'twitter']) }}" class="btn btn-styled btn-block btn-twitter btn-icon--2 btn-icon-left px-4">
-                                    <i class="icon ion-social-twitter"></i> Login with Twitter
+                                    <i class="icon ion-social-twitter"></i> {{__('Login with Twitter')}}
                                 </a>
                             </div>
                         </div>

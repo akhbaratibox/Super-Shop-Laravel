@@ -34,8 +34,8 @@
                                 {{ $product->name }}
                             </h2>
                             <ul class="breadcrumb">
-                                <li><a href="">Home</a></li>
-                                <li><a href="">All Categories</a></li>
+                                <li><a href="">{{__('Home')}}</a></li>
+                                <li><a href="">{{__('All Categories')}}</a></li>
                                 <li><a href="">{{ $product->category->name }}</a></li>
                                 <li><a href="">{{ $product->subcategory->name }}</a></li>
                                 <li class="active"><a href="">{{ $product->subsubcategory->name }}</a></li>
@@ -44,7 +44,7 @@
                             <div class="row align-items-center">
                                 <div class="col-6">
                                     <div class="sold-by">
-                                        <small class="mr-2">Sold by: </small>
+                                        <small class="mr-2">{{__('Sold by')}}: </small>
                                         <a href="">{{ $product->user->name }}</a>
                                     </div>
                                     <!-- Rating stars -->
@@ -69,11 +69,11 @@
                                         @endphp
                                         @if ($qty > 0)
                                             <li>
-                                                <span class="badge badge-md badge-pill bg-green">In stock</span>
+                                                <span class="badge badge-md badge-pill bg-green">{{__('In stock')}}</span>
                                             </li>
                                         @else
                                             <li>
-                                                <span class="badge badge-md badge-pill bg-red">Out of stock</span>
+                                                <span class="badge badge-md badge-pill bg-red">{{__('Out of stock')}}</span>
                                             </li>
                                         @endif
                                     </ul>
@@ -84,7 +84,7 @@
 
                                 <div class="row no-gutters mt-4">
                                     <div class="col-2">
-                                        <div class="product-description-label">Price:</div>
+                                        <div class="product-description-label">{{__('Price')}}:</div>
                                     </div>
                                     <div class="col-10">
                                         <div class="product-price-old">
@@ -98,7 +98,7 @@
 
                                 <div class="row no-gutters mt-3">
                                     <div class="col-2">
-                                        <div class="product-description-label mt-1">Discount Price:</div>
+                                        <div class="product-description-label mt-1">{{__('Discount Price')}}:</div>
                                     </div>
                                     <div class="col-10">
                                         <div class="product-price">
@@ -112,7 +112,7 @@
                             @else
                                 <div class="row no-gutters mt-3">
                                     <div class="col-2">
-                                        <div class="product-description-label">Price:</div>
+                                        <div class="product-description-label">{{__('Price')}}:</div>
                                     </div>
                                     <div class="col-10">
                                         <div class="product-price">
@@ -154,7 +154,7 @@
                                 @if (count(json_decode($product->colors)) > 0)
                                     <div class="row no-gutters">
                                         <div class="col-2">
-                                            <div class="product-description-label mt-2">Color:</div>
+                                            <div class="product-description-label mt-2">{{__('Color')}}:</div>
                                         </div>
                                         <div class="col-10">
                                             <ul class="list-inline checkbox-color mb-1">
@@ -174,7 +174,7 @@
                                 <!-- Quantity + Add to cart -->
                                 <div class="row no-gutters">
                                     <div class="col-2">
-                                        <div class="product-description-label mt-2">Quantity:</div>
+                                        <div class="product-description-label mt-2">{{__('Quantity')}}:</div>
                                     </div>
                                     <div class="col-10">
                                         <div class="product-quantity d-flex align-items-center">
@@ -200,7 +200,7 @@
 
                                 <div class="row no-gutters pb-3 d-none" id="chosen_price_div">
                                     <div class="col-2">
-                                        <div class="product-description-label">Total Price:</div>
+                                        <div class="product-description-label">{{__('Total Price')}}:</div>
                                     </div>
                                     <div class="col-10">
                                         <div class="product-price">
@@ -244,7 +244,7 @@
                                     <div class="product-description-label alpha-6">Seller Guarantees:</div>
                                 </div>
                                 <div class="col-10">
-                                    On-time Delivery <a href="" class="ml-2">View details</a>
+                                    On-time Delivery <a href="" class="ml-2">{{__('View details')}}</a>
                                 </div>
                             </div>
                             <div class="row no-gutters mt-3">
@@ -417,7 +417,7 @@
                     </div>
                     <div class="seller-top-products-box bg-white sidebar-box mb-3">
                         <div class="box-title">
-                            Top Selling Products From This Seller
+                            {{__('Top Selling Products From This Seller')}}
                         </div>
                         <div class="box-content">
                             @foreach (\App\Product::where('user_id', $product->user_id)->orderBy('num_of_sale', 'desc')->limit(4)->get() as $key => $top_product)
@@ -449,13 +449,13 @@
                         <div class="tabs tabs--style-2">
                             <ul class="nav nav-tabs justify-content-center sticky-top bg-white">
                                 <li class="nav-item">
-                                    <a href="#tab_default_1" data-toggle="tab" class="nav-link text-uppercase strong-600 active show">Description</a>
+                                    <a href="#tab_default_1" data-toggle="tab" class="nav-link text-uppercase strong-600 active show">{{__('Description')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#tab_default_2" data-toggle="tab" class="nav-link text-uppercase strong-600">Videos</a>
+                                    <a href="#tab_default_2" data-toggle="tab" class="nav-link text-uppercase strong-600">{{__('Videos')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#tab_default_3" data-toggle="tab" class="nav-link text-uppercase strong-600">Reviews</a>
+                                    <a href="#tab_default_3" data-toggle="tab" class="nav-link text-uppercase strong-600">{{__('Reviews')}}</a>
                                 </li>
                             </ul>
 
@@ -558,20 +558,20 @@
                                         <div class="leave-review">
                                             <div class="section-title section-title--style-1">
                                                 <h3 class="section-title-inner heading-6 strong-600 text-uppercase">
-                                                    Write a review
+                                                    {{__('Write a review')}}
                                                 </h3>
                                             </div>
                                             <form class="form-default" role="form">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="" class="text-uppercase c-gray-light">Your name</label>
+                                                            <label for="" class="text-uppercase c-gray-light">{{__('Your name')}}</label>
                                                             <input type="text" name="name" class="form-control" required="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="" class="text-uppercase c-gray-light">Email</label>
+                                                            <label for="" class="text-uppercase c-gray-light">{{__('Email')}}</label>
                                                             <input type="text" name="name" class="form-control" required="">
                                                         </div>
                                                     </div>
@@ -595,7 +595,7 @@
 
                                                 <div class="text-right">
                                                     <button type="submit" class="btn btn-styled btn-base-1 btn-circle mt-4">
-                                                        Send review
+                                                        {{__('Send review')}}
                                                     </button>
                                                 </div>
                                             </form>
@@ -610,7 +610,7 @@
                     <div class="my-4 bg-white p-3">
                         <div class="section-title-1">
                             <h3 class="heading-5 strong-700 mb-0">
-                                <span class="mr-4">Related products</span>
+                                <span class="mr-4">{{__('Related products')}}</span>
                             </h3>
                         </div>
                         <div class="caorusel-box">

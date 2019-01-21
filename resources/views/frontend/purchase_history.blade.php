@@ -20,15 +20,15 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-6 col-12">
                                     <h2 class="heading heading-6 text-capitalize strong-600 mb-0">
-                                        Purchase History
+                                        {{__('Purchase History')}}
                                     </h2>
                                 </div>
                                 <div class="col-lg-6 col-12">
                                     <div class="float-right">
                                         <ul class="breadcrumb">
-                                            <li><a href="{{ route('home') }}">Home</a></li>
-                                            <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                            <li class="active"><a href="{{ route('purchase_history.index') }}">Purchase History</a></li>
+                                            <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
+                                            <li><a href="{{ route('dashboard') }}">{{__('dashboard')}}</a></li>
+                                            <li class="active"><a href="{{ route('purchase_history.index') }}">{{__('Purchase History')}}</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -42,12 +42,12 @@
                                     <table class="table table-sm table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Code</th>
-                                                <th>Date</th>
-                                                <th>Amount</th>
-                                                <th>Delivery Status</th>
-                                                <th>Payment Status</th>
-                                                <th>Options</th>
+                                                <th>{{__('Code')}}</th>
+                                                <th>{{__('Date')}}</th>
+                                                <th>{{__('Amount')}}</th>
+                                                <th>{{__('Delivery Status')}}</th>
+                                                <th>{{__('Payment Status')}}</th>
+                                                <th>{{__('Options')}}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -74,9 +74,9 @@
                                                     <td>
                                                         <span class="badge badge--2 mr-4">
                                                             @if ($order->payment_status == 'paid')
-                                                                <i class="bg-green"></i> Paid
+                                                                <i class="bg-green"></i> {{__('Paid')}}
                                                             @else
-                                                                <i class="bg-red"></i> Unpaid
+                                                                <i class="bg-red"></i> {{__('Unpaid')}}
                                                             @endif
                                                         </span>
                                                     </td>
@@ -87,8 +87,8 @@
                                                             </button>
 
                                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="">
-                                                                <button onclick="show_order_details()" class="dropdown-item">Order Details</button>
-                                                                <button onclick="" class="dropdown-item">Cancel Order</button>
+                                                                <button onclick="show_order_details()" class="dropdown-item">{{__('Order Details')}}</button>
+                                                                <button onclick="" class="dropdown-item">{{__('Cancel Order')}}</button>
                                                             </div>
                                                         </div>
                                                     </td>

@@ -15,14 +15,14 @@
                         <div class="row align-items-center">
                             <div class="col-lg-6 col-12">
                                 <h2 class="heading heading-6 text-capitalize strong-600 mb-0">
-                                    Dashboard
+                                    {{__('dashboard')}}
                                 </h2>
                             </div>
                             <div class="col-lg-6 col-12">
                                 <div class="float-right">
                                     <ul class="breadcrumb">
-                                        <li><a href="{{ route('home') }}">Home</a></li>
-                                        <li class="active"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                        <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
+                                        <li class="active"><a href="{{ route('dashboard') }}">{{__('dashboard')}}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
                                     <a href="" class="d-block">
                                         <i class="fa fa-upload"></i>
                                         <span class="d-block title heading-3 strong-400">{{ count(\App\Product::where('user_id', Auth::user()->id)->get()) }}</span>
-                                        <span class="d-block sub-title">Products</span>
+                                        <span class="d-block sub-title">{{__('products')}}</span>
                                     </a>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                                     <a href="" class="d-block">
                                         <i class="fa fa-cart-plus"></i>
                                         <span class="d-block title heading-3 strong-400">{{ count(\App\OrderDetail::where('seller_id', Auth::user()->id)->where('delivery_status', 'delivered')->get()) }}</span>
-                                        <span class="d-block sub-title">Total sale</span>
+                                        <span class="d-block sub-title">{{__('Total sale')}}</span>
                                     </a>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@
                                             }
                                         @endphp
                                         <span class="d-block title heading-3 strong-400">{{ single_price($total) }}</span>
-                                        <span class="d-block sub-title">Total earnings</span>
+                                        <span class="d-block sub-title">{{__('Total earnings')}}</span>
                                     </a>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
                                     <a href="" class="d-block">
                                         <i class="fa fa-check-square-o"></i>
                                         <span class="d-block title heading-3 strong-400">{{ count(\App\OrderDetail::where('seller_id', Auth::user()->id)->where('delivery_status', 'delivered')->get()) }}</span>
-                                        <span class="d-block sub-title">Successful orders</span>
+                                        <span class="d-block sub-title">{{__('Successful orders')}}</span>
                                     </a>
                                 </div>
                             </div>
@@ -81,24 +81,24 @@
                             <div class="col-md-7">
                                 <div class="form-box bg-white mt-4">
                                     <div class="form-box-title px-3 py-2 text-center">
-                                        Orders
+                                        {{__('orders')}}
                                     </div>
                                     <div class="form-box-content p-3">
                                         <table class="table mb-0 table-bordered" style="font-size:14px;">
                                             <tr>
-                                                <td>Total orders:</td>
+                                                <td>{{__('Total orders')}}:</td>
                                                 <td><strong class="heading-6">{{ count(\App\OrderDetail::where('seller_id', Auth::user()->id)->get()) }}</strong></td>
                                             </tr>
                                             <tr >
-                                                <td>Pending orders:</td>
+                                                <td>{{__('Pending orders')}}:</td>
                                                 <td><strong class="heading-6">{{ count(\App\OrderDetail::where('seller_id', Auth::user()->id)->where('delivery_status', 'pending')->get()) }}</strong></td>
                                             </tr>
                                             <tr >
-                                                <td>Cancelled orders:</td>
+                                                <td>{{__('Cancelled orders')}}:</td>
                                                 <td><strong class="heading-6">{{ count(\App\OrderDetail::where('seller_id', Auth::user()->id)->where('delivery_status', 'cancelled')->get()) }}</strong></td>
                                             </tr>
                                             <tr >
-                                                <td>Successful orders:</td>
+                                                <td>{{__('Successful orders')}}:</td>
                                                 <td><strong class="heading-6">{{ count(\App\OrderDetail::where('seller_id', Auth::user()->id)->where('delivery_status', 'delivered')->get()) }}</strong></td>
                                             </tr>
                                         </table>
@@ -114,7 +114,7 @@
                                             @endif
                                         >
                                     </div>
-                                    <a href="" class="btn btn-styled btn-base-1">Verify Now</a>
+                                    <a href="" class="btn btn-styled btn-base-1">{{__('Verify Now')}}</a>
                                 </div>
                             </div>
                         </div>
@@ -122,7 +122,7 @@
                             <div class="col-md-8">
                                 <div class="form-box bg-white mt-4">
                                     <div class="form-box-title px-3 py-2 text-center">
-                                        Products
+                                        {{__('products')}}
                                     </div>
                                     <div class="form-box-content p-3 category-widget">
                                         <ul class="clearfix">
@@ -133,21 +133,21 @@
                                             @endforeach
                                         </ul>
                                         <div class="text-center">
-                                            <a href="{{ route('seller.products.upload')}}" class="btn pt-3 pb-1">Add New Product</a>
+                                            <a href="{{ route('seller.products.upload')}}" class="btn pt-3 pb-1">{{__('Add New Product')}}</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="bg-white mt-4 p-4 text-center">
-                                    <div class="heading-4 strong-700">Shop</div>
-                                    <p>Manage & organize your shop</p>
-                                    <a href="{{ route('shop.index') }}" class="btn btn-styled btn-base-1 btn-outline btn-sm">Go to setting</a>
+                                    <div class="heading-4 strong-700">{{__('Shop')}}</div>
+                                    <p>{{__('Manage & organize your shop')}}</p>
+                                    <a href="{{ route('shop.index') }}" class="btn btn-styled btn-base-1 btn-outline btn-sm">{{__('Go to setting')}}</a>
                                 </div>
                                 <div class="bg-white mt-4 p-4 text-center">
-                                    <div class="heading-4 strong-700">Payment</div>
-                                    <p>Configure your payment method</p>
-                                    <a href="" class="btn btn-styled btn-base-1 btn-outline btn-sm">Configure Now</a>
+                                    <div class="heading-4 strong-700">{{__('Payment')}}</div>
+                                    <p>{{__('Configure your payment method')}}</p>
+                                    <a href="" class="btn btn-styled btn-base-1 btn-outline btn-sm">{{__('Configure Now')}}</a>
                                 </div>
                             </div>
                         </div>

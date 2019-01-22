@@ -1,6 +1,6 @@
 <div class="keyword">
     @if (sizeof($keywords) > 0)
-        <div class="title">Popular Suggestions</div>
+        <div class="title">{{__('Popular Suggestions')}}</div>
         <ul>
             @foreach ($keywords as $key => $keyword)
                 <li><a href="{{ route('suggestion.search', $keyword) }}">{{ $keyword }}</a></li>
@@ -10,7 +10,7 @@
 </div>
 <div class="category">
     @if (count($subsubcategories) > 0)
-        <div class="title">Category Suggestions</div>
+        <div class="title">{{__('Category Suggestions')}}</div>
         <ul>
             @foreach ($subsubcategories as $key => $subsubcategory)
                 <li><a href="{{ route('products.subsubcategory', $subsubcategory->id) }}">{{ $subsubcategory->name }}</a></li>
@@ -20,7 +20,7 @@
 </div>
 <div class="product">
     @if (count($products) > 0)
-        <div class="title">Products</div>
+        <div class="title">{{__('products')}}</div>
         <ul>
             @foreach ($products as $key => $product)
                 <li>
@@ -47,9 +47,9 @@
                                             }
                                         @endphp
                                         @if ($qty > 0)
-                                            <span class="badge badge-pill bg-green">In stock</span>
+                                            <span class="badge badge-pill bg-green">{{__('In stock')}}</span>
                                         @else
-                                            <span class="badge badge badge-pill bg-red">Out of stock</span>
+                                            <span class="badge badge badge-pill bg-red">{{__('Out of stock')}}</span>
                                         @endif
                                     </div>
                                 </div>

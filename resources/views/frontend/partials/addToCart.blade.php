@@ -27,7 +27,7 @@
 
                 <div class="row no-gutters mt-4">
                     <div class="col-2">
-                        <div class="product-description-label">Price:</div>
+                        <div class="product-description-label">{{__('Price')}}:</div>
                     </div>
                     <div class="col-10">
                         <div class="product-price-old">
@@ -40,7 +40,7 @@
                 </div>
                 <div class="row no-gutters mt-3">
                     <div class="col-2">
-                        <div class="product-description-label">Discount Price:</div>
+                        <div class="product-description-label">{{__('Discount Price')}}:</div>
                     </div>
                     <div class="col-10">
                         <div class="product-price">
@@ -81,7 +81,7 @@
                     @if(count(json_decode($product->colors)) > 0)
                         <div class="row no-gutters">
                             <div class="col-2">
-                                <div class="product-description-label">Color:</div>
+                                <div class="product-description-label">{{__('Color')}}:</div>
                             </div>
                             <div class="col-10">
                                 <ul class="list-inline checkbox-color mb-1">
@@ -101,7 +101,7 @@
                     <!-- Quantity + Add to cart -->
                     <div class="row no-gutters">
                         <div class="col-2">
-                            <div class="product-description-label mt-2">Quantity:</div>
+                            <div class="product-description-label mt-2">{{__('Quantity')}}:</div>
                         </div>
                         <div class="col-10">
                             <div class="product-quantity d-flex align-items-center">
@@ -127,7 +127,7 @@
 
                     <div class="row no-gutters pb-3 d-none" id="chosen_price_div">
                         <div class="col-2">
-                            <div class="product-description-label">Total Price:</div>
+                            <div class="product-description-label">{{__('Total Price')}}:</div>
                         </div>
                         <div class="col-10">
                             <div class="product-price">
@@ -144,7 +144,7 @@
                     <div class="d-table-cell">
                         <!-- Add to cart button -->
                         <button type="button" class="btn btn-base-1 btn-icon-left" onclick="addToCart()">
-                            <i class="icon ion-bag"></i> Add to cart
+                            <i class="icon ion-bag"></i> {{__('Add to cart')}}
                         </button>
                     </div>
                 </div>

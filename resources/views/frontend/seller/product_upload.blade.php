@@ -16,16 +16,16 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-6 col-12">
                                     <h2 class="heading heading-6 text-capitalize strong-600 mb-0">
-                                        Add Product
+                                        {{__('Add Product')}}
                                     </h2>
                                 </div>
                                 <div class="col-lg-6 col-12">
                                     <div class="float-right">
                                         <ul class="breadcrumb">
-                                            <li><a href="{{ route('home') }}">Home</a></li>
-                                            <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                            <li><a href="{{ route('seller.products') }}">Products</a></li>
-                                            <li class="active"><a href="{{ route('seller.products.upload') }}">Add Product</a></li>
+                                            <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
+                                            <li><a href="{{ route('dashboard') }}">{{__('dashboard')}}</a></li>
+                                            <li><a href="{{ route('seller.products') }}">{{__('products')}}</a></li>
+                                            <li class="active"><a href="{{ route('seller.products.upload') }}">{{__('Add Product')}}</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -37,7 +37,7 @@
 
                             <div class="form-box bg-white mt-4">
                                 <div class="form-box-title px-3 py-2">
-                                    General
+                                    {{__('General')}}
                                 </div>
                                 <div class="form-box-content p-3">
                                     <div class="row">
@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-2">
-                                            <label>Product Category <span class="required-star">*</span></label>
+                                            <label>{{__('Product Category')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
                                             <div class="form-control mb-3 c-pointer" data-toggle="modal" data-target="#categorySelectModal" id="product_category">Select a category</div>
@@ -61,7 +61,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-2">
-                                            <label>Product Brand <span class="required-star">*</span></label>
+                                            <label>{{__('Product Brand')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
                                             <div class="mb-3">
@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-2">
-                                            <label>Product Unit <span class="required-star">*</span></label>
+                                            <label>{{__('Product Unit')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
                                             <input type="text" class="form-control mb-3" name="unit" placeholder="Product unit">
@@ -81,7 +81,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-2">
-                                            <label>Product Tag <span class="required-star">*</span></label>
+                                            <label>{{__('Product Tag')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
                                             <input type="text" class="form-control mb-3 tagsInput" name="tags[]" placeholder="Type & hit enter" data-role="tagsinput">
@@ -91,12 +91,12 @@
                             </div>
                             <div class="form-box bg-white mt-4">
                                 <div class="form-box-title px-3 py-2">
-                                    Images
+                                    {{__('Images')}}
                                 </div>
                                 <div class="form-box-content p-3">
                                     <div class="row">
                                         <div class="col-2">
-                                            <label>Main Images <span class="required-star">*</span></label>
+                                            <label>{{__('Main Images')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
                                             <input type="file" name="photos[]" id="file-1" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" multiple accept="image/*" />
@@ -104,14 +104,14 @@
                                                 <span></span>
                                                 <strong>
                                                     <i class="fa fa-upload"></i>
-                                                    Choose images…
+                                                    {{__('Choose images')}}…
                                                 </strong>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-2">
-                                            <label>Thumbnail Image <span class="required-star">*</span></label>
+                                            <label>{{__('Thumbnail Image')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
                                             <input type="file" name="thumbnail_img" id="file-2" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
@@ -119,14 +119,14 @@
                                                 <span></span>
                                                 <strong>
                                                     <i class="fa fa-upload"></i>
-                                                    Choose image
+                                                    {{__('Choose images')}}
                                                 </strong>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-2">
-                                            <label>Featured <span class="required-star">*</span></label>
+                                            <label>{{__('featured')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
                                             <input type="file" name="featured_img" id="file-3" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
@@ -134,14 +134,14 @@
                                                 <span></span>
                                                 <strong>
                                                     <i class="fa fa-upload"></i>
-                                                    Choose image
+                                                    {{__('Choose images')}}
                                                 </strong>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-2">
-                                            <label>Flash Deal <span class="required-star">*</span></label>
+                                            <label>{{__('Flash Deal')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
                                             <input type="file" name="flash_deal_img" id="file-4" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
@@ -149,7 +149,7 @@
                                                 <span></span>
                                                 <strong>
                                                     <i class="fa fa-upload"></i>
-                                                    Choose image
+                                                    {{__('Choose images')}}
                                                 </strong>
                                             </label>
                                         </div>
@@ -158,12 +158,12 @@
                             </div>
                             <div class="form-box bg-white mt-4">
                                 <div class="form-box-title px-3 py-2">
-                                    Videos
+                                    {{__('Videos')}}
                                 </div>
                                 <div class="form-box-content p-3">
                                     <div class="row">
                                         <div class="col-2">
-                                            <label>Video From</label>
+                                            <label>{{__('Video From')}}</label>
                                         </div>
                                         <div class="col-10">
                                             <div class="mb-3">
@@ -187,12 +187,12 @@
                             </div>
                             <div class="form-box bg-white mt-4">
                                 <div class="form-box-title px-3 py-2">
-                                    Meta Tags
+                                    {{__('Meta Tags')}}
                                 </div>
                                 <div class="form-box-content p-3">
                                     <div class="row">
                                         <div class="col-2">
-                                            <label>Keywords</label>
+                                            <label>{{__('Keywords')}}</label>
                                         </div>
                                         <div class="col-10">
                                             <input type="text" class="form-control mb-3" placeholder="keyword, keyword">
@@ -200,7 +200,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-2">
-                                            <label>Keywords</label>
+                                            <label>{{__('Keywords')}}</label>
                                         </div>
                                         <div class="col-10">
                                             <input type="text" class="form-control mb-3" placeholder="keyword, keyword">
@@ -210,7 +210,7 @@
                             </div>
                             <div class="form-box bg-white mt-4">
                                 <div class="form-box-title px-3 py-2">
-                                    Customer Choice
+                                    {{__('Customer Choice')}}
                                 </div>
                                 <div class="form-box-content p-3">
                                     <div class="row mb-3">
@@ -243,12 +243,12 @@
                             </div>
                             <div class="form-box bg-white mt-4">
                                 <div class="form-box-title px-3 py-2">
-                                    Price
+                                    {{__('Price')}}
                                 </div>
                                 <div class="form-box-content p-3">
                                     <div class="row">
                                         <div class="col-2">
-                                            <label>Unit Price (Base Price) <span class="required-star">*</span></label>
+                                            <label>{{__('unit_price')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-10">
                                             <input type="number" min="0" step="0.01" class="form-control mb-3" name="unit_price" placeholder="Unit Price (Base Price)">
@@ -256,7 +256,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-2">
-                                            <label>Purchase Price</label>
+                                            <label>{{__('purchase_price')}}</label>
                                         </div>
                                         <div class="col-10">
                                             <input type="number" min="0" step="0.01" class="form-control mb-3" name="purchase_price" placeholder="Purchase Price">
@@ -264,7 +264,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-2">
-                                            <label>Tax</label>
+                                            <label>{{__('tax')}}</label>
                                         </div>
                                         <div class="col-8">
                                             <input type="number" min="0" step="0.01" class="form-control mb-3" name="tax" placeholder="Tax">
@@ -280,7 +280,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-2">
-                                            <label>Discount</label>
+                                            <label>{{__('discount')}}</label>
                                         </div>
                                         <div class="col-8">
                                             <input type="number" min="0" step="0.01" class="form-control mb-3" name="discount" placeholder="Discount">
@@ -303,12 +303,12 @@
                             </div>
                             <div class="form-box bg-white mt-4">
                                 <div class="form-box-title px-3 py-2">
-                                    Description
+                                    {{__('description')}}
                                 </div>
                                 <div class="form-box-content p-3">
                                     <div class="row">
                                         <div class="col-2">
-                                            <label>Description</label>
+                                            <label>{{__('description')}}</label>
                                         </div>
                                         <div class="col-10">
                                             <div class="mb-3">
@@ -340,8 +340,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="target-category heading-6">
-                        <span class="mr-3">Target Category:</span>
-                        <span>Category > Sub category > Sub sub category</span>
+                        <span class="mr-3">{{__('Target Category')}}:</span>
+                        <span>{{__('category')}} > {{__('subcategory')}} > {{__('subsubcategory')}}</span>
                     </div>
                     <div class="row no-gutters modal-categories mt-4 mb-2">
                         <div class="col-4">
@@ -400,8 +400,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" onclick="closeModal()">Confirm</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('cancel')}}</button>
+                    <button type="button" class="btn btn-primary" onclick="closeModal()">{{__('Confirm')}}</button>
                 </div>
             </div>
         </div>

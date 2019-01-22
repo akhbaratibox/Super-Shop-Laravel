@@ -7,7 +7,7 @@
                         <i class="icon-hotel-restaurant-105"></i>
                     </div>
                     <div class="block-content d-none d-md-block">
-                        <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">1. My Cart</h3>
+                        <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">1. {{__('My Cart')}}</h3>
                     </div>
                 </div>
             </div>
@@ -18,7 +18,7 @@
                         <i class="icon-finance-067"></i>
                     </div>
                     <div class="block-content d-none d-md-block">
-                        <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">2. Shipping info</h3>
+                        <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">2. {{__('Shipping info')}}</h3>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                         <i class="icon-finance-059"></i>
                     </div>
                     <div class="block-content d-none d-md-block">
-                        <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">3. Payment</h3>
+                        <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">3. {{__('Payment')}}</h3>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     <div class="card">
                         <div class="card-title px-4">
                             <h3 class="heading heading-5 strong-500">
-                                Select a payment option
+                                {{__('Select a payment option')}}
                             </h3>
                         </div>
                         <div class="card-body text-center">
@@ -91,11 +91,11 @@
                         <div class="col-6">
                             <a href="{{ route('home') }}" class="link link--style-3">
                                 <i class="ion-android-arrow-back"></i>
-                                Return to shop
+                                {{__('Return to shop')}}
                             </a>
                         </div>
                         <div class="col-6 text-right">
-                            <button type="submit" class="btn btn-styled btn-base-1">Complete Order</button>
+                            <button type="submit" class="btn btn-styled btn-base-1">{{__('Complete Order')}}</button>
                         </div>
                     </div>
                 </form>
@@ -107,12 +107,12 @@
                         <div class="row align-items-center">
                             <div class="col-6">
                                 <h3 class="heading heading-3 strong-400 mb-0">
-                                    <span>Summary</span>
+                                    <span>{{__('Summary')}}</span>
                                 </h3>
                             </div>
 
                             <div class="col-6 text-right">
-                                <span class="badge badge-md badge-success">{{ count(Session::get('cart')) }} items</span>
+                                <span class="badge badge-md badge-success">{{ count(Session::get('cart')) }} {{__('items')}}</span>
                             </div>
                         </div>
                     </div>
@@ -121,8 +121,8 @@
                         <table class="table-cart table-cart-review">
                             <thead>
                                 <tr>
-                                    <th class="product-name">Product</th>
-                                    <th class="product-total text-right">Total</th>
+                                    <th class="product-name">{{__('product')}}</th>
+                                    <th class="product-total text-right">{{__('Total')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -156,21 +156,21 @@
 
                             <tfoot>
                                 <tr class="cart-subtotal no-border">
-                                    <th>Subtotal</th>
+                                    <th>{{__('Subtotal')}}</th>
                                     <td class="text-right">
                                         <span class="strong-600">{{ single_price($total) }}</span>
                                     </td>
                                 </tr>
 
                                 <tr class="cart-shipping">
-                                    <th>Shipping</th>
+                                    <th>{{__('Shipping')}}</th>
                                     <td class="text-right">
-                                        <span class="text-italic">Not selected</span>
+                                        <span class="text-italic">{{__('Not selected')}}</span>
                                     </td>
                                 </tr>
 
                                 <tr class="cart-total">
-                                    <th><span class="strong-600">Total</span></th>
+                                    <th><span class="strong-600">{{__('Total')}}</span></th>
                                     <td class="text-right">
                                         <strong><span>{{ single_price($total) }}</span></strong>
                                     </td>

@@ -16,15 +16,15 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-6 col-12">
                                     <h2 class="heading heading-6 text-capitalize strong-600 mb-0">
-                                        Products
+                                        {{__('products')}}
                                     </h2>
                                 </div>
                                 <div class="col-lg-6 col-12">
                                     <div class="float-right">
                                         <ul class="breadcrumb">
-                                            <li><a href="{{ route('home') }}">Home</a></li>
-                                            <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                            <li><a href="{{ route('seller.products') }}">Products</a></li>
+                                            <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
+                                            <li><a href="{{ route('dashboard') }}">{{__('dashboard')}}</a></li>
+                                            <li><a href="{{ route('seller.products') }}">{{__('products')}}</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -79,9 +79,9 @@
                                                         </button>
 
                                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton-{{ $key }}">
-                                                            <a href="{{route('seller.products.edit', $product->id)}}" class="dropdown-item">Edit</a>
+                                                            <a href="{{route('seller.products.edit', $product->id)}}" class="dropdown-item">{{__('Edit')}}</a>
         					                                <button onclick="confirm_modal('{{route('products.destroy', $product->id)}}')" class="dropdown-item">Delete</button>
-                                                            <a href="{{route('products.duplicate', $product->id)}}" class="dropdown-item">Duplicate</a>
+                                                            <a href="{{route('products.duplicate', $product->id)}}" class="dropdown-item">{{__('Duplicate')}}</a>
                                                         </div>
                                                     </div>
                                                 </td>

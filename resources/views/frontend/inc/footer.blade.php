@@ -6,7 +6,7 @@
                 <div class="footer-top-box text-center">
                     <a href="">
                         <i class="fa fa-tv"></i>
-                        <h4 class="heading-5">Seller Policy</h4>
+                        <h4 class="heading-5">{{__('Seller Policy')}}</h4>
                     </a>
                 </div>
             </div>
@@ -14,7 +14,7 @@
                 <div class="footer-top-box text-center">
                     <a href="">
                         <i class="fa fa-tv"></i>
-                        <h4 class="heading-5">Return Policy</h4>
+                        <h4 class="heading-5">{{__('Return Policy')}}</h4>
                     </a>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                 <div class="footer-top-box text-center">
                     <a href="">
                         <i class="fa fa-tv"></i>
-                        <h4 class="heading-5">Support Policy</h4>
+                        <h4 class="heading-5">{{__('Support Policy')}}</h4>
                     </a>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                 <div class="footer-top-box text-center">
                     <a href="">
                         <i class="fa fa-tv"></i>
-                        <h4 class="heading-5">My Profile</h4>
+                        <h4 class="heading-5">{{__('My Profile')}}</h4>
                     </a>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                 <div class="col-lg-3 offset-xl-1 col-md-4">
                     <div class="col text-center text-md-left">
                         <h4 class="heading heading-xs strong-600 text-uppercase mb-2">
-                            Contact Info
+                            {{__('Contact Info')}}
                         </h4>
                         <ul class="footer-links contact-widget">
                             <li>

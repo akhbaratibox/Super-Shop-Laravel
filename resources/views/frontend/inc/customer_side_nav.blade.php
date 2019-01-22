@@ -5,7 +5,7 @@
             <div class="name">{{ Auth::user()->name }}</div>
         </div>
         <div class="sidebar-widget-title py-3">
-            <span>Menu</span>
+            <span>{{__('Menu')}}</span>
         </div>
         <div class="widget-profile-menu py-3">
             <ul class="categories categories--style-3">
@@ -13,7 +13,7 @@
                     <a href="{{ route('dashboard') }}" class="{{ areActiveRoutesHome(['dashboard'])}}">
                         <i class="fa fa-dashboard"></i>
                         <span class="category-name">
-                            Dashboard
+                            {{__('dashboard')}}
                         </span>
                     </a>
                 </li>
@@ -21,7 +21,7 @@
                     <a href="{{ route('purchase_history.index') }}" class="{{ areActiveRoutesHome(['purchase_history.index'])}}">
                         <i class="fa fa-cart-plus"></i>
                         <span class="category-name">
-                            Purchase History
+                            {{__('Purchase History')}}
                         </span>
                     </a>
                 </li>
@@ -29,7 +29,7 @@
                     <a href="{{ route('wishlists.index') }}" class="{{ areActiveRoutesHome(['wishlists.index'])}}">
                         <i class="fa fa-heart"></i>
                         <span class="category-name">
-                            Wishlist
+                            {{__('Wishlist')}}
                         </span>
                     </a>
                 </li>
@@ -37,14 +37,14 @@
                     <a href="{{ route('profile') }}" class="{{ areActiveRoutesHome(['profile'])}}">
                         <i class="fa fa-user-circle-o"></i>
                         <span class="category-name">
-                            Manage Profile
+                            {{__('Manage Profile')}}
                         </span>
                     </a>
                 </li>
             </ul>
         </div>
         <div class="widget-seller-btn pt-4">
-            <a href="" class="btn btn-anim-primary w-100">Be A Seller</a>
+            <a href="" class="btn btn-anim-primary w-100">{{__('Be A Seller')}}</a>
         </div>
     </div>
 </div>

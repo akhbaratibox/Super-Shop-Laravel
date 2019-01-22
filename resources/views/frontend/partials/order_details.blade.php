@@ -14,31 +14,31 @@
         <ul class="process-steps clearfix">
             <li class="done">
                 <div class="icon">1</div>
-                <div class="title">Order placed</div>
+                <div class="title">{{__('Order placed')}}</div>
             </li>
             <li @if($status == 'pending') class="active" @else class="done" @endif>
                 <div class="icon">2</div>
-                <div class="title">On review</div>
+                <div class="title">{{__('On review')}}</div>
             </li>
             <li @if($status == 'delivered' || $status == 'on_delivery') class="done" @else class="active" @endif>
                 <div class="icon">3</div>
-                <div class="title">On delivery</div>
+                <div class="title">{{__('On delivery')}}</div>
             </li>
             <li @if($status == 'delivered') class="done" @else class="active" @endif>
                 <div class="icon">4</div>
-                <div class="title">Delivered</div>
+                <div class="title">{{__('Delivered')}}</div>
             </li>
         </ul>
     </div>
     <div class="card mt-4">
         <div class="card-header py-2 px-3 heading-6 strong-600 clearfix">
-            <div class="float-left">Order Summary</div>
+            <div class="float-left">{{__('Order Summary')}}</div>
             <div class="float-right form-inline">
                 <select class="form-control selectpicker form-control-sm"  data-minimum-results-for-search="Infinity" id="order_status">
-                    <option value="pending" @if ($status == 'pending') selected @endif>Pending</option>
-                    <option value="on_review" @if ($status == 'on_review') selected @endif>On review</option>
-                    <option value="on_delivery" @if ($status == 'on_delivery') selected @endif>On delivery</option>
-                    <option value="delivered" @if ($status == 'delivered') selected @endif>Delivered</option>
+                    <option value="pending" @if ($status == 'pending') selected @endif>{{__('Pending')}}</option>
+                    <option value="on_review" @if ($status == 'on_review') selected @endif>{{__('On review')}}</option>
+                    <option value="on_delivery" @if ($status == 'on_delivery') selected @endif>{{__('On delivery')}}</option>
+                    <option value="delivered" @if ($status == 'delivered') selected @endif>{{__('Delivered')}}</option>
                 </select>
             </div>
         </div>
@@ -47,21 +47,21 @@
                 <div class="col-lg-6">
                     <table class="details-table table">
                         <tr>
-                            <td class="w-50 strong-600">Order ID:</td>
+                            <td class="w-50 strong-600">{{__('Order ID')}}:</td>
                             <td>{{ $order->code }}</td>
                         </tr>
                         <tr>
-                            <td class="w-50 strong-600">Customer:</td>
+                            <td class="w-50 strong-600">{{__('Customer')}}:</td>
                             <td>{{ json_decode($order->shipping_address)->name }}</td>
                         </tr>
                         <tr>
-                            <td class="w-50 strong-600">Email:</td>
+                            <td class="w-50 strong-600">{{__('email')}}:</td>
                             @if ($order->user_id != null)
                                 <td>{{ $order->user->email }}</td>
                             @endif
                         </tr>
                         <tr>
-                            <td class="w-50 strong-600">Shipping address:</td>
+                            <td class="w-50 strong-600">{{__('Shipping address')}}:</td>
                             <td>{{ json_decode($order->shipping_address)->address }}, {{ json_decode($order->shipping_address)->city }}, {{ json_decode($order->shipping_address)->country }}</td>
                         </tr>
                     </table>
@@ -69,23 +69,23 @@
                 <div class="col-lg-6">
                     <table class="details-table table">
                         <tr>
-                            <td class="w-50 strong-600">Order date:</td>
+                            <td class="w-50 strong-600">{{__('Order date')}}:</td>
                             <td>{{ date('d-m-Y H:m A', $order->date) }}</td>
                         </tr>
                         <tr>
-                            <td class="w-50 strong-600">Order status:</td>
+                            <td class="w-50 strong-600">{{__('Order status')}}:</td>
                             <td>{{ $status }}</td>
                         </tr>
                         <tr>
-                            <td class="w-50 strong-600">Total order amount:</td>
+                            <td class="w-50 strong-600">{{__('Total order amount')}}:</td>
                             <td>{{ single_price($order->orderDetails->where('seller_id', Auth::user()->id)->sum('price')) }}</td>
                         </tr>
                         <tr>
-                            <td class="w-50 strong-600">Shipping method:</td>
+                            <td class="w-50 strong-600">{{__('Shipping method')}}:</td>
                             <td>Flat shipping rate</td>
                         </tr>
                         <tr>
-                            <td class="w-50 strong-600">Payment method:</td>
+                            <td class="w-50 strong-600">{{__('Payment method')}}:</td>
                             <td>{{ $order->payment_type }}</td>
                         </tr>
                     </table>
@@ -96,16 +96,16 @@
     <div class="row">
         <div class="col-lg-9">
             <div class="card mt-4">
-                <div class="card-header py-2 px-3 heading-6 strong-600">Order Details</div>
+                <div class="card-header py-2 px-3 heading-6 strong-600">{{__('Order Details')}}</div>
                 <div class="card-body pb-0">
                     <table class="details-table table">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th width="40%">Product</th>
-                                <th>Variation</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
+                                <th width="40%">{{__('product')}}</th>
+                                <th>{{__('Variation')}}</th>
+                                <th>{{__('Quantity')}}</th>
+                                <th>{{__('Price')}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -129,30 +129,30 @@
         </div>
         <div class="col-lg-3">
             <div class="card mt-4">
-                <div class="card-header py-2 px-3 heading-6 strong-600">Order Ammount</div>
+                <div class="card-header py-2 px-3 heading-6 strong-600">{{__('Order Ammount')}}</div>
                 <div class="card-body pb-0">
                     <table class="table details-table">
                         <tbody>
                             <tr>
-                                <th>Subtotal</th>
+                                <th>{{__('Subtotal')}}</th>
                                 <td class="text-right">
                                     <span class="strong-600">587.14$</span>
                                 </td>
                             </tr>
                             <tr>
-                                <th>Shipping</th>
+                                <th>{{__('Shipping')}}</th>
                                 <td class="text-right">
                                     <span class="text-italic">0.00$</span>
                                 </td>
                             </tr>
                             <tr>
-                                <th>Tax</th>
+                                <th>{{__('tax')}}</th>
                                 <td class="text-right">
                                     <span class="text-italic">0.00$</span>
                                 </td>
                             </tr>
                             <tr>
-                                <th><span class="strong-600">Total</span></th>
+                                <th><span class="strong-600">{{__('Total')}}</span></th>
                                 <td class="text-right">
                                     <strong><span>587.14$</span></strong>
                                 </td>

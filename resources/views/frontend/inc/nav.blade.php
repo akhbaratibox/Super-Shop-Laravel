@@ -50,17 +50,17 @@
                     <ul class="inline-links">
                         @auth
                         <li>
-                            <a href="{{ route('dashboard') }}" class="top-bar-item">My Profile</a>
+                            <a href="{{ route('dashboard') }}" class="top-bar-item">{{__('My Profile')}}</a>
                         </li>
                         <li>
-                            <a href="{{ route('logout') }}" class="top-bar-item">Logout</a>
+                            <a href="{{ route('logout') }}" class="top-bar-item">{{__('logout')}}</a>
                         </li>
                         @else
                         <li>
-                            <a href="{{ route('user.login') }}" class="top-bar-item">Login</a>
+                            <a href="{{ route('user.login') }}" class="top-bar-item">{{__('login')}}</a>
                         </li>
                         <li>
-                            <a href="{{ route('user.login') }}" class="top-bar-item">Registration</a>
+                            <a href="{{ route('user.login') }}" class="top-bar-item">{{__('Registration')}}</a>
                         </li>
                         @endauth
                     </ul>
@@ -86,15 +86,15 @@
                                 <div class="name">{{ Auth::user()->name }}</div>
                         </div>
                         <div class="side-login px-3 pb-3">
-                            <a href="{{ route('logout') }}">Sign Out</a>
+                            <a href="{{ route('logout') }}">{{__('Sign Out')}}</a>
                         </div>
                     @else
                         <div class="widget-profile-box px-3 py-4 d-flex align-items-center">
                                 <div class="image " style="background-image:url('{{ asset('frontend/images/icons/user-placeholder.jpg') }}')"></div>
                         </div>
                         <div class="side-login px-3 pb-3">
-                            <a href="{{ route('user.login') }}">Sign In</a>
-                            <a href="{{ route('user.login') }}">Registration</a>
+                            <a href="{{ route('user.login') }}">{{__('Sign In')}}</a>
+                            <a href="{{ route('user.login') }}">{{__('Registration')}}</a>
                         </div>
                     @endauth
                 </div>
@@ -103,28 +103,28 @@
                         <li>
                             <a href="{{ route('home') }}">
                                 <i class="la la-home"></i>
-                                <span>Home</span>
+                                <span>{{__('Home')}}</span>
                             </a>
                         </li>
 
                         <li>
                             <a href="{{ route('dashboard') }}">
                                 <i class="la la-dashboard"></i>
-                                <span>Dashboard</span>
+                                <span>{{__('dashboard')}}</span>
                             </a>
                         </li>
 
                         <li>
                             <a href="{{ route('purchase_history.index') }}">
                                 <i class="la la-file-text"></i>
-                                <span>Purchase History</span>
+                                <span>{{__('Purchase History')}}</span>
                             </a>
                         </li>
 
                         <li>
                             <a href="{{ route('compare') }}">
                                 <i class="la la-refresh"></i>
-                                <span>Compare</span>
+                                <span>{{__('Compare')}}</span>
                                 @if(Session::has('compare'))
                                     <span class="badge" id="compare_items_sidenav">{{ count(Session::get('compare'))}}</span>
                                 @else
@@ -135,7 +135,7 @@
                         <li>
                             <a href="{{ route('cart') }}">
                                 <i class="la la-shopping-cart"></i>
-                                <span>Cart</span>
+                                <span>{{__('Cart')}}</span>
                                 @if(Session::has('cart'))
                                     <span class="badge" id="cart_items_sidenav">{{ count(Session::get('cart'))}}</span>
                                 @else
@@ -146,64 +146,64 @@
                         <li>
                             <a href="{{ route('wishlists.index') }}">
                                 <i class="la la-heart-o"></i>
-                                <span>Wishlist</span>
+                                <span>{{__('Wishlist')}}</span>
                             </a>
                         </li>
 
                         <li>
                             <a href="{{ route('profile') }}">
                                 <i class="la la-user"></i>
-                                <span>Manage Profile</span>
+                                <span>{{__('Manage Profile')}}</span>
                             </a>
                         </li>
 
                     </ul>
                     @if (Auth::check() && Auth::user()->user_type == 'seller')
                         <div class="sidebar-widget-title py-0">
-                            <span>Shop Options</span>
+                            <span>{{__('Shop Options')}}</span>
                         </div>
                         <ul class="side-seller-menu">
                             <li>
                                 <a href="{{ route('seller.products') }}">
                                     <i class="la la-diamond"></i>
-                                    <span>Products</span>
+                                    <span>{{__('products')}}</span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="{{ route('orders.index') }}">
                                     <i class="la la-file-text"></i>
-                                    <span>Orders</span>
+                                    <span>{{__('orders')}}</span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="{{ route('shop.index') }}">
                                     <i class="la la-cog"></i>
-                                    <span>Shop Setting</span>
+                                    <span>{{__('Shop Setting')}}</span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="">
                                     <i class="la la-cc-mastercard"></i>
-                                    <span>Payment History</span>
+                                    <span>{{__('Payment History')}}</span>
                                 </a>
                             </li>
                         </ul>
                         <div class="sidebar-widget-title py-0">
-                            <span>Earinngs</span>
+                            <span>{{__('Earinngs')}}</span>
                         </div>
                         <div class="widget-balance py-3">
                             <div class="text-center">
                                 <div class="heading-4 strong-700 mb-4">
-                                    <small class="d-block text-sm alpha-5 mb-2">your earnings</small>
+                                    <small class="d-block text-sm alpha-5 mb-2">{{__('your earnings')}}</small>
                                     <span class="p-2 bg-base-1 rounded">$526.51</span>
                                 </div>
                                 <table class="text-left mb-0 table w-75 m-auto">
                                     <tbody><tr>
                                         <td class="p-1 text-sm">
-                                            Total earnings:
+                                            {{__('Total earnings')}}:
                                         </td>
                                         <td class="p-1">
                                             $1500.26
@@ -211,7 +211,7 @@
                                     </tr>
                                     <tr>
                                         <td class="p-1 text-sm">
-                                            Last Month earnings:
+                                            {{__('Last Month earnings')}}:
                                         </td>
                                         <td class="p-1">
                                             $756.75
@@ -272,7 +272,7 @@
                                         </div>
                                         <div class="form-group category-select d-none d-xl-block">
                                             <select class="form-control selectpicker" name="category">
-                                                <option value="">All Categories</option>
+                                                <option value="">{{__('All Categories')}}</option>
                                                 @foreach (\App\Category::all() as $key => $category)
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                 @endforeach
@@ -309,7 +309,7 @@
                                     <div class="nav-compare-box" id="compare">
                                         <a href="{{ route('compare') }}" class="nav-box-link">
                                             <i class="la la-refresh d-inline-block nav-box-icon"></i>
-                                            <span class="nav-box-text d-none d-xl-inline-block">Compare</span>
+                                            <span class="nav-box-text d-none d-xl-inline-block">{{__('Compare')}}</span>
                                             @if(Session::has('compare'))
                                                 <span class="nav-box-number">{{ count(Session::get('compare'))}}</span>
                                             @else
@@ -322,7 +322,7 @@
                                     <div class="nav-wishlist-box" id="wishlist">
                                         <a href="{{ route('wishlists.index') }}" class="nav-box-link">
                                             <i class="la la-heart-o d-inline-block nav-box-icon"></i>
-                                            <span class="nav-box-text d-none d-xl-inline-block">Wishlist</span>
+                                            <span class="nav-box-text d-none d-xl-inline-block">{{__('Wishlist')}}</span>
                                             @if(Auth::check())
                                                 <span class="nav-box-number">{{ count(Auth::user()->wishlists)}}</span>
                                             @else
@@ -335,7 +335,7 @@
                                     <div class="nav-cart-box dropdown" id="cart_items">
                                         <a href="" class="nav-box-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="la la-shopping-cart d-inline-block nav-box-icon"></i>
-                                            <span class="nav-box-text d-none d-xl-inline-block">Cart</span>
+                                            <span class="nav-box-text d-none d-xl-inline-block">{{__('Cart')}}</span>
                                             @if(Session::has('cart'))
                                                 <span class="nav-box-number">{{ count(Session::get('cart'))}}</span>
                                             @else
@@ -348,7 +348,7 @@
                                                     @if(Session::has('cart'))
                                                         @if(count($cart = Session::get('cart')) > 0)
                                                             <div class="dc-header">
-                                                                <h3 class="heading heading-6 strong-700">Cart Items</h3>
+                                                                <h3 class="heading heading-6 strong-700">{{__('Cart Items')}}</h3>
                                                             </div>
                                                             <div class="dropdown-cart-items c-scrollbar">
                                                                 @php
@@ -386,31 +386,31 @@
                                                                 @endforeach
                                                             </div>
                                                             <div class="dc-item py-3">
-                                                                <span class="subtotal-text">Subtotal</span>
+                                                                <span class="subtotal-text">{{__('Subtotal')}}</span>
                                                                 <span class="subtotal-amount">{{ single_price($total) }}</span>
                                                             </div>
                                                             <div class="py-2 text-center dc-btn">
                                                                 <ul class="inline-links inline-links--style-3">
                                                                     <li class="pr-3">
                                                                         <a href="{{ route('cart') }}" class="link link--style-1 text-capitalize btn btn-base-1 px-3 py-1">
-                                                                            <i class="la la-shopping-cart"></i> View cart
+                                                                            <i class="la la-shopping-cart"></i> {{__('View cart')}}
                                                                         </a>
                                                                     </li>
                                                                     <li>
                                                                         <a href="{{ route('checkout.shipping_info') }}" class="link link--style-1 text-capitalize btn btn-base-1 px-3 py-1 light-text">
-                                                                            <i class="la la-mail-forward"></i> Checkout
+                                                                            <i class="la la-mail-forward"></i> {{__('Checkout')}}
                                                                         </a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
                                                         @else
                                                             <div class="dc-header">
-                                                                <h3 class="heading heading-6 strong-700">Your Cart is empty</h3>
+                                                                <h3 class="heading heading-6 strong-700">{{__('Your Cart is empty')}}</h3>
                                                             </div>
                                                         @endif
                                                     @else
                                                         <div class="dc-header">
-                                                            <h3 class="heading heading-6 strong-700">Your Cart is empty</h3>
+                                                            <h3 class="heading heading-6 strong-700">{{__('Your Cart is empty')}}</h3>
                                                         </div>
                                                     @endif
                                                 </div>
@@ -430,7 +430,7 @@
                     <div class="col-lg-3 position-static">
                         <div class="category-sidebar" id="category-sidebar">
                             <div class="all-category">
-                                <span>CATEGORIES</span>
+                                <span>{{__('CATEGORIES')}}</span>
                                 <a href="{{ route('categories.all') }}">See All ></a>
                             </div>
                             <ul class="categories">

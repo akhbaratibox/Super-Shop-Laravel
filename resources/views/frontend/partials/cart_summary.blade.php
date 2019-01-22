@@ -9,10 +9,10 @@
                             <thead>
                                 <tr>
                                     <th class="product-image"></th>
-                                    <th class="product-name">Product</th>
-                                    <th class="product-price d-none d-lg-table-cell">Price</th>
-                                    <th class="product-quanity d-none d-md-table-cell">Quantity</th>
-                                    <th class="product-total">Total</th>
+                                    <th class="product-name">{{__('product')}}</th>
+                                    <th class="product-price d-none d-lg-table-cell">{{__('Price')}}</th>
+                                    <th class="product-quanity d-none d-md-table-cell">{{__('Quantity')}}</th>
+                                    <th class="product-total">{{__('Total')}}</th>
                                     <th class="product-remove"></th>
                                 </tr>
                             </thead>
@@ -82,14 +82,14 @@
                     <div class="col-6">
                         <a href="{{ route('home') }}" class="link link--style-3">
                             <i class="ion-android-arrow-back"></i>
-                            Return to shop
+                            {{__('Return to shop')}}
                         </a>
                     </div>
                     <div class="col-6 text-right">
                         @if(Auth::check())
-                            <a href="{{ route('checkout.shipping_info') }}" class="btn btn-styled btn-base-1">Continue to Shipping</a>
+                            <a href="{{ route('checkout.shipping_info') }}" class="btn btn-styled btn-base-1">{{__('Continue to Shipping')}}</a>
                         @else
-                            <button class="btn btn-styled btn-base-1" onclick="showCheckoutModal()">Continue to Shipping</button>
+                            <button class="btn btn-styled btn-base-1" onclick="showCheckoutModal()">{{__('Continue to Shipping')}}</button>
                         @endif
                     </div>
                 </div>
@@ -103,7 +103,7 @@
                     <div class="row align-items-center">
                         <div class="col-6">
                             <h3 class="heading heading-3 strong-400 mb-0">
-                                <span>Summary</span>
+                                <span>{{__('Summary')}}</span>
                             </h3>
                         </div>
 
@@ -117,8 +117,8 @@
                     <table class="table-cart table-cart-review">
                         <thead>
                             <tr>
-                                <th class="product-name">Product</th>
-                                <th class="product-total text-right">Total</th>
+                                <th class="product-name">{{__('product')}}</th>
+                                <th class="product-total text-right">{{__('Total')}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -152,21 +152,21 @@
 
                         <tfoot>
                             <tr class="cart-subtotal no-border">
-                                <th>Subtotal</th>
+                                <th>{{__('Subtotal')}}</th>
                                 <td class="text-right">
                                     <span class="strong-600">{{ single_price($total) }}</span>
                                 </td>
                             </tr>
 
                             <tr class="cart-shipping">
-                                <th>Shipping</th>
+                                <th>{{__('Shipping')}}</th>
                                 <td class="text-right">
-                                    <span class="text-italic">Not selected</span>
+                                    <span class="text-italic">{{__('Not selected')}}</span>
                                 </td>
                             </tr>
 
                             <tr class="cart-total">
-                                <th><span class="strong-600">Total</span></th>
+                                <th><span class="strong-600">{{__('Total')}}</span></th>
                                 <td class="text-right">
                                     <strong><span>{{ single_price($total) }}</span></strong>
                                 </td>

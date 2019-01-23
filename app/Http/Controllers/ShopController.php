@@ -94,11 +94,11 @@ class ShopController extends Controller
         $shop->slug = preg_replace('/\s+/', '-', $request->name).'-'.$shop->id;
 
         if($shop->save()){
-            flash('Your Shop has been updated successfully!')->success();
+            flash(__('Your Shop has been updated successfully!'))->success();
             return back();
         }
 
-        flash('Sorry! Something went wrong.')->danger();
+        flash(__('Sorry! Something went wrong.'))->danger();
         return back();
     }
 

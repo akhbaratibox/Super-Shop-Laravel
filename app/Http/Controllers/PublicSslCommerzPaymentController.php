@@ -85,21 +85,21 @@ class PublicSslCommerzPaymentController extends Controller
         Session::put('cart', collect([]));
         Session::forget('order_id');
 
-        flash("Payment completed")->success();
+        flash(__('Payment completed'))->success();
     	return redirect()->route('home');
     }
 
     public function fail(Request $request)
     {
         $request->session()->forget('order_id');
-        flash("Payment Failed")->success();
+        flash(__('Payment Failed'))->success();
         return redirect()->url()->previous();
     }
 
      public function cancel(Request $request)
     {
         $request->session()->forget('order_id');
-        flash("Payment cancelled")->success();
+        flash(__('Payment cancelled'))->success();
     	return redirect()->url()->previous();
     }
 

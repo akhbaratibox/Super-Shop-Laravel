@@ -50,12 +50,12 @@ class StaffController extends Controller
             $staff->user_id = $user->id;
             $staff->role_id = $request->role_id;
             if($staff->save()){
-                flash('Staff has been inserted successfully')->success();
+                flash(__('Staff has been inserted successfully'))->success();
                 return redirect()->route('staffs.index');
             }
         }
 
-        flash('Something went wrong')->danger();
+        flash(__('Something went wrong'))->danger();
         return back();
     }
 
@@ -101,12 +101,12 @@ class StaffController extends Controller
         }
         if($user->save()){
             if($staff->save()){
-                flash('Staff has been updated successfully')->success();
+                flash(__('Staff has been updated successfully'))->success();
                 return redirect()->route('staffs.index');
             }
         }
 
-        flash('Something went wrong')->danger();
+        flash(__('Something went wrong'))->danger();
         return back();
     }
 
@@ -120,11 +120,11 @@ class StaffController extends Controller
     {
         User::destroy(Staff::findOrFail($id)->user->id);
         if(Staff::destroy($id)){
-            flash('Staff has been deleted successfully')->success();
+            flash(__('Staff has been deleted successfully'))->success();
             return redirect()->route('staffs.index');
         }
 
-        flash('Something went wrong')->danger();
+        flash(__('Something went wrong'))->danger();
         return back();
     }
 }

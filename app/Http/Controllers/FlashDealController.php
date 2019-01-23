@@ -50,11 +50,11 @@ class FlashDealController extends Controller
                 $flash_deal_product->discount_type = $request['discount_type_'.$product];
                 $flash_deal_product->save();
             }
-            flash('Flash Deal has been inserted successfully')->success();
+            flash(__('Flash Deal has been inserted successfully'))->success();
             return redirect()->route('flash_deals.index');
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }
@@ -107,11 +107,11 @@ class FlashDealController extends Controller
                 $flash_deal_product->discount_type = $request['discount_type_'.$product];
                 $flash_deal_product->save();
             }
-            flash('Flash Deal has been updated successfully')->success();
+            flash(__('Flash Deal has been updated successfully'))->success();
             return redirect()->route('flash_deals.index');
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }
@@ -136,7 +136,7 @@ class FlashDealController extends Controller
         $flash_deal = FlashDeal::findOrFail($request->id);
         $flash_deal->status = $request->status;
         if($flash_deal->save()){
-            flash('Flash deal status updated successfully')->success();
+            flash(__('Flash deal status updated successfully'))->success();
             return 1;
         }
         return 0;

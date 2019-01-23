@@ -37,7 +37,7 @@ class NewsletterController extends Controller
             Mail::to($email)->queue(new EmailManager($array));
     	}
 
-    	flash('Newsletter has been send')->success();
+    	flash(__('Newsletter has been send'))->success();
     	return redirect()->route('home');
     }
 }

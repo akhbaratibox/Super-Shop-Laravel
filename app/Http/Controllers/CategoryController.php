@@ -47,11 +47,11 @@ class CategoryController extends Controller
         }
 
         if($category->save()){
-            flash('Category has been inserted successfully')->success();
+            flash(__('Category has been inserted successfully'))->success();
             return redirect()->route('categories.index');
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }
@@ -98,11 +98,11 @@ class CategoryController extends Controller
         }
 
         if($category->save()){
-            flash('Category has been updated successfully')->success();
+            flash(__('Category has been updated successfully'))->success();
             return redirect()->route('categories.index');
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }
@@ -123,11 +123,11 @@ class CategoryController extends Controller
             if($category->icon != null){
                 unlink($category->icon);
             }
-            flash('Category has been deleted successfully')->success();
+            flash(__('Category has been deleted successfully'))->success();
             return redirect()->route('categories.index');
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }

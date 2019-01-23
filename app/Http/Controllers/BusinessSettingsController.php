@@ -44,7 +44,7 @@ class BusinessSettingsController extends Controller
             $business_settings->save();
         }
 
-        flash("Settings updated successfully")->success();
+        flash(__("Settings updated successfully"))->success();
         return back();
     }
 
@@ -58,7 +58,7 @@ class BusinessSettingsController extends Controller
                 ));
             }
         }
-        flash("Settings updated successfully")->success();
+        flash(__("Settings updated successfully"))->success();
         return back();
     }
 
@@ -75,10 +75,10 @@ class BusinessSettingsController extends Controller
     	$currency->exchange_rate = $request->exchange_rate;
         $currency->status = $request->status;
         if($currency->save()){
-            flash('Currency updated successfully')->success();
+            flash(__('Currency updated successfully'))->success();
             return '1';
         }
-        flash('Something went wrong')->error();
+        flash(__('Something went wrong'))->error();
         return '0';
     }
 
@@ -91,10 +91,10 @@ class BusinessSettingsController extends Controller
     	$currency->exchange_rate = $request->exchange_rate;
         $currency->status = $request->status;
         if($currency->save()){
-            flash('Currency updated successfully')->success();
+            flash(__('Currency updated successfully'))->success();
             return '1';
         }
-        flash('Something went wrong')->error();
+        flash(__('Something went wrong'))->error();
         return '0';
     }
 
@@ -118,7 +118,7 @@ class BusinessSettingsController extends Controller
                 $business_settings->save();
             }
         }
-        flash("Settings updated successfully")->success();
+        flash(__("Settings updated successfully"))->success();
         return back();
     }
 

@@ -41,11 +41,11 @@ class RoleController extends Controller
             $role->name = $request->name;
             $role->permissions = json_encode($request->permissions);
             if($role->save()){
-                flash('Role has been inserted successfully')->success();
+                flash(__('Role has been inserted successfully'))->success();
                 return redirect()->route('roles.index');
             }
         }
-        flash('Something went wrong')->danger();
+        flash(__('Something went wrong'))->danger();
         return back();
     }
 
@@ -87,11 +87,11 @@ class RoleController extends Controller
             $role->name = $request->name;
             $role->permissions = json_encode($request->permissions);
             if($role->save()){
-                flash('Role has been updated successfully')->success();
+                flash(__('Role has been updated successfully'))->success();
                 return redirect()->route('roles.index');
             }
         }
-        flash('Something went wrong')->danger();
+        flash(__('Something went wrong'))->danger();
         return back();
     }
 
@@ -104,11 +104,11 @@ class RoleController extends Controller
     public function destroy($id)
     {
         if(Role::destroy($id)){
-            flash('Role has been deleted successfully')->success();
+            flash(__('Role has been deleted successfully'))->success();
             return redirect()->route('roles.index');
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }

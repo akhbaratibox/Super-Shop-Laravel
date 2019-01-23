@@ -44,11 +44,11 @@ class BrandController extends Controller
         }
 
         if($brand->save()){
-            flash('Brand has been inserted successfully')->success();
+            flash(__('Brand has been inserted successfully'))->success();
             return redirect()->route('brands.index');
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }
@@ -92,11 +92,11 @@ class BrandController extends Controller
         }
 
         if($brand->save()){
-            flash('Brand has been updated successfully')->success();
+            flash(__('Brand has been updated successfully'))->success();
             return redirect()->route('brands.index');
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }
@@ -114,11 +114,11 @@ class BrandController extends Controller
             if($brand->logo != null){
                 unlink($brand->logo);
             }
-            flash('Brand has been deleted successfully')->success();
+            flash(__('Brand has been deleted successfully'))->success();
             return redirect()->route('brands.index');
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }

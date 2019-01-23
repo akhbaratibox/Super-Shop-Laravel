@@ -162,7 +162,7 @@ class ProductController extends Controller
         $product->variations = json_encode($variations);
 
         if($product->save()){
-            flash('Product has been inserted successfully')->success();
+            flash(__('Product has been inserted successfully'))->success();
             if(Auth::user()->user_type == 'admin'){
                 return view('products.index');
             }
@@ -171,7 +171,7 @@ class ProductController extends Controller
             }
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }
@@ -327,7 +327,7 @@ class ProductController extends Controller
         $product->variations = json_encode($variations);
 
         if($product->save()){
-            flash('Product has been updated successfully')->success();
+            flash(__('Product has been updated successfully'))->success();
             if(Auth::user()->user_type == 'admin'){
                 return view('products.index');
             }
@@ -336,7 +336,7 @@ class ProductController extends Controller
             }
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }
@@ -363,7 +363,7 @@ class ProductController extends Controller
             foreach (json_decode($product->photos) as $key => $photo) {
                 unlink($photo);
             }
-            flash('Product has been deleted successfully')->success();
+            flash(__('Product has been deleted successfully'))->success();
             if(Auth::user()->user_type == 'admin'){
                 return view('products.index');
             }
@@ -372,7 +372,7 @@ class ProductController extends Controller
             }
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }
@@ -390,7 +390,7 @@ class ProductController extends Controller
         $product_new->slug = substr($product_new->slug, 0, -5).str_random(5);
 
         if($product_new->save()){
-            flash('Product has been duplicated successfully')->success();
+            flash(__('Product has been duplicated successfully'))->success();
             if(Auth::user()->user_type == 'admin'){
                 return view('products.index');
             }
@@ -399,7 +399,7 @@ class ProductController extends Controller
             }
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }

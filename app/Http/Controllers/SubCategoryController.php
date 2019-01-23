@@ -47,11 +47,11 @@ class SubCategoryController extends Controller
         }
 
         if($subcategory->save()){
-            flash('Subcategory has been inserted successfully')->success();
+            flash(__('Subcategory has been inserted successfully'))->success();
             return redirect()->route('subcategories.index');
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }
@@ -98,11 +98,11 @@ class SubCategoryController extends Controller
         }
 
         if($subcategory->save()){
-            flash('Subcategory has been updated successfully')->success();
+            flash(__('Subcategory has been updated successfully'))->success();
             return redirect()->route('subcategories.index');
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }
@@ -120,11 +120,11 @@ class SubCategoryController extends Controller
             if($subcategory->banner){
                 unlink($subcategory->banner);
             }
-            flash('Subcategory has been deleted successfully')->success();
+            flash(__('Subcategory has been deleted successfully'))->success();
             return redirect()->route('subcategories.index');
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }

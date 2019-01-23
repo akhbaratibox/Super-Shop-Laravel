@@ -42,7 +42,7 @@ class BannerController extends Controller
                 $banner->photo = $photo->store('uploads/banners');
                 $banner->save();
             }
-            flash('Banner has been inserted successfully')->success();
+            flash(__('Banner has been inserted successfully'))->success();
         }
         return redirect()->route('home_settings.index');
     }
@@ -114,10 +114,10 @@ class BannerController extends Controller
         $banner = Banner::findOrFail($id);
         if(Banner::destroy($id)){
             unlink($banner->photo);
-            flash('Banner has been deleted successfully')->success();
+            flash(__('Banner has been deleted successfully'))->success();
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
         }
         return redirect()->route('home_settings.index');
     }

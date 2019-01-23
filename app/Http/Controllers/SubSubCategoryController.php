@@ -51,11 +51,11 @@ class SubSubCategoryController extends Controller
         $subsubcategory->brands = json_encode($request->brands);
 
         if($subsubcategory->save()){
-            flash('SubSubCategory has been inserted successfully')->success();
+            flash(__('SubSubCategory has been inserted successfully'))->success();
             return redirect()->route('subsubcategories.index');
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }
@@ -105,11 +105,11 @@ class SubSubCategoryController extends Controller
         $subsubcategory->brands = json_encode($request->brands);
 
         if($subsubcategory->save()){
-            flash('SubSubCategory has been updated successfully')->success();
+            flash(__('SubSubCategory has been updated successfully'))->success();
             return redirect()->route('subsubcategories.index');
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }
@@ -127,11 +127,11 @@ class SubSubCategoryController extends Controller
             if($subsubcategory->banner != null){
                 unlink($subsubcategory->banner);
             }
-            flash('SubSubCategory has been deleted successfully')->success();
+            flash(__('SubSubCategory has been deleted successfully'))->success();
             return redirect()->route('subsubcategories.index');
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }

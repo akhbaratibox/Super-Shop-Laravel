@@ -66,7 +66,7 @@ class PaypalController extends Controller
     {
         // Curse and humiliate the user for cancelling this most sacred payment (yours)
         $request->session()->forget('order_id');
-        flash("Payment cancelled")->success();
+        flash(__('Payment cancelled'))->success();
     	return redirect()->url()->previous();
     }
 
@@ -89,7 +89,7 @@ class PaypalController extends Controller
         $request->session()->put('cart', collect([]));
         $request->session()->forget('order_id');
 
-        flash("Payment completed")->success();
+        flash(__('Payment completed'))->success();
     	return redirect()->route('home');
     }
 }

@@ -40,10 +40,10 @@ class SubscriberController extends Controller
             $subscriber = new Subscriber;
             $subscriber->email = $request->email;
             $subscriber->save();
-            flash('You have subscribed successfully')->success();
+            flash(__('You have subscribed successfully'))->success();
         }
         else{
-            flash('You are  already a subscriber')->success();
+            flash(__('You are  already a subscriber'))->success();
         }
         return back();
     }

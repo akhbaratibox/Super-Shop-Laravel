@@ -12,7 +12,7 @@ class LanguageController extends Controller
     public function changeLanguage(Request $request)
     {
     	$request->session()->put('locale', $request->locale);
-    	flash('Language changed to '.$request->locale)->success();
+    	flash(__('Language changed to ').$request->locale)->success();
     }
 
     public function index(Request $request)
@@ -32,11 +32,11 @@ class LanguageController extends Controller
         $language->name = $request->name;
         $language->code = $request->code;
         if($language->save()){
-            flash('Language has been inserted successfully')->success();
+            flash(__('Language has been inserted successfully'))->success();
             return redirect()->route('languages.index');
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
             return back();
         }
     }
@@ -51,7 +51,7 @@ class LanguageController extends Controller
     {
         $language = Language::findOrFail($request->id);
         saveJSONFile($language->code, $request->key);
-        flash('Key-Value updated  for '.$language->name)->success();
+        flash(__('Key-Value updated  for ').$language->name)->success();
         return back();
     }
 }

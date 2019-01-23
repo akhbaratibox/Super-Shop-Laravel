@@ -47,13 +47,13 @@ class SellerController extends Controller
             $seller = new Seller;
             $seller->user_id = $user->id;
             if($seller->save()){
-                flash('Seller has been inserted successfully')->success();
+                flash(__('Seller has been inserted successfully'))->success();
                 return redirect()->route('sellers.index');
             }
         }
 
-        flash('Something went wrong')->danger();
-        return back();  
+        flash(__('Something went wrong'))->danger();
+        return back();
     }
 
     /**
@@ -97,13 +97,13 @@ class SellerController extends Controller
         }
         if($user->save()){
             if($seller->save()){
-                flash('Seller has been updated successfully')->success();
+                flash(__('Seller has been updated successfully'))->success();
                 return redirect()->route('sellers.index');
             }
         }
 
-        flash('Something went wrong')->danger();
-        return back(); 
+        flash(__('Something went wrong'))->danger();
+        return back();
     }
 
     /**
@@ -116,11 +116,11 @@ class SellerController extends Controller
     {
         User::destroy(Seller::findOrFail($id)->user->id);
         if(Seller::destroy($id)){
-            flash('Seller has been deleted successfully')->success();
+            flash(__('Seller has been deleted successfully'))->success();
             return redirect()->route('sellers.index');
         }
-        
-        flash('Something went wrong')->danger();
+
+        flash(__('Something went wrong'))->danger();
         return back();
     }
 }

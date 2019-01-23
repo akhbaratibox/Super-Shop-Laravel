@@ -97,11 +97,11 @@ class HomeController extends Controller
         }
 
         if($user->save()){
-            flash('Your Profile has been updated successfully!')->success();
+            flash(__('Your Profile has been updated successfully!'))->success();
             return back();
         }
 
-        flash('Sorry! Something went wrong.')->danger();
+        flash(__('Sorry! Something went wrong.'))->danger();
         return back();
     }
 

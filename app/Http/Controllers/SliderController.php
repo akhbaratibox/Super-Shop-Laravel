@@ -42,7 +42,7 @@ class SliderController extends Controller
                 $slider->photo = $photo->store('uploads/sliders');
                 $slider->save();
             }
-            flash('Slider has been inserted successfully')->success();
+            flash(__('Slider has been inserted successfully'))->success();
         }
         return redirect()->route('home_settings.index');
     }
@@ -99,10 +99,10 @@ class SliderController extends Controller
         $slider = Slider::findOrFail($id);
         if(Slider::destroy($id)){
             unlink($slider->photo);
-            flash('Slider has been deleted successfully')->success();
+            flash(__('Slider has been deleted successfully'))->success();
         }
         else{
-            flash('Something went wrong')->danger();
+            flash(__('Something went wrong'))->danger();
         }
         return redirect()->route('home_settings.index');
     }

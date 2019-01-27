@@ -18,6 +18,7 @@
                     <th>Customer</th>
                     <th>Amount</th>
                     <th>Delivery Status</th>
+                    <th>Payment Method</th>
                     <th>Payment Status</th>
                     <th width="10%">{{__('options')}}</th>
                 </tr>
@@ -46,18 +47,16 @@
                                 @endif
                             </td>
                             <td>
-                                {{ single_price($order->orderDetails->where('seller_id', Auth::user()->id)->sum('price')) }}
+                                {{ single_price($order->orderDetails->where('seller_id', Auth::user()->id)->sum('price') + $order->orderDetails->where('seller_id', Auth::user()->id)->sum('tax')) }}
                             </td>
                             <td>
                                 @php
-                                    $status = 'Delivered';
-                                    foreach ($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail) {
-                                        if($orderDetail->delivery_status != 'delivered'){
-                                            $status = 'Pending';
-                                        }
-                                    }
+                                    $status = $order->orderDetails->first()->delivery_status;
                                 @endphp
-                                {{ $status }}
+                                {{ ucfirst(str_replace('_', ' ', $status)) }}
+                            </td>
+                            <td>
+                                {{ $order->payment_type }}
                             </td>
                             <td>
                                 <span class="badge badge--2 mr-4">
@@ -74,7 +73,7 @@
                                         Actions <i class="dropdown-caret"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="{{route('orders.show', $order->id)}}">View</a></li>
+                                        <li><a href="{{ route('orders.show', $order->id) }}">View</a></li>
                                         <li><a onclick="confirm_modal('{{route('orders.destroy', $order->id)}}');">Delete</a></li>
                                     </ul>
                                 </div>

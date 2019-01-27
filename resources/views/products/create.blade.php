@@ -155,7 +155,26 @@
 							</div>
 				        </div>
 						<div id="demo-stk-lft-tab-4" class="tab-pane fade">
-				            <p class="text-main text-semibold">Meta Tags</p>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">{{__('meta_title')}}</label>
+								<div class="col-lg-7">
+									<input type="text" class="form-control" name="meta_title" placeholder="{{__('meta_title')}}">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">{{__('description')}}</label>
+								<div class="col-lg-7">
+									<textarea name="meta_description" rows="8" class="form-control"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">Meta Image</label>
+								<div class="col-lg-7">
+									<div id="meta_photo">
+
+									</div>
+								</div>
+							</div>
 				        </div>
 
 						<div id="demo-stk-lft-tab-5" class="tab-pane fade">
@@ -285,7 +304,12 @@
 						    </div>
 				        </div>
 						<div id="demo-stk-lft-tab-10" class="tab-pane fade">
-
+							<div class="form-group">
+								<label class="col-lg-2 control-label">{{__('pdf_specification')}}</label>
+								<div class="col-lg-7">
+									<input type="file" class="form-control" placeholder="{{__('pdf')}}" name="pdf" accept="application/pdf">
+								</div>
+							</div>
 				        </div>
 				    </div>
 				</div>
@@ -445,6 +469,22 @@
 		});
 		$("#flash_deal_img").spartanMultiImagePicker({
 			fieldName:        'flash_deal_img',
+			maxCount:         1,
+			rowHeight:        '200px',
+			groupClassName:   'col-md-4 col-sm-4 col-xs-6',
+			maxFileSize:      '',
+			dropFileLabel : "Drop Here",
+			onExtensionErr : function(index, file){
+				console.log(index, file,  'extension err');
+				alert('Please only input png or jpg type file')
+			},
+			onSizeErr : function(index, file){
+				console.log(index, file,  'file size too big');
+				alert('File size too big');
+			}
+		});
+		$("#meta_photo").spartanMultiImagePicker({
+			fieldName:        'meta_img',
 			maxCount:         1,
 			rowHeight:        '200px',
 			groupClassName:   'col-md-4 col-sm-4 col-xs-6',

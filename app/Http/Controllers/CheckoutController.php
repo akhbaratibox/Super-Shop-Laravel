@@ -31,6 +31,13 @@ class CheckoutController extends Controller
                 $sslcommerz = new PublicSslCommerzPaymentController;
                 return $sslcommerz->index($request);
             }
+            elseif ($request->payment_option == 'cash_on_delivery') {
+                $request->session()->put('cart', collect([]));
+                $request->session()->forget('order_id');
+
+                flash("Your order has been placed successfully")->success();
+            	return redirect()->route('home');
+            }
         }
     }
 

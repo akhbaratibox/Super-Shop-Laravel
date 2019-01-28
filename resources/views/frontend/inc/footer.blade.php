@@ -4,7 +4,7 @@
         <div class="row no-gutters">
             <div class="col-lg-3 col-md-6">
                 <div class="footer-top-box text-center">
-                    <a href="">
+                    <a href="{{ route('sellerpolicy') }}">
                         <i class="fa fa-tv"></i>
                         <h4 class="heading-5">{{__('Seller Policy')}}</h4>
                     </a>
@@ -12,7 +12,7 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="footer-top-box text-center">
-                    <a href="">
+                    <a href="{{ route('returnpolicy') }}">
                         <i class="fa fa-tv"></i>
                         <h4 class="heading-5">{{__('Return Policy')}}</h4>
                     </a>
@@ -20,7 +20,7 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="footer-top-box text-center">
-                    <a href="">
+                    <a href="{{ route('supportpolicy') }}">
                         <i class="fa fa-tv"></i>
                         <h4 class="heading-5">{{__('Support Policy')}}</h4>
                     </a>
@@ -28,7 +28,7 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="footer-top-box text-center">
-                    <a href="">
+                    <a href="{{ route('profile') }}">
                         <i class="fa fa-tv"></i>
                         <h4 class="heading-5">{{__('My Profile')}}</h4>
                     </a>
@@ -44,13 +44,19 @@
     <div class="footer-top">
         <div class="container">
             <div class="row cols-xs-space cols-sm-space cols-md-space">
-
+                @php
+                    $generalsetting = \App\GeneralSetting::first();
+                @endphp
                 <div class="col-lg-5 col-xl-4 text-center text-md-left">
                     <div class="col">
-                        <a href="#" class="d-block">
-                            <img src="{{ asset('frontend/images/logo/logo.svg') }}" class="" height="44">
+                        <a href="{{ route('home') }}" class="d-block">
+                            @if($generalsetting->logo != null)
+                                <img src="{{ asset($generalsetting->logo) }}" class="" height="44">
+                            @else
+                                <img src="{{ asset('frontend/images/logo/logo.png') }}" class="" height="44">
+                            @endif
                         </a>
-                        <p class="mt-3">Active Super Shop Multi vendor system is such a platform to build a border less marketplace both for physical and digital goods.</p>
+                        <p class="mt-3">{{ $generalsetting->description }}</p>
                         <div class="d-inline-block d-md-block">
                             <form class="form-inline" method="POST" action="{{ route('subscribers.store') }}">
                                 @csrf
@@ -72,16 +78,16 @@
                         <ul class="footer-links contact-widget">
                             <li>
                                <span class="d-block opacity-5">Address:</span>
-                               <span class="d-block">1234 Street Name, City, England</span>
+                               <span class="d-block">{{ $generalsetting->address }}</span>
                             </li>
                             <li>
                                <span class="d-block opacity-5">Phone:</span>
-                               <span class="d-block">Toll Free (123) 456-7890</span>
+                               <span class="d-block">{{ $generalsetting->phone }}</span>
                             </li>
                             <li>
                                <span class="d-block opacity-5">Email:</span>
                                <span class="d-block">
-                                   <a href="mailto:mail@example.com">mail@example.com</a>
+                                   <a href="mailto:{{ $generalsetting->email }}">{{ $generalsetting->email  }}</a>
                                 </span>
                             </li>
                         </ul>
@@ -93,31 +99,13 @@
                             Useful Link
                         </h4>
                         <ul class="footer-links">
-                            <li>
-                                <a href="#" title="">
-                                    Link 1
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="">
-                                    Link 2
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="">
-                                    Link 3
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="">
-                                    Link 4
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="">
-                                    Link 5
-                                </a>
-                            </li>
+                            @foreach (\App\Link::all() as $key => $link)
+                                <li>
+                                    <a href="{{ $link->url }}" title="">
+                                        {{ $link->name }}
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -130,17 +118,17 @@
 
                        <ul class="footer-links">
                             <li>
-                                <a href="#" title="Home">
+                                <a href="{{ route('user.login') }}" title="Home">
                                     Login
                                 </a>
                             </li>
                             <li>
-                                <a href="#" title="About us">
+                                <a href="{{ route('purchase_history.index') }}" title="About us">
                                     Order History
                                 </a>
                             </li>
                             <li>
-                                <a href="#" title="Services">
+                                <a href="{{ route('wishlists.index') }}" title="Services">
                                     My Wishlist
                                 </a>
                             </li>

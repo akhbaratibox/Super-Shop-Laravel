@@ -54,7 +54,7 @@
                                             @foreach ($orders as $key => $order)
                                                 <tr>
                                                     <td>
-                                                        <a href="{{ route('orders.show', $order->id) }}">{{ $order->code }}</a>
+                                                        <a href="#{{ $order->code }}" onclick="show_order_details({{ $order->id }})">{{ $order->code }}</a>
                                                     </td>
                                                     <td>{{ date('d-m-Y', $order->date) }}</td>
                                                     <td>
@@ -62,14 +62,9 @@
                                                     </td>
                                                     <td>
                                                         @php
-                                                            $status = "Delivered";
-                                                            foreach ($order->orderDetails as $key => $orderDetail) {
-                                                                if($orderDetail->delivery_status != 'delivered'){
-                                                                    $status = 'Pending';
-                                                                }
-                                                            }
+                                                            $status = $order->orderDetails->first()->delivery_status;
                                                         @endphp
-                                                        {{ $status }}
+                                                        {{ ucfirst(str_replace('_', ' ', $status)) }}
                                                     </td>
                                                     <td>
                                                         <span class="badge badge--2 mr-4">
@@ -87,8 +82,8 @@
                                                             </button>
 
                                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="">
-                                                                <button onclick="show_order_details()" class="dropdown-item">{{__('Order Details')}}</button>
-                                                                <button onclick="" class="dropdown-item">{{__('Cancel Order')}}</button>
+                                                                <button onclick="show_order_details({{ $order->id }})" class="dropdown-item">{{__('Order Details')}}</button>
+                                                                {{-- <button onclick="" class="dropdown-item">{{__('Cancel Order')}}</button> --}}
                                                             </div>
                                                         </div>
                                                     </td>

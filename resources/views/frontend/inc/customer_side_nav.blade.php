@@ -11,7 +11,7 @@
             <ul class="categories categories--style-3">
                 <li>
                     <a href="{{ route('dashboard') }}" class="{{ areActiveRoutesHome(['dashboard'])}}">
-                        <i class="fa fa-dashboard"></i>
+                        <i class="la la-dashboard"></i>
                         <span class="category-name">
                             {{__('dashboard')}}
                         </span>
@@ -19,7 +19,7 @@
                 </li>
                 <li>
                     <a href="{{ route('purchase_history.index') }}" class="{{ areActiveRoutesHome(['purchase_history.index'])}}">
-                        <i class="fa fa-cart-plus"></i>
+                        <i class="la la-file-text"></i>
                         <span class="category-name">
                             {{__('Purchase History')}}
                         </span>
@@ -27,7 +27,7 @@
                 </li>
                 <li>
                     <a href="{{ route('wishlists.index') }}" class="{{ areActiveRoutesHome(['wishlists.index'])}}">
-                        <i class="fa fa-heart"></i>
+                        <i class="la la-heart-o"></i>
                         <span class="category-name">
                             {{__('Wishlist')}}
                         </span>
@@ -35,7 +35,7 @@
                 </li>
                 <li>
                     <a href="{{ route('profile') }}" class="{{ areActiveRoutesHome(['profile'])}}">
-                        <i class="fa fa-user-circle-o"></i>
+                        <i class="la la-user"></i>
                         <span class="category-name">
                             {{__('Manage Profile')}}
                         </span>

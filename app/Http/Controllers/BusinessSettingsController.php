@@ -18,6 +18,11 @@ class BusinessSettingsController extends Controller
         return view('business_settings.social_login');
     }
 
+    public function smtp_settings(Request $request)
+    {
+        return view('business_settings.smtp_settings');
+    }
+
     public function payment_method(Request $request)
     {
         return view('business_settings.payment_method');
@@ -25,13 +30,8 @@ class BusinessSettingsController extends Controller
 
     public function payment_method_update(Request $request)
     {
-        $path = base_path('.env');
-        if (file_exists($path)) {
-            foreach ($request->types as $key => $type) {
-                file_put_contents($path, str_replace(
-                    $type.'='.env($type), $type.'='.$request[$type], file_get_contents($path)
-                ));
-            }
+        foreach ($request->types as $key => $type) {
+                $this->overWriteEnvFile($type, $request[$type]);
         }
 
         $business_settings = BusinessSetting::where('type', $request->payment_method.'_sandbox')->first();
@@ -44,22 +44,29 @@ class BusinessSettingsController extends Controller
             $business_settings->save();
         }
 
-        flash(__("Settings updated successfully"))->success();
+        flash("Settings updated successfully")->success();
         return back();
     }
 
     public function env_key_update(Request $request)
     {
+        foreach ($request->types as $key => $type) {
+                $this->overWriteEnvFile($type, $request[$type]);
+        }
+
+        flash("Settings updated successfully")->success();
+        return back();
+    }
+
+    public function overWriteEnvFile($type, $val)
+    {
         $path = base_path('.env');
         if (file_exists($path)) {
-            foreach ($request->types as $key => $type) {
-                file_put_contents($path, str_replace(
-                    $type.'='.env($type), $type.'='.$request[$type], file_get_contents($path)
-                ));
-            }
+            $val = '"'.trim($val).'"';
+            file_put_contents($path, str_replace(
+                $type.'="'.env($type).'"', $type.'='.$val, file_get_contents($path)
+            ));
         }
-        flash(__("Settings updated successfully"))->success();
-        return back();
     }
 
     public function currency(Request $request)
@@ -75,10 +82,10 @@ class BusinessSettingsController extends Controller
     	$currency->exchange_rate = $request->exchange_rate;
         $currency->status = $request->status;
         if($currency->save()){
-            flash(__('Currency updated successfully'))->success();
+            flash('Currency updated successfully')->success();
             return '1';
         }
-        flash(__('Something went wrong'))->error();
+        flash('Something went wrong')->error();
         return '0';
     }
 
@@ -91,10 +98,10 @@ class BusinessSettingsController extends Controller
     	$currency->exchange_rate = $request->exchange_rate;
         $currency->status = $request->status;
         if($currency->save()){
-            flash(__('Currency updated successfully'))->success();
+            flash('Currency updated successfully')->success();
             return '1';
         }
-        flash(__('Something went wrong'))->error();
+        flash('Something went wrong')->error();
         return '0';
     }
 
@@ -118,7 +125,7 @@ class BusinessSettingsController extends Controller
                 $business_settings->save();
             }
         }
-        flash(__("Settings updated successfully"))->success();
+        flash("Settings updated successfully")->success();
         return back();
     }
 

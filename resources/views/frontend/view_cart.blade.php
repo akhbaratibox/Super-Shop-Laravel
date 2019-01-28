@@ -169,12 +169,14 @@
                                 </thead>
                                 <tbody>
                                     @php
-                                    $total = 0;
+                                        $subtotal = 0;
+                                        $tax = 0;
                                     @endphp
                                     @foreach (Session::get('cart') as $key => $cartItem)
                                         @php
                                         $product = \App\Product::find($cartItem['id']);
-                                        $total = $total + $cartItem['price']*$cartItem['quantity'];
+                                        $subtotal += $cartItem['price']*$cartItem['quantity'];
+                                        $tax += $cartItem['tax']*$cartItem['quantity'];
                                         $product_name_with_choice = $product->name;
                                         if(isset($cartItem['color'])){
                                             $product_name_with_choice .= ' - '.\App\Color::where('code', $cartItem['color'])->first()->name;
@@ -198,23 +200,30 @@
 
                                 <tfoot>
                                     <tr class="cart-subtotal no-border">
-                                        <th>{{__('Subtotal')}}</th>
+                                        <th>Subtotal</th>
                                         <td class="text-right">
-                                            <span class="strong-600">{{ single_price($total) }}</span>
+                                            <span class="strong-600">{{ single_price($subtotal) }}</span>
                                         </td>
                                     </tr>
 
                                     <tr class="cart-shipping">
-                                        <th>Shipping</th>
+                                        <th>Tax</th>
                                         <td class="text-right">
-                                            <span class="text-italic">{{__('Not selected')}}</span>
+                                            <span class="text-italic">{{ single_price($tax) }}</span>
                                         </td>
                                     </tr>
 
-                                    <tr class="cart-total">
-                                        <th><span class="strong-600">{{__('Total')}}</span></th>
+                                    {{-- <tr class="cart-shipping">
+                                        <th>Shipping</th>
                                         <td class="text-right">
-                                            <strong><span>{{ single_price($total) }}</span></strong>
+                                            <span class="text-italic">Not selected</span>
+                                        </td>
+                                    </tr> --}}
+
+                                    <tr class="cart-total">
+                                        <th><span class="strong-600">Total</span></th>
+                                        <td class="text-right">
+                                            <strong><span>{{ single_price($subtotal+$tax) }}</span></strong>
                                         </td>
                                     </tr>
                                 </tfoot>

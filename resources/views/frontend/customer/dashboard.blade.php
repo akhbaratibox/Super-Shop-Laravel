@@ -12,16 +12,16 @@
                     <!-- Page title -->
                     <div class="page-title">
                         <div class="row align-items-center">
-                            <div class="col-lg-6 col-12">
+                            <div class="col-md-6 col-12">
                                 <h2 class="heading heading-6 text-capitalize strong-600 mb-0">
-                                    {{__('dashboard')}}
+                                    Dashboard
                                 </h2>
                             </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="float-right">
+                            <div class="col-md-6 col-12">
+                                <div class="float-md-right">
                                     <ul class="breadcrumb">
-                                        <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
-                                        <li class="active"><a href="{{ route('dashboard') }}">{{__('dashboard')}}</a></li>
+                                        <li><a href="{{ route('home') }}">Home</a></li>
+                                        <li class="active"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -36,9 +36,9 @@
                                     <a href="" class="d-block">
                                         <i class="fa fa-shopping-cart"></i>
                                         @if(Session::has('cart'))
-                                            <span class="d-block title">{{ count(Session::get('cart'))}} {{__('Product(s)')}}</span>
+                                            <span class="d-block title">{{ count(Session::get('cart'))}} Product(s)</span>
                                         @else
-                                            <span class="d-block title">0 {{__('product')}}</span>
+                                            <span class="d-block title">0 Product</span>
                                         @endif
                                         <span class="d-block sub-title">in your cart</span>
                                     </a>
@@ -48,7 +48,7 @@
                                 <div class="dashboard-widget text-center red-widget mt-4">
                                     <a href="" class="d-block">
                                         <i class="fa fa-heart"></i>
-                                        <span class="d-block title">{{ count(Auth::user()->wishlists)}} {{__('Product(s)')}}</span>
+                                        <span class="d-block title">{{ count(Auth::user()->wishlists)}} Product(s)</span>
                                         <span class="d-block sub-title">in your wishlist</span>
                                     </a>
                                 </div>
@@ -64,8 +64,8 @@
                                                 $total += count($order->orderDetails);
                                             }
                                         @endphp
-                                        <span class="d-block title">{{ $total }} {{__('Product(s)')}}</span>
-                                        <span class="d-block sub-title">{{__('you ordered')}}</span>
+                                        <span class="d-block title">{{ $total }} Product(s)</span>
+                                        <span class="d-block sub-title">you ordered</span>
                                     </a>
                                 </div>
                             </div>
@@ -74,19 +74,19 @@
                             <div class="col-md-5">
                                 <div class="form-box bg-white mt-4">
                                     <div class="form-box-title px-3 py-2 clearfix ">
-                                        {{__('Saved Shipping Info')}}
+                                        Saved Shipping Info
                                         <div class="float-right">
-                                            <a href="{{ route('profile') }}" class="btn btn-link btn-sm">{{__('Edit')}}</a>
+                                            <a href="{{ route('profile') }}" class="btn btn-link btn-sm">Edit</a>
                                         </div>
                                     </div>
                                     <div class="form-box-content p-3">
                                         <table>
                                             <tr>
-                                                <td>{{__('Address')}}:</td>
+                                                <td>Address:</td>
                                                 <td class="p-2">{{ Auth::user()->address }}</td>
                                             </tr>
                                             <tr>
-                                                <td>{{__('Country')}}:</td>
+                                                <td>Country:</td>
                                                 <td class="p-2">
                                                     @if (Auth::user()->country != null)
                                                         {{ \App\Country::where('code', Auth::user()->country)->first()->name }}
@@ -94,15 +94,15 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>{{__('City')}}:</td>
+                                                <td>City:</td>
                                                 <td class="p-2">{{ Auth::user()->city }}</td>
                                             </tr>
                                             <tr>
-                                                <td>{{__('Postal Code')}}:</td>
+                                                <td>Postal Code:</td>
                                                 <td class="p-2">{{ Auth::user()->postal_code }}</td>
                                             </tr>
                                             <tr>
-                                                <td>{{__('Phone')}}:</td>
+                                                <td>Phone:</td>
                                                 <td class="p-2">{{ Auth::user()->phone }}</td>
                                             </tr>
                                         </table>

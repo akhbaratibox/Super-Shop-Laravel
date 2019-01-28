@@ -94,7 +94,7 @@
                         </div>
                         <div class="side-login px-3 pb-3">
                             <a href="{{ route('user.login') }}">{{__('Sign In')}}</a>
-                            <a href="{{ route('user.login') }}">{{__('Registration')}}</a>
+                            <a href="{{ route('user.registration') }}">{{__('Registration')}}</a>
                         </div>
                     @endauth
                 </div>

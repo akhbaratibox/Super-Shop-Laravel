@@ -231,6 +231,33 @@
                                 <li class="{{ areActiveRoutes(['home_settings.index', 'home_banners.index', 'sliders.index', 'home_categories.index', 'home_banners.create', 'home_categories.create', 'home_categories.edit', 'sliders.create'])}}">
                                     <a class="nav-link" href="{{route('home_settings.index')}}">{{__('home')}}</a>
                                 </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="menu-title">{{__('Poly Pages')}}</span>
+                                        <i class="arrow"></i>
+                                    </a>
+
+                                    <!--Submenu-->
+                                    <ul class="collapse">
+
+                                        <li class="{{ areActiveRoutes(['sellerpolicy.index'])}}">
+                                            <a class="nav-link" href="{{route('sellerpolicy.index', 'seller_policy')}}">{{__('Seller Policy')}}</a>
+                                        </li>
+                                        <li class="{{ areActiveRoutes(['returnpolicy.index'])}}">
+                                            <a class="nav-link" href="{{route('returnpolicy.index', 'return_policy')}}">{{__('Return Policy')}}</a>
+                                        </li>
+                                        <li class="{{ areActiveRoutes(['supportpolicy.index'])}}">
+                                            <a class="nav-link" href="{{route('supportpolicy.index', 'support_policy')}}">{{__('Support Policy')}}</a>
+                                        </li>
+                                    </ul>
+
+                                </li>
+                                <li class="{{ areActiveRoutes(['links.index', 'links.create', 'links.edit'])}}">
+                                    <a class="nav-link" href="{{route('links.index')}}">{{__('Useful Link')}}</a>
+                                </li>
+                                <li class="{{ areActiveRoutes(['generalsettings.index'])}}">
+                                    <a class="nav-link" href="{{route('generalsettings.index')}}">{{__('General Settings')}}</a>
+                                </li>
                             </ul>
                         </li>
 

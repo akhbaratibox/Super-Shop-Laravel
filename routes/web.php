@@ -17,7 +17,9 @@ Route::post('/language', 'languageController@changeLanguage')->name('language.ch
 Route::get('/social-login/redirect/{provider}', 'Auth\LoginController@redirectToProvider')->name('social.login');
 Route::get('/social-login/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('social.callback');
 Route::get('/users/login', 'HomeController@login')->name('user.login');
+Route::get('/users/registration', 'HomeController@registration')->name('user.registration');
 Route::post('/users/login', 'HomeController@user_login')->name('user.login.submit');
+Route::post('/users/login/cart', 'HomeController@cart_login')->name('cart.login.submit');
 
 Route::post('/subcategories/get_subcategories_by_category', 'SubCategoryController@get_subcategories_by_category')->name('subcategories.get_subcategories_by_category');
 Route::post('/subsubcategories/get_subsubcategories_by_subcategory', 'SubSubCategoryController@get_subsubcategories_by_subcategory')->name('subsubcategories.get_subsubcategories_by_subcategory');
@@ -70,8 +72,13 @@ Route::post('/orders/update_status', 'OrderController@update_status')->name('ord
 
 Route::get('/categories', 'HomeController@all_categories')->name('categories.all');
 Route::get('/search', 'HomeController@search')->name('search');
+Route::post('/search', 'HomeController@search')->name('search');
 Route::get('/search?q={search}', 'HomeController@search')->name('suggestion.search');
-Route::post('/search', 'HomeController@ajax_search')->name('search.ajax');
+Route::post('/ajax-search', 'HomeController@ajax_search')->name('search.ajax');
+
+Route::get('/sellerpolicy', 'HomeController@sellerpolicy')->name('sellerpolicy');
+Route::get('/returnpolicy', 'HomeController@returnpolicy')->name('returnpolicy');
+Route::get('/supportpolicy', 'HomeController@supportpolicy')->name('supportpolicy');
 
 Route::resource('wishlists','WishlistController');
 Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
@@ -86,6 +93,9 @@ Route::group(['middleware' => ['user', 'verified']], function(){
 
 	Route::resource('orders','OrderController');
 	Route::get('/orders/destroy/{id}', 'OrderController@destroy')->name('orders.destroy');
+
+	Route::resource('wishlists','WishlistController');
+	Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
 });
 
 Route::group(['prefix' =>'seller', 'middleware' => ['seller', 'verified']], function(){

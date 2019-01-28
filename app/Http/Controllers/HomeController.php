@@ -17,6 +17,21 @@ use ImageOptimizer;
 
 class HomeController extends Controller
 {
+    public function login()
+    {
+        if(Auth::check()){
+            return redirect()->route('home');
+        }
+        return view('frontend.user_login');
+    }
+
+    public function registration()
+    {
+        if(Auth::check()){
+            return redirect()->route('home');
+        }
+        return view('frontend.user_registration');
+    }
 
     public function user_login(Request $request)
     {
@@ -30,6 +45,22 @@ class HomeController extends Controller
                     auth()->login($user, false);
                 }
                 return redirect()->route('dashboard');
+            }
+        }
+        return back();
+    }
+
+    public function cart_login(Request $request)
+    {
+        $user = User::whereIn('user_type', ['customer', 'seller'])->where('email', $request->email)->first();
+        if($user != null){
+            if(Hash::check($request->password, $user->password)){
+                if($request->has('remember')){
+                    auth()->login($user, true);
+                }
+                else{
+                    auth()->login($user, false);
+                }
             }
         }
         return back();
@@ -195,14 +226,6 @@ class HomeController extends Controller
         return view('frontend.seller.products', compact('products'));
     }
 
-    public function login()
-    {
-        if(Auth::check()){
-            return redirect()->route('home');
-        }
-        return view('frontend.user_login');
-    }
-
     public function ajax_search(Request $request)
     {
         $keywords = array();
@@ -232,18 +255,53 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        if($request->q != null){
-            $searchController = new SearchController;
-            $searchController->store($request);
+        $query = $request->q;
+        $brand_id = $request->brand_id;
+        $sort_by = $request->sort_by;
+        $category_id = $request->category;
+
+        $conditions = ['published' => 1];
+
+        if($brand_id != null){
+            $conditions = array_merge($conditions, ['brand_id' => $request->brand_id]);
+        }
+        if($category_id != null){
+            $conditions = array_merge($conditions, ['category_id' => $category_id]);
         }
 
-        if($request->category != null){
-            $products = Product::where('published', 1)->where('category_id', $request->category)->where('name', 'like', '%'.$request->q.'%')->paginate(9);
+        $products = Product::where($conditions);
+
+        if($query != null){
+            $searchController = new SearchController;
+            $searchController->store($request);
+            $products = $products->where('name', 'like', '%'.$query.'%');
         }
-        else {
-            $products = Product::where('published', 1)->where('name', 'like', '%'.$request->q.'%')->orWhere('tags', 'like', '%'.$request->q.'%')->paginate(9);
+
+        if($sort_by != null){
+            switch ($sort_by) {
+                case '1':
+                    $products->orderBy('created_at', 'desc');
+                    break;
+                case '2':
+                    $products->orderBy('created_at', 'asc');
+                    break;
+                case '3':
+                    $products->orderBy('unit_price', 'asc');
+                    break;
+                case '4':
+                    $products->orderBy('unit_price', 'desc');
+                    break;
+                default:
+                    // code...
+                    break;
+            }
         }
-        return view('frontend.product_listing', compact('products'));
+
+        //dd($request->all());
+
+        $products = $products->paginate(9);
+
+        return view('frontend.product_listing', compact('products', 'query', 'category_id', 'brand_id', 'sort_by'));
     }
 
     public function home_settings(Request $request)
@@ -292,7 +350,25 @@ class HomeController extends Controller
                     $price -= $product->discount;
                 }
             }
+            if($product->tax_type == 'percent'){
+                $price += ($price*$product->tax)/100;
+            }
+            elseif($product->tax_type == 'amount'){
+                $price += $product->tax;
+            }
         }
         return single_price($price*$request->quantity);
+    }
+
+    public function sellerpolicy(){
+        return view("frontend.policies.sellerpolicy");
+    }
+
+    public function returnpolicy(){
+        return view("frontend.policies.returnpolicy");
+    }
+
+    public function supportpolicy(){
+        return view("frontend.policies.supportpolicy");
     }
 }

@@ -34,11 +34,11 @@
                                 {{ $product->name }}
                             </h2>
                             <ul class="breadcrumb">
-                                <li><a href="">{{__('Home')}}</a></li>
-                                <li><a href="">{{__('All Categories')}}</a></li>
-                                <li><a href="">{{ $product->category->name }}</a></li>
-                                <li><a href="">{{ $product->subcategory->name }}</a></li>
-                                <li class="active"><a href="">{{ $product->subsubcategory->name }}</a></li>
+                                <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
+                                <li><a href="{{ route('categories.all') }}">{{__('All Categories')}}</a></li>
+                                <li><a href="{{ route('products.category', $product->category_id) }}">{{ $product->category->name }}</a></li>
+                                <li><a href="{{ route('products.subcategory', $product->subcategory_id) }}">{{ $product->subcategory->name }}</a></li>
+                                <li class="active"><a href="{{ route('products.subsubcategory', $product->subsubcategory_id) }}">{{ $product->subsubcategory->name }}</a></li>
                             </ul>
 
                             <div class="row align-items-center">
@@ -67,14 +67,16 @@
                                                 $qty += $variation->qty;
                                             }
                                         @endphp
-                                        @if ($qty > 0)
-                                            <li>
-                                                <span class="badge badge-md badge-pill bg-green">{{__('In stock')}}</span>
-                                            </li>
-                                        @else
-                                            <li>
-                                                <span class="badge badge-md badge-pill bg-red">{{__('Out of stock')}}</span>
-                                            </li>
+                                        @if(count(json_decode($product->variations, true)) >= 1)
+                                            @if ($qty > 0)
+                                                <li>
+                                                    <span class="badge badge-md badge-pill bg-green">{{__('In stock')}}</span>
+                                                </li>
+                                            @else
+                                                <li>
+                                                    <span class="badge badge-md badge-pill bg-red">{{__('Out of stock')}}</span>
+                                                </li>
+                                            @endif
                                         @endif
                                     </ul>
                                 </div>
@@ -191,7 +193,9 @@
                                                     </button>
                                                 </span>
                                             </div>
-                                            <div class="avialable-amount">({{ $qty }} pc available)</div>
+                                            @if(count(json_decode($product->variations, true)) >= 1)
+                                                <div class="avialable-amount">({{ $qty }} pc available)</div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -236,7 +240,7 @@
                                     <div class="product-description-label alpha-6">Return Policy:</div>
                                 </div>
                                 <div class="col-10">
-                                    Returns accepted if product not as described, buyer pays return shipping fee; or keep the product & agree refund with seller. <a href="" class="ml-2">View details</a>
+                                    Returns accepted if product not as described, buyer pays return shipping fee; or keep the product & agree refund with seller. <a href="{{ route('returnpolicy') }}" class="ml-2">View details</a>
                                 </div>
                             </div>
                             <div class="row no-gutters mt-3">

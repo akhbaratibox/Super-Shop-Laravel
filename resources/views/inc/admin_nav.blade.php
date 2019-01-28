@@ -3,13 +3,21 @@
 <header id="navbar">
     <div id="navbar-container" class="boxed">
 
+        @php
+            $generalsetting = \App\GeneralSetting::first();
+        @endphp
+
         <!--Brand logo & name-->
         <!--================================-->
         <div class="navbar-header">
             <a href="{{route('admin.dashboard')}}" class="navbar-brand">
-                <img src="{{ asset('img/logo_shop.png') }}" alt="Nifty Logo" class="brand-icon">
+                @if($generalsetting->logo != null)
+                    <img src="{{ asset($generalsetting->logo) }}" class="brand-icon" alt="{{ $generalsetting->site_name }}">
+                @else
+                    <img src="{{ asset('img/logo_shop.png') }}" class="brand-icon" alt="{{ $generalsetting->site_name }}">
+                @endif
                 <div class="brand-title">
-                    <span class="brand-text">ActiveShop</span>
+                    <span class="brand-text">{{ $generalsetting->site_name }}</span>
                 </div>
             </a>
         </div>

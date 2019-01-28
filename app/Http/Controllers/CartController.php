@@ -48,7 +48,16 @@ class CartController extends Controller
         }
 
         if($str != null){
-            $price = json_decode($product->variations)->$str->price;
+            $variations = json_decode($product->variations);
+            $price = $variations->$str->price;
+            if($variations->$str->qty >= $request['quantity']){
+                $variations->$str->qty -= $request['quantity'];
+                $product->variations = json_encode($variations);
+                $product->save();
+            }
+            else{
+                return view('frontend.partials.outOfStockCart');
+            }
         }
         else{
             $price = $product->unit_price;
@@ -74,10 +83,17 @@ class CartController extends Controller
                     $price -= $product->discount;
                 }
             }
+            if($product->tax_type == 'percent'){
+                $tax = ($price*$product->tax)/100;
+            }
+            elseif($product->tax_type == 'amount'){
+                $tax = $product->tax;
+            }
         }
 
         $data['quantity'] = $request['quantity'];
         $data['price'] = $price;
+        $data['tax'] = $tax;
 
         if($request->session()->has('cart')){
             $cart = $request->session()->get('cart', collect([]));

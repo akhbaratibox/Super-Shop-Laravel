@@ -114,65 +114,70 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="sort-by-bar row no-gutters bg-white mb-3 px-3">
-                            <div class="col-lg-4 col-md-5">
-                                <div class="sort-by-box">
-                                    <div class="form-group">
-                                        <label>{{__('Search')}}</label>
-                                        <form role="form" class="search-widget">
-                                            <input class="form-control input-lg" type="text" placeholder="Search products">
-                                            <button type="button" class="btn-inner">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-7 offset-lg-1">
-                                <div class="row no-gutters">
-                                    <div class="col-4">
-                                        <div class="sort-by-box px-1">
-                                            <div class="form-group">
-                                                <label>{{__('Sort by')}}</label>
-                                                <select class="form-control sortSelect" data-minimum-results-for-search="Infinity">
-                                                    <option value="1">{{__('Newest')}}</option>
-                                                    <option value="2">{{__('Oldest')}}</option>
-                                                    <option value="3">{{__('Price low to high')}}</option>
-                                                    <option value="4">{{__('Price high to low')}}</option>
-                                                    <option value="5">{{__('Most viewed')}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="sort-by-box px-1">
-                                            <div class="form-group">
-                                                <label>{{__('brands')}}</label>
-                                                <select class="form-control sortSelect" data-placeholder="This is a placeholder">
-                                                    <option>{{__('All Brands')}}</option>
-                                                    @foreach (\App\Brand::all() as $key => $brand)
-                                                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="sort-by-box px-1">
-                                            <div class="form-group">
-                                                <label>{{__('sellers')}}</label>
-                                                <select class="form-control sortSelect" data-placeholder="This is a placeholder">
-                                                    <option>{{__('All Sellers')}}</option>
-                                                    <option value="1">Seller Name</option>
-                                                    <option value="2">Brand Name</option>
-                                                    <option value="3">Seller Name ffdv fd fdvgfdgf </option>
-                                                </select>
+                        <form class="" id="search-form" action="{{ route('search') }}" method="POST">
+                            @csrf
+                            @isset($category_id)
+                                <input type="hidden" name="category" value="{{ $category_id }}">
+                            @endisset
+                            <div class="sort-by-bar row no-gutters bg-white mb-3 px-3">
+                                <div class="col-lg-4 col-md-5">
+                                    <div class="sort-by-box">
+                                        <div class="form-group">
+                                            <label>Search</label>
+                                            <div class="search-widget">
+                                                <input class="form-control input-lg" type="text" name="q" placeholder="Search products" @isset($query) value="{{ $query }}" @endisset>
+                                                <button type="submit" class="btn-inner">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-7 offset-lg-1">
+                                    <div class="row no-gutters">
+                                        <div class="col-4">
+                                            <div class="sort-by-box px-1">
+                                                <div class="form-group">
+                                                    <label>Sort by</label>
+                                                    <select class="form-control sortSelect" data-minimum-results-for-search="Infinity" name="sort_by" onchange="filter()">
+                                                        <option value="1" @isset($sort_by) @if ($sort_by == '1') selected @endif @endisset>Newest</option>
+                                                        <option value="2" @isset($sort_by) @if ($sort_by == '2') selected @endif @endisset>Oldest</option>
+                                                        <option value="3" @isset($sort_by) @if ($sort_by == '3') selected @endif @endisset>Price low to high</option>
+                                                        <option value="4" @isset($sort_by) @if ($sort_by == '4') selected @endif @endisset>Price high to low</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="sort-by-box px-1">
+                                                <div class="form-group">
+                                                    <label>Brands</label>
+                                                    <select class="form-control sortSelect" data-placeholder="All Brands" name="brand_id" onchange="filter()">
+                                                        <option value="">All Brands</option>
+                                                        @foreach (\App\Brand::all() as $key => $brand)
+                                                            <option value="{{ $brand->id }}"   @isset($brand_id) @if ($brand_id == $brand->id) selected @endif @endisset>{{ $brand->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="sort-by-box px-1">
+                                                <div class="form-group">
+                                                    <label>{{__('sellers')}}</label>
+                                                    <select class="form-control sortSelect" data-placeholder="This is a placeholder">
+                                                        <option>{{__('All Sellers')}}</option>
+                                                        <option value="1">Seller Name</option>
+                                                        <option value="2">Brand Name</option>
+                                                        <option value="3">Seller Name ffdv fd fdvgfdgf </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                         <!-- <hr class=""> -->
                         <div class="products-box-bar p-3 bg-white">
                             <div class="row">
@@ -232,4 +237,18 @@
         </div>
     </section>
 
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        function filter(){
+            $('#search-form').submit();
+            // var keyword = $('input[name=keyword]').val();
+            // var sort_by = $('select[name=sort_by]').val();
+            // var brand_id = $('select[name=brand_id]').val();
+            // $.get('{{ route('products.filter') }}', {_token:'{{ @csrf_token() }}', keyword:keyword, sort_by:sort_by, brand_id:brand_id}, function(result){
+            //     $('#products-list').html(result);
+            // })
+        }
+    </script>
 @endsection

@@ -92,10 +92,12 @@ class OrderController extends Controller
         $order->date = strtotime(date('d-m-Y'));
 
         if($order->save()){
-            $total = 0;
+            $subtotal = 0;
+            $tax = 0;
             foreach (Session::get('cart') as $key => $cartItem){
                 $product = Product::find($cartItem['id']);
-                $total = $total + $cartItem['price']*$cartItem['quantity'];
+                $subtotal += $cartItem['price']*$cartItem['quantity'];
+                $tax += $cartItem['tax']*$cartItem['quantity'];
                 $product_variation = null;
                 if(isset($cartItem['color'])){
                     $product_variation .= Color::where('code', $cartItem['color'])->first()->name;
@@ -110,7 +112,8 @@ class OrderController extends Controller
                 $order_detail->seller_id = $product->user_id;
                 $order_detail->product_id = $product->id;
                 $order_detail->variation = $product_variation;
-                $order_detail->price = $cartItem['price'];
+                $order_detail->price = $cartItem['price'] * $cartItem['quantity'];
+                $order_detail->tax = $cartItem['tax'] * $cartItem['quantity'];
                 $order_detail->quantity = $cartItem['quantity'];
                 $order_detail->save();
 
@@ -118,7 +121,7 @@ class OrderController extends Controller
                 $product->save();
             }
 
-            $order->grand_total = $total;
+            $order->grand_total = $subtotal + $tax;
             $order->save();
 
             $request->session()->put('order_id', $order->id);
@@ -133,7 +136,8 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order::findOrFail($id);
+        return view('orders.show', compact('order'));
     }
 
     /**
@@ -167,13 +171,29 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order = Order::findOrFail($id);
+        if($order != null){
+            foreach($order->orderDetails as $key => $orderDetail){
+                $orderDetail->delete();
+            }
+            $order->delete();
+            flash('Order has been deleted successfully')->success();
+        }
+        else{
+            flash('Something went wrong')->danger();
+        }
+        return back();
     }
 
     public function order_details(Request $request)
     {
         $order = Order::findOrFail($request->order_id);
-        return view('frontend.partials.order_details', compact('order'));
+        if(Auth::user()->user_type == 'seller'){
+            return view('frontend.partials.order_details_seller', compact('order'));
+        }
+        else {
+            return view('frontend.partials.order_details_customer', compact('order'));
+        }
     }
 
     public function update_status(Request $request)

@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    <section class="gry-bg py-5">
+    <section class="gry-bg py-4">
         <div class="profile">
             <div class="container">
                 <div class="row">
@@ -9,20 +9,20 @@
                         <div class="card">
                             <div class="text-center px-35 pt-5">
                                 <h3 class="heading heading-4 strong-500">
-                                    Login to your account.
+                                    Create an account.
                                 </h3>
                             </div>
                             <div class="px-5 py-3 py-lg-5">
                                 <div class="row align-items-center">
                                     <div class="col-12 col-lg">
-                                        <form class="form-default" role="form" action="{{ route('user.login.submit') }}" method="POST">
+                                        <form class="form-default" role="form" action="{{ route('register') }}" method="POST">
                                             @csrf
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <!-- <label>{{ __('email') }}</label> -->
+                                                        <!-- <label>{{ __('name') }}</label> -->
                                                         <div class="input-group input-group--style-1">
-                                                            <input type="email" class="form-control form-control-sm {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="Email" name="email" id="email">
+                                                            <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name') }}" placeholder="{{ __('name') }}" name="name">
                                                             <span class="input-group-addon">
                                                                 <i class="text-md la la-user"></i>
                                                             </span>
@@ -34,9 +34,23 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group">
+                                                        <!-- <label>{{ __('email') }}</label> -->
+                                                        <div class="input-group input-group--style-1">
+                                                            <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{ __('email') }}" name="email">
+                                                            <span class="input-group-addon">
+                                                                <i class="text-md la la-envelope"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group">
                                                         <!-- <label>{{ __('password') }}</label> -->
                                                         <div class="input-group input-group--style-1">
-                                                            <input type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Password" name="password" id="password">
+                                                            <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('password') }}" name="password">
                                                             <span class="input-group-addon">
                                                                 <i class="text-md la la-lock"></i>
                                                             </span>
@@ -46,24 +60,46 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-6">
+                                                <div class="col-12">
                                                     <div class="form-group">
-                                                        <div class="checkbox pad-btm text-left">
-                                                            <input id="demo-form-checkbox" class="magic-checkbox" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                            <label for="demo-form-checkbox" class="text-sm">
-                                                                {{ __('Remember Me') }}
-                                                            </label>
+                                                        <!-- <label>{{ __('confirm_password') }}</label> -->
+                                                        <div class="input-group input-group--style-1">
+                                                            <input type="password" class="form-control" placeholder="{{ __('confirm_password') }}" name="password_confirmation">
+                                                            <span class="input-group-addon">
+                                                                <i class="text-md la la-lock"></i>
+                                                            </span>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-6 text-right">
-                                                    <a href="{{ route('password.request') }}" class="link link-xs link--style-3">Forgot password?</a>
                                                 </div>
                                             </div>
 
                                             <div class="row">
-                                                <div class="col text-center">
-                                                    <button type="submit" class="btn btn-styled btn-base-1 btn-md w-100">{{ __('login') }}</button>
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}">
+                                                            @if ($errors->has('g-recaptcha-response'))
+                                                                <span class="invalid-feedback" style="display:block">
+                                                                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                                                </span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="checkbox pad-btm text-left">
+                                                        <input class="magic-checkbox" type="checkbox" name="checkbox_example_1" id="checkboxExample_1a" required>
+                                                        <label for="checkboxExample_1a" class="text-sm">By signing up you agree to our terms and conditions.</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center">
+                                                <div class="col-12 text-right  mt-3">
+                                                    <button type="submit" class="btn btn-styled btn-base-1 w-100 btn-md">{{ __('create_account') }}</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -86,26 +122,9 @@
                             </div>
                             <div class="text-center px-35 pb-3">
                                 <p class="text-md">
-                                    Need an account? <a href="{{ route('user.registration') }}" class="strong-600">Register Now</a>
+                                    Allready have an account? <a href="{{ route('user.login') }}" class="strong-600">Log In</a>
                                 </p>
                             </div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-white p-4 mx-auto mt-4"> 
-                        <div class="">
-                            <table class="table table-responsive table-bordered mb-0">
-                                <tbody>
-                                    <tr>
-                                        <td>Seller Account</td>
-                                        <td><button class="btn btn-info" onclick="autoFillSeller()">Copy credentials</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Customer Account</td>
-                                        <td><button class="btn btn-info" onclick="autoFillCustomer()">Copy credentials</button></td>
-                                    </tr>
-                                </tbody>
-                            </table>
                         </div>
                     </div>
 

@@ -49,6 +49,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('/activation', 'BusinessSettingsController@activation')->name('activation.index');
 	Route::get('/payment-method', 'BusinessSettingsController@payment_method')->name('payment_method.index');
 	Route::get('/social-login', 'BusinessSettingsController@social_login')->name('social_login.index');
+	Route::get('/smtp-settings', 'BusinessSettingsController@smtp_settings')->name('smtp_settings.index');
 	Route::post('/env_key_update', 'BusinessSettingsController@env_key_update')->name('env_key_update.update');
 	Route::post('/payment_method_update', 'BusinessSettingsController@payment_method_update')->name('payment_method.update');
 	Route::get('/currency', 'BusinessSettingsController@currency')->name('currency.index');
@@ -61,6 +62,12 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::post('/languages/key_value_store', 'LanguageController@key_value_store')->name('languages.key_value_store');
 
 	Route::get('/frontend_settings/home', 'HomeController@home_settings')->name('home_settings.index');
+	Route::get('/sellerpolicy/{type}', 'PolicyController@index')->name('sellerpolicy.index');
+	Route::get('/returnpolicy/{type}', 'PolicyController@index')->name('returnpolicy.index');
+	Route::get('/supportpolicy/{type}', 'PolicyController@index')->name('supportpolicy.index');
+
+	//Policy Controller
+	Route::post('/policies/store', 'PolicyController@store')->name('policies.store');
 
 	Route::group(['prefix' => 'frontend_settings'], function(){
 		Route::resource('sliders','SliderController');
@@ -88,5 +95,13 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::post('/flash_deals/product_discount_edit', 'FlashDealController@product_discount_edit')->name('flash_deals.product_discount_edit');
 
 	Route::get('/orders', 'OrderController@admin_orders')->name('orders.index.admin');
+	Route::get('/orders/{id}/show', 'OrderController@show')->name('orders.show');
+	Route::post('/orders/update_status', 'OrderController@update_status')->name('orders.update_status');
+	Route::get('/orders/destroy/{id}', 'OrderController@destroy')->name('orders.destroy');
 	Route::get('/sales', 'OrderController@sales')->name('sales.index');
+
+	Route::resource('links','LinkController');
+	Route::get('/links/destroy/{id}', 'LinkController@destroy')->name('links.destroy');
+
+	Route::resource('generalsettings','GeneralSettingController');
 });

@@ -221,15 +221,17 @@
                                 <div class="d-table-cell">
                                     <!-- Add to cart button -->
                                     <button type="button" class="btn btn-base-1 btn-icon-left" onclick="addToCart()">
-                                        <i class="icon ion-bag"></i> Add to cart
+                                        <i class="la la-shopping-cart"></i> Add to cart
                                     </button>
                                     <!-- Add to wishlist button -->
                                     <button type="button" class="btn btn-outline btn-base-1 btn-icon-left" onclick="addToWishList({{ $product->id }})">
-                                        <i class="icon ion-ios-heart-outline"></i> Add to wishlist
+                                        <i class="la la-heart-o"></i>
+                                        <span class="d-none d-md-inline-block"> Add to wishlist</span>
                                     </button>
                                     <!-- Add to compare button -->
                                     <button type="button" class="btn btn-outline btn-base-1 btn-icon-left" onclick="addToCompare({{ $product->id }})">
-                                        <i class="icon ion-ios-loop"></i> Add to compare
+                                        <i class="la la-refresh"></i>
+                                        <span class="d-none d-md-inline-block"> Add to compare</span>
                                     </button>
                                 </div>
                             </div>
@@ -291,28 +293,8 @@
                                     <div class="product-description-label mt-2">Share:</div>
                                 </div>
                                 <div class="col-10">
-                                    <ul class="social-media social-media--style-1-v4">
-                                        <li>
-                                            <a href="#" class="facebook" target="_blank" data-toggle="tooltip" data-original-title="Share this page on facebook">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="twitter" target="_blank" data-toggle="tooltip" data-original-title="Share this page on twitter">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="google-plus" target="_blank" data-toggle="tooltip" data-original-title="Share this page on google-plus">
-                                                <i class="fa fa-google-plus"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="instagram" target="_blank" data-toggle="tooltip" data-original-title="Share this page on instagram">
-                                                <i class="fa fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                    <div class="addthis_inline_share_toolbox"></div>
                                 </div>
                             </div>
                         </div>

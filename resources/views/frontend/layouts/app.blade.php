@@ -96,6 +96,8 @@
 <script src="{{ asset('frontend/js/sweetalert2.min.js') }}"></script>
 <script src="{{ asset('frontend/js/slick.min.js') }}"></script>
 
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c4eb3c7c69a2672"></script>
+
 <script type="text/javascript">
     function showFrontendAlert(type, message){
         swal({

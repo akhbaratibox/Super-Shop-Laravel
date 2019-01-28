@@ -426,7 +426,7 @@
                                     </div>
                                     <div class="product-details float-left">
                                         <h4 class="title text-truncate-2">
-                                            <a href="" class="d-block">{{ $product->name }}</a>
+                                            <a href="{{ route('product', $product->slug) }}" class="d-block">{{ $product->name }}</a>
                                         </h4>
                                         <div class="price-box">
                                             @if(home_base_price($product->id) != home_discounted_base_price($product->id))
@@ -455,7 +455,7 @@
                                     </div>
                                     <div class="product-details float-left">
                                         <h4 class="title text-truncate-2">
-                                            <a href="" class="d-block">{{ $product->name }}</a>
+                                            <a href="{{ route('product', $product->slug) }}" class="d-block">{{ $product->name }}</a>
                                         </h4>
                                         <div class="price-box">
                                             @if(home_base_price($product->id) != home_discounted_base_price($product->id))

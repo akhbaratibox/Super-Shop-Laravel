@@ -112,32 +112,11 @@
                 <div class="c-preloader">
                     <i class="fa fa-spin fa-spinner"></i>
                 </div>
-                <button type="button" class="close absolute-close-btn" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
                 <div id="order-details-modal-body">
-                    <div class="modal-body p-4">
-                        <div class="row no-gutters cols-xs-space cols-sm-space cols-md-space">
 
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-@endsection
-
-
-@section('script')
-    <script type="text/javascript">
-        function show_order_details()
-        {
-            if(!$('#modal-size').hasClass('modal-lg')){
-                $('#modal-size').addClass('modal-lg');
-            }
-            $('#order_details').modal();
-            $('.c-preloader').hide();
-        }
-    </script>
 @endsection

@@ -243,12 +243,6 @@
     <script type="text/javascript">
         function filter(){
             $('#search-form').submit();
-            // var keyword = $('input[name=keyword]').val();
-            // var sort_by = $('select[name=sort_by]').val();
-            // var brand_id = $('select[name=brand_id]').val();
-            // $.get('{{ route('products.filter') }}', {_token:'{{ @csrf_token() }}', keyword:keyword, sort_by:sort_by, brand_id:brand_id}, function(result){
-            //     $('#products-list').html(result);
-            // })
         }
     </script>
 @endsection

@@ -32,8 +32,8 @@
                     <div class="">
                         <div class="row">
                             <div class="col-md-4">
-                                <div class="dashboard-widget text-center green-widget mt-4">
-                                    <a href="" class="d-block">
+                                <div class="dashboard-widget text-center green-widget mt-4 c-pointer">
+                                    <a href="javascript:;" class="d-block">
                                         <i class="fa fa-shopping-cart"></i>
                                         @if(Session::has('cart'))
                                             <span class="d-block title">{{ count(Session::get('cart'))}} Product(s)</span>
@@ -45,8 +45,8 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="dashboard-widget text-center red-widget mt-4">
-                                    <a href="" class="d-block">
+                                <div class="dashboard-widget text-center red-widget mt-4 c-pointer">
+                                    <a href="javascript:;" class="d-block">
                                         <i class="fa fa-heart"></i>
                                         <span class="d-block title">{{ count(Auth::user()->wishlists)}} Product(s)</span>
                                         <span class="d-block sub-title">in your wishlist</span>
@@ -54,8 +54,8 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="dashboard-widget text-center yellow-widget mt-4">
-                                    <a href="" class="d-block">
+                                <div class="dashboard-widget text-center yellow-widget mt-4 c-pointer">
+                                    <a href="javascript:;" class="d-block">
                                         <i class="fa fa-building"></i>
                                         @php
                                             $orders = \App\Order::where('user_id', Auth::user()->id)->get();

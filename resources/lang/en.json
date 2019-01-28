@@ -399,6 +399,6 @@
     "You are  already a subscriber" : "You are  already a subscriber",
     "SubSubCategory has been deleted successfully" : "SubSubCategory has been deleted successfully",
     "SubSubCategory has been updated successfully" : "SubSubCategory has been updated successfully",
-    "SubSubCategory has been inserted successfully" : "SubSubCategory has been inserted successfully"
-
+    "SubSubCategory has been inserted successfully" : "SubSubCategory has been inserted successfully",
+    "SMTP Settings" : "SMTP Settings"
 }

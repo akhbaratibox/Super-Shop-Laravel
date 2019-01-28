@@ -1,5 +1,31 @@
 @extends('frontend.layouts.app')
 
+@section('meta')
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="{{ $product->meta_title }}">
+    <meta itemprop="description" content="{{ $product->meta_description }}">
+    <meta itemprop="image" content="{{ asset($product->meta_img) }}">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="product">
+    <meta name="twitter:site" content="@publisher_handle">
+    <meta name="twitter:title" content="{{ $product->meta_title }}">
+    <meta name="twitter:description" content="{{ $product->meta_description }}">
+    <meta name="twitter:creator" content="@author_handle">
+    <meta name="twitter:image" content="{{ asset($product->meta_img) }}">
+    <meta name="twitter:data1" content="{{ single_price($product->unit_price) }}">
+    <meta name="twitter:label1" content="Price">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="{{ $product->meta_title }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{{ route('product', $product->slug) }}" />
+    <meta property="og:image" content="{{ asset($product->meta_img) }}" />
+    <meta property="og:description" content="{{ $product->meta_description }}" />
+    <meta property="og:site_name" content="{{ env('APP_NAME') }}" />
+    <meta property="og:price:amount" content="{{ single_price($product->unit_price) }}" />
+@endsection
+
 @section('content')
     <!-- SHOP GRID WRAPPER -->
     <section class="product-details-area">
@@ -293,8 +319,7 @@
                                     <div class="product-description-label mt-2">Share:</div>
                                 </div>
                                 <div class="col-10">
-                                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                                    <div class="addthis_inline_share_toolbox"></div>
+                                    <div id="share"></div>
                                 </div>
                             </div>
                         </div>
@@ -631,4 +656,15 @@
         </div>
     </section>
 
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function() {
+    		$('#share').share({
+    			networks: ['facebook','googleplus','twitter','linkedin','tumblr','in1','stumbleupon','digg'],
+    			theme: 'square'
+    		});
+    	});
+    </script>
 @endsection

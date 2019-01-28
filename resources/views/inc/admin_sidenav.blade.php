@@ -204,6 +204,9 @@
                                 <li class="{{ areActiveRoutes(['payment_method.index'])}}">
                                     <a class="nav-link" href="{{ route('payment_method.index') }}">{{__('payment_mothod')}}</a>
                                 </li>
+                                <li class="{{ areActiveRoutes(['smtp_settings.index'])}}">
+                                    <a class="nav-link" href="{{ route('smtp_settings.index') }}">{{__('SMTP Settings')}}</a>
+                                </li>
                                 <li class="{{ areActiveRoutes(['social_login.index'])}}">
                                     <a class="nav-link" href="{{ route('social_login.index') }}">Social Media Login</a>
                                 </li>

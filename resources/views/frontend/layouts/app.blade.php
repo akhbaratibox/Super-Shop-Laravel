@@ -10,6 +10,8 @@
 <meta name="keywords" content="bootstrap, responsive, template, website, html, theme, ux, ui, web, design, developer, support, business, corporate, real estate, education, medical, school, education, demo, css, framework">
 <meta name="author" content="Webpixels">
 
+@yield('meta')
+
 <!-- Favicon -->
 <link href="{{ asset('frontend/images/favicon.png') }}" rel="icon" type="image/png">
 
@@ -30,6 +32,7 @@
 <link type="text/css" href="{{ asset('frontend/css/sweetalert2.min.css') }}" rel="stylesheet">
 <link type="text/css" href="{{ asset('frontend/css/slick.css') }}" rel="stylesheet">
 <link type="text/css" href="{{ asset('frontend/css/xzoom.css') }}" rel="stylesheet">
+<link type="text/css" href="{{ asset('frontend/css/jquery.share.css') }}" rel="stylesheet">
 
 <!-- Global style (main) -->
 <link type="text/css" href="{{ asset('frontend/css/boomerang.css') }}" rel="stylesheet" media="screen">
@@ -96,7 +99,7 @@
 <script src="{{ asset('frontend/js/sweetalert2.min.js') }}"></script>
 <script src="{{ asset('frontend/js/slick.min.js') }}"></script>
 
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c4eb3c7c69a2672"></script>
+<script src="{{ asset('frontend/js/jquery.share.js') }}"></script>
 
 <script type="text/javascript">
     function showFrontendAlert(type, message){

@@ -4,6 +4,8 @@ use App\Currency;
 use App\BusinessSetting;
 use App\Product;
 use App\SubSubCategory;
+use App\FlashDealProduct;
+use App\FlashDeal;
 
 //highlights the selected navigation on admin panel
 if (! function_exists('areActiveRoutes')) {
@@ -91,11 +93,16 @@ if (! function_exists('convert_price')) {
             $currency = Currency::find($business_settings->value);
             $price = floatval($price) / floatval($currency->exchange_rate);
         }
-        $business_settings = BusinessSetting::where('type', 'home_default_currency')->first();
-        if($business_settings!=null){
-            $currency = Currency::find($business_settings->value);
-            $price = floatval($price) * floatval($currency->exchange_rate);
+
+        $code = \App\Currency::findOrFail(\App\BusinessSetting::where('type', 'home_default_currency')->first()->value)->code;
+        if(Session::has('currency_code')){
+            $currency = Currency::where('code', Session::get('currency_code', $code))->first();
         }
+        else{
+            $currency = Currency::where('code', $code)->first();
+        }
+
+        $price = floatval($price) * floatval($currency->exchange_rate);
 
         return $price;
     }
@@ -158,9 +165,8 @@ if (! function_exists('home_discounted_price')) {
         }
 
         $flash_deal = \App\FlashDeal::where('status', 1)->first();
-        if ($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date) {
-            $flash_deal_product = \App\FlashDealProduct::where('flash_deal_id', $flash_deal->id)->where('product_id', $id)->first();
-            if($flash_deal_product != null){
+        if ($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date && FlashDealProduct::where('flash_deal_id', $flash_deal->id)->where('product_id', $id)->first() != null) {
+            $flash_deal_product = FlashDealProduct::where('flash_deal_id', $flash_deal->id)->where('product_id', $id)->first();
                 if($flash_deal_product->discount_type == 'percent'){
                     $lowest_price -= ($lowest_price*$flash_deal_product->discount)/100;
                     $highest_price -= ($highest_price*$flash_deal_product->discount)/100;
@@ -169,17 +175,25 @@ if (! function_exists('home_discounted_price')) {
                     $lowest_price -= $flash_deal_product->discount;
                     $highest_price -= $flash_deal_product->discount;
                 }
+        }
+        else{
+            if($product->discount_type == 'percent'){
+                $lowest_price -= ($lowest_price*$product->discount)/100;
+                $highest_price -= ($highest_price*$product->discount)/100;
             }
-            else{
-                if($product->discount_type == 'percent'){
-                    $lowest_price -= ($lowest_price*$product->discount)/100;
-                    $highest_price -= ($highest_price*$product->discount)/100;
-                }
-                elseif($product->discount_type == 'amount'){
-                    $lowest_price -= $product->discount;
-                    $highest_price -= $product->discount;
-                }
+            elseif($product->discount_type == 'amount'){
+                $lowest_price -= $product->discount;
+                $highest_price -= $product->discount;
             }
+        }
+
+        if($product->tax_type == 'percent'){
+            $lowest_price += ($lowest_price*$product->tax)/100;
+            $highest_price += ($highest_price*$product->tax)/100;
+        }
+        elseif($product->tax_type == 'amount'){
+            $lowest_price += $product->tax;
+            $highest_price += $product->tax;
         }
 
         $lowest_price = convert_price($lowest_price);
@@ -230,24 +244,29 @@ if (! function_exists('home_discounted_base_price')) {
         $price = $product->unit_price;
 
         $flash_deal = \App\FlashDeal::where('status', 1)->first();
-        if ($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date) {
-            $flash_deal_product = \App\FlashDealProduct::where('flash_deal_id', $flash_deal->id)->where('product_id', $id)->first();
-            if($flash_deal_product != null){
-                if($flash_deal_product->discount_type == 'percent'){
-                    $price -= ($price*$flash_deal_product->discount)/100;
-                }
-                elseif($flash_deal_product->discount_type == 'amount'){
-                    $price -= $flash_deal_product->discount;
-                }
+        if ($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date && FlashDealProduct::where('flash_deal_id', $flash_deal->id)->where('product_id', $id)->first() != null) {
+            $flash_deal_product = FlashDealProduct::where('flash_deal_id', $flash_deal->id)->where('product_id', $id)->first();
+            if($flash_deal_product->discount_type == 'percent'){
+                $price -= ($price*$flash_deal_product->discount)/100;
             }
-            else{
-                if($product->discount_type == 'percent'){
-                    $price -= ($price*$product->discount)/100;
-                }
-                elseif($product->discount_type == 'amount'){
-                    $price -= $product->discount;
-                }
+            elseif($flash_deal_product->discount_type == 'amount'){
+                $price -= $flash_deal_product->discount;
             }
+        }
+        else{
+            if($product->discount_type == 'percent'){
+                $price -= ($price*$product->discount)/100;
+            }
+            elseif($product->discount_type == 'amount'){
+                $price -= $product->discount;
+            }
+        }
+
+        if($product->tax_type == 'percent'){
+            $price += ($price*$product->tax)/100;
+        }
+        elseif($product->tax_type == 'amount'){
+            $price += $product->tax;
         }
 
         $price = convert_price($price);
@@ -264,13 +283,14 @@ if (! function_exists('home_discounted_base_price')) {
 if (! function_exists('currency_symbol')) {
     function currency_symbol()
     {
-        $business_settings = BusinessSetting::where('type', 'home_default_currency')->first();
-        $symbol = '$';
-        if($business_settings!=null){
-            $currency = Currency::find($business_settings->value);
-            $symbol = $currency->symbol;
+        $code = \App\Currency::findOrFail(\App\BusinessSetting::where('type', 'home_default_currency')->first()->value)->code;
+        if(Session::has('currency_code')){
+            $currency = Currency::where('code', Session::get('currency_code', $code))->first();
         }
-        return $symbol;
+        else{
+            $currency = Currency::where('code', $code)->first();
+        }
+        return $currency->symbol;
     }
 }
 

@@ -126,17 +126,8 @@
             $('#lang-change .dropdown-item a').each(function() {
                 $(this).on('click', function(e){
                     e.preventDefault();
-
                     var $this = $(this);
-                    var $parent = $this.closest('.dropdown');
-                    var $btn = $parent.find('.dropdown-toggle');
-                    var $html = $this.html();
                     var locale = $this.data('flag');
-
-                    // $parent.find('.dropdown-item.active').removeClass('active');
-                    // $this.addClass('active');
-                    //$btn.html($html);
-
                     $.post('{{ route('language.change') }}',{_token:'{{ csrf_token() }}', locale:locale}, function(data){
                         location.reload();
                     });
@@ -149,16 +140,12 @@
             $('#currency-change .dropdown-item a').each(function() {
                 $(this).on('click', function(e){
                     e.preventDefault();
-
                     var $this = $(this);
-                    var $parent = $this.closest('.dropdown');
-                    var $btn = $parent.find('.dropdown-toggle');
-                    var $html = $this.html();
-                    var $currency_code = $this.data('currency');
+                    var currency_code = $this.data('currency');
+                    $.post('{{ route('currency.change') }}',{_token:'{{ csrf_token() }}', currency_code:currency_code}, function(data){
+                        location.reload();
+                    });
 
-                    $parent.find('.dropdown-item.active').removeClass('active');
-                    $this.addClass('active');
-                    $btn.html($html);
                 });
             });
         }

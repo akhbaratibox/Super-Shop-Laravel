@@ -52,9 +52,9 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('/smtp-settings', 'BusinessSettingsController@smtp_settings')->name('smtp_settings.index');
 	Route::post('/env_key_update', 'BusinessSettingsController@env_key_update')->name('env_key_update.update');
 	Route::post('/payment_method_update', 'BusinessSettingsController@payment_method_update')->name('payment_method.update');
-	Route::get('/currency', 'BusinessSettingsController@currency')->name('currency.index');
-    Route::post('/currency/update', 'BusinessSettingsController@updateCurrency')->name('currency.update');
-    Route::post('/your-currency/update', 'BusinessSettingsController@updateYourCurrency')->name('your_currency.update');
+	Route::get('/currency', 'CurrencyController@currency')->name('currency.index');
+    Route::post('/currency/update', 'CurrencyController@updateCurrency')->name('currency.update');
+    Route::post('/your-currency/update', 'CurrencyController@updateYourCurrency')->name('your_currency.update');
 	Route::get('/verification/form', 'BusinessSettingsController@seller_verification_form')->name('seller_verification_form.index');
 
 	Route::resource('/languages', 'LanguageController');

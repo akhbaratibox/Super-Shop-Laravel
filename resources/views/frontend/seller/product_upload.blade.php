@@ -5,7 +5,7 @@
     <section class="gry-bg py-4 profile">
         <div class="container">
             <div class="row cols-xs-space cols-sm-space cols-md-space">
-                <div class="col-lg-3">
+                <div class="col-lg-3 d-none d-lg-block">
                     @include('frontend.inc.seller_side_nav')
                 </div>
 
@@ -14,13 +14,13 @@
                         <!-- Page title -->
                         <div class="page-title">
                             <div class="row align-items-center">
-                                <div class="col-lg-6 col-12">
+                                <div class="col-md-6">
                                     <h2 class="heading heading-6 text-capitalize strong-600 mb-0">
                                         {{__('Add Product')}}
                                     </h2>
                                 </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="float-right">
+                                <div class="col-md-6">
+                                    <div class="float-md-right">
                                         <ul class="breadcrumb">
                                             <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
                                             <li><a href="{{ route('dashboard') }}">{{__('dashboard')}}</a></li>
@@ -41,18 +41,18 @@
                                 </div>
                                 <div class="form-box-content p-3">
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-md-2">
                                             <label>{{__('product_name')}} <span class="required-star">*</span></label>
                                         </div>
-                                        <div class="col-10">
+                                        <div class="col-md-10">
                                             <input type="text" class="form-control mb-3" name="name" placeholder="{{__('product_name')}}">
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-md-2">
                                             <label>{{__('Product Category')}} <span class="required-star">*</span></label>
                                         </div>
-                                        <div class="col-10">
+                                        <div class="col-md-10">
                                             <div class="form-control mb-3 c-pointer" data-toggle="modal" data-target="#categorySelectModal" id="product_category">Select a category</div>
                                             <input type="hidden" name="category_id" id="category_id" value="" required>
                                             <input type="hidden" name="subcategory_id" id="subcategory_id" value="" required>
@@ -60,10 +60,10 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-md-2">
                                             <label>{{__('Product Brand')}} <span class="required-star">*</span></label>
                                         </div>
-                                        <div class="col-10">
+                                        <div class="col-md-10">
                                             <div class="mb-3">
                                                 <select class="form-control mb-3 selectpicker" data-placeholder="Select a brand" id="brands" name="brand_id">
 
@@ -72,18 +72,18 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-md-2">
                                             <label>{{__('Product Unit')}} <span class="required-star">*</span></label>
                                         </div>
-                                        <div class="col-10">
+                                        <div class="col-md-10">
                                             <input type="text" class="form-control mb-3" name="unit" placeholder="Product unit">
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-md-2">
                                             <label>{{__('Product Tag')}} <span class="required-star">*</span></label>
                                         </div>
-                                        <div class="col-10">
+                                        <div class="col-md-10">
                                             <input type="text" class="form-control mb-3 tagsInput" name="tags[]" placeholder="Type & hit enter" data-role="tagsinput">
                                         </div>
                                     </div>
@@ -95,10 +95,10 @@
                                 </div>
                                 <div class="form-box-content p-3">
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-md-2">
                                             <label>{{__('Main Images')}} <span class="required-star">*</span></label>
                                         </div>
-                                        <div class="col-10">
+                                        <div class="col-md-10">
                                             <input type="file" name="photos[]" id="file-1" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" multiple accept="image/*" />
                                             <label for="file-1" class="mw-100 mb-3">
                                                 <span></span>
@@ -110,10 +110,10 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-md-2">
                                             <label>{{__('Thumbnail Image')}} <span class="required-star">*</span></label>
                                         </div>
-                                        <div class="col-10">
+                                        <div class="col-md-10">
                                             <input type="file" name="thumbnail_img" id="file-2" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
                                             <label for="file-2" class="mw-100 mb-3">
                                                 <span></span>
@@ -125,10 +125,10 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-md-2">
                                             <label>{{__('featured')}} <span class="required-star">*</span></label>
                                         </div>
-                                        <div class="col-10">
+                                        <div class="col-md-10">
                                             <input type="file" name="featured_img" id="file-3" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
                                             <label for="file-3" class="mw-100 mb-3">
                                                 <span></span>
@@ -140,10 +140,10 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-md-2">
                                             <label>{{__('Flash Deal')}} <span class="required-star">*</span></label>
                                         </div>
-                                        <div class="col-10">
+                                        <div class="col-md-10">
                                             <input type="file" name="flash_deal_img" id="file-4" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
                                             <label for="file-4" class="mw-100 mb-3">
                                                 <span></span>
@@ -162,10 +162,10 @@
                                 </div>
                                 <div class="form-box-content p-3">
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-md-2">
                                             <label>{{__('Video From')}}</label>
                                         </div>
-                                        <div class="col-10">
+                                        <div class="col-md-10">
                                             <div class="mb-3">
                                                 <select class="form-control selectpicker" data-minimum-results-for-search="Infinity" name="video_provider">
                                                     <option value="youtube">Youtube</option>
@@ -176,10 +176,10 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-md-2">
                                             <label>Video URL</label>
                                         </div>
-                                        <div class="col-10">
+                                        <div class="col-md-10">
                                             <input type="text" class="form-control mb-3" name="video_link" placeholder="Video link">
                                         </div>
                                     </div>
@@ -191,18 +191,18 @@
                                 </div>
                                 <div class="form-box-content p-3">
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-md-2">
                                             <label>{{__('Keywords')}}</label>
                                         </div>
-                                        <div class="col-10">
+                                        <div class="col-md-10">
                                             <input type="text" class="form-control mb-3" placeholder="keyword, keyword">
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-md-2">
                                             <label>{{__('Keywords')}}</label>
                                         </div>
-                                        <div class="col-10">
+                                        <div class="col-md-10">
                                             <input type="text" class="form-control mb-3" placeholder="keyword, keyword">
                                         </div>
                                     </div>
@@ -214,17 +214,17 @@
                                 </div>
                                 <div class="form-box-content p-3">
                                     <div class="row mb-3">
-                                        <div class="col-2">
+                                        <div class="col-8 col-md-3 order-1 order-md-0">
         									<input type="text" class="form-control" value="{{__('colors')}}" disabled>
         								</div>
-        								<div class="col-9">
+        								<div class="col-12 col-md-7 col-xl-8 order-3 order-md-0 mt-2 mt-md-0">
         									<select class="form-control selectpicker" name="colors[]" id="colors" multiple>
         										@foreach (\App\Color::orderBy('name', 'asc')->get() as $key => $color)
         											<option value="{{ $color->code }}">{{ $color->name }}</option>
         										@endforeach
         									</select>
         								</div>
-        								<div class="col-1">
+        								<div class="col-4 col-xl-1 col-md-2 order-2 order-md-0 text-right">
         									<label class="switch" style="margin-top:5px;">
         										<input value="1" type="checkbox" name="colors_active" checked>
         										<span class="slider round"></span>
@@ -247,29 +247,29 @@
                                 </div>
                                 <div class="form-box-content p-3">
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-md-2">
                                             <label>{{__('unit_price')}} <span class="required-star">*</span></label>
                                         </div>
-                                        <div class="col-10">
+                                        <div class="col-md-10">
                                             <input type="number" min="0" step="0.01" class="form-control mb-3" name="unit_price" placeholder="Unit Price (Base Price)">
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-md-2">
                                             <label>{{__('purchase_price')}}</label>
                                         </div>
-                                        <div class="col-10">
+                                        <div class="col-md-10">
                                             <input type="number" min="0" step="0.01" class="form-control mb-3" name="purchase_price" placeholder="Purchase Price">
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-md-2">
                                             <label>{{__('tax')}}</label>
                                         </div>
                                         <div class="col-8">
                                             <input type="number" min="0" step="0.01" class="form-control mb-3" name="tax" placeholder="Tax">
                                         </div>
-                                        <div class="col-2">
+                                        <div class="col-4 col-md-2">
                                             <div class="mb-3">
                                                 <select class="form-control selectpicker" name="tax_type" data-minimum-results-for-search="Infinity">
                                                     <option value="1">$</option>
@@ -279,13 +279,13 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-md-2">
                                             <label>{{__('discount')}}</label>
                                         </div>
                                         <div class="col-8">
                                             <input type="number" min="0" step="0.01" class="form-control mb-3" name="discount" placeholder="Discount">
                                         </div>
-                                        <div class="col-2">
+                                        <div class="col-4 col-md-2">
                                             <div class="mb-3">
                                                 <select class="form-control selectpicker" name="discount_type" data-minimum-results-for-search="Infinity">
                                                     <option value="1">$</option>
@@ -307,10 +307,10 @@
                                 </div>
                                 <div class="form-box-content p-3">
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-md-2">
                                             <label>{{__('description')}}</label>
                                         </div>
-                                        <div class="col-10">
+                                        <div class="col-md-10">
                                             <div class="mb-3">
                                                 <textarea class="editor" name="description"></textarea>
                                             </div>
@@ -512,7 +512,7 @@
 
         var i = 0;
     	function add_more_customer_choice_option(){
-    		$('#customer_choice_options').append('<div class="row mb-3"><div class="col-2"><input type="hidden" name="choice_no[]" value="'+i+'"><input type="text" class="form-control" name="choice[]" value="" placeholder="Choice Title"></div><div class="col-9"><input type="text" class="form-control tagsInput" name="choice_options_'+i+'[]" placeholder="Enter choice values" onchange="update_sku()"></div><div class="col-1"><button type="button" onclick="delete_row(this)" class="btn btn-link btn-icon text-danger"><i class="fa fa-trash-o"></i></button></div></div>');
+    		$('#customer_choice_options').append('<div class="row mb-3"><div class="col-8 col-md-3 order-1 order-md-0"><input type="hidden" name="choice_no[]" value="'+i+'"><input type="text" class="form-control" name="choice[]" value="" placeholder="Choice Title"></div><div class="col-12 col-md-7 col-xl-8 order-3 order-md-0 mt-2 mt-md-0"><input type="text" class="form-control tagsInput" name="choice_options_'+i+'[]" placeholder="Enter choice values" onchange="update_sku()"></div><div class="col-4 col-xl-1 col-md-2 order-2 order-md-0 text-right"><button type="button" onclick="delete_row(this)" class="btn btn-link btn-icon text-danger"><i class="fa fa-trash-o"></i></button></div></div>');
     		i++;
             $('.tagsInput').tagsinput('items');
     	}

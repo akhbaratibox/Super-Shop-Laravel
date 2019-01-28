@@ -1,4 +1,4 @@
-__<div class="sidebar sidebar--style-3 no-border stickyfill p-0">
+<div class="sidebar sidebar--style-3 no-border stickyfill p-0">
     <div class="widget mb-0">
         <div class="widget-profile-box text-center p-3">
             <div class="image" style="background-image:url('{{ Auth::user()->avatar_original }}')"></div>
@@ -11,7 +11,7 @@ __<div class="sidebar sidebar--style-3 no-border stickyfill p-0">
             <ul class="categories categories--style-3">
                 <li>
                     <a href="{{ route('dashboard') }}" class="{{ areActiveRoutesHome(['dashboard'])}}">
-                        <i class="fa fa-dashboard"></i>
+                        <i class="la la-dashboard"></i>
                         <span class="category-name">
                             {{__('dashboard')}}
                         </span>
@@ -19,7 +19,7 @@ __<div class="sidebar sidebar--style-3 no-border stickyfill p-0">
                 </li>
                 <li>
                     <a href="{{ route('purchase_history.index') }}" class="{{ areActiveRoutesHome(['purchase_history.index'])}}">
-                        <i class="fa fa-cart-plus"></i>
+                        <i class="la la-file-text"></i>
                         <span class="category-name">
                             {{__('Purchase History')}}
                         </span>
@@ -27,7 +27,7 @@ __<div class="sidebar sidebar--style-3 no-border stickyfill p-0">
                 </li>
                 <li>
                     <a href="{{ route('wishlists.index') }}" class="{{ areActiveRoutesHome(['wishlists.index'])}}">
-                        <i class="fa fa-heart"></i>
+                        <i class="la la-heart-o"></i>
                         <span class="category-name">
                             {{__('Wishlist')}}
                         </span>
@@ -35,7 +35,7 @@ __<div class="sidebar sidebar--style-3 no-border stickyfill p-0">
                 </li>
                 <li>
                     <a href="{{ route('seller.products') }}" class="{{ areActiveRoutesHome(['seller.products', 'seller.products.upload', 'seller.products.edit'])}}">
-                        <i class="fa fa-diamond"></i>
+                        <i class="la la-diamond"></i>
                         <span class="category-name">
                             {{__('products')}}
                         </span>
@@ -43,7 +43,7 @@ __<div class="sidebar sidebar--style-3 no-border stickyfill p-0">
                 </li>
                 <li>
                     <a href="{{ route('orders.index') }}" class="{{ areActiveRoutesHome(['orders.index'])}}">
-                        <i class="fa fa-shopping-basket"></i>
+                        <i class="la la-file-text"></i>
                         <span class="category-name">
                             {{__('orders')}}
                         </span>
@@ -51,7 +51,7 @@ __<div class="sidebar sidebar--style-3 no-border stickyfill p-0">
                 </li>
                 <li>
                     <a href="{{ route('shop.index') }}" class="{{ areActiveRoutesHome(['shop.index'])}}">
-                        <i class="fa fa-cog"></i>
+                        <i class="la la-cog"></i>
                         <span class="category-name">
                             {{__('Shop Setting')}}
                         </span>
@@ -59,7 +59,7 @@ __<div class="sidebar sidebar--style-3 no-border stickyfill p-0">
                 </li>
                 <li>
                     <a href="{{ route('seller.products') }}" class="{{ areActiveRoutesHome([])}}">
-                        <i class="fa fa-credit-card-alt"></i>
+                        <i class="la la-cc-mastercard"></i>
                         <span class="category-name">
                             {{__('Payment History')}}
                         </span>
@@ -67,7 +67,7 @@ __<div class="sidebar sidebar--style-3 no-border stickyfill p-0">
                 </li>
                 <li>
                     <a href="{{ route('profile') }}" class="{{ areActiveRoutesHome(['profile'])}}">
-                        <i class="fa fa-user-circle-o"></i>
+                        <i class="la la-user"></i>
                         <span class="category-name">
                             {{__('Manage Profile')}}
                         </span>

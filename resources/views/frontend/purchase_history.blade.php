@@ -5,7 +5,7 @@
     <section class="gry-bg py-4 profile">
         <div class="container">
             <div class="row cols-xs-space cols-sm-space cols-md-space">
-                <div class="col-lg-3">
+                <div class="col-lg-3 d-none d-lg-block">
                     @if(Auth::user()->user_type == 'seller')
                         @include('frontend.inc.seller_side_nav')
                     @elseif(Auth::user()->user_type == 'customer')
@@ -18,13 +18,13 @@
                         <!-- Page title -->
                         <div class="page-title">
                             <div class="row align-items-center">
-                                <div class="col-lg-6 col-12">
+                                <div class="col-md-6 col-12">
                                     <h2 class="heading heading-6 text-capitalize strong-600 mb-0">
                                         {{__('Purchase History')}}
                                     </h2>
                                 </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="float-right">
+                                <div class="col-md-6 col-12">
+                                    <div class="float-md-right">
                                         <ul class="breadcrumb">
                                             <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
                                             <li><a href="{{ route('dashboard') }}">{{__('dashboard')}}</a></li>
@@ -39,7 +39,7 @@
                             <!-- Order history table -->
                             <div class="card no-border mt-4">
                                 <div>
-                                    <table class="table table-sm table-hover">
+                                    <table class="table table-sm table-hover table-responsive-md">
                                         <thead>
                                             <tr>
                                                 <th>{{__('Code')}}</th>

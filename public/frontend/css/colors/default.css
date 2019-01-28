@@ -124,7 +124,8 @@ ul.categories--style-3 > li > ul > li > a.active,
 .tabs--style-2 .nav-tabs .nav-link:hover,
 .product-box-1 .title a:hover,
 .product-box-1 .price-bar .price,
-.sub-category-menu ul li a:hover
+.sub-category-menu ul li a:hover,
+.product-box-2 .add-to-cart
 
 {
     color: #e62e04;
@@ -235,7 +236,8 @@ input:checked + .toggle-switch-slider:before,
 
 
 
-.pace .pace-progress {
+.pace .pace-progress,
+.widget-profile-menu a:hover {
     background: #e62e04 !important;
 }
 
@@ -281,7 +283,9 @@ input:checked + .toggle-switch-slider:before,
 .noUi-vertical .noUi-handle,
 .input-group-btn-vertical > .btn:hover,
 #map-zoom-in:hover,
-#map-zoom-out:hover
+#map-zoom-out:hover,
+.product-box-2 .add-to-cart:hover
+
 {
     background-color: #e62e04;
 }
@@ -363,7 +367,9 @@ a > .feature--boxed-border:hover,
 .typeface-palette a.active:hover > .typeface-entry,
 .section-title-1 li a.active,
 .section-title-1 li a:hover,
-.bg-base-1 .btn-base-1
+.bg-base-1 .btn-base-1,
+.product-box-2 .add-to-cart
+
 {
     border-color: #e62e04;
 }

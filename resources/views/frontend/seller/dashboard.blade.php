@@ -13,13 +13,13 @@
                     <!-- Page title -->
                     <div class="page-title">
                         <div class="row align-items-center">
-                            <div class="col-lg-6 col-12">
+                            <div class="col-md-6">
                                 <h2 class="heading heading-6 text-capitalize strong-600 mb-0">
                                     {{__('dashboard')}}
                                 </h2>
                             </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="float-right">
+                            <div class="col-md-6">
+                                <div class="float-md-right">
                                     <ul class="breadcrumb">
                                         <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
                                         <li class="active"><a href="{{ route('dashboard') }}">{{__('dashboard')}}</a></li>
@@ -31,7 +31,7 @@
                     <!-- dashboard content -->
                     <div class="">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-6">
                                 <div class="dashboard-widget text-center green-widget mt-4">
                                     <a href="" class="d-block">
                                         <i class="fa fa-upload"></i>
@@ -40,7 +40,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-6">
                                 <div class="dashboard-widget text-center red-widget mt-4">
                                     <a href="" class="d-block">
                                         <i class="fa fa-cart-plus"></i>
@@ -49,7 +49,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-6">
                                 <div class="dashboard-widget text-center blue-widget mt-4">
                                     <a href="" class="d-block">
                                         <i class="fa fa-dollar"></i>
@@ -67,7 +67,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-6">
                                 <div class="dashboard-widget text-center yellow-widget mt-4">
                                     <a href="" class="d-block">
                                         <i class="fa fa-check-square-o"></i>

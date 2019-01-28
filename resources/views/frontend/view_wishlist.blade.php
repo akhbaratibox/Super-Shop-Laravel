@@ -5,7 +5,7 @@
     <section class="gry-bg py-4 profile">
         <div class="container">
             <div class="row cols-xs-space cols-sm-space cols-md-space">
-                <div class="col-lg-3">
+                <div class="col-lg-3 d-none d-lg-block">
                     @if(Auth::user()->user_type == 'seller')
                         @include('frontend.inc.seller_side_nav')
                     @elseif(Auth::user()->user_type == 'customer')
@@ -18,17 +18,17 @@
                         <!-- Page title -->
                         <div class="page-title">
                             <div class="row align-items-center">
-                                <div class="col-lg-6 col-12">
+                                <div class="col-md-6 col-12">
                                     <h2 class="heading heading-6 text-capitalize strong-600 mb-0">
-                                        {{__('Wishlist')}}
+                                        Wishlist
                                     </h2>
                                 </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="float-right">
+                                <div class="col-md-6 col-12">
+                                    <div class="float-md-right">
                                         <ul class="breadcrumb">
-                                            <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
-                                            <li><a href="{{ route('dashboard') }}">{{__('dashboard')}}</a></li>
-                                            <li class="active"><a href="{{ route('wishlists.index') }}">{{__('Wishlist')}}</a></li>
+                                            <li><a href="{{ route('home') }}">Home</a></li>
+                                            <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                            <li class="active"><a href="{{ route('wishlists.index') }}">Wishlist</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -39,55 +39,38 @@
 
                         <div class="row shop-default-wrapper shop-cards-wrapper shop-tech-wrapper mt-4">
                             @foreach ($wishlists as $key => $wishlist)
-                                <div class="col-lg-4" id="wishlist_{{ $wishlist->id }}">
-                                    <div class="card card-product mb-3">
-                                        <div class="card-body">
-                                            <div class="card-image swiper-js-container">
-                                                <div class="">
-                                                    <div class="swiper-container" data-swiper-items="1" data-swiper-space-between="0">
-                                                        <div class="swiper-wrapper">
-                                                            @foreach (json_decode($wishlist->product->photos) as $key => $photo)
-                                                                <div class="swiper-slide">
-                                                                    <img src="{{ asset($photo) }}" class="img-fluid img-center img-primary">
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                <div class="col-xl-4 col-md-6" id="wishlist_{{ $wishlist->id }}">
+                                    <div class="card card-product mb-3 product-card-2">
+                                        <div class="card-body p-3">
+                                            <div class="card-image">
+                                                <a href="{{ route('product', $wishlist->product->slug) }}" class="d-block" style="background-image:url('{{ asset(json_decode($wishlist->product->photos)[0]) }}');">
+                                                </a>
                                             </div>
 
-                                            <h2 class="heading heading-6 strong-600 mt-2 mb-3">
-                                                <a href="#">{{ $wishlist->product->name }}</a>
+                                            <h2 class="heading heading-6 strong-600 mt-2 mb-3 text-truncate-2">
+                                                <a href="{{ route('product', $wishlist->product->slug) }}">{{ $wishlist->product->name }}</a>
                                             </h2>
 
-                                            <div class="mt-3">
-                                                <div class="price-wrapper">
-                                                    <span class="price price-sm c-gray-dark">
-                                                        <span class="strong-300">$</span><span class="price-value strong-600">65.</span><small class="strong-300">00</small>
-                                                    </span>
-                                                    <span class="clearfix"></span>
+                                            <div class="mt-2">
+                                                <div class="price-box">
+                                                    @if(home_base_price($wishlist->product->id) != home_discounted_base_price($wishlist->product->id))
+                                                        <del class="old-product-price strong-400">{{ home_base_price($wishlist->product->id) }}</del>
+                                                    @endif
+                                                    <span class="product-price strong-600">{{ home_discounted_base_price($wishlist->product->id) }}</span>
                                                 </div>
-                                                <h6 class="heading heading-sm strong-400 c-red">Save 10%</h6>
-                                                <span class="star-rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </span>
                                             </div>
                                         </div>
-                                        <div class="card-footer">
+                                        <div class="card-footer p-3">
                                             <div class="product-buttons">
                                                 <div class="row align-items-center">
                                                     <div class="col-2">
                                                         <a href="#" class="link link--style-3" data-toggle="tooltip" data-placement="top" title="Remove from wishlist" onclick="removeFromWishlist({{ $wishlist->id }})">
-                                                            <i class="ion-close-round"></i>
+                                                            <i class="la la-close"></i>
                                                         </a>
                                                     </div>
                                                     <div class="col-10">
                                                         <button type="button" class="btn btn-block btn-base-1 btn-circle btn-icon-left" onclick="showAddToCartModal({{ $wishlist->product->id }})">
-                                                            <i class="icon ion-android-cart"></i>Add to cart
+                                                            <i class="la la-shopping-cart mr-2"></i>Add to cart
                                                         </button>
                                                     </div>
                                                 </div>

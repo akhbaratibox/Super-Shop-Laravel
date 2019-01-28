@@ -336,7 +336,7 @@
     <section class="gry-bg">
         <div class="container">
             <div class="row">
-                <div class="col-xl-3 order-2 order-xl-0 d-none d-xl-block">
+                <div class="col-xl-3 d-none d-xl-block">
                     <div class="seller-info-box mb-3">
                         <div class="sold-by position-relative">
                             <div class="position-absolute medal-badge">
@@ -406,14 +406,14 @@
                             <div class="category-accordion">
                                 @foreach (\App\Product::where('user_id', $product->user_id)->select('category_id')->distinct()->get() as $key => $category)
                                     <div class="single-category">
-                                        <button class="btn w-100 category-name" type="button" data-toggle="collapse" data-target="#category-{{ $key }}" aria-expanded="true">
+                                        <button class="btn w-100 category-name collapsed" type="button" data-toggle="collapse" data-target="#category-{{ $key }}" aria-expanded="false">
                                         {{ App\Category::findOrFail($category->category_id)->name }}
                                         </button>
 
-                                        <div id="category-{{ $key }}" class="collapse show">
+                                        <div id="category-{{ $key }}" class="collapse">
                                             @foreach (\App\Product::where('user_id', $product->user_id)->where('category_id', $category->category_id)->select('subcategory_id')->distinct()->get() as $subcategory)
                                                 <div class="single-sub-category">
-                                                    <button class="btn w-100 sub-category-name" type="button" data-toggle="collapse" data-target="#subCategory-{{ $subcategory->subcategory_id }}" aria-expanded="true">
+                                                    <button class="btn w-100 sub-category-name" type="button" data-toggle="collapse" data-target="#subCategory-{{ $subcategory->subcategory_id }}" aria-expanded="false">
                                                     {{ App\SubCategory::findOrFail($subcategory->subcategory_id)->name }}
                                                     </button>
                                                     <div id="subCategory-{{ $subcategory->subcategory_id }}" class="collapse show">
@@ -436,21 +436,20 @@
                         </div>
                         <div class="box-content">
                             @foreach (\App\Product::where('user_id', $product->user_id)->orderBy('num_of_sale', 'desc')->limit(4)->get() as $key => $top_product)
-                            <div class="product-box-1 mb-3">
-                                <div class="block product">
-                                    <div class="block-image">
-                                        <div class="view view-first">
-                                            <a href="{{ route('product', $top_product->slug) }}">
-                                                <img src="{{ asset(json_decode($top_product->photos)[0]) }}" class="img-fluid img-center img-primary">
-                                            </a>
-                                        </div>
+                            <div class="mb-3 product-box-3">
+                                <div class="clearfix">
+                                    <div class="product-image float-left">
+                                        <a href="{{ route('product', $top_product->slug) }}" style="background-image:url('{{ asset(json_decode($top_product->photos)[0]) }}');"></a>
                                     </div>
-                                    <div class="text-center pb-2">
-                                        <h2 class="heading heading-6 product-title text-normal strong-500 text-truncate-2">
-                                            <a href="{{ route('product', $top_product->slug) }}">{{ $top_product->name }}</a>
-                                        </h2>
-                                        <div class="price-wrapper">
-                                            <span class="product-price strong-600">{{ home_discounted_base_price($top_product->id) }}</span></span>
+                                    <div class="product-details float-left">
+                                        <h4 class="title text-truncate-2">
+                                            <a href="{{ route('product', $top_product->slug) }}" class="d-block">{{ $top_product->name }}</a>
+                                        </h4>
+                                        <div class="price-box">
+                                            <!-- @if(home_base_price($top_product->id) != home_discounted_base_price($top_product->id))
+                                                <del class="old-product-price strong-400">{{ home_base_price($top_product->id) }}</del>
+                                            @endif -->
+                                            <span class="product-price strong-600">{{ home_discounted_base_price($top_product->id) }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -459,7 +458,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-9 order-1 order-xl-0">
+                <div class="col-xl-9">
                     <div class="product-desc-tab bg-white">
                         <div class="tabs tabs--style-2">
                             <ul class="nav nav-tabs justify-content-center sticky-top bg-white">
@@ -629,7 +628,7 @@
                             </h3>
                         </div>
                         <div class="caorusel-box">
-                            <div class="slick-carousel" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="2" data-slick-xs-items="1">
+                            <div class="slick-carousel" data-slick-items="4" data-slick-lg-items="4"  data-slick-md-items="3" data-slick-sm-items="2" data-slick-xs-items="1">
                                 @foreach (\App\Product::where('subcategory_id', $product->subcategory_id)->where('id', '!=', $product->id)->limit(10)->get() as $key => $related_product)
                                     <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
                                         <div class="card-body p-0">
@@ -669,6 +668,7 @@
     			networks: ['facebook','googleplus','twitter','linkedin','tumblr','in1','stumbleupon','digg'],
     			theme: 'square'
     		});
-    	});
+    	});
+
     </script>
 @endsection

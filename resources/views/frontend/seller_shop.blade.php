@@ -90,7 +90,7 @@
     <section class="gry-bg pt-4">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-xl-3 d-none d-xl-block">
                     <div class="seller-info-box mb-3">
                         <div class="sold-by position-relative">
                             <div class="position-absolute medal-badge">
@@ -154,17 +154,17 @@
                                 @endphp
                                 @foreach (\App\Product::where('user_id', $shop->user->id)->select('category_id')->distinct()->get() as $key => $category)
                                     <div class="single-category">
-                                        <button class="btn w-100 category-name" type="button" data-toggle="collapse" data-target="#category-{{ $key }}" aria-expanded="true">
+                                        <button class="btn w-100 category-name collapsed" type="button" data-toggle="collapse" data-target="#category-{{ $key }}" aria-expanded="false">
                                         {{ App\Category::findOrFail($category->category_id)->name }}
                                         </button>
 
-                                        <div id="category-{{ $key }}" class="collapse show">
+                                        <div id="category-{{ $key }}" class="collapse">
                                             @foreach (\App\Product::where('user_id', $shop->user->id)->where('category_id', $category->category_id)->select('subcategory_id')->distinct()->get() as $subcategory)
                                                 <div class="single-sub-category">
-                                                    <button class="btn w-100 sub-category-name" type="button" data-toggle="collapse" data-target="#subCategory-{{ $subcategory->subcategory_id }}" aria-expanded="true">
+                                                    <button class="btn w-100 sub-category-name" type="button" data-toggle="collapse" data-target="#subCategory-{{ $subcategory->subcategory_id }}" aria-expanded="false">
                                                     {{ App\SubCategory::findOrFail($subcategory->subcategory_id)->name }}
                                                     </button>
-                                                    <div id="subCategory-{{ $subcategory->subcategory_id }}" class="collapse show">
+                                                    <div id="subCategory-{{ $subcategory->subcategory_id }}" class="collapse">
                                                         <ul class="sub-sub-category-list">
                                                             @foreach (\App\Product::where('user_id', $shop->user->id)->where('category_id',            $category->category_id)->where('subcategory_id', $subcategory->subcategory_id)->select('subsubcategory_id')->distinct()->get() as $subsubcategory)
                                                                 @php
@@ -203,14 +203,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-9">
+                <div class="col-xl-9">
                     <h4 class="heading-5 strong-600 border-bottom pb-3 mb-4">{{__('New Arrival Products')}}</h4>
                     <div class="product-list row">
                         @php
                             $products = \App\Product::where('user_id', $shop->user->id)->where('created_at', '>=' , date('Y-m-d', strtotime('-10days')))->paginate(6);
                         @endphp
                         @foreach ($products as $key => $product)
-                            <div class="col-lg-4">
+                            <div class="col-lg-4 col-md-6">
                                 <div class="card product-box-1 mb-3">
                                     <div class="card-image">
                                         <a href="" class="d-block" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');" tabindex="0">

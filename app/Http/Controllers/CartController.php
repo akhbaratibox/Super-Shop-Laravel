@@ -36,6 +36,7 @@ class CartController extends Controller
         $data = array();
         $data['id'] = $product->id;
         $str = '';
+        $tax = 0;
 
         if($request->has('color')){
             $data['color'] = $request['color'];

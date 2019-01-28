@@ -71,7 +71,11 @@
                                 <div class="col-6">
                                     <div class="sold-by">
                                         <small class="mr-2">{{__('Sold by')}}: </small>
-                                        <a href="">{{ $product->user->name }}</a>
+                                        @if ($product->added_by == 'seller')
+                                            <a href="{{ route('shop.visit', $product->user->shop->slug) }}">{{ $product->user->name }}</a>
+                                        @else
+                                            <a class="#">{{ $product->user->name }}</a>
+                                        @endif
                                     </div>
                                     <!-- Rating stars -->
                                     <!-- <div class="rating">

@@ -121,6 +121,49 @@
 
 <script>
 
+    $(document).ready(function() {
+        if ($('#lang-change').length > 0) {
+            $('#lang-change .dropdown-item a').each(function() {
+                $(this).on('click', function(e){
+                    e.preventDefault();
+
+                    var $this = $(this);
+                    var $parent = $this.closest('.dropdown');
+                    var $btn = $parent.find('.dropdown-toggle');
+                    var $html = $this.html();
+                    var locale = $this.data('flag');
+
+                    // $parent.find('.dropdown-item.active').removeClass('active');
+                    // $this.addClass('active');
+                    //$btn.html($html);
+
+                    $.post('{{ route('language.change') }}',{_token:'{{ csrf_token() }}', locale:locale}, function(data){
+                        location.reload();
+                    });
+
+                });
+            });
+        }
+
+        if ($('#currency-change').length > 0) {
+            $('#currency-change .dropdown-item a').each(function() {
+                $(this).on('click', function(e){
+                    e.preventDefault();
+
+                    var $this = $(this);
+                    var $parent = $this.closest('.dropdown');
+                    var $btn = $parent.find('.dropdown-toggle');
+                    var $html = $this.html();
+                    var $currency_code = $this.data('currency');
+
+                    $parent.find('.dropdown-item.active').removeClass('active');
+                    $this.addClass('active');
+                    $btn.html($html);
+                });
+            });
+        }
+    });
+
     $('#search').on('keyup', function(){
         search();
     });

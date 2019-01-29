@@ -81,6 +81,8 @@ Route::post('/ajax-search', 'HomeController@ajax_search')->name('search.ajax');
 Route::get('/sellerpolicy', 'HomeController@sellerpolicy')->name('sellerpolicy');
 Route::get('/returnpolicy', 'HomeController@returnpolicy')->name('returnpolicy');
 Route::get('/supportpolicy', 'HomeController@supportpolicy')->name('supportpolicy');
+Route::get('/terms', 'HomeController@terms')->name('terms');
+Route::get('/privacypolicy', 'HomeController@privacypolicy')->name('privacypolicy');
 
 Route::resource('wishlists','WishlistController');
 Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');

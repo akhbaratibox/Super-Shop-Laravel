@@ -78,6 +78,11 @@ class GeneralSettingController extends Controller
         $generalsetting->phone = $request->phone;
         $generalsetting->email = $request->email;
         $generalsetting->description = $request->description;
+        $generalsetting->facebook = $request->facebook;
+        $generalsetting->instagram = $request->instagram;
+        $generalsetting->twitter = $request->twitter;
+        $generalsetting->youtube = $request->youtube;
+        $generalsetting->google_plus = $request->google_plus;
 
         if($request->hasFile('logo')){
             $generalsetting->logo = $request->file('logo')->store('uploads/logo');

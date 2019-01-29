@@ -371,4 +371,12 @@ class HomeController extends Controller
     public function supportpolicy(){
         return view("frontend.policies.supportpolicy");
     }
+
+    public function terms(){
+        return view("frontend.policies.terms");
+    }
+
+    public function privacypolicy(){
+        return view("frontend.policies.privacypolicy");
+    }
 }

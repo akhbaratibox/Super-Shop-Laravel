@@ -159,36 +159,51 @@
                                 © 2018 Active Super Shop
                             </li>
                             <li>
-                                <a href="#">Terms</a>
+                                <a href="{{ route('terms') }}">Terms</a>
                             </li>
                             <li>
-                                <a href="#">Privacy policy</a>
+                                <a href="{{ route('privacypolicy') }}">Privacy policy</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <ul class="social-media social-media--style-1-v4 text-center my-3 my-md-0">
-                        <li>
-                            <a href="#" class="facebook" target="_blank" data-toggle="tooltip" data-original-title="Facebook">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="instagram" target="_blank" data-toggle="tooltip" data-original-title="Instagram">
-                                <i class="fa fa-instagram"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="dribbble" target="_blank" data-toggle="tooltip" data-original-title="Dribbble">
-                                <i class="fa fa-dribbble"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="dribbble" target="_blank" data-toggle="tooltip" data-original-title="Github">
-                                <i class="fa fa-github"></i>
-                            </a>
-                        </li>
+                        @if ($generalsetting->facebook != null)
+                            <li>
+                                <a href="{{ $generalsetting->facebook }}" class="facebook" target="_blank" data-toggle="tooltip" data-original-title="Facebook">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                        @endif
+                        @if ($generalsetting->instagram != null)
+                            <li>
+                                <a href="{{ $generalsetting->instagram }}" class="instagram" target="_blank" data-toggle="tooltip" data-original-title="Instagram">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                        @endif
+                        @if ($generalsetting->twitter != null)
+                            <li>
+                                <a href="{{ $generalsetting->twitter }}" class="twitter" target="_blank" data-toggle="tooltip" data-original-title="Twitter">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                        @endif
+                        @if ($generalsetting->youtube != null)
+                            <li>
+                                <a href="{{ $generalsetting->youtube }}" class="youtube" target="_blank" data-toggle="tooltip" data-original-title="Youtube">
+                                    <i class="fa fa-youtube"></i>
+                                </a>
+                            </li>
+                        @endif
+                        @if ($generalsetting->google_plus != null)
+                            <li>
+                                <a href="{{ $generalsetting->google_plus }}" class="google-plus" target="_blank" data-toggle="tooltip" data-original-title="Google Plus">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
                 <div class="col-md-4">

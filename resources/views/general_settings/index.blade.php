@@ -50,6 +50,36 @@
                             <input type="file" id="logo" name="logo" class="form-control">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="facebook">{{__('Facebook')}}</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="facebook" name="facebook" value="{{ $generalsetting->facebook }}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="instagram">{{__('Instagram')}}</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="instagram" name="instagram" value="{{ $generalsetting->instagram }}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="twitter">{{__('Twitter')}}</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="twitter" name="twitter" value="{{ $generalsetting->twitter }}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="youtube">{{__('Youtube')}}</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="youtube" name="youtube" value="{{ $generalsetting->youtube }}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="google_plus">{{__('Google Plus')}}</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="google_plus" name="google_plus" value="{{ $generalsetting->google_plus }}" class="form-control">
+                        </div>
+                    </div>
                 </div>
                 <div class="panel-footer text-right">
                     <button class="btn btn-purple" type="submit">{{__('save')}}</button>

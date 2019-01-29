@@ -120,3 +120,7 @@
 [28-01-2019 06:50:18] PayPal\Core\PayPalHttpConnection: INFO	: Response Status 	: 200
 [28-01-2019 06:50:18] PayPal\Core\PayPalHttpConnection: INFO	: POST https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LRHKL7Q7LE20240C8903083L/execute
 [28-01-2019 06:50:21] PayPal\Core\PayPalHttpConnection: INFO	: Response Status 	: 200
+[29-01-2019 12:32:48] PayPal\Core\PayPalHttpConnection: INFO	: POST https://api.sandbox.paypal.com/v1/oauth2/token
+[29-01-2019 12:32:50] PayPal\Core\PayPalHttpConnection: INFO	: Response Status 	: 200
+[29-01-2019 12:32:50] PayPal\Core\PayPalHttpConnection: INFO	: POST https://api.sandbox.paypal.com/v1/payments/payment
+[29-01-2019 12:32:52] PayPal\Core\PayPalHttpConnection: INFO	: Response Status 	: 201

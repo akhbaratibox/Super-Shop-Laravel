@@ -61,6 +61,11 @@ Route::POST('/sslcommerz/cancel', 'PublicSslCommerzPaymentController@cancel');
 Route::POST('/sslcommerz/ipn', 'PublicSslCommerzPaymentController@ipn');
 //SSLCOMMERZ END
 
+//Stipe Start
+Route::get('stripe', 'StripePaymentController@stripe');
+Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
+//Stripe END
+
 Route::get('/compare', 'CompareController@index')->name('compare');
 Route::get('/compare/reset', 'CompareController@reset')->name('compare.reset');
 Route::post('/compare/addToCompare', 'CompareController@addToCompare')->name('compare.addToCompare');

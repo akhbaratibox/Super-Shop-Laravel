@@ -61,6 +61,16 @@
                                         </label>
                                     </li>
                                 @endif
+                                @if(\App\BusinessSetting::where('type', 'stripe_payment')->first()->value == 1)
+                                    <li>
+                                        <label class="payment_option">
+                                            <input type="radio" id="" name="payment_option" value="stripe" checked>
+                                            <span>
+                                                <img src="{{ asset('frontend/images/icons/cards/stripe.png')}}" class="img-fluid">
+                                            </span>
+                                        </label>
+                                    </li>
+                                @endif
                                 @if(\App\BusinessSetting::where('type', 'sslcommerz_payment')->first()->value == 1)
                                     <li>
                                         <label class="payment_option">

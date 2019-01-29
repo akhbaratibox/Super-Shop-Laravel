@@ -121,42 +121,5 @@
                 showFrontendAlert('success', 'Item has been renoved from wishlist');
             })
         }
-
-        function showAddToCartModal(id){
-            if(!$('#modal-size').hasClass('modal-lg')){
-                $('#modal-size').addClass('modal-lg');
-            }
-            $('#addToCart').modal();
-            $.post('{{ route('cart.showCartModal') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
-                $('.c-preloader').hide();
-                $('#addToCart-modal-body').html(data);
-                $('#slideshow').desoSlide({
-                    thumbs: $('#slideshow_thumbs .swiper-slide > a'),
-                    thumbEvent: 'click',
-                    first: 0,
-                    effect: 'none',
-                    overlay: 'none',
-                    controls: {
-                        show: false,
-                        keys: false
-                    },
-                });
-            });
-        }
-
-        function addToCart(){
-            $('.c-preloader').show();
-            $.ajax({
-               type:"POST",
-               url:'{{ route('cart.addToCart') }}',
-               data:$('#option-choice-form').serialize(),
-               success: function(data){
-                   $('.c-preloader').hide();
-                   $('#modal-size').removeClass('modal-lg');
-                   $('#addToCart-modal-body').html(data);
-                   updateNavCart();
-               }
-           });
-        }
     </script>
 @endsection

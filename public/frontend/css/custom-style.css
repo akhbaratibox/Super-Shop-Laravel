@@ -45,6 +45,10 @@ input[type="submit"]{
     opacity: 0.5;
 }
 
+.jodit_container .jodit_workplace{
+    min-height: 300px!important;
+}
+
 .text-truncate-2{
     overflow: hidden;
     display: -webkit-box;
@@ -2898,8 +2902,8 @@ ul.seller-brand-list .brand-item {
         -webkit-transition: opacity .3s,visibility .3s;
         -ms-webkit-transition: opacity .3s,visibility .3s;
     }
-    
-    
+
+
     .side-menu-wrap.opacity-0, .side-menu-overlay.opacity-0 {
         opacity: 0;
         visibility: hidden;
@@ -2908,7 +2912,7 @@ ul.seller-brand-list .brand-item {
         opacity: 1;
         visibility: visible;
     }
-    
+
     .side-menu {
         position: absolute;
         left: 0;
@@ -2950,7 +2954,7 @@ ul.seller-brand-list .brand-item {
         position: relative;
         color: #fff;
     }
-    
+
     .side-menu-close {
         position: absolute;
         color: #fff;
@@ -2963,27 +2967,27 @@ ul.seller-brand-list .brand-item {
         text-align: center;
         cursor: pointer;
     }
-    
+
     .side-menu-header .widget-profile-box .image {
         margin: 0;
         height: 60px;
         width: 60px;
         border: 3px solid #da8471;
     }
-    
+
     .side-menu-header .widget-profile-box .name {
         margin-left: 10px;
         font-weight: 700;
         margin-top: 0;
     }
-    
+
     .side-menu-header .side-login a {
         color: #fff;
         font-size: 14px;
         font-weight: 600;
         line-height: 14px;
     }
-    
+
     .side-menu-header .side-login a:not(:first-child) {
         margin-left: 10px;
         border-left: 1px solid #fff;
@@ -2994,7 +2998,7 @@ ul.seller-brand-list .brand-item {
         margin: 0;
         list-style: none;
     }
-    
+
     .side-menu-list ul li a {
         color: #5a5a5a;
         font-size: 14px;
@@ -3002,7 +3006,7 @@ ul.seller-brand-list .brand-item {
         display: block;
         font-weight: 600;
     }
-    
+
     .side-menu-list ul li a i {
         opacity: 0.6;
         margin-right: 8px;
@@ -3027,11 +3031,11 @@ ul.seller-brand-list .brand-item {
         padding-top: 30px;
         background: transparent;
     }
-    
+
     .category-sidebar .sub-cat-menu {
         display: none !important;
     }
-    
+
     .category-sidebar .categories > li {
         width: 120px;
         height: 110px;
@@ -3042,17 +3046,17 @@ ul.seller-brand-list .brand-item {
         margin: 0 5px;
         vertical-align: top;
     }
-    
+
     .category-sidebar .categories {
         -webkit-overflow-scrolling: touch;
         overflow-x: auto;
         white-space: nowrap;
     }
-    
+
     .category-sidebar .categories > li > a > * {
         display: block;
     }
-    
+
     .category-sidebar .categories > li > a {
         text-align: center;
         height: 100%;
@@ -3080,7 +3084,7 @@ ul.seller-brand-list .brand-item {
     .all-category-menu ul li{
         width: 25%;
     }
-    
+
 }
 
 

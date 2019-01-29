@@ -196,18 +196,33 @@
                                 <div class="form-box-content p-3">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('Keywords')}}</label>
+                                            <label>{{__('Meta Title')}}</label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control mb-3" placeholder="keyword, keyword">
+                                            <input type="text" class="form-control mb-3" value="{{ $product->meta_title }}" placeholder="{{__('Meta Title')}}">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('Keywords')}}</label>
+                                            <label>{{__('Description')}}</label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control mb-3" placeholder="keyword, keyword">
+                                            <textarea name="meta_description" rows="8" class="form-control mb-3">{{ $product->meta_description }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>{{__('Meta Image')}} <span class="required-star">*</span></label>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="file" name="meta_img" id="file-2" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
+                                            <label for="file-2" class="mw-100 mb-3">
+                                                <span></span>
+                                                <strong>
+                                                    <i class="fa fa-upload"></i>
+                                                    {{__('Choose image')}}
+                                                </strong>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>

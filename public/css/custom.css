@@ -90,3 +90,11 @@ select + .select2-container{
 .datepicker{
     z-index: 99999 !important;
 }
+
+.img-md {
+    height: auto;
+}
+
+.jodit_container .jodit_workplace{
+    min-height: 300px!important;
+}

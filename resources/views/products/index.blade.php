@@ -32,7 +32,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th width="20%">{{__('name')}}</th>
+                                    <th width="30%">{{__('name')}}</th>
                                     <th>{{__('photo')}}</th>
                                     <th>{{__('current_qty')}}</th>
                                     <th>{{__('base_price')}}</th>
@@ -43,7 +43,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach(\App\Product::where('added_by', 'admin')->get() as $key => $product)
+                                @foreach(\App\Product::where('added_by', 'admin')->orderBy('created_at', 'desc')->get() as $key => $product)
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td><a href="{{ route('product', $product->slug) }}" target="_blank">{{ $product->name }}</a></td>
@@ -105,7 +105,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach(\App\Product::where('added_by', 'seller')->get() as $key => $product)
+                                @foreach(\App\Product::where('added_by', 'seller')->orderBy('created_at', 'desc')->get() as $key => $product)
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td><a href="{{ route('product', $product->slug) }}" target="_blank">{{ $product->name }}</a></td>

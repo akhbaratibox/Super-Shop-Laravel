@@ -35,9 +35,9 @@
 						<li class="">
 				            <a data-toggle="tab" href="#demo-stk-lft-tab-7" aria-expanded="false">Description</a>
 				        </li>
-						<li class="">
+						{{-- <li class="">
 				            <a data-toggle="tab" href="#demo-stk-lft-tab-8" aria-expanded="false">Display Settings</a>
-				        </li>
+				        </li> --}}
 						<li class="">
 				            <a data-toggle="tab" href="#demo-stk-lft-tab-9" aria-expanded="false">Shipping Info</a>
 				        </li>
@@ -156,19 +156,19 @@
 				        </div>
 						<div id="demo-stk-lft-tab-4" class="tab-pane fade">
 							<div class="form-group">
-								<label class="col-lg-2 control-label">{{__('meta_title')}}</label>
+								<label class="col-lg-2 control-label">{{__('Meta Title')}}</label>
 								<div class="col-lg-7">
-									<input type="text" class="form-control" name="meta_title" placeholder="{{__('meta_title')}}">
+									<input type="text" class="form-control" name="meta_title" placeholder="{{__('Meta Title')}}">
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">{{__('description')}}</label>
+								<label class="col-lg-2 control-label">{{__('Description')}}</label>
 								<div class="col-lg-7">
 									<textarea name="meta_description" rows="8" class="form-control"></textarea>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">Meta Image</label>
+								<label class="col-lg-2 control-label">{{ __('Meta Image') }}</label>
 								<div class="col-lg-7">
 									<div id="meta_photo">
 
@@ -258,9 +258,9 @@
 							</div>
 				        </div>
 
-						<div id="demo-stk-lft-tab-8" class="tab-pane fade">
+						{{-- <div id="demo-stk-lft-tab-8" class="tab-pane fade">
 
-				        </div>
+				        </div> --}}
 
 						<div id="demo-stk-lft-tab-9" class="tab-pane fade">
 							<div class="col-sm-4">

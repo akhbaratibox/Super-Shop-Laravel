@@ -236,7 +236,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <span class="menu-title">{{__('Poly Pages')}}</span>
+                                        <span class="menu-title">{{__('Policy Pages')}}</span>
                                         <i class="arrow"></i>
                                     </a>
 
@@ -251,6 +251,12 @@
                                         </li>
                                         <li class="{{ areActiveRoutes(['supportpolicy.index'])}}">
                                             <a class="nav-link" href="{{route('supportpolicy.index', 'support_policy')}}">{{__('Support Policy')}}</a>
+                                        </li>
+                                        <li class="{{ areActiveRoutes(['terms.index'])}}">
+                                            <a class="nav-link" href="{{route('terms.index', 'terms')}}">{{__('Terms & Conditions')}}</a>
+                                        </li>
+                                        <li class="{{ areActiveRoutes(['privacypolicy.index'])}}">
+                                            <a class="nav-link" href="{{route('privacypolicy.index', 'privacy_policy')}}">{{__('Privacy Policy')}}</a>
                                         </li>
                                     </ul>
 

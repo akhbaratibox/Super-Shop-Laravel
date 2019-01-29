@@ -14,7 +14,7 @@
             <div class="panel-body">
                 <div class="form-group">
                     <input type="hidden" name="name" value="{{ $policy->name }}">
-                    <label class="col-sm-2 control-label" for="name">{{__('content')}}</label>
+                    <label class="col-sm-2 control-label" for="name">{{__('Content')}}</label>
                     <div class="col-sm-10">
                         <textarea class="editor" name="content" required>{{$policy->content}}</textarea>
                     </div>

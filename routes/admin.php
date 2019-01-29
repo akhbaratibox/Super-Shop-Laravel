@@ -65,6 +65,8 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('/sellerpolicy/{type}', 'PolicyController@index')->name('sellerpolicy.index');
 	Route::get('/returnpolicy/{type}', 'PolicyController@index')->name('returnpolicy.index');
 	Route::get('/supportpolicy/{type}', 'PolicyController@index')->name('supportpolicy.index');
+	Route::get('/terms/{type}', 'PolicyController@index')->name('terms.index');
+	Route::get('/privacypolicy/{type}', 'PolicyController@index')->name('privacypolicy.index');
 
 	//Policy Controller
 	Route::post('/policies/store', 'PolicyController@store')->name('policies.store');

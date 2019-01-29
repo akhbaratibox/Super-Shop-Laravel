@@ -26,7 +26,7 @@
                 <li>
                     <a href="{{ route('product', $product->slug) }}">
                         <div class="d-flex search-product align-items-center">
-                            <div class="image" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');">
+                            <div class="image" style="background-image:url('{{ asset($product->thumbnail_img) }}');">
                             </div>
                             <div class="w-100">
                                 <div class="product-name">
@@ -46,10 +46,12 @@
                                                 $qty += $variation->qty;
                                             }
                                         @endphp
-                                        @if ($qty > 0)
-                                            <span class="badge badge-pill bg-green">{{__('In stock')}}</span>
-                                        @else
-                                            <span class="badge badge badge-pill bg-red">{{__('Out of stock')}}</span>
+                                        @if(count(json_decode($product->variations, true)) >= 1)
+                                            @if ($qty > 0)
+                                                <span class="badge badge-pill bg-green">{{__('In stock')}}</span>
+                                            @else
+                                                <span class="badge badge badge-pill bg-red">{{__('Out of stock')}}</span>
+                                            @endif
                                         @endif
                                     </div>
                                 </div>

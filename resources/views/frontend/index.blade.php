@@ -157,7 +157,7 @@
                                         <a href="{{ route('product', $product->slug) }}" class="d-block flash-deal-item">
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col">
-                                                    <div class="img" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}')">
+                                                    <div class="img" style="background-image:url('{{ asset($product->flash_deal_img) }}')">
                                                     </div>
                                                 </div>
                                                 <div class="col">
@@ -220,7 +220,7 @@
                                     <div class="card-body p-0">
 
                                         <div class="card-image">
-                                            <a href="{{ route('product', $product->slug) }}" class="d-block" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');">
+                                            <a href="{{ route('product', $product->slug) }}" class="d-block" style="background-image:url('{{ asset($product->flash_deal_img) }}');">
                                             </a>
                                         </div>
 
@@ -266,7 +266,7 @@
                                 <div class="row no-gutters product-box-2">
                                     <div class="col-4">
                                         <div class="position-relative overflow-hidden h-100">
-                                            <a href="{{ route('product', $product->slug) }}" class="d-block product-image h-100" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');">
+                                            <a href="{{ route('product', $product->slug) }}" class="d-block product-image h-100" style="background-image:url('{{ asset($product->thumbnail_img) }}');">
                                             </a>
                                             <div class="product-btns">
                                                 <button class="btn add-wishlist" title="Add to Wishlist" onclick="addToWishList({{ $product->id }})">
@@ -336,7 +336,7 @@
                                     <div class="col-lg-3 col-md-6">
                                         <div class="product-box-2 bg-white alt-box">
                                             <div class="position-relative overflow-hidden">
-                                                <a href="{{ route('product', $product->slug) }}" class="d-block product-image h-100" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');" tabindex="0">
+                                                <a href="{{ route('product', $product->slug) }}" class="d-block product-image h-100" style="background-image:url('{{ asset($product->thumbnail_img) }}');" tabindex="0">
                                                 </a>
                                                 <div class="product-btns clearfix">
                                                     <button class="btn add-wishlist" title="Add to Wishlist" onclick="addToWishList({{ $product->id }})" tabindex="0">
@@ -393,7 +393,7 @@
                             <div class="mb-4 product-box-3 col-md-6 col-lg-12">
                                 <div class="clearfix">
                                     <div class="product-image float-left">
-                                        <a href="{{ route('product', $product->slug) }}" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');"></a>
+                                        <a href="{{ route('product', $product->slug) }}" style="background-image:url('{{ asset($product->thumbnail_img) }}');"></a>
                                     </div>
                                     <div class="product-details float-left">
                                         <h4 class="title text-truncate-2">
@@ -422,7 +422,7 @@
                             <div class="mb-4 product-box-3 col-md-6 col-lg-12">
                                 <div class="clearfix">
                                     <div class="product-image float-left">
-                                        <a href="{{ route('product', $product->slug) }}" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');"></a>
+                                        <a href="{{ route('product', $product->slug) }}" style="background-image:url('{{ asset($product->featured_img) }}');"></a>
                                     </div>
                                     <div class="product-details float-left">
                                         <h4 class="title text-truncate-2">
@@ -451,7 +451,7 @@
                             <div class="mb-4 product-box-3 col-md-6 col-lg-12">
                                 <div class="clearfix">
                                     <div class="product-image float-left">
-                                        <a href="{{ route('product', $product->slug) }}" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');"></a>
+                                        <a href="{{ route('product', $product->slug) }}" style="background-image:url('{{ asset($product->thumbnail_img) }}');"></a>
                                     </div>
                                     <div class="product-details float-left">
                                         <h4 class="title text-truncate-2">

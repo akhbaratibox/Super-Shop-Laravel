@@ -89,11 +89,11 @@
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">{{__('pay_u_money_activation')}}</h3>
+                <h3 class="panel-title text-center">{{__('SSlCommerz Activation')}}</h3>
             </div>
             <div class="panel-body text-center">
                 <label class="switch">
-                    <input type="checkbox" onchange="updateSettings(this, 'payumoney_payment')" <?php if(\App\BusinessSetting::where('type', 'payumoney_payment')->first()->value == 1) echo "checked";?>>
+                    <input type="checkbox" onchange="updateSettings(this, 'sslcommerz_payment')" <?php if(\App\BusinessSetting::where('type', 'sslcommerz_payment')->first()->value == 1) echo "checked";?>>
                     <span class="slider round"></span>
                 </label>
             </div>

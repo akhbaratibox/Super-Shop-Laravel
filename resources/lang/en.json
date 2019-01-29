@@ -139,7 +139,7 @@
     "paypal_payment_activation" : "Paypal Payment Activation",
     "stripe_payment_activation" : "Stripe Payment Activation",
     "cash_payment_activation" : "Cash Payment Activation",
-    "pay_u_money_activation" : "Pay U Money Activation",
+    "SSlCommerz Activation" : "SSlCommerz Activation",
     "paypal_credential" : "Paypal Credential",
     "paypal_client_id" : "Paypal Client ID",
     "paypal_client_secret" : "Paypal Client Secret",

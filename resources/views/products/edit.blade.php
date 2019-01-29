@@ -142,7 +142,7 @@
 							<div class="form-group">
 								<label class="col-lg-2 control-label">Video Provider</label>
 								<div class="col-lg-7">
-									<select class="form-control demo-select2-placeholder" name="video_provider" id="video_provider" required>
+									<select class="form-control demo-select2-placeholder" name="video_provider" id="video_provider">
 										<option value="youtube" <?php if($product->video_provider == 'youtube') echo "selected";?> >Youtube</option>
 										<option value="dailymotion" <?php if($product->video_provider == 'dailymotion') echo "selected";?> >Dailymotion</option>
 										<option value="vimeo" <?php if($product->video_provider == 'vimeo') echo "selected";?> >Vimeo</option>
@@ -152,7 +152,7 @@
 							<div class="form-group">
 								<label class="col-lg-2 control-label">Video Link</label>
 								<div class="col-lg-7">
-									<input type="text" class="form-control" name="video_link" value="{{ $product->video_link }}" placeholder="Video Link" required>
+									<input type="text" class="form-control" name="video_link" value="{{ $product->video_link }}" placeholder="Video Link">
 								</div>
 							</div>
 				        </div>

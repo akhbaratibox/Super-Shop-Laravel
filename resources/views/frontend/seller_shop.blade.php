@@ -60,7 +60,7 @@
                                         <div class="card-body p-0">
 
                                             <div class="card-image">
-                                                <a href="{{ route('product', $product->slug) }}" class="d-block" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');">
+                                                <a href="{{ route('product', $product->slug) }}" class="d-block" style="background-image:url('{{ asset($product->featured_img) }}');">
                                                 </a>
                                             </div>
 
@@ -213,7 +213,7 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="card product-box-1 mb-3">
                                     <div class="card-image">
-                                        <a href="" class="d-block" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');" tabindex="0">
+                                        <a href="" class="d-block" style="background-image:url('{{ asset($product->thumbnail_img) }}');" tabindex="0">
                                         </a>
                                     </div>
                                     <div class="card-body p-0">

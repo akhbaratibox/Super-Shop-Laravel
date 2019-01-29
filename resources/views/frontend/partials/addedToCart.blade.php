@@ -6,7 +6,7 @@
     <div class="product-box">
         <div class="block">
             <div class="block-image">
-                <img src="{{ asset(json_decode($product->photos)[0]) }}" class="" alt="Product Image">
+                <img src="{{ asset($product->thumbnail_img) }}" class="" alt="Product Image">
             </div>
             <div class="block-body">
                 <h6 class="strong-600">

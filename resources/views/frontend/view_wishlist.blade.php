@@ -43,7 +43,7 @@
                                     <div class="card card-product mb-3 product-card-2">
                                         <div class="card-body p-3">
                                             <div class="card-image">
-                                                <a href="{{ route('product', $wishlist->product->slug) }}" class="d-block" style="background-image:url('{{ asset(json_decode($wishlist->product->photos)[0]) }}');">
+                                                <a href="{{ route('product', $wishlist->product->slug) }}" class="d-block" style="background-image:url('{{ asset($wishlist->product->thumbnail_img) }}');">
                                                 </a>
                                             </div>
 

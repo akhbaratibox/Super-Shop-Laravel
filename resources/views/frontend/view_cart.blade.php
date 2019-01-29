@@ -82,7 +82,7 @@
                                             <tr class="cart-item">
                                                 <td class="product-image">
                                                     <a href="#" class="mr-5">
-                                                        <img src="{{ asset(json_decode($product->photos)[0]) }}">
+                                                        <img src="{{ asset($product->thumbnail_img) }}">
                                                     </a>
                                                 </td>
 

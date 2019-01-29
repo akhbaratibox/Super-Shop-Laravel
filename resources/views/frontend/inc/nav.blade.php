@@ -367,7 +367,7 @@
                                                                         <div class="d-flex align-items-center">
                                                                             <div class="dc-image">
                                                                                 <a href="{{ route('product', $product->slug) }}">
-                                                                                    <img src="{{ asset(json_decode($product->photos)[0]) }}" class="img-fluid" alt="">
+                                                                                    <img src="{{ asset($product->thumbnail_img) }}" class="img-fluid" alt="">
                                                                                 </a>
                                                                             </div>
                                                                             <div class="dc-content">

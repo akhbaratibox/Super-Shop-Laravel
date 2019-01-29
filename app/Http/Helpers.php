@@ -69,21 +69,6 @@ if (! function_exists('combinations')) {
     }
 }
 
-//converts price to home default price
-if (! function_exists('single_price')) {
-    function single_price($price)
-    {
-        $price = convert_price($price);
-
-        if(BusinessSetting::where('type', 'symbol_format')->first()->value == 1){
-            return currency_symbol().$price;
-        }
-        else{
-            return $price.currency_symbol();
-        }
-    }
-}
-
 //converts currency
 if (! function_exists('convert_price')) {
     function convert_price($price)
@@ -108,6 +93,25 @@ if (! function_exists('convert_price')) {
     }
 }
 
+//formats currency
+if (! function_exists('format_price')) {
+    function format_price($price)
+    {
+        if(BusinessSetting::where('type', 'symbol_format')->first()->value == 1){
+            return currency_symbol().number_format($price, 2);
+        }
+        return number_format($price, 2).currency_symbol();
+    }
+}
+
+//converts price to home default price
+if (! function_exists('single_price')) {
+    function single_price($price)
+    {
+        return format_price(convert_price($price));
+    }
+}
+
 //Shows Price on page based on low to high
 if (! function_exists('home_price')) {
     function home_price($id)
@@ -129,20 +133,10 @@ if (! function_exists('home_price')) {
         $highest_price = convert_price($highest_price);
 
         if($lowest_price == $highest_price){
-            if(BusinessSetting::where('type', 'symbol_format')->first()->value == 1){
-                return currency_symbol().$lowest_price;
-            }
-            else{
-                return $lowest_price.currency_symbol();
-            }
+            return format_price($lowest_price);
         }
         else{
-            if(BusinessSetting::where('type', 'symbol_format')->first()->value == 1){
-                return currency_symbol().$lowest_price.' - '.currency_symbol().$highest_price;
-            }
-            else{
-                return $lowest_price.currency_symbol().' - '.$highest_price.currency_symbol();
-            }
+            return format_price($lowest_price).' - '.format_price($highest_price);
         }
     }
 }
@@ -200,20 +194,10 @@ if (! function_exists('home_discounted_price')) {
         $highest_price = convert_price($highest_price);
 
         if($lowest_price == $highest_price){
-            if(BusinessSetting::where('type', 'symbol_format')->first()->value == 1){
-                return currency_symbol().$lowest_price;
-            }
-            else{
-                return $lowest_price.currency_symbol();
-            }
+            return format_price($lowest_price);
         }
         else{
-            if(BusinessSetting::where('type', 'symbol_format')->first()->value == 1){
-                return currency_symbol().$lowest_price.' - '.currency_symbol().$highest_price;
-            }
-            else{
-                return $lowest_price.currency_symbol().' - '.$highest_price.currency_symbol();
-            }
+            return format_price($lowest_price).' - '.format_price($highest_price);
         }
     }
 }
@@ -224,15 +208,7 @@ if (! function_exists('home_base_price')) {
     {
         $product = Product::findOrFail($id);
         $price = $product->unit_price;
-
-        $price = convert_price($price);
-
-        if(BusinessSetting::where('type', 'symbol_format')->first()->value == 1){
-            return currency_symbol().$price;
-        }
-        else{
-            return $price.currency_symbol();
-        }
+        return format_price(convert_price($price));
     }
 }
 
@@ -269,14 +245,7 @@ if (! function_exists('home_discounted_base_price')) {
             $price += $product->tax;
         }
 
-        $price = convert_price($price);
-
-        if(BusinessSetting::where('type', 'symbol_format')->first()->value == 1){
-            return currency_symbol().$price;
-        }
-        else{
-            return $price.currency_symbol();
-        }
+        return format_price(convert_price($price));
     }
 }
 

@@ -439,7 +439,7 @@
                             <div class="mb-3 product-box-3">
                                 <div class="clearfix">
                                     <div class="product-image float-left">
-                                        <a href="{{ route('product', $top_product->slug) }}" style="background-image:url('{{ asset(json_decode($top_product->photos)[0]) }}');"></a>
+                                        <a href="{{ route('product', $top_product->slug) }}" style="background-image:url('{{ asset($top_product->thumbnail_img) }}');"></a>
                                     </div>
                                     <div class="product-details float-left">
                                         <h4 class="title text-truncate-2">
@@ -465,9 +465,11 @@
                                 <li class="nav-item">
                                     <a href="#tab_default_1" data-toggle="tab" class="nav-link text-uppercase strong-600 active show">{{__('Description')}}</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="#tab_default_2" data-toggle="tab" class="nav-link text-uppercase strong-600">{{__('Videos')}}</a>
-                                </li>
+                                @if($product->video_link != null)
+                                    <li class="nav-item">
+                                        <a href="#tab_default_2" data-toggle="tab" class="nav-link text-uppercase strong-600">{{__('Video')}}</a>
+                                    </li>
+                                @endif
                                 <li class="nav-item">
                                     <a href="#tab_default_3" data-toggle="tab" class="nav-link text-uppercase strong-600">{{__('Reviews')}}</a>
                                 </li>
@@ -633,7 +635,7 @@
                                     <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
                                         <div class="card-body p-0">
                                             <div class="card-image">
-                                                <a href="{{ route('product', $related_product->slug) }}" class="d-block" style="background-image:url('{{ asset(json_decode($related_product->photos)[0]) }}');">
+                                                <a href="{{ route('product', $related_product->slug) }}" class="d-block" style="background-image:url('{{ asset($related_product->thumbnail_img) }}');">
                                                 </a>
                                             </div>
 

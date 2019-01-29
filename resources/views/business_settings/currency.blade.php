@@ -69,7 +69,7 @@
             <div class="panel-body">
                 <form class="form-horizontal" action="{{ route('business_settings.update') }}" method="POST">
                     @csrf
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <input type="hidden" name="types[]" value="currency_format">
                         <div class="col-lg-3">
                             <label class="control-label">{{__('currency_format')}}</label>
@@ -80,7 +80,7 @@
                                 <option value="2">German Format - 1.234.567,89</option>
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <input type="hidden" name="types[]" value="symbol_format">
                         <div class="col-lg-3">

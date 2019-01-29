@@ -185,7 +185,7 @@
                                     <div class="col-lg-4 col-md-6">
                                         <div class="product-card-1 mb-3">
                                             <figure class="product-image-container">
-                                                <a href="{{ route('product', $product->slug) }}" class="product-image d-block" style="background-image:url('{{ asset(json_decode($product->photos)[0]) }}');">
+                                                <a href="{{ route('product', $product->slug) }}" class="product-image d-block" style="background-image:url('{{ asset($product->thumbnail_img) }}');">
                                                     <!-- <img src="{{ asset(json_decode($product->photos)[0]) }}" alt="product" class="img-center img-fluid"> -->
                                                 </a>
                                                 <button class="btn-quickview" onclick="showAddToCartModal({{ $product->id }})"><i class="la la-eye"></i></button>

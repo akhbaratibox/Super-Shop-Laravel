@@ -47,7 +47,7 @@
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td><a href="{{ route('product', $product->slug) }}" target="_blank">{{ $product->name }}</a></td>
-                                        <td><img class="img-md" src="{{ asset(json_decode($product->photos)[0])}}" alt="Image"></td>
+                                        <td><img class="img-md" src="{{ asset($product->thumbnail_img)}}" alt="Image"></td>
                                         <td>
                                             @php
                                                 $qty = 0;
@@ -109,7 +109,7 @@
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td><a href="{{ route('product', $product->slug) }}" target="_blank">{{ $product->name }}</a></td>
-                                        <td><img class="img-md" src="{{ asset(json_decode($product->photos)[0])}}" alt="Image"></td>
+                                        <td><img class="img-md" src="{{ asset($product->thumbnail_img)}}" alt="Image"></td>
                                         <td>
                                             @php
                                                 $qty = 0;
@@ -119,7 +119,7 @@
                                                 echo $qty;
                                             @endphp
                                         </td>
-                                        <td>{{number_format($product->unit_price,2)}}</td>
+                                        <td>{{ number_format($product->unit_price,2) }}</td>
                                         <td><label class="switch">
                                             <input onchange="update_todays_deal(this)" value="{{ $product->id }}" type="checkbox" <?php if($product->todays_deal == 1) echo "checked";?> >
                                             <span class="slider round"></span></label></td>

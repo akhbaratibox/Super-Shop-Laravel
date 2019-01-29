@@ -194,18 +194,21 @@
                 <div class="col-md-4">
                     <div class="text-center text-md-right">
                         <ul class="inline-links">
-                            <li>
-                                <img src="{{ asset('frontend/images/icons/cards/visa.png') }}" width="30" class="img-grayscale">
-                            </li>
-                            <li>
-                                <img src="{{ asset('frontend/images/icons/cards/mastercard.png') }}" width="30" class="img-grayscale">
-                            </li>
-                            <li>
-                                <img src="{{ asset('frontend/images/icons/cards/maestro.png') }}" width="30" class="img-grayscale">
-                            </li>
-                            <li>
-                                <img src="{{ asset('frontend/images/icons/cards/paypal.png') }}" width="30" class="img-grayscale">
-                            </li>
+                            @if (\App\BusinessSetting::where('type', 'paypal_payment')->first()->value == 1)
+                                <li>
+                                    <img src="{{ asset('frontend/images/icons/cards/paypal-256x160.png')}}" height="20">
+                                </li>
+                            @endif
+                            @if (\App\BusinessSetting::where('type', 'sslcommerz_payment')->first()->value == 1)
+                                <li>
+                                    <img src="{{ asset('frontend/images/icons/cards/sslcommerz.png')}}" height="20">
+                                </li>
+                            @endif
+                            @if (\App\BusinessSetting::where('type', 'cash_payment')->first()->value == 1)
+                                <li>
+                                    <img src="{{ asset('frontend/images/icons/cards/cod.png')}}" height="20">
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>

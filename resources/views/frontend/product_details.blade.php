@@ -606,12 +606,17 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-12">
-                                                                <div class="rating mt-1 mb-1">
-                                                                    <span class="star voted" rel="1"></span>
-                                                                    <span class="star voted" rel="2"></span>
-                                                                    <span class="star voted" rel="3"></span>
-                                                                    <span class="star voted" rel="4"></span>
-                                                                    <span class="star voted" rel="5"></span>
+                                                                <div class="c-rating mt-1 mb-1 clearfix d-inline-block">
+                                                                    <input type="radio" id="star5" name="rating" value="5" />
+                                                                    <label class="star" for="star5" title="Awesome" aria-hidden="true"></label>
+                                                                    <input type="radio" id="star4" name="rating" value="4" />
+                                                                    <label class="star" for="star4" title="Great" aria-hidden="true"></label>
+                                                                    <input type="radio" id="star3" name="rating" value="3" />
+                                                                    <label class="star" for="star3" title="Very good" aria-hidden="true"></label>
+                                                                    <input type="radio" id="star2" name="rating" value="2" />
+                                                                    <label class="star" for="star2" title="Good" aria-hidden="true"></label>
+                                                                    <input type="radio" id="star1" name="rating" value="1" />
+                                                                    <label class="star" for="star1" title="Bad" aria-hidden="true"></label>
                                                                 </div>
                                                             </div>
                                                         </div>

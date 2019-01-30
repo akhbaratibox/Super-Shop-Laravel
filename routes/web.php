@@ -105,6 +105,8 @@ Route::group(['middleware' => ['user', 'verified']], function(){
 
 	Route::resource('wishlists','WishlistController');
 	Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
+
+	Route::get('invoice/{order_id}', 'InvoiceController@download')->name('invoice.download');
 });
 
 Route::group(['prefix' =>'seller', 'middleware' => ['seller', 'verified']], function(){

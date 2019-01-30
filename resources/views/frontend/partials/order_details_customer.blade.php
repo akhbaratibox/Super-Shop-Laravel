@@ -111,7 +111,7 @@
                                     <td>
                                         {{ $orderDetail->quantity }}
                                     </td>
-                                    <td>{{ $orderDetail->price }}</td>
+                                    <td>{{ single_price($orderDetail->price) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

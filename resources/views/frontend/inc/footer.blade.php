@@ -156,7 +156,7 @@
                     <div class="copyright text-center text-md-left">
                         <ul class="copy-links no-margin">
                             <li>
-                                © 2018 Active Super Shop
+                                © {{ date('Y') }} {{ $generalsetting->site_name }}
                             </li>
                             <li>
                                 <a href="{{ route('terms') }}">Terms</a>

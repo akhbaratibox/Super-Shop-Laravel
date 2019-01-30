@@ -571,52 +571,65 @@
                                             </div>
                                         </div>
 
-                                        <div class="leave-review">
-                                            <div class="section-title section-title--style-1">
-                                                <h3 class="section-title-inner heading-6 strong-600 text-uppercase">
-                                                    {{__('Write a review')}}
-                                                </h3>
-                                            </div>
-                                            <form class="form-default" role="form">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="" class="text-uppercase c-gray-light">{{__('Your name')}}</label>
-                                                            <input type="text" name="name" class="form-control" required="">
+                                        @if(Auth::check())
+                                            @php
+                                                $commentable = false;
+                                            @endphp
+                                            @foreach ($product->orderDetails as $key => $orderDetail)
+                                                @if($orderDetail->order->user_id == Auth::user()->id)
+                                                    @php
+                                                        $commentable = true;
+                                                    @endphp
+                                                @endif
+                                            @endforeach
+                                            @if ($commentable)
+                                                <div class="leave-review">
+                                                    <div class="section-title section-title--style-1">
+                                                        <h3 class="section-title-inner heading-6 strong-600 text-uppercase">
+                                                            {{__('Write a review')}}
+                                                        </h3>
+                                                    </div>
+                                                    <form class="form-default" role="form">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="" class="text-uppercase c-gray-light">{{__('Your name')}}</label>
+                                                                    <input type="text" name="name" value="{{ Auth::user()->name }}" class="form-control" disabled required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="" class="text-uppercase c-gray-light">{{__('Email')}}</label>
+                                                                    <input type="text" name="email" value="{{ Auth::user()->email }}" class="form-control" required disabled>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="" class="text-uppercase c-gray-light">{{__('Email')}}</label>
-                                                            <input type="text" name="name" class="form-control" required="">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="rating mt-1 mb-1">
+                                                                    <span class="star voted" rel="1"></span>
+                                                                    <span class="star voted" rel="2"></span>
+                                                                    <span class="star voted" rel="3"></span>
+                                                                    <span class="star voted" rel="4"></span>
+                                                                    <span class="star voted" rel="5"></span>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <div class="rating mt-1 mb-1">
-                                                            <span class="star voted" rel="1"></span>
-                                                            <span class="star voted" rel="2"></span>
-                                                            <span class="star voted" rel="3"></span>
-                                                            <span class="star voted" rel="4"></span>
-                                                            <span class="star voted" rel="5"></span>
+                                                        <div class="row mt-3">
+                                                            <div class="col-sm-12">
+                                                                <textarea class="form-control" rows="4" name="comment" placeholder="Your review"></textarea>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row mt-3">
-                                                    <div class="col-sm-12">
-                                                        <textarea class="form-control" rows="4" placeholder="Your review"></textarea>
-                                                    </div>
-                                                </div>
 
-                                                <div class="text-right">
-                                                    <button type="submit" class="btn btn-styled btn-base-1 btn-circle mt-4">
-                                                        {{__('Send review')}}
-                                                    </button>
+                                                        <div class="text-right">
+                                                            <button type="submit" class="btn btn-styled btn-base-1 btn-circle mt-4">
+                                                                {{__('Send review')}}
+                                                            </button>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                            </form>
-                                        </div>
-
+                                            @endif
+                                        @endif
                                     </div>
                                 </div>
 

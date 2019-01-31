@@ -19,10 +19,9 @@
                 <div class="col">
                     <div class="seller-shop-menu text-center">
                         <ul class="inline-links">
-                            <li class="active"><a href="">{{__('Store Home')}}</a></li>
-                            <li><a href="">{{__('New Arrival')}}</a></li>
-                            <li><a href="">{{__('Top Selling')}}</a></li>
-                            <li><a href="">{{__('All Products')}}</a></li>
+                            <li @if(!isset($type)) class="active" @endif><a href="{{ route('shop.visit', $shop->slug) }}">{{__('Store Home')}}</a></li>
+                            <li @if(isset($type) && $type == 'top_selling') class="active" @endif><a href="{{ route('shop.visit.type', ['slug'=>$shop->slug, 'type'=>'top_selling']) }}">{{__('Top Selling')}}</a></li>
+                            <li @if(isset($type) && $type == 'all_products') class="active" @endif><a href="{{ route('shop.visit.type', ['slug'=>$shop->slug, 'type'=>'all_products']) }}">{{__('All Products')}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -93,27 +92,39 @@
                 <div class="col-xl-3 d-none d-xl-block">
                     <div class="seller-info-box mb-3">
                         <div class="sold-by position-relative">
-                            <div class="position-absolute medal-badge">
-                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" viewBox="0 0 287.5 442.2">
-                                    <polygon style="fill:#F8B517;" points="223.4,442.2 143.8,376.7 64.1,442.2 64.1,215.3 223.4,215.3 "/>
-                                    <circle style="fill:#FBD303;" cx="143.8" cy="143.8" r="143.8"/>
-                                    <circle style="fill:#F8B517;" cx="143.8" cy="143.8" r="93.6"/>
-                                    <polygon style="fill:#FCFCFD;" points="143.8,55.9 163.4,116.6 227.5,116.6 175.6,154.3 195.6,215.3 143.8,177.7 91.9,215.3 111.9,154.3
-                                    60,116.6 124.1,116.6 "/>
-                                </svg>
-                            </div>
+                            @if ($product->added_by == 'seller' && $product->user->seller->verification_status == 1)
+                                <div class="position-absolute medal-badge">
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" viewBox="0 0 287.5 442.2">
+                                        <polygon style="fill:#F8B517;" points="223.4,442.2 143.8,376.7 64.1,442.2 64.1,215.3 223.4,215.3 "/>
+                                        <circle style="fill:#FBD303;" cx="143.8" cy="143.8" r="143.8"/>
+                                        <circle style="fill:#F8B517;" cx="143.8" cy="143.8" r="93.6"/>
+                                        <polygon style="fill:#FCFCFD;" points="143.8,55.9 163.4,116.6 227.5,116.6 175.6,154.3 195.6,215.3 143.8,177.7 91.9,215.3 111.9,154.3
+                                        60,116.6 124.1,116.6 "/>
+                                    </svg>
+                                </div>
+                            @endif
                             <div class="title">{{__('Seller Info')}}</div>
                             <a href="" class="name d-block">{{ $shop->name }}</a>
                             <div class="location">{{ $shop->address }}</div>
                             <div class="rating text-center d-block">
                                 <span class="star-rating star-rating-sm d-block">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
+                                    @php
+                                        $rating = 0; $total = 0;
+                                        foreach ($product->user->products as $key => $product) {
+                                            $rating += $product->reviews->avg('rating');
+                                            $total += $product->reviews->count();
+                                        }
+                                    @endphp
+                                    @if ($total > 0)
+                                        @for ($i=0; $i < $rating/$total; $i++)
+                                            <i class="fa fa-star"></i>
+                                        @endfor
+                                        @for ($i=0; $i < 5-$rating/$total; $i++)
+                                            <i class="fa fa-star-o"></i>
+                                        @endfor
+                                    @endif
                                 </span>
-                                <span class="rating-count d-block ml-0">(2 customer reviews)</span>
+                                <span class="rating-count d-block ml-0">({{ $total }} customer reviews)</span>
                             </div>
                         </div>
                         <div class="row no-gutters">
@@ -204,10 +215,26 @@
                     </div>
                 </div>
                 <div class="col-xl-9">
-                    <h4 class="heading-5 strong-600 border-bottom pb-3 mb-4">{{__('New Arrival Products')}}</h4>
+                    <h4 class="heading-5 strong-600 border-bottom pb-3 mb-4">
+                        @if (!isset($type))
+                            {{__('New Arrival Products')}}
+                        @elseif ($type == 'top_selling')
+                            {{__('Top Selling')}}
+                        @elseif ($type == 'all_products')
+                            {{__('All Products')}}
+                        @endif
+                    </h4>
                     <div class="product-list row">
                         @php
-                            $products = \App\Product::where('user_id', $shop->user->id)->where('created_at', '>=' , date('Y-m-d', strtotime('-10days')))->paginate(6);
+                            if (!isset($type)){
+                                $products = \App\Product::where('user_id', $shop->user->id)->orderBy('created_at', 'desc')->paginate(6);
+                            }
+                            elseif ($type == 'top_selling'){
+                                $products = \App\Product::where('user_id', $shop->user->id)->orderBy('num_of_sale', 'desc')->paginate(6);
+                            }
+                            elseif ($type == 'all_products'){
+                                $products = \App\Product::where('user_id', $shop->user->id)->paginate(6);
+                            }
                         @endphp
                         @foreach ($products as $key => $product)
                             <div class="col-lg-4 col-md-6">

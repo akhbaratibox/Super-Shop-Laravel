@@ -168,6 +168,15 @@ class HomeController extends Controller
         abort(404);
     }
 
+    public function filter_shop($slug, $type)
+    {
+        $shop  = Shop::where('slug', $slug)->first();
+        if($shop!=null && $type != null){
+            return view('frontend.seller_shop', compact('shop', 'type'));
+        }
+        abort(404);
+    }
+
     public function listing(Request $request)
     {
         $products = Product::orderBy('created_at', 'desc')->paginate(9);

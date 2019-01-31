@@ -86,14 +86,15 @@
                                                     $rating += $product->reviews->avg('rating');
                                                     $total += $product->reviews->count();
                                                 }
-                                                $rating /= $total;
                                             @endphp
-                                            @for ($i=0; $i < $rating; $i++)
-                                                <i class="fa fa-star"></i>
-                                            @endfor
-                                            @for ($i=0; $i < 5-$rating; $i++)
-                                                <i class="fa fa-star-o"></i>
-                                            @endfor
+                                            @if ($total > 0)
+                                                @for ($i=0; $i < $rating/$total; $i++)
+                                                    <i class="fa fa-star"></i>
+                                                @endfor
+                                                @for ($i=0; $i < 5-$rating/$total; $i++)
+                                                    <i class="fa fa-star-o"></i>
+                                                @endfor
+                                            @endif
                                         </span>
                                         <span class="rating-count">({{ $total }} customer reviews)</span>
                                     </div>
@@ -348,7 +349,7 @@
                 <div class="col-xl-3 d-none d-xl-block">
                     <div class="seller-info-box mb-3">
                         <div class="sold-by position-relative">
-                            @if ($product->user->seller->verification_status == 1)
+                            @if ($product->added_by == 'seller' && $product->user->seller->verification_status == 1)
                                 <div class="position-absolute medal-badge">
                                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" viewBox="0 0 287.5 442.2">
                                         <polygon style="fill:#F8B517;" points="223.4,442.2 143.8,376.7 64.1,442.2 64.1,215.3 223.4,215.3 "/>
@@ -374,14 +375,15 @@
                                             $rating += $product->reviews->avg('rating');
                                             $total += $product->reviews->count();
                                         }
-                                        $rating /= $total;
                                     @endphp
-                                    @for ($i=0; $i < $rating; $i++)
-                                        <i class="fa fa-star"></i>
-                                    @endfor
-                                    @for ($i=0; $i < 5-$rating; $i++)
-                                        <i class="fa fa-star-o"></i>
-                                    @endfor
+                                    @if ($total > 0)
+                                        @for ($i=0; $i < $rating/$total; $i++)
+                                            <i class="fa fa-star"></i>
+                                        @endfor
+                                        @for ($i=0; $i < 5-$rating/$total; $i++)
+                                            <i class="fa fa-star-o"></i>
+                                        @endfor
+                                    @endif
                                 </span>
                                 <span class="rating-count d-block ml-0">({{ $total }} customer reviews)</span>
                             </div>

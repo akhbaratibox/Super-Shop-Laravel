@@ -124,6 +124,20 @@ class OrderController extends Controller
             $order->grand_total = $subtotal + $tax;
             $order->save();
 
+            $pdf = PDF::loadView('invoices.customer_invoice', compact('order'));
+            $output = $pdf->output();
+    		file_put_contents('invoices/'.'Order#'.$order->code.'.pdf', $output);
+
+            $array['view'] = 'emails.invoice';
+            $array['subject'] = 'Order Placed - '.$order->code;
+            $array['from'] = env('MAIL_USERNAME');
+            $array['content'] = 'Hi. Your order has been placed';
+            $array['file'] = 'invoices/Order#'.$order->code.'.pdf';
+            $array['file_name'] = 'Order#'.$order->code.'.pdf';
+
+            Mail::to($request->session()->get('shipping_info')['email'])->queue(new InvoiceEmailManager($array));
+            unlink($array['file']);
+
             $request->session()->put('order_id', $order->id);
         }
     }

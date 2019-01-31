@@ -56,7 +56,7 @@
                                         @foreach ($products as $key => $product)
                                             <tr>
                                                 <td>{{ $key+1 }}</td>
-                                                <td><a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a></td>
+                                                <td><a href="{{ route('product', $product->slug) }}" target="_blank">{{ $product->name }}</a></td>
                                                 <td>{{ $product->subsubcategory->name }}</td>
                                                 <td>
                                                     @php

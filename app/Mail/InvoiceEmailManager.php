@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EmailManager extends Mailable
+class InvoiceEmailManager extends Mailable
 {
     use Queueable, SerializesModels;
     /**
@@ -26,10 +26,14 @@ class EmailManager extends Mailable
      *
      * @return $this
      */
-    public function build()
-    {
-        return $this->view($this->array['view'])
-                    ->from($this->array['from'])
-                    ->subject($this->array['subject']);
-    }
-}
+     public function build()
+     {
+         return $this->view($this->array['view'])
+                     ->from($this->array['from'])
+                     ->subject($this->array['subject'])
+                     ->attach($this->array['file'],[
+                         'as' => $this->array['file_name'],
+                         'mime' => 'application/pdf'
+                     ]);
+     }
+ }

@@ -9,6 +9,10 @@ use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\PublicSslCommerzPaymentController;
 use App\Http\Controllers\OrderController;
+use App\Mail\InvoiceEmailManager;
+use Mail;
+use PDF;
+use App\Order;
 
 class CheckoutController extends Controller
 {
@@ -55,6 +59,7 @@ class CheckoutController extends Controller
     public function get_payment_info(Request $request)
     {
         $data['name'] = $request->name;
+        $data['email'] = $request->email;
         $data['address'] = $request->address;
         $data['country'] = $request->country;
         $data['city'] = $request->city;

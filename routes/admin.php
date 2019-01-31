@@ -100,7 +100,6 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 
 	Route::get('/orders', 'OrderController@admin_orders')->name('orders.index.admin');
 	Route::get('/orders/{id}/show', 'OrderController@show')->name('orders.show');
-	Route::post('/orders/update_status', 'OrderController@update_status')->name('orders.update_status');
 	Route::get('/orders/destroy/{id}', 'OrderController@destroy')->name('orders.destroy');
 	Route::get('/sales', 'OrderController@sales')->name('sales.index');
 

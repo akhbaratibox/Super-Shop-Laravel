@@ -51,7 +51,7 @@
                             <div class="card">
                                 @if(Auth::check())
                                     @php
-                                    $user = Auth::user();
+                                        $user = Auth::user();
                                     @endphp
                                     <div class="card-body">
                                         <div class="row">
@@ -59,6 +59,15 @@
                                                 <div class="form-group">
                                                     <label class="control-label">{{__('name')}}</label>
                                                     <input type="text" class="form-control" name="name" value="{{ $user->name }}" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="control-label">{{__('email')}}</label>
+                                                    <input type="text" class="form-control" name="email" value="{{ $user->email }}" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -115,6 +124,15 @@
                                             <div class="form-group">
                                                 <label class="control-label">{{__('name')}}</label>
                                                 <input type="text" class="form-control" name="name" placeholder="Name" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">{{__('email')}}</label>
+                                                <input type="text" class="form-control" name="email" placeholder="Email" required>
                                             </div>
                                         </div>
                                     </div>

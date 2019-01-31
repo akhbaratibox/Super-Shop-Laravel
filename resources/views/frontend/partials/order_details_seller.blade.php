@@ -78,7 +78,7 @@
                         </tr>
                         <tr>
                             <td class="w-50 strong-600">Total order amount:</td>
-                            <td>{{ single_price($order->orderDetails->where('seller_id', Auth::user()->id)->sum('price')) }}</td>
+                            <td>{{ single_price($order->orderDetails->where('seller_id', Auth::user()->id)->sum('price') + $order->orderDetails->where('seller_id', Auth::user()->id)->sum('tax')) }}</td>
                         </tr>
                         <tr>
                             <td class="w-50 strong-600">Shipping method:</td>
@@ -136,25 +136,25 @@
                             <tr>
                                 <th>Subtotal</th>
                                 <td class="text-right">
-                                    <span class="strong-600">587.14$</span>
+                                    <span class="strong-600">{{ single_price($order->orderDetails->where('seller_id', Auth::user()->id)->sum('price')) }}</span>
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>Shipping</th>
                                 <td class="text-right">
                                     <span class="text-italic">0.00$</span>
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>Tax</th>
                                 <td class="text-right">
-                                    <span class="text-italic">0.00$</span>
+                                    <span class="text-italic">{{ single_price($order->orderDetails->where('seller_id', Auth::user()->id)->sum('tax')) }}</span>
                                 </td>
                             </tr>
                             <tr>
                                 <th><span class="strong-600">Total</span></th>
                                 <td class="text-right">
-                                    <strong><span>587.14$</span></strong>
+                                    <strong><span>{{ single_price($order->orderDetails->where('seller_id', Auth::user()->id)->sum('price') + $order->orderDetails->where('seller_id', Auth::user()->id)->sum('tax')) }}</span></strong>
                                 </td>
                             </tr>
                         </tbody>
@@ -172,6 +172,7 @@
         $.post('{{ route('orders.update_status') }}', {_token:'{{ @csrf_token() }}',order_id:order_id,status:status}, function(data){
             $('#order_details').modal('hide');
             showFrontendAlert('success', 'Order status has been updated');
+            location.reload().setTimeOut(500);
         });
     });
 </script>

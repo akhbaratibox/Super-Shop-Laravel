@@ -59,7 +59,7 @@
                                                             {{ $key+1 }}
                                                         </td>
                                                         <td>
-                                                            {{ $order->code }}
+                                                            <a href="#{{ $order->code }}" onclick="show_order_details({{ $order->id }})">{{ $order->code }}</a>
                                                         </td>
                                                         <td>
                                                             {{ count($order->orderDetails->where('seller_id', Auth::user()->id)) }}
@@ -97,7 +97,7 @@
 
                                                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="">
                                                                     <button onclick="show_order_details({{ $order->id }})" class="dropdown-item">{{__('Order Details')}}</button>
-                                                                    {{-- <button onclick="" class="dropdown-item">Cancel Order</button> --}}
+                                                                    <a href="{{ route('invoice.download', $order->id) }}" class="dropdown-item">{{__('Download Invoice')}}</a>
                                                                 </div>
                                                             </div>
                                                         </td>

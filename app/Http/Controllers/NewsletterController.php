@@ -22,7 +22,7 @@ class NewsletterController extends Controller
     	foreach ($request->user_emails as $key => $email) {
             $array['view'] = 'emails.newsletter';
             $array['subject'] = $request->subject;
-            $array['from'] = $request->mail_from;
+            $array['from'] = env('MAIL_USERNAME');
             $array['content'] = $request->content;
 
             Mail::to($email)->queue(new EmailManager($array));
@@ -31,7 +31,7 @@ class NewsletterController extends Controller
         foreach ($request->subscriber_emails as $key => $email) {
             $array['view'] = 'emails.newsletter';
             $array['subject'] = $request->subject;
-            $array['from'] = $request->mail_from;
+            $array['from'] = env('MAIL_USERNAME');
             $array['content'] = $request->content;
 
             Mail::to($email)->queue(new EmailManager($array));

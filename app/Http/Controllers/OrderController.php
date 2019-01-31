@@ -10,6 +10,9 @@ use App\OrderDetail;
 use Auth;
 use Session;
 use DB;
+use PDF;
+use Mail;
+use App\Mail\InvoiceEmailManager;
 
 class OrderController extends Controller
 {

@@ -82,16 +82,16 @@
                                         <span class="star-rating star-rating-sm">
                                             @php
                                                 $rating = 0; $total = 0;
-                                                foreach ($product->user->products as $key => $product) {
-                                                    $rating += $product->reviews->avg('rating');
-                                                    $total += $product->reviews->count();
+                                                foreach ($product->user->products as $key => $seller_product) {
+                                                    $rating += $seller_product->reviews->sum('rating');
+                                                    $total += $seller_product->reviews->count();
                                                 }
                                             @endphp
                                             @if ($total > 0)
-                                                @for ($i=0; $i < $rating/$total; $i++)
+                                                @for ($i=0; $i < floor($rating/$total); $i++)
                                                     <i class="fa fa-star"></i>
                                                 @endfor
-                                                @for ($i=0; $i < 5-$rating/$total; $i++)
+                                                @for ($i=0; $i < ceil(5-$rating/$total); $i++)
                                                     <i class="fa fa-star-o"></i>
                                                 @endfor
                                             @endif
@@ -371,16 +371,16 @@
                                 <span class="star-rating star-rating-sm d-block">
                                     @php
                                         $rating = 0; $total = 0;
-                                        foreach ($product->user->products as $key => $product) {
-                                            $rating += $product->reviews->avg('rating');
-                                            $total += $product->reviews->count();
+                                        foreach ($product->user->products as $key => $seller_product) {
+                                            $rating += $seller_product->reviews->sum('rating');
+                                            $total += $seller_product->reviews->count();
                                         }
                                     @endphp
                                     @if ($total > 0)
-                                        @for ($i=0; $i < $rating/$total; $i++)
+                                        @for ($i=0; $i < floor($rating/$total); $i++)
                                             <i class="fa fa-star"></i>
                                         @endfor
-                                        @for ($i=0; $i < 5-$rating/$total; $i++)
+                                        @for ($i=0; $i < ceil(5-$rating/$total); $i++)
                                             <i class="fa fa-star-o"></i>
                                         @endfor
                                     @endif

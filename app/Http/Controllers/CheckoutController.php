@@ -9,9 +9,6 @@ use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\PublicSslCommerzPaymentController;
 use App\Http\Controllers\OrderController;
-use App\Mail\InvoiceEmailManager;
-use Mail;
-use PDF;
 use App\Order;
 
 class CheckoutController extends Controller

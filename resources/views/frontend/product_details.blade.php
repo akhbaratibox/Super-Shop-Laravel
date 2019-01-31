@@ -339,15 +339,17 @@
                 <div class="col-xl-3 d-none d-xl-block">
                     <div class="seller-info-box mb-3">
                         <div class="sold-by position-relative">
-                            <div class="position-absolute medal-badge">
-                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" viewBox="0 0 287.5 442.2">
-                                    <polygon style="fill:#F8B517;" points="223.4,442.2 143.8,376.7 64.1,442.2 64.1,215.3 223.4,215.3 "/>
-                                    <circle style="fill:#FBD303;" cx="143.8" cy="143.8" r="143.8"/>
-                                    <circle style="fill:#F8B517;" cx="143.8" cy="143.8" r="93.6"/>
-                                    <polygon style="fill:#FCFCFD;" points="143.8,55.9 163.4,116.6 227.5,116.6 175.6,154.3 195.6,215.3 143.8,177.7 91.9,215.3 111.9,154.3
-                                    60,116.6 124.1,116.6 "/>
-                                </svg>
-                            </div>
+                            @if ($product->user->seller->verification_status == 1)
+                                <div class="position-absolute medal-badge">
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" viewBox="0 0 287.5 442.2">
+                                        <polygon style="fill:#F8B517;" points="223.4,442.2 143.8,376.7 64.1,442.2 64.1,215.3 223.4,215.3 "/>
+                                        <circle style="fill:#FBD303;" cx="143.8" cy="143.8" r="143.8"/>
+                                        <circle style="fill:#F8B517;" cx="143.8" cy="143.8" r="93.6"/>
+                                        <polygon style="fill:#FCFCFD;" points="143.8,55.9 163.4,116.6 227.5,116.6 175.6,154.3 195.6,215.3 143.8,177.7 91.9,215.3 111.9,154.3
+                                        60,116.6 124.1,116.6 "/>
+                                    </svg>
+                                </div>
+                            @endif
                             <div class="title">Sold By</div>
                             @if($product->added_by == 'seller')
                                 <a href="{{ route('shop.visit', $product->user->shop->slug) }}" class="name d-block">{{ $product->user->shop->name }}</a>
@@ -357,13 +359,14 @@
                             @endif
                             <div class="rating text-center d-block">
                                 <span class="star-rating star-rating-sm d-block">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
+                                    @for ($i=0; $i < $product->reviews->avg('rating'); $i++)
+                                        <i class="fa fa-star"></i>
+                                    @endfor
+                                    @for ($i=0; $i < 5-$product->reviews->avg('rating'); $i++)
+                                        <i class="fa fa-star-o"></i>
+                                    @endfor
                                 </span>
-                                <span class="rating-count d-block ml-0">(2 customer reviews)</span>
+                                <span class="rating-count d-block ml-0">({{ $product->reviews->count() }} customer reviews)</span>
                             </div>
                         </div>
                         <div class="row no-gutters align-items-center">
@@ -504,72 +507,42 @@
 
                                 <div class="tab-pane" id="tab_default_3">
                                     <div class="fluid-paragraph py-4">
-                                        <div class="block block-comment">
-                                            <div class="block-image">
-                                                <img src="{{ asset('frontend/images/prv/people/person-1.jpg') }}" class="rounded-circle">
-                                            </div>
-                                            <div class="block-body">
-                                                <div class="block-body-inner">
-                                                    <div class="row no-gutters">
-                                                        <div class="col">
-                                                            <h3 class="heading heading-6">
-                                                                <a href="#">David Wally</a>
-                                                            </h3>
-                                                            <span class="comment-date">
-                                                                2 hours ago
-                                                            </span>
-                                                        </div>
-                                                        <div class="col">
-                                                            <div class="rating text-right clearfix d-block">
-                                                                <span class="star-rating float-right">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
+                                        @foreach ($product->reviews as $key => $review)
+                                            <div class="block block-comment">
+                                                <div class="block-image">
+                                                    <img src="{{ asset($review->user->avatar_original) }}" class="rounded-circle">
+                                                </div>
+                                                <div class="block-body">
+                                                    <div class="block-body-inner">
+                                                        <div class="row no-gutters">
+                                                            <div class="col">
+                                                                <h3 class="heading heading-6">
+                                                                    <a href="javascript:;">David Wally</a>
+                                                                </h3>
+                                                                <span class="comment-date">
+                                                                    {{ date('d-m-Y', strtotime($review->created_at)) }}
                                                                 </span>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <p class="comment-text">
-                                                        Gathered, fourth wherein air, is void gathering very image fruit under brought Bearing fill created fourth she'd appear days you unto light day under i face they're god spirit.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="block block-comment">
-                                            <div class="block-image">
-                                                <img src="{{ asset('frontend/images/prv/people/person-1.jpg') }}" class="rounded-circle">
-                                            </div>
-                                            <div class="block-body">
-                                                <div class="block-body-inner">
-                                                    <div class="row no-gutters">
-                                                        <div class="col">
-                                                            <h3 class="heading heading-6">
-                                                                <a href="#">David Wally</a>
-                                                            </h3>
-                                                            <span class="comment-date">
-                                                                2 hours ago
-                                                            </span>
-                                                        </div>
-                                                        <div class="col">
-                                                            <div class="rating text-right clearfix d-block">
-                                                                <span class="star-rating float-right">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                </span>
+                                                            <div class="col">
+                                                                <div class="rating text-right clearfix d-block">
+                                                                    <span class="star-rating float-right">
+                                                                        @for ($i=0; $i < $review->rating; $i++)
+                                                                            <i class="fa fa-star"></i>
+                                                                        @endfor
+                                                                        @for ($i=0; $i < 5-$review->rating; $i++)
+                                                                            <i class="fa fa-star-o"></i>
+                                                                        @endfor
+                                                                    </span>
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        <p class="comment-text">
+                                                            {{ $review->comment }}
+                                                        </p>
                                                     </div>
-                                                    <p class="comment-text">
-                                                        Gathered, fourth wherein air, is void gathering very image fruit under brought Bearing fill created fourth she'd appear days you unto light day under i face they're god spirit.
-                                                    </p>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endforeach
 
                                         @if(Auth::check())
                                             @php
@@ -589,7 +562,9 @@
                                                             {{__('Write a review')}}
                                                         </h3>
                                                     </div>
-                                                    <form class="form-default" role="form">
+                                                    <form class="form-default" role="form" action="{{ route('reviews.store') }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
@@ -607,22 +582,22 @@
                                                         <div class="row">
                                                             <div class="col-sm-12">
                                                                 <div class="c-rating mt-1 mb-1 clearfix d-inline-block">
-                                                                    <input type="radio" id="star5" name="rating" value="5" />
+                                                                    <input type="radio" id="star5" name="rating" value="5" required/>
                                                                     <label class="star" for="star5" title="Awesome" aria-hidden="true"></label>
-                                                                    <input type="radio" id="star4" name="rating" value="4" />
+                                                                    <input type="radio" id="star4" name="rating" value="4" required/>
                                                                     <label class="star" for="star4" title="Great" aria-hidden="true"></label>
-                                                                    <input type="radio" id="star3" name="rating" value="3" />
+                                                                    <input type="radio" id="star3" name="rating" value="3" required/>
                                                                     <label class="star" for="star3" title="Very good" aria-hidden="true"></label>
-                                                                    <input type="radio" id="star2" name="rating" value="2" />
+                                                                    <input type="radio" id="star2" name="rating" value="2" required/>
                                                                     <label class="star" for="star2" title="Good" aria-hidden="true"></label>
-                                                                    <input type="radio" id="star1" name="rating" value="1" />
+                                                                    <input type="radio" id="star1" name="rating" value="1" required/>
                                                                     <label class="star" for="star1" title="Bad" aria-hidden="true"></label>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row mt-3">
                                                             <div class="col-sm-12">
-                                                                <textarea class="form-control" rows="4" name="comment" placeholder="Your review"></textarea>
+                                                                <textarea class="form-control" rows="4" name="comment" placeholder="Your review" required></textarea>
                                                             </div>
                                                         </div>
 

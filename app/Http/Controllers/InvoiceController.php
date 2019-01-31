@@ -11,7 +11,7 @@ class InvoiceController extends Controller
     public function download($id)
     {
         $order = Order::findOrFail($id);
-        $pdf = PDF::loadView('invoices.invoice', compact('order'));
+        $pdf = PDF::loadView('invoices.customer_invoice', compact('order'));
         return $pdf->download('order-'.$order->code.'.pdf');
     }
 }

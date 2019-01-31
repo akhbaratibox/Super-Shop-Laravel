@@ -86,7 +86,7 @@
                                                     $rating += $product->reviews->avg('rating');
                                                     $total += $product->reviews->count();
                                                 }
-                                                $rating /= count($product->user->products);
+                                                $rating /= $total;
                                             @endphp
                                             @for ($i=0; $i < $rating; $i++)
                                                 <i class="fa fa-star"></i>
@@ -374,7 +374,7 @@
                                             $rating += $product->reviews->avg('rating');
                                             $total += $product->reviews->count();
                                         }
-                                        $rating /= count($product->user->products);
+                                        $rating /= $total;
                                     @endphp
                                     @for ($i=0; $i < $rating; $i++)
                                         <i class="fa fa-star"></i>

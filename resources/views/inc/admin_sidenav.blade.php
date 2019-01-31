@@ -220,7 +220,7 @@
                                     <a class="nav-link" href="{{route('seller_verification_form.index')}}">{{__('seller_verification_form')}}</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['business_settings.vendor'])}}">
-                                    <a class="nav-link" href="{{ route('business_settings.vendor', 'vendor_commission') }}">{{__('Vendor Commission')}}</a>
+                                    <a class="nav-link" href="{{ route('business_settings.vendor', 'vendor_commission') }}">{{__('Seller Commission')}}</a>
                                 </li>
                             </ul>
                         </li>

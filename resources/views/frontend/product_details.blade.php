@@ -78,16 +78,25 @@
                                         @endif
                                     </div>
                                     <!-- Rating stars -->
-                                    <!-- <div class="rating">
+                                    <div class="rating">
                                         <span class="star-rating star-rating-sm">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
+                                            @php
+                                                $rating = 0; $total = 0;
+                                                foreach ($product->user->products as $key => $product) {
+                                                    $rating += $product->reviews->avg('rating');
+                                                    $total += $product->reviews->count();
+                                                }
+                                                $rating /= count($product->user->products);
+                                            @endphp
+                                            @for ($i=0; $i < $rating; $i++)
+                                                <i class="fa fa-star"></i>
+                                            @endfor
+                                            @for ($i=0; $i < 5-$rating; $i++)
+                                                <i class="fa fa-star-o"></i>
+                                            @endfor
                                         </span>
-                                        <span class="rating-count">(2 customer reviews)</span>
-                                    </div> -->
+                                        <span class="rating-count">({{ $total }} customer reviews)</span>
+                                    </div>
                                 </div>
                                 <div class="col-6 text-right">
                                     <ul class="inline-links inline-links--style-1">
@@ -359,14 +368,22 @@
                             @endif
                             <div class="rating text-center d-block">
                                 <span class="star-rating star-rating-sm d-block">
-                                    @for ($i=0; $i < $product->reviews->avg('rating'); $i++)
+                                    @php
+                                        $rating = 0; $total = 0;
+                                        foreach ($product->user->products as $key => $product) {
+                                            $rating += $product->reviews->avg('rating');
+                                            $total += $product->reviews->count();
+                                        }
+                                        $rating /= count($product->user->products);
+                                    @endphp
+                                    @for ($i=0; $i < $rating; $i++)
                                         <i class="fa fa-star"></i>
                                     @endfor
-                                    @for ($i=0; $i < 5-$product->reviews->avg('rating'); $i++)
+                                    @for ($i=0; $i < 5-$rating; $i++)
                                         <i class="fa fa-star-o"></i>
                                     @endfor
                                 </span>
-                                <span class="rating-count d-block ml-0">({{ $product->reviews->count() }} customer reviews)</span>
+                                <span class="rating-count d-block ml-0">({{ $total }} customer reviews)</span>
                             </div>
                         </div>
                         <div class="row no-gutters align-items-center">

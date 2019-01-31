@@ -111,17 +111,17 @@ class BusinessSettingsController extends Controller
 
     public function vendor($type)
     {
-        $business = BusinessSetting::where('type', $type)->first();
-        return view('business_settings.vendorindex', compact('business'));
+        $business_settings = BusinessSetting::where('type', $type)->first();
+        return view('business_settings.vendor_commission', compact('business_settings'));
     }
 
-    public function vendorstore(Request $request){
-        $business = BusinessSetting::where('type', $request->type)->first();
-        $business->type = $request->type;
-        $business->value = $request->value;
-        $business->save();
+    public function vendor_commission_update(Request $request){
+        $business_settings = BusinessSetting::where('type', $request->type)->first();
+        $business_settings->type = $request->type;
+        $business_settings->value = $request->value;
+        $business_settings->save();
 
-        flash('Vendor Commission updated successfully');
+        flash('Seller Commission updated successfully');
         return back();
     }
 }

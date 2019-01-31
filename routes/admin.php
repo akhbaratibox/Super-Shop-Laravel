@@ -57,7 +57,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
     Route::post('/your-currency/update', 'CurrencyController@updateYourCurrency')->name('your_currency.update');
 	Route::get('/verification/form', 'BusinessSettingsController@seller_verification_form')->name('seller_verification_form.index');
 	Route::get('/business_settings/{type}', 'BusinessSettingsController@vendor')->name('business_settings.vendor');
-	Route::post('/business_settings/vendor_store', 'BusinessSettingsController@vendorstore')->name('business_settings.vendorstore');
+	Route::post('/business_settings/vendor_commission_update', 'BusinessSettingsController@vendor_commission_update')->name('business_settings.vendor.commission');
 
 	Route::resource('/languages', 'LanguageController');
 	Route::get('/languages/destroy/{id}', 'LanguageController@destroy')->name('languages.destroy');
@@ -108,7 +108,4 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('/links/destroy/{id}', 'LinkController@destroy')->name('links.destroy');
 
 	Route::resource('generalsettings','GeneralSettingController');
-
-	Route::resource('vendors','VendorController');
-
 });

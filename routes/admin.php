@@ -30,7 +30,6 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('/products/create','ProductController@create')->name('products.create');
 	Route::get('/products/{id}/edit','ProductController@edit')->name('products.edit');
 	Route::post('/products/todays_deal', 'ProductController@updateTodaysDeal')->name('products.todays_deal');
-	Route::post('/products/published', 'ProductController@updatePublished')->name('products.published');
 	Route::post('/products/get_products_by_subsubcategory', 'ProductController@get_products_by_subsubcategory')->name('products.get_products_by_subsubcategory');
 
 	Route::resource('sellers','SellerController');

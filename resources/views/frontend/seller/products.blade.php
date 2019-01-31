@@ -47,6 +47,7 @@
                                             <th>{{__('subsubcategory')}}</th>
                                             <th>{{__('current_qty')}}</th>
                                             <th>{{__('base_price')}}</th>
+                                            <th>{{__('published')}}</th>
                                             <th>{{__('featured')}}</th>
                                             <th>{{__('options')}}</th>
                                         </tr>
@@ -68,6 +69,10 @@
                                                     @endphp
                                                 </td>
                                                 <td>{{ $product->unit_price }}</td>
+                                                <td><label class="switch">
+                                                    <input onchange="update_published(this)" value="{{ $product->id }}" type="checkbox" <?php if($product->published == 1) echo "checked";?> >
+                                                    <span class="slider round"></span></label>
+                                                </td>
                                                 <td><label class="switch">
                                                     <input onchange="update_featured(this)" value="{{ $product->id }}" type="checkbox" <?php if($product->featured == 1) echo "checked";?> >
                                                     <span class="slider round"></span></label>
@@ -118,6 +123,23 @@
             $.post('{{ route('products.featured') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
                 if(data == 1){
                     showFrontendAlert('success', 'Featured products updated successfully');
+                }
+                else{
+                    showFrontendAlert('danger', 'Something went wrong');
+                }
+            });
+        }
+
+        function update_published(el){
+            if(el.checked){
+                var status = 1;
+            }
+            else{
+                var status = 0;
+            }
+            $.post('{{ route('products.published') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
+                if(data == 1){
+                    showFrontendAlert('success', 'Published products updated successfully');
                 }
                 else{
                     showFrontendAlert('danger', 'Something went wrong');

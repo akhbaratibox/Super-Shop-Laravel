@@ -53,7 +53,7 @@
                 <div class="col-10 offset-1 col-lg-8 offset-lg-2">
                     <div class="caorusel-box">
                         <div class="slick-carousel center-mode" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="3" data-slick-sm-items="1" data-slick-xs-items="1" data-slick-center="true">
-                            @foreach ($shop->user->products->where('featured', 1) as $key => $product)
+                            @foreach ($shop->user->products->where('published', 1)->where('featured', 1) as $key => $product)
                                 <div class="">
                                     <div class="product-card-2 card card-product m-3 shop-cards shop-tech">
                                         <div class="card-body p-0">
@@ -227,13 +227,13 @@
                     <div class="product-list row">
                         @php
                             if (!isset($type)){
-                                $products = \App\Product::where('user_id', $shop->user->id)->orderBy('created_at', 'desc')->paginate(6);
+                                $products = \App\Product::where('user_id', $shop->user->id)->where('published', 1)->orderBy('created_at', 'desc')->paginate(6);
                             }
                             elseif ($type == 'top_selling'){
-                                $products = \App\Product::where('user_id', $shop->user->id)->orderBy('num_of_sale', 'desc')->paginate(6);
+                                $products = \App\Product::where('user_id', $shop->user->id)->where('published', 1)->orderBy('num_of_sale', 'desc')->paginate(6);
                             }
                             elseif ($type == 'all_products'){
-                                $products = \App\Product::where('user_id', $shop->user->id)->paginate(6);
+                                $products = \App\Product::where('user_id', $shop->user->id)->where('published', 1)->paginate(6);
                             }
                         @endphp
                         @foreach ($products as $key => $product)

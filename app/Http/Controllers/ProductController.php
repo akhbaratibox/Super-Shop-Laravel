@@ -352,16 +352,16 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         if(Product::destroy($id)){
             if($product->thumbnail_img != null){
-                unlink($product->thumbnail_img);
+                //unlink($product->thumbnail_img);
             }
             if($product->featured_img != null){
-                unlink($product->featured_img);
+                //unlink($product->featured_img);
             }
             if($product->flash_deal_img != null){
-                unlink($product->flash_deal_img);
+                //unlink($product->flash_deal_img);
             }
             foreach (json_decode($product->photos) as $key => $photo) {
-                unlink($photo);
+                //unlink($photo);
             }
             flash(__('Product has been deleted successfully'))->success();
             if(Auth::user()->user_type == 'admin'){

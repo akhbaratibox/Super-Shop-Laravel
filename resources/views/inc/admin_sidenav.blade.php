@@ -219,6 +219,9 @@
                                 <li class="{{ areActiveRoutes(['seller_verification_form.index'])}}">
                                     <a class="nav-link" href="{{route('seller_verification_form.index')}}">{{__('seller_verification_form')}}</a>
                                 </li>
+                                <li class="{{ areActiveRoutes(['business_settings.vendor'])}}">
+                                    <a class="nav-link" href="{{ route('business_settings.vendor', 'vendor_commission') }}">{{__('Vendor Commission')}}</a>
+                                </li>
                             </ul>
                         </li>
 

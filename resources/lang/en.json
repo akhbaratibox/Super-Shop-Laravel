@@ -401,5 +401,7 @@
     "SubSubCategory has been deleted successfully" : "SubSubCategory has been deleted successfully",
     "SubSubCategory has been updated successfully" : "SubSubCategory has been updated successfully",
     "SubSubCategory has been inserted successfully" : "SubSubCategory has been inserted successfully",
-    "SMTP Settings" : "SMTP Settings"
+    "SMTP Settings" : "SMTP Settings",
+
+    "Vendor Commision" : "Vendor Commision"
 }

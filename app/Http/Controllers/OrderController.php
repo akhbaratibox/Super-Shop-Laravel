@@ -64,6 +64,17 @@ class OrderController extends Controller
     }
 
     /**
+     * Display a single sale to admin.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function sales_show($id)
+    {
+        $order = Order::findOrFail($id);
+        return view('sales.show', compact('order'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

@@ -99,6 +99,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 
 	Route::get('/orders', 'OrderController@admin_orders')->name('orders.index.admin');
 	Route::get('/orders/{id}/show', 'OrderController@show')->name('orders.show');
+	Route::get('/sales/{id}/show', 'OrderController@sales_show')->name('sales.show');
 	Route::get('/orders/destroy/{id}', 'OrderController@destroy')->name('orders.destroy');
 	Route::get('/sales', 'OrderController@sales')->name('sales.index');
 

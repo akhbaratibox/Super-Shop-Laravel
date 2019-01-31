@@ -74,6 +74,7 @@
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <li><a href="{{ route('orders.show', $order->id) }}">View</a></li>
+                                        <li><a href="{{ route('seller.invoice.download', $order->id) }}">{{__('Download Invoice')}}</a></li>
                                         <li><a onclick="confirm_modal('{{route('orders.destroy', $order->id)}}');">Delete</a></li>
                                     </ul>
                                 </div>

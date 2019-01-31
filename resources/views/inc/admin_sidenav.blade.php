@@ -127,14 +127,14 @@
                             </a>
                         </li>
 
-                        <li class="{{ areActiveRoutes(['orders.index.admin'])}}">
+                        <li class="{{ areActiveRoutes(['orders.index.admin', 'orders.show'])}}">
                             <a class="nav-link" href="{{ route('orders.index.admin') }}">
                                 <i class="fa fa-shopping-basket"></i>
                                 <span class="menu-title">{{__('orders')}}</span>
                             </a>
                         </li>
 
-                        <li class="{{ areActiveRoutes(['sales.index'])}}">
+                        <li class="{{ areActiveRoutes(['sales.index', 'sales.show'])}}">
                             <a class="nav-link" href="{{ route('sales.index') }}">
                                 <i class="fa fa-money"></i>
                                 <span class="menu-title">{{__('sales')}}</span>

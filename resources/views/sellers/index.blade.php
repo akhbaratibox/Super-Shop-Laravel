@@ -33,7 +33,13 @@
                         <td>{{$key+1}}</td>
                         <td>{{$seller->user->name}}</td>
                         <td>{{$seller->user->email}}</td>
-                        <td>{{$seller->status}}</td>
+                        <td>
+                            @if ($seller->verification_status == 1)
+                                Verified
+                            @else
+                                Not verified
+                            @endif
+                        </td>
                         <td>
                             <a href="{{route('sellers.edit', $seller->id)}}" class="btn btn-mint btn-icon"><i class="demo-psi-pen-5 icon-lg"></i></a>
                             <a onclick="confirm_modal('{{route('sellers.destroy', $seller->id)}}');" class="btn btn-danger btn-icon"><i class="demo-psi-recycling icon-lg"></i></a>

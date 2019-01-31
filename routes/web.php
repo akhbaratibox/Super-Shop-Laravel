@@ -109,8 +109,6 @@ Route::group(['middleware' => ['user', 'verified']], function(){
 	Route::resource('wishlists','WishlistController');
 	Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
 
-	Route::get('invoice/customer/{order_id}', 'InvoiceController@customer_invoice_download')->name('customer.invoice.download');
-	Route::get('invoice/seller/{order_id}', 'InvoiceController@seller_invoice_download')->name('seller.invoice.download');
 	Route::resource('/reviews', 'ReviewController');
 });
 
@@ -130,4 +128,7 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::post('/products/sku_combination_edit', 'ProductController@sku_combination_edit')->name('products.sku_combination_edit');
 	Route::post('/products/featured', 'ProductController@updateFeatured')->name('products.featured');
 	Route::post('/products/published', 'ProductController@updatePublished')->name('products.published');
+
+	Route::get('invoice/customer/{order_id}', 'InvoiceController@customer_invoice_download')->name('customer.invoice.download');
+	Route::get('invoice/seller/{order_id}', 'InvoiceController@seller_invoice_download')->name('seller.invoice.download');
 });

@@ -20,6 +20,12 @@ class PurchaseHistoryController extends Controller
         return view('frontend.purchase_history', compact('orders'));
     }
 
+    public function purchase_history_details(Request $request)
+    {
+        $order = Order::findOrFail($request->order_id);
+        return view('frontend.partials.order_details_customer', compact('order'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

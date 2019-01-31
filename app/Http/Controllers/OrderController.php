@@ -205,12 +205,7 @@ class OrderController extends Controller
     public function order_details(Request $request)
     {
         $order = Order::findOrFail($request->order_id);
-        if(Auth::user()->user_type == 'seller'){
-            return view('frontend.partials.order_details_seller', compact('order'));
-        }
-        else {
-            return view('frontend.partials.order_details_customer', compact('order'));
-        }
+        return view('frontend.partials.order_details_seller', compact('order'));
     }
 
     public function update_status(Request $request)

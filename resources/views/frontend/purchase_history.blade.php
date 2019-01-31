@@ -54,7 +54,7 @@
                                             @foreach ($orders as $key => $order)
                                                 <tr>
                                                     <td>
-                                                        <a href="#{{ $order->code }}" onclick="show_order_details({{ $order->id }})">{{ $order->code }}</a>
+                                                        <a href="#{{ $order->code }}" onclick="show_purchase_history_details({{ $order->id }})">{{ $order->code }}</a>
                                                     </td>
                                                     <td>{{ date('d-m-Y', $order->date) }}</td>
                                                     <td>
@@ -82,8 +82,8 @@
                                                             </button>
 
                                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="">
-                                                                <button onclick="show_order_details({{ $order->id }})" class="dropdown-item">{{__('Order Details')}}</button>
-                                                                <a href="{{ route('invoice.download', $order->id) }}" class="dropdown-item">{{__('Download Invoice')}}</a>
+                                                                <button onclick="show_purchase_history_details({{ $order->id }})" class="dropdown-item">{{__('Order Details')}}</button>
+                                                                <a href="{{ route('customer.invoice.download', $order->id) }}" class="dropdown-item">{{__('Download Invoice')}}</a>
                                                             </div>
                                                         </div>
                                                     </td>

@@ -9,18 +9,17 @@ use Auth;
 
 class InvoiceController extends Controller
 {
-    public function download($id)
+    public function customer_invoice_download($id)
     {
         $order = Order::findOrFail($id);
-        if (Auth::user()->user_type == 'customer') {
-            $pdf = PDF::loadView('invoices.customer_invoice', compact('order'));
-        }
-        elseif (Auth::user()->user_type == 'seller') {
-            $pdf = PDF::loadView('invoices.seller_invoice', compact('order'));
-        }
-        elseif (Auth::user()->user_type == 'admin') {
-            $pdf = PDF::loadView('invoices.admin_invoice', compact('order'));
-        }
+        $pdf = PDF::loadView('invoices.customer_invoice', compact('order'));
+        return $pdf->download('order-'.$order->code.'.pdf');
+    }
+
+    public function seller_invoice_download($id)
+    {
+        $order = Order::findOrFail($id);
+        $pdf = PDF::loadView('invoices.seller_invoice', compact('order'));
         return $pdf->download('order-'.$order->code.'.pdf');
     }
 }

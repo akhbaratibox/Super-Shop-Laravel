@@ -97,7 +97,7 @@
 
                                                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="">
                                                                     <button onclick="show_order_details({{ $order->id }})" class="dropdown-item">{{__('Order Details')}}</button>
-                                                                    <a href="{{ route('invoice.download', $order->id) }}" class="dropdown-item">{{__('Download Invoice')}}</a>
+                                                                    <a href="{{ route('seller.invoice.download', $order->id) }}" class="dropdown-item">{{__('Download Invoice')}}</a>
                                                                 </div>
                                                             </div>
                                                         </td>

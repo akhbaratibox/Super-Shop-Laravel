@@ -9,130 +9,86 @@
 				<h3 class="panel-title text-center">Seller Verification Form</h3>
 			</div>
 			<div class="panel-body">
-				<div class="row">
-					<div class="col-lg-8 form-horizontal seller_form_border" id="form">
+				<form action="{{ route('seller_verification_form.update') }}" method="post">
+					@csrf
+					<div class="row">
+						<div class="col-lg-8 form-horizontal seller_form_border" id="form">
+							@foreach (json_decode(\App\BusinessSetting::where('type', 'verification_form')->first()->value) as $key => $element)
+								@if ($element->type == 'text' || $element->type == 'file')
+									<div class="form-group" style="background:rgba(0,0,0,0.1);padding:10px 0;">
+									    <input type="hidden" name="type[]" value="text">
+									    <div class="col-lg-3">
+									        <label class="control-label">{{ ucfirst($element->type) }}</label>
+									    </div>
+									    <div class="col-lg-7">
+									        <input class="form-control" type="text" name="label[]" value="{{ $element->label }}" placeholder="Label">
+									    </div>
+									    <div class="col-lg-2"><span class="btn btn-icon btn-circle icon-lg fa fa-times" onclick="delete_choice_clearfix(this)"></span></div>
+									</div>
+								@elseif ($element->type == 'select' || $element->type == 'multi_select' || $element->type == 'radio')
+									<div class="form-group" style="background:rgba(0,0,0,0.1);padding:10px 0;">
+									    <input type="hidden" name="type[]" value="{{ $element->type }}">
+									    <input type="hidden" name="option[]" class="option" value="{{ $key }}">
+									    <div class="col-lg-3">
+									        <label class="control-label">{{ ucfirst(str_replace('_', ' ', $element->type)) }}</label>
+									    </div>
+									    <div class="col-lg-7">
+									        <input class="form-control" type="text" name="label[]" value="{{ $element->label }}" placeholder="Select Label" style="margin-bottom:10px">
+									        <div class="customer_choice_options_types_wrap_child">
+												@foreach (json_decode($element->options) as $value)
+													<div class="form-group">
+													    <div class="col-sm-6 col-sm-offset-4">
+													        <input class="form-control" type="text" name="options_{{ $key }}[]" value="{{ $value }}" required="">
+													    </div>
+													    <div class="col-sm-2"> <span class="btn btn-icon btn-circle icon-lg fa fa-times" onclick="delete_choice_clearfix(this)"></span></div>
+													</div>
+												@endforeach
+											</div>
+									        <button class="btn btn-success pull-right" type="button" onclick="add_customer_choice_options(this)"><i class="glyphicon glyphicon-plus"></i> Add option</button>
+									    </div>
+									    <div class="col-lg-2"><span class="btn btn-icon btn-circle icon-lg fa fa-times" onclick="delete_choice_clearfix(this)"></span></div>
+									</div>
+								@endif
+							@endforeach
+						</div>
+						<div class="col-lg-4">
 
+							<ul class="list-group">
+								<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('text')">Text Input</li>
+								<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('select')">Select</li>
+								<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('multi-select')">Multiple Select</li>
+								<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('radio')">Radio</li>
+								<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('file')">File</li>
+							</ul>
+
+						</div>
 					</div>
-					<div class="col-lg-4">
-
-						<ul class="list-group">
-							<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('text')">Text Input</li>
-							<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('select')">Select</li>
-							<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('multi-select')">Multiple Select</li>
-							<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('radio')">Radio</li>
-							<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('file')">File</li>
-						</ul>
-
-					</div>
-				</div>
+					<div class="panel-footer text-right">
+		                <button class="btn btn-purple" type="submit">{{__('save')}}</button>
+		            </div>
+				</form>
 			</div>
 		</div>
 
-	</div>
-
-	<div class="text hide">
-		<div class="form-group" style="background:rgba(0,0,0,0.1);padding:10px 0;">
-			<div class="col-lg-3">
-				<label class="control-label">Text</label>
-			</div>
-			<div class="col-lg-7">
-				<input class="form-control" type="text" placeholder="Label">
-			</div>
-			<div class="col-lg-2">
-				<span class="btn btn-danger btn-icon btn-circle icon-lg fa fa-times" onclick="delete_choice_clearfix(this)">
-				</span>
-			</div>
-		</div>
-	</div>
-
-	<div class="file hide">
-		<div class="form-group" style="background:rgba(0,0,0,0.1);padding:10px 0;">
-			<div class="col-lg-3">
-				<label class="control-label">File</label>
-			</div>
-			<div class="col-lg-7">
-				<input class="form-control" type="text" placeholder="Label">
-			</div>
-			<div class="col-lg-2">
-				<span class="btn btn-danger btn-icon btn-circle icon-lg fa fa-times" onclick="delete_choice_clearfix(this)">
-				</span>
-			</div>
-		</div>
-	</div>
-
-	<div class="select hide">
-		<div class="form-group" style="background:rgba(0,0,0,0.1);padding:10px 0;">
-			<div class="col-lg-3">
-				<label class="control-label">Select</label>
-			</div>
-			<div class="col-lg-7">
-				<input class="form-control" type="text" placeholder="Select Label" style="margin-bottom:10px">
-				<div class="customer_choice_options_types_wrap_child">
-
-				</div>
-				<button class="btn btn-success pull-right" type="button" onclick="add_customer_choice_options(this)"><i class="glyphicon glyphicon-plus"></i> Add option</button>
-			</div>
-			<div class="col-lg-2">
-				<span class="btn btn-danger btn-icon btn-circle icon-lg fa fa-times" onclick="delete_choice_clearfix(this)">
-				</span>
-			</div>
-		</div>
-	</div>
-
-	<div class="multi-select hide">
-		<div class="form-group" style="background:rgba(0,0,0,0.1);padding:10px 0;">
-			<div class="col-lg-3">
-				<label class="control-label">Multi-Select</label>
-			</div>
-			<div class="col-lg-7">
-				<input class="form-control" type="text" placeholder="Multi-Select Label" style="margin-bottom:10px">
-				<div class="customer_choice_options_types_wrap_child">
-
-				</div>
-				<button class="btn btn-success pull-right" type="button" onclick="add_customer_choice_options(this)"><i class="glyphicon glyphicon-plus"></i> Add option</button>
-			</div>
-			<div class="col-lg-2">
-				<span class="btn btn-danger btn-icon btn-circle icon-lg fa fa-times" onclick="delete_choice_clearfix(this)">
-				</span>
-			</div>
-		</div>
-	</div>
-
-	<div class="radio hide">
-		<div class="form-group" style="background:rgba(0,0,0,0.1);padding:10px 0;">
-			<div class="col-lg-3">
-				<label class="control-label">Radio</label>
-			</div>
-			<div class="col-lg-7">
-				<input class="form-control" type="text" placeholder="Radio Label" style="margin-bottom:10px">
-				<div class="customer_choice_options_types_wrap_child">
-
-				</div>
-				<button class="btn btn-success pull-right" type="button" onclick="add_customer_choice_options(this)"><i class="glyphicon glyphicon-plus"></i> Add option</button>
-			</div>
-			<div class="col-lg-2">
-				<span class="btn btn-danger btn-icon btn-circle icon-lg fa fa-times" onclick="delete_choice_clearfix(this)">
-				</span>
-			</div>
-		</div>
-	</div>
-
-	<div class="option hide">
-		<div class="form-group">
-			<div class="col-sm-6 col-sm-offset-4">
-				<input class="form-control" type="text" value="" required>
-			</div>
-			<div class="col-sm-2"> <span class="btn btn-danger btn-icon btn-circle icon-lg fa fa-times" onclick="delete_choice_clearfix(this)"></span>
-			</div>
-		</div>
 	</div>
 
 @endsection
 
 @section('script')
 	<script type="text/javascript">
+
+		var i = 0;
+
 		function add_customer_choice_options(em){
-			$(em).parent().find('.customer_choice_options_types_wrap_child').append($('.option').html());
+			var j = $(em).closest('.form-group').find('.option').val();
+			var str = '<div class="form-group">'
+							+'<div class="col-sm-6 col-sm-offset-4">'
+								+'<input class="form-control" type="text" name="options_'+j+'[]" value="" required>'
+							+'</div>'
+							+'<div class="col-sm-2"> <span class="btn btn-icon btn-circle icon-lg fa fa-times" onclick="delete_choice_clearfix(this)"></span>'
+							+'</div>'
+						+'</div>'
+			$(em).parent().find('.customer_choice_options_types_wrap_child').append(str);
 		}
 		function delete_choice_clearfix(em){
 			$(em).parent().parent().remove();
@@ -140,19 +96,94 @@
 		function appenddToForm(type){
 			$('#form').removeClass('seller_form_border');
 			if(type == 'text'){
-				$('#form').append($('.text').html());
+				var str = '<div class="form-group" style="background:rgba(0,0,0,0.1);padding:10px 0;">'
+								+'<input type="hidden" name="type[]" value="text">'
+								+'<div class="col-lg-3">'
+									+'<label class="control-label">Text</label>'
+								+'</div>'
+								+'<div class="col-lg-7">'
+									+'<input class="form-control" type="text" name="label[]" placeholder="Label">'
+								+'</div>'
+								+'<div class="col-lg-2">'
+									+'<span class="btn btn-icon btn-circle icon-lg fa fa-times" onclick="delete_choice_clearfix(this)"></span>'
+								+'</div>'
+							+'</div>';
+				$('#form').append(str);
 			}
 			else if (type == 'select') {
-				$('#form').append($('.select').html());
+				i++;
+				var str = '<div class="form-group" style="background:rgba(0,0,0,0.1);padding:10px 0;">'
+								+'<input type="hidden" name="type[]" value="select"><input type="hidden" name="option[]" class="option" value="'+i+'">'
+								+'<div class="col-lg-3">'
+									+'<label class="control-label">Select</label>'
+								+'</div>'
+								+'<div class="col-lg-7">'
+									+'<input class="form-control" type="text" name="label[]" placeholder="Select Label" style="margin-bottom:10px">'
+									+'<div class="customer_choice_options_types_wrap_child">'
+
+									+'</div>'
+									+'<button class="btn btn-success pull-right" type="button" onclick="add_customer_choice_options(this)"><i class="glyphicon glyphicon-plus"></i> Add option</button>'
+								+'</div>'
+								+'<div class="col-lg-2">'
+									+'<span class="btn btn-icon btn-circle icon-lg fa fa-times" onclick="delete_choice_clearfix(this)"></span>'
+								+'</div>'
+							+'</div>';
+				$('#form').append(str);
 			}
 			else if (type == 'multi-select') {
-				$('#form').append($('.multi-select').html());
+				i++;
+				var str = '<div class="form-group" style="background:rgba(0,0,0,0.1);padding:10px 0;">'
+								+'<input type="hidden" name="type[]" value="multi_select"><input type="hidden" name="option[]" class="option" value="'+i+'">'
+								+'<div class="col-lg-3">'
+									+'<label class="control-label">Multiple select</label>'
+								+'</div>'
+								+'<div class="col-lg-7">'
+									+'<input class="form-control" type="text" name="label[]" placeholder="Multiple Select Label" style="margin-bottom:10px">'
+									+'<div class="customer_choice_options_types_wrap_child">'
+
+									+'</div>'
+									+'<button class="btn btn-success pull-right" type="button" onclick="add_customer_choice_options(this)"><i class="glyphicon glyphicon-plus"></i> Add option</button>'
+								+'</div>'
+								+'<div class="col-lg-2">'
+									+'<span class="btn btn-icon btn-circle icon-lg fa fa-times" onclick="delete_choice_clearfix(this)"></span>'
+								+'</div>'
+							+'</div>';
+				$('#form').append(str);
 			}
 			else if (type == 'radio') {
-				$('#form').append($('.radio').html());
+				i++;
+				var str = '<div class="form-group" style="background:rgba(0,0,0,0.1);padding:10px 0;">'
+								+'<input type="hidden" name="type[]" value="select"><input type="hidden" name="option[]" class="option" value="'+i+'">'
+								+'<div class="col-lg-3">'
+									+'<label class="control-label">Radio</label>'
+								+'</div>'
+								+'<div class="col-lg-7">'
+									+'<input class="form-control" type="text" name="label[]" placeholder="Radio Label" style="margin-bottom:10px">'
+									+'<div class="customer_choice_options_types_wrap_child">'
+
+									+'</div>'
+									+'<button class="btn btn-success pull-right" type="button" onclick="add_customer_choice_options(this)"><i class="glyphicon glyphicon-plus"></i> Add option</button>'
+								+'</div>'
+								+'<div class="col-lg-2">'
+									+'<span class="btn btn-icon btn-circle icon-lg fa fa-times" onclick="delete_choice_clearfix(this)"></span>'
+								+'</div>'
+							+'</div>';
+				$('#form').append(str);
 			}
 			else if (type == 'file') {
-				$('#form').append($('.file').html());
+				var str = '<div class="form-group" style="background:rgba(0,0,0,0.1);padding:10px 0;">'
+								+'<input type="hidden" name="type[]" value="file">'
+								+'<div class="col-lg-3">'
+									+'<label class="control-label">File</label>'
+								+'</div>'
+								+'<div class="col-lg-7">'
+									+'<input class="form-control" type="text" name="label[]" placeholder="Label">'
+								+'</div>'
+								+'<div class="col-lg-2">'
+									+'<span class="btn btn-icon btn-circle icon-lg fa fa-times" onclick="delete_choice_clearfix(this)"></span>'
+								+'</div>'
+							+'</div>';
+				$('#form').append(str);
 			}
 		}
 	</script>

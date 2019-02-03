@@ -55,6 +55,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
     Route::post('/currency/update', 'CurrencyController@updateCurrency')->name('currency.update');
     Route::post('/your-currency/update', 'CurrencyController@updateYourCurrency')->name('your_currency.update');
 	Route::get('/verification/form', 'BusinessSettingsController@seller_verification_form')->name('seller_verification_form.index');
+	Route::post('/verification/form', 'BusinessSettingsController@seller_verification_form_update')->name('seller_verification_form.update');
 	Route::get('/business_settings/{type}', 'BusinessSettingsController@vendor')->name('business_settings.vendor');
 	Route::post('/business_settings/vendor_commission_update', 'BusinessSettingsController@vendor_commission_update')->name('business_settings.vendor.commission');
 

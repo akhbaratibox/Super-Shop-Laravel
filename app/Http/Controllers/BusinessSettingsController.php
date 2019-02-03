@@ -74,6 +74,28 @@ class BusinessSettingsController extends Controller
     	return view('business_settings.seller_verification_form');
     }
 
+    public function seller_verification_form_update(Request $request)
+    {
+        $form = array();
+        $select_types = ['select', 'multi_select', 'radio'];
+        $j = 0;
+        for ($i=0; $i < count($request->type); $i++) {
+            $item['type'] = $request->type[$i];
+            $item['label'] = $request->label[$i];
+            if(in_array($request->type[$i], $select_types)){
+                $item['options'] = json_encode($request['options_'.$request->option[$j]]);
+                $j++;
+            }
+            array_push($form, $item);
+        }
+        $business_settings = BusinessSetting::where('type', 'verification_form')->first();
+        $business_settings->value = json_encode($form);
+        if($business_settings->save()){
+            flash("Verification form updated successfully")->success();
+            return back();
+        }
+    }
+
     public function update(Request $request)
     {
         foreach ($request->types as $key => $type) {

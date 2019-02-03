@@ -11,9 +11,9 @@
 
 	<div class="col-sm-2">
 		<select id="language" name="language" class="form-control">
-		    @foreach (\App\Language::all() as $key => $language)
-				<option value="{{ $language->code }}" <?php if(Session::get('locale', Config::get('app.locale')) == $language->code) echo "selected";?> >{{ $language->name }}</option>
-		    @endforeach
+		    {{-- @foreach (\App\Language::all() as $key => $language)
+				<option value="{{ $language->code }}" @php if(Session::get('locale', Config::get('app.locale')) == $language->code) echo "selected"; @endphp >{{ $language->name }}</option>
+		    @endforeach --}}
 		</select>
 	</div>
 

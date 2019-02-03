@@ -97,7 +97,7 @@ class GeneralSettingController extends Controller
             return redirect()->route('generalsettings.index');
         }
         else{
-            flash('Something went wrong')->danger();
+            flash('Something went wrong')->error();
             return back();
         }
     }

@@ -51,7 +51,7 @@ class CategoryController extends Controller
             return redirect()->route('categories.index');
         }
         else{
-            flash(__('Something went wrong'))->danger();
+            flash(__('Something went wrong'))->error();
             return back();
         }
     }
@@ -102,7 +102,7 @@ class CategoryController extends Controller
             return redirect()->route('categories.index');
         }
         else{
-            flash(__('Something went wrong'))->danger();
+            flash(__('Something went wrong'))->error();
             return back();
         }
     }
@@ -127,7 +127,7 @@ class CategoryController extends Controller
             return redirect()->route('categories.index');
         }
         else{
-            flash(__('Something went wrong'))->danger();
+            flash(__('Something went wrong'))->error();
             return back();
         }
     }

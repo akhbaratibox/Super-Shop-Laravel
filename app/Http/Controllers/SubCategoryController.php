@@ -51,7 +51,7 @@ class SubCategoryController extends Controller
             return redirect()->route('subcategories.index');
         }
         else{
-            flash(__('Something went wrong'))->danger();
+            flash(__('Something went wrong'))->error();
             return back();
         }
     }
@@ -102,7 +102,7 @@ class SubCategoryController extends Controller
             return redirect()->route('subcategories.index');
         }
         else{
-            flash(__('Something went wrong'))->danger();
+            flash(__('Something went wrong'))->error();
             return back();
         }
     }
@@ -124,7 +124,7 @@ class SubCategoryController extends Controller
             return redirect()->route('subcategories.index');
         }
         else{
-            flash(__('Something went wrong'))->danger();
+            flash(__('Something went wrong'))->error();
             return back();
         }
     }

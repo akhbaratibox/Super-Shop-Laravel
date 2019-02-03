@@ -56,7 +56,7 @@
                                 {{ ucfirst(str_replace('_', ' ', $status)) }}
                             </td>
                             <td>
-                                {{ $order->payment_type }}
+                                {{ ucfirst(str_replace('_', ' ', $order->payment_type)) }}
                             </td>
                             <td>
                                 <span class="badge badge--2 mr-4">

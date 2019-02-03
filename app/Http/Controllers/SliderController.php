@@ -102,7 +102,7 @@ class SliderController extends Controller
             flash(__('Slider has been deleted successfully'))->success();
         }
         else{
-            flash(__('Something went wrong'))->danger();
+            flash(__('Something went wrong'))->error();
         }
         return redirect()->route('home_settings.index');
     }

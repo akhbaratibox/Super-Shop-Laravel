@@ -171,7 +171,7 @@ class ProductController extends Controller
             }
         }
         else{
-            flash(__('Something went wrong'))->danger();
+            flash(__('Something went wrong'))->error();
             return back();
         }
     }
@@ -336,7 +336,7 @@ class ProductController extends Controller
             }
         }
         else{
-            flash(__('Something went wrong'))->danger();
+            flash(__('Something went wrong'))->error();
             return back();
         }
     }
@@ -372,7 +372,7 @@ class ProductController extends Controller
             }
         }
         else{
-            flash(__('Something went wrong'))->danger();
+            flash(__('Something went wrong'))->error();
             return back();
         }
     }
@@ -399,7 +399,7 @@ class ProductController extends Controller
             }
         }
         else{
-            flash(__('Something went wrong'))->danger();
+            flash(__('Something went wrong'))->error();
             return back();
         }
     }

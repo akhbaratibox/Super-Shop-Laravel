@@ -54,7 +54,7 @@ class FlashDealController extends Controller
             return redirect()->route('flash_deals.index');
         }
         else{
-            flash(__('Something went wrong'))->danger();
+            flash(__('Something went wrong'))->error();
             return back();
         }
     }
@@ -111,7 +111,7 @@ class FlashDealController extends Controller
             return redirect()->route('flash_deals.index');
         }
         else{
-            flash(__('Something went wrong'))->danger();
+            flash(__('Something went wrong'))->error();
             return back();
         }
     }

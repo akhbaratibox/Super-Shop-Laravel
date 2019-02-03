@@ -102,11 +102,6 @@ Route::group(['middleware' => ['user', 'verified']], function(){
 	Route::post('/purchase_history/details', 'PurchaseHistoryController@purchase_history_details')->name('purchase_history.details');
 	Route::get('/purchase_history/destroy/{id}', 'PurchaseHistoryController@destroy')->name('purchase_history.destroy');
 
-	Route::resource('orders','OrderController');
-	Route::get('/orders/destroy/{id}', 'OrderController@destroy')->name('orders.destroy');
-	Route::post('/orders/update_delivery_status', 'OrderController@update_delivery_status')->name('orders.update_delivery_status');
-	Route::post('/orders/update_payment_status', 'OrderController@update_payment_status')->name('orders.update_payment_status');
-
 	Route::resource('wishlists','WishlistController');
 	Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
 
@@ -132,4 +127,9 @@ Route::group(['middleware' => ['auth']], function(){
 
 	Route::get('invoice/customer/{order_id}', 'InvoiceController@customer_invoice_download')->name('customer.invoice.download');
 	Route::get('invoice/seller/{order_id}', 'InvoiceController@seller_invoice_download')->name('seller.invoice.download');
+
+	Route::resource('orders','OrderController');
+	Route::get('/orders/destroy/{id}', 'OrderController@destroy')->name('orders.destroy');
+	Route::post('/orders/update_delivery_status', 'OrderController@update_delivery_status')->name('orders.update_delivery_status');
+	Route::post('/orders/update_payment_status', 'OrderController@update_payment_status')->name('orders.update_payment_status');
 });

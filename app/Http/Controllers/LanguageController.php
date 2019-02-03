@@ -37,7 +37,7 @@ class LanguageController extends Controller
             return redirect()->route('languages.index');
         }
         else{
-            flash(__('Something went wrong'))->danger();
+            flash(__('Something went wrong'))->error();
             return back();
         }
     }

@@ -208,7 +208,7 @@ class OrderController extends Controller
             flash('Order has been deleted successfully')->success();
         }
         else{
-            flash('Something went wrong')->danger();
+            flash('Something went wrong')->error();
         }
         return back();
     }
@@ -226,6 +226,23 @@ class OrderController extends Controller
             $orderDetail->delivery_status = $request->status;
             $orderDetail->save();
         }
+        return 1;
+    }
+
+    public function update_payment_status(Request $request)
+    {
+        $order = Order::findOrFail($request->order_id);
+        foreach($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail){
+            $orderDetail->payment_status = $request->status;
+            $orderDetail->save();
+        }
+        $status = 'paid';
+        foreach($order->orderDetails as $key => $orderDetail){
+            if($orderDetail->payment_status == 'unpaid'){
+                $status = 'unpaid';
+            }
+        }
+        $order->payment_status == $status;
         return 1;
     }
 }

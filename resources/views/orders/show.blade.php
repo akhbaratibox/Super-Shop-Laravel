@@ -13,7 +13,15 @@
     @endphp
     <div class="panel-body">
         <div class="row">
-            <div class="col-lg-offset-10 col-lg-2">
+            <div class="col-lg-offset-6 col-lg-3">
+                <label for=update_payment_status"">Payment Status</label>
+                <select class="form-control demo-select2"  data-minimum-results-for-search="Infinity" id="update_payment_status">
+                    <option value="paid" @if ($order->payment_status == 'paid') selected @endif>Paid</option>
+                    <option value="unpaid" @if ($order->payment_status == 'unpaid') selected @endif>Unpaid</option>
+                </select>
+            </div>
+            <div class="col-lg-3">
+                <label for=update_delivery_status"">Delivery Status</label>
                 <select class="form-control demo-select2"  data-minimum-results-for-search="Infinity" id="update_delivery_status">
                     <option value="pending" @if ($status == 'pending') selected @endif>Pending</option>
                     <option value="on_review" @if ($status == 'on_review') selected @endif>On review</option>
@@ -149,9 +157,20 @@
         $('#update_delivery_status').on('change', function(){
             var order_id = {{ $order->id }};
             var status = $('#update_delivery_status').val();
-            $.post('{{ route('orders.update_status') }}', {_token:'{{ @csrf_token() }}',order_id:order_id,status:status}, function(data){
+            $.post('{{ route('orders.update_delivery_status') }}', {_token:'{{ @csrf_token() }}',order_id:order_id,status:status}, function(data){
                 $('#order_details').modal('hide');
-                showAlert('success', 'Order status has been updated');
+                showAlert('success', 'Delivery status has been updated');
+                location.reload().setTimeOut(500);
+            });
+        });
+
+        $('#update_payment_status').on('change', function(){
+            var order_id = {{ $order->id }};
+            var status = $('#update_payment_status').val();
+            $.post('{{ route('orders.update_payment_status') }}', {_token:'{{ @csrf_token() }}',order_id:order_id,status:status}, function(data){
+                $('#order_details').modal('hide');
+                showFrontendAlert('success', 'Payment status has been updated');
+                location.reload().setTimeOut(500);
             });
         });
     </script>

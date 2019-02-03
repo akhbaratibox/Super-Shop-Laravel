@@ -132,7 +132,7 @@ class HomeController extends Controller
             return back();
         }
 
-        flash(__('Sorry! Something went wrong.'))->danger();
+        flash(__('Sorry! Something went wrong.'))->error();
         return back();
     }
 

@@ -52,7 +52,7 @@ class SellerController extends Controller
             }
         }
 
-        flash(__('Something went wrong'))->danger();
+        flash(__('Something went wrong'))->error();
         return back();
     }
 
@@ -102,7 +102,7 @@ class SellerController extends Controller
             }
         }
 
-        flash(__('Something went wrong'))->danger();
+        flash(__('Something went wrong'))->error();
         return back();
     }
 
@@ -120,7 +120,7 @@ class SellerController extends Controller
             return redirect()->route('sellers.index');
         }
 
-        flash(__('Something went wrong'))->danger();
+        flash(__('Something went wrong'))->error();
         return back();
     }
 }

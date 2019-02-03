@@ -26,7 +26,12 @@
                 	@endphp
                 		<tr>
                 			<td>
+                                <div class="col-sm-3">
+                                <img class="img-md" src="{{ asset($product->thumbnail_img)}}" alt="Image">
+                                </div>
+                                <div class="col-sm-9">
                 				<label for="" class="control-label">{{ $product->name }}</label>
+                                </div>
                 			</td>
                             <td>
                 				<label for="" class="control-label">{{ $product->unit_price }}</label>

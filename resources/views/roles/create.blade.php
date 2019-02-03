@@ -30,7 +30,32 @@
                                 <label class="control-label">{{ __('products') }}</label>
                             </div>
                             <div class="col-sm-2">
-                                <input type="checkbox" name="permissions[]" class="form-control demo-sw" value="1">
+                                <label class="switch">
+                                    <input type="checkbox" name="permissions[]" class="form-control demo-sw" value="1">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <label class="control-label">{{ __('flash_deal') }}</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <label class="switch">
+                                    <input type="checkbox" name="permissions[]" class="form-control demo-sw" value="2">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <label class="control-label">{{ __('orders') }}</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <label class="switch">
+                                    <input type="checkbox" name="permissions[]" class="form-control demo-sw" value="3">
+                                    <span class="slider round"></span>
+                                </label>
                             </div>
                         </div>
                         <div class="row">
@@ -38,7 +63,10 @@
                                 <label class="control-label">{{ __('sales') }}</label>
                             </div>
                             <div class="col-sm-2">
-                                <input type="checkbox" name="permissions[]" class="form-control demo-sw" value="2">
+                                <label class="switch">
+                                    <input type="checkbox" name="permissions[]" class="form-control demo-sw" value="4">
+                                    <span class="slider round"></span>
+                                </label>
                             </div>
                         </div>
                         <div class="row">
@@ -46,7 +74,10 @@
                                 <label class="control-label">{{ __('sellers') }}</label>
                             </div>
                             <div class="col-sm-2">
-                                <input type="checkbox" name="permissions[]" class="form-control demo-sw" value="3">
+                                <label class="switch">
+                                    <input type="checkbox" name="permissions[]" class="form-control demo-sw" value="5">
+                                    <span class="slider round"></span>
+                                </label>
                             </div>
                         </div>
                         <div class="row">
@@ -54,7 +85,54 @@
                                 <label class="control-label">{{ __('customers') }}</label>
                             </div>
                             <div class="col-sm-2">
-                                <input type="checkbox" name="permissions[]" class="form-control demo-sw" value="4">
+                                <label class="switch">
+                                    <input type="checkbox" name="permissions[]" class="form-control demo-sw" value="6">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <label class="control-label">{{ __('messaging') }}</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <label class="switch">
+                                    <input type="checkbox" name="permissions[]" class="form-control demo-sw" value="7">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <label class="control-label">{{ __('business_settings') }}</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <label class="switch">
+                                    <input type="checkbox" name="permissions[]" class="form-control demo-sw" value="8">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <label class="control-label">{{ __('frontend_settings') }}</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <label class="switch">
+                                    <input type="checkbox" name="permissions[]" class="form-control demo-sw" value="9">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <label class="control-label">{{ __('staffs') }}</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <label class="switch">
+                                    <input type="checkbox" name="permissions[]" class="form-control demo-sw" value="10">
+                                    <span class="slider round"></span>
+                                </label>
                             </div>
                         </div>
                     </div>

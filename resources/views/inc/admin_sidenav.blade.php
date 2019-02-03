@@ -93,54 +93,63 @@
                         </li>
 
                         <!-- Product Menu -->
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-shopping-cart"></i>
-                                <span class="menu-title">{{__('products')}}</span>
-                                <i class="arrow"></i>
-                            </a>
+                        @if(Auth::user()->user_type == 'admin' || in_array('1', json_decode(Auth::user()->staff->role->permissions)))
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span class="menu-title">{{__('products')}}</span>
+                                    <i class="arrow"></i>
+                                </a>
 
-                            <!--Submenu-->
-                            <ul class="collapse">
-                                <li class="{{ areActiveRoutes(['brands.index', 'brands.create', 'brands.edit'])}}">
-                                    <a class="nav-link" href="{{route('brands.index')}}">{{__('brand')}}</a>
-                                </li>
-                                <li class="{{ areActiveRoutes(['categories.index', 'categories.create', 'categories.edit'])}}">
-                                    <a class="nav-link" href="{{route('categories.index')}}">{{__('category')}}</a>
-                                </li>
-                                <li class="{{ areActiveRoutes(['subcategories.index', 'subcategories.create', 'subcategories.edit'])}}">
-                                    <a class="nav-link" href="{{route('subcategories.index')}}">{{__('subcategory')}}</a>
-                                </li>
-                                <li class="{{ areActiveRoutes(['subsubcategories.index', 'subsubcategories.create', 'subsubcategories.edit'])}}">
-                                    <a class="nav-link" href="{{route('subsubcategories.index')}}">{{__('subsubcategory')}}</a>
-                                </li>
-                                <li class="{{ areActiveRoutes(['products.index', 'products.create', 'products.edit'])}}">
-                                    <a class="nav-link" href="{{route('products.index')}}">{{__('all_product')}}</a>
-                                </li>
-                            </ul>
-                        </li>
+                                <!--Submenu-->
+                                <ul class="collapse">
+                                    <li class="{{ areActiveRoutes(['brands.index', 'brands.create', 'brands.edit'])}}">
+                                        <a class="nav-link" href="{{route('brands.index')}}">{{__('brand')}}</a>
+                                    </li>
+                                    <li class="{{ areActiveRoutes(['categories.index', 'categories.create', 'categories.edit'])}}">
+                                        <a class="nav-link" href="{{route('categories.index')}}">{{__('category')}}</a>
+                                    </li>
+                                    <li class="{{ areActiveRoutes(['subcategories.index', 'subcategories.create', 'subcategories.edit'])}}">
+                                        <a class="nav-link" href="{{route('subcategories.index')}}">{{__('subcategory')}}</a>
+                                    </li>
+                                    <li class="{{ areActiveRoutes(['subsubcategories.index', 'subsubcategories.create', 'subsubcategories.edit'])}}">
+                                        <a class="nav-link" href="{{route('subsubcategories.index')}}">{{__('subsubcategory')}}</a>
+                                    </li>
+                                    <li class="{{ areActiveRoutes(['products.index', 'products.create', 'products.edit'])}}">
+                                        <a class="nav-link" href="{{route('products.index')}}">{{__('all_product')}}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
 
+                        @if(Auth::user()->user_type == 'admin' || in_array('2', json_decode(Auth::user()->staff->role->permissions)))
                         <li class="{{ areActiveRoutes(['flash_deals.index', 'flash_deals.create', 'flash_deals.edit'])}}">
                             <a class="nav-link" href="{{ route('flash_deals.index') }}">
                                 <i class="fa fa-bolt"></i>
                                 <span class="menu-title">{{__('flash_deal')}}</span>
                             </a>
                         </li>
+                        @endif
 
+                        @if(Auth::user()->user_type == 'admin' || in_array('3', json_decode(Auth::user()->staff->role->permissions)))
                         <li class="{{ areActiveRoutes(['orders.index.admin', 'orders.show'])}}">
                             <a class="nav-link" href="{{ route('orders.index.admin') }}">
                                 <i class="fa fa-shopping-basket"></i>
                                 <span class="menu-title">{{__('orders')}}</span>
                             </a>
                         </li>
+                        @endif
 
+                        @if(Auth::user()->user_type == 'admin' || in_array('4', json_decode(Auth::user()->staff->role->permissions)))
                         <li class="{{ areActiveRoutes(['sales.index', 'sales.show'])}}">
                             <a class="nav-link" href="{{ route('sales.index') }}">
                                 <i class="fa fa-money"></i>
                                 <span class="menu-title">{{__('sales')}}</span>
                             </a>
                         </li>
+                        @endif
 
+                        @if(Auth::user()->user_type == 'admin' || in_array('5', json_decode(Auth::user()->staff->role->permissions)))
                         <li>
                             <a href="#">
                                 <i class="fa fa-user-plus"></i>
@@ -155,7 +164,9 @@
                                 </li>
                             </ul>
                         </li>
+                        @endif
 
+                        @if(Auth::user()->user_type == 'admin' || in_array('6', json_decode(Auth::user()->staff->role->permissions)))
                         <li>
                             <a href="#">
                                 <i class="fa fa-user-plus"></i>
@@ -170,7 +181,9 @@
                                 </li>
                             </ul>
                         </li>
+                        @endif
 
+                        @if(Auth::user()->user_type == 'admin' || in_array('7', json_decode(Auth::user()->staff->role->permissions)))
                         <li>
                             <a href="#">
                                 <i class="fa fa-envelope"></i>
@@ -188,7 +201,9 @@
                                 </li>
                             </ul>
                         </li>
+                        @endif
 
+                        @if(Auth::user()->user_type == 'admin' || in_array('8', json_decode(Auth::user()->staff->role->permissions)))
                         <li>
                             <a href="#">
                                 <i class="fa fa-briefcase"></i>
@@ -224,7 +239,9 @@
                                 </li>
                             </ul>
                         </li>
+                        @endif
 
+                        @if(Auth::user()->user_type == 'admin' || in_array('9', json_decode(Auth::user()->staff->role->permissions)))
                         <li>
                             <a href="#">
                                 <i class="fa fa-desktop"></i>
@@ -272,7 +289,9 @@
                                 </li>
                             </ul>
                         </li>
+                        @endif
 
+                        @if(Auth::user()->user_type == 'admin' || in_array('10', json_decode(Auth::user()->staff->role->permissions)))
                         <li>
                             <a href="#">
                                 <i class="fa fa-user"></i>
@@ -290,6 +309,7 @@
                                 </li>
                             </ul>
                         </li>
+                        @endif
 
                     </ul>
                 </div>

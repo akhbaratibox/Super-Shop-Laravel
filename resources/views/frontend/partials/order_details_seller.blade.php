@@ -34,7 +34,13 @@
         <div class="card-header py-2 px-3 heading-6 strong-600 clearfix">
             <div class="float-left">Order Summary</div>
             <div class="float-right form-inline">
-                <select class="form-control selectpicker form-control-sm"  data-minimum-results-for-search="Infinity" id="order_status">
+                <select class="form-control selectpicker form-control-sm"  data-minimum-results-for-search="Infinity" id="update_payment_status">
+                    <option value="paid" @if ($status == 'pending') selected @endif>Unpaid</option>
+                    <option value="unpaid" @if ($status == 'on_review') selected @endif>Paid</option>
+                </select>
+            </div>
+            <div class="float-right form-inline">
+                <select class="form-control selectpicker form-control-sm"  data-minimum-results-for-search="Infinity" id="update_delivery_status">
                     <option value="pending" @if ($status == 'pending') selected @endif>Pending</option>
                     <option value="on_review" @if ($status == 'on_review') selected @endif>On review</option>
                     <option value="on_delivery" @if ($status == 'on_delivery') selected @endif>On delivery</option>
@@ -166,10 +172,10 @@
 </div>
 
 <script type="text/javascript">
-    $('#order_status').on('change', function(){
+    $('#update_delivery_status').on('change', function(){
         var order_id = {{ $order->id }};
-        var status = $('#order_status').val();
-        $.post('{{ route('orders.update_status') }}', {_token:'{{ @csrf_token() }}',order_id:order_id,status:status}, function(data){
+        var status = $('#update_delivery_status').val();
+        $.post('{{ route('orders.update_delivery_status') }}', {_token:'{{ @csrf_token() }}',order_id:order_id,status:status}, function(data){
             $('#order_details').modal('hide');
             showFrontendAlert('success', 'Order status has been updated');
             location.reload().setTimeOut(500);

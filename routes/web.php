@@ -104,7 +104,8 @@ Route::group(['middleware' => ['user', 'verified']], function(){
 
 	Route::resource('orders','OrderController');
 	Route::get('/orders/destroy/{id}', 'OrderController@destroy')->name('orders.destroy');
-	Route::post('/orders/update_status', 'OrderController@update_status')->name('orders.update_status');
+	Route::post('/orders/update_delivery_status', 'OrderController@update_delivery_status')->name('orders.update_delivery_status');
+	Route::post('/orders/update_payment_status', 'OrderController@update_payment_status')->name('orders.update_payment_status');
 
 	Route::resource('wishlists','WishlistController');
 	Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');

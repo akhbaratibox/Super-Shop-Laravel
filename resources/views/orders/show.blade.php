@@ -14,7 +14,7 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-lg-offset-10 col-lg-2">
-                <select class="form-control demo-select2"  data-minimum-results-for-search="Infinity" id="order_status">
+                <select class="form-control demo-select2"  data-minimum-results-for-search="Infinity" id="update_delivery_status">
                     <option value="pending" @if ($status == 'pending') selected @endif>Pending</option>
                     <option value="on_review" @if ($status == 'on_review') selected @endif>On review</option>
                     <option value="on_delivery" @if ($status == 'on_delivery') selected @endif>On delivery</option>
@@ -146,9 +146,9 @@
 
 @section('script')
     <script type="text/javascript">
-        $('#order_status').on('change', function(){
+        $('#update_delivery_status').on('change', function(){
             var order_id = {{ $order->id }};
-            var status = $('#order_status').val();
+            var status = $('#update_delivery_status').val();
             $.post('{{ route('orders.update_status') }}', {_token:'{{ @csrf_token() }}',order_id:order_id,status:status}, function(data){
                 $('#order_details').modal('hide');
                 showAlert('success', 'Order status has been updated');

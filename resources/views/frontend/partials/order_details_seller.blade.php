@@ -30,23 +30,31 @@
             </li>
         </ul>
     </div>
-    <div class="card mt-4">
-        <div class="card-header py-2 px-3 heading-6 strong-600 clearfix">
-            <div class="float-left">Order Summary</div>
-            <div class="float-right form-inline">
+    <div class="row mt-5">
+        <div class="offset-lg-2 col-lg-4 col-sm-6">
+            <div class="form-inline">
                 <select class="form-control selectpicker form-control-sm"  data-minimum-results-for-search="Infinity" id="update_payment_status">
                     <option value="paid" @if ($status == 'pending') selected @endif>Unpaid</option>
                     <option value="unpaid" @if ($status == 'on_review') selected @endif>Paid</option>
                 </select>
+                <label class="my-2" >Payment Status</label>
             </div>
-            <div class="float-right form-inline">
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="form-inline">
                 <select class="form-control selectpicker form-control-sm"  data-minimum-results-for-search="Infinity" id="update_delivery_status">
                     <option value="pending" @if ($status == 'pending') selected @endif>Pending</option>
                     <option value="on_review" @if ($status == 'on_review') selected @endif>On review</option>
                     <option value="on_delivery" @if ($status == 'on_delivery') selected @endif>On delivery</option>
                     <option value="delivered" @if ($status == 'delivered') selected @endif>Delivered</option>
                 </select>
+                <label class="my-2" >Delivery Status</label>
             </div>
+        </div>
+    </div>
+    <div class="card mt-3">
+        <div class="card-header py-2 px-3 ">
+        <div class="heading-6 strong-600">Order Summary</div>
         </div>
         <div class="card-body pb-0">
             <div class="row">

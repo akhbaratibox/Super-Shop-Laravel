@@ -64,27 +64,78 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('Sliders')}}</label>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <input type="file" name="sliders[]" id="file-1" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" multiple accept="image/*" />
-                                            <label for="file-1" class="mw-100 mb-3">
-                                                <span></span>
-                                                <strong>
-                                                    <i class="fa fa-upload"></i>
-                                                    {{__('Choose image')}}…
-                                                </strong>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2">
                                             <label>{{__('Address')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="text" class="form-control mb-3" placeholder="Address" name="address" value="{{ $shop->address }}" required>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="form-box bg-white mt-4">
+                                <div class="form-box-title px-3 py-2">
+                                    {{__('Slider Settings')}}
+                                </div>
+                                <div class="form-box-content p-3">
+                                    <div id="shop-slider-images">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <label>{{__('Sliders')}}</label>
+                                            </div>
+                                            <div class="offset-2 offset-md-0 col-10 col-md-10">
+                                                <input type="file" name="sliders[]" id="slide-0" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" multiple accept="image/*" />
+                                                <label for="slide-0" class="mw-100 mb-3">
+                                                    <span></span>
+                                                    <strong>
+                                                        <i class="fa fa-upload"></i>
+                                                        {{__('Choose image')}}
+                                                    </strong>
+                                                </label>
+                                            </div>
+                                            <!-- <div class="col-2 col-md-1 text-right">
+                                                <button type="button" onclick="delete_this_row(this)" class="btn btn-link btn-icon text-danger"><i class="fa fa-trash-o"></i></button>
+                                            </div> -->
+                                        </div>
+
+                                    </div>
+
+                                    <div class="text-right">
+                                        <button type="button" class="btn btn-info" onclick="add_more_slider_image()">{{ __('add_more') }}</button>
+                                    </div>
+                                    <script>
+                                        var slide_id = 1;
+                                        function add_more_slider_image(){
+                                            var shopSliderAdd =  '<div class="row">';
+                                            shopSliderAdd +=  '<div class="col-2">';
+                                            shopSliderAdd +=  '<button type="button" onclick="delete_this_row(this)" class="btn btn-link btn-icon text-danger"><i class="fa fa-trash-o"></i></button>';
+                                            shopSliderAdd +=  '</div>';
+                                            shopSliderAdd +=  '<div class="col-10">';
+                                            shopSliderAdd +=  '<input type="file" name="sliders[]" id="slide-'+slide_id+'" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" multiple accept="image/*" />';
+                                            shopSliderAdd +=  '<label for="slide-'+slide_id+'" class="mw-100 mb-3">';
+                                            shopSliderAdd +=  '<span></span>';
+                                            shopSliderAdd +=  '<strong>';
+                                            shopSliderAdd +=  '<i class="fa fa-upload"></i>';
+                                            shopSliderAdd +=  "{{__('Choose image')}}";
+                                            shopSliderAdd +=  '</strong>';
+                                            shopSliderAdd +=  '</label>';
+                                            shopSliderAdd +=  '</div>';
+                                            shopSliderAdd +=  '</div>';
+                                            slide_id++;
+                                            $('#shop-slider-images').append(shopSliderAdd);
+                                        }
+                                        function delete_this_row(em){
+                                            $(em).closest('.row').remove();
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+
+                            <div class="form-box bg-white mt-4">
+                                <div class="form-box-title px-3 py-2">
+                                    {{__('Social Media Link')}}
+                                </div>
+                                <div class="form-box-content p-3">
                                     <div class="row">
                                         <div class="col-md-2">
                                             <label>{{__('Facebook')}} </label>

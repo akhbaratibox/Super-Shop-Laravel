@@ -159,4 +159,15 @@ class ShopController extends Controller
     {
         //
     }
+
+    public function verify_form(Request $request)
+    {
+        $shop = Auth::user()->shop;
+        return view('frontend.seller.verify_form', compact('shop'));
+    }
+
+    public function verify_form_store(Request $request)
+    {
+        dd($request->all());
+    }
 }

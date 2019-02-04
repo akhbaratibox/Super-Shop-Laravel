@@ -12,11 +12,11 @@
 				<form action="{{ route('seller_verification_form.update') }}" method="post">
 					@csrf
 					<div class="row">
-						<div class="col-lg-8 form-horizontal seller_form_border" id="form">
+						<div class="col-lg-8 form-horizontal" id="form">
 							@foreach (json_decode(\App\BusinessSetting::where('type', 'verification_form')->first()->value) as $key => $element)
 								@if ($element->type == 'text' || $element->type == 'file')
 									<div class="form-group" style="background:rgba(0,0,0,0.1);padding:10px 0;">
-									    <input type="hidden" name="type[]" value="text">
+									    <input type="hidden" name="type[]" value="{{ $element->type }}">
 									    <div class="col-lg-3">
 									        <label class="control-label">{{ ucfirst($element->type) }}</label>
 									    </div>
@@ -94,7 +94,7 @@
 			$(em).parent().parent().remove();
 		}
 		function appenddToForm(type){
-			$('#form').removeClass('seller_form_border');
+			//$('#form').removeClass('seller_form_border');
 			if(type == 'text'){
 				var str = '<div class="form-group" style="background:rgba(0,0,0,0.1);padding:10px 0;">'
 								+'<input type="hidden" name="type[]" value="text">'
@@ -153,7 +153,7 @@
 			else if (type == 'radio') {
 				i++;
 				var str = '<div class="form-group" style="background:rgba(0,0,0,0.1);padding:10px 0;">'
-								+'<input type="hidden" name="type[]" value="select"><input type="hidden" name="option[]" class="option" value="'+i+'">'
+								+'<input type="hidden" name="type[]" value="radio"><input type="hidden" name="option[]" class="option" value="'+i+'">'
 								+'<div class="col-lg-3">'
 									+'<label class="control-label">Radio</label>'
 								+'</div>'

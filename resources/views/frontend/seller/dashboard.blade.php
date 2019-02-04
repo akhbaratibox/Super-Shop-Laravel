@@ -114,7 +114,9 @@
                                             @endif
                                         >
                                     </div>
-                                    <a href="" class="btn btn-styled btn-base-1">{{__('Verify Now')}}</a>
+                                    @if(Auth::user()->seller->verification_status == 0)
+                                        <a href="{{ route('shop.verify') }}" class="btn btn-styled btn-base-1">{{__('Verify Now')}}</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

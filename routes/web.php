@@ -35,8 +35,8 @@ Route::get('/products/subcategory/{id}', 'HomeController@listing_by_subcategory'
 Route::get('/products/subsubcategory/{id}', 'HomeController@listing_by_subsubcategory')->name('products.subsubcategory');
 Route::get('/products/brand/{id}', 'HomeController@listing_by_brand')->name('products.brand');
 Route::post('/product/variant_price', 'HomeController@variant_price')->name('products.variant_price');
-Route::get('/shop/{slug}', 'HomeController@shop')->name('shop.visit');
-Route::get('/shop/{slug}/{type}', 'HomeController@filter_shop')->name('shop.visit.type');
+Route::get('/shops/visit/{slug}', 'HomeController@shop')->name('shop.visit');
+Route::get('/shops/visit/{slug}/{type}', 'HomeController@filter_shop')->name('shop.visit.type');
 
 Route::get('/cart', 'CartController@index')->name('cart');
 Route::post('/cart/nav-cart-items', 'CartController@updateNavCart')->name('cart.nav_cart');
@@ -134,3 +134,5 @@ Route::group(['middleware' => ['auth']], function(){
 });
 
 Route::resource('shops', 'ShopController');
+Route::get('/shop/apply_for_verification', 'ShopController@verify_form')->name('shop.verify');
+Route::post('/shop/apply_for_verification', 'ShopController@verify_form_store')->name('shop.verify.store');

@@ -98,3 +98,24 @@ select + .select2-container{
 .jodit_container .jodit_workplace{
     min-height: 300px!important;
 }
+
+
+
+body, #content-container, #navbar {
+  background-color: #ecf0f5;
+}
+
+
+.dash-widget-left {
+  position: relative;
+  padding-left: 50px;
+}
+
+.dash-widget-vertical {
+  position: absolute;
+  left: 0;
+  
+}
+.dash-widget-vertical .rorate{
+  transform: rotate(-90deg)
+}

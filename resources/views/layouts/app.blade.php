@@ -53,7 +53,8 @@
     <link href="{{ asset('css/jodit.min.css') }}" rel="stylesheet">
 
     <!--Theme [ DEMONSTRATION ]-->
-    <link href="{{ asset('css/themes/type-full/theme-dark-full.min.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('css/themes/type-full/theme-dark-full.min.css') }}" rel="stylesheet"> -->
+    <link href="{{ asset('css/themes/type-c/theme-navy.min.css') }}" rel="stylesheet">
 
     <!--Spectrum Stylesheet [ REQUIRED ]-->
     <link href="{{ asset('css/spectrum.css')}}" rel="stylesheet">

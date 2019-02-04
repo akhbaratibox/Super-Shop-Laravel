@@ -54,7 +54,7 @@
                 for (var i = 0; i < data.length; i++) {
                     $('#subsubcategory_id').append($('<option>', {
                         value: data[i].id,
-                        text: data[i].name
+                        text: data[i].name +' ('+data[i].number_of_products+' products)'
                     }));
                 }
 

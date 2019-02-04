@@ -252,7 +252,7 @@
                             <!--Submenu-->
                             <ul class="collapse">
                                 <li class="{{ areActiveRoutes(['home_settings.index', 'home_banners.index', 'sliders.index', 'home_categories.index', 'home_banners.create', 'home_categories.create', 'home_categories.edit', 'sliders.create'])}}">
-                                    <a class="nav-link" href="{{route('home_settings.index')}}">{{__('home')}}</a>
+                                    <a class="nav-link" href="{{route('home_settings.index')}}">{{__('Home')}}</a>
                                 </li>
                                 <li>
                                     <a href="#">

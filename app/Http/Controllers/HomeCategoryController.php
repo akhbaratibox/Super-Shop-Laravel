@@ -119,8 +119,9 @@ class HomeCategoryController extends Controller
         $result = array();
         $subcategories = Category::find($request->category_id)->subcategories;
         foreach ($subcategories as $key => $subcategory) {
-            foreach ($subcategory->subsubcategories as $key => $subcategory) {
-                array_push($result, $subcategory);
+            foreach ($subcategory->subsubcategories as $key => $subsubcategory) {
+                $subsubcategory['number_of_products'] = count($subsubcategory->products);
+                array_push($result, $subsubcategory);
             }
         }
         return $result;

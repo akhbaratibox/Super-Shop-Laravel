@@ -53,7 +53,7 @@
                 for (var i = 0; i < data.length; i++) {
                     $('#subsubcategory_id').append($('<option>', {
                         value: data[i].id,
-                        text: data[i].name
+                        text: data[i].name +' ('+data[i].number_of_products+' products)'
                     }));
                     $(".demo-select2-max-4").select2({
                         maximumSelectionLength: 4
@@ -61,6 +61,6 @@
                 }
             });
         }
-        
+
     });
 </script>

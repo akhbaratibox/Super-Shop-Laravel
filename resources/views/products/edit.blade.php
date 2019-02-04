@@ -108,6 +108,19 @@
 							<div class="form-group">
 								<label class="col-lg-2 control-label">Main Images</label>
 								<div class="col-lg-7">
+									<div class="">
+										@foreach (json_decode($product->photos) as $key => $photo)
+											<div class="row control-group">
+												<div class="col-sm-6">
+			                                        <img src="{{ asset($photo) }}" alt="" class="img-lg">
+													<input type="hidden" name="photos[]" value="{{ $photo }}">
+			                                    </div>
+			                                    <div class="col-sm-6">
+			                                        <button type="button" class="btn btn-danger remove-files">Remove<i class="icon-x position-right"></i></button>
+			                                    </div>
+											</div>
+										@endforeach
+									</div>
 									<div id="photos">
 
 									</div>
@@ -519,6 +532,10 @@
 				alert('File size too big');
 			}
 		});
+
+		$('.remove-files').on('click', function(){
+            $(this).parents(".control-group").remove();
+        });
 	});
 
 	$('#category_id').on('change', function() {

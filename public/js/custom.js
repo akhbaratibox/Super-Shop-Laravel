@@ -54,7 +54,19 @@ $(document).on('nifty.ready', function() {
 	//
 	// } );
 
-	$('.demo-dp-component .input-group.date').datepicker({autoclose:true, startDate: '-0d'});
+	//$('.demo-dp-component .input-group.date').datepicker({autoclose:true, startDate: '-0d'});
+
+    // BOOTSTRAP DATEPICKER WITH RANGE SELECTION
+    // =================================================================
+    // Require Bootstrap Datepicker
+    // http://eternicode.github.io/bootstrap-datepicker/
+    // =================================================================
+    $('#demo-dp-range .input-daterange').datepicker({
+        startDate: '-0d',
+        todayBtn: "linked",
+        autoclose: true,
+        todayHighlight: true
+    });
 
 });
 

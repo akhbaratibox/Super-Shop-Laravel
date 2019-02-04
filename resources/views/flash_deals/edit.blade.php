@@ -21,23 +21,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="start_date">{{__('start_date')}}</label>
+                    <label class="col-sm-3 control-label" for="start_date">{{__('Date')}}</label>
                     <div class="col-sm-9">
-                        <div class="demo-dp-component">
-                            <div class="input-group date">
-                                <input type="text" class="form-control" id="start_date" name="start_date" value="{{ date('m/d/Y', $flash_deal->start_date) }}" required>
-                                <span class="input-group-addon"><i class="demo-pli-calendar-4"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label" for="end_date">{{__('end_date')}}</label>
-                    <div class="col-sm-9">
-                        <div class="demo-dp-component">
-                            <div class="input-group date">
-                                <input type="text" class="form-control" id="end_date" name="end_date" value="{{ date('m/d/Y', $flash_deal->end_date) }}" required>
-                                <span class="input-group-addon"><i class="demo-pli-calendar-4"></i></span>
+                        <div id="demo-dp-range">
+                            <div class="input-daterange input-group" id="datepicker">
+                                <input type="text" class="form-control" name="start_date" value="{{ date('m/d/Y', $flash_deal->start_date) }}">
+                                <span class="input-group-addon">to</span>
+                                <input type="text" class="form-control" name="end_date" value="{{ date('m/d/Y', $flash_deal->end_date) }}">
                             </div>
                         </div>
                     </div>

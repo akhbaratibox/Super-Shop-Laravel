@@ -5,9 +5,41 @@
 <section class="gry-bg py-4">
         <div class="container">
             <div class="row">
-                <div class="col">
-                    <div class="text-center">
-                        <img height="100" src="{{ asset($shop->logo) }}" alt="Shop Logo">
+                <div class="col-offset-2">
+                    <img height="100" src="{{ asset($shop->logo) }}" alt="Shop Logo">
+                </div>
+                <div class="col-4">
+                    <div class="seller-info-box mb-3">
+                        <div class="sold-by position-relative">
+                            <a href="" class="name d-block">{{ $shop->name }}</a>
+                            <div class="location">{{ $shop->address }}</div>
+                        </div>
+                        <div class="row no-gutters">
+                            <div class="col">
+                                <ul class="social-media social-media--style-1-v4 text-center">
+                                    <li>
+                                        <a href="{{ $shop->facebook }}" class="facebook" target="_blank" data-toggle="tooltip" data-original-title="Facebook">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ $shop->google }}" class="google" target="_blank" data-toggle="tooltip" data-original-title="Google">
+                                            <i class="fa fa-google"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ $shop->twitter }}" class="twitter" target="_blank" data-toggle="tooltip" data-original-title="Twitter">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ $shop->youtube }}" class="youtube" target="_blank" data-toggle="tooltip" data-original-title="Youtube">
+                                            <i class="fa fa-youtube"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -54,7 +54,7 @@ $(document).on('nifty.ready', function() {
 	//
 	// } );
 
-	$('.demo-dp-component .input-group.date').datepicker({autoclose:true});
+	$('.demo-dp-component .input-group.date').datepicker({autoclose:true, startDate: '-0d'});
 
 });
 

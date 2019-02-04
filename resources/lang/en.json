@@ -388,7 +388,7 @@
     "Seller has been deleted successfully" : "Seller has been deleted successfully",
     "Seller has been updated successfully" : "Seller has been updated successfully",
     "Seller has been inserted successfully" : "Seller has been inserted successfully",
-    "Your Shop has been updated successfully!" : "Sorry! Something went wrong.",
+    "Your Shop has been updated successfully" : "Your Shop has been updated successfully",
     "Slider has been inserted successfully" : "Slider has been inserted successfully",
     "Slider has been deleted successfully" : "Slider has been deleted successfully",
     "Staff has been deleted successfully" : "Staff has been deleted successfully",
@@ -403,6 +403,6 @@
     "SubSubCategory has been updated successfully" : "SubSubCategory has been updated successfully",
     "SubSubCategory has been inserted successfully" : "SubSubCategory has been inserted successfully",
     "SMTP Settings" : "SMTP Settings",
-
-    "Seller Commission" : "Seller Commission"
+    "Seller Commission" : "Seller Commission",
+    "Add More" : "Add More"
 }

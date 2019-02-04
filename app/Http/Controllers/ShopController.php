@@ -72,7 +72,16 @@ class ShopController extends Controller
     public function update(Request $request, $id)
     {
         $shop = Shop::find($id);
-        $shop->name = $request->name;
+
+        if($request->has('name') && $request->has('address')){
+            $shop->name = $request->name;
+            $shop->address = $request->address;
+            $shop->slug = preg_replace('/\s+/', '-', $request->name).'-'.$shop->id;
+        }
+
+        if($request->hasFile('logo')){
+            $shop->logo = $request->logo->store('shop/logo');
+        }
 
         $sliders = array();
         if($request->hasFile('sliders')){
@@ -82,16 +91,12 @@ class ShopController extends Controller
             $shop->sliders = json_encode($sliders);
         }
 
-        if($request->hasFile('logo')){
-            $shop->logo = $request->logo->store('shop/logo');
+        if($request->has('facebook') || $request->has('google') || $request->has('twitter') || $request->has('youtube')){
+            $shop->facebook = $request->facebook;
+            $shop->google = $request->google;
+            $shop->twitter = $request->twitter;
+            $shop->youtube = $request->youtube;
         }
-
-        $shop->address = $request->address;
-        $shop->facebook = $request->facebook;
-        $shop->google = $request->google;
-        $shop->twitter = $request->twitter;
-        $shop->youtube = $request->youtube;
-        $shop->slug = preg_replace('/\s+/', '-', $request->name).'-'.$shop->id;
 
         if($shop->save()){
             flash(__('Your Shop has been updated successfully!'))->success();

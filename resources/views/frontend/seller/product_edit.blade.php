@@ -98,19 +98,24 @@
                                     {{__('Images')}}
                                 </div>
                                 <div class="form-box-content p-3">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <label>{{__('Main Images')}} <span class="required-star">*</span></label>
+                                    <div id="product-images">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <label>{{__('Main Images')}} <span class="required-star">*</span></label>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <input type="file" name="photos[]" id="photos-1" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
+                                                <label for="file-1" class="mw-100 mb-3">
+                                                    <span></span>
+                                                    <strong>
+                                                        <i class="fa fa-upload"></i>
+                                                        {{__('Choose image')}}
+                                                    </strong>
+                                                </label>
+                                            </div>
                                         </div>
-                                        <div class="col-md-10">
-                                            <input type="file" name="photos[]" id="file-1" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" multiple accept="image/*" />
-                                            <label for="file-1" class="mw-100 mb-3">
-                                                <span></span>
-                                                <strong>
-                                                    <i class="fa fa-upload"></i>
-                                                    {{__('Choose images')}}…
-                                                </strong>
-                                            </label>
+                                        <div class="text-right">
+                                            <button type="button" class="btn btn-info mb-3" onclick="add_more_slider_image()">{{ __('Add More') }}</button>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -130,7 +135,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('featured')}} <span class="required-star">*</span></label>
+                                            <label>{{__('featured')}}</label>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="featured_img" id="file-3" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
@@ -145,7 +150,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('flash_deal')}} <span class="required-star">*</span></label>
+                                            <label>{{__('flash_deal')}}</label>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="flash_deal_img" id="file-4" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
@@ -588,6 +593,32 @@
     		   }
     	   });
     	}
+
+        var photo_id = 1;
+        function add_more_slider_image(){
+            var photoAdd =  '<div class="row">';
+            photoAdd +=  '<div class="col-2">';
+            photoAdd +=  '<button type="button" onclick="delete_this_row(this)" class="btn btn-link btn-icon text-danger"><i class="fa fa-trash-o"></i></button>';
+            photoAdd +=  '</div>';
+            photoAdd +=  '<div class="col-10">';
+            photoAdd +=  '<input type="file" name="photos[]" id="photos-'+photo_id+'" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" multiple accept="image/*" />';
+            photoAdd +=  '<label for="photos-'+photo_id+'" class="mw-100 mb-3">';
+            photoAdd +=  '<span></span>';
+            photoAdd +=  '<strong>';
+            photoAdd +=  '<i class="fa fa-upload"></i>';
+            photoAdd +=  "{{__('Choose image')}}";
+            photoAdd +=  '</strong>';
+            photoAdd +=  '</label>';
+            photoAdd +=  '</div>';
+            photoAdd +=  '</div>';
+            $('#product-images').append(photoAdd);
+
+            photo_id++;
+            imageInputInitialize();
+        }
+        function delete_this_row(em){
+            $(em).closest('.row').remove();
+        }
 
     </script>
 @endsection

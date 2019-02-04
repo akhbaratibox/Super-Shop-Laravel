@@ -72,7 +72,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="text-right mt-4">
+                                <button type="submit" class="btn btn-styled btn-base-1">{{__('save')}}</button>
+                            </div>
+                        </form>
 
+                        <form class="" action="{{ route('shop.update', $shop->id) }}" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="_method" value="PATCH">
+                            @csrf
                             <div class="form-box bg-white mt-4">
                                 <div class="form-box-title px-3 py-2">
                                     {{__('Slider Settings')}}
@@ -93,44 +100,21 @@
                                                     </strong>
                                                 </label>
                                             </div>
-                                            <!-- <div class="col-2 col-md-1 text-right">
-                                                <button type="button" onclick="delete_this_row(this)" class="btn btn-link btn-icon text-danger"><i class="fa fa-trash-o"></i></button>
-                                            </div> -->
                                         </div>
-
+                                        <div class="text-right">
+                                            <button type="button" class="btn btn-info mb-3" onclick="add_more_slider_image()">{{ __('Add More') }}</button>
+                                        </div>
                                     </div>
-
-                                    <div class="text-right">
-                                        <button type="button" class="btn btn-info" onclick="add_more_slider_image()">{{ __('add_more') }}</button>
-                                    </div>
-                                    <script>
-                                        var slide_id = 1;
-                                        function add_more_slider_image(){
-                                            var shopSliderAdd =  '<div class="row">';
-                                            shopSliderAdd +=  '<div class="col-2">';
-                                            shopSliderAdd +=  '<button type="button" onclick="delete_this_row(this)" class="btn btn-link btn-icon text-danger"><i class="fa fa-trash-o"></i></button>';
-                                            shopSliderAdd +=  '</div>';
-                                            shopSliderAdd +=  '<div class="col-10">';
-                                            shopSliderAdd +=  '<input type="file" name="sliders[]" id="slide-'+slide_id+'" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" multiple accept="image/*" />';
-                                            shopSliderAdd +=  '<label for="slide-'+slide_id+'" class="mw-100 mb-3">';
-                                            shopSliderAdd +=  '<span></span>';
-                                            shopSliderAdd +=  '<strong>';
-                                            shopSliderAdd +=  '<i class="fa fa-upload"></i>';
-                                            shopSliderAdd +=  "{{__('Choose image')}}";
-                                            shopSliderAdd +=  '</strong>';
-                                            shopSliderAdd +=  '</label>';
-                                            shopSliderAdd +=  '</div>';
-                                            shopSliderAdd +=  '</div>';
-                                            slide_id++;
-                                            $('#shop-slider-images').append(shopSliderAdd);
-                                        }
-                                        function delete_this_row(em){
-                                            $(em).closest('.row').remove();
-                                        }
-                                    </script>
                                 </div>
                             </div>
+                            <div class="text-right mt-4">
+                                <button type="submit" class="btn btn-styled btn-base-1">{{__('save')}}</button>
+                            </div>
+                        </form>
 
+                        <form class="" action="{{ route('shop.update', $shop->id) }}" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="_method" value="PATCH">
+                            @csrf
                             <div class="form-box bg-white mt-4">
                                 <div class="form-box-title px-3 py-2">
                                     {{__('Social Media Link')}}
@@ -170,7 +154,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="text-right mt-4">
                                 <button type="submit" class="btn btn-styled btn-base-1">{{__('save')}}</button>
                             </div>
@@ -181,4 +164,34 @@
         </div>
     </section>
 
+@endsection
+
+@section('script')
+    <script>
+        var slide_id = 1;
+        function add_more_slider_image(){
+            var shopSliderAdd =  '<div class="row">';
+            shopSliderAdd +=  '<div class="col-2">';
+            shopSliderAdd +=  '<button type="button" onclick="delete_this_row(this)" class="btn btn-link btn-icon text-danger"><i class="fa fa-trash-o"></i></button>';
+            shopSliderAdd +=  '</div>';
+            shopSliderAdd +=  '<div class="col-10">';
+            shopSliderAdd +=  '<input type="file" name="sliders[]" id="slide-'+slide_id+'" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" multiple accept="image/*" />';
+            shopSliderAdd +=  '<label for="slide-'+slide_id+'" class="mw-100 mb-3">';
+            shopSliderAdd +=  '<span></span>';
+            shopSliderAdd +=  '<strong>';
+            shopSliderAdd +=  '<i class="fa fa-upload"></i>';
+            shopSliderAdd +=  "{{__('Choose image')}}";
+            shopSliderAdd +=  '</strong>';
+            shopSliderAdd +=  '</label>';
+            shopSliderAdd +=  '</div>';
+            shopSliderAdd +=  '</div>';
+            $('#shop-slider-images').append(shopSliderAdd);
+
+            slide_id++;
+            imageInputInitialize();
+        }
+        function delete_this_row(em){
+            $(em).closest('.row').remove();
+        }
+    </script>
 @endsection

@@ -124,7 +124,7 @@
                 <div class="col-xl-3 d-none d-xl-block">
                     <div class="seller-info-box mb-3">
                         <div class="sold-by position-relative">
-                            @if ($product->added_by == 'seller' && $product->user->seller->verification_status == 1)
+                            @if (Auth::user()->seller->verification_status == 1)
                                 <div class="position-absolute medal-badge">
                                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" viewBox="0 0 287.5 442.2">
                                         <polygon style="fill:#F8B517;" points="223.4,442.2 143.8,376.7 64.1,442.2 64.1,215.3 223.4,215.3 "/>
@@ -142,7 +142,7 @@
                                 <span class="star-rating star-rating-sm d-block">
                                     @php
                                         $rating = 0; $total = 0;
-                                        foreach ($product->user->products as $key => $seller_product) {
+                                        foreach (Auth::user()->products as $key => $seller_product) {
                                             $rating += $seller_product->reviews->sum('rating');
                                             $total += $seller_product->reviews->count();
                                         }

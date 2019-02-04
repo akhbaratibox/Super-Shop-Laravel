@@ -182,7 +182,7 @@
                             </li>
 
                             <li>
-                                <a href="{{ route('shop.index') }}">
+                                <a href="{{ route('shops.index') }}">
                                     <i class="la la-cog"></i>
                                     <span>{{__('Shop Setting')}}</span>
                                 </a>

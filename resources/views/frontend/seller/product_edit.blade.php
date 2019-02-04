@@ -114,9 +114,9 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="text-right">
-                                            <button type="button" class="btn btn-info mb-3" onclick="add_more_slider_image()">{{ __('Add More') }}</button>
-                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button type="button" class="btn btn-info mb-3" onclick="add_more_slider_image()">{{ __('Add More') }}</button>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">

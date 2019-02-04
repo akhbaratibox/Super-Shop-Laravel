@@ -112,7 +112,6 @@ Route::group(['prefix' =>'seller', 'middleware' => ['seller', 'verified']], func
 	Route::get('/products', 'HomeController@seller_product_list')->name('seller.products');
 	Route::get('/product/upload', 'HomeController@show_product_upload_form')->name('seller.products.upload');
 	Route::get('/product/{id}/edit', 'HomeController@show_product_edit_form')->name('seller.products.edit');
-	Route::resource('shop', 'ShopController');
 });
 
 Route::group(['middleware' => ['auth']], function(){
@@ -133,3 +132,5 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::post('/orders/update_delivery_status', 'OrderController@update_delivery_status')->name('orders.update_delivery_status');
 	Route::post('/orders/update_payment_status', 'OrderController@update_payment_status')->name('orders.update_payment_status');
 });
+
+Route::resource('shops', 'ShopController');

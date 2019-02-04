@@ -25,13 +25,13 @@
                                         <ul class="breadcrumb">
                                             <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
                                             <li><a href="{{ route('dashboard') }}">{{__('dashboard')}}</a></li>
-                                            <li class="active"><a href="{{ route('shop.index') }}">{{__('Shop Settings')}}</a></li>
+                                            <li class="active"><a href="{{ route('shops.index') }}">{{__('Shop Settings')}}</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <form class="" action="{{ route('shop.update', $shop->id) }}" method="POST" enctype="multipart/form-data">
+                        <form class="" action="{{ route('shops.update', $shop->id) }}" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="_method" value="PATCH">
                             @csrf
                             <div class="form-box bg-white mt-4">
@@ -77,7 +77,7 @@
                             </div>
                         </form>
 
-                        <form class="" action="{{ route('shop.update', $shop->id) }}" method="POST" enctype="multipart/form-data">
+                        <form class="" action="{{ route('shops.update', $shop->id) }}" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="_method" value="PATCH">
                             @csrf
                             <div class="form-box bg-white mt-4">
@@ -101,9 +101,9 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="text-right">
-                                            <button type="button" class="btn btn-info mb-3" onclick="add_more_slider_image()">{{ __('Add More') }}</button>
-                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button type="button" class="btn btn-info mb-3" onclick="add_more_slider_image()">{{ __('Add More') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -112,7 +112,7 @@
                             </div>
                         </form>
 
-                        <form class="" action="{{ route('shop.update', $shop->id) }}" method="POST" enctype="multipart/form-data">
+                        <form class="" action="{{ route('shops.update', $shop->id) }}" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="_method" value="PATCH">
                             @csrf
                             <div class="form-box bg-white mt-4">

@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Shop;
+use App\User;
+use App\Seller;
 use Auth;
+use Hash;
 
 class ShopController extends Controller
 {
@@ -26,7 +29,7 @@ class ShopController extends Controller
      */
     public function create()
     {
-
+        return view('frontend.seller_form');
     }
 
     /**
@@ -37,7 +40,38 @@ class ShopController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(!Auth::check() && $request->password == $request->password_confirmation){
+            $user = new User;
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->user_type = "seller";
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }
+        else{
+            $user = Auth::user();
+        }
+
+        $seller = new Seller;
+        $seller->user_id = $user->id;
+        $seller->save();
+
+        if(Shop::where('user_id', $user->id)->first() == null){
+            $shop = new Shop;
+            $shop->user_id = $user->id;
+            $shop->name = $request->name;
+            $shop->address = $request->address;
+            $shop->slug = preg_replace('/\s+/', '-', $request->name).'-'.$shop->id;
+
+            if($shop->save()){
+                auth()->login($user, false);
+                flash(__('Your Shop has been created successfully!'))->success();
+                return redirect()->route('home');
+            }
+        }
+
+        flash(__('Sorry! Something went wrong.'))->error();
+        return back();
     }
 
     /**

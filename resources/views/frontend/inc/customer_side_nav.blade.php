@@ -44,7 +44,7 @@
             </ul>
         </div>
         <div class="widget-seller-btn pt-4">
-            <a href="" class="btn btn-anim-primary w-100">{{__('Be A Seller')}}</a>
+            <a href="{{ route('shops.create') }}" class="btn btn-anim-primary w-100">{{__('Be A Seller')}}</a>
         </div>
     </div>
 </div>

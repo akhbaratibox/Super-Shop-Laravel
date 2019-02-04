@@ -40,16 +40,24 @@ class ShopController extends Controller
      */
     public function store(Request $request)
     {
-        if(!Auth::check() && $request->password == $request->password_confirmation){
-            $user = new User;
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->user_type = "seller";
-            $user->password = Hash::make($request->password);
-            $user->save();
+        if(!Auth::check()){
+            if($request->password == $request->password_confirmation){
+                $user = new User;
+                $user->name = $request->name;
+                $user->email = $request->email;
+                $user->user_type = "seller";
+                $user->password = Hash::make($request->password);
+                $user->save();
+            }
+            else{
+                flash(__('Sorry! Password did not match.'))->error();
+                return back();
+            }
         }
         else{
             $user = Auth::user();
+            $user->user_type = "seller";
+            $user->save();
         }
 
         $seller = new Seller;
@@ -66,7 +74,7 @@ class ShopController extends Controller
             if($shop->save()){
                 auth()->login($user, false);
                 flash(__('Your Shop has been created successfully!'))->success();
-                return redirect()->route('home');
+                return redirect()->route('shops.index');
             }
         }
 

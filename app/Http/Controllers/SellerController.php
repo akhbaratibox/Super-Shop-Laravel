@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Seller;
 use App\User;
+use App\Shop;
 use Illuminate\Support\Facades\Hash;
 
 class SellerController extends Controller
@@ -47,6 +48,10 @@ class SellerController extends Controller
             $seller = new Seller;
             $seller->user_id = $user->id;
             if($seller->save()){
+                $shop = new Shop;
+                $shop->user_id = $user->id;
+                $shop->slug = 'demo-shop-'.$user->id;
+                $shop->save();
                 flash(__('Seller has been inserted successfully'))->success();
                 return redirect()->route('sellers.index');
             }

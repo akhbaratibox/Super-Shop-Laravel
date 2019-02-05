@@ -28,7 +28,7 @@
     <link href="{{ asset('plugins/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
 
     <!--Demo [ DEMONSTRATION ]-->
-    <link href="{{ asset('css/demo/nifty-demo.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/demo/nifty-demo-icons.min.css') }}" rel="stylesheet">
 
     <!--Animate.css [ OPTIONAL ]-->
     <link href="{{ asset('plugins/animate-css/animate.min.css')}}" rel="stylesheet">

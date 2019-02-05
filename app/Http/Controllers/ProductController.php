@@ -143,7 +143,7 @@ class ProductController extends Controller
                         $str .= '-'.str_replace(' ', '', $item);
                     }
                     else{
-                        if($request->has('colors_active')){
+                        if($request->has('colors_active') && $request->has('colors') && count($request->colors) > 0){
                             $color_name = \App\Color::where('code', $item)->first()->name;
                             $str .= $color_name;
                         }
@@ -309,7 +309,7 @@ class ProductController extends Controller
                         $str .= '-'.str_replace(' ', '', $item);
                     }
                     else{
-                        if($request->has('colors_active')){
+                        if($request->has('colors_active') && $request->has('colors') && count($request->colors) > 0){
                             $color_name = \App\Color::where('code', $item)->first()->name;
                             $str .= $color_name;
                         }
@@ -446,7 +446,7 @@ class ProductController extends Controller
     public function sku_combination(Request $request)
     {
         $options = array();
-        if($request->has('colors_active')){
+        if($request->has('colors_active') && $request->has('colors') && count($request->colors) > 0){
             $colors_active = 1;
             array_push($options, $request->colors);
         }
@@ -474,7 +474,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($request->id);
 
         $options = array();
-        if($request->has('colors_active')){
+        if($request->has('colors_active') && $request->has('colors') && count($request->colors) > 0){
             $colors_active = 1;
             array_push($options, $request->colors);
         }

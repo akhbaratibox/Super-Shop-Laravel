@@ -121,7 +121,7 @@ class ProductController extends Controller
 
         //combinations start
         $options = array();
-        if($request->has('colors_active')){
+        if($request->has('colors_active') && $request->has('colors') && count($request->colors) > 0){
             $colors_active = 1;
             array_push($options, $request->colors);
         }
@@ -287,7 +287,7 @@ class ProductController extends Controller
 
         //combinations start
         $options = array();
-        if($request->has('colors_active')){
+        if($request->has('colors_active') && $request->has('colors') && count($request->colors) > 0){
             $colors_active = 1;
             array_push($options, $request->colors);
         }

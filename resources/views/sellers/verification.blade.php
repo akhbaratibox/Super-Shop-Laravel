@@ -6,12 +6,16 @@
 <!--===================================================-->
 <div class="panel">
     <div class="panel-heading">
+        <div class="panel-control">
+            <a href="#" class="btn btn-default btn-rounded d-innline-block">Reject</a></li>
+            <a href="#" class="btn btn-primary btn-rounded d-innline-block">Accept</a>
+        </div>
         <h3 class="panel-title">{{__('Seller Verification')}}</h3>
     </div>
     <div class="panel-body">
-        <div class="col-lg-4">
+        <div class="col-md-6">
             <div class="panel-heading">
-                <h3>{{__('User Info')}}</h3>
+                <h3 class="text-lg">{{__('User Info')}}</h3>
             </div>
             <div class="row">
                 <label class="col-sm-3 control-label" for="name">{{__('name')}}</label>
@@ -40,7 +44,7 @@
 
 
             <div class="panel-heading">
-                <h3>{{__('Shop Info')}}</h3>
+                <h3 class="text-lg">{{__('Shop Info')}}</h3>
             </div>
 
             <div class="row">
@@ -56,9 +60,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-md-6">
             <div class="panel-heading">
-                <h3>{{__('Verification Info')}}</h3>
+                <h3 class="text-lg">{{__('Verification Info')}}</h3>
             </div>
             <table class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <tbody>

@@ -133,7 +133,7 @@
 		        </tr>
 		        <tr>
 		            <th class="gry-color text-left">Shipping Cost</td>
-		            <td>$ 0</td>
+		            <td>{{ single_price($order->orderDetails->sum('shipping_cost')) }}</td>
 		        </tr>
 		        <tr class="border-bottom">
 		            <th class="gry-color text-left">Total Tax</td>

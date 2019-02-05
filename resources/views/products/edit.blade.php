@@ -108,20 +108,18 @@
 							<div class="form-group">
 								<label class="col-lg-2 control-label">Main Images</label>
 								<div class="col-lg-7">
-									<div class="">
+									<div id="photos">
 										@foreach (json_decode($product->photos) as $key => $photo)
-											<div class="row control-group">
+											<div class="col-md-4 col-sm-4 col-xs-6">
 												<div class="col-sm-6">
-			                                        <img src="{{ asset($photo) }}" alt="" class="img-lg">
+													<img src="{{ asset($photo) }}" alt="" class="img-responsive">
 													<input type="hidden" name="photos[]" value="{{ $photo }}">
-			                                    </div>
-			                                    <div class="col-sm-6">
-			                                        <button type="button" class="btn btn-danger remove-files">Remove<i class="icon-x position-right"></i></button>
-			                                    </div>
+													<div class="">
+														<button type="button" class="btn btn-danger remove-files">Remove<i class="icon-x position-right"></i></button>
+													</div>
+												</div>
 											</div>
 										@endforeach
-									</div>
-									<div id="photos">
 
 									</div>
 								</div>

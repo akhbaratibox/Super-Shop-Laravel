@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="col-sm-12">
+<div class="col-lg-6 col-lg-offset-3">
     <div class="panel">
         <div class="panel-heading">
             <h3 class="panel-title">{{__('subsubcategory_information')}}</h3>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Customer;
+use App\User;
 
 class CustomerController extends Controller
 {
@@ -81,6 +82,13 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy(Customer::findOrFail($id)->user->id);
+        if(Customer::destroy($id)){
+            flash(__('Customer has been deleted successfully'))->success();
+            return redirect()->route('customers.index');
+        }
+
+        flash(__('Something went wrong'))->error();
+        return back();
     }
 }

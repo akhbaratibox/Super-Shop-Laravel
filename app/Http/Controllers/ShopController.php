@@ -182,19 +182,23 @@ class ShopController extends Controller
             $item = array();
             if ($element->type == 'text') {
                 $item['type'] = 'text';
-                $item[$element->label] = $request['element_'.$i];
+                $item['label'] = $element->label;
+                $item['value'] = $request['element_'.$i];
             }
             elseif ($element->type == 'select' || $element->type == 'radio') {
                 $item['type'] = 'select';
-                $item[$element->label] = $request['element_'.$i];
+                $item['label'] = $element->label;
+                $item['value'] = $request['element_'.$i];
             }
             elseif ($element->type == 'multi_select') {
                 $item['type'] = 'multi_select';
-                $item[$element->label] = json_encode($request['element_'.$i]);
+                $item['label'] = $element->label;
+                $item['value'] = json_encode($request['element_'.$i]);
             }
             elseif ($element->type == 'file') {
                 $item['type'] = 'file';
-                $item[$element->label] = $request['element_'.$i]->store('uploads/verification_form');
+                $item['label'] = $element->label;
+                $item['value'] = $request['element_'.$i]->store('uploads/verification_form');
             }
             array_push($data, $item);
             $i++;

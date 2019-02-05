@@ -34,6 +34,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 
 	Route::resource('sellers','SellerController');
 	Route::get('/sellers/destroy/{id}', 'SellerController@destroy')->name('sellers.destroy');
+	Route::get('/sellers/view/{id}/verification', 'SellerController@show_verification_request')->name('sellers.show_verification_request');
 
 	Route::resource('customers','CustomerController');
 	Route::get('/customers/destroy/{id}', 'CustomerController@destroy')->name('customers.destroy');

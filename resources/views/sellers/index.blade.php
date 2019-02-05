@@ -36,8 +36,10 @@
                         <td>
                             @if ($seller->verification_status == 1)
                                 Verified
+                            @elseif ($seller->verification_info != null)
+                                Requested (<a href="{{ route('sellers.show_verification_request', $seller->id) }}">view</a>)
                             @else
-                                Not verified
+                                Not Verified
                             @endif
                         </td>
                         <td>

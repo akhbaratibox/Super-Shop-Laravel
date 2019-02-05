@@ -128,4 +128,10 @@ class SellerController extends Controller
         flash(__('Something went wrong'))->error();
         return back();
     }
+
+    public function show_verification_request($id)
+    {
+        $seller = Seller::findOrFail($id);
+        return view('sellers.verification', compact('seller'));
+    }
 }

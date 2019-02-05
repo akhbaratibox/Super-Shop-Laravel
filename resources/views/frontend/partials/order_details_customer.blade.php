@@ -72,10 +72,10 @@
                             <td class="w-50 strong-600">Total order amount:</td>
                             <td>{{ single_price($order->orderDetails->sum('price') + $order->orderDetails->sum('tax')) }}</td>
                         </tr>
-                        {{-- <tr>
+                        <tr>
                             <td class="w-50 strong-600">Shipping method:</td>
                             <td>Flat shipping rate</td>
-                        </tr> --}}
+                        </tr>
                         <tr>
                             <td class="w-50 strong-600">Payment method:</td>
                             <td>{{ $order->payment_type }}</td>
@@ -131,22 +131,16 @@
                                     <span class="strong-600">{{ single_price($order->orderDetails->sum('price')) }}</span>
                                 </td>
                             </tr>
-                            {{-- <tr>
+                            <tr>
                                 <th>Shipping</th>
                                 <td class="text-right">
-                                    <span class="text-italic">0.00$</span>
-                                </td>
-                            </tr> --}}
-                            <tr>
-                                <th>Tax</th>
-                                <td class="text-right">
-                                    <span class="text-italic">{{ single_price($order->orderDetails->sum('tax')) }}</span>
+                                    <span class="text-italic">{{ single_price($order->orderDetails->sum('shipping_cost')) }}</span>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Tax</th>
                                 <td class="text-right">
-                                    <span class="text-italic">{{ single_price($order->orderDetails->sum('shipping_cost')) }}</span>
+                                    <span class="text-italic">{{ single_price($order->orderDetails->sum('tax')) }}</span>
                                 </td>
                             </tr>
                             <tr>

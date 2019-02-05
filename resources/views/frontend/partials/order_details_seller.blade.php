@@ -153,22 +153,16 @@
                                     <span class="strong-600">{{ single_price($order->orderDetails->where('seller_id', Auth::user()->id)->sum('price')) }}</span>
                                 </td>
                             </tr>
-                            {{-- <tr>
+                            <tr>
                                 <th>Shipping</th>
                                 <td class="text-right">
-                                    <span class="text-italic">0.00$</span>
+                                    <span class="text-italic">{{ single_price($order->orderDetails->where('seller_id', Auth::user()->id)->sum('shipping_cost')) }}</span>
                                 </td>
-                            </tr> --}}
+                            </tr>
                             <tr>
                                 <th>Tax</th>
                                 <td class="text-right">
                                     <span class="text-italic">{{ single_price($order->orderDetails->where('seller_id', Auth::user()->id)->sum('tax')) }}</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Shipping Cost</th>
-                                <td class="text-right">
-                                    <span class="text-italic">{{ single_price($order->orderDetails->where('seller_id', Auth::user()->id)->sum('shipping_cost')) }}</span>
                                 </td>
                             </tr>
                             <tr>

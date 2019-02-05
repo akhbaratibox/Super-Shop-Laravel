@@ -9,24 +9,25 @@
         <h3 class="panel-title">{{__('Order Details')}}</h3>
     </div>
     @php
-        $status = $order->orderDetails->first()->delivery_status;
+        $delivery_status = $order->orderDetails->first()->delivery_status;
+        $payment_status = $order->orderDetails->first()->payment_status;
     @endphp
     <div class="panel-body">
         <div class="row">
             <div class="col-lg-offset-6 col-lg-3">
                 <label for=update_payment_status"">Payment Status</label>
                 <select class="form-control demo-select2"  data-minimum-results-for-search="Infinity" id="update_payment_status">
-                    <option value="paid" @if ($order->payment_status == 'paid') selected @endif>Paid</option>
-                    <option value="unpaid" @if ($order->payment_status == 'unpaid') selected @endif>Unpaid</option>
+                    <option value="paid" @if ($payment_status == 'paid') selected @endif>Paid</option>
+                    <option value="unpaid" @if ($payment_status == 'unpaid') selected @endif>Unpaid</option>
                 </select>
             </div>
             <div class="col-lg-3">
                 <label for=update_delivery_status"">Delivery Status</label>
                 <select class="form-control demo-select2"  data-minimum-results-for-search="Infinity" id="update_delivery_status">
-                    <option value="pending" @if ($status == 'pending') selected @endif>Pending</option>
-                    <option value="on_review" @if ($status == 'on_review') selected @endif>On review</option>
-                    <option value="on_delivery" @if ($status == 'on_delivery') selected @endif>On delivery</option>
-                    <option value="delivered" @if ($status == 'delivered') selected @endif>Delivered</option>
+                    <option value="pending" @if ($delivery_status == 'pending') selected @endif>Pending</option>
+                    <option value="on_review" @if ($delivery_status == 'on_review') selected @endif>On review</option>
+                    <option value="on_delivery" @if ($delivery_status == 'on_delivery') selected @endif>On delivery</option>
+                    <option value="delivered" @if ($delivery_status == 'delivered') selected @endif>Delivered</option>
                 </select>
             </div>
         </div>
@@ -62,7 +63,7 @@
                     </tr>
                     <tr>
                         <td class="w-50 strong-600">Order status:</td>
-                        <td>{{ ucfirst(str_replace('_', ' ', $status)) }}</td>
+                        <td>{{ ucfirst(str_replace('_', ' ', $delivery_status)) }}</td>
                     </tr>
                     <tr>
                         <td class="w-50 strong-600">Total order amount:</td>
@@ -74,7 +75,7 @@
                     </tr> --}}
                     <tr>
                         <td class="w-50 strong-600">Payment method:</td>
-                        <td>{{ $order->payment_type }}</td>
+                        <td>{{ ucfirst(str_replace('_', ' ', $order->payment_type)) }}</td>
                     </tr>
                 </table>
             </div>
@@ -158,9 +159,7 @@
             var order_id = {{ $order->id }};
             var status = $('#update_delivery_status').val();
             $.post('{{ route('orders.update_delivery_status') }}', {_token:'{{ @csrf_token() }}',order_id:order_id,status:status}, function(data){
-                $('#order_details').modal('hide');
                 showAlert('success', 'Delivery status has been updated');
-                location.reload().setTimeOut(500);
             });
         });
 
@@ -168,9 +167,7 @@
             var order_id = {{ $order->id }};
             var status = $('#update_payment_status').val();
             $.post('{{ route('orders.update_payment_status') }}', {_token:'{{ @csrf_token() }}',order_id:order_id,status:status}, function(data){
-                $('#order_details').modal('hide');
-                showFrontendAlert('success', 'Payment status has been updated');
-                location.reload().setTimeOut(500);
+                showAlert('success', 'Payment status has been updated');
             });
         });
     </script>

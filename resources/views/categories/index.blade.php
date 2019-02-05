@@ -34,13 +34,20 @@
                         <td>{{$key+1}}</td>
                         <td>{{$category->name}}</td>
                         <td><img class="img-md" src="{{ asset($category->banner) }}" alt="{{__('banner')}}"></td>
-                        <td><img class="img-md" src="{{ asset($category->icon) }}" alt="{{__('icon')}}"></td>
+                        <td><img class="img-sm" src="{{ asset($category->icon) }}" alt="{{__('icon')}}"></td>
                         <td><label class="switch">
                             <input onchange="update_featured(this)" value="{{ $category->id }}" type="checkbox" <?php if($category->featured == 1) echo "checked";?> >
                             <span class="slider round"></span></label></td>
                         <td>
-                            <a href="{{route('categories.edit', $category->id)}}" class="btn btn-mint btn-icon"><i class="demo-psi-pen-5 icon-lg"></i></a>
-                            <a onclick="confirm_modal('{{route('categories.destroy', $category->id)}}');" class="btn btn-danger btn-icon"><i class="demo-psi-recycling icon-lg"></i></a>
+                            <div class="btn-group dropdown">
+                                <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
+                                    Actions <i class="dropdown-caret"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="{{route('categories.edit', $category->id)}}">Edit</a></li>
+                                    <li><a onclick="confirm_modal('{{route('categories.destroy', $category->id)}}');">Delete</a></li>
+                                </ul>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

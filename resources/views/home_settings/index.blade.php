@@ -53,7 +53,14 @@
                                             <input onchange="update_slider_published(this)" value="{{ $slider->id }}" type="checkbox" <?php if($slider->published == 1) echo "checked";?> >
                                             <span class="slider round"></span></label></td>
                                         <td>
-                                            <a onclick="confirm_modal('{{route('sliders.destroy', $slider->id)}}');" class="btn btn-danger btn-icon"><i class="demo-psi-recycling icon-lg"></i></a>
+                                            <div class="btn-group dropdown">
+                                                <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
+                                                    Actions <i class="dropdown-caret"></i>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li><a onclick="confirm_modal('{{route('sliders.destroy', $slider->id)}}');">Delete</a></li>
+                                                </ul>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -94,7 +101,14 @@
                                             <input onchange="update_banner_published(this)" value="{{ $banner->id }}" type="checkbox" <?php if($banner->published == 1) echo "checked";?> >
                                             <span class="slider round"></span></label></td>
                                         <td>
-                                            <a onclick="confirm_modal('{{route('home_banners.destroy', $banner->id)}}');" class="btn btn-danger btn-icon"><i class="demo-psi-recycling icon-lg"></i></a>
+                                            <div class="btn-group dropdown">
+                                                <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
+                                                    Actions <i class="dropdown-caret"></i>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li><a onclick="confirm_modal('{{route('home_banners.destroy', $banner->id)}}');">Delete</a></li>
+                                                </ul>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -141,8 +155,15 @@
                                             <input onchange="update_home_category_status(this)" value="{{ $home_category->id }}" type="checkbox" <?php if($home_category->status == 1) echo "checked";?> >
                                             <span class="slider round"></span></label></td>
                                         <td>
-                                            <a onclick="edit_home_category({{ $home_category->id }})" class="btn btn-mint btn-icon"><i class="demo-psi-pen-5 icon-lg"></i></a>
-                                            <a onclick="confirm_modal('{{route('home_categories.destroy', $home_category->id)}}');" class="btn btn-danger btn-icon"><i class="demo-psi-recycling icon-lg"></i></a>
+                                            <div class="btn-group dropdown">
+                                                <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
+                                                    Actions <i class="dropdown-caret"></i>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li><a onclick="edit_home_category({{ $home_category->id }})">Edit</a></li>
+                                                    <li><a onclick="confirm_modal('{{route('home_categories.destroy', $home_category->id)}}');">Delete</a></li>
+                                                </ul>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

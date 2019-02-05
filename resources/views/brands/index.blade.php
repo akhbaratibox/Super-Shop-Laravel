@@ -33,8 +33,15 @@
                         <td>{{$brand->name}}</td>
                         <td><img class="img-md" src="{{ asset($brand->logo) }}" alt="Logo"></td>
                         <td>
-                            <a href="{{route('brands.edit', $brand->id)}}" class="btn btn-mint btn-icon"><i class="demo-psi-pen-5 icon-lg"></i></a>
-                            <a onclick="confirm_modal('{{route('brands.destroy', $brand->id)}}');" class="btn btn-danger btn-icon"><i class="demo-psi-recycling icon-lg"></i></a>
+                            <div class="btn-group dropdown">
+                                <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
+                                    Actions <i class="dropdown-caret"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="{{route('brands.edit', $brand->id)}}">Edit</a></li>
+                                    <li><a onclick="confirm_modal('{{route('brands.destroy', $brand->id)}}');">Delete</a></li>
+                                </ul>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

@@ -42,10 +42,6 @@ class SubCategoryController extends Controller
         $subcategory->name = $request->name;
         $subcategory->category_id = $request->category_id;
 
-        if($request->hasFile('banner')){
-            $subcategory->banner = $request->file('banner')->store('uploads/subcategories/banner');
-        }
-
         if($subcategory->save()){
             flash(__('Subcategory has been inserted successfully'))->success();
             return redirect()->route('subcategories.index');
@@ -93,10 +89,6 @@ class SubCategoryController extends Controller
         $subcategory->name = $request->name;
         $subcategory->category_id = $request->category_id;
 
-        if($request->hasFile('banner')){
-            $subcategory->banner = $request->file('banner')->store('uploads/subcategories/banner');
-        }
-
         if($subcategory->save()){
             flash(__('Subcategory has been updated successfully'))->success();
             return redirect()->route('subcategories.index');
@@ -117,9 +109,6 @@ class SubCategoryController extends Controller
     {
         $subcategory = SubCategory::findOrFail($id);
         if(SubCategory::destroy($id)){
-            if($subcategory->banner){
-                unlink($subcategory->banner);
-            }
             flash(__('Subcategory has been deleted successfully'))->success();
             return redirect()->route('subcategories.index');
         }

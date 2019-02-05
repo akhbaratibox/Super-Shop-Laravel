@@ -25,7 +25,6 @@
                     <th>{{__('subcategory')}}</th>
                     <th>{{__('category')}}</th>
                     <th>{{__('brands')}}</th>
-                    <th>{{__('banner')}}</th>
                     <th width="10%">{{__('options')}}</th>
                 </tr>
             </thead>
@@ -41,10 +40,16 @@
                                 <span class="badge badge-info">{{\App\Brand::find($brand_id)->name}}</span>
                             @endforeach
                         </td>
-                        <td><img class="img-md" src="{{ asset($subsubcategory->banner) }}" alt="Banner"></td>
                         <td>
-                            <a href="{{route('subsubcategories.edit', $subsubcategory->id)}}" class="btn btn-mint btn-icon"><i class="demo-psi-pen-5 icon-lg"></i></a>
-                            <a onclick="confirm_modal('{{route('subsubcategories.destroy', $subsubcategory->id)}}');" class="btn btn-danger btn-icon"><i class="demo-psi-recycling icon-lg"></i></a>
+                            <div class="btn-group dropdown">
+                                <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
+                                    Actions <i class="dropdown-caret"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="{{route('subsubcategories.edit', $subsubcategory->id)}}">Edit</a></li>
+                                    <li><a onclick="confirm_modal('{{route('subsubcategories.destroy', $subsubcategory->id)}}');">Delete</a></li>
+                                </ul>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

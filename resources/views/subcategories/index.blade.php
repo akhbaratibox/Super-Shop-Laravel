@@ -23,7 +23,6 @@
                     <th>#</th>
                     <th>{{__('subcategory')}}</th>
                     <th>{{__('category')}}</th>
-                    <th>{{__('banner')}}</th>
                     <th width="10%">{{__('options')}}</th>
                 </tr>
             </thead>
@@ -33,10 +32,16 @@
                         <td>{{$key+1}}</td>
                         <td>{{$subcategory->name}}</td>
                         <td>{{$subcategory->category->name}}</td>
-                        <td><img class="img-md" src="{{ asset($subcategory->banner) }}" alt="Banner"></td>
                         <td>
-                            <a href="{{route('subcategories.edit', $subcategory->id)}}" class="btn btn-mint btn-icon"><i class="demo-psi-pen-5 icon-lg"></i></a>
-                            <a onclick="confirm_modal('{{route('subcategories.destroy', $subcategory->id)}}');" class="btn btn-danger btn-icon"><i class="demo-psi-recycling icon-lg"></i></a>
+                            <div class="btn-group dropdown">
+                                <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
+                                    Actions <i class="dropdown-caret"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="{{route('subcategories.edit', $subcategory->id)}}">Edit</a></li>
+                                    <li><a onclick="confirm_modal('{{route('subcategories.destroy', $subcategory->id)}}');">Delete</a></li>
+                                </ul>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

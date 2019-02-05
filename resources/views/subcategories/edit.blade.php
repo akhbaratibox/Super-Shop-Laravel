@@ -30,12 +30,6 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label" for="banner">{{__('banner')}}</label>
-                    <div class="col-sm-9">
-                        <input type="file" id="banner" name="banner" class="form-control">
-                    </div>
-                </div>
             </div>
             <div class="panel-footer text-right">
                 <button class="btn btn-purple" type="submit">{{__('save')}}</button>

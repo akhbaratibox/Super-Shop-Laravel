@@ -33,8 +33,14 @@
                         <td>{{$customer->user->name}}</td>
                         <td>{{$customer->user->email}}</td>
                         <td>
-                            <a href="{{route('customers.edit', $customer->id)}}" class="btn btn-mint btn-icon"><i class="demo-psi-pen-5 icon-lg"></i></a>
-                            <a onclick="confirm_modal('{{route('customers.destroy', $customer->id)}}');" class="btn btn-danger btn-icon"><i class="demo-psi-recycling icon-lg"></i></a>
+                            <div class="btn-group dropdown">
+                                <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
+                                    Actions <i class="dropdown-caret"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a onclick="confirm_modal('{{route('customers.destroy', $customer->id)}}');">Delete</a></li>
+                                </ul>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

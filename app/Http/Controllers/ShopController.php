@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Shop;
 use App\User;
 use App\Seller;
+use App\BusinessSetting;
 use Auth;
 use Hash;
 
@@ -56,6 +57,7 @@ class ShopController extends Controller
         }
         else{
             $user = Auth::user();
+            $user->customer->delete();
             $user->user_type = "seller";
             $user->save();
         }
@@ -162,12 +164,49 @@ class ShopController extends Controller
 
     public function verify_form(Request $request)
     {
-        $shop = Auth::user()->shop;
-        return view('frontend.seller.verify_form', compact('shop'));
+        if(Auth::user()->seller->verification_info == null){
+            $shop = Auth::user()->shop;
+            return view('frontend.seller.verify_form', compact('shop'));
+        }
+        else {
+            flash(__('Sorry! You have sent verification request already.'))->error();
+            return back();
+        }
     }
 
     public function verify_form_store(Request $request)
     {
-        dd($request->all());
+        $data = array();
+        $i = 0;
+        foreach (json_decode(BusinessSetting::where('type', 'verification_form')->first()->value) as $key => $element) {
+            $item = array();
+            if ($element->type == 'text') {
+                $item['type'] = 'text';
+                $item[$element->label] = $request['element_'.$i];
+            }
+            elseif ($element->type == 'select' || $element->type == 'radio') {
+                $item['type'] = 'select';
+                $item[$element->label] = $request['element_'.$i];
+            }
+            elseif ($element->type == 'multi_select') {
+                $item['type'] = 'multi_select';
+                $item[$element->label] = json_encode($request['element_'.$i]);
+            }
+            elseif ($element->type == 'file') {
+                $item['type'] = 'file';
+                $item[$element->label] = $request['element_'.$i]->store('uploads/verification_form');
+            }
+            array_push($data, $item);
+            $i++;
+        }
+        $seller = Auth::user()->seller;
+        $seller->verification_info = json_encode($data);
+        if($seller->save()){
+            flash(__('Your shop verification request has been submitted successfully!'))->success();
+            return redirect()->route('dashboard');
+        }
+
+        flash(__('Sorry! Something went wrong.'))->error();
+        return back();
     }
 }

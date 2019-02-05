@@ -7,37 +7,11 @@
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">{{__('product_activation')}}</h3>
-            </div>
-            <div class="panel-body text-center">
-                <label class="switch">
-                    <input type="checkbox" onchange="updateSettings(this, 'product_activation')" <?php if(\App\BusinessSetting::where('type', 'product_activation')->first()->value == 1) echo "checked";?> >
-                    <span class="slider round"></span>
-                </label>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="panel">
-            <div class="panel-heading">
                 <h3 class="panel-title text-center">{{__('vendor_system_activation')}}</h3>
             </div>
             <div class="panel-body text-center">
                 <label class="switch">
                     <input type="checkbox" onchange="updateSettings(this, 'vendor_system_activation')" <?php if(\App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1) echo "checked";?>>
-                    <span class="slider round"></span>
-                </label>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="panel">
-            <div class="panel-heading">
-                <h3 class="panel-title text-center">{{__('show_vendor')}}</h3>
-            </div>
-            <div class="panel-body text-center">
-                <label class="switch">
-                    <input type="checkbox" onchange="updateSettings(this, 'show_vendors')" <?php if(\App\BusinessSetting::where('type', 'show_vendors')->first()->value == 1) echo "checked";?>>
                     <span class="slider round"></span>
                 </label>
             </div>

@@ -33,12 +33,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="mail_from">{{__('from')}} : {{__('email_address')}}</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="mail_from" id="mail_from" required>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="col-sm-2 control-label" for="subject">{{__('newsletter_subject')}}</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="subject" id="subject" required>

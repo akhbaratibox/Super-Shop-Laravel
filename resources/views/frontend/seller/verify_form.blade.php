@@ -67,14 +67,29 @@
                                                 </label>
                                             </div>
                                         </div>
-                                    @elseif ($element->type == 'select' || $element->type == 'multi_select')
+                                    @elseif ($element->type == 'select')
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <label>{{ $element->label }}</label>
                                             </div>
                                             <div class="col-md-10">
                                                 <div class="mb-3">
-                                                    <select class="form-control selectpicker" @if($element->type == 'multi_select') multiple @endif data-minimum-results-for-search="Infinity" name="element_{{ $key }}">
+                                                    <select class="form-control selectpicker" data-minimum-results-for-search="Infinity" name="element_{{ $key }}">
+                                                        @foreach (json_decode($element->options) as $value)
+                                                            <option value="{{ $value }}">{{ $value }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @elseif ($element->type == 'multi_select')
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <label>{{ $element->label }}</label>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="mb-3">
+                                                    <select class="form-control selectpicker" data-minimum-results-for-search="Infinity" name="element_{{ $key }}[]" multiple>
                                                         @foreach (json_decode($element->options) as $value)
                                                             <option value="{{ $value }}">{{ $value }}</option>
                                                         @endforeach
@@ -91,7 +106,7 @@
                                                 <div class="mb-3">
                                                     @foreach (json_decode($element->options) as $value)
                                                         <div class="radio radio-inline">
-                                                            <input type="radio" name="element_{{ $key }}" id="{{ $value }}">
+                                                            <input type="radio" name="element_{{ $key }}" value="{{ $value }}" id="{{ $value }}">
                                                             <label for="{{ $value }}">{{ $value }}</label>
                                                         </div>
                                                     @endforeach

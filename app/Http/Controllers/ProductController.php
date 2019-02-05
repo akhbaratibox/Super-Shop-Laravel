@@ -88,6 +88,7 @@ class ProductController extends Controller
         $product->tax_type = $request->tax_type;
         $product->discount = $request->discount;
         $product->discount_type = $request->discount_type;
+        $product->shipping_cost = $request->shipping_cost;
 
         $product->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->name)).'-'.str_random(5);
 
@@ -95,6 +96,7 @@ class ProductController extends Controller
             if(count($request->colors) > 0){
                 $product->colors = json_encode($request->colors);
             }
+
         }
         else {
             $colors = array();
@@ -254,6 +256,7 @@ class ProductController extends Controller
         $product->tax = $request->tax;
         $product->tax_type = $request->tax_type;
         $product->discount = $request->discount;
+        $product->shipping_cost = $request->shipping_cost;
         $product->discount_type = $request->discount_type;
 
         if($request->has('colors_active')){

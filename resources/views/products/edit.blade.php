@@ -287,7 +287,13 @@
 
 				        </div> --}}
 						<div id="demo-stk-lft-tab-9" class="tab-pane fade">
-							<div class="col-sm-4">
+							<div class="form-group">
+								<label class="col-lg-2 control-label">{{__('shipping_cost')}}</label>
+								<div class="col-lg-7">
+									<input type="number" min="0" step="0.01" value="{{ $product->shipping_cost }}" name="shipping_cost" class="form-control">
+								</div>
+							</div>
+							{{-- <div class="col-sm-4">
 						        <div class="panel">
 						            <div class="panel-heading">
 						                <h3 class="panel-title text-center">DHL</h3>
@@ -326,7 +332,7 @@
 						            </div>
 						        </div>
 						    </div>
-				        </div>
+				        </div> --}}
 						<div id="demo-stk-lft-tab-10" class="tab-pane fade">
 
 				        </div>

@@ -108,10 +108,12 @@ class OrderController extends Controller
         if($order->save()){
             $subtotal = 0;
             $tax = 0;
+            $shipping = 0;
             foreach (Session::get('cart') as $key => $cartItem){
                 $product = Product::find($cartItem['id']);
                 $subtotal += $cartItem['price']*$cartItem['quantity'];
                 $tax += $cartItem['tax']*$cartItem['quantity'];
+                $shipping += $cartItem['shipping']*$cartItem['quantity'];
                 $product_variation = null;
                 if(isset($cartItem['color'])){
                     $product_variation .= Color::where('code', $cartItem['color'])->first()->name;
@@ -128,6 +130,7 @@ class OrderController extends Controller
                 $order_detail->variation = $product_variation;
                 $order_detail->price = $cartItem['price'] * $cartItem['quantity'];
                 $order_detail->tax = $cartItem['tax'] * $cartItem['quantity'];
+                $order_detail->shipping_cost = $cartItem['shipping']*$cartItem['quantity'];
                 $order_detail->quantity = $cartItem['quantity'];
                 $order_detail->save();
 
@@ -135,7 +138,7 @@ class OrderController extends Controller
                 $product->save();
             }
 
-            $order->grand_total = $subtotal + $tax;
+            $order->grand_total = $subtotal + $tax + $shipping;
             $order->save();
 
             $pdf = PDF::loadView('invoices.customer_invoice', compact('order'));

@@ -183,7 +183,7 @@
 									<input type="text" class="form-control" value="{{__('colors')}}" disabled>
 								</div>
 								<div class="col-lg-7">
-									<select class="form-control demo-select2-placeholder" name="colors[]" id="colors" multiple>
+									<select class="form-control demo-select2-placeholder" name="colors[]" id="colors" multiple disabled>
 										@foreach (\App\Color::orderBy('name', 'asc')->get() as $key => $color)
 											<option value="{{ $color->code }}">{{ $color->name }}</option>
 										@endforeach
@@ -191,7 +191,7 @@
 								</div>
 								<div class="col-lg-2">
 									<label class="switch" style="margin-top:5px;">
-										<input value="1" type="checkbox" name="colors_active" checked>
+										<input value="1" type="checkbox" name="colors_active">
 										<span class="slider round"></span>
 									</label>
 								</div>
@@ -211,19 +211,19 @@
 							<div class="form-group">
 								<label class="col-lg-2 control-label">{{__('unit_price')}}</label>
 								<div class="col-lg-7">
-									<input type="number" min="0" step="0.01" placeholder="{{__('unit_price')}}" name="unit_price" class="form-control">
+									<input type="number" min="0" step="0.01" placeholder="{{__('unit_price')}}" name="unit_price" class="form-control" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-lg-2 control-label">{{__('purchase_price')}}</label>
 								<div class="col-lg-7">
-									<input type="number" min="0" step="0.01" placeholder="{{__('purchase_price')}}" name="purchase_price" class="form-control">
+									<input type="number" min="0" step="0.01" placeholder="{{__('purchase_price')}}" name="purchase_price" class="form-control" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-lg-2 control-label">{{__('tax')}}</label>
 								<div class="col-lg-7">
-									<input type="number" min="0" step="0.01" placeholder="{{__('tax')}}" name="tax" class="form-control">
+									<input type="number" min="0" step="0.01" placeholder="{{__('tax')}}" name="tax" class="form-control" required>
 								</div>
 								<div class="col-lg-1">
 									<select class="demo-select2" name="tax_type">
@@ -235,7 +235,7 @@
 							<div class="form-group">
 								<label class="col-lg-2 control-label">{{__('discount')}}</label>
 								<div class="col-lg-7">
-									<input type="number" min="0" step="0.01" placeholder="{{__('discount')}}" name="discount" class="form-control">
+									<input type="number" min="0" step="0.01" placeholder="{{__('discount')}}" name="discount" class="form-control" required>
 								</div>
 								<div class="col-lg-1">
 									<select class="demo-select2" name="discount_type">
@@ -263,7 +263,13 @@
 				        </div> --}}
 
 						<div id="demo-stk-lft-tab-9" class="tab-pane fade">
-							<div class="col-sm-4">
+							<div class="form-group">
+								<label class="col-lg-2 control-label">{{__('shipping_cost')}}</label>
+								<div class="col-lg-7">
+									<input type="number" min="0" step="0.01" placeholder="{{__('shipping_cost')}}" name="shipping_cost" class="form-control" required>
+								</div>
+							</div>
+							{{-- <div class="col-sm-4">
 						        <div class="panel">
 						            <div class="panel-heading">
 						                <h3 class="panel-title text-center">DHL</h3>
@@ -301,7 +307,7 @@
 						                </label>
 						            </div>
 						        </div>
-						    </div>
+						    </div> --}}
 				        </div>
 						<div id="demo-stk-lft-tab-10" class="tab-pane fade">
 							<div class="form-group">

@@ -95,6 +95,7 @@ class CartController extends Controller
         $data['quantity'] = $request['quantity'];
         $data['price'] = $price;
         $data['tax'] = $tax;
+        $data['shipping'] = $product->shipping_cost;
 
         if($request->session()->has('cart')){
             $cart = $request->session()->get('cart', collect([]));
@@ -116,7 +117,7 @@ class CartController extends Controller
             $request->session()->put('cart', $cart);
         }
 
-        return view('frontend.partials.cart_summary');;
+        return view('frontend.partials.cart_details');;
     }
 
     public function updateQuantity(Request $request)
@@ -130,6 +131,6 @@ class CartController extends Controller
         });
         $request->session()->put('cart', $cart);
 
-        return view('frontend.partials.cart_summary');
+        return view('frontend.partials.cart_details');
     }
 }

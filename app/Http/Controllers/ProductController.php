@@ -220,7 +220,7 @@ class ProductController extends Controller
         $product->subsubcategory_id = $request->subsubcategory_id;
         $product->brand_id = $request->brand_id;
 
-        $photos = array();
+        $photos = $request->previous_photos;
 
         if($request->hasFile('photos')){
             foreach ($request->photos as $key => $photo) {
@@ -228,9 +228,10 @@ class ProductController extends Controller
                 array_push($photos, $path);
                 ImageOptimizer::optimize(base_path('public/').$path);
             }
-            $product->photos = json_encode($photos);
         }
+        $product->photos = json_encode($photos);
 
+        $product->thumbnail_img = $request->previous_thumnail_img;
         if($request->hasFile('thumbnail_img')){
             $product->thumbnail_img = $request->thumbnail_img->store('uploads/products/thumbnail');
             ImageOptimizer::optimize(base_path('public/').$product->thumbnail_img);

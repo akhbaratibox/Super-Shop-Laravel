@@ -113,12 +113,11 @@
 											<div class="col-md-4 col-sm-4 col-xs-6">
 												<div class="img-upload-preview">
 													<img src="{{ asset($photo) }}" alt="" class="img-responsive">
-													<input type="hidden" name="photos[]" value="{{ $photo }}">
+													<input type="hidden" name="previous_photos[]" value="{{ $photo }}">
 													<button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
 												</div>
 											</div>
 										@endforeach
-
 									</div>
 								</div>
 							</div>
@@ -126,7 +125,15 @@
 								<label class="col-lg-2 control-label">Thumbnail Image</label>
 								<div class="col-lg-7">
 									<div id="thumbnail_img">
-
+										@if ($product->thumbnail_img != null)
+											<div class="col-md-4 col-sm-4 col-xs-6">
+												<div class="img-upload-preview">
+													<img src="{{ asset($product->thumbnail_img) }}" alt="" class="img-responsive">
+													<input type="hidden" name="previous_thumnail_img" value="{{ $product->thumbnail_img }}">
+													<button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
+												</div>
+											</div>
+										@endif
 									</div>
 								</div>
 							</div>

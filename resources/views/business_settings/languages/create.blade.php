@@ -24,11 +24,10 @@
                         <label class="control-label">{{ __('code') }}</label>
                     </div>
                     <div class="col-lg-6">
-                        <!-- <input type="text" class="form-control" name="code" placeholder="{{ __('code') }}" required> -->
-                        <select class="country-flag-select" name="">
-                            <option value="" data-flag="{{ asset('frontend/images/icons/flags/en.png') }}"> EN</option>
-                            <option value="" data-flag="{{ asset('frontend/images/icons/flags/bn.png') }}"> BN</option>
-                            <option value="" data-flag="{{ asset('frontend/images/icons/flags/en.png') }}"> CN</option>
+                        <select class="country-flag-select" name="code">
+                            @foreach(\File::files(base_path('public/frontend/images/icons/flags')) as $path)
+                                <option value="{{ pathinfo($path)['filename'] }}" data-flag="{{ asset('frontend/images/icons/flags/'.pathinfo($path)['filename'].'.png') }}"> {{ strtoupper(pathinfo($path)['filename']) }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

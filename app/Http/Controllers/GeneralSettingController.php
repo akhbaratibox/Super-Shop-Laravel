@@ -89,6 +89,11 @@ class GeneralSettingController extends Controller
             ImageOptimizer::optimize(base_path('public/').$generalsetting->logo);
         }
 
+        if($request->hasFile('favicon')){
+            $generalsetting->favicon = $request->file('favicon')->store('uploads/favicon');
+            ImageOptimizer::optimize(base_path('public/').$generalsetting->favicon);
+        }
+
         if($generalsetting->save()){
             $businessSettingsController = new BusinessSettingsController;
             $businessSettingsController->overWriteEnvFile('APP_NAME',$request->name);

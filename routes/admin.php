@@ -64,6 +64,8 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 
 	Route::resource('/languages', 'LanguageController');
 	Route::get('/languages/destroy/{id}', 'LanguageController@destroy')->name('languages.destroy');
+	Route::get('/languages/{id}/edit', 'LanguageController@edit')->name('languages.edit');
+	Route::post('/languages/{id}/update', 'LanguageController@update')->name('languages.update');
 	Route::post('/languages/key_value_store', 'LanguageController@key_value_store')->name('languages.key_value_store');
 
 	Route::get('/frontend_settings/home', 'HomeController@home_settings')->name('home_settings.index');

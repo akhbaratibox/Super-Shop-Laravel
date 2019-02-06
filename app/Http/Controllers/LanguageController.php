@@ -48,11 +48,44 @@ class LanguageController extends Controller
         return view('business_settings.languages.language_view', compact('language'));
     }
 
+    public function edit($id)
+    {
+        $language = Language::findOrFail($id);
+        return view('business_settings.languages.edit', compact('language'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $language = Language::findOrFail($id);
+        $language->name = $request->name;
+        $language->code = $request->code;
+        if($language->save()){
+            flash(__('Language has been updated successfully'))->success();
+            return redirect()->route('languages.index');
+        }
+        else{
+            flash(__('Something went wrong'))->error();
+            return back();
+        }
+    }
+
     public function key_value_store(Request $request)
     {
         $language = Language::findOrFail($request->id);
         saveJSONFile($language->code, $request->key);
         flash(__('Key-Value updated  for ').$language->name)->success();
         return back();
+    }
+
+    public function destroy($id)
+    {
+        if(Language::destroy($id)){
+            flash(__('Language has been deleted successfully'))->success();
+            return redirect()->route('languages.index');
+        }
+        else{
+            flash(__('Something went wrong'))->error();
+            return back();
+        }
     }
 }

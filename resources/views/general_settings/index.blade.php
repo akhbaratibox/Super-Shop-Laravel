@@ -51,6 +51,12 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="col-sm-3 control-label" for="logo">{{__('Favicon')}}</label>
+                        <div class="col-sm-9">
+                            <input type="file" id="favicon" name="favicon" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-sm-3 control-label" for="facebook">{{__('Facebook')}}</label>
                         <div class="col-sm-9">
                             <input type="text" id="facebook" name="facebook" value="{{ $generalsetting->facebook }}" class="form-control">

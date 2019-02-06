@@ -2,20 +2,23 @@
 <html>
 <head>
 
+@php
+    $generalsetting = \App\GeneralSetting::first();
+@endphp
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <meta name="robots" content="index, follow">
-<meta name="description" content="Active Super Shop Multi vendor system is such a platform to build a border less marketplace both for physical and digital goods.">
+<meta name="description" content="{{ $generalsetting->description }}">
 <meta name="keywords" content="bootstrap, responsive, template, website, html, theme, ux, ui, web, design, developer, support, business, corporate, real estate, education, medical, school, education, demo, css, framework">
 <meta name="author" content="Webpixels">
 
 @yield('meta')
 
 <!-- Favicon -->
-<link href="{{ asset('frontend/images/favicon.png') }}" rel="icon" type="image/png">
+<link name="favicon" type="image/x-icon" href="{{ asset(\App\GeneralSetting::first()->favicon) }}" rel="shortcut icon" />
 
-<title>Active Shop</title>
+<title>{{ config('app.name', 'Laravel') }}</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">

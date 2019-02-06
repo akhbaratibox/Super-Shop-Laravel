@@ -17,6 +17,9 @@
 
     <!--Bootstrap Stylesheet [ REQUIRED ]-->
     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    
+    <!--Font Awesome [ OPTIONAL ]-->
+    <link href="{{ asset('plugins/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
 
     <!--Nifty Stylesheet [ REQUIRED ]-->
     <link href="{{ asset('css/nifty.min.css')}}" rel="stylesheet">
@@ -28,13 +31,25 @@
     <link href="{{ asset('css/demo/nifty-demo.min.css') }}" rel="stylesheet">
 
     <!--Theme [ DEMONSTRATION ]-->
-    <link href="{{ asset('css/themes/type-full/theme-light-full.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/themes/type-c/theme-navy.min.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
 </head>
 <body>
-    <div id="container" class="cls-container">
+    <div id="container" class="">
         <div class="cls-content">
-            @yield('content')
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="panel">
+                            <div class="panel-body">
+                                @yield('content')
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

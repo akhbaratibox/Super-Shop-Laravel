@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="col-lg-6">
+<div class="col-lg-6 col-lg-offset-3">
     <div class="panel">
         <div class="panel-heading">
             <h3 class="panel-title text-center">{{ __('language_info') }}</h3>
@@ -20,12 +20,16 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="hidden" name="types[]" value="GOOGLE_CLIENT_SECRET">
                     <div class="col-lg-3">
                         <label class="control-label">{{ __('code') }}</label>
                     </div>
                     <div class="col-lg-6">
-                        <input type="text" class="form-control" name="code" placeholder="{{ __('code') }}" required>
+                        <!-- <input type="text" class="form-control" name="code" placeholder="{{ __('code') }}" required> -->
+                        <select class="country-flag-select" name="">
+                            <option value="" data-flag="{{ asset('frontend/images/icons/flags/en.png') }}"> EN</option>
+                            <option value="" data-flag="{{ asset('frontend/images/icons/flags/bn.png') }}"> BN</option>
+                            <option value="" data-flag="{{ asset('frontend/images/icons/flags/en.png') }}"> CN</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">

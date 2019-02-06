@@ -111,12 +111,10 @@
 									<div id="photos">
 										@foreach (json_decode($product->photos) as $key => $photo)
 											<div class="col-md-4 col-sm-4 col-xs-6">
-												<div class="col-sm-6">
+												<div class="img-upload-preview">
 													<img src="{{ asset($photo) }}" alt="" class="img-responsive">
 													<input type="hidden" name="photos[]" value="{{ $photo }}">
-													<div class="">
-														<button type="button" class="btn btn-danger remove-files">Remove<i class="icon-x position-right"></i></button>
-													</div>
+													<button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
 												</div>
 											</div>
 										@endforeach
@@ -538,7 +536,7 @@
 		});
 
 		$('.remove-files').on('click', function(){
-            $(this).parents(".control-group").remove();
+            $(this).parents(".col-md-4").remove();
         });
 	});
 

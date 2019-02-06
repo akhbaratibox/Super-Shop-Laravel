@@ -1,9 +1,9 @@
 @extends('layouts.blank')
 @section('content')
-    <h4 class="header-title">Checking file permissions</h4>
-    <p class="text-muted font-13">
-        We ran diagnosis on your server. Review the items that have a red mark on it. If everything is green, you are good to go to the next step.
-    </p>
+    <div class="mar-ver pad-btm text-center">
+        <h1 class="h3">Checking file permissions</h1>
+        <p>We ran diagnosis on your server. Review the items that have a red mark on it. If everything is green, you are good to go to the next step.</p>
+    </div>
     <p class="text-muted">
         @php
             $phpVersion = number_format((float)phpversion(), 2, '.', '');

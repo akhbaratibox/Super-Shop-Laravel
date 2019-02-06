@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="col-sm-8">
+    <div class="col-lg-6 col-lg-offset-3">
         <div class="panel">
             <!--Horizontal Form-->
 

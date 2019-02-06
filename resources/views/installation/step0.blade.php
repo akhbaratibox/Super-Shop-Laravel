@@ -6,7 +6,7 @@
         proceeding.</p>
     </div>
     <ol class="list-group">
-        <li class="list-group-item text-semibold"><i class="fa fa-check icon-sm"></i> Codecanyon purchase code</li>
+        <li class="list-group-item text-semibold"><i class="fa fa-check"></i> Codecanyon purchase code</li>
         <li class="list-group-item text-semibold"><i class="fa fa-check"></i> Database Name</li>
         <li class="list-group-item text-semibold"><i class="fa fa-check"></i> Database Username</li>
         <li class="list-group-item text-semibold"><i class="fa fa-check"></i> Database Password</li>

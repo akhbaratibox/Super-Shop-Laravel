@@ -72,15 +72,21 @@
                                         <div class="border-right h-100 mx-auto" style="width:1px;"></div>
                                     </div>
                                     <div class="col-12 col-lg">
-                                        <a href="{{ route('social.login', ['provider' => 'google']) }}" class="btn btn-styled btn-block btn-google btn-icon--2 btn-icon-left px-4 my-4">
-                                            <i class="icon fa fa-google"></i> Login with Google
-                                        </a>
-                                        <a href="{{ route('social.login', ['provider' => 'facebook']) }}" class="btn btn-styled btn-block btn-facebook btn-icon--2 btn-icon-left px-4 my-4">
-                                            <i class="icon fa fa-facebook"></i> Login with Facebook
-                                        </a>
+                                        @if(\App\BusinessSetting::where('type', 'google_login')->first()->value == 1)
+                                            <a href="{{ route('social.login', ['provider' => 'google']) }}" class="btn btn-styled btn-block btn-google btn-icon--2 btn-icon-left px-4 my-4">
+                                                <i class="icon fa fa-google"></i> Login with Google
+                                            </a>
+                                        @endif
+                                        @if (\App\BusinessSetting::where('type', 'facebook_login')->first()->value == 1)
+                                            <a href="{{ route('social.login', ['provider' => 'facebook']) }}" class="btn btn-styled btn-block btn-facebook btn-icon--2 btn-icon-left px-4 my-4">
+                                                <i class="icon fa fa-facebook"></i> Login with Facebook
+                                            </a>
+                                        @endif
+                                        @if (\App\BusinessSetting::where('type', 'twitter_login')->first()->value == 1)
                                         <a href="{{ route('social.login', ['provider' => 'twitter']) }}" class="btn btn-styled btn-block btn-twitter btn-icon--2 btn-icon-left px-4 my-4">
                                             <i class="icon fa fa-twitter"></i> Login with Twitter
                                         </a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -91,8 +97,8 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="bg-white p-4 mx-auto mt-4"> 
+
+                    <div class="bg-white p-4 mx-auto mt-4">
                         <div class="">
                             <table class="table table-responsive table-bordered mb-0">
                                 <tbody>

@@ -222,6 +222,9 @@
                                 <li class="{{ areActiveRoutes(['smtp_settings.index'])}}">
                                     <a class="nav-link" href="{{ route('smtp_settings.index') }}">{{__('SMTP Settings')}}</a>
                                 </li>
+                                <li class="{{ areActiveRoutes(['google_analytics.index'])}}">
+                                    <a class="nav-link" href="{{ route('google_analytics.index') }}">{{__('Google Analytics')}}</a>
+                                </li>
                                 <li class="{{ areActiveRoutes(['social_login.index'])}}">
                                     <a class="nav-link" href="{{ route('social_login.index') }}">Social Media Login</a>
                                 </li>

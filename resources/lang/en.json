@@ -4,6 +4,12 @@
     "confirm_password" : "Confirm Password",
     "create_account" : "Create Account",
     "login" : "Login",
+    "social_media_login" : "Social Media Login",
+    "Facebook login" : "Facebook Login",
+    "Google login" : "Google Login",
+    "Twitter login" : "Twitter Login",
+    "Google Analytics" : "Google Analytics",
+    "Google Analytics Setting" : "Google Analytics Setting",
 
     "dashboard" : "Dashboard",
     "products" : "Products",

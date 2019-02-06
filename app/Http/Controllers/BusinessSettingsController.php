@@ -23,6 +23,11 @@ class BusinessSettingsController extends Controller
         return view('business_settings.smtp_settings');
     }
 
+    public function google_analytics(Request $request)
+    {
+        return view('business_settings.google_analytics');
+    }
+
     public function payment_method(Request $request)
     {
         return view('business_settings.payment_method');
@@ -36,6 +41,27 @@ class BusinessSettingsController extends Controller
 
         $business_settings = BusinessSetting::where('type', $request->payment_method.'_sandbox')->first();
         if ($request->has($request->payment_method.'_sandbox')) {
+            $business_settings->value = 1;
+            $business_settings->save();
+        }
+        else{
+            $business_settings->value = 0;
+            $business_settings->save();
+        }
+
+        flash("Settings updated successfully")->success();
+        return back();
+    }
+
+    public function google_analytics_update(Request $request)
+    {
+        foreach ($request->types as $key => $type) {
+                $this->overWriteEnvFile($type, $request[$type]);
+        }
+
+        $business_settings = BusinessSetting::where('type', 'google_analytics')->first();
+
+        if ($request->has('google_analytics')) {
             $business_settings->value = 1;
             $business_settings->save();
         }

@@ -75,6 +75,49 @@
     </div>
 </div>
 
+<div class="row">
+    <h3 class="text-center">{{__('social_media_login')}}</h3>
+    <div class="col-lg-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">{{__('Facebook login')}}</h3>
+            </div>
+            <div class="panel-body text-center">
+                <label class="switch">
+                    <input type="checkbox" onchange="updateSettings(this, 'facebook_login')" <?php if(\App\BusinessSetting::where('type', 'facebook_login')->first()->value == 1) echo "checked";?>>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">{{__('Google login')}}</h3>
+            </div>
+            <div class="panel-body text-center">
+                <label class="switch">
+                    <input type="checkbox" onchange="updateSettings(this, 'google_login')" <?php if(\App\BusinessSetting::where('type', 'google_login')->first()->value == 1) echo "checked";?>>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">{{__('Twitter login')}}</h3>
+            </div>
+            <div class="panel-body text-center">
+                <label class="switch">
+                    <input type="checkbox" onchange="updateSettings(this, 'twitter_login')" <?php if(\App\BusinessSetting::where('type', 'twitter_login')->first()->value == 1) echo "checked";?>>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @section('script')

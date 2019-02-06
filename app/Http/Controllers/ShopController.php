@@ -124,13 +124,17 @@ class ShopController extends Controller
         }
 
         if($request->hasFile('logo')){
-            $shop->logo = $request->logo->store('shop/logo');
+            $shop->logo = $request->logo->store('uploads/hop/logo');
+        }
+
+        if($request->hasFile('banner')){
+            $shop->banner = $request->banner->store('uploads/shop/banner');
         }
 
         $sliders = array();
         if($request->hasFile('sliders')){
             foreach ($request->sliders as $key => $slider) {
-                array_push($sliders, $slider->store('shop/sliders'));
+                array_push($sliders, $slider->store('uploads/shop/sliders'));
             }
             $shop->sliders = json_encode($sliders);
         }

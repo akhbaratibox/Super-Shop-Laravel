@@ -170,12 +170,13 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-body px-4">
-                                    <form class="form-default" role="form">
+                                    <form class="form-default" role="form" action="{{ route('cart.login.submit') }}" method="POST">
+                                        @csrf
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <div class="input-group input-group--style-1">
-                                                        <input type="email" class="form-control" placeholder="Email">
+                                                        <input type="email" name="email" class="form-control" placeholder="Email">
                                                         <span class="input-group-addon">
                                                             <i class="text-md ion-person"></i>
                                                         </span>
@@ -188,7 +189,7 @@
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <div class="input-group input-group--style-1">
-                                                        <input type="password" class="form-control" placeholder="Password">
+                                                        <input type="password" name="password" class="form-control" placeholder="Password">
                                                         <span class="input-group-addon">
                                                             <i class="text-md ion-locked"></i>
                                                         </span>
@@ -227,7 +228,7 @@
                                     <a href="{{ route('social.login', ['provider' => 'twitter']) }}" class="btn btn-styled btn-block btn-twitter btn-icon--2 btn-icon-left px-4 my-4">
                                         <i class="icon fa fa-twitter"></i> Login with Twitter
                                     </a>
-                                    @endif  
+                                    @endif
                                 </div>
                             </div>
                         </div>

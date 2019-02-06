@@ -64,6 +64,21 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
+                                            <label>{{__('banner')}}</label>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="file" name="banner" id="file-2" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
+                                            <label for="file-2" class="mw-100 mb-3">
+                                                <span></span>
+                                                <strong>
+                                                    <i class="fa fa-upload"></i>
+                                                    {{__('Choose image')}}
+                                                </strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
                                             <label>{{__('Address')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">

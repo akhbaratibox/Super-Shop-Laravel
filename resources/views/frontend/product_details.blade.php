@@ -71,7 +71,7 @@
                                 <div class="col-6">
                                     <div class="sold-by">
                                         <small class="mr-2">{{__('Sold by')}}: </small>
-                                        @if ($product->added_by == 'seller')
+                                        @if ($product->added_by == 'seller' && \App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)
                                             <a href="{{ route('shop.visit', $product->user->shop->slug) }}">{{ $product->user->name }}</a>
                                         @else
                                             <a class="#">{{ $product->user->name }}</a>
@@ -349,7 +349,7 @@
                 <div class="col-xl-3 d-none d-xl-block">
                     <div class="seller-info-box mb-3">
                         <div class="sold-by position-relative">
-                            @if ($product->added_by == 'seller' && $product->user->seller->verification_status == 1)
+                            @if ($product->added_by == 'seller' && \App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1 && $product->user->seller->verification_status == 1)
                                 <div class="position-absolute medal-badge">
                                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" viewBox="0 0 287.5 442.2">
                                         <polygon style="fill:#F8B517;" points="223.4,442.2 143.8,376.7 64.1,442.2 64.1,215.3 223.4,215.3 "/>
@@ -361,7 +361,7 @@
                                 </div>
                             @endif
                             <div class="title">Sold By</div>
-                            @if($product->added_by == 'seller')
+                            @if($product->added_by == 'seller' && \App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)
                                 <a href="{{ route('shop.visit', $product->user->shop->slug) }}" class="name d-block">{{ $product->user->shop->name }}</a>
                                 <div class="location">{{ $product->user->shop->address }}</div>
                             @else

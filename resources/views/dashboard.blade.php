@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
+
+@if(Auth::user()->user_type == 'admin' || in_array('1', json_decode(Auth::user()->staff->role->permissions)))
+    <div class="row">
     <div class="col-md-6">
         <div class="panel">
             <div class="panel-body text-center dash-widget dash-widget-left">
@@ -13,7 +15,9 @@
                 </div>
                 <br>
                 <p class="text-lg text-main">Total published products: <span class="text-bold">{{ \App\Product::where('published', 1)->get()->count() }}</span></p>
-                <p class="text-lg text-main">Total seller's products: <span class="text-bold">{{ \App\Product::where('published', 1)->where('added_by', 'seller')->get()->count() }}</span></p>
+                @if (\App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)
+                    <p class="text-lg text-main">Total seller's products: <span class="text-bold">{{ \App\Product::where('published', 1)->where('added_by', 'seller')->get()->count() }}</span></p>
+                @endif
                 <p class="text-lg text-main">Total admin's products: <span class="text-bold">{{ \App\Product::where('published', 1)->where('added_by', 'admin')->get()->count() }}</span></p>
                 <br>
                 <a href="{{ route('products.index') }}" class="btn btn-primary mar-top">Manage Products <i class="fa fa-long-arrow-right"></i></a>
@@ -57,8 +61,10 @@
         </div>
     </div>
 </div>
+@endif
 
-<div class="row">
+@if((Auth::user()->user_type == 'admin' || in_array('5', json_decode(Auth::user()->staff->role->permissions))) && \App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)
+    <div class="row">
     <div class="col-md-4">
         <div class="panel">
             <div class="panel-body text-center dash-widget dash-widget-left">
@@ -102,8 +108,10 @@
         </div>
     </div>
 </div>
+@endif
 
-<div class="row">
+@if(Auth::user()->user_type == 'admin' || in_array('1', json_decode(Auth::user()->staff->role->permissions)))
+    <div class="row">
     <div class="col-md-6">
         <div class="panel">
             <!--Panel heading-->
@@ -174,6 +182,7 @@
         </div>
     </div>
 </div>
+@endif
 
 @if(Auth::user()->user_type == 'admin' || in_array('9', json_decode(Auth::user()->staff->role->permissions)))
     <div class="row">

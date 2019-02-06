@@ -134,16 +134,18 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col text-center text-md-left">
-                        <div class="mt-4">
-                            <h4 class="heading heading-xs strong-600 text-uppercase mb-2">
-                                Be a Seller
-                            </h4>
-                            <a href="{{ route('shops.create') }}" class="btn btn-base-1 btn-icon-left">
-                                Apply Now
-                            </a>
+                    @if (\App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)
+                        <div class="col text-center text-md-left">
+                            <div class="mt-4">
+                                <h4 class="heading heading-xs strong-600 text-uppercase mb-2">
+                                    Be a Seller
+                                </h4>
+                                <a href="{{ route('shops.create') }}" class="btn btn-base-1 btn-icon-left">
+                                    Apply Now
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>

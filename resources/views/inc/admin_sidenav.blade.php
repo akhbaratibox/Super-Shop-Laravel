@@ -149,7 +149,7 @@
                         </li>
                         @endif
 
-                        @if(Auth::user()->user_type == 'admin' || in_array('5', json_decode(Auth::user()->staff->role->permissions)))
+                        @if((Auth::user()->user_type == 'admin' || in_array('5', json_decode(Auth::user()->staff->role->permissions))) && \App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)
                         <li>
                             <a href="#">
                                 <i class="fa fa-user-plus"></i>

@@ -18,9 +18,11 @@
             <li class="active">
                 <a data-toggle="tab" href="#demo-lft-tab-1" aria-expanded="true">{{__('admin_products')}} <span class="badge badge-info">{{count(\App\Product::where('added_by','admin')->get())}}</span></a>
             </li>
-            <li class="">
-                <a data-toggle="tab" href="#demo-lft-tab-2" aria-expanded="false">{{__('seller_products')}} <span class="badge badge-purple">{{count(\App\Product::where('added_by','seller')->get())}}</span></a>
-            </li>
+            @if(\App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)
+                <li class="">
+                    <a data-toggle="tab" href="#demo-lft-tab-2" aria-expanded="false">{{__('seller_products')}} <span class="badge badge-purple">{{count(\App\Product::where('added_by','seller')->get())}}</span></a>
+                </li>
+            @endif
         </ul>
 
         <!--Tabs Content-->
@@ -87,7 +89,9 @@
                     </div>
                 </div>
             </div>
-            <div id="demo-lft-tab-2" class="tab-pane fade">
+
+            @if(\App\BusinessSetting::where('type', 'vendor_system_activation', 1)->first()->value == 1)
+                <div id="demo-lft-tab-2" class="tab-pane fade">
                 <div class="panel">
                     <div class="panel-body">
                         <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
@@ -149,6 +153,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </div>

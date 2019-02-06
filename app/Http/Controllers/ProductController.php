@@ -89,6 +89,13 @@ class ProductController extends Controller
         $product->discount = $request->discount;
         $product->discount_type = $request->discount_type;
         $product->shipping_cost = $request->shipping_cost;
+        $product->meta_title = $request->meta_title;
+        $product->meta_description = $request->meta_description;
+
+        if($request->hasFile('meta_img')){
+            $product->meta_img = $request->meta_img->store('uploads/products/meta');
+            ImageOptimizer::optimize(base_path('public/').$product->meta_img);
+        }
 
         $product->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->name)).'-'.str_random(5);
 
@@ -261,6 +268,13 @@ class ProductController extends Controller
         $product->discount = $request->discount;
         $product->shipping_cost = $request->shipping_cost;
         $product->discount_type = $request->discount_type;
+        $product->meta_title = $request->meta_title;
+        $product->meta_description = $request->meta_description;
+
+        if($request->hasFile('meta_img')){
+            $product->meta_img = $request->meta_img->store('uploads/products/meta');
+            ImageOptimizer::optimize(base_path('public/').$product->meta_img);
+        }
 
         if($request->has('colors_active')){
             if($request->has('colors') && count($request->colors) > 0){

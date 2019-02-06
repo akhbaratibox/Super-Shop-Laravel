@@ -141,7 +141,15 @@
 								<label class="col-lg-2 control-label">Featured</label>
 								<div class="col-lg-7">
 									<div id="featured_img">
-
+										@if ($product->featured_img != null)
+											<div class="col-md-4 col-sm-4 col-xs-6">
+												<div class="img-upload-preview">
+													<img src="{{ asset($product->featured_img) }}" alt="" class="img-responsive">
+													<input type="hidden" name="previous_featured_img" value="{{ $product->featured_img }}">
+													<button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
+												</div>
+											</div>
+										@endif
 									</div>
 								</div>
 							</div>
@@ -149,7 +157,15 @@
 								<label class="col-lg-2 control-label">Flash Deal</label>
 								<div class="col-lg-7">
 									<div id="flash_deal_img">
-
+										@if ($product->flash_deal_img != null)
+											<div class="col-md-4 col-sm-4 col-xs-6">
+												<div class="img-upload-preview">
+													<img src="{{ asset($product->flash_deal_img) }}" alt="" class="img-responsive">
+													<input type="hidden" name="previous_flash_deal_img" value="{{ $product->flash_deal_img }}">
+													<button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
+												</div>
+											</div>
+										@endif
 									</div>
 								</div>
 							</div>

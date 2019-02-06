@@ -237,11 +237,13 @@ class ProductController extends Controller
             ImageOptimizer::optimize(base_path('public/').$product->thumbnail_img);
         }
 
+        $product->featured_img = $request->previous_featured_img;
         if($request->hasFile('featured_img')){
             $product->featured_img = $request->featured_img->store('uploads/products/featured');
             ImageOptimizer::optimize(base_path('public/').$product->featured_img);
         }
 
+        $product->flash_deal_img = $request->previous_flash_deal_img;
         if($request->hasFile('flash_deal_img')){
             $product->flash_deal_img = $request->flash_deal_img->store('uploads/products/flash_deal');
             ImageOptimizer::optimize(base_path('public/').$product->flash_deal_img);

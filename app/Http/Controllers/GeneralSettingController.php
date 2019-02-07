@@ -57,7 +57,7 @@ class GeneralSettingController extends Controller
 
         if($generalsetting->save()){
             flash('Logo settings has been updated successfully')->success();
-            return redirect()->route('generalsettings.index');
+            return redirect()->route('generalsettings.logo');
         }
         else{
             flash('Something went wrong')->error();

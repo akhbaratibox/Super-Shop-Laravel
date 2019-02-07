@@ -12,7 +12,6 @@
             <!--===================================================-->
             <form class="form-horizontal" action="{{ route('generalsettings.logo.store') }}" method="POST" enctype="multipart/form-data">
             	@csrf
-                <input type="hidden" name="_method" value="PATCH">
                 <div class="panel-body">
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="logo">{{__('Frontend logo')}}</label>

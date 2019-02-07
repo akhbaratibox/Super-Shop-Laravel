@@ -151,8 +151,6 @@ button.paction.add-wishlist:hover,
 button.paction.add-compare:hover,
 .home-slide .slick-dots li.slick-active button,
 .home-slide .slick-dots li button:hover,
-.seller-shop-menu li.active a,
-.seller-shop-menu li a:hover,
 .caorusel-box .slick-dots li.slick-active button,
 .caorusel-box .slick-dots li button:hover,
 .flash-deal-box .countdown .countdown-digit,
@@ -368,7 +366,9 @@ a > .feature--boxed-border:hover,
 .section-title-1 li a.active,
 .section-title-1 li a:hover,
 .bg-base-1 .btn-base-1,
-.product-box-2 .add-to-cart
+.product-box-2 .add-to-cart,
+.seller-shop-menu li.active a,
+.seller-shop-menu li a:hover
 
 {
     border-color: #e62e04;

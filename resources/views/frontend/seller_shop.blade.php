@@ -1,55 +1,50 @@
 @extends('frontend.layouts.app')
 
 @section('content')
+    <section>
+        <img src="https://via.placeholder.com/2000x300.jpg" alt="" class="img-fluid">
+    </section>
 
-<section class="gry-bg py-4">
+    <section class="gry-bg pt-4">
         <div class="container">
             <div class="row">
-                <div class="col-offset-2">
-                    <img height="100" src="{{ asset($shop->logo) }}" alt="Shop Logo">
-                </div>
-                <div class="col-4">
-                    <div class="seller-info-box mb-3">
-                        <div class="sold-by position-relative">
-                            <a href="" class="name d-block">{{ $shop->name }}</a>
-                            <div class="location">{{ $shop->address }}</div>
-                        </div>
-                        <div class="row no-gutters">
-                            <div class="col">
-                                <ul class="social-media social-media--style-1-v4 text-center">
-                                    <li>
-                                        <a href="{{ $shop->facebook }}" class="facebook" target="_blank" data-toggle="tooltip" data-original-title="Facebook">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ $shop->google }}" class="google" target="_blank" data-toggle="tooltip" data-original-title="Google">
-                                            <i class="fa fa-google"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ $shop->twitter }}" class="twitter" target="_blank" data-toggle="tooltip" data-original-title="Twitter">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ $shop->youtube }}" class="youtube" target="_blank" data-toggle="tooltip" data-original-title="Youtube">
-                                            <i class="fa fa-youtube"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                <div class="col-md-6">
+                    <div class="d-flex">
+                        <img height="60" src="{{ asset($shop->logo) }}" alt="Shop Logo">
+                        <div class="pl-4">
+                            <h3 class="strong-700 heading-4 mb-0 mt-2">{{ $shop->name }}</h3>
+                            <div class="location alpha-6">{{ $shop->address }}</div>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <ul class="social-media social-media--style-1-v4 text-md-right mt-4 mt-md-0">
+                        <li>
+                            <a href="{{ $shop->facebook }}" class="facebook" target="_blank" data-toggle="tooltip" data-original-title="Facebook">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ $shop->google }}" class="google" target="_blank" data-toggle="tooltip" data-original-title="Google">
+                                <i class="fa fa-google"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ $shop->twitter }}" class="twitter" target="_blank" data-toggle="tooltip" data-original-title="Twitter">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ $shop->youtube }}" class="youtube" target="_blank" data-toggle="tooltip" data-original-title="Youtube">
+                                <i class="fa fa-youtube"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </section>
-    <section class="seller-shop-menu-bar sticky-top">
-        <div class="container">
-            <div class="row">
+            <div class="row sticky-top mt-4">
                 <div class="col">
-                    <div class="seller-shop-menu text-center">
+                    <div class="seller-shop-menu">
                         <ul class="inline-links">
                             <li @if(!isset($type)) class="active" @endif><a href="{{ route('shop.visit', $shop->slug) }}">{{__('Store Home')}}</a></li>
                             <li @if(isset($type) && $type == 'top_selling') class="active" @endif><a href="{{ route('shop.visit.type', ['slug'=>$shop->slug, 'type'=>'top_selling']) }}">{{__('Top Selling')}}</a></li>
@@ -61,20 +56,24 @@
         </div>
     </section>
 
-    <section class="gry-bg">
-        <div class="home-slide">
-            <div class="slick-carousel" data-slick-arrows="true" data-slick-dots="true">
-                @if ($shop->sliders != null)
-                    @foreach (json_decode($shop->sliders) as $key => $slide)
-                        <div class="">
-                            <img class="d-block w-100" src="{{ asset($slide) }}" alt="{{ $key }} slide" style="max-height:300px;">
-                        </div>
-                    @endforeach
-                @endif
+    
+    <section class="py-5">
+        <div class="container">
+            <div class="home-slide">
+                <div class="slick-carousel" data-slick-arrows="true" data-slick-dots="true">
+                    @if ($shop->sliders != null)
+                        @foreach (json_decode($shop->sliders) as $key => $slide)
+                            <div class="">
+                                <img class="d-block w-100" src="{{ asset($slide) }}" alt="{{ $key }} slide" style="max-height:300px;">
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
             </div>
         </div>
     </section>
-    <section class="slice sct-color-1">
+    @if (!isset($type)){
+    <section class="slice sct-color-1 pt-2">
         <div class="container">
             <div class="section-title section-title--style-1 text-center mb-5">
                 <h3 class="section-title-inner heading-3 strong-600">
@@ -82,9 +81,9 @@
                 </h3>
             </div>
             <div class="row">
-                <div class="col-10 offset-1 col-lg-8 offset-lg-2">
+                <div class="col">
                     <div class="caorusel-box">
-                        <div class="slick-carousel center-mode" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="3" data-slick-sm-items="1" data-slick-xs-items="1" data-slick-center="true">
+                        <div class="slick-carousel center-mode" data-slick-items="5" data-slick-lg-items="3"  data-slick-md-items="3" data-slick-sm-items="1" data-slick-xs-items="1" data-slick-center="true">
                             @foreach ($shop->user->products->where('published', 1)->where('featured', 1) as $key => $product)
                                 <div class="">
                                     <div class="product-card-2 card card-product m-3 shop-cards shop-tech">
@@ -100,7 +99,7 @@
                                                     <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
                                                     <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
                                                 </div>
-                                                <h2 class="product-title p-0 mt-2">
+                                                <h2 class="product-title p-0 mt-2 text-truncate-2">
                                                     <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
                                                 </h2>
                                             </div>
@@ -116,6 +115,7 @@
 
         </div>
     </section>
+    @endif
 
 
     <section class="gry-bg pt-4">
@@ -276,7 +276,7 @@
                                         </a>
                                     </div>
                                     <div class="card-body p-0">
-                                        <div class="title p-3">
+                                        <div class="title p-3 text-truncate-2">
                                             <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
                                         </div>
                                         <div class="price-bar row no-gutters">

@@ -1,71 +1,92 @@
-@extends('layouts.blank')
+@extends('layouts.login')
 
 @section('content')
 
-<div class="cls-content-sm panel">
-    <div class="panel-body">
-        <div class="mar-ver pad-btm">
-            <h1 class="h3">Account Login</h1>
-            <p>Sign In to your account</p>
+<div class="flex-row">
+    <div class="flex-col-xl-6 blank-index d-flex align-items-center justify-content-center" style="background-image:url('{{ asset('img/bg-img/login-box.jpg') }}');">
+        @php
+            $generalsetting = \App\GeneralSetting::first();
+        @endphp
+        <div class="text-center">
+            <br>
+            <br>
+            <br>
+            @if($generalsetting->logo != null)
+                <img src="{{ asset($generalsetting->logo) }}" class="" height="44">
+            @else
+                <img src="{{ asset('frontend/images/logo/logo.png') }}" class="" height="44">
+            @endif
+            
+            <div class="cls-content-sm panel">
+                <div class="pad-all">
+                    <table class="table table-responsive table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>admin@example.com</td>
+                                <td>123456</td>
+                                <td><button class="btn btn-info btn-xs" onclick="autoFill()">copy</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+
         </div>
-        <form method="POST" role="form" action="{{ route('login') }}">
-            @csrf
-            <div class="form-group">
-                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus placeholder="Email">
-                @if ($errors->has('email'))
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span>
-                @endif
-            </div>
-            <div class="form-group">
-                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Password">
-                @if ($errors->has('password'))
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span>
-                @endif
-            </div>
-            <div class="checkbox pad-btm text-left">
-                <input id="demo-form-checkbox" class="magic-checkbox" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                <label for="demo-form-checkbox">
-                    {{ __('Remember Me') }}
-                </label>
-            </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block">
-                {{ __('Login') }}
-            </button>
-        </form>
     </div>
-
-    <div class="pad-all">
-        <table class="table table-responsive table-bordered">
-            <tbody>
-                <tr>
-                    <td>admin@example.com</td>
-                    <td>123456</td>
-                    <td><button class="btn btn-info btn-xs" onclick="autoFill()">copy</button></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="pad-all">
-        <a href="{{ route('password.request') }}" class="btn-link mar-rgt">Forgot password ?</a>
-        <!--<a href="{{ route('register') }}" class="btn-link mar-lft">Create a new account</a>-->
-
-        <!--<div class="media pad-top bord-top">
-            <div class="pull-right">
-                <a href="#" class="pad-rgt"><i class="demo-psi-facebook icon-lg text-primary"></i></a>
-                <a href="#" class="pad-rgt"><i class="demo-psi-twitter icon-lg text-info"></i></a>
-                <a href="#" class="pad-rgt"><i class="demo-psi-google-plus icon-lg text-danger"></i></a>
+    <div class="flex-col-xl-6">
+        <div class="pad-all">
+            <br>
+            <br>
+            <div class="mar-ver pad-btm pad-lft">
+                <h1 class="h3">Admin Login</h1>
             </div>
-            <div class="media-body text-left text-bold text-main">
-                Login with
-            </div>
-        </div>-->
+            <form class="pad-hor" method="POST" role="form" action="{{ route('login') }}">
+                @csrf
+                <div class="form-group">
+                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus placeholder="Email">
+                    @if ($errors->has('email'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-group">
+                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Password">
+                    @if ($errors->has('password'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="checkbox pad-btm text-left">
+                            <input id="demo-form-checkbox" class="magic-checkbox" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                            <label for="demo-form-checkbox">
+                                {{ __('Remember Me') }}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="checkbox pad-btm text-right">
+                            <a href="{{ route('password.request') }}" class="btn-link">Forgot password ?</a>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                    {{ __('Login') }}
+                </button>
+            </form>
+            <br>
+            <br>
+            <br>
+        </div>
     </div>
 </div>
+
 
 @endsection
 

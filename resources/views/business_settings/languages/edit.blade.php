@@ -26,7 +26,7 @@
                     <div class="col-lg-6">
                         <select class="country-flag-select" name="code">
                             @foreach(\File::files(base_path('public/frontend/images/icons/flags')) as $path)
-                                <option value="{{ pathinfo($path)['filename'] }}" data-flag="{{ asset('frontend/images/icons/flags/'.pathinfo($path)['filename'].'.png') }}" @if($language->code == pathinfo($path)['filename']) checked @endif> {{ strtoupper(pathinfo($path)['filename']) }}</option>
+                                <option value="{{ pathinfo($path)['filename'] }}" data-flag="{{ asset('frontend/images/icons/flags/'.pathinfo($path)['filename'].'.png') }}" @if($language->code == pathinfo($path)['filename']) selected @endif> {{ strtoupper(pathinfo($path)['filename']) }}</option>
                             @endforeach
                         </select>
                     </div>

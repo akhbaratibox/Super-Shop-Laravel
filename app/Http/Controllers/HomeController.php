@@ -10,6 +10,7 @@ use App\Category;
 use App\SubSubCategory;
 use App\Product;
 use App\User;
+use App\Seller;
 use App\Shop;
 use App\Color;
 use App\Http\Controllers\SearchController;
@@ -106,10 +107,15 @@ class HomeController extends Controller
 
     public function profile(Request $request)
     {
-        return view('frontend.profile');
+        if(Auth::user()->user_type == 'customer'){
+            return view('frontend.customer.profile');
+        }
+        elseif(Auth::user()->user_type == 'seller'){
+            return view('frontend.seller.profile');
+        }
     }
 
-    public function update_profile(Request $request)
+    public function customer_update_profile(Request $request)
     {
         $user = Auth::user();
         $user->name = $request->name;
@@ -128,6 +134,46 @@ class HomeController extends Controller
         }
 
         if($user->save()){
+            flash(__('Your Profile has been updated successfully!'))->success();
+            return back();
+        }
+
+        flash(__('Sorry! Something went wrong.'))->error();
+        return back();
+    }
+
+
+    public function seller_update_profile(Request $request)
+    {
+        $user = Auth::user();
+        $user->name = $request->name;
+        $user->address = $request->address;
+        $user->country = $request->country;
+        $user->city = $request->city;
+        $user->postal_code = $request->postal_code;
+        $user->phone = $request->phone;
+
+        if($request->new_password != null && ($request->new_password == $request->confirm_password)){
+            $user->password = Hash::make($request->new_password);
+        }
+
+        if($request->hasFile('photo')){
+            $user->avatar_original = $request->photo->store('uploads');
+        }
+
+        $seller = $user->seller;
+        $seller->cash_on_delivery_status = $request->cash_on_delivery_status;
+        $seller->sslcommerz_status = $request->sslcommerz_status;
+        $seller->ssl_store_id = $request->ssl_store_id;
+        $seller->ssl_password = $request->ssl_password;
+        $seller->paypal_status = $request->paypal_status;
+        $seller->paypal_client_id = $request->paypal_client_id;
+        $seller->paypal_client_secret = $request->paypal_client_secret;
+        $seller->stripe_status = $request->stripe_status;
+        $seller->stripe_key = $request->stripe_key;
+        $seller->stripe_secret = $request->stripe_secret;
+
+        if($user->save() && $seller->save()){
             flash(__('Your Profile has been updated successfully!'))->success();
             return back();
         }

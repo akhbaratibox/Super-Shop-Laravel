@@ -6,7 +6,7 @@
 <div class="col-lg-6 col-lg-offset-3">
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title text-center">{{ __('language_info') }}</h3>
+            <h3 class="panel-title text-center">{{ __('Language Info') }}</h3>
         </div>
         <div class="panel-body">
             <form class="form-horizontal" action="{{ route('languages.update', $language->id) }}" method="POST">

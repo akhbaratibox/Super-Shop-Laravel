@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                         </div>
-                        <form class="" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+                        <form class="" action="{{ route('customer.profile.update') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-box bg-white mt-4">
                                 <div class="form-box-title px-3 py-2">

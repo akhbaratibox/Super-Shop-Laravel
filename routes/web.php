@@ -96,7 +96,8 @@ Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.r
 Route::group(['middleware' => ['user', 'verified']], function(){
 	Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 	Route::get('/profile', 'HomeController@profile')->name('profile');
-	Route::post('/update-profile', 'HomeController@update_profile')->name('profile.update');
+	Route::post('/customer/update-profile', 'HomeController@customer_update_profile')->name('customer.profile.update');
+	Route::post('/seller/update-profile', 'HomeController@seller_update_profile')->name('seller.profile.update');
 
 	Route::resource('purchase_history','PurchaseHistoryController');
 	Route::post('/purchase_history/details', 'PurchaseHistoryController@purchase_history_details')->name('purchase_history.details');

@@ -52,12 +52,17 @@
 			</td>
 			<td>
 				<input type="number" name="price_{{ $str }}" value="@php
-                    if(isset(json_decode($product->variations)->$str->price)){
-                        echo json_decode($product->variations)->$str->price;
+                    if ($product->unit_price == $unit_price) {
+						if(isset(json_decode($product->variations)->$str->price)){
+	                        echo json_decode($product->variations)->$str->price;
+	                    }
+	                    else{
+	                        echo $unit_price;
+	                    }
                     }
-                    else{
-                        echo $unit_price;
-                    }
+					else{
+						echo $unit_price;
+					}
                 @endphp" min="0" step="0.01" class="form-control" required>
 			</td>
 			<td>

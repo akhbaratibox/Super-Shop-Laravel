@@ -401,6 +401,10 @@
 	    update_sku();
 	});
 
+	$('input[name="unit_price"]').on('keyup', function() {
+	    update_sku();
+	});
+
 	function delete_row(em){
 		$(em).closest('.form-group').remove();
 		update_sku();

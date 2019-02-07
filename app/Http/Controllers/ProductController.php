@@ -227,9 +227,14 @@ class ProductController extends Controller
         $product->subsubcategory_id = $request->subsubcategory_id;
         $product->brand_id = $request->brand_id;
 
-        $photos = $request->previous_photos;
+        if($request->has('previous_photos')){
+            $photos = $request->previous_photos;
+        }
+        else{
+            $photos = array();
+        }
 
-        if($request->hasFile('previous_photos')){
+        if($request->hasFile('photos')){
             foreach ($request->photos as $key => $photo) {
                 $path = $photo->store('uploads/products/photos');
                 array_push($photos, $path);

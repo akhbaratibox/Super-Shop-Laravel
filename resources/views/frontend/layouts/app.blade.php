@@ -60,7 +60,7 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', env('TRACKING_ID'));
+      gtag('config', @php env('TRACKING_ID') @endphp);
     </script>
 @endif
 

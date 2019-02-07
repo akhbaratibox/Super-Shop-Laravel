@@ -205,7 +205,15 @@
 								<label class="col-lg-2 control-label">{{ __('Meta Image') }}</label>
 								<div class="col-lg-7">
 									<div id="meta_photo">
-
+										@if ($product->meta_img != null)
+											<div class="col-md-4 col-sm-4 col-xs-6">
+												<div class="img-upload-preview">
+													<img src="{{ asset($product->meta_img) }}" alt="" class="img-responsive">
+													<input type="hidden" name="previous_meta_img" value="{{ $product->meta_img }}">
+													<button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
+												</div>
+											</div>
+										@endif
 									</div>
 								</div>
 							</div>

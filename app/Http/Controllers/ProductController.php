@@ -271,6 +271,7 @@ class ProductController extends Controller
         $product->meta_title = $request->meta_title;
         $product->meta_description = $request->meta_description;
 
+        $product->meta_img = $request->previous_meta_img;
         if($request->hasFile('meta_img')){
             $product->meta_img = $request->meta_img->store('uploads/products/meta');
             ImageOptimizer::optimize(base_path('public/').$product->meta_img);

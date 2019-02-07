@@ -17,7 +17,7 @@
 
     <!--Bootstrap Stylesheet [ REQUIRED ]-->
     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
-    
+
     <!--Font Awesome [ OPTIONAL ]-->
     <link href="{{ asset('plugins/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
 
@@ -37,7 +37,15 @@
 
 </head>
 <body>
-    <div id="container" class="blank-index" style="background-image:url('{{ asset('img/bg-img/login-bg.jpg') }}');">
+    @php
+        $generalsetting = \App\GeneralSetting::first();
+    @endphp
+    <div id="container" class="blank-index"
+        @if ($generalsetting->admin_login_background != null)
+            style="background-image:url('{{ asset($generalsetting->admin_login_background) }}');"
+        @else
+            style="background-image:url('{{ asset('img/bg-img/login-bg.jpg') }}');"
+        @endif>
         <div class="cls-content">
             <div class="container">
                 <div class="row">

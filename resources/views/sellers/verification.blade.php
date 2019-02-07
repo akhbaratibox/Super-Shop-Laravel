@@ -7,8 +7,8 @@
 <div class="panel">
     <div class="panel-heading">
         <div class="panel-control">
-            <a href="#" class="btn btn-default btn-rounded d-innline-block">Reject</a></li>
-            <a href="#" class="btn btn-primary btn-rounded d-innline-block">Accept</a>
+            <a href="{{ route('sellers.reject', $seller->id) }}" class="btn btn-default btn-rounded d-innline-block">Reject</a></li>
+            <a href="{{ route('sellers.approve', $seller->id) }}" class="btn btn-primary btn-rounded d-innline-block">Accept</a>
         </div>
         <h3 class="panel-title">{{__('Seller Verification')}}</h3>
     </div>

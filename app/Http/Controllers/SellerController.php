@@ -134,4 +134,29 @@ class SellerController extends Controller
         $seller = Seller::findOrFail($id);
         return view('sellers.verification', compact('seller'));
     }
+
+    public function approve_seller($id)
+    {
+        $seller = Seller::findOrFail($id);
+        $seller->verification_status = 1;
+        if($seller->save()){
+            flash(__('Seller has been approved successfully'))->success();
+            return redirect()->route('sellers.index');
+        }
+        flash(__('Something went wrong'))->error();
+        return back();
+    }
+
+    public function reject_seller($id)
+    {
+        $seller = Seller::findOrFail($id);
+        $seller->verification_status = 0;
+        $seller->verification_info = null;
+        if($seller->save()){
+            flash(__('Seller verification request has been rejected successfully'))->success();
+            return redirect()->route('sellers.index');
+        }
+        flash(__('Something went wrong'))->error();
+        return back();
+    }
 }

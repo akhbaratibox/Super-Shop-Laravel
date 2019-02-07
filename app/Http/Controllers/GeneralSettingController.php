@@ -20,6 +20,51 @@ class GeneralSettingController extends Controller
         return view("general_settings.index", compact("generalsetting"));
     }
 
+    public function logo()
+    {
+        $generalsetting = GeneralSetting::first();
+        return view("general_settings.logo", compact("generalsetting"));
+    }
+
+    public function storeLogo(Request $request)
+    {
+        $generalsetting = GeneralSetting::first();
+
+        if($request->hasFile('logo')){
+            $generalsetting->logo = $request->file('logo')->store('uploads/logo');
+            ImageOptimizer::optimize(base_path('public/').$generalsetting->logo);
+        }
+
+        if($request->hasFile('admin_logo')){
+            $generalsetting->admin_logo = $request->file('admin_logo')->store('uploads/admin_logo');
+            ImageOptimizer::optimize(base_path('public/').$generalsetting->admin_logo);
+        }
+
+        if($request->hasFile('favicon')){
+            $generalsetting->favicon = $request->file('favicon')->store('uploads/favicon');
+            ImageOptimizer::optimize(base_path('public/').$generalsetting->favicon);
+        }
+
+        if($request->hasFile('admin_login_background')){
+            $generalsetting->admin_login_background = $request->file('admin_login_background')->store('uploads/admin_login_background');
+            ImageOptimizer::optimize(base_path('public/').$generalsetting->admin_login_background);
+        }
+
+        if($request->hasFile('admin_login_sidebar')){
+            $generalsetting->admin_login_sidebar = $request->file('admin_login_sidebar')->store('uploads/admin_login_sidebar');
+            ImageOptimizer::optimize(base_path('public/').$generalsetting->admin_login_sidebar);
+        }
+
+        if($generalsetting->save()){
+            flash('Logo settings has been updated successfully')->success();
+            return redirect()->route('generalsettings.index');
+        }
+        else{
+            flash('Something went wrong')->error();
+            return back();
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -84,21 +129,11 @@ class GeneralSettingController extends Controller
         $generalsetting->youtube = $request->youtube;
         $generalsetting->google_plus = $request->google_plus;
 
-        if($request->hasFile('logo')){
-            $generalsetting->logo = $request->file('logo')->store('uploads/logo');
-            ImageOptimizer::optimize(base_path('public/').$generalsetting->logo);
-        }
-
-        if($request->hasFile('favicon')){
-            $generalsetting->favicon = $request->file('favicon')->store('uploads/favicon');
-            ImageOptimizer::optimize(base_path('public/').$generalsetting->favicon);
-        }
-
         if($generalsetting->save()){
             $businessSettingsController = new BusinessSettingsController;
             $businessSettingsController->overWriteEnvFile('APP_NAME',$request->name);
 
-            flash('GeneralSetting has been inserted successfully')->success();
+            flash('GeneralSetting has been updated successfully')->success();
             return redirect()->route('generalsettings.index');
         }
         else{

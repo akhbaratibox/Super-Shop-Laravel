@@ -7,6 +7,7 @@ use Session;
 use Illuminate\Routing\UrlGenerator;
 use App\Http\Controllers;
 use App\Order;
+use App\BusinessSetting;
 session_start();
 
 class PublicSslCommerzPaymentController extends Controller
@@ -81,6 +82,15 @@ class PublicSslCommerzPaymentController extends Controller
         $order->payment_status = 'paid';
         $order->payment_details = json_encode($request->all());
         $order->save();
+
+        $commission_percentage = BusinessSetting::where('type', 'vendor_commission')->first()->value;
+        foreach ($order->orderDetails as $key => $orderDetail) {
+            if($orderDetail->product->user->user_type == 'seller'){
+                $seller = $orderDetail->product->user->seller;
+                $seller->admin_to_pay = $seller->admin_to_pay + ($orderDetail->price*(100-$commission_percentage))/100;
+                $seller->save();
+            }
+        }
 
         Session::put('cart', collect([]));
         Session::forget('order_id');

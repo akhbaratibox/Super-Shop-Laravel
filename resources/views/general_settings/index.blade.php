@@ -21,19 +21,19 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label" for="address">{{__('address')}}</label>
+                        <label class="col-sm-3 control-label" for="address">{{__('Address')}}</label>
                         <div class="col-sm-9">
                             <input type="text" id="address" name="address" value="{{ $generalsetting->address }}" class="form-control" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label" for="name">{{__('description')}}</label>
+                        <label class="col-sm-3 control-label" for="name">{{__('Footer Text')}}</label>
                         <div class="col-sm-9">
                             <textarea class="form-control" rows="4" name="description" required>{{$generalsetting->description}}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label" for="phone">{{__('phone')}}</label>
+                        <label class="col-sm-3 control-label" for="phone">{{__('Phone')}}</label>
                         <div class="col-sm-9">
                             <input type="text" id="phone" name="phone" value="{{ $generalsetting->phone }}" class="form-control" required>
                         </div>
@@ -42,18 +42,6 @@
                         <label class="col-sm-3 control-label" for="email">{{__('email')}}</label>
                         <div class="col-sm-9">
                             <input type="text" id="email" name="email" value="{{ $generalsetting->email }}" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label" for="logo">{{__('logo')}}</label>
-                        <div class="col-sm-9">
-                            <input type="file" id="logo" name="logo" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label" for="logo">{{__('Favicon')}}</label>
-                        <div class="col-sm-9">
-                            <input type="file" id="favicon" name="favicon" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">

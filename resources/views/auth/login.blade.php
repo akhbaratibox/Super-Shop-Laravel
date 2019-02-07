@@ -2,11 +2,17 @@
 
 @section('content')
 
+@php
+    $generalsetting = \App\GeneralSetting::first();
+@endphp
+
 <div class="flex-row">
-    <div class="flex-col-xl-6 blank-index d-flex align-items-center justify-content-center" style="background-image:url('{{ asset('img/bg-img/login-box.jpg') }}');">
-        @php
-            $generalsetting = \App\GeneralSetting::first();
-        @endphp
+    <div class="flex-col-xl-6 blank-index d-flex align-items-center justify-content-center"
+    @if ($generalsetting->admin_login_sidebar != null)
+        style="background-image:url('{{ asset($generalsetting->admin_login_sidebar) }}');"
+    @else
+        style="background-image:url('{{ asset('img/bg-img/login-box.jpg') }}');"
+    @endif>
         <div class="text-center">
             <br>
             <br>
@@ -16,7 +22,7 @@
             @else
                 <img src="{{ asset('frontend/images/logo/logo.png') }}" class="" height="44">
             @endif
-            
+
             <div class="cls-content-sm panel">
                 <div class="pad-all">
                     <table class="table table-responsive table-bordered">

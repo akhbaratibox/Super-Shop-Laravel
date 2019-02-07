@@ -38,6 +38,16 @@ class CheckoutController extends Controller
                 return $sslcommerz->index($request);
             }
             elseif ($request->payment_option == 'cash_on_delivery') {
+                $order = Order::findOrFail($request->session()->get('order_id'));
+                $commission_percentage = BusinessSetting::where('type', 'vendor_commission')->first()->value;
+                foreach ($order->orderDetails as $key => $orderDetail) {
+                    if($orderDetail->product->user->user_type == 'seller'){
+                        $seller = $orderDetail->product->user->seller;
+                        $seller->pay_to_admin = $seller->pay_to_admin + ($orderDetail->price*$commission_percentage)/100;
+                        $seller->save();
+                    }
+                }
+
                 $request->session()->put('cart', collect([]));
                 $request->session()->forget('order_id');
 

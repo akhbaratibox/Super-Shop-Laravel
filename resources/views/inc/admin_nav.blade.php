@@ -12,7 +12,7 @@
         <div class="navbar-header">
             <a href="{{route('admin.dashboard')}}" class="navbar-brand">
                 @if($generalsetting->logo != null)
-                    <img src="{{ asset($generalsetting->logo) }}" class="brand-icon" alt="{{ $generalsetting->site_name }}">
+                    <img src="{{ asset($generalsetting->admin_logo) }}" class="brand-icon" alt="{{ $generalsetting->site_name }}">
                 @else
                     <img src="{{ asset('img/logo_shop.png') }}" class="brand-icon" alt="{{ $generalsetting->site_name }}">
                 @endif

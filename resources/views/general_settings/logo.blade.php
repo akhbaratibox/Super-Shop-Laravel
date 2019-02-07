@@ -1,0 +1,58 @@
+@extends('layouts.app')
+
+@section('content')
+
+    <div class="col-lg-6 col-lg-offset-3">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{__('Logo Settings')}}</h3>
+            </div>
+
+            <!--Horizontal Form-->
+            <!--===================================================-->
+            <form class="form-horizontal" action="{{ route('generalsettings.logo.store') }}" method="POST" enctype="multipart/form-data">
+            	@csrf
+                <input type="hidden" name="_method" value="PATCH">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="logo">{{__('Frontend logo')}}</label>
+                        <div class="col-sm-9">
+                            <input type="file" id="logo" name="logo" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="admin_logo">{{__('Admin logo')}}</label>
+                        <div class="col-sm-9">
+                            <input type="file" id="admin_logo" name="admin_logo" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="favicon">{{__('Favicon')}}</label>
+                        <div class="col-sm-9">
+                            <input type="file" id="favicon" name="favicon" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="admin_login_background">{{__('Admin login background image')}}</label>
+                        <div class="col-sm-9">
+                            <input type="file" id="admin_login_background" name="admin_login_background" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="admin_login_sidebar">{{__('Admin login sidebar image')}}</label>
+                        <div class="col-sm-9">
+                            <input type="file" id="admin_login_sidebar" name="admin_login_sidebar" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer text-right">
+                    <button class="btn btn-purple" type="submit">{{__('save')}}</button>
+                </div>
+            </form>
+            <!--===================================================-->
+            <!--End Horizontal Form-->
+
+        </div>
+    </div>
+
+@endsection

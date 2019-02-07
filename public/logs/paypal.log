@@ -124,3 +124,21 @@
 [29-01-2019 12:32:50] PayPal\Core\PayPalHttpConnection: INFO	: Response Status 	: 200
 [29-01-2019 12:32:50] PayPal\Core\PayPalHttpConnection: INFO	: POST https://api.sandbox.paypal.com/v1/payments/payment
 [29-01-2019 12:32:52] PayPal\Core\PayPalHttpConnection: INFO	: Response Status 	: 201
+[07-02-2019 11:56:35] PayPal\Core\PayPalHttpConnection: INFO	: POST https://api.sandbox.paypal.com/v1/oauth2/token
+[07-02-2019 11:56:37] PayPal\Core\PayPalHttpConnection: INFO	: Response Status 	: 200
+[07-02-2019 11:56:37] PayPal\Core\PayPalHttpConnection: INFO	: POST https://api.sandbox.paypal.com/v1/payments/payment
+[07-02-2019 11:56:39] PayPal\Core\PayPalHttpConnection: INFO	: Response Status 	: 201
+[07-02-2019 11:57:15] PayPal\Core\PayPalHttpConnection: INFO	: POST https://api.sandbox.paypal.com/v1/oauth2/token
+[07-02-2019 11:57:16] PayPal\Core\PayPalHttpConnection: INFO	: Response Status 	: 200
+[07-02-2019 11:57:16] PayPal\Core\PayPalHttpConnection: INFO	: GET https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LROBZ6Y63C066695N365334H
+[07-02-2019 11:57:18] PayPal\Core\PayPalHttpConnection: INFO	: Response Status 	: 400
+[07-02-2019 11:57:18] PayPal\Core\PayPalHttpConnection: ERROR	: Got Http response code 400 when accessing https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LROBZ6Y63C066695N365334H. {"name":"UNAUTHORIZED_PAYMENT","message":"Unauthorized payment","information_link":"https://developer.paypal.com/docs/api/payments/#errors","debug_id":"5809ca1dd6d09"}
+[07-02-2019 11:57:51] PayPal\Core\PayPalHttpConnection: INFO	: POST https://api.sandbox.paypal.com/v1/oauth2/token
+[07-02-2019 11:57:52] PayPal\Core\PayPalHttpConnection: INFO	: Response Status 	: 200
+[07-02-2019 11:57:52] PayPal\Core\PayPalHttpConnection: INFO	: GET https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LROBZ6Y63C066695N365334H
+[07-02-2019 11:57:55] PayPal\Core\PayPalHttpConnection: INFO	: Response Status 	: 400
+[07-02-2019 11:57:55] PayPal\Core\PayPalHttpConnection: ERROR	: Got Http response code 400 when accessing https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LROBZ6Y63C066695N365334H. {"name":"UNAUTHORIZED_PAYMENT","message":"Unauthorized payment","information_link":"https://developer.paypal.com/docs/api/payments/#errors","debug_id":"b1a1a91b6fab9"}
+[07-02-2019 12:07:55] PayPal\Core\PayPalHttpConnection: INFO	: POST https://api.sandbox.paypal.com/v1/oauth2/token
+[07-02-2019 12:07:57] PayPal\Core\PayPalHttpConnection: INFO	: Response Status 	: 200
+[07-02-2019 12:07:57] PayPal\Core\PayPalHttpConnection: INFO	: POST https://api.sandbox.paypal.com/v1/payments/payment
+[07-02-2019 12:07:59] PayPal\Core\PayPalHttpConnection: INFO	: Response Status 	: 201

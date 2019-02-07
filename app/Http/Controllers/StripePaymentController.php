@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Stripe;
 use App\Order;
+use App\BusinessSetting;
 
 class StripePaymentController extends Controller
 {
@@ -36,6 +37,15 @@ class StripePaymentController extends Controller
         $order->payment_status = 'paid';
         $order->payment_details = $payment;
         $order->save();
+
+        $commission_percentage = BusinessSetting::where('type', 'vendor_commission')->first()->value;
+        foreach ($order->orderDetails as $key => $orderDetail) {
+            if($orderDetail->product->user->user_type == 'seller'){
+                $seller = $orderDetail->product->user->seller;
+                $seller->admin_to_pay = $seller->admin_to_pay + ($orderDetail->price*(100-$commission_percentage))/100;
+                $seller->save();
+            }
+        }
 
         $request->session()->put('cart', collect([]));
         $request->session()->forget('order_id');

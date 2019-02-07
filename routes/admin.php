@@ -35,6 +35,8 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::resource('sellers','SellerController');
 	Route::get('/sellers/destroy/{id}', 'SellerController@destroy')->name('sellers.destroy');
 	Route::get('/sellers/view/{id}/verification', 'SellerController@show_verification_request')->name('sellers.show_verification_request');
+	Route::get('/sellers/approve/{id}', 'SellerController@approve_seller')->name('sellers.approve');
+	Route::get('/sellers/reject/{id}', 'SellerController@reject_seller')->name('sellers.reject');
 
 	Route::resource('customers','CustomerController');
 	Route::get('/customers/destroy/{id}', 'CustomerController@destroy')->name('customers.destroy');
@@ -113,4 +115,6 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('/links/destroy/{id}', 'LinkController@destroy')->name('links.destroy');
 
 	Route::resource('generalsettings','GeneralSettingController');
+	Route::get('/logo','GeneralSettingController@logo')->name('generalsettings.logo');
+	Route::post('/logo','GeneralSettingController@storeLogo')->name('generalsettings.logo.store');
 });

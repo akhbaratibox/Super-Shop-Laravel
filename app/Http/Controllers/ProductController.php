@@ -229,7 +229,7 @@ class ProductController extends Controller
 
         $photos = $request->previous_photos;
 
-        if($request->hasFile('photos')){
+        if($request->hasFile('previous_photos')){
             foreach ($request->photos as $key => $photo) {
                 $path = $photo->store('uploads/products/photos');
                 array_push($photos, $path);

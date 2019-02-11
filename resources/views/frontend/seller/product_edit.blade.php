@@ -104,6 +104,17 @@
                                                 <label>{{__('Main Images')}} <span class="required-star">*</span></label>
                                             </div>
                                             <div class="col-md-10">
+                                                <div class="row">
+                                                    @foreach (json_decode($product->photos) as $key => $photo)
+                                                        <div class="col-md-3">
+                                                            <div class="img-upload-preview">
+                                                                <img src="{{ asset($photo) }}" alt="" class="img-responsive">
+                                                                <input type="hidden" name="previous_photos[]" value="{{ $photo }}">
+                                                                <button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
                                                 <input type="file" name="photos[]" id="photos-1" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
                                                 <label for="photos-1" class="mw-100 mb-3">
                                                     <span></span>
@@ -123,6 +134,17 @@
                                             <label>{{__('Thumbnail Image')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
+                                            <div class="row">
+                                                @if ($product->thumbnail_img != null)
+                                                    <div class="col-md-3">
+                                                        <div class="img-upload-preview">
+                                                            <img src="{{ asset($product->thumbnail_img) }}" alt="" class="img-responsive">
+                                                            <input type="hidden" name="previous_photos[]" value="{{ $product->thumbnail_img }}">
+                                                            <button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </div>
                                             <input type="file" name="thumbnail_img" id="file-2" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
                                             <label for="file-2" class="mw-100 mb-3">
                                                 <span></span>
@@ -138,6 +160,17 @@
                                             <label>{{__('featured')}}</label>
                                         </div>
                                         <div class="col-md-10">
+                                            <div class="row">
+                                                @if ($product->featured_img != null)
+                                                    <div class="col-md-3">
+                                                        <div class="img-upload-preview">
+                                                            <img src="{{ asset($product->featured_img) }}" alt="" class="img-responsive">
+                                                            <input type="hidden" name="previous_featured_img" value="{{ $product->featured_img }}">
+                                                            <button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </div>
                                             <input type="file" name="featured_img" id="file-3" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
                                             <label for="file-3" class="mw-100 mb-3">
                                                 <span></span>
@@ -153,6 +186,17 @@
                                             <label>{{__('flash_deal')}}</label>
                                         </div>
                                         <div class="col-md-10">
+                                            <div class="row">
+                                                @if ($product->flash_deal_img != null)
+                                                    <div class="col-md-3">
+                                                        <div class="img-upload-preview">
+                                                            <img src="{{ asset($product->flash_deal_img) }}" alt="" class="img-responsive">
+                                                            <input type="hidden" name="previous_flash_deal_img" value="{{ $product->flash_deal_img }}">
+                                                            <button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </div>
                                             <input type="file" name="flash_deal_img" id="file-4" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
                                             <label for="file-4" class="mw-100 mb-3">
                                                 <span></span>
@@ -483,6 +527,10 @@
             $('#subcategory_list').hide();
             $('#subsubcategory_list').hide();
             update_sku();
+
+            $('.remove-files').on('click', function(){
+                $(this).parents(".col-md-3").remove();
+            });
         });
 
         function list_item_highlight(el){
@@ -641,6 +689,7 @@
         function delete_this_row(em){
             $(em).closest('.row').remove();
         }
+
 
     </script>
 @endsection

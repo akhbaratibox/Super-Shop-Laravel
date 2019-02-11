@@ -1,9 +1,9 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    <section>
+    <!-- <section>
         <img src="https://via.placeholder.com/2000x300.jpg" alt="" class="img-fluid">
-    </section>
+    </section> -->
 
     <section class="gry-bg pt-4">
         <div class="container">
@@ -81,9 +81,9 @@
                 </h3>
             </div>
             <div class="row">
-                <div class="col">
+                <div class="col-lg-8 offset-lg-2">
                     <div class="caorusel-box">
-                        <div class="slick-carousel center-mode" data-slick-items="5" data-slick-lg-items="3"  data-slick-md-items="3" data-slick-sm-items="1" data-slick-xs-items="1" data-slick-center="true">
+                        <div class="slick-carousel center-mode" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="3" data-slick-sm-items="1" data-slick-xs-items="1" data-slick-center="true">
                             @foreach ($shop->user->products->where('published', 1)->where('featured', 1) as $key => $product)
                                 <div class="">
                                     <div class="product-card-2 card card-product m-3 shop-cards shop-tech">

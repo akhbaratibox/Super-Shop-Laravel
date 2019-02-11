@@ -45,7 +45,7 @@
                                             <label>{{__('product_name')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control mb-3" name="name" placeholder="{{__('product_name')}}">
+                                            <input type="text" class="form-control mb-3" name="name" placeholder="{{__('product_name')}}" required>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -65,7 +65,7 @@
                                         </div>
                                         <div class="col-md-10">
                                             <div class="mb-3">
-                                                <select class="form-control mb-3 selectpicker" data-placeholder="Select a brand" id="brands" name="brand_id">
+                                                <select class="form-control mb-3 selectpicker" data-placeholder="Select a brand" id="brands" name="brand_id" required>
 
                                                 </select>
                                             </div>
@@ -76,7 +76,7 @@
                                             <label>{{__('Product Unit')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control mb-3" name="unit" placeholder="Product unit">
+                                            <input type="text" class="form-control mb-3" name="unit" placeholder="Product unit" required>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -84,7 +84,7 @@
                                             <label>{{__('Product Tag')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control mb-3 tagsInput" name="tags[]" placeholder="Type & hit enter" data-role="tagsinput">
+                                            <input type="text" class="form-control mb-3 tagsInput" name="tags[]" placeholder="Type & hit enter" data-role="tagsinput" required>
                                         </div>
                                     </div>
                                 </div>
@@ -101,7 +101,7 @@
                                             </div>
                                             <div class="col-md-10">
                                                 <input type="file" name="photos[]" id="photos-1" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
-                                                <label for="file-1" class="mw-100 mb-3">
+                                                <label for="photos-1" class="mw-100 mb-3">
                                                     <span></span>
                                                     <strong>
                                                         <i class="fa fa-upload"></i>
@@ -216,8 +216,8 @@
                                             <label>{{__('Meta Image')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="file" name="meta_img" id="file-2" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
-                                            <label for="file-2" class="mw-100 mb-3">
+                                            <input type="file" name="meta_img" id="file-5" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
+                                            <label for="file-5" class="mw-100 mb-3">
                                                 <span></span>
                                                 <strong>
                                                     <i class="fa fa-upload"></i>
@@ -334,6 +334,28 @@
                                             <div class="mb-3">
                                                 <textarea class="editor" name="description"></textarea>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-box bg-white mt-4">
+                                <div class="form-box-title px-3 py-2">
+                                    {{__('PDF Specification')}}
+                                </div>
+                                <div class="form-box-content p-3">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>{{__('PDF')}}</label>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="file" name="pdf" id="file-6" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="pdf/*" />
+                                            <label for="file-6" class="mw-100 mb-3">
+                                                <span></span>
+                                                <strong>
+                                                    <i class="fa fa-upload"></i>
+                                                    {{__('Choose PDF')}}
+                                                </strong>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -575,7 +597,7 @@
     	   });
     	}
 
-        var photo_id = 1;
+        var photo_id = 2;
         function add_more_slider_image(){
             var photoAdd =  '<div class="row">';
             photoAdd +=  '<div class="col-2">';

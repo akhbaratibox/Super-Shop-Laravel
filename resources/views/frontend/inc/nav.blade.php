@@ -64,7 +64,7 @@
                             <a href="{{ route('user.login') }}" class="top-bar-item">{{__('login')}}</a>
                         </li>
                         <li>
-                            <a href="{{ route('user.login') }}" class="top-bar-item">{{__('Registration')}}</a>
+                            <a href="{{ route('user.registration') }}" class="top-bar-item">{{__('Registration')}}</a>
                         </li>
                         @endauth
                     </ul>

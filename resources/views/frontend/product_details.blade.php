@@ -492,8 +492,13 @@
                                         <a href="#tab_default_2" data-toggle="tab" class="nav-link text-uppercase strong-600">{{__('Video')}}</a>
                                     </li>
                                 @endif
+                                @if($product->pdf != null)
+                                    <li class="nav-item">
+                                        <a href="#tab_default_3" data-toggle="tab" class="nav-link text-uppercase strong-600">{{__('Downloads')}}</a>
+                                    </li>
+                                @endif
                                 <li class="nav-item">
-                                    <a href="#tab_default_3" data-toggle="tab" class="nav-link text-uppercase strong-600">{{__('Reviews')}}</a>
+                                    <a href="#tab_default_4" data-toggle="tab" class="nav-link text-uppercase strong-600">{{__('Reviews')}}</a>
                                 </li>
                             </ul>
 
@@ -523,8 +528,17 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="tab-pane" id="tab_default_3">
+                                    <div class="py-2 px-4">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <a href="{{ asset($product->pdf) }}">{{ __('Download') }}</a>
+                                            </div>
+                                        </div>
+                                        <span class="space-md-md"></span>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab_default_4">
                                     <div class="fluid-paragraph py-4">
                                         @foreach ($product->reviews as $key => $review)
                                             <div class="block block-comment">

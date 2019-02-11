@@ -139,7 +139,7 @@
                                                     <div class="col-md-3">
                                                         <div class="img-upload-preview">
                                                             <img src="{{ asset($product->thumbnail_img) }}" alt="" class="img-responsive">
-                                                            <input type="hidden" name="previous_photos[]" value="{{ $product->thumbnail_img }}">
+                                                            <input type="hidden" name="previous_thumbnail_img" value="{{ $product->thumbnail_img }}">
                                                             <button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
                                                         </div>
                                                     </div>

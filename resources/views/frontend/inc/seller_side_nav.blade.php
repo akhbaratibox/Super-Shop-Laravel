@@ -1,7 +1,7 @@
 <div class="sidebar sidebar--style-3 no-border stickyfill p-0">
     <div class="widget mb-0">
         <div class="widget-profile-box text-center p-3">
-            <div class="image" style="background-image:url('{{ Auth::user()->avatar_original }}')"></div>
+            <div class="image" style="background-image:url('{{ asset(Auth::user()->avatar_original) }}')"></div>
             <div class="name mb-0">{{ Auth::user()->name }}</div>
         </div>
         <div class="sidebar-widget-title py-3">

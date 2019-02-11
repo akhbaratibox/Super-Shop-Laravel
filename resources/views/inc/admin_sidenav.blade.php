@@ -240,6 +240,9 @@
                                 <li class="{{ areActiveRoutes(['business_settings.vendor'])}}">
                                     <a class="nav-link" href="{{ route('business_settings.vendor', 'vendor_commission') }}">{{__('Seller Commission')}}</a>
                                 </li>
+                                <li class="{{ areActiveRoutes(['seosetting.index'])}}">
+                                    <a class="nav-link" href="{{ route('seosetting.index') }}">{{__('SEO Setting')}}</a>
+                                </li>
                             </ul>
                         </li>
                         @endif

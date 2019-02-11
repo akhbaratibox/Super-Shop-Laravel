@@ -9,6 +9,12 @@
         @csrf
         <div class="panel-body">
             <div class="form-group">
+                <label class="col-sm-3" for="url">{{__('URL')}}</label>
+                <div class="col-sm-9">
+                    <input type="text" placeholder="{{__('URL')}}" id="url" name="url" class="form-control" required>
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-sm-3">
                     <label class="control-label">Banner Images</label>
                     <strong>(850px*420px)</strong>

@@ -40,6 +40,7 @@ class BannerController extends Controller
             foreach ($request->photos as $key => $photo) {
                 $banner = new Banner;
                 $banner->photo = $photo->store('uploads/banners');
+                $banner->url = $request->url;
                 $banner->save();
             }
             flash(__('Banner has been inserted successfully'))->success();

@@ -127,10 +127,6 @@ class ShopController extends Controller
             $shop->logo = $request->logo->store('uploads/hop/logo');
         }
 
-        if($request->hasFile('banner')){
-            $shop->banner = $request->banner->store('uploads/shop/banner');
-        }
-
         if($request->has('previous_sliders')){
             $sliders = $request->previous_sliders;
         }

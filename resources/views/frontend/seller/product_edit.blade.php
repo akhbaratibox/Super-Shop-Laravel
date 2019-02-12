@@ -630,6 +630,9 @@
         }
 
         var i = $('input[name="choice_no[]"').last().val();
+        if(isNaN(i)){
+    		i =0;
+    	}
 
     	function add_more_customer_choice_option(){
             i++;

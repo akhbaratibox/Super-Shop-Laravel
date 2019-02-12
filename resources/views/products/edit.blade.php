@@ -129,7 +129,7 @@
 											<div class="col-md-4 col-sm-4 col-xs-6">
 												<div class="img-upload-preview">
 													<img src="{{ asset($product->thumbnail_img) }}" alt="" class="img-responsive">
-													<input type="hidden" name="previous_thumnail_img" value="{{ $product->thumbnail_img }}">
+													<input type="hidden" name="previous_thumbnail_img" value="{{ $product->thumbnail_img }}">
 													<button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
 												</div>
 											</div>
@@ -380,6 +380,9 @@
 <script type="text/javascript">
 
 	var i = $('input[name="choice_no[]"').last().val();
+	if(isNaN(i)){
+		i =0;
+	}
 
 	function add_more_customer_choice_option(){
 		i++;

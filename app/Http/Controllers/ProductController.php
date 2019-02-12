@@ -99,11 +99,8 @@ class ProductController extends Controller
 
         $product->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->name)).'-'.str_random(5);
 
-        if($request->has('colors_active')){
-            if($request->has('colors') && count($request->colors) > 0){
-                $product->colors = json_encode($request->colors);
-            }
-
+        if($request->has('colors_active') && $request->has('colors') && count($request->colors) > 0){
+            $product->colors = json_encode($request->colors);
         }
         else {
             $colors = array();
@@ -243,7 +240,7 @@ class ProductController extends Controller
         }
         $product->photos = json_encode($photos);
 
-        $product->thumbnail_img = $request->previous_thumnail_img;
+        $product->thumbnail_img = $request->previous_thumbnail_img;
         if($request->hasFile('thumbnail_img')){
             $product->thumbnail_img = $request->thumbnail_img->store('uploads/products/thumbnail');
             ImageOptimizer::optimize(base_path('public/').$product->thumbnail_img);
@@ -282,10 +279,8 @@ class ProductController extends Controller
             ImageOptimizer::optimize(base_path('public/').$product->meta_img);
         }
 
-        if($request->has('colors_active')){
-            if($request->has('colors') && count($request->colors) > 0){
-                $product->colors = json_encode($request->colors);
-            }
+        if($request->has('colors_active') && $request->has('colors') && count($request->colors) > 0){
+            $product->colors = json_encode($request->colors);
         }
         else {
             $colors = array();

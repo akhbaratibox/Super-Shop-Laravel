@@ -74,29 +74,29 @@
                                         @if ($product->added_by == 'seller' && \App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)
                                             <a href="{{ route('shop.visit', $product->user->shop->slug) }}">{{ $product->user->name }}</a>
                                         @else
-                                            <a class="#">{{ $product->user->name }}</a>
+                                            {{ __('Inhouse product') }}
                                         @endif
                                     </div>
                                     <!-- Rating stars -->
                                     <div class="rating">
-                                        <span class="star-rating star-rating-sm">
-                                            @php
-                                                $rating = 0; $total = 0;
-                                                foreach ($product->user->products as $key => $seller_product) {
-                                                    $rating += $seller_product->reviews->sum('rating');
-                                                    $total += $seller_product->reviews->count();
-                                                }
-                                            @endphp
-                                            @if ($total > 0)
+                                        @php
+                                            $rating = 0; $total = 0;
+                                            foreach ($product->user->products as $key => $seller_product) {
+                                                $rating += $seller_product->reviews->sum('rating');
+                                                $total += $seller_product->reviews->count();
+                                            }
+                                        @endphp
+                                        @if ($total > 0)
+                                            <span class="star-rating star-rating-sm">
                                                 @for ($i=0; $i < floor($rating/$total); $i++)
                                                     <i class="fa fa-star"></i>
                                                 @endfor
                                                 @for ($i=0; $i < ceil(5-$rating/$total); $i++)
                                                     <i class="fa fa-star-o"></i>
                                                 @endfor
-                                            @endif
-                                        </span>
-                                        <span class="rating-count">({{ $total }} customer reviews)</span>
+                                            </span>
+                                            <span class="rating-count">({{ $total }} customer reviews)</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-6 text-right">
@@ -365,28 +365,28 @@
                                 <a href="{{ route('shop.visit', $product->user->shop->slug) }}" class="name d-block">{{ $product->user->shop->name }}</a>
                                 <div class="location">{{ $product->user->shop->address }}</div>
                             @else
-                                <a class="name d-block">{{ $product->user->name }}</a>
+                                {{ __('Inhouse product') }}
                             @endif
-                            <div class="rating text-center d-block">
-                                <span class="star-rating star-rating-sm d-block">
-                                    @php
-                                        $rating = 0; $total = 0;
-                                        foreach ($product->user->products as $key => $seller_product) {
-                                            $rating += $seller_product->reviews->sum('rating');
-                                            $total += $seller_product->reviews->count();
-                                        }
-                                    @endphp
-                                    @if ($total > 0)
+                            @php
+                                $rating = 0; $total = 0;
+                                foreach ($product->user->products as $key => $seller_product) {
+                                    $rating += $seller_product->reviews->sum('rating');
+                                    $total += $seller_product->reviews->count();
+                                }
+                            @endphp
+                            @if ($total > 0)
+                                <div class="rating text-center d-block">
+                                    <span class="star-rating star-rating-sm d-block">
                                         @for ($i=0; $i < floor($rating/$total); $i++)
                                             <i class="fa fa-star"></i>
                                         @endfor
                                         @for ($i=0; $i < ceil(5-$rating/$total); $i++)
                                             <i class="fa fa-star-o"></i>
                                         @endfor
-                                    @endif
-                                </span>
-                                <span class="rating-count d-block ml-0">({{ $total }} customer reviews)</span>
-                            </div>
+                                    </span>
+                                    <span class="rating-count d-block ml-0">({{ $total }} customer reviews)</span>
+                                </div>
+                            @endif
                         </div>
                         <div class="row no-gutters align-items-center">
                             @if($product->added_by == 'seller')

@@ -92,15 +92,17 @@
                                             </div>
                                             <div class="offset-2 offset-md-0 col-10 col-md-10">
                                                 <div class="row">
-                                                    @foreach (json_decode($shop->sliders) as $key => $sliders)
-                                                        <div class="col-md-3">
-                                                            <div class="img-upload-preview">
-                                                                <img src="{{ asset($sliders) }}" alt="" class="img-responsive">
-                                                                <input type="hidden" name="previous_sliders[]" value="{{ $sliders }}">
-                                                                <button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
+                                                    @if ($shop->sliders != null)
+                                                        @foreach (json_decode($shop->sliders) as $key => $sliders)
+                                                            <div class="col-md-3">
+                                                                <div class="img-upload-preview">
+                                                                    <img src="{{ asset($sliders) }}" alt="" class="img-responsive">
+                                                                    <input type="hidden" name="previous_sliders[]" value="{{ $sliders }}">
+                                                                    <button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    @endforeach
+                                                        @endforeach
+                                                    @endif
                                                 </div>
                                                 <input type="file" name="sliders[]" id="slide-0" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" multiple accept="image/*" />
                                                 <label for="slide-0" class="mw-100 mb-3">

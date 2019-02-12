@@ -261,9 +261,20 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('Meta Image')}} <span class="required-star">*</span></label>
+                                            <label>{{__('Meta Image')}}</label>
                                         </div>
                                         <div class="col-md-10">
+                                            <div class="row">
+                                                @if ($product->meta_img != null)
+                                                    <div class="col-md-3">
+                                                        <div class="img-upload-preview">
+                                                            <img src="{{ asset($product->meta_img) }}" alt="" class="img-responsive">
+                                                            <input type="hidden" name="previous_meta_img" value="{{ $product->meta_img }}">
+                                                            <button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </div>
                                             <input type="file" name="meta_img" id="file-5" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
                                             <label for="file-5" class="mw-100 mb-3">
                                                 <span></span>

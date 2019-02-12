@@ -57,7 +57,9 @@ class ShopController extends Controller
         }
         else{
             $user = Auth::user();
-            $user->customer->delete();
+            if($user->customer != null){
+                $user->customer->delete();
+            }
             $user->user_type = "seller";
             $user->save();
         }

@@ -149,6 +149,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Netshell\Paypal\PaypalServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -213,6 +214,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Paypal' => Netshell\Paypal\Facades\Paypal::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

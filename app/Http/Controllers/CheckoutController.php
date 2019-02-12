@@ -10,6 +10,7 @@ use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\PublicSslCommerzPaymentController;
 use App\Http\Controllers\OrderController;
 use App\Order;
+use App\BusinessSetting;
 
 class CheckoutController extends Controller
 {

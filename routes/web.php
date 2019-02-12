@@ -11,7 +11,7 @@
 |
 */
 
-Auth::routes(['verify' => true]);
+Auth::routes();
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::post('/language', 'LanguageController@changeLanguage')->name('language.change');
 Route::post('/currency', 'CurrencyController@changeCurrency')->name('currency.change');

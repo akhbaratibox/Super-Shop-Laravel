@@ -131,13 +131,20 @@ class ShopController extends Controller
             $shop->banner = $request->banner->store('uploads/shop/banner');
         }
 
-        $sliders = array();
+        if($request->has('previous_sliders')){
+            $sliders = $request->previous_sliders;
+        }
+        else{
+            $sliders = array();
+        }
+
         if($request->hasFile('sliders')){
             foreach ($request->sliders as $key => $slider) {
                 array_push($sliders, $slider->store('uploads/shop/sliders'));
             }
-            $shop->sliders = json_encode($sliders);
         }
+
+        $shop->sliders = json_encode($sliders);
 
         if($request->has('facebook') || $request->has('google') || $request->has('twitter') || $request->has('youtube')){
             $shop->facebook = $request->facebook;

@@ -56,7 +56,7 @@
                                         <label class="payment_option">
                                             <input type="radio" id="" name="payment_option" value="paypal" checked>
                                             <span>
-                                                <img src="{{ asset('frontend/images/icons/cards/paypal-256x160.png')}}" class="img-fluid">
+                                                <img src="{{ asset('frontend/images/icons/cards/paypal.png')}}" class="img-fluid">
                                             </span>
                                         </label>
                                     </li>

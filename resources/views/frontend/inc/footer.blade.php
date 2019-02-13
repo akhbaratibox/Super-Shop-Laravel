@@ -213,7 +213,12 @@
                         <ul class="inline-links">
                             @if (\App\BusinessSetting::where('type', 'paypal_payment')->first()->value == 1)
                                 <li>
-                                    <img src="{{ asset('frontend/images/icons/cards/paypal-256x160.png')}}" height="20">
+                                    <img src="{{ asset('frontend/images/icons/cards/paypal.png')}}" height="20">
+                                </li>
+                            @endif
+                            @if (\App\BusinessSetting::where('type', 'stripe_payment')->first()->value == 1)
+                                <li>
+                                    <img src="{{ asset('frontend/images/icons/cards/stripe.png')}}" height="20">
                                 </li>
                             @endif
                             @if (\App\BusinessSetting::where('type', 'sslcommerz_payment')->first()->value == 1)

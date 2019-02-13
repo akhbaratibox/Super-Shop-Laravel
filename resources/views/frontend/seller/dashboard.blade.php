@@ -108,11 +108,11 @@
                             <div class="col-md-5">
                                 <div class="bg-white mt-4 p-5 text-center">
                                     <div class="mb-3">
-                                        <img src="{{ asset('frontend/images/icons/approved.svg') }}" alt="" width="130"
-                                            @if(Auth::user()->seller->verification_status == 0)
-                                                class="img-grayscale alpha-4"
-                                            @endif
-                                        >
+                                        @if(Auth::user()->seller->verification_status == 0)
+                                            <img src="{{ asset('frontend/images/icons/non_verified.png') }}" alt="" width="130">
+                                        @else
+                                            <img src="{{ asset('frontend/images/icons/verified.png') }}" alt="" width="130">
+                                        @endif
                                     </div>
                                     @if(Auth::user()->seller->verification_status == 0)
                                         <a href="{{ route('shop.verify') }}" class="btn btn-styled btn-base-1">{{__('Verify Now')}}</a>

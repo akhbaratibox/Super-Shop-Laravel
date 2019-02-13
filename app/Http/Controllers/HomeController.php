@@ -226,7 +226,7 @@ class HomeController extends Controller
 
     public function listing(Request $request)
     {
-        $products = Product::orderBy('created_at', 'desc')->paginate(9);
+        $products = filter_products(Product::orderBy('created_at', 'desc'))->paginate(9);
         return view('frontend.product_listing', compact('products'));
     }
 
@@ -238,28 +238,28 @@ class HomeController extends Controller
 
     public function listing_by_category($id)
     {
-        $products = Product::where('published', 1)->where('category_id', $id)->orderBy('created_at', 'desc')->paginate(9);
+        $products = filter_products(Product::where('published', 1)->where('category_id', $id)->orderBy('created_at', 'desc'))->paginate(9);
         $category_id = $id;
         return view('frontend.product_listing', compact('products', 'category_id'));
     }
 
     public function listing_by_subcategory($id)
     {
-        $products = Product::where('published', 1)->where('subcategory_id', $id)->orderBy('created_at', 'desc')->paginate(9);
+        $products = filter_products(Product::where('published', 1)->where('subcategory_id', $id)->orderBy('created_at', 'desc'))->paginate(9);
         $subcategory_id = $id;
         return view('frontend.product_listing', compact('products', 'subcategory_id'));
     }
 
     public function listing_by_subsubcategory($id)
     {
-        $products = Product::where('published', 1)->where('subsubcategory_id', $id)->orderBy('created_at', 'desc')->paginate(9);
+        $products = filter_products(Product::where('published', 1)->where('subsubcategory_id', $id)->orderBy('created_at', 'desc'))->paginate(9);
         $subsubcategory_id = $id;
         return view('frontend.product_listing', compact('products', 'subsubcategory_id'));
     }
 
     public function listing_by_brand($id)
     {
-        $products = Product::where('published', 1)->where('brand_id', $id)->orderBy('created_at', 'desc')->paginate(9);
+        $products = filter_products(Product::where('published', 1)->where('brand_id', $id)->orderBy('created_at', 'desc'))->paginate(9);
         return view('frontend.product_listing', compact('products'));
     }
 
@@ -300,13 +300,9 @@ class HomeController extends Controller
                 }
             }
         }
-        if(BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1){
-            $products = Product::where('published', 1)->where('name', 'like', '%'.$request->search.'%')->get()->take(3);
-        }
-        else{
-            $products = Product::where('added_by', 'admin')->where('published', 1)->where('name', 'like', '%'.$request->search.'%')->get()->take(3);
-        }
-        
+
+        $products = filter_products(Product::where('published', 1)->where('name', 'like', '%'.$request->search.'%'))->get()->take(3);
+
         $subsubcategories = SubSubCategory::where('name', 'like', '%'.$request->search.'%')->get()->take(3);
 
         if(sizeof($keywords)>0 || sizeof($subsubcategories)>0 || sizeof($products)>0){
@@ -359,11 +355,7 @@ class HomeController extends Controller
             }
         }
 
-        if(BusinessSetting::where('type', 'vendor_system_activation')->first()->value != 1){
-            $products = $products->where('added_by', 'admin');
-        }
-
-        $products = $products->paginate(9);
+        $products = filter_products($products)->paginate(9);
 
         return view('frontend.product_listing', compact('products', 'query', 'category_id', 'brand_id', 'sort_by'));
     }

@@ -69,6 +69,18 @@ if (! function_exists('combinations')) {
     }
 }
 
+//filter products based on vendor activation system
+if (! function_exists('filter_products')) {
+    function filter_products($products) {
+        if(BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1){
+            return $products;
+        }
+        else{
+            return $products->where('added_by', 'admin');
+        }
+    }
+}
+
 //converts currency
 if (! function_exists('convert_price')) {
     function convert_price($price)

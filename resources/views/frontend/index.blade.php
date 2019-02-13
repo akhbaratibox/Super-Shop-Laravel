@@ -261,15 +261,7 @@
                 </div>
                 <div class="caorusel-box">
                     <div class="slick-carousel" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="2" data-slick-xs-items="1" data-slick-dots="true" data-slick-rows="2">
-                        @php
-                            if(\App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1){
-                                $products = \App\Product::where('published', 1)->orderBy('num_of_sale', 'desc')->limit(20)->get();
-                            }
-                            else{
-                                $products = \App\Product::where('published', 1)->where('added_by', 'admin')->orderBy('num_of_sale', 'desc')->limit(20)->get();
-                            }
-                        @endphp
-                        @foreach ($products as $key => $product)
+                        @foreach (filter_products(\App\Product::where('published', 1)->orderBy('num_of_sale', 'desc'))->limit(20)->get() as $key => $product)
                             <div class="p-2">
                                 <div class="row no-gutters product-box-2">
                                     <div class="col-4">
@@ -337,15 +329,7 @@
                     @foreach (json_decode($homeCategory->subsubcategories) as $key => $subsubcategory)
                         <div class="tab-pane fade @php if($key == 0) echo 'show active'; @endphp" id="subsubcat-{{ $subsubcategory }}">
                             <div class="row">
-                                @php
-                                    if(\App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1){
-                                        $products = \App\Product::where('published', 1)->where('subsubcategory_id', $subsubcategory)->limit(4)->get();
-                                    }
-                                    else{
-                                        $products = \App\Product::where('published', 1)->where('subsubcategory_id', $subsubcategory)->where('added_by', 'admin')->limit(4)->get();
-                                    }
-                                @endphp
-                                @foreach ($products as $key => $product)
+                                @foreach (filter_products(\App\Product::where('published', 1)->where('subsubcategory_id', $subsubcategory))->limit(4)->get() as $key => $product)
                                     <div class="col-lg-3 col-md-6">
                                         <div class="product-box-2 bg-white alt-box">
                                             <div class="position-relative overflow-hidden">
@@ -402,15 +386,7 @@
                         </h3>
                     </div>
                     <div class="pt-3 row">
-                        @php
-                            if(\App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1){
-                                $products = \App\Product::where('published', 1)->orderBy('num_of_sale', 'desc')->limit(4)->get();
-                            }
-                            else{
-                                $products = \App\Product::where('published', 1)->where('added_by', 'admin')->orderBy('num_of_sale', 'desc')->limit(4)->get() ;
-                            }
-                        @endphp
-                        @foreach ($products as $key => $product)
+                        @foreach (filter_products(\App\Product::where('published', 1)->orderBy('num_of_sale', 'desc'))->limit(4)->get() as $key => $product)
                             <div class="mb-4 product-box-3 col-md-6 col-lg-12">
                                 <div class="clearfix">
                                     <div class="product-image float-left">
@@ -439,15 +415,7 @@
                         </h3>
                     </div>
                     <div class="pt-3 row">
-                        @php
-                            if(\App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1){
-                                $products = \App\Product::where('published', 1)->where('featured', '1')->limit(4)->get();
-                            }
-                            else{
-                                $products = \App\Product::where('published', 1)->where('featured', '1')->where('added_by', 'admin')->limit(4)->get() ;
-                            }
-                        @endphp
-                        @foreach ($products as $key => $product)
+                        @foreach (filter_products(\App\Product::where('published', 1)->where('featured', '1'))->limit(4)->get() as $key => $product)
                             <div class="mb-4 product-box-3 col-md-6 col-lg-12">
                                 <div class="clearfix">
                                     <div class="product-image float-left">
@@ -476,15 +444,7 @@
                         </h3>
                     </div>
                     <div class="pt-3 row">
-                        @php
-                            if(\App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1){
-                                $products = \App\Product::where('published', 1)->where('todays_deal', '1')->limit(4)->get();
-                            }
-                            else{
-                                $products = \App\Product::where('published', 1)->where('todays_deal', '1')->where('added_by', 'admin')->limit(4)->get() ;
-                            }
-                        @endphp
-                        @foreach ($products as $key => $product)
+                        @foreach (filter_products(\App\Product::where('published', 1)->where('todays_deal', '1'))->limit(4)->get() as $key => $product)
                             <div class="mb-4 product-box-3 col-md-6 col-lg-12">
                                 <div class="clearfix">
                                     <div class="product-image float-left">

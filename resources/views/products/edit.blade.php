@@ -224,7 +224,7 @@
 									<input type="text" class="form-control" value="{{__('colors')}}" disabled>
 								</div>
 								<div class="col-lg-7">
-									<select class="form-control demo-select2-placeholder" name="colors[]" id="colors" multiple>
+									<select class="form-control color-var-select" name="colors[]" id="colors" multiple>
 										@foreach (\App\Color::orderBy('name', 'asc')->get() as $key => $color)
 											<option value="{{ $color->code }}" <?php if(in_array($color->code, json_decode($product->colors))) echo 'selected'?> >{{ $color->name }}</option>
 										@endforeach

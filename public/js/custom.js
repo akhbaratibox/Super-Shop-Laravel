@@ -16,6 +16,19 @@ $(document).on('nifty.ready', function() {
 	// =================================================================
 	$(".demo-select2").select2();
 
+	// SELECT2 SINGLE
+	// color select select2
+	$('.color-var-select').select2({
+        templateResult: colorCodeSelect,
+        templateSelection: colorCodeSelect,
+        escapeMarkup: function(m) { return m; }
+    });
+    function colorCodeSelect(state) {
+        var colorCode = $(state.element).val();
+        if (!colorCode) return state.text;
+        return  "<span class='color-preview' style='background-color:"+colorCode+";'></span>" + state.text;
+    }
+
 
 	// SELECT2 Maximum Limit 4
 	// =================================================================

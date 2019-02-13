@@ -183,7 +183,7 @@
 									<input type="text" class="form-control" value="{{__('colors')}}" disabled>
 								</div>
 								<div class="col-lg-7">
-									<select class="form-control demo-select2-placeholder" name="colors[]" id="colors" multiple disabled>
+									<select class="form-control color-var-select" name="colors[]" id="colors" multiple disabled>
 										@foreach (\App\Color::orderBy('name', 'asc')->get() as $key => $color)
 											<option value="{{ $color->code }}">{{ $color->name }}</option>
 										@endforeach

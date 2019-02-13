@@ -50,7 +50,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('shops.index') }}" class="{{ areActiveRoutesHome(['shop.index'])}}">
+                    <a href="{{ route('shops.index') }}" class="{{ areActiveRoutesHome(['shops.index'])}}">
                         <i class="la la-cog"></i>
                         <span class="category-name">
                             {{__('Shop Setting')}}

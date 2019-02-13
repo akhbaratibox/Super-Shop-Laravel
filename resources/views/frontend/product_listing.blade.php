@@ -95,15 +95,44 @@
                             <div class="col-11">
                                 <div class="brands-collapse-box" id="brands-collapse-box">
                                     <ul class="inline-links">
+                                        @php
+                                            $brands = array();
+                                        @endphp
                                         @if(isset($subsubcategory_id))
-                                            @foreach (json_decode(\App\SubSubCategory::find($subsubcategory_id)->brands) as $key => $brand_id)
-                                                <li><a href="{{ route('products.brand', $brand_id) }}"><img src="{{ asset(\App\Brand::find($brand_id)->logo) }}" alt="" class="img-fluid"></a></li>
+                                            @php
+                                                foreach (json_decode(\App\SubSubCategory::find($subsubcategory_id)->brands) as $brand) {
+                                                    if(!in_array($brand, $brands)){
+                                                        array_push($brands, $brand);
+                                                    }
+                                                }
+                                            @endphp
+                                        @elseif(isset($subcategory_id))
+                                            @foreach (\App\SubCategory::find($subcategory_id)->subsubcategories as $key => $subsubcategory)
+                                                @php
+                                                    foreach (json_decode($subsubcategory->brands) as $brand) {
+                                                        if(!in_array($brand, $brands)){
+                                                            array_push($brands, $brand);
+                                                        }
+                                                    }
+                                                @endphp
                                             @endforeach
-                                        @else
-                                            @foreach (\App\Brand::all() as $key => $brand)
-                                                <li><a href="{{ route('products.brand', $brand->id) }}"><img src="{{ asset($brand->logo) }}" alt="" class="img-fluid"></a></li>
+                                        @elseif(isset($category_id))
+                                            @foreach (\App\Category::find($category_id)->subcategories as $key => $subcategory)
+                                                @foreach ($subcategory->subsubcategories as $key => $subsubcategory)
+                                                    @php
+                                                        foreach (json_decode($subsubcategory->brands) as $brand) {
+                                                            if(!in_array($brand, $brands)){
+                                                                array_push($brands, $brand);
+                                                            }
+                                                        }
+                                                    @endphp
+                                                @endforeach
                                             @endforeach
                                         @endif
+
+                                        @foreach ($brands as $key => $brand_id)
+                                            <li><a href="{{ route('products.brand', $brand_id) }}"><img src="{{ asset(\App\Brand::find($brand_id)->logo) }}" alt="" class="img-fluid"></a></li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>

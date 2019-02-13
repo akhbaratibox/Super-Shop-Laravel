@@ -56,65 +56,64 @@
         </div>
     </section>
 
-    
-    <section class="py-5">
-        <div class="container">
-            <div class="home-slide">
-                <div class="slick-carousel" data-slick-arrows="true" data-slick-dots="true">
-                    @if ($shop->sliders != null)
-                        @foreach (json_decode($shop->sliders) as $key => $slide)
-                            <div class="">
-                                <img class="d-block w-100" src="{{ asset($slide) }}" alt="{{ $key }} slide" style="max-height:300px;">
-                            </div>
-                        @endforeach
-                    @endif
-                </div>
-            </div>
-        </div>
-    </section>
     @if (!isset($type)){
-    <section class="slice sct-color-1 pt-2">
-        <div class="container">
-            <div class="section-title section-title--style-1 text-center mb-5">
-                <h3 class="section-title-inner heading-3 strong-600">
-                    {{__('Featured Products')}}
-                </h3>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="caorusel-box">
-                        <div class="slick-carousel center-mode" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="3" data-slick-sm-items="1" data-slick-xs-items="1" data-slick-center="true">
-                            @foreach ($shop->user->products->where('published', 1)->where('featured', 1) as $key => $product)
+        <section class="py-5">
+            <div class="container">
+                <div class="home-slide">
+                    <div class="slick-carousel" data-slick-arrows="true" data-slick-dots="true">
+                        @if ($shop->sliders != null)
+                            @foreach (json_decode($shop->sliders) as $key => $slide)
                                 <div class="">
-                                    <div class="product-card-2 card card-product m-3 shop-cards shop-tech">
-                                        <div class="card-body p-0">
-
-                                            <div class="card-image">
-                                                <a href="{{ route('product', $product->slug) }}" class="d-block" style="background-image:url('{{ asset($product->featured_img) }}');">
-                                                </a>
-                                            </div>
-
-                                            <div class="p-3">
-                                                <div class="price-box">
-                                                    <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
-                                                    <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
-                                                </div>
-                                                <h2 class="product-title p-0 mt-2 text-truncate-2">
-                                                    <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
-                                                </h2>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <img class="d-block w-100" src="{{ asset($slide) }}" alt="{{ $key }} slide" style="max-height:300px;">
                                 </div>
                             @endforeach
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
+        </section>
+        <section class="slice sct-color-1 pt-2">
+            <div class="container">
+                <div class="section-title section-title--style-1 text-center mb-5">
+                    <h3 class="section-title-inner heading-3 strong-600">
+                        {{__('Featured Products')}}
+                    </h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="caorusel-box">
+                            <div class="slick-carousel center-mode" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="3" data-slick-sm-items="1" data-slick-xs-items="1" data-slick-center="true">
+                                @foreach ($shop->user->products->where('published', 1)->where('featured', 1) as $key => $product)
+                                    <div class="">
+                                        <div class="product-card-2 card card-product m-3 shop-cards shop-tech">
+                                            <div class="card-body p-0">
+
+                                                <div class="card-image">
+                                                    <a href="{{ route('product', $product->slug) }}" class="d-block" style="background-image:url('{{ asset($product->featured_img) }}');">
+                                                    </a>
+                                                </div>
+
+                                                <div class="p-3">
+                                                    <div class="price-box">
+                                                        <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
+                                                        <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                                                    </div>
+                                                    <h2 class="product-title p-0 mt-2 text-truncate-2">
+                                                        <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
-        </div>
-    </section>
+            </div>
+        </section>
     @endif
 
 

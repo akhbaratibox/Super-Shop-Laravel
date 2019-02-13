@@ -13,6 +13,7 @@ use App\User;
 use App\Seller;
 use App\Shop;
 use App\Color;
+use App\BusinessSetting;
 use App\Http\Controllers\SearchController;
 use ImageOptimizer;
 
@@ -299,7 +300,13 @@ class HomeController extends Controller
                 }
             }
         }
-        $products = Product::where('published', 1)->where('name', 'like', '%'.$request->search.'%')->get()->take(3);
+        if(BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1){
+            $products = Product::where('published', 1)->where('name', 'like', '%'.$request->search.'%')->get()->take(3);
+        }
+        else{
+            $products = Product::where('added_by', 'admin')->where('published', 1)->where('name', 'like', '%'.$request->search.'%')->get()->take(3);
+        }
+        
         $subsubcategories = SubSubCategory::where('name', 'like', '%'.$request->search.'%')->get()->take(3);
 
         if(sizeof($keywords)>0 || sizeof($subsubcategories)>0 || sizeof($products)>0){
@@ -352,7 +359,9 @@ class HomeController extends Controller
             }
         }
 
-        //dd($request->all());
+        if(BusinessSetting::where('type', 'vendor_system_activation')->first()->value != 1){
+            $products = $products->where('added_by', 'admin');
+        }
 
         $products = $products->paginate(9);
 

@@ -657,7 +657,15 @@
                         </div>
                         <div class="caorusel-box">
                             <div class="slick-carousel" data-slick-items="4" data-slick-lg-items="4"  data-slick-md-items="3" data-slick-sm-items="2" data-slick-xs-items="1">
-                                @foreach (\App\Product::where('subcategory_id', $product->subcategory_id)->where('id', '!=', $product->id)->limit(10)->get() as $key => $related_product)
+                                @php
+                                    if(\App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1){
+                                        $products = \App\Product::where('subcategory_id', $product->subcategory_id)->where('id', '!=', $product->id)->limit(10)->get();
+                                    }
+                                    else{
+                                        $products = \App\Product::where('subcategory_id', $product->subcategory_id)->where('added_by', 'admin')->where('id', '!=', $product->id)->limit(10)->get();
+                                    }
+                                @endphp
+                                @foreach ($products as $key => $related_product)
                                     <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
                                         <div class="card-body p-0">
                                             <div class="card-image">

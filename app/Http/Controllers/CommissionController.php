@@ -47,6 +47,9 @@ class CommissionController extends Controller
         $payment->payment_details = $payment_details;
         $payment->save();
 
+        Session::forget('payment_data');
+        Session::forget('payment_type');
+
         flash(__('Payment completed'))->success();
         return redirect()->route('sellers.index');
     }

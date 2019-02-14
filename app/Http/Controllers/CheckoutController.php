@@ -11,6 +11,7 @@ use App\Http\Controllers\PublicSslCommerzPaymentController;
 use App\Http\Controllers\OrderController;
 use App\Order;
 use App\BusinessSetting;
+use Session;
 
 class CheckoutController extends Controller
 {
@@ -76,8 +77,9 @@ class CheckoutController extends Controller
             }
         }
 
-        $request->session()->put('cart', collect([]));
-        $request->session()->forget('order_id');
+        Session::put('cart', collect([]));
+        Session::forget('order_id');
+        Session::forget('payment_type');
 
         flash(__('Payment completed'))->success();
         return redirect()->route('home');

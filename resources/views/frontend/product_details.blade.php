@@ -285,18 +285,20 @@
                                     Returns accepted if product not as described, buyer pays return shipping fee; or keep the product & agree refund with seller. <a href="{{ route('returnpolicy') }}" class="ml-2">View details</a>
                                 </div>
                             </div>
-                            <div class="row no-gutters mt-3">
-                                <div class="col-2">
-                                    <div class="product-description-label alpha-6">Seller Guarantees:</div>
+                            @if ($product->added_by == 'seller')
+                                <div class="row no-gutters mt-3">
+                                    <div class="col-2">
+                                        <div class="product-description-label alpha-6">Seller Guarantees:</div>
+                                    </div>
+                                    <div class="col-10">
+                                        @if ($product->user->seller->verification_status == 1)
+                                            Verified seller
+                                        @else
+                                            Non verified seller
+                                        @endif
+                                    </div>
                                 </div>
-                                <div class="col-10">
-                                    @if ($product->user->seller->verification_status == 1)
-                                        Verified seller
-                                    @else
-                                        Non verified seller
-                                    @endif
-                                </div>
-                            </div>
+                            @endif
                             <div class="row no-gutters mt-3">
                                 <div class="col-2">
                                     <div class="product-description-label alpha-6">Payment:</div>

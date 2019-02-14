@@ -7,6 +7,10 @@ use Paypal;
 use Redirect;
 use App\Order;
 use App\BusinessSetting;
+use App\Seller;
+use Session;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CommissionController;
 
 class PaypalController extends Controller
 {
@@ -14,25 +18,44 @@ class PaypalController extends Controller
 
     public function __construct()
     {
-        $this->_apiContext = PayPal::ApiContext(
-            env('PAYPAL_CLIENT_ID'),
-            env('PAYPAL_CLIENT_SECRET'));
+        if(Session::has('payment_type')){
+            if(Session::get('payment_type') == 'cart_payment'){
+                $this->_apiContext = PayPal::ApiContext(
+                    env('PAYPAL_CLIENT_ID'),
+                    env('PAYPAL_CLIENT_SECRET'));
 
-        if(BusinessSetting::where('type', 'paypal_sandbox')->first()->value == 1){
-            $mode = 'sandbox';
-        }
-        else{
-            $mode = 'live';
-        }
+                if(BusinessSetting::where('type', 'paypal_sandbox')->first()->value == 1){
+                    $mode = 'sandbox';
+                }
+                else{
+                    $mode = 'live';
+                }
 
-		$this->_apiContext->setConfig(array(
-			'mode' => $mode,
-			'service.EndPoint' => 'https://api.sandbox.paypal.com',
-			'http.ConnectionTimeOut' => 30,
-			'log.LogEnabled' => true,
-			'log.FileName' => public_path('logs/paypal.log'),
-			'log.LogLevel' => 'FINE'
-		));
+        		$this->_apiContext->setConfig(array(
+        			'mode' => $mode,
+        			'service.EndPoint' => 'https://api.sandbox.paypal.com',
+        			'http.ConnectionTimeOut' => 30,
+        			'log.LogEnabled' => true,
+        			'log.FileName' => public_path('logs/paypal.log'),
+        			'log.LogLevel' => 'FINE'
+        		));
+            }
+            elseif (Session::get('payment_type') == 'seller_payment') {
+                $seller = Seller::findOrFail(Session::get('payment_details')['seller_id']);
+                $this->_apiContext = PayPal::ApiContext(
+                    $seller->paypal_client_id,
+                    $seller->paypal_client_secret);
+
+        		$this->_apiContext->setConfig(array(
+        			'mode' => 'sandbox',
+        			'service.EndPoint' => 'https://api.sandbox.paypal.com',
+        			'http.ConnectionTimeOut' => 30,
+        			'log.LogEnabled' => true,
+        			'log.FileName' => public_path('logs/paypal.log'),
+        			'log.LogLevel' => 'FINE'
+        		));
+            }
+        }
     }
 
     public function getCheckout()
@@ -76,29 +99,21 @@ class PaypalController extends Controller
     	$token = $request->get('token');
     	$payer_id = $request->get('PayerID');
 
-    	$payment = PayPal::getById($payment_id, $this->_apiContext);
-    	$paymentExecution = PayPal::PaymentExecution();
-    	$paymentExecution->setPayerId($payer_id);
-    	$executePayment = $payment->execute($paymentExecution, $this->_apiContext);
+        $payment = '';
+    	// $payment = PayPal::getById($payment_id, $this->_apiContext);
+    	// $paymentExecution = PayPal::PaymentExecution();
+    	// $paymentExecution->setPayerId($payer_id);
+    	// $executePayment = $payment->execute($paymentExecution, $this->_apiContext);
 
-        $order = Order::findOrFail($request->session()->get('order_id'));
-        $order->payment_status = 'paid';
-        $order->payment_details = $payment;
-        $order->save();
-
-        $commission_percentage = BusinessSetting::where('type', 'vendor_commission')->first()->value;
-        foreach ($order->orderDetails as $key => $orderDetail) {
-            if($orderDetail->product->user->user_type == 'seller'){
-                $seller = $orderDetail->product->user->seller;
-                $seller->admin_to_pay = $seller->admin_to_pay + ($orderDetail->price*(100-$commission_percentage))/100;
-                $seller->save();
+        if($request->session()->has('payment_type')){
+            if($request->session()->get('payment_type') == 'cart_payment'){
+                $checkoutController = new CheckoutController;
+                return $checkoutController->checkout_done($request->session()->get('order_id'), $payment);
+            }
+            elseif ($request->session()->get('payment_type') == 'seller_payment') {
+                $commissionController = new CommissionController;
+                return $commissionController->seller_payment_done($request->session()->get('payment_data'), $payment);
             }
         }
-
-        $request->session()->put('cart', collect([]));
-        $request->session()->forget('order_id');
-
-        flash(__('Payment completed'))->success();
-    	return redirect()->route('home');
     }
 }

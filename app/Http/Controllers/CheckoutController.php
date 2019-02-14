@@ -25,6 +25,8 @@ class CheckoutController extends Controller
         $orderController = new OrderController;
         $orderController->store($request);
 
+        $request->session()->put('payment_type', 'cart_payment');
+
         if($request->session()->get('order_id') != null){
             if($request->payment_option == 'paypal'){
                 $paypal = new PaypalController;
@@ -56,6 +58,29 @@ class CheckoutController extends Controller
             	return redirect()->route('home');
             }
         }
+    }
+
+    public function checkout_done($order_id, $payment)
+    {
+        $order = Order::findOrFail($order_id);
+        $order->payment_status = 'paid';
+        $order->payment_details = $payment;
+        $order->save();
+
+        $commission_percentage = BusinessSetting::where('type', 'vendor_commission')->first()->value;
+        foreach ($order->orderDetails as $key => $orderDetail) {
+            if($orderDetail->product->user->user_type == 'seller'){
+                $seller = $orderDetail->product->user->seller;
+                $seller->admin_to_pay = $seller->admin_to_pay + ($orderDetail->price*(100-$commission_percentage))/100;
+                $seller->save();
+            }
+        }
+
+        $request->session()->put('cart', collect([]));
+        $request->session()->forget('order_id');
+
+        flash(__('Payment completed'))->success();
+        return redirect()->route('home');
     }
 
     public function get_shipping_info(Request $request)

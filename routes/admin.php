@@ -37,6 +37,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('/sellers/view/{id}/verification', 'SellerController@show_verification_request')->name('sellers.show_verification_request');
 	Route::get('/sellers/approve/{id}', 'SellerController@approve_seller')->name('sellers.approve');
 	Route::get('/sellers/reject/{id}', 'SellerController@reject_seller')->name('sellers.reject');
+	Route::post('/sellers/payment_modal', 'SellerController@payment_modal')->name('sellers.payment_modal');
 
 	Route::resource('customers','CustomerController');
 	Route::get('/customers/destroy/{id}', 'CustomerController@destroy')->name('customers.destroy');
@@ -119,4 +120,6 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::post('/logo','GeneralSettingController@storeLogo')->name('generalsettings.logo.store');
 
 	Route::resource('seosetting','SEOController');
+	
+	Route::post('/pay_to_seller', 'CommissionController@pay_to_seller')->name('commissions.pay_to_seller');
 });

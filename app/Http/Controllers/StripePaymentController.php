@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Stripe;
 use App\Order;
 use App\BusinessSetting;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CommissionController;
 
 class StripePaymentController extends Controller
 {
@@ -33,24 +35,15 @@ class StripePaymentController extends Controller
                 "source" => $request->stripeToken
         ]));
 
-        $order = Order::findOrFail($request->session()->get('order_id'));
-        $order->payment_status = 'paid';
-        $order->payment_details = $payment;
-        $order->save();
-
-        $commission_percentage = BusinessSetting::where('type', 'vendor_commission')->first()->value;
-        foreach ($order->orderDetails as $key => $orderDetail) {
-            if($orderDetail->product->user->user_type == 'seller'){
-                $seller = $orderDetail->product->user->seller;
-                $seller->admin_to_pay = $seller->admin_to_pay + ($orderDetail->price*(100-$commission_percentage))/100;
-                $seller->save();
+        if($request->session()->has('payment_type')){
+            if($request->session()->get('payment_type') == 'cart_payment'){
+                $checkoutController = new CheckoutController;
+                return $checkoutController->checkout_done($request->session()->get('order_id'), $payment);
+            }
+            elseif ($request->session()->get('payment_type') == 'seller_payment') {
+                $commissionController = new CommissionController;
+                return $commissionController->seller_payment_done($request->session()->get('payment_data'), $payment);
             }
         }
-
-        $request->session()->put('cart', collect([]));
-        $request->session()->forget('order_id');
-
-        flash(__('Payment completed'))->success();
-    	return redirect()->route('home');
     }
 }

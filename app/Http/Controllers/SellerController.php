@@ -159,4 +159,11 @@ class SellerController extends Controller
         flash(__('Something went wrong'))->error();
         return back();
     }
+
+
+    public function payment_modal(Request $request)
+    {
+        $seller = Seller::findOrFail($request->id);
+        return view('sellers.payment_modal', compact('seller'));
+    }
 }

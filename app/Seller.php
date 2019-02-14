@@ -9,4 +9,8 @@ class Seller extends Model
     public function user(){
     	return $this->belongsTo(user::class);
     }
+
+    public function payments(){
+    	return $this->hasMany(Payment::class);
+    }
 }

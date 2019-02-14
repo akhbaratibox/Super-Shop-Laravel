@@ -2,10 +2,10 @@
     <div class="widget mb-0">
         <div class="widget-profile-box text-center p-3">
             <div class="image" style="background-image:url('{{ asset(Auth::user()->avatar_original) }}')"></div>
-            @if(Auth::user()->seller->verification_status == 0)
-                <div class="name mb-0">{{ Auth::user()->name }} <span><img width="15" src="{{ asset('frontend/images/icons/non_verified_icon.png') }}"></span></div>
+            @if(Auth::user()->seller->verification_status == 1)
+                <div class="name mb-0">{{ Auth::user()->name }} <span class="ml-2"><i class="fa fa-check-circle" style="color:green"></i></span></div>
             @else
-                <div class="name mb-0">{{ Auth::user()->name }} <span><img width="15" src="{{ asset('frontend/images/icons/verified_icon.png') }}"></span></div>
+                <div class="name mb-0">{{ Auth::user()->name }} <span class="ml-2"><i class="fa fa-times-circle" style="color:red"></i></span></div>
             @endif
         </div>
         <div class="sidebar-widget-title py-3">

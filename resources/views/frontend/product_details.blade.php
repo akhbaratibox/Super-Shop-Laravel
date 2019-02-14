@@ -290,7 +290,11 @@
                                     <div class="product-description-label alpha-6">Seller Guarantees:</div>
                                 </div>
                                 <div class="col-10">
-                                    On-time Delivery <a href="" class="ml-2">{{__('View details')}}</a>
+                                    @if ($product->user->seller->verification_status == 1)
+                                        Verified seller
+                                    @else
+                                        Non verified seller
+                                    @endif
                                 </div>
                             </div>
                             <div class="row no-gutters mt-3">
@@ -314,7 +318,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="row no-gutters mt-3">
+                            {{-- <div class="row no-gutters mt-3">
                                 <div class="col-2">
                                     <img src="{{ asset('frontend/images/icons/buyer-protection.png') }}" width="40" class="">
                                 </div>
@@ -325,8 +329,7 @@
                                         <li><strong>Full or Partial Refund</strong>, if the item is not as described</li>
                                     </ul>
                                 </div>
-                            </div>
-
+                            </div> --}}
                             <hr class="mt-4">
                             <div class="row no-gutters mt-4">
                                 <div class="col-2">
@@ -362,7 +365,13 @@
                             @endif
                             <div class="title">Sold By</div>
                             @if($product->added_by == 'seller' && \App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)
-                                <a href="{{ route('shop.visit', $product->user->shop->slug) }}" class="name d-block">{{ $product->user->shop->name }}</a>
+                                <a href="{{ route('shop.visit', $product->user->shop->slug) }}" class="name d-block">{{ $product->user->shop->name }}
+                                @if ($product->user->seller->verification_status == 1)
+                                    <span class="ml-2"><i class="fa fa-check-circle" style="color:green"></i></span>
+                                @else
+                                    <span class="ml-2"><i class="fa fa-times-circle" style="color:red"></i></span>
+                                @endif
+                                </a>
                                 <div class="location">{{ $product->user->shop->address }}</div>
                             @else
                                 {{ __('Inhouse product') }}

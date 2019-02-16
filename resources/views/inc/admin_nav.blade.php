@@ -58,10 +58,24 @@
             </ul>
             <ul class="nav navbar-top-links">
 
+                @php
+                    $orders = DB::table('orders')
+                                ->orderBy('code', 'desc')
+                                ->join('order_details', 'orders.id', '=', 'order_details.order_id')
+                                ->where('order_details.seller_id', Auth::user()->id)
+                                ->where('orders.viewed', 0)
+                                ->select('orders.id')
+                                ->distinct()
+                                ->count();
+                    $sellers = \App\Seller::where('verification_status', 0)->where('verification_info', '!=', null)->count();
+                @endphp
+
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="true">
                         <i class="demo-pli-bell"></i>
-                        <span class="badge badge-header badge-danger"></span>
+                        @if($orders > 0 || $sellers > 0)
+                            <span class="badge badge-header badge-danger"></span>
+                        @endif
                     </a>
 
                     <!--Notification dropdown menu-->
@@ -69,14 +83,24 @@
                         <div class="nano scrollable has-scrollbar" style="height: 265px;">
                             <div class="nano-content" tabindex="0" style="right: -17px;">
                                 <ul class="head-list">
-                                    <li>
-                                        <a class="media" href="#">
-                                            <div class="media-body">
-                                                <p class="mar-no text-nowrap text-main text-semibold">Write a news article</p>
-                                                <small>Last Update 8 hours ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
+                                    @if($orders > 0)
+                                        <li>
+                                            <a class="media" href="{{ route('orders.index.admin') }}">
+                                                <div class="media-body">
+                                                    <p class="mar-no text-nowrap text-main text-semibold">{{ $orders }} new order(s)</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    @endif
+                                    @if($sellers > 0)
+                                        <li>
+                                            <a class="media" href="{{ route('sellers.index') }}">
+                                                <div class="media-body">
+                                                    <p class="mar-no text-nowrap text-main text-semibold">New verification request(s)</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    @endif
                                 </ul>
                             </div>
                             <div class="nano-pane" style="">

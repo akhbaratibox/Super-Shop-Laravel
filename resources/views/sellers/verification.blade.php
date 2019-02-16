@@ -13,7 +13,7 @@
         <h3 class="panel-title">{{__('Seller Verification')}}</h3>
     </div>
     <div class="panel-body">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="panel-heading">
                 <h3 class="text-lg">{{__('User Info')}}</h3>
             </div>
@@ -60,7 +60,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="panel-heading">
                 <h3 class="text-lg">{{__('Verification Info')}}</h3>
             </div>
@@ -77,13 +77,17 @@
                                 </td>
                             @elseif ($info->type == 'file')
                                 <td>
-                                    <a href="{{ asset($info->value) }}" target="_blank">Click here</a>
+                                    <a href="{{ asset($info->value) }}" target="_blank" class="btn-info">Click here</a>
                                 </td>
                             @endif
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            <div class="text-center">
+                <a href="{{ route('sellers.reject', $seller->id) }}" class="btn btn-default d-innline-block">Reject</a></li>
+                <a href="{{ route('sellers.approve', $seller->id) }}" class="btn btn-primary d-innline-block">Accept</a>
+            </div>
         </div>
     </div>
 </div>

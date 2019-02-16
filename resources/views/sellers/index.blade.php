@@ -40,9 +40,11 @@
                                     Verified
                                 </div>
                             @elseif ($seller->verification_info != null)
-                                <div class="label label-table label-info">
-                                    Requested (<a href="{{ route('sellers.show_verification_request', $seller->id) }}">view</a>)
-                                </div>
+                                <a href="{{ route('sellers.show_verification_request', $seller->id) }}">
+                                    <div class="label label-table label-info">
+                                        Requested
+                                    </div>
+                                </a>
                             @else
                                 <div class="label label-table label-danger">
                                     Not Verified

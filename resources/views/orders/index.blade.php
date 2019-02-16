@@ -34,7 +34,7 @@
                                 {{ $key+1 }}
                             </td>
                             <td>
-                                {{ $order->code }} @if($order->viewed == 0) <span class="pull-right badge badge-danger">{{ __('New') }}</span> @endif
+                                {{ $order->code }} @if($order->viewed == 0) <span class="pull-right badge badge-info">{{ __('New') }}</span> @endif
                             </td>
                             <td>
                                 {{ count($order->orderDetails->where('seller_id', Auth::user()->id)) }}

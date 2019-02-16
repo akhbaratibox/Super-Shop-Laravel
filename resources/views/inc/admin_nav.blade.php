@@ -58,6 +58,34 @@
             </ul>
             <ul class="nav navbar-top-links">
 
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="true">
+                        <i class="demo-pli-bell"></i>
+                        <span class="badge badge-header badge-danger"></span>
+                    </a>
+
+                    <!--Notification dropdown menu-->
+                    <div class="dropdown-menu dropdown-menu-md dropdown-menu-right" style="opacity: 1;">
+                        <div class="nano scrollable has-scrollbar" style="height: 265px;">
+                            <div class="nano-content" tabindex="0" style="right: -17px;">
+                                <ul class="head-list">
+                                    <li>
+                                        <a class="media" href="#">
+                                            <div class="media-body">
+                                                <p class="mar-no text-nowrap text-main text-semibold">Write a news article</p>
+                                                <small>Last Update 8 hours ago</small>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="nano-pane" style="">
+                                <div class="nano-slider" style="height: 170px; transform: translate(0px, 0px);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
                 <!--User dropdown-->
                 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                 <li id="dropdown-user" class="dropdown">

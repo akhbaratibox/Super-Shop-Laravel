@@ -168,6 +168,8 @@ class OrderController extends Controller
     public function show($id)
     {
         $order = Order::findOrFail($id);
+        $order->viewed = 1;
+        $order->save();
         return view('orders.show', compact('order'));
     }
 

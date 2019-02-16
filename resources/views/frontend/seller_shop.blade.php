@@ -62,7 +62,7 @@
         </div>
     </section>
 
-    @if (!isset($type)){
+    @if (!isset($type))
         <section class="py-5">
             <div class="container">
                 <div class="home-slide">
@@ -286,8 +286,12 @@
                                         </div>
                                         <div class="price-bar row no-gutters">
                                             <div class="price col-8">
-                                                <del class="old-product-price strong-600">{{ home_base_price($product->id) }}</del>
-                                                <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                                                @if(home_price($product->id) != home_discounted_price($product->id))
+                                                    <del class="old-product-price strong-600">{{ home_base_price($product->id) }}</del>
+                                                    <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                                                @else
+                                                    <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                                                @endif
                                             </div>
                                             <div class="col-4">
                                                 <button class="add-wishlist" title="Add to Wishlist" onclick="addToWishList({{ $product->id }})">

@@ -132,10 +132,20 @@
                         @endif
 
                         @if(Auth::user()->user_type == 'admin' || in_array('3', json_decode(Auth::user()->staff->role->permissions)))
+                            @php
+                                $orders = DB::table('orders')
+                                            ->orderBy('code', 'desc')
+                                            ->join('order_details', 'orders.id', '=', 'order_details.order_id')
+                                            ->where('order_details.seller_id', Auth::user()->id)
+                                            ->where('orders.viewed', 0)
+                                            ->select('orders.id')
+                                            ->distinct()
+                                            ->count();
+                            @endphp
                         <li class="{{ areActiveRoutes(['orders.index.admin', 'orders.show'])}}">
                             <a class="nav-link" href="{{ route('orders.index.admin') }}">
                                 <i class="fa fa-shopping-basket"></i>
-                                <span class="menu-title">{{__('orders')}}</span>
+                                <span class="menu-title">{{__('orders')}} @if($orders > 0)<span class="pull-right badge badge-danger">{{ $orders }}</span>@endif</span>
                             </a>
                         </li>
                         @endif
@@ -160,7 +170,10 @@
                             <!--Submenu-->
                             <ul class="collapse">
                                 <li class="{{ areActiveRoutes(['sellers.index', 'sellers.create', 'sellers.edit'])}}">
-                                    <a class="nav-link" href="{{route('sellers.index')}}">{{__('seller_list')}}</a>
+                                    @php
+                                        $sellers = \App\Seller::where('verification_status', 0)->where('verification_info', '!=', null)->count();
+                                    @endphp
+                                    <a class="nav-link" href="{{route('sellers.index')}}">{{__('seller_list')}} @if($sellers > 0)<span class="pull-right badge badge-danger">{{ $sellers }}</span> @endif</a>
                                 </li>
                             </ul>
                         </li>

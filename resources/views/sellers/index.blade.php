@@ -36,11 +36,17 @@
                         <td>{{$seller->user->email}}</td>
                         <td>
                             @if ($seller->verification_status == 1)
-                                Verified
+                                <div class="label label-table label-success">
+                                    Verified
+                                </div>
                             @elseif ($seller->verification_info != null)
-                                Requested (<a href="{{ route('sellers.show_verification_request', $seller->id) }}">view</a>)
+                                <div class="label label-table label-info">
+                                    Requested (<a href="{{ route('sellers.show_verification_request', $seller->id) }}">view</a>)
+                                </div>
                             @else
-                                Not Verified
+                                <div class="label label-table label-danger">
+                                    Not Verified
+                                </div>
                             @endif
                         </td>
                         <td>

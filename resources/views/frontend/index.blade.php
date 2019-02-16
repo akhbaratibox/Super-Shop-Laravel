@@ -175,8 +175,41 @@
                             </div>
                         </div>
                     </div>
+                @else
+                    <div class="col-lg-2 d-none d-lg-block">
+                        <div class="flash-deal-box bg-white h-100">
+                            <div class="title text-center p-2 gry-bg">
+                                <h3 class="heading-6 mb-0">
+                                    {{ __('Todays Deal') }}
+                                    <span class="badge badge-danger">Hot</span>
+                                    <div class="countdown countdown--style-1 countdown--style-1-v1" data-countdown-date="{{ date('m/d/Y', strtotime(date('m/d/Y').'+1 day')) }}" data-countdown-label="show"></div>
+                                </h3>
+                            </div>
+                            <div class="flash-content c-scrollbar">
+                                @foreach (filter_products(\App\Product::where('published', 1)->where('todays_deal', '1'))->get() as $key => $product)
+                                    @if ($product != null)
+                                        <a href="{{ route('product', $product->slug) }}" class="d-block flash-deal-item">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col">
+                                                    <div class="img" style="background-image:url('{{ asset($product->flash_deal_img) }}')">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="price">
+                                                        <span class="d-block">{{ home_discounted_base_price($product->id) }}</span>
+                                                        @if(home_base_price($product->id) != home_discounted_base_price($product->id))
+                                                            <del class="d-block">{{ home_base_price($product->id) }}</del>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
                 @endif
-
             </div>
         </div>
     </section>

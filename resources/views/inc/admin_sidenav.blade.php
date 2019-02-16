@@ -209,9 +209,6 @@
                                 <li class="{{ areActiveRoutes(['newsletters.index'])}}">
                                     <a class="nav-link" href="{{route('newsletters.index')}}">{{__('newsletters')}}</a>
                                 </li>
-                                <li class="{{ areActiveRoutes(['messages.index'])}}">
-                                    <a class="nav-link" href="{{route('messages.index')}}">{{__('contact_messages')}}</a>
-                                </li>
                             </ul>
                         </li>
                         @endif

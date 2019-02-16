@@ -45,7 +45,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('/newsletter', 'NewsletterController@index')->name('newsletters.index');
 	Route::post('/newsletter/send', 'NewsletterController@send')->name('newsletters.send');
 
-	Route::resource('messages','ContactMessageController');
+	Route::resource('profile','ProfileController');
 
 	Route::post('/business-settings/update', 'BusinessSettingsController@update')->name('business_settings.update');
 	Route::post('/business-settings/update/activation', 'BusinessSettingsController@updateActivationSettings')->name('business_settings.update.activation');
@@ -120,6 +120,6 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::post('/logo','GeneralSettingController@storeLogo')->name('generalsettings.logo.store');
 
 	Route::resource('seosetting','SEOController');
-	
+
 	Route::post('/pay_to_seller', 'CommissionController@pay_to_seller')->name('commissions.pay_to_seller');
 });

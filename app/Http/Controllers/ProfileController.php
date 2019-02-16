@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\user;
+use Hash;
 
-class ContactMessageController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,7 @@ class ContactMessageController extends Controller
      */
     public function index()
     {
-        return view('contact_messages.index');
+        return view('partials.admin_profile');
     }
 
     /**
@@ -68,7 +70,19 @@ class ContactMessageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if($request->new_password != null && ($request->new_password == $request->confirm_password)){
+            $user->password = Hash::make($request->new_password);
+        }
+        if($user->save()){
+            flash(__('Your Profile has been updated successfully!'))->success();
+            return back();
+        }
+
+        flash(__('Sorry! Something went wrong.'))->error();
+        return back();
     }
 
     /**

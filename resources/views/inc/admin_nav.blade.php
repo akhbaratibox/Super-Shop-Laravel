@@ -43,7 +43,7 @@
 
 
 
-                <!--Search-->
+                {{-- <!--Search-->
                 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                 <li>
                     <div class="custom-search-form">
@@ -53,7 +53,7 @@
                     </div>
                 </li>
                 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                <!--End Search-->
+                <!--End Search--> --}}
 
             </ul>
             <ul class="nav navbar-top-links">

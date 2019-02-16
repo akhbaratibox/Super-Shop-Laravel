@@ -189,7 +189,7 @@
                             </li>
 
                             <li>
-                                <a href="">
+                                <a href="{{ route('payments.index') }}">
                                     <i class="la la-cc-mastercard"></i>
                                     <span>{{__('Payment History')}}</span>
                                 </a>
@@ -201,27 +201,56 @@
                         <div class="widget-balance py-3">
                             <div class="text-center">
                                 <div class="heading-4 strong-700 mb-4">
-                                    <small class="d-block text-sm alpha-5 mb-2">{{__('your earnings')}}</small>
-                                    <span class="p-2 bg-base-1 rounded">$526.51</span>
+                                    @php
+                                        $orderDetails = \App\OrderDetail::where('seller_id', Auth::user()->id)->where('created_at', '>=', date('-30d'))->get();
+                                        $total = 0;
+                                        foreach ($orderDetails as $key => $orderDetail) {
+                                            if($orderDetail->order->payment_status == 'paid'){
+                                                $total += $orderDetail->price;
+                                            }
+                                        }
+                                    @endphp
+                                    <small class="d-block text-sm alpha-5 mb-2">{{__('your earnings (current month)')}}</small>
+                                    <span class="p-2 bg-base-1 rounded">{{ single_price($total) }}</span>
                                 </div>
                                 <table class="text-left mb-0 table w-75 m-auto">
-                                    <tbody><tr>
-                                        <td class="p-1 text-sm">
-                                            {{__('Total earnings')}}:
-                                        </td>
-                                        <td class="p-1">
-                                            $1500.26
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-1 text-sm">
-                                            {{__('Last Month earnings')}}:
-                                        </td>
-                                        <td class="p-1">
-                                            $756.75
-                                        </td>
-                                    </tr>
-                                </tbody></table>
+                                    <tbody>
+                                        <tr>
+                                            @php
+                                                $orderDetails = \App\OrderDetail::where('seller_id', Auth::user()->id)->get();
+                                                $total = 0;
+                                                foreach ($orderDetails as $key => $orderDetail) {
+                                                    if($orderDetail->order->payment_status == 'paid'){
+                                                        $total += $orderDetail->price;
+                                                    }
+                                                }
+                                            @endphp
+                                            <td class="p-1 text-sm">
+                                                {{__('Total earnings')}}:
+                                            </td>
+                                            <td class="p-1">
+                                                {{ single_price($total) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            @php
+                                                $orderDetails = \App\OrderDetail::where('seller_id', Auth::user()->id)->where('created_at', '>=', date('-60d'))->where('created_at', '<=', date('-30d'))->get();
+                                                $total = 0;
+                                                foreach ($orderDetails as $key => $orderDetail) {
+                                                    if($orderDetail->order->payment_status == 'paid'){
+                                                        $total += $orderDetail->price;
+                                                    }
+                                                }
+                                            @endphp
+                                            <td class="p-1 text-sm">
+                                                {{__('Last Month earnings')}}:
+                                            </td>
+                                            <td class="p-1">
+                                                {{ single_price($total) }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     @endif

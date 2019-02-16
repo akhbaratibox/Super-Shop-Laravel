@@ -2,146 +2,160 @@
 
 @section('content')
 
-<!-- Basic Data Tables -->
-<!--===================================================-->
-<div class="panel">
-    <div class="panel-heading">
-        <h3 class="panel-title">{{__('Order Details')}}</h3>
+    <div class="panel">
+    	<div class="panel-body">
+    		<div class="invoice-masthead">
+    			<div class="invoice-text">
+    				<h3 class="h1 text-thin mar-no text-primary">{{ __('Order Details') }}</h3>
+    			</div>
+    		</div>
+    		<div class="invoice-bill row">
+    			<div class="col-sm-6 text-xs-center">
+    				<address>
+        				<strong class="text-main">{{ json_decode($order->shipping_address)->name }}</strong><br>
+                         {{ json_decode($order->shipping_address)->email }}<br>
+        				 {{ json_decode($order->shipping_address)->address }}, {{ json_decode($order->shipping_address)->city }}, {{ json_decode($order->shipping_address)->country }}
+                    </address>
+    			</div>
+    			<div class="col-sm-6 text-xs-center">
+    				<table class="invoice-details">
+    				<tbody>
+    				<tr>
+    					<td class="text-main text-bold">
+    						Order #
+    					</td>
+    					<td class="text-right text-info text-bold">
+    						{{ $order->code }}
+    					</td>
+    				</tr>
+    				<tr>
+    					<td class="text-main text-bold">
+    						Order Status
+    					</td>
+                        @php
+                            $status = $order->orderDetails->first()->delivery_status;
+                        @endphp
+    					<td class="text-right">
+                            @if($status == 'delivered')
+                                <span class="badge badge-success">{{ ucfirst(str_replace('_', ' ', $status)) }}</span>
+                            @else
+                                <span class="badge badge-info">{{ ucfirst(str_replace('_', ' ', $status)) }}</span>
+                            @endif
+    					</td>
+    				</tr>
+    				<tr>
+    					<td class="text-main text-bold">
+    						Order Date
+    					</td>
+    					<td class="text-right">
+    						{{ date('d-m-Y H:m A', $order->date) }}
+    					</td>
+    				</tr>
+                    <tr>
+    					<td class="text-main text-bold">
+    						Total amount
+    					</td>
+    					<td class="text-right">
+    						{{ single_price($order->orderDetails->sum('price') + $order->orderDetails->sum('tax')) }}
+    					</td>
+    				</tr>
+                    <tr>
+    					<td class="text-main text-bold">
+    						Payment method
+    					</td>
+    					<td class="text-right">
+    						{{ ucfirst(str_replace('_', ' ', $order->payment_type)) }}
+    					</td>
+    				</tr>
+    				</tbody>
+    				</table>
+    			</div>
+    		</div>
+    		<hr class="new-section-sm bord-no">
+    		<div class="row">
+    			<div class="col-lg-12 table-responsive">
+    				<table class="table table-bordered invoice-summary">
+        				<thead>
+            				<tr class="bg-trans-dark">
+                                <th class="min-col">#</th>
+            					<th class="text-uppercase">
+            						Description
+            					</th>
+            					<th class="min-col text-center text-uppercase">
+            						Qty
+            					</th>
+            					<th class="min-col text-center text-uppercase">
+            						Price
+            					</th>
+            					<th class="min-col text-right text-uppercase">
+            						Total
+            					</th>
+            				</tr>
+        				</thead>
+        				<tbody>
+                            @foreach ($order->orderDetails as $key => $orderDetail)
+                                <tr>
+                                    <td>{{ $key+1 }}</td>
+                					<td>
+                						<strong><a href="{{ route('product', $orderDetail->product->slug) }}" target="_blank">{{ $orderDetail->product->name }}</a></strong>
+                						<small>{{ $orderDetail->variation }}</small>
+                					</td>
+                					<td class="text-center">
+                						{{ $orderDetail->quantity }}
+                					</td>
+                					<td class="text-center">
+                						{{ single_price($orderDetail->price/$orderDetail->quantity) }}
+                					</td>
+                                    <td class="text-center">
+                						{{ single_price($orderDetail->price) }}
+                					</td>
+                				</tr>
+                            @endforeach
+        				</tbody>
+    				</table>
+    			</div>
+    		</div>
+    		<div class="clearfix">
+    			<table class="table invoice-total">
+    			<tbody>
+    			<tr>
+    				<td>
+    					<strong>Sub Total :</strong>
+    				</td>
+    				<td>
+    					{{ single_price($order->orderDetails->sum('price')) }}
+    				</td>
+    			</tr>
+    			<tr>
+    				<td>
+    					<strong>TAX :</strong>
+    				</td>
+    				<td>
+    					{{ single_price($order->orderDetails->sum('tax')) }}
+    				</td>
+    			</tr>
+                <tr>
+    				<td>
+    					<strong>Shipping :</strong>
+    				</td>
+    				<td>
+    					{{ single_price($order->orderDetails->sum('shipping_cost')) }}
+    				</td>
+    			</tr>
+    			<tr>
+    				<td>
+    					<strong>TOTAL :</strong>
+    				</td>
+    				<td class="text-bold h4">
+    					{{ single_price($order->grand_total) }}
+    				</td>
+    			</tr>
+    			</tbody>
+    			</table>
+    		</div>
+    		<div class="text-right no-print">
+    			<a href="{{ route('customer.invoice.download', $order->id) }}" class="btn btn-default"><i class="demo-pli-printer icon-lg"></i></a>
+    		</div>
+    	</div>
     </div>
-    @php
-        $status = $order->orderDetails->first()->delivery_status;
-    @endphp
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-lg-6">
-                <table class="details-table table">
-                    <tr>
-                        <td class="w-50 strong-600">Order ID:</td>
-                        <td>{{ $order->code }}</td>
-                    </tr>
-                    <tr>
-                        <td class="w-50 strong-600">Customer:</td>
-                        <td>{{ json_decode($order->shipping_address)->name }}</td>
-                    </tr>
-                    <tr>
-                        <td class="w-50 strong-600">Email:</td>
-                        @if ($order->user_id != null)
-                            <td>{{ $order->user->email }}</td>
-                        @endif
-                    </tr>
-                    <tr>
-                        <td class="w-50 strong-600">Shipping address:</td>
-                        <td>{{ json_decode($order->shipping_address)->address }}, {{ json_decode($order->shipping_address)->city }}, {{ json_decode($order->shipping_address)->country }}</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-lg-6">
-                <table class="details-table table">
-                    <tr>
-                        <td class="w-50 strong-600">Order date:</td>
-                        <td>{{ date('d-m-Y H:m A', $order->date) }}</td>
-                    </tr>
-                    <tr>
-                        <td class="w-50 strong-600">Order status:</td>
-                        <td>{{ ucfirst(str_replace('_', ' ', $status)) }}</td>
-                    </tr>
-                    <tr>
-                        <td class="w-50 strong-600">Total order amount:</td>
-                        <td>{{ single_price($order->orderDetails->sum('price') + $order->orderDetails->sum('tax')) }}</td>
-                    </tr>
-                    {{-- <tr>
-                        <td class="w-50 strong-600">Shipping method:</td>
-                        <td>Flat shipping rate</td>
-                    </tr> --}}
-                    <tr>
-                        <td class="w-50 strong-600">Payment method:</td>
-                        <td>{{ $order->payment_type }}</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-9">
-                <div class="card mt-4">
-                    <div class="card-header py-2 px-3 heading-6 strong-600">Order Details</div>
-                    <div class="card-body pb-0">
-                        <table class="details-table table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th width="40%">Product</th>
-                                    <th>Variation</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($order->orderDetails as $key => $orderDetail)
-                                    <tr>
-                                        <td>{{ $key+1 }}</td>
-                                        <td><a href="{{ route('product', $orderDetail->product->slug) }}" target="_blank">{{ $orderDetail->product->name }}</a></td>
-                                        <td>
-                                            {{ $orderDetail->variation }}
-                                        </td>
-                                        <td>
-                                            {{ $orderDetail->quantity }}
-                                        </td>
-                                        <td>{{ $orderDetail->price }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card mt-4">
-                    <div class="card-header py-2 px-3 heading-6 strong-600">Order Ammount</div>
-                    <div class="card-body pb-0">
-                        <table class="table details-table">
-                            <tbody>
-                                <tr>
-                                    <th>Subtotal</th>
-                                    <td class="text-right">
-                                        <span class="strong-600">{{ single_price($order->orderDetails->sum('price')) }}</span>
-                                    </td>
-                                </tr>
-                                {{-- <tr>
-                                    <th>Shipping</th>
-                                    <td class="text-right">
-                                        <span class="text-italic">0.00$</span>
-                                    </td>
-                                </tr> --}}
-                                <tr>
-                                    <th>Tax</th>
-                                    <td class="text-right">
-                                        <span class="text-italic">{{ single_price($order->orderDetails->sum('tax')) }}</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th><span class="strong-600">Total</span></th>
-                                    <td class="text-right">
-                                        <strong><span>{{ single_price($order->grand_total) }}</span></strong>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
-
-@section('script')
-    <script type="text/javascript">
-        $('#order_status').on('change', function(){
-            var order_id = {{ $order->id }};
-            var status = $('#order_status').val();
-            $.post('{{ route('orders.update_status') }}', {_token:'{{ @csrf_token() }}',order_id:order_id,status:status}, function(data){
-                $('#order_details').modal('hide');
-                showAlert('success', 'Order status has been updated');
-            });
-        });
-    </script>
 @endsection

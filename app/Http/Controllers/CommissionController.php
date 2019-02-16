@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\PaypalController;
 use App\Seller;
 use App\Payment;
+use Session;
 
 class CommissionController extends Controller
 {

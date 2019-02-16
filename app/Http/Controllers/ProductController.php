@@ -279,6 +279,8 @@ class ProductController extends Controller
             ImageOptimizer::optimize(base_path('public/').$product->meta_img);
         }
 
+        $product->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->name)).'-'.str_random(5);
+
         if($request->has('colors_active') && $request->has('colors') && count($request->colors) > 0){
             $product->colors = json_encode($request->colors);
         }

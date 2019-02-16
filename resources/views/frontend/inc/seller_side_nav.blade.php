@@ -62,7 +62,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('seller.products') }}" class="{{ areActiveRoutesHome([])}}">
+                    <a href="{{ route('payments.index') }}" class="{{ areActiveRoutesHome(['payments.index'])}}">
                         <i class="la la-cc-mastercard"></i>
                         <span class="category-name">
                             {{__('Payment History')}}

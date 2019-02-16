@@ -47,7 +47,7 @@ class CheckoutController extends Controller
                 foreach ($order->orderDetails as $key => $orderDetail) {
                     if($orderDetail->product->user->user_type == 'seller'){
                         $seller = $orderDetail->product->user->seller;
-                        $seller->pay_to_admin = $seller->pay_to_admin + ($orderDetail->price*$commission_percentage)/100;
+                        $seller->admin_to_pay = $seller->admin_to_pay - ($orderDetail->price*$commission_percentage)/100;
                         $seller->save();
                     }
                 }

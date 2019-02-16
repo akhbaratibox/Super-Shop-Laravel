@@ -38,6 +38,6 @@ class NewsletterController extends Controller
     	}
 
     	flash(__('Newsletter has been send'))->success();
-    	return redirect()->route('home');
+    	return redirect()->route('admin.dashboard');
     }
 }

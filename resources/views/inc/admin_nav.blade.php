@@ -123,7 +123,7 @@
                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right panel-default">
                         <ul class="head-list">
                             <li>
-                                <a href="#"><i class="demo-pli-male icon-lg icon-fw"></i> {{__('profile')}}</a>
+                                <a href="{{ route('profile.index') }}"><i class="demo-pli-male icon-lg icon-fw"></i> {{__('profile')}}</a>
                             </li>
                             <li>
                                 <a href="{{ route('logout')}}"><i class="demo-pli-unlock icon-lg icon-fw"></i> {{__('logout')}}</a>

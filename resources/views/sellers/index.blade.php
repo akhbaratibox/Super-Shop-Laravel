@@ -52,11 +52,8 @@
                             @endif
                         </td>
                         <td>
-                            @php
-                                $amount = $seller->admin_to_pay - $seller->pay_to_admin;
-                            @endphp
-                            @if ($amount > 0)
-                                {{ single_price($amount) }}
+                            @if ($seller->admin_to_pay > 0)
+                                {{ single_price($seller->admin_to_pay) }}
                             @else
                                 {{ single_price(0) }}
                             @endif

@@ -38,7 +38,7 @@
 <link type="text/css" href="{{ asset('frontend/css/jquery.share.css') }}" rel="stylesheet">
 
 <!-- Global style (main) -->
-<link type="text/css" href="{{ asset('frontend/css/boomerang.css') }}" rel="stylesheet" media="screen">
+<link type="text/css" href="{{ asset('frontend/css/active-shop.css') }}" rel="stylesheet" media="screen">
 
 <!--Spectrum Stylesheet [ REQUIRED ]-->
 <link href="{{ asset('css/spectrum.css')}}" rel="stylesheet">
@@ -457,7 +457,7 @@
 <script src="{{ asset('frontend/js/xzoom.min.js') }}"></script>
 
 <!-- App JS -->
-<script src="{{ asset('frontend/js/boomerang.js') }}"></script>
+<script src="{{ asset('frontend/js/active-shop.js') }}"></script>
 <script src="{{ asset('frontend/js/main.js') }}"></script>
 
 @yield('script')

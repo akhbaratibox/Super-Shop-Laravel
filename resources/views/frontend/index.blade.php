@@ -182,10 +182,9 @@
                                 <h3 class="heading-6 mb-0">
                                     {{ __('Todays Deal') }}
                                     <span class="badge badge-danger">Hot</span>
-                                    <div class="countdown countdown--style-1 countdown--style-1-v1" data-countdown-date="{{ date('m/d/Y', strtotime(date('m/d/Y').'+1 day')) }}" data-countdown-label="show"></div>
                                 </h3>
                             </div>
-                            <div class="flash-content c-scrollbar">
+                            <div class="flash-content c-scrollbar c-height">
                                 @foreach (filter_products(\App\Product::where('published', 1)->where('todays_deal', '1'))->get() as $key => $product)
                                     @if ($product != null)
                                         <a href="{{ route('product', $product->slug) }}" class="d-block flash-deal-item">

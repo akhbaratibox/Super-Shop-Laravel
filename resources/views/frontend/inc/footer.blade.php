@@ -170,7 +170,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <ul class="social-media social-media--style-1-v4 text-center my-3 my-md-0">
+                    <ul class="text-center my-3 my-md-0 social-nav model-2">
                         @if ($generalsetting->facebook != null)
                             <li>
                                 <a href="{{ $generalsetting->facebook }}" class="facebook" target="_blank" data-toggle="tooltip" data-original-title="Facebook">

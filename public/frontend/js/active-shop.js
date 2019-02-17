@@ -1,10 +1,3 @@
-/*
-Theme Name: Boomerang - Multipurpose Template
-Theme URI: https://wrapbootstrap.com/theme/tribus-multipurpose-template-WB0367H15
-Author: Webpixels
-Author URI: http://www.webpixels.io
-License URI: http://wrapbootstrap.com
-*/
 
 
 

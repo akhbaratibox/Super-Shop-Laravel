@@ -72,7 +72,11 @@ class LanguageController extends Controller
     public function key_value_store(Request $request)
     {
         $language = Language::findOrFail($request->id);
-        saveJSONFile($language->code, $request->key);
+        $data = openJSONFile($language->code);
+        foreach ($request->key as $key => $key) {
+            $data[$key] = $request->key[$key];
+        }
+        saveJSONFile($language->code, $data);
         flash(__('Key-Value updated  for ').$language->name)->success();
         return back();
     }

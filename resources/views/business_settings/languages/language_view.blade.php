@@ -11,7 +11,7 @@
                 @csrf
                 <input type="hidden" name="id" value="{{ $language->id }}">
                 <div class="panel-body">
-                    <table class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -41,7 +41,6 @@
                             @endforeach
                         </tbody>
                     </table>
-
                 </div>
                 <div class="panel-footer text-right">
     				<button type="submit" class="btn btn-purple">{{ __('save') }}</button>

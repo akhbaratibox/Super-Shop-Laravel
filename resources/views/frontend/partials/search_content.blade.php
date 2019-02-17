@@ -63,3 +63,39 @@
         </ul>
     @endif
 </div>
+@if(BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)
+    <div class="product">
+        @if (count($shops) > 0)
+            <div class="title">{{__('Shops')}}</div>
+            <ul>
+                @foreach ($shops as $key => $shop)
+                    <li>
+                        <a href="{{ route('shop.visit', $shop->slug) }}">
+                            <div class="d-flex search-product align-items-center">
+                                <div class="image" style="background-image:url('{{ asset($shop->logo) }}');">
+                                </div>
+                                <div class="w-100">
+                                    <div class="product-name">
+                                        {{ $shop->name }}
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="price-box float-left">
+                                            <span class="product-price strong-600">{{ $shop->address }}</span>
+                                        </div>
+                                        <div class="stock-box float-right">
+                                            @if($shop->user->seller->verification_status == 1)
+                                                <span class="ml-2"><i class="fa fa-check-circle" style="color:green"></i></span>
+                                            @else
+                                                <span class="ml-2"><i class="fa fa-times-circle" style="color:red"></i></span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        @endif
+    </div>
+@endif

@@ -33,6 +33,7 @@ class LanguageController extends Controller
         $language->name = $request->name;
         $language->code = $request->code;
         if($language->save()){
+            saveJSONFile($language->code, openJSONFile('en'));
             flash(__('Language has been inserted successfully'))->success();
             return redirect()->route('languages.index');
         }

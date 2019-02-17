@@ -1,17 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\BusinessSetting;
-
-define("SSLCZ_STORE_ID", env('SSLCZ_STORE_ID'));
-define("SSLCZ_STORE_PASSWD", env('SSLCZ_STORE_PASSWD'));
-
-# IF SANDBOX TRUE, THEN IT WILL CONNECT WITH SSLCOMMERZ SANDBOX (TEST) SYSTEM
-if(BusinessSetting::where('type', 'sslcommerz_sandbox')->first()->value == 1){
-    define("SSLCZ_IS_SANDBOX", true);
-}
-else{
-    define("SSLCZ_IS_SANDBOX", false);
-}
+use Session;
 
 # IF BROWSE FROM LOCAL HOST, KEEP true
 define("SSLCZ_IS_LOCAL_HOST", true);
@@ -28,9 +18,27 @@ class SSLCommerz
 
     public function __construct()
     {
-        $this->setSSLCommerzMode((SSLCZ_IS_SANDBOX) ? 1 : 0);
-        $this->store_id = SSLCZ_STORE_ID;
-        $this->store_pass = SSLCZ_STORE_PASSWD;
+        if(Session::has('payment_type')){
+            if(Session::get('payment_type') == 'cart_payment'){
+                # IF SANDBOX TRUE, THEN IT WILL CONNECT WITH SSLCOMMERZ SANDBOX (TEST) SYSTEM
+                if(BusinessSetting::where('type', 'sslcommerz_sandbox')->first()->value == 1){
+                    define("SSLCZ_IS_SANDBOX", true);
+                }
+                else{
+                    define("SSLCZ_IS_SANDBOX", false);
+                }
+
+                $this->setSSLCommerzMode((true) ? 1 : 0);
+                $this->store_id = env('SSLCZ_STORE_ID');
+                $this->store_pass = env('SSLCZ_STORE_PASSWD');
+            }
+            elseif (Session::get('payment_type') == 'seller_payment') {
+                $seller = Seller::findOrFail(Session::get('payment_details')['seller_id']);
+                $this->setSSLCommerzMode((SSLCZ_IS_SANDBOX) ? 1 : 0);
+                $this->store_id = $seller->ssl_store_id;
+                $this->store_pass = $seller->ssl_password;
+            }
+        }
         $this->sslc_submit_url = "https://" . $this->sslc_mode . ".sslcommerz.com/gwprocess/v3/api.php";
         $this->sslc_validation_url = "https://" . $this->sslc_mode . ".sslcommerz.com/validator/api/validationserverAPI.php";
     }

@@ -100,10 +100,10 @@ class PaypalController extends Controller
     	$payer_id = $request->get('PayerID');
 
         $payment = '';
-    	// $payment = PayPal::getById($payment_id, $this->_apiContext);
-    	// $paymentExecution = PayPal::PaymentExecution();
-    	// $paymentExecution->setPayerId($payer_id);
-    	// $executePayment = $payment->execute($paymentExecution, $this->_apiContext);
+    	$payment = PayPal::getById($payment_id, $this->_apiContext);
+    	$paymentExecution = PayPal::PaymentExecution();
+    	$paymentExecution->setPayerId($payer_id);
+    	$executePayment = $payment->execute($paymentExecution, $this->_apiContext);
 
         if($request->session()->has('payment_type')){
             if($request->session()->get('payment_type') == 'cart_payment'){

@@ -42,7 +42,9 @@
                                         <ul class="dropdown-menu dropdown-menu-right">
                                             <li><a href="{{route('languages.show', $language->id)}}">Translation</a></li>
                                             <li><a href="{{route('languages.edit', $language->id)}}">Edit</a></li>
-                                            <li><a onclick="confirm_modal('{{route('languages.destroy', $language->id)}}');">Delete</a></li>
+                                            @if($language->code != 'en')
+                                                <li><a onclick="confirm_modal('{{route('languages.destroy', $language->id)}}');">Delete</a></li>
+                                            @endif
                                         </ul>
                                     </div>
                                 </td>

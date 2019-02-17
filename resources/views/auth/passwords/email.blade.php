@@ -5,7 +5,7 @@
 <div class="cls-content-sm panel">
     <div class="panel-body">
         <h1 class="h3">{{ __('Reset Password') }}</h1>
-        <p class="pad-btm">Enter your email address to recover your password. </p>
+        <p class="pad-btm">{{__('Enter your email address to recover your password.')}} </p>
         <form method="POST" action="{{ route('password.email') }}">
             @csrf
             <div class="form-group">
@@ -24,7 +24,7 @@
             </div>
         </form>
         <div class="pad-top">
-            <a href="{{route('user.login')}}" class="btn-link text-bold text-main">Back to Login</a>
+            <a href="{{route('user.login')}}" class="btn-link text-bold text-main">{{__('Back to Login')}}</a>
         </div>
     </div>
 </div>

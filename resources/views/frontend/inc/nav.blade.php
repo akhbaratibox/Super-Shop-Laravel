@@ -57,11 +57,11 @@
                             <a href="{{ route('dashboard') }}" class="top-bar-item">{{__('My Profile')}}</a>
                         </li>
                         <li>
-                            <a href="{{ route('logout') }}" class="top-bar-item">{{__('logout')}}</a>
+                            <a href="{{ route('logout') }}" class="top-bar-item">{{__('Logout')}}</a>
                         </li>
                         @else
                         <li>
-                            <a href="{{ route('user.login') }}" class="top-bar-item">{{__('login')}}</a>
+                            <a href="{{ route('user.login') }}" class="top-bar-item">{{__('Login')}}</a>
                         </li>
                         <li>
                             <a href="{{ route('user.registration') }}" class="top-bar-item">{{__('Registration')}}</a>
@@ -114,7 +114,7 @@
                         <li>
                             <a href="{{ route('dashboard') }}">
                                 <i class="la la-dashboard"></i>
-                                <span>{{__('dashboard')}}</span>
+                                <span>{{__('Dashboard')}}</span>
                             </a>
                         </li>
 
@@ -170,14 +170,14 @@
                             <li>
                                 <a href="{{ route('seller.products') }}">
                                     <i class="la la-diamond"></i>
-                                    <span>{{__('products')}}</span>
+                                    <span>{{__('Products')}}</span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="{{ route('orders.index') }}">
                                     <i class="la la-file-text"></i>
-                                    <span>{{__('orders')}}</span>
+                                    <span>{{__('Orders')}}</span>
                                 </a>
                             </li>
 
@@ -210,7 +210,7 @@
                                             }
                                         }
                                     @endphp
-                                    <small class="d-block text-sm alpha-5 mb-2">{{__('your earnings (current month)')}}</small>
+                                    <small class="d-block text-sm alpha-5 mb-2">{{__('Your earnings (current month)')}}</small>
                                     <span class="p-2 bg-base-1 rounded">{{ single_price($total) }}</span>
                                 </div>
                                 <table class="text-left mb-0 table w-75 m-auto">

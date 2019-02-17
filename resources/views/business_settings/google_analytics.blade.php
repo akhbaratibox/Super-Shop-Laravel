@@ -26,7 +26,7 @@
                         <div class="form-group">
                             <input type="hidden" name="types[]" value="TRACKING_ID">
                             <div class="col-lg-3">
-                                <label class="control-label">{{__(' Tracking ID')}}</label>
+                                <label class="control-label">{{__('Tracking ID')}}</label>
                             </div>
                             <div class="col-lg-6">
                                 <input type="text" class="form-control" name="TRACKING_ID" value="{{  env('TRACKING_ID') }}" placeholder="Tracking ID" required>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-lg-12 text-right">
-                                <button class="btn btn-purple" type="submit">{{__('save')}}</button>
+                                <button class="btn btn-purple" type="submit">{{__('Save')}}</button>
                             </div>
                         </div>
                     </form>

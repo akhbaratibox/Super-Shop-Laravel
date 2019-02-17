@@ -17,7 +17,7 @@
                     <a href="{{ route('dashboard') }}" class="{{ areActiveRoutesHome(['dashboard'])}}">
                         <i class="la la-dashboard"></i>
                         <span class="category-name">
-                            {{__('dashboard')}}
+                            {{__('Dashboard')}}
                         </span>
                     </a>
                 </li>
@@ -41,7 +41,7 @@
                     <a href="{{ route('seller.products') }}" class="{{ areActiveRoutesHome(['seller.products', 'seller.products.upload', 'seller.products.edit'])}}">
                         <i class="la la-diamond"></i>
                         <span class="category-name">
-                            {{__('products')}}
+                            {{__('Products')}}
                         </span>
                     </a>
                 </li>
@@ -49,7 +49,7 @@
                     <a href="{{ route('orders.index') }}" class="{{ areActiveRoutesHome(['orders.index'])}}">
                         <i class="la la-file-text"></i>
                         <span class="category-name">
-                            {{__('orders')}}
+                            {{__('Orders')}}
                         </span>
                     </a>
                 </li>
@@ -95,7 +95,7 @@
                             }
                         }
                     @endphp
-                    <small class="d-block text-sm alpha-5 mb-2">{{__('your earnings (current month)')}}</small>
+                    <small class="d-block text-sm alpha-5 mb-2">{{__('Your earnings (current month)')}}</small>
                     <span class="p-2 bg-base-1 rounded">{{ single_price($total) }}</span>
                 </div>
                 <table class="text-left mb-0 table w-75 m-auto">

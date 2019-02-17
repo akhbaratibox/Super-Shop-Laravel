@@ -13,7 +13,7 @@
                     <a href="{{ route('dashboard') }}" class="{{ areActiveRoutesHome(['dashboard'])}}">
                         <i class="la la-dashboard"></i>
                         <span class="category-name">
-                            {{__('dashboard')}}
+                            {{__('Dashboard')}}
                         </span>
                     </a>
                 </li>

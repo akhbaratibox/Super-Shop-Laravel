@@ -16,15 +16,15 @@
                             <div class="row align-items-center">
                                 <div class="col-md-6">
                                     <h2 class="heading heading-6 text-capitalize strong-600 mb-0">
-                                        {{__('orders')}}
+                                        {{__('Orders')}}
                                     </h2>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="float-md-right">
                                         <ul class="breadcrumb">
                                             <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
-                                            <li><a href="{{ route('dashboard') }}">{{__('dashboard')}}</a></li>
-                                            <li class="active"><a href="{{ route('orders.index') }}">{{__('orders')}}</a></li>
+                                            <li><a href="{{ route('dashboard') }}">{{__('Dashboard')}}</a></li>
+                                            <li class="active"><a href="{{ route('orders.index') }}">{{__('Orders')}}</a></li>
                                         </ul>
                                     </div>
                                 </div>

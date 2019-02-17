@@ -3,11 +3,11 @@
 @section('content')
 
 <div class="row">
-    <h3 class="text-center">{{__('business_related')}}</h3>
+    <h3 class="text-center">{{__('Business Related')}}</h3>
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">{{__('vendor_system_activation')}}</h3>
+                <h3 class="panel-title text-center">{{__('Vendor System Activation')}}</h3>
             </div>
             <div class="panel-body text-center">
                 <label class="switch">
@@ -20,11 +20,11 @@
 </div>
 
 <div class="row">
-    <h3 class="text-center">{{__('payment_related')}}</h3>
+    <h3 class="text-center">{{__('Payment Related')}}</h3>
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">{{__('paypal_payment_activation')}}</h3>
+                <h3 class="panel-title text-center">{{__('Paypal Payment Activation')}}</h3>
             </div>
             <div class="panel-body text-center">
                 <label class="switch">
@@ -37,7 +37,7 @@
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">{{__('stripe_payment_activation')}}</h3>
+                <h3 class="panel-title text-center">{{__('Stripe Payment Activation')}}</h3>
             </div>
             <div class="panel-body text-center">
                 <label class="switch">
@@ -50,7 +50,7 @@
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">{{__('cash_payment_activation')}}</h3>
+                <h3 class="panel-title text-center">{{__('Cash Payment Activation')}}</h3>
             </div>
             <div class="panel-body text-center">
                 <label class="switch">
@@ -76,7 +76,7 @@
 </div>
 
 <div class="row">
-    <h3 class="text-center">{{__('social_media_login')}}</h3>
+    <h3 class="text-center">{{__('Social Media Login')}}</h3>
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-heading">

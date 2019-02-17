@@ -20,15 +20,15 @@
                             <div class="row align-items-center">
                                 <div class="col-md-6 col-12">
                                     <h2 class="heading heading-6 text-capitalize strong-600 mb-0">
-                                        Manage Profile
+                                        {{__('Manage Profile')}}
                                     </h2>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="float-md-right">
                                         <ul class="breadcrumb">
-                                            <li><a href="{{ route('home') }}">Home</a></li>
-                                            <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                            <li class="active"><a href="{{ route('profile') }}">Manage Profile</a></li>
+                                            <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
+                                            <li><a href="{{ route('dashboard') }}">{{__('Dashboard')}}</a></li>
+                                            <li class="active"><a href="{{ route('profile') }}">{{__('Manage Profile')}}</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -38,28 +38,28 @@
                             @csrf
                             <div class="form-box bg-white mt-4">
                                 <div class="form-box-title px-3 py-2">
-                                    Basic info
+                                    {{__('Basic info')}}
                                 </div>
                                 <div class="form-box-content p-3">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>Your Name</label>
+                                            <label>{{__('Your Name')}}</label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control mb-3" placeholder="Your name" name="name" value="{{ Auth::user()->name }}">
+                                            <input type="text" class="form-control mb-3" placeholder="{{__('Your Name')}}" name="name" value="{{ Auth::user()->name }}">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>Your Email</label>
+                                            <label>{{__('Your Email')}}</label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="email" class="form-control mb-3" placeholder="Your Email" name="email" value="{{ Auth::user()->email }}" disabled>
+                                            <input type="email" class="form-control mb-3" placeholder="{{__('Your Email')}}" name="email" value="{{ Auth::user()->email }}" disabled>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>Photo</label>
+                                            <label>{{__('Photo')}}</label>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="photo" id="file-3" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
@@ -67,37 +67,37 @@
                                                 <span></span>
                                                 <strong>
                                                     <i class="fa fa-upload"></i>
-                                                    Choose image
+                                                    {{__('Choose image')}}
                                                 </strong>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>Your Password</label>
+                                            <label>{{__('Your Password')}}</label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="password" class="form-control mb-3" placeholder="New Password" name="new_password">
+                                            <input type="password" class="form-control mb-3" placeholder="{{__('New Password')}}" name="new_password">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>Confirm Password</label>
+                                            <label>{{__('Confirm Password')}}</label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="password" class="form-control mb-3" placeholder="Confirm Password" name="confirm_password">
+                                            <input type="password" class="form-control mb-3" placeholder="{{__('Confirm Password')}}" name="confirm_password">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-box bg-white mt-4">
                                 <div class="form-box-title px-3 py-2">
-                                    Shipping info
+                                    {{__('Shipping info')}}
                                 </div>
                                 <div class="form-box-content p-3">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>Address</label>
+                                            <label>{{__('Address')}}</label>
                                         </div>
                                         <div class="col-md-10">
                                             <textarea class="form-control textarea-autogrow mb-3" placeholder="Your Address" rows="1" name="address">{{ Auth::user()->address }}</textarea>
@@ -105,7 +105,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>Country</label>
+                                            <label>{{__('Country')}}</label>
                                         </div>
                                         <div class="col-md-10">
                                             <div class="mb-3">
@@ -119,7 +119,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>City</label>
+                                            <label>{{__('City')}}</label>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="text" class="form-control mb-3" placeholder="Your City" name="city" value="{{ Auth::user()->city }}">
@@ -127,7 +127,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>Postal Code</label>
+                                            <label>{{__('Postal Code')}}</label>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="text" class="form-control mb-3" placeholder="Your Postal Code" name="postal_code" value="{{ Auth::user()->postal_code }}">
@@ -135,7 +135,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>Phone</label>
+                                            <label>{{__('Phone')}}</label>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="text" class="form-control mb-3" placeholder="Your Phone Number" name="phone" value="{{ Auth::user()->phone }}">
@@ -145,7 +145,7 @@
                             </div>
 
                             <div class="text-right mt-4">
-                                <button type="submit" class="btn btn-styled btn-base-1">Update Profile</button>
+                                <button type="submit" class="btn btn-styled btn-base-1">{{__('Update Profile')}}</button>
                             </div>
                         </form>
                     </div>

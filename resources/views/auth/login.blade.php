@@ -47,7 +47,7 @@
             <br>
             <br>
             <div class="mar-ver pad-btm pad-lft">
-                <h1 class="h3">Admin Login</h1>
+                <h1 class="h3">{{__('Admin Login')}}</h1>
             </div>
             <form class="pad-hor" method="POST" role="form" action="{{ route('login') }}">
                 @csrf
@@ -78,7 +78,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="checkbox pad-btm text-right">
-                            <a href="{{ route('password.request') }}" class="btn-link">Forgot password ?</a>
+                            <a href="{{ route('password.request') }}" class="btn-link">{{__('Forgot password')}} ?</a>
                         </div>
                     </div>
                 </div>

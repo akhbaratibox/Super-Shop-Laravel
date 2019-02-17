@@ -23,7 +23,7 @@
                                     <div class="float-md-right">
                                         <ul class="breadcrumb">
                                             <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
-                                            <li><a href="{{ route('dashboard') }}">{{__('dashboard')}}</a></li>
+                                            <li><a href="{{ route('dashboard') }}">{{__('Dashboard')}}</a></li>
                                             <li class="active"><a href="{{ route('payments.index') }}">{{__('Payment History')}}</a></li>
                                         </ul>
                                     </div>

@@ -20,9 +20,9 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{__('name')}}</th>
-                            <th>{{__('code')}}</th>
-                            <th width="10%">{{__('options')}}</th>
+                            <th>{{__('Name')}}</th>
+                            <th>{{__('Code')}}</th>
+                            <th width="10%">{{__('Options')}}</th>
                         </tr>
                     </thead>
                     <tbody>

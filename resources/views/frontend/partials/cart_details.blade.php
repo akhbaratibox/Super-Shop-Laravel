@@ -9,7 +9,7 @@
                             <thead>
                                 <tr>
                                     <th class="product-image"></th>
-                                    <th class="product-name">{{__('product')}}</th>
+                                    <th class="product-name">{{__('Product')}}</th>
                                     <th class="product-price d-none d-lg-table-cell">{{__('Price')}}</th>
                                     <th class="product-quanity d-none d-md-table-cell">{{__('Quantity')}}</th>
                                     <th class="product-total">{{__('Total')}}</th>

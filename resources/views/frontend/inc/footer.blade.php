@@ -61,10 +61,10 @@
                             <form class="form-inline" method="POST" action="{{ route('subscribers.store') }}">
                                 @csrf
                                 <div class="form-group mb-0">
-                                    <input type="email" class="form-control" placeholder="Your Email Address" name="email" required>
+                                    <input type="email" class="form-control" placeholder="{{__('Your Email Address')}}" name="email" required>
                                 </div>
                                 <button type="submit" class="btn btn-base-1 btn-icon-left">
-                                    Subscribe
+                                    {{__('Subscribe')}}
                                 </button>
                             </form>
                         </div>
@@ -77,15 +77,15 @@
                         </h4>
                         <ul class="footer-links contact-widget">
                             <li>
-                               <span class="d-block opacity-5">Address:</span>
+                               <span class="d-block opacity-5">{{__('Address')}}:</span>
                                <span class="d-block">{{ $generalsetting->address }}</span>
                             </li>
                             <li>
-                               <span class="d-block opacity-5">Phone:</span>
+                               <span class="d-block opacity-5">{{__('Phone')}}:</span>
                                <span class="d-block">{{ $generalsetting->phone }}</span>
                             </li>
                             <li>
-                               <span class="d-block opacity-5">Email:</span>
+                               <span class="d-block opacity-5">{{__('Email')}}:</span>
                                <span class="d-block">
                                    <a href="mailto:{{ $generalsetting->email }}">{{ $generalsetting->email  }}</a>
                                 </span>
@@ -96,7 +96,7 @@
                 <div class="col-lg-2 col-md-4">
                     <div class="col text-center text-md-left">
                         <h4 class="heading heading-xs strong-600 text-uppercase mb-2">
-                            Useful Link
+                            {{__('Useful Link')}}
                         </h4>
                         <ul class="footer-links">
                             @foreach (\App\Link::all() as $key => $link)
@@ -113,23 +113,23 @@
                 <div class="col-md-4 col-lg-2">
                     <div class="col text-center text-md-left">
                        <h4 class="heading heading-xs strong-600 text-uppercase mb-2">
-                          My Account
+                          {{__('My Account')}}
                        </h4>
 
                        <ul class="footer-links">
                             <li>
                                 <a href="{{ route('user.login') }}" title="Home">
-                                    Login
+                                    {{__('Login')}}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('purchase_history.index') }}" title="About us">
-                                    Order History
+                                    {{__('Order History')}}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('wishlists.index') }}" title="Services">
-                                    My Wishlist
+                                    {{__('My Wishlist')}}
                                 </a>
                             </li>
                         </ul>
@@ -138,10 +138,10 @@
                         <div class="col text-center text-md-left">
                             <div class="mt-4">
                                 <h4 class="heading heading-xs strong-600 text-uppercase mb-2">
-                                    Be a Seller
+                                    {{__('Be a Seller')}}
                                 </h4>
                                 <a href="{{ route('shops.create') }}" class="btn btn-base-1 btn-icon-left">
-                                    Apply Now
+                                    {{__('Apply Now')}}
                                 </a>
                             </div>
                         </div>
@@ -161,10 +161,10 @@
                                 © {{ date('Y') }} {{ $generalsetting->site_name }}
                             </li>
                             <li>
-                                <a href="{{ route('terms') }}">Terms</a>
+                                <a href="{{ route('terms') }}">{{__('Terms')}}</a>
                             </li>
                             <li>
-                                <a href="{{ route('privacypolicy') }}">Privacy policy</a>
+                                <a href="{{ route('privacypolicy') }}">{{__('Privacy policy')}}</a>
                             </li>
                         </ul>
                     </div>

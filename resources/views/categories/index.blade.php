@@ -14,18 +14,18 @@
 <!--===================================================-->
 <div class="panel">
     <div class="panel-heading">
-        <h3 class="panel-title">{{__('categories')}}</h3>
+        <h3 class="panel-title">{{__('Categories')}}</h3>
     </div>
     <div class="panel-body">
         <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>{{__('name')}}</th>
-                    <th>{{__('banner')}}</th>
-                    <th>{{__('icon')}}</th>
-                    <th>{{__('featured')}}</th>
-                    <th width="10%">{{__('options')}}</th>
+                    <th>{{__('Name')}}</th>
+                    <th>{{__('Banner')}}</th>
+                    <th>{{__('Icon')}}</th>
+                    <th>{{__('Featured')}}</th>
+                    <th width="10%">{{__('Options')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,11 +41,11 @@
                         <td>
                             <div class="btn-group dropdown">
                                 <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
-                                    Actions <i class="dropdown-caret"></i>
+                                    {{__('Actions')}} <i class="dropdown-caret"></i>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="{{route('categories.edit', $category->id)}}">Edit</a></li>
-                                    <li><a onclick="confirm_modal('{{route('categories.destroy', $category->id)}}');">Delete</a></li>
+                                    <li><a href="{{route('categories.edit', $category->id)}}">{{__('Edit')}}</a></li>
+                                    <li><a onclick="confirm_modal('{{route('categories.destroy', $category->id)}}');">{{__('Delete')}}</a></li>
                                 </ul>
                             </div>
                         </td>

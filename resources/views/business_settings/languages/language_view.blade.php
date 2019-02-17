@@ -15,8 +15,8 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>{{__('key')}}</th>
-                                <th>{{__('value')}}</th>
+                                <th>{{__('Key')}}</th>
+                                <th>{{__('Value')}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,7 +43,7 @@
                     </table>
                 </div>
                 <div class="panel-footer text-right">
-    				<button type="submit" class="btn btn-purple">{{ __('save') }}</button>
+    				<button type="submit" class="btn btn-purple">{{ __('Save') }}</button>
     			</div>
             </form>
         </div>

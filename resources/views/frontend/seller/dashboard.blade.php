@@ -15,14 +15,14 @@
                         <div class="row align-items-center">
                             <div class="col-md-6">
                                 <h2 class="heading heading-6 text-capitalize strong-600 mb-0">
-                                    {{__('dashboard')}}
+                                    {{__('Dashboard')}}
                                 </h2>
                             </div>
                             <div class="col-md-6">
                                 <div class="float-md-right">
                                     <ul class="breadcrumb">
                                         <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
-                                        <li class="active"><a href="{{ route('dashboard') }}">{{__('dashboard')}}</a></li>
+                                        <li class="active"><a href="{{ route('dashboard') }}">{{__('Dashboard')}}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
                                     <a href="javascript:;" class="d-block">
                                         <i class="fa fa-upload"></i>
                                         <span class="d-block title heading-3 strong-400">{{ count(\App\Product::where('user_id', Auth::user()->id)->get()) }}</span>
-                                        <span class="d-block sub-title">{{__('products')}}</span>
+                                        <span class="d-block sub-title">{{__('Products')}}</span>
                                     </a>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                             <div class="col-md-7">
                                 <div class="form-box bg-white mt-4">
                                     <div class="form-box-title px-3 py-2 text-center">
-                                        {{__('orders')}}
+                                        {{__('Orders')}}
                                     </div>
                                     <div class="form-box-content p-3">
                                         <table class="table mb-0 table-bordered" style="font-size:14px;">
@@ -124,7 +124,7 @@
                             <div class="col-md-8">
                                 <div class="form-box bg-white mt-4">
                                     <div class="form-box-title px-3 py-2 text-center">
-                                        {{__('products')}}
+                                        {{__('Products')}}
                                     </div>
                                     <div class="form-box-content p-3 category-widget">
                                         <ul class="clearfix">

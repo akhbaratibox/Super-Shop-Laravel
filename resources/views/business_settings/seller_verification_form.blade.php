@@ -6,7 +6,7 @@
 
 		<div class="panel">
 			<div class="panel-heading">
-				<h3 class="panel-title text-center">Seller Verification Form</h3>
+				<h3 class="panel-title text-center">{{__('Seller Verification Form')}}</h3>
 			</div>
 			<div class="panel-body">
 				<form action="{{ route('seller_verification_form.update') }}" method="post">
@@ -54,17 +54,17 @@
 						<div class="col-lg-4">
 
 							<ul class="list-group">
-								<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('text')">Text Input</li>
-								<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('select')">Select</li>
-								<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('multi-select')">Multiple Select</li>
-								<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('radio')">Radio</li>
-								<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('file')">File</li>
+								<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('text')">{{__('Text Input')}}</li>
+								<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('select')">{{__('Select')}}</li>
+								<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('multi-select')">{{__('Multiple Select')}}</li>
+								<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('radio')">{{__('Radio')}}</li>
+								<li class="list-group-item btn" style="text-align: left;" onclick="appenddToForm('file')">{{__('File')}}</li>
 							</ul>
 
 						</div>
 					</div>
 					<div class="panel-footer text-right">
-		                <button class="btn btn-purple" type="submit">{{__('save')}}</button>
+		                <button class="btn btn-purple" type="submit">{{__('Save')}}</button>
 		            </div>
 				</form>
 			</div>

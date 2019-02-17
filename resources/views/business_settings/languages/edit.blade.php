@@ -13,15 +13,15 @@
                 @csrf
                 <div class="form-group">
                     <div class="col-lg-3">
-                        <label class="control-label">{{ __('name') }}</label>
+                        <label class="control-label">{{ __('Name') }}</label>
                     </div>
                     <div class="col-lg-6">
-                        <input type="text" class="form-control" name="name" placeholder="{{ __('name') }}" value="{{ $language->name }}" required>
+                        <input type="text" class="form-control" name="name" placeholder="{{ __('Name') }}" value="{{ $language->name }}" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-lg-3">
-                        <label class="control-label">{{ __('code') }}</label>
+                        <label class="control-label">{{ __('Code') }}</label>
                     </div>
                     <div class="col-lg-6">
                         <select class="country-flag-select" name="code">
@@ -33,7 +33,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-lg-12 text-right">
-                        <button class="btn btn-purple" type="submit">{{__('save')}}</button>
+                        <button class="btn btn-purple" type="submit">{{__('Save')}}</button>
                     </div>
                 </div>
             </form>

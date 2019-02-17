@@ -57,7 +57,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="control-label">{{__('name')}}</label>
+                                                    <label class="control-label">{{__('Name')}}</label>
                                                     <input type="text" class="form-control" name="name" value="{{ $user->name }}" required>
                                                 </div>
                                             </div>
@@ -66,7 +66,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="control-label">{{__('email')}}</label>
+                                                    <label class="control-label">{{__('Email')}}</label>
                                                     <input type="text" class="form-control" name="email" value="{{ $user->email }}" required>
                                                 </div>
                                             </div>
@@ -86,8 +86,9 @@
                                                 <div class="form-group">
                                                     <label class="control-label">{{__('Select your country')}}</label>
                                                     <select class="form-control custome-control" data-live-search="true" name="country">
-                                                        <option value="United States">United States</option>
-                                                        <option value="Bangladesh">Bangladesh</option>
+                                                        @foreach (\App\Country::all() as $key => $country)
+                                                            <option value="{{ $country->name }}">{{ $country->name }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -122,7 +123,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="control-label">{{__('name')}}</label>
+                                                <label class="control-label">{{__('Name')}}</label>
                                                 <input type="text" class="form-control" name="name" placeholder="Name" required>
                                             </div>
                                         </div>
@@ -131,7 +132,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="control-label">{{__('email')}}</label>
+                                                <label class="control-label">{{__('Email')}}</label>
                                                 <input type="text" class="form-control" name="email" placeholder="Email" required>
                                             </div>
                                         </div>
@@ -151,8 +152,9 @@
                                             <div class="form-group">
                                                 <label class="control-label">{{__('Select your country')}}</label>
                                                 <select class="form-control custome-control" data-live-search="true" name="country">
-                                                    <option value="United States">United States</option>
-                                                    <option value="Bangladesh">Bangladesh</option>
+                                                    @foreach (\App\Country::all() as $key => $country)
+                                                        <option value="{{ $country->name }}">{{ $country->name }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>

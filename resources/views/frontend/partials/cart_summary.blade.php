@@ -8,7 +8,7 @@
             </div>
 
             <div class="col-6 text-right">
-                <span class="badge badge-md badge-success">{{ count(Session::get('cart')) }} {{__('items')}}</span>
+                <span class="badge badge-md badge-success">{{ count(Session::get('cart')) }} {{__('Items')}}</span>
             </div>
         </div>
     </div>
@@ -17,7 +17,7 @@
         <table class="table-cart table-cart-review">
             <thead>
                 <tr>
-                    <th class="product-name">{{__('product')}}</th>
+                    <th class="product-name">{{__('Product')}}</th>
                     <th class="product-total text-right">{{__('Total')}}</th>
                 </tr>
             </thead>
@@ -56,28 +56,28 @@
 
             <tfoot>
                 <tr class="cart-subtotal no-border">
-                    <th>Subtotal</th>
+                    <th>{{__('Subtotal')}}</th>
                     <td class="text-right">
                         <span class="strong-600">{{ single_price($subtotal) }}</span>
                     </td>
                 </tr>
 
                 <tr class="cart-shipping">
-                    <th>Tax</th>
+                    <th>{{__('Tax')}}</th>
                     <td class="text-right">
                         <span class="text-italic">{{ single_price($tax) }}</span>
                     </td>
                 </tr>
 
                 <tr class="cart-shipping">
-                    <th>Shipping</th>
+                    <th>{{__('Shipping')}}</th>
                     <td class="text-right">
                         <span class="text-italic">{{ single_price($shipping) }}</span>
                     </td>
                 </tr>
 
                 <tr class="cart-total">
-                    <th><span class="strong-600">Total</span></th>
+                    <th><span class="strong-600">{{__('Total')}}</span></th>
                     <td class="text-right">
                         <strong><span>{{ single_price($subtotal+$tax+$shipping) }}</span></strong>
                     </td>

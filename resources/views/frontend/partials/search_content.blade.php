@@ -20,7 +20,7 @@
 </div>
 <div class="product">
     @if (count($products) > 0)
-        <div class="title">{{__('products')}}</div>
+        <div class="title">{{__('Products')}}</div>
         <ul>
             @foreach ($products as $key => $product)
                 <li>

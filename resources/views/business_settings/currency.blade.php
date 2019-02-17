@@ -6,14 +6,14 @@
     <div class="col-lg-6">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">{{__('home_default_currency')}}</h3>
+                <h3 class="panel-title text-center">{{__('Home Default Currency')}}</h3>
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" action="{{ route('business_settings.update') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <div class="col-lg-3">
-                            <label class="control-label">{{__('home_default_currency')}}</label>
+                            <label class="control-label">{{__('Home Default Currency')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <select class="form-control demo-select2-placeholder" name="home_default_currency">
@@ -24,7 +24,7 @@
                         </div>
                         <input type="hidden" name="types[]" value="home_default_currency">
                         <div class="col-lg-3">
-                            <button class="btn btn-purple" type="submit">{{__('save')}}</button>
+                            <button class="btn btn-purple" type="submit">{{__('Save')}}</button>
                         </div>
                     </div>
                 </form>
@@ -35,14 +35,14 @@
     <div class="col-lg-6">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">{{__('system_default_currency')}}</h3>
+                <h3 class="panel-title text-center">{{__('System Default Currency')}}</h3>
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" action="{{ route('business_settings.update') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <div class="col-lg-3">
-                            <label class="control-label">{{__('system_default_currency')}}</label>
+                            <label class="control-label">{{__('System Default Currency')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <select class="form-control demo-select2-placeholder" name="system_default_currency">
@@ -53,7 +53,7 @@
                         </div>
                         <input type="hidden" name="types[]" value="system_default_currency">
                         <div class="col-lg-3">
-                            <button class="btn btn-purple" type="submit">{{__('save')}}</button>
+                            <button class="btn btn-purple" type="submit">{{__('Save')}}</button>
                         </div>
                     </div>
                 </form>
@@ -64,7 +64,7 @@
     <div class="col-lg-6">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">{{__('set_currency_formats')}}</h3>
+                <h3 class="panel-title text-center">{{__('Set Currency Formats')}}</h3>
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" action="{{ route('business_settings.update') }}" method="POST">
@@ -84,7 +84,7 @@
                     <div class="form-group">
                         <input type="hidden" name="types[]" value="symbol_format">
                         <div class="col-lg-3">
-                            <label class="control-label">{{__('symbol_format')}}</label>
+                            <label class="control-label">{{__('Symbol Format')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <select class="form-control demo-select2-placeholder" name="symbol_format">
@@ -96,7 +96,7 @@
                     <div class="form-group">
                         <input type="hidden" name="types[]" value="no_of_decimals">
                         <div class="col-lg-3">
-                            <label class="control-label">{{__('no_of_decimals')}}</label>
+                            <label class="control-label">{{__('No of decimals')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <select class="form-control demo-select2-placeholder" name="no_of_decimals">
@@ -109,7 +109,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-12 text-right">
-                            <button class="btn btn-purple" type="submit">{{__('save')}}</button>
+                            <button class="btn btn-purple" type="submit">{{__('Save')}}</button>
                         </div>
                     </div>
                 </form>
@@ -121,19 +121,19 @@
 <div class="row">
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">{{__('all_currency')}}</h3>
+            <h3 class="panel-title">{{__('All Currency')}}</h3>
         </div>
         <div class="panel-body">
             <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>{{__('currency_name')}}</th>
-                        <th>{{__('currency_symbol')}}</th>
-                        <th>{{__('currency_code')}}</th>
-                        <th>{{__('exchange_rate')}}</th>
-                        <th>{{__('status')}}</th>
-                        <th width="10%">{{__('options')}}</th>
+                        <th>{{__('Currency name')}}</th>
+                        <th>{{__('Currency symbol')}}</th>
+                        <th>{{__('Currency code')}}</th>
+                        <th>{{__('Exchange rate')}}</th>
+                        <th>{{__('Status')}}</th>
+                        <th width="10%">{{__('Options')}}</th>
                     </tr>
                 </thead>
                 <tbody>

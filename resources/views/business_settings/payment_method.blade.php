@@ -6,7 +6,7 @@
     <div class="col-lg-6">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">{{__('paypal_credential')}}</h3>
+                <h3 class="panel-title text-center">{{__('Paypal Credential')}}</h3>
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
@@ -15,7 +15,7 @@
                     <div class="form-group">
                         <input type="hidden" name="types[]" value="PAYPAL_CLIENT_ID">
                         <div class="col-lg-3">
-                            <label class="control-label">{{__('paypal_client_id')}}</label>
+                            <label class="control-label">{{__('Paypal Client Id')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <input type="text" class="form-control" name="PAYPAL_CLIENT_ID" value="{{  env('PAYPAL_CLIENT_ID') }}" placeholder="Paypal Client ID" required>
@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <input type="hidden" name="types[]" value="PAYPAL_CLIENT_SECRET">
                         <div class="col-lg-3">
-                            <label class="control-label">{{__('paypal_client_secret')}}</label>
+                            <label class="control-label">{{__('Paypal Client Secret')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <input type="text" class="form-control" name="PAYPAL_CLIENT_SECRET" value="{{  env('PAYPAL_CLIENT_SECRET') }}" placeholder="Paypal Client Secret" required>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-3">
-                            <label class="control-label">{{__('paypal_sandbox_mode')}}</label>
+                            <label class="control-label">{{__('Paypal Sandbox Mode')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <label class="switch">
@@ -45,7 +45,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-12 text-right">
-                            <button class="btn btn-purple" type="submit">{{__('save')}}</button>
+                            <button class="btn btn-purple" type="submit">{{__('Save')}}</button>
                         </div>
                     </div>
                 </form>

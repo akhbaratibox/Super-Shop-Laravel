@@ -14,16 +14,16 @@
 <!--===================================================-->
 <div class="panel">
     <div class="panel-heading">
-        <h3 class="panel-title">{{__('customers')}}</h3>
+        <h3 class="panel-title">{{__('Customers')}}</h3>
     </div>
     <div class="panel-body">
         <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>{{__('name')}}</th>
-                    <th>{{__('email_address')}}</th>
-                    <th width="10%">{{__('password')}}</th>
+                    <th>{{__('Name')}}</th>
+                    <th>{{__('Email Address')}}</th>
+                    <th width="10%">{{__('Password')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,10 +35,10 @@
                         <td>
                             <div class="btn-group dropdown">
                                 <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
-                                    Actions <i class="dropdown-caret"></i>
+                                    {{__('Actions')}} <i class="dropdown-caret"></i>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a onclick="confirm_modal('{{route('customers.destroy', $customer->id)}}');">Delete</a></li>
+                                    <li><a onclick="confirm_modal('{{route('customers.destroy', $customer->id)}}');">{{__('Delete')}}</a></li>
                                 </ul>
                             </div>
                         </td>

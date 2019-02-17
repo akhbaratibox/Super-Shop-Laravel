@@ -5,7 +5,7 @@
 <div class="col-sm-12">
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">{{__('flash_deal_information')}}</h3>
+            <h3 class="panel-title">{{__('Flash Deal Information')}}</h3>
         </div>
 
         <!--Horizontal Form-->
@@ -15,9 +15,9 @@
             <input type="hidden" name="_method" value="PATCH">
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">{{__('title')}}</label>
+                    <label class="col-sm-3 control-label" for="name">{{__('Title')}}</label>
                     <div class="col-sm-9">
-                        <input type="text" placeholder="{{__('title')}}" id="name" name="title" value="{{ $flash_deal->title }}" class="form-control" required>
+                        <input type="text" placeholder="{{__('Title')}}" id="name" name="title" value="{{ $flash_deal->title }}" class="form-control" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -26,14 +26,14 @@
                         <div id="demo-dp-range">
                             <div class="input-daterange input-group" id="datepicker">
                                 <input type="text" class="form-control" name="start_date" value="{{ date('m/d/Y', $flash_deal->start_date) }}">
-                                <span class="input-group-addon">to</span>
+                                <span class="input-group-addon">{{__('to')}}</span>
                                 <input type="text" class="form-control" name="end_date" value="{{ date('m/d/Y', $flash_deal->end_date) }}">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="products">{{__('products')}}</label>
+                    <label class="col-sm-3 control-label" for="products">{{__('Products')}}</label>
                     <div class="col-sm-9">
                         <select name="products[]" id="products" class="form-control demo-select2" multiple required data-placeholder="Choose Products">
                             @foreach(\App\Product::all() as $product)
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="panel-footer text-right">
-                <button class="btn btn-purple" type="submit">{{__('save')}}</button>
+                <button class="btn btn-purple" type="submit">{{__('Save')}}</button>
             </div>
         </form>
         <!--===================================================-->

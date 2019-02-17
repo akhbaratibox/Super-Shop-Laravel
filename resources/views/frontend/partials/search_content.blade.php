@@ -63,7 +63,7 @@
         </ul>
     @endif
 </div>
-@if(BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)
+@if(\App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)
     <div class="product">
         @if (count($shops) > 0)
             <div class="title">{{__('Shops')}}</div>

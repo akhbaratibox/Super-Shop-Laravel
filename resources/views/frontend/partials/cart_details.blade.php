@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row cols-xs-space cols-sm-space cols-md-space">
-        <div class="col-lg-8">
+        <div class="col-xl-8">
             <!-- <form class="form-default bg-white p-4" data-toggle="validator" role="form"> -->
             <div class="form-default bg-white p-4">
                 <div class="">
@@ -35,17 +35,17 @@
                                     @endphp
                                     <tr class="cart-item">
                                         <td class="product-image">
-                                            <a href="#" class="mr-5">
+                                            <a href="#" class="mr-3">
                                                 <img src="{{ asset($product->thumbnail_img) }}">
                                             </a>
                                         </td>
 
                                         <td class="product-name">
-                                            <span class="pr-4">{{ $product_name_with_choice }}</span>
+                                            <span class="pr-4 d-block">{{ $product_name_with_choice }}</span>
                                         </td>
 
                                         <td class="product-price d-none d-lg-table-cell">
-                                            <span class="pr-4">{{ single_price($cartItem['price']) }}</span>
+                                            <span class="pr-3 d-block">{{ single_price($cartItem['price']) }}</span>
                                         </td>
 
                                         <td class="product-quantity d-none d-md-table-cell">
@@ -97,7 +97,7 @@
             <!-- </form> -->
         </div>
 
-        <div class="col-lg-4 ml-lg-auto">
+        <div class="col-xl-4 ml-lg-auto">
             @include('frontend.partials.cart_summary')
         </div>
     </div>

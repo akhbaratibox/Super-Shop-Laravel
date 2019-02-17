@@ -5,9 +5,9 @@
         <img src="https://via.placeholder.com/2000x300.jpg" alt="" class="img-fluid">
     </section> -->
 
-    <section class="gry-bg pt-4">
+    <section class="gry-bg pt-4 ">
         <div class="container">
-            <div class="row">
+            <div class="row align-items-baseline">
                 <div class="col-md-6">
                     <div class="d-flex">
                         <img height="60" src="{{ asset($shop->logo) }}" alt="Shop Logo">
@@ -24,24 +24,24 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <ul class="social-media social-media--style-1-v4 text-md-right mt-4 mt-md-0">
+                    <ul class="text-md-right mt-4 mt-md-0 social-nav model-2">
                         <li>
-                            <a href="{{ $shop->facebook }}" class="facebook" target="_blank" data-toggle="tooltip" data-original-title="Facebook">
+                            <a href="{{ $shop->facebook }}" class="facebook social_a" target="_blank" data-toggle="tooltip" data-original-title="Facebook">
                                 <i class="fa fa-facebook"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ $shop->google }}" class="google" target="_blank" data-toggle="tooltip" data-original-title="Google">
-                                <i class="fa fa-google"></i>
+                            <a href="{{ $shop->google }}" class="google-plus social_a" target="_blank" data-toggle="tooltip" data-original-title="Google">
+                                <i class="fa fa-google-plus"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ $shop->twitter }}" class="twitter" target="_blank" data-toggle="tooltip" data-original-title="Twitter">
+                            <a href="{{ $shop->twitter }}" class="twitter social_a" target="_blank" data-toggle="tooltip" data-original-title="Twitter">
                                 <i class="fa fa-twitter"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ $shop->youtube }}" class="youtube" target="_blank" data-toggle="tooltip" data-original-title="Youtube">
+                            <a href="{{ $shop->youtube }}" class="youtube social_a" target="_blank" data-toggle="tooltip" data-original-title="Youtube">
                                 <i class="fa fa-youtube"></i>
                             </a>
                         </li>
@@ -86,12 +86,12 @@
                     </h3>
                 </div>
                 <div class="row">
-                    <div class="col-lg-8 offset-lg-2">
+                    <div class="col">
                         <div class="caorusel-box">
-                            <div class="slick-carousel center-mode" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="3" data-slick-sm-items="1" data-slick-xs-items="1" data-slick-center="true">
+                            <div class="slick-carousel center-mode" data-slick-items="5" data-slick-lg-items="3"  data-slick-md-items="3" data-slick-sm-items="1" data-slick-xs-items="1" data-slick-center="true">
                                 @foreach ($shop->user->products->where('published', 1)->where('featured', 1) as $key => $product)
                                     <div class="">
-                                        <div class="product-card-2 card card-product m-3 shop-cards shop-tech">
+                                        <div class="product-card-2 card card-product mx-3 my-5 shop-cards shop-tech">
                                             <div class="card-body p-0">
 
                                                 <div class="card-image">
@@ -123,7 +123,7 @@
     @endif
 
 
-    <section class="gry-bg pt-4">
+    <section class="@if (!isset($type)) gry-bg @endif pt-5">
         <div class="container">
             <div class="row">
                 <div class="col-xl-3 d-none d-xl-block">

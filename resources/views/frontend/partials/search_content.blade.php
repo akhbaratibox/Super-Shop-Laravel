@@ -28,8 +28,8 @@
                         <div class="d-flex search-product align-items-center">
                             <div class="image" style="background-image:url('{{ asset($product->thumbnail_img) }}');">
                             </div>
-                            <div class="w-100">
-                                <div class="product-name">
+                            <div class="w-100 overflow--hidden">
+                                <div class="product-name text-truncate">
                                     {{ $product->name }}
                                 </div>
                                 <div class="clearfix">
@@ -74,21 +74,20 @@
                             <div class="d-flex search-product align-items-center">
                                 <div class="image" style="background-image:url('{{ asset($shop->logo) }}');">
                                 </div>
-                                <div class="w-100">
-                                    <div class="product-name">
+                                <div class="w-100 overflow--hidden ">
+                                    <div class="product-name text-truncate heading-6 strong-600">
                                         {{ $shop->name }}
-                                    </div>
-                                    <div class="clearfix">
-                                        <div class="price-box float-left">
-                                            <span class="product-price strong-600">{{ $shop->address }}</span>
-                                        </div>
-                                        <div class="stock-box float-right">
+                                        
+                                        <div class="stock-box d-inline-block">
                                             @if($shop->user->seller->verification_status == 1)
                                                 <span class="ml-2"><i class="fa fa-check-circle" style="color:green"></i></span>
                                             @else
                                                 <span class="ml-2"><i class="fa fa-times-circle" style="color:red"></i></span>
                                             @endif
                                         </div>
+                                    </div>
+                                    <div class="price-box alpha-6">
+                                        {{ $shop->address }}
                                     </div>
                                 </div>
                             </div>

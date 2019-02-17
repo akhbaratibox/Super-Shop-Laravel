@@ -48,7 +48,7 @@
                             <strong class="product-quantity">× {{ $cartItem['quantity'] }}</strong>
                         </td>
                         <td class="product-total text-right">
-                            <span>{{ single_price($cartItem['price']*$cartItem['quantity']) }}</span>
+                            <span class="pl-4">{{ single_price($cartItem['price']*$cartItem['quantity']) }}</span>
                         </td>
                     </tr>
                 @endforeach

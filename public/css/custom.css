@@ -281,3 +281,21 @@ body, #content-container, #navbar {
 .select2-container{
     z-index: 10000;
 }
+
+#mainnav-container {
+  width: 280px;
+  left: -280px;
+}
+@media (min-width: 768px){
+  #container.mainnav-in .navbar-brand, #container.mainnav-lg .navbar-brand, #container.mainnav-in .brand-title, #container.mainnav-lg .brand-title {
+    width: 280px;
+  }
+  .navbar-content {
+      margin-left: 280px;
+  }
+}
+@media (min-width: 992px){
+  #container.mainnav-lg #footer, #container.mainnav-lg #content-container {
+      padding-left: 280px;
+  }
+}

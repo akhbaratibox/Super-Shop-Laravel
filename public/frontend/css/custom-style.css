@@ -1387,10 +1387,11 @@ label.payment_option span {
     height: 60px;
     width: 120px;
     display: inline-block;
-    border: 1px solid #eeeeee;
+    /* border: 1px solid #eeeeee; */
     border-radius: 4px;
-    padding: 8px 10px;
+    /* padding: 8px 10px; */
     background: #f6f6f6;
+    position: relative;
 }
 
 label.payment_option span img {
@@ -1398,9 +1399,30 @@ label.payment_option span img {
     height: auto;
     max-height: 100%;
 }
+label.payment_option input:checked + span:before{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(255,255,255,0.8);
+    content: "";
+    top: 0;
+    left: 0;
+}
 
-
-
+label.payment_option input:checked + span:after{
+    position: absolute;
+    content: "";
+    left: calc(50% - 6px);
+    top: calc(50% - 12px);
+    width: 12px;
+    height: 24px;
+    border: solid #28a745;
+    border-width: 0 4px 4px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    box-shadow: 2px 3px 5px rgb(94, 146, 106);
+}
 
 
 

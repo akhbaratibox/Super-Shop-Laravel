@@ -85,7 +85,8 @@
                                 <ul class="head-list">
                                     @if($orders > 0)
                                         <li>
-                                            <a class="media" href="{{ route('orders.index.admin') }}">
+                                            <a class="media" href="{{ route('orders.index.admin') }}" style="position:relative">
+                                                <span class="badge badge-header badge-info" style="right:auto;left:3px;"></span>
                                                 <div class="media-body">
                                                     <p class="mar-no text-nowrap text-main text-semibold">{{ $orders }} new order(s)</p>
                                                 </div>

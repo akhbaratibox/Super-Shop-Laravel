@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2019 at 03:32 PM
+-- Generation Time: Feb 17, 2019 at 09:23 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -1357,12 +1357,7 @@ CREATE TABLE `sellers` (
 
 INSERT INTO `sellers` (`id`, `user_id`, `verification_status`, `verification_info`, `cash_on_delivery_status`, `sslcommerz_status`, `stripe_status`, `paypal_status`, `paypal_client_id`, `paypal_client_secret`, `ssl_store_id`, `ssl_password`, `stripe_key`, `stripe_secret`, `admin_to_pay`, `created_at`, `updated_at`) VALUES
 (1, 3, 1, '[{\"type\":\"text\",\"label\":\"Name\",\"value\":\"Mr. Seller\"},{\"type\":\"select\",\"label\":\"Marital Status\",\"value\":\"Married\"},{\"type\":\"multi_select\",\"label\":\"Company\",\"value\":\"[\\\"Company\\\"]\"},{\"type\":\"select\",\"label\":\"Gender\",\"value\":\"Male\"},{\"type\":\"file\",\"label\":\"Image\",\"value\":\"uploads\\/verification_form\\/CRWqFifcbKqibNzllBhEyUSkV6m1viknGXMEhtiW.png\"}]', 1, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 23.50, '2018-10-07 04:42:57', '2019-02-16 08:01:59'),
-(2, 9, 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0.00, '2018-12-03 09:19:06', '2018-12-03 09:19:06'),
-(7, 19, 1, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0.00, '2019-02-04 10:42:37', '2019-02-04 10:42:37'),
-(8, 16, 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0.00, '2019-02-04 04:48:05', '2019-02-07 05:31:27'),
-(10, 22, 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0.00, '2019-02-04 05:34:49', '2019-02-04 05:34:49'),
 (11, 23, 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0.00, '2019-02-12 11:46:18', '2019-02-12 11:46:18'),
-(12, 23, 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0.00, '2019-02-12 11:51:21', '2019-02-12 11:51:21'),
 (13, 24, 1, '[{\"type\":\"text\",\"label\":\"Name\",\"value\":\"Computer seller\"},{\"type\":\"select\",\"label\":\"Marital Status\",\"value\":\"Unmarried\"},{\"type\":\"multi_select\",\"label\":\"Company\",\"value\":\"[\\\"Company\\\"]\"},{\"type\":\"select\",\"label\":\"Gender\",\"value\":\"Male\"},{\"type\":\"file\",\"label\":\"Image\",\"value\":\"uploads\\/verification_form\\/ACNyjogZTfCbHVeXqrx0e8uZkjKJ5xxu63ot67hx.png\"}]', 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0.00, '2019-02-12 15:10:13', '2019-02-12 17:23:32'),
 (14, 25, 1, '[{\"type\":\"text\",\"label\":\"Your name\",\"value\":\"Cloth Seller\"},{\"type\":\"text\",\"label\":\"Shop name\",\"value\":\"Dress House\"},{\"type\":\"text\",\"label\":\"Email\",\"value\":\"clothseller@shop.com\"},{\"type\":\"text\",\"label\":\"License No\",\"value\":\"123456\"},{\"type\":\"text\",\"label\":\"Full Address\",\"value\":\"Demo, Demo, Demo\"},{\"type\":\"text\",\"label\":\"Phone Number\",\"value\":\"123456789\"},{\"type\":\"file\",\"label\":\"Tax Papers\",\"value\":\"uploads\\/verification_form\\/TurW5czXr7TisDcvWYoBylowl47lWMNxVsbWgdwd.pdf\"}]', 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0.00, '2019-02-13 06:27:48', '2019-02-16 07:28:50');
 
@@ -1418,14 +1413,6 @@ CREATE TABLE `shops` (
 
 INSERT INTO `shops` (`id`, `user_id`, `name`, `logo`, `sliders`, `address`, `facebook`, `google`, `twitter`, `youtube`, `slug`, `created_at`, `updated_at`) VALUES
 (1, 3, 'Demo Seller Shop', 'uploads/hop/logo/Gt1xw7vjTpMnwpADkGSilc35qrAfcw02kuZ36Jdn.png', '[\"uploads\\/shop\\/sliders\\/lToeKDeUyWcxy1HRs2yH37oBLyIwEwyPkqdyXBRO.jpeg\",\"uploads\\/shop\\/sliders\\/asDBJ3Bro1ijNaNnx3Hpnp6uq3n66ndyLczOJ0F6.jpeg\",\"uploads\\/shop\\/sliders\\/ltwUfHND4QP1K7bPFbuOC4i8v6zL9KHJKzex4zaX.jpeg\"]', 'House : Demo, Road : Demo, Section : Demo', 'www.facebook.com', 'www.google.com', 'www.twitter.com', 'www.youtube.com', 'Demo-Seller-Shop-1', '2018-11-27 10:23:13', '2019-02-09 23:56:31'),
-(2, 9, 'Demo Shop', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Demo-Shop-2', '2018-12-03 09:18:38', '2018-12-03 09:18:38'),
-(3, 10, 'Demo Shop', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'demo-shop-1', '2018-12-05 07:34:33', '2018-12-05 07:34:33'),
-(4, 11, 'Demo Shop', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Demo-Shop-11', '2018-12-06 09:04:29', '2018-12-06 09:04:29'),
-(5, 12, 'Demo Shop', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'demo-shop-12', '2018-12-10 07:04:59', '2018-12-10 07:04:59'),
-(6, 13, 'Demo Shop', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'demo-shop-13', '2018-12-11 09:12:08', '2018-12-11 09:12:08'),
-(8, 19, 'Colton Fernandez', NULL, NULL, 'Fuga Nihil omnis la', NULL, NULL, NULL, NULL, 'Colton-Fernandez-8', '2019-02-04 04:39:39', '2019-02-04 04:43:11'),
-(9, 16, 'Wear Dreams', NULL, NULL, 'House 86, Lake Drive Road, Sector 7, Uttara, Dhaka', NULL, NULL, NULL, NULL, 'Wear-Dreams-9', '2019-02-04 04:48:05', '2019-02-04 04:51:25'),
-(10, 22, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Demo-Shop-22', '2019-02-04 05:34:49', '2019-02-04 05:34:49'),
 (11, 23, 'Computer Accessories Seller', NULL, NULL, 'Demo address', NULL, NULL, NULL, NULL, 'Computer-Accessories-Seller-', '2019-02-12 11:46:18', '2019-02-12 11:46:18'),
 (12, 24, 'Computer seller', 'uploads/hop/logo/MPa2IW797RSSQBcYAYlYdZNbe5NVMrW9gcBOREU6.png', '[\"uploads\\/shop\\/sliders\\/uVPq1cRWAIYyygh2YUaEtWnbo10xCoDj3zPA9Rz2.jpeg\"]', 'Computer seller address', NULL, NULL, NULL, NULL, 'Computer-seller-12', '2019-02-12 15:10:13', '2019-02-12 22:01:28'),
 (13, 25, 'Dress House Private Limited', 'uploads/hop/logo/aurndrAERVqgkFQORiuhrnw9eegszzp4dDT3oUnW.png', '[\"uploads\\/shop\\/sliders\\/cHjKqMdUcJIWinA0RvjN7yCQPPCtBhxnIGfEpcV1.jpeg\"]', 'House : Demo, Road : Demo, Section : Demo', NULL, NULL, NULL, NULL, 'Dress-House-Private-Limited-13', '2019-02-13 06:27:48', '2019-02-13 23:03:02');
@@ -1801,10 +1788,6 @@ INSERT INTO `users` (`id`, `provider_id`, `user_type`, `name`, `email`, `email_v
 (1, NULL, 'admin', 'Admin', 'admin@example.com', '2018-12-11 18:00:00', '$2y$10$aEw8avP2ZGG8B3FjYUC71.ZjvSt5UoM.7x.OfdtNRAPTMbwyrwFvK', 'btXMKvT1O26HxtFbSQOWDPGPmXXAQergoM58fwNpnJx1SSx7prffA4RpL1vt', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', '', NULL, NULL, NULL, NULL, '2018-09-26 02:08:48', '2018-12-12 01:26:01'),
 (3, NULL, 'seller', 'Mr. Seller', 'seller@example.com', '2018-12-11 18:00:00', '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', 'yguCeFQ15tuhvdOLf4DBnhK8adFXrCjnXOWesCdEiid4LHP0O47FRfxLDitR', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'uploads/HO7BJ0Wxep8TNRELVW5PfQ9p9PdwG9Ji12S4NRK6.jpeg', 'Demo address', 'US', 'Demo city', '1234', '12345678', '2018-10-07 04:42:57', '2019-02-12 11:07:24'),
 (8, NULL, 'customer', 'Mr. Demo Customer', 'customer@example.com', '2018-12-12 02:24:31', '$2y$10$MUHJSlPUDFwq9oNJeogg7eIRrXBQZWxjSpgaDv1ZJ7P1Icv882aom', 'Q6P0f57BD1YOHBXXqku935zSxZE5xWkJO9tnSkIngjSuFdx3oHUOCv146DIN', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'uploads/Sig1AulqoyXBj05Xk5KZPEgtQhi3fb71NMKyvWcK.jpeg', 'House : 001, Street: 002, Section : 003, \r\nNew York, United States.', 'US', 'New York', '1234', '0123456789', '2018-10-17 06:26:52', '2019-02-10 15:43:21'),
-(9, NULL, 'seller', 'Demo', 'demo@gmail.com', '2018-12-11 18:00:00', '$2y$10$jIxILbBjHJJXeoEI9zcV3uB.N5DyKWRC14l9pLQ/F0YFpBeZPKG1u', 'XmrN40orTwtYUyCB5SAXEzo7fUGIFurYrBrnMCQdr9i8kVrZZCf0VGKm5TVe', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-12-03 03:17:22', '2018-12-03 03:17:22'),
-(16, '107111794830756336948', 'seller', 'Developer Activeitzone', 'developer.activeitzone@gmail.com', '2018-12-18 06:12:28', '$2y$10$MUHJSlPUDFwq9oNJeogg7eIRrXBQZWxjSpgaDv1ZJ7P1Icv882aom', 'Nfz8JlzqmwLhnJcUa1oSLZ2aVtLsPTISKdIyFtb4oHvkb88HaEozUV9vrrLw', 'https://lh3.googleusercontent.com/-316m8JIRelg/AAAAAAAAAAI/AAAAAAAAAAA/AGDgw-iJLLjkxY9OWnYateAJtf5nIi44Eg/mo/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-316m8JIRelg/AAAAAAAAAAI/AAAAAAAAAAA/AGDgw-iJLLjkxY9OWnYateAJtf5nIi44Eg/mo/photo.jpg', NULL, NULL, NULL, NULL, NULL, '2018-12-18 00:44:28', '2018-12-18 00:44:28'),
-(19, NULL, 'seller', 'Colton Fernandez', 'naimcse56@gmail.com', '2019-02-03 18:00:00', '$2y$10$lqtY6UB.yCvzo9Eiv9OCHOcurKK7ES7VJSJCQCRBMEQC/RUtZjKf.', 'aLBRvRdo2rPZT9DY8pivD41m3xKfiY5rtv5iHntEZoG6VN8RvhZeOkrsRdjX', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-02-04 04:39:39', '2019-02-04 04:39:39'),
-(22, NULL, 'seller', 'Seller 1', 'seller4@gmail.com', '2019-02-03 18:00:00', '$2y$10$xl2fhh23d8Y7yfKqLsY9WOTsQgt29pKhA1DHoQYAWZO2ceYHNPNqi', 'lw4pfOkdiiTMYoXRW0nxnAigbWXsfqzwz3RuNwS3rHjmzCfU9ueByt4IBcUZ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-02-04 05:34:49', '2019-02-04 05:34:49'),
 (23, NULL, 'seller', 'Computer Accessories Seller', 'seller1@example.com', '2019-02-12 00:00:00', '$2y$10$HX2A3uwppkKIEd01RQ7cN.74lZOO9R.5ETnQEQ96bh3hdGUXw4wMG', 'wB9jtYGiu8ym2UByz352RMX4LpV6UgpjUA6sOKnzpjdhvXCdUf6iWVp0GmxH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-02-12 11:32:22', '2019-02-12 11:46:18'),
 (24, NULL, 'seller', 'Computer seller', 'computerseller@shop.com', NULL, '$2y$10$H41NqWbkVOj.RStUEWRXNe08k3fE3WuqCA2YG8YgatnLoqZKo57Ti', 'y967HWPmXAJVcePfblxh4nj9qBLsujcXmG7UJfPy33PFvYufnpc3xgonIeSo', NULL, 'uploads/1mMxQH4KIoCtVVpOBt7k7uYymbWNMQ3jJuTj7y3u.jpeg', NULL, 'AF', NULL, NULL, NULL, '2019-02-12 15:10:13', '2019-02-12 17:23:32'),
 (25, NULL, 'seller', 'Cloth Seller', 'clothseller@example.com', NULL, '$2y$10$4JQKgftaagB50HcSz.FP2efOWYeMrf/zy/Acn4MxgxhUmRSYjkAm6', 'JhjctlBjz3qSFIxPLsdm4kKIsJy8wtjGjHvCWdYB2jGftCca99UiqxxITv5m', NULL, 'uploads/xaNE6IYCXL7nC7T6VbkiROXRm0eU0ohwAVY6ANcd.jpeg', 'Demo address', 'GB', 'Demo city', '1234', '0123456789', '2019-02-13 06:27:05', '2019-02-13 22:36:50');
@@ -2103,7 +2086,7 @@ ALTER TABLE `currencies`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `flash_deals`
@@ -2163,7 +2146,7 @@ ALTER TABLE `order_details`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `policies`

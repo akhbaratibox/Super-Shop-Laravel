@@ -168,7 +168,10 @@
                             <tr>
                                 <th><span class="strong-600">{{__('Total')}}</span></th>
                                 <td class="text-right">
-                                    <strong><span>{{ single_price($order->orderDetails->where('seller_id', Auth::user()->id)->sum('price') + $order->orderDetails->where('seller_id', Auth::user()->id)->sum('tax')) +$order->orderDetails->where('seller_id', Auth::user()->id)->sum('shipping_cost') }}</span></strong>
+                                    <strong>
+                                        <span>{{ single_price($order->orderDetails->where('seller_id', Auth::user()->id)->sum('price') + $order->orderDetails->where('seller_id', Auth::user()->id)->sum('tax') + $order->orderDetails->where('seller_id', Auth::user()->id)->sum('shipping_cost')) }}
+                                        </span>
+                                    </strong>
                                 </td>
                             </tr>
                         </tbody>

@@ -343,7 +343,7 @@
                                             <label>{{__('Unit Price')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="unit_price" placeholder="{{__('Unit Price')}} {{__('(Base Price)')}}" value="{{$product->unit_price}}">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="unit_price" placeholder="{{__('Unit Price')}} ({{__('Base Price')}})" value="{{$product->unit_price}}">
                                         </div>
                                     </div>
                                     <div class="row">

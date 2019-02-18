@@ -9,7 +9,7 @@
                         <div class="card">
                             <div class="text-center px-35 pt-5">
                                 <h3 class="heading heading-4 strong-500">
-                                    Login to your account.
+                                    {{__('Login to your account.')}}
                                 </h3>
                             </div>
                             <div class="px-5 py-3 py-lg-5">
@@ -22,7 +22,7 @@
                                                     <div class="form-group">
                                                         <!-- <label>{{ __('email') }}</label> -->
                                                         <div class="input-group input-group--style-1">
-                                                            <input type="email" class="form-control form-control-sm {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="Email" name="email" id="email">
+                                                            <input type="email" class="form-control form-control-sm {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{__('Email')}}" name="email" id="email">
                                                             <span class="input-group-addon">
                                                                 <i class="text-md la la-user"></i>
                                                             </span>
@@ -36,7 +36,7 @@
                                                     <div class="form-group">
                                                         <!-- <label>{{ __('password') }}</label> -->
                                                         <div class="input-group input-group--style-1">
-                                                            <input type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Password" name="password" id="password">
+                                                            <input type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{__('Password')}}" name="password" id="password">
                                                             <span class="input-group-addon">
                                                                 <i class="text-md la la-lock"></i>
                                                             </span>
@@ -57,13 +57,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-6 text-right">
-                                                    <a href="{{ route('password.request') }}" class="link link-xs link--style-3">Forgot password?</a>
+                                                    <a href="{{ route('password.request') }}" class="link link-xs link--style-3">{{__('Forgot password?')}}</a>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col text-center">
-                                                    <button type="submit" class="btn btn-styled btn-base-1 btn-md w-100">{{ __('login') }}</button>
+                                                    <button type="submit" class="btn btn-styled btn-base-1 btn-md w-100">{{ __('Login') }}</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -74,17 +74,17 @@
                                     <div class="col-12 col-lg">
                                         @if(\App\BusinessSetting::where('type', 'google_login')->first()->value == 1)
                                             <a href="{{ route('social.login', ['provider' => 'google']) }}" class="btn btn-styled btn-block btn-google btn-icon--2 btn-icon-left px-4 my-4">
-                                                <i class="icon fa fa-google"></i> Login with Google
+                                                <i class="icon fa fa-google"></i> {{__('Login with Google')}}
                                             </a>
                                         @endif
                                         @if (\App\BusinessSetting::where('type', 'facebook_login')->first()->value == 1)
                                             <a href="{{ route('social.login', ['provider' => 'facebook']) }}" class="btn btn-styled btn-block btn-facebook btn-icon--2 btn-icon-left px-4 my-4">
-                                                <i class="icon fa fa-facebook"></i> Login with Facebook
+                                                <i class="icon fa fa-facebook"></i> {{__('Login with Facebook')}}
                                             </a>
                                         @endif
                                         @if (\App\BusinessSetting::where('type', 'twitter_login')->first()->value == 1)
                                         <a href="{{ route('social.login', ['provider' => 'twitter']) }}" class="btn btn-styled btn-block btn-twitter btn-icon--2 btn-icon-left px-4 my-4">
-                                            <i class="icon fa fa-twitter"></i> Login with Twitter
+                                            <i class="icon fa fa-twitter"></i> {{__('Login with Twitter')}}
                                         </a>
                                         @endif
                                     </div>
@@ -92,7 +92,7 @@
                             </div>
                             <div class="text-center px-35 pb-3">
                                 <p class="text-md">
-                                    Need an account? <a href="{{ route('user.registration') }}" class="strong-600">Register Now</a>
+                                    {{__('Need an account?')}} <a href="{{ route('user.registration') }}" class="strong-600">{{__('Register Now')}}</a>
                                 </p>
                             </div>
                         </div>
@@ -103,11 +103,11 @@
                             <table class="table table-responsive table-bordered mb-0">
                                 <tbody>
                                     <tr>
-                                        <td>Seller Account</td>
+                                        <td>{{__('Seller Account')}}</td>
                                         <td><button class="btn btn-info" onclick="autoFillSeller()">Copy credentials</button></td>
                                     </tr>
                                     <tr>
-                                        <td>Customer Account</td>
+                                        <td>{{__('Customer Account')}}</td>
                                         <td><button class="btn btn-info" onclick="autoFillCustomer()">Copy credentials</button></td>
                                     </tr>
                                 </tbody>

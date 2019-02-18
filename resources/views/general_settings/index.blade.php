@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label" for="email">{{__('email')}}</label>
+                        <label class="col-sm-3 control-label" for="email">{{__('Email')}}</label>
                         <div class="col-sm-9">
                             <input type="text" id="email" name="email" value="{{ $generalsetting->email }}" class="form-control" required>
                         </div>
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <div class="panel-footer text-right">
-                    <button class="btn btn-purple" type="submit">{{__('save')}}</button>
+                    <button class="btn btn-purple" type="submit">{{__('Save')}}</button>
                 </div>
             </form>
             <!--===================================================-->

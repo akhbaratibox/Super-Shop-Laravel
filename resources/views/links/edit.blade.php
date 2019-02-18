@@ -20,13 +20,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">{{__('Title')}}</label>
+                    <label class="col-sm-3 control-label" for="name">{{__('URL')}}</label>
                     <div class="col-sm-9">
                         <input type="text" value="{{ $link->url }}" id="link" name="link" class="form-control" required>
                     </div>
                 </div>
             <div class="panel-footer text-right">
-                <button class="btn btn-purple" type="submit">{{__('save')}}</button>
+                <button class="btn btn-purple" type="submit">{{__('Save')}}</button>
             </div>
         </form>
         <!--===================================================-->

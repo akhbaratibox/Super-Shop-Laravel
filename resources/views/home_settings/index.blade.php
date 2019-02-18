@@ -7,16 +7,16 @@
         <!--Nav Tabs-->
         <ul class="nav nav-tabs">
             <li class="active">
-                <a data-toggle="tab" href="#demo-lft-tab-1" aria-expanded="true">{{ __('home_slider') }}</a>
+                <a data-toggle="tab" href="#demo-lft-tab-1" aria-expanded="true">{{ __('Home slider') }}</a>
             </li>
             <li class="">
-                <a data-toggle="tab" href="#demo-lft-tab-2" aria-expanded="false">{{ __('home_banner') }}</a>
+                <a data-toggle="tab" href="#demo-lft-tab-2" aria-expanded="false">{{ __('Home banner') }}</a>
             </li>
             <li class="">
-                <a data-toggle="tab" href="#demo-lft-tab-3" aria-expanded="false">{{ __('home_categories') }}</a>
+                <a data-toggle="tab" href="#demo-lft-tab-3" aria-expanded="false">{{ __('Home categories') }}</a>
             </li>
             <li class="">
-                <a data-toggle="tab" href="#demo-lft-tab-4" aria-expanded="false">{{ __('best_selling') }}</a>
+                <a data-toggle="tab" href="#demo-lft-tab-4" aria-expanded="false">{{ __('Best selling') }}</a>
             </li>
         </ul>
 
@@ -26,22 +26,22 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <a onclick="add_slider()" class="btn btn-info pull-right">{{__('add_new')}}</a>
+                        <a onclick="add_slider()" class="btn btn-info pull-right">{{__('Add New Slider')}}</a>
                     </div>
                 </div>
 
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">{{__('home_slider')}}</h3>
+                        <h3 class="panel-title">{{__('Home slider')}}</h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>{{__('photo')}}</th>
-                                    <th>{{__('published')}}</th>
-                                    <th width="10%">{{__('options')}}</th>
+                                    <th>{{__('Photo')}}</th>
+                                    <th>{{__('Published')}}</th>
+                                    <th width="10%">{{__('Options')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -55,10 +55,10 @@
                                         <td>
                                             <div class="btn-group dropdown">
                                                 <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
-                                                    Actions <i class="dropdown-caret"></i>
+                                                    {{__('Actions')}} <i class="dropdown-caret"></i>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li><a onclick="confirm_modal('{{route('sliders.destroy', $slider->id)}}');">Delete</a></li>
+                                                    <li><a onclick="confirm_modal('{{route('sliders.destroy', $slider->id)}}');">{{__('Delete')}}</a></li>
                                                 </ul>
                                             </div>
                                         </td>
@@ -74,22 +74,22 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <a onclick="add_banner()" class="btn btn-info pull-right">{{__('add_new')}}</a>
+                        <a onclick="add_banner()" class="btn btn-info pull-right">{{__('Add New Banner')}}</a>
                     </div>
                 </div>
 
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">{{__('home_banner')}} (Max 3 published)</h3>
+                        <h3 class="panel-title">{{__('Home banner')}} (Max 3 published)</h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>{{__('photo')}}</th>
-                                    <th>{{__('published')}}</th>
-                                    <th width="10%">{{__('options')}}</th>
+                                    <th>{{__('Photo')}}</th>
+                                    <th>{{__('Published')}}</th>
+                                    <th width="10%">{{__('Options')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -103,10 +103,10 @@
                                         <td>
                                             <div class="btn-group dropdown">
                                                 <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
-                                                    Actions <i class="dropdown-caret"></i>
+                                                    {{__('Actions')}} <i class="dropdown-caret"></i>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li><a onclick="confirm_modal('{{route('home_banners.destroy', $banner->id)}}');">Delete</a></li>
+                                                    <li><a onclick="confirm_modal('{{route('home_banners.destroy', $banner->id)}}');">{{__('Actions')}}</a></li>
                                                 </ul>
                                             </div>
                                         </td>
@@ -122,23 +122,23 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <a onclick="add_home_category()" class="btn btn-info pull-right">{{__('add_new')}}</a>
+                        <a onclick="add_home_category()" class="btn btn-info pull-right">{{__('Add New Category')}}</a>
                     </div>
                 </div>
 
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">{{__('home_categories')}}</h3>
+                        <h3 class="panel-title">{{__('Home Categories')}}</h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>{{__('category')}}</th>
-                                    <th>{{__('subsubcategories')}}</th>
-                                    <th>{{ __('status') }}</th>
-                                    <th width="10%">{{__('options')}}</th>
+                                    <th>{{__('Category')}}</th>
+                                    <th>{{__('Subsubcategories')}}</th>
+                                    <th>{{ __('Status') }}</th>
+                                    <th width="10%">{{__('Options')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -157,11 +157,11 @@
                                         <td>
                                             <div class="btn-group dropdown">
                                                 <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
-                                                    Actions <i class="dropdown-caret"></i>
+                                                    {{__('Actions')}} <i class="dropdown-caret"></i>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li><a onclick="edit_home_category({{ $home_category->id }})">Edit</a></li>
-                                                    <li><a onclick="confirm_modal('{{route('home_categories.destroy', $home_category->id)}}');">Delete</a></li>
+                                                    <li><a onclick="edit_home_category({{ $home_category->id }})">{{__('Edit')}}</a></li>
+                                                    <li><a onclick="confirm_modal('{{route('home_categories.destroy', $home_category->id)}}');">{{__('Delete')}}</a></li>
                                                 </ul>
                                             </div>
                                         </td>
@@ -176,7 +176,7 @@
             <div id="demo-lft-tab-4" class="tab-pane fade">
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title text-center">{{ __('best_selling') }}</h3>
+                        <h3 class="panel-title text-center">{{ __('Best Selling') }}</h3>
                     </div>
                     <div class="panel-body text-center">
                         <label class="switch">

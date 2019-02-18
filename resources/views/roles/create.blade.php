@@ -5,7 +5,7 @@
 <div class="col-lg-6 col-lg-offset-3">
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">{{__('role_information')}}</h3>
+            <h3 class="panel-title">{{__('Role Information')}}</h3>
         </div>
 
         <!--Horizontal Form-->
@@ -14,20 +14,20 @@
         	@csrf
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="name">{{__('name')}}</label>
+                    <label class="col-sm-3 control-label" for="name">{{__('Name')}}</label>
                     <div class="col-sm-9">
-                        <input type="text" placeholder="{{__('name')}}" id="name" name="name" class="form-control" required>
+                        <input type="text" placeholder="{{__('Name')}}" id="name" name="name" class="form-control" required>
                     </div>
                 </div>
                 <div class="panel-heading">
-                    <h3 class="panel-title">{{ __('permissions') }}</h3>
+                    <h3 class="panel-title">{{ __('Permissions') }}</h3>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="banner"></label>
                     <div class="col-sm-9">
                         <div class="row">
                             <div class="col-sm-10">
-                                <label class="control-label">{{ __('products') }}</label>
+                                <label class="control-label">{{ __('Products') }}</label>
                             </div>
                             <div class="col-sm-2">
                                 <label class="switch">
@@ -38,7 +38,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-10">
-                                <label class="control-label">{{ __('flash_deal') }}</label>
+                                <label class="control-label">{{ __('Flash Deal') }}</label>
                             </div>
                             <div class="col-sm-2">
                                 <label class="switch">
@@ -49,7 +49,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-10">
-                                <label class="control-label">{{ __('orders') }}</label>
+                                <label class="control-label">{{ __('Orders') }}</label>
                             </div>
                             <div class="col-sm-2">
                                 <label class="switch">
@@ -60,7 +60,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-10">
-                                <label class="control-label">{{ __('sales') }}</label>
+                                <label class="control-label">{{ __('Sales') }}</label>
                             </div>
                             <div class="col-sm-2">
                                 <label class="switch">
@@ -71,7 +71,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-10">
-                                <label class="control-label">{{ __('sellers') }}</label>
+                                <label class="control-label">{{ __('Sellers') }}</label>
                             </div>
                             <div class="col-sm-2">
                                 <label class="switch">
@@ -82,7 +82,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-10">
-                                <label class="control-label">{{ __('customers') }}</label>
+                                <label class="control-label">{{ __('Customers') }}</label>
                             </div>
                             <div class="col-sm-2">
                                 <label class="switch">
@@ -93,7 +93,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-10">
-                                <label class="control-label">{{ __('messaging') }}</label>
+                                <label class="control-label">{{ __('Messaging') }}</label>
                             </div>
                             <div class="col-sm-2">
                                 <label class="switch">
@@ -104,7 +104,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-10">
-                                <label class="control-label">{{ __('business_settings') }}</label>
+                                <label class="control-label">{{ __('Business Settings') }}</label>
                             </div>
                             <div class="col-sm-2">
                                 <label class="switch">
@@ -115,7 +115,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-10">
-                                <label class="control-label">{{ __('frontend_settings') }}</label>
+                                <label class="control-label">{{ __('Frontend Settings') }}</label>
                             </div>
                             <div class="col-sm-2">
                                 <label class="switch">
@@ -126,7 +126,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-10">
-                                <label class="control-label">{{ __('staffs') }}</label>
+                                <label class="control-label">{{ __('Staffs') }}</label>
                             </div>
                             <div class="col-sm-2">
                                 <label class="switch">
@@ -139,7 +139,7 @@
                 </div>
             </div>
             <div class="panel-footer text-right">
-                <button class="btn btn-purple" type="submit">{{__('save')}}</button>
+                <button class="btn btn-purple" type="submit">{{__('Save')}}</button>
             </div>
         </form>
         <!--===================================================-->

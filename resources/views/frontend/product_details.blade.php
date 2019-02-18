@@ -95,7 +95,7 @@
                                                     <i class="fa fa-star-o"></i>
                                                 @endfor
                                             </span>
-                                            <span class="rating-count">({{ $total }} customer reviews)</span>
+                                            <span class="rating-count">({{ $total }} {{__('customer reviews')}})</span>
                                         @endif
                                     </div>
                                 </div>
@@ -234,7 +234,7 @@
                                                 </span>
                                             </div>
                                             @if(count(json_decode($product->variations, true)) >= 1)
-                                                <div class="avialable-amount">({{ $qty }} pc available)</div>
+                                                <div class="avialable-amount">({{ $qty }} {{__('pc available')}})</div>
                                             @endif
                                         </div>
                                     </div>
@@ -261,17 +261,17 @@
                                 <div class="d-table-cell">
                                     <!-- Add to cart button -->
                                     <button type="button" class="btn btn-base-1 btn-icon-left" onclick="addToCart()">
-                                        <i class="la la-shopping-cart"></i> Add to cart
+                                        <i class="la la-shopping-cart"></i> {{__('Add to cart')}}
                                     </button>
                                     <!-- Add to wishlist button -->
                                     <button type="button" class="btn btn-outline btn-base-1 btn-icon-left" onclick="addToWishList({{ $product->id }})">
                                         <i class="la la-heart-o"></i>
-                                        <span class="d-none d-md-inline-block"> Add to wishlist</span>
+                                        <span class="d-none d-md-inline-block"> {{__('Add to wishlist')}}</span>
                                     </button>
                                     <!-- Add to compare button -->
                                     <button type="button" class="btn btn-outline btn-base-1 btn-icon-left" onclick="addToCompare({{ $product->id }})">
                                         <i class="la la-refresh"></i>
-                                        <span class="d-none d-md-inline-block"> Add to compare</span>
+                                        <span class="d-none d-md-inline-block"> {{__('Add to compare')}}</span>
                                     </button>
                                 </div>
                             </div>
@@ -279,29 +279,29 @@
                             <hr class="mt-4">
                             <div class="row no-gutters mt-3">
                                 <div class="col-2">
-                                    <div class="product-description-label alpha-6">Return Policy:</div>
+                                    <div class="product-description-label alpha-6">{{__('Return Policy')}}:</div>
                                 </div>
                                 <div class="col-10">
-                                    Returns accepted if product not as described, buyer pays return shipping fee; or keep the product & agree refund with seller. <a href="{{ route('returnpolicy') }}" class="ml-2">View details</a>
+                                    {{__('Returns accepted if product not as described, buyer pays return shipping fee; or keep the product & agree refund with seller.')}} <a href="{{ route('returnpolicy') }}" class="ml-2">View details</a>
                                 </div>
                             </div>
                             @if ($product->added_by == 'seller')
                                 <div class="row no-gutters mt-3">
                                     <div class="col-2">
-                                        <div class="product-description-label alpha-6">Seller Guarantees:</div>
+                                        <div class="product-description-label alpha-6">{{__('Seller Guarantees')}}:</div>
                                     </div>
                                     <div class="col-10">
                                         @if ($product->user->seller->verification_status == 1)
-                                            Verified seller
+                                            {{__('Verified seller')}}
                                         @else
-                                            Non verified seller
+                                            {{__('Non verified seller')}}
                                         @endif
                                     </div>
                                 </div>
                             @endif
                             <div class="row no-gutters mt-3">
                                 <div class="col-2">
-                                    <div class="product-description-label alpha-6">Payment:</div>
+                                    <div class="product-description-label alpha-6">{{__('Payment')}}:</div>
                                 </div>
                                 <div class="col-10">
                                     <ul class="inline-links">
@@ -335,7 +335,7 @@
                             <hr class="mt-4">
                             <div class="row no-gutters mt-4">
                                 <div class="col-2">
-                                    <div class="product-description-label mt-2">Share:</div>
+                                    <div class="product-description-label mt-2">{{__('Share')}}:</div>
                                 </div>
                                 <div class="col-10">
                                     <div id="share"></div>
@@ -365,7 +365,7 @@
                                     </svg>
                                 </div>
                             @endif
-                            <div class="title">Sold By</div>
+                            <div class="title">{{__('Sold By')}}</div>
                             @if($product->added_by == 'seller' && \App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)
                                 <a href="{{ route('shop.visit', $product->user->shop->slug) }}" class="name d-block">{{ $product->user->shop->name }}
                                 @if ($product->user->seller->verification_status == 1)
@@ -395,14 +395,14 @@
                                             <i class="fa fa-star-o"></i>
                                         @endfor
                                     </span>
-                                    <span class="rating-count d-block ml-0">({{ $total }} customer reviews)</span>
+                                    <span class="rating-count d-block ml-0">({{ $total }} {{__('customer reviews')}})</span>
                                 </div>
                             @endif
                         </div>
                         <div class="row no-gutters align-items-center">
                             @if($product->added_by == 'seller')
                                 <div class="col">
-                                    <a href="{{ route('shop.visit', $product->user->shop->slug) }}" class="d-block store-btn">Visit Store</a>
+                                    <a href="{{ route('shop.visit', $product->user->shop->slug) }}" class="d-block store-btn">{{__('Visit Store')}}</a>
                                 </div>
                                 <div class="col">
                                     <ul class="social-media social-media--style-1-v4 text-center">
@@ -433,7 +433,7 @@
                     </div>
                     <div class="seller-category-box bg-white sidebar-box mb-3">
                         <div class="box-title">
-                            This Seller's Categories
+                            {{__("This Seller's Categories")}}
                         </div>
                         <div class="box-content">
                             <div class="category-accordion">
@@ -641,7 +641,7 @@
                                                         </div>
                                                         <div class="row mt-3">
                                                             <div class="col-sm-12">
-                                                                <textarea class="form-control" rows="4" name="comment" placeholder="Your review" required></textarea>
+                                                                <textarea class="form-control" rows="4" name="comment" placeholder="{{__('Your review')}}" required></textarea>
                                                             </div>
                                                         </div>
 

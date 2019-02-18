@@ -35,7 +35,7 @@
 
                     <div class="bg-white sidebar-box mb-3">
                         <div class="box-title text-center">
-                            {{__('categories')}}
+                            {{__('Categories')}}
                         </div>
                         <div class="box-content">
                             <div class="category-accordion">
@@ -152,9 +152,9 @@
                                 <div class="col-lg-4 col-md-5">
                                     <div class="sort-by-box">
                                         <div class="form-group">
-                                            <label>Search</label>
+                                            <label>{{__('Search')}}</label>
                                             <div class="search-widget">
-                                                <input class="form-control input-lg" type="text" name="q" placeholder="Search products" @isset($query) value="{{ $query }}" @endisset>
+                                                <input class="form-control input-lg" type="text" name="q" placeholder="{{__('Search products')}}" @isset($query) value="{{ $query }}" @endisset>
                                                 <button type="submit" class="btn-inner">
                                                     <i class="fa fa-search"></i>
                                                 </button>
@@ -167,12 +167,12 @@
                                         <div class="col-4">
                                             <div class="sort-by-box px-1">
                                                 <div class="form-group">
-                                                    <label>Sort by</label>
+                                                    <label>{{__('Sort by')}}</label>
                                                     <select class="form-control sortSelect" data-minimum-results-for-search="Infinity" name="sort_by" onchange="filter()">
-                                                        <option value="1" @isset($sort_by) @if ($sort_by == '1') selected @endif @endisset>Newest</option>
-                                                        <option value="2" @isset($sort_by) @if ($sort_by == '2') selected @endif @endisset>Oldest</option>
-                                                        <option value="3" @isset($sort_by) @if ($sort_by == '3') selected @endif @endisset>Price low to high</option>
-                                                        <option value="4" @isset($sort_by) @if ($sort_by == '4') selected @endif @endisset>Price high to low</option>
+                                                        <option value="1" @isset($sort_by) @if ($sort_by == '1') selected @endif @endisset>{{__('Newest')}}</option>
+                                                        <option value="2" @isset($sort_by) @if ($sort_by == '2') selected @endif @endisset>{{__('Oldest')}}</option>
+                                                        <option value="3" @isset($sort_by) @if ($sort_by == '3') selected @endif @endisset>{{__('Price low to high')}}</option>
+                                                        <option value="4" @isset($sort_by) @if ($sort_by == '4') selected @endif @endisset>{{__('Price high to low')}}</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -180,9 +180,9 @@
                                         <div class="col-4">
                                             <div class="sort-by-box px-1">
                                                 <div class="form-group">
-                                                    <label>Brands</label>
-                                                    <select class="form-control sortSelect" data-placeholder="All Brands" name="brand_id" onchange="filter()">
-                                                        <option value="">All Brands</option>
+                                                    <label>{{__('Brands')}}</label>
+                                                    <select class="form-control sortSelect" data-placeholder="{{__('All Brands')}}" name="brand_id" onchange="filter()">
+                                                        <option value="">{{__('All Brands')}}</option>
                                                         @foreach (\App\Brand::all() as $key => $brand)
                                                             <option value="{{ $brand->id }}"   @isset($brand_id) @if ($brand_id == $brand->id) selected @endif @endisset>{{ $brand->name }}</option>
                                                         @endforeach
@@ -193,12 +193,11 @@
                                         <div class="col-4">
                                             <div class="sort-by-box px-1">
                                                 <div class="form-group">
-                                                    <label>{{__('sellers')}}</label>
+                                                    <label>{{__('Sellers')}}</label>
                                                     <select class="form-control sortSelect" data-placeholder="This is a placeholder">
                                                         <option>{{__('All Sellers')}}</option>
-                                                        <option value="1">Seller Name</option>
-                                                        <option value="2">Brand Name</option>
-                                                        <option value="3">Seller Name ffdv fd fdvgfdgf </option>
+                                                        <option value="1">{{__('Seller Name')}}</option>
+                                                        <option value="2">{{__('Brand Name')}}</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -239,7 +238,7 @@
                                                     </button>
 
                                                     <button type="button" class="paction add-cart btn btn-base-1 btn-circle btn-icon-left" onclick="showAddToCartModal({{ $product->id }})">
-                                                        <i class="fa la la-shopping-cart"></i>Add to cart
+                                                        <i class="fa la la-shopping-cart"></i>{{__('Add to cart')}}
                                                     </button>
 
                                                     <button class="paction add-compare" title="Add to Compare" onclick="addToCompare({{ $product->id }})">

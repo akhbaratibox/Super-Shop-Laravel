@@ -8,7 +8,7 @@
                 <div class="col-lg-3 position-static order-2 order-lg-0">
                     <div class="category-sidebar">
                         <div class="all-category d-none d-lg-block">
-                            <span >{{__('categories')}}</span>
+                            <span >{{__('Categories')}}</span>
                             <a href="{{ route('categories.all') }}">
                                 <span class="d-none d-lg-inline-block">{{__('See All')}} ></span>
                             </a>
@@ -17,7 +17,7 @@
                             <li class="d-lg-none">
                                 <a href="{{ route('categories.all') }}">
                                     <img class="cat-image" src="{{ asset('frontend/images/icons/list.png') }}" width="30">
-                                    <span class="cat-name">{{__('All')}} <br> {{__('categories')}}</span>
+                                    <span class="cat-name">{{__('All')}} <br> {{__('Categories')}}</span>
                                 </a>
                             </li>
                             @foreach (\App\Category::all()->take(11) as $key => $category)
@@ -143,8 +143,8 @@
                         <div class="flash-deal-box bg-white h-100">
                             <div class="title text-center p-2 gry-bg">
                                 <h3 class="heading-6 mb-0">
-                                    Flash Deal
-                                    <span class="badge badge-danger">Hot</span>
+                                    {{__('Flash Deal')}}
+                                    <span class="badge badge-danger">{{__('Hot')}}</span>
                                 </h3>
                                 <div class="countdown countdown--style-1 countdown--style-1-v1" data-countdown-date="{{ date('m/d/Y', $flash_deal->end_date) }}" data-countdown-label="show"></div>
                             </div>
@@ -181,7 +181,7 @@
                             <div class="title text-center p-2 gry-bg">
                                 <h3 class="heading-6 mb-0">
                                     {{ __('Todays Deal') }}
-                                    <span class="badge badge-danger">Hot</span>
+                                    <span class="badge badge-danger">{{__('Hot')}}</span>
                                 </h3>
                             </div>
                             <div class="flash-content c-scrollbar c-height">
@@ -237,7 +237,7 @@
             <div class="container">
                 <div class="section-title section-title--style-1">
                     <h3 class="section-title-inner heading-4 strong-700 text-capitalize">
-                        <span class="mr-4">Flash Deal</span>
+                        <span class="mr-4">{{__('Flash Deal')}}</span>
                         <small class="countdown countdown-sm d-inline-block" data-countdown-date="{{ date('m/d/Y', $flash_deal->end_date) }}" data-countdown-label="hide"></small>
                     </h3>
                 </div>
@@ -285,7 +285,7 @@
                         <span class="mr-4">{{__('Best Selling')}}</span>
                     </h3>
                     <ul class="inline-links float-right">
-                        <li><a  class="active">Top 20</a></li>
+                        <li><a  class="active">{{__('Top 20')}}</a></li>
                         {{-- <li><a href="" >Category name</a></li>
                         <li><a href="" >Category name</a></li>
                         <li><a href="" >Category name</a></li> --}}

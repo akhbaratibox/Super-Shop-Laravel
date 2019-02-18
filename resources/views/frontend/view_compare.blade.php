@@ -61,7 +61,7 @@
                                                 @endforeach
                                             </tr>
                                             <tr>
-                                                <th scope="row">{{__('brand')}}</th>
+                                                <th scope="row">{{__('Brand')}}</th>
                                                 @foreach (Session::get('compare') as $key => $item)
                                                     <td>{{ \App\Product::find($item)->brand->name }}</td>
                                                 @endforeach
@@ -83,7 +83,7 @@
                                                 @foreach (Session::get('compare') as $key => $item)
                                                     <td class="text-center py-4">
                                                         <button type="button" class="btn btn-base-1 btn-circle btn-icon-left" onclick="showAddToCartModal({{ $item }})">
-                                                            <i class="icon ion-android-cart"></i>Add to cart
+                                                            <i class="icon ion-android-cart"></i>{{__('Add to cart')}}
                                                         </button>
                                                     </td>
                                                 @endforeach

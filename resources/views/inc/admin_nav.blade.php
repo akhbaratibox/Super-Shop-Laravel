@@ -97,7 +97,7 @@
                                         <li>
                                             <a class="media" href="{{ route('sellers.index') }}">
                                                 <div class="media-body">
-                                                    <p class="mar-no text-nowrap text-main text-semibold">New verification request(s)</p>
+                                                    <p class="mar-no text-nowrap text-main text-semibold">{{__('New verification request(s)')}}</p>
                                                 </div>
                                             </a>
                                         </li>
@@ -124,10 +124,10 @@
                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right panel-default">
                         <ul class="head-list">
                             <li>
-                                <a href="{{ route('profile.index') }}"><i class="demo-pli-male icon-lg icon-fw"></i> {{__('profile')}}</a>
+                                <a href="{{ route('profile.index') }}"><i class="demo-pli-male icon-lg icon-fw"></i> {{__('Profile')}}</a>
                             </li>
                             <li>
-                                <a href="{{ route('logout')}}"><i class="demo-pli-unlock icon-lg icon-fw"></i> {{__('logout')}}</a>
+                                <a href="{{ route('logout')}}"><i class="demo-pli-unlock icon-lg icon-fw"></i> {{__('Logout')}}</a>
                             </li>
                         </ul>
                     </div>

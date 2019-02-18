@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <a href="{{ route('sellers.create')}}" class="btn btn-info pull-right">{{__('add_new')}}</a>
+        <a href="{{ route('sellers.create')}}" class="btn btn-info pull-right">{{__('Add New Seller')}}</a>
     </div>
 </div>
 
@@ -21,11 +21,11 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>{{__('name')}}</th>
-                    <th>{{__('email_address')}}</th>
-                    <th>{{__('status')}}</th>
+                    <th>{{__('Name')}}</th>
+                    <th>{{__('Email Address')}}</th>
+                    <th>{{__('Status')}}</th>
                     <th>{{ __('Due to seller') }}</th>
-                    <th width="10%">{{__('options')}}</th>
+                    <th width="10%">{{__('Options')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,17 +37,17 @@
                         <td>
                             @if ($seller->verification_status == 1)
                                 <div class="label label-table label-success">
-                                    Verified
+                                    {{__('Verified')}}
                                 </div>
                             @elseif ($seller->verification_info != null)
                                 <a href="{{ route('sellers.show_verification_request', $seller->id) }}">
                                     <div class="label label-table label-info">
-                                        Requested
+                                        {{__('Requested')}}
                                     </div>
                                 </a>
                             @else
                                 <div class="label label-table label-danger">
-                                    Not Verified
+                                    {{__('Not Verified')}}
                                 </div>
                             @endif
                         </td>
@@ -61,12 +61,12 @@
                         <td>
                             <div class="btn-group dropdown">
                                 <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
-                                    Actions <i class="dropdown-caret"></i>
+                                    {{__('Actions')}} <i class="dropdown-caret"></i>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a onclick="show_seller_payment_modal('{{$seller->id}}');">Pay</a></li>
-                                    <li><a href="{{route('sellers.edit', $seller->id)}}">Edit</a></li>
-                                    <li><a onclick="confirm_modal('{{route('sellers.destroy', $seller->id)}}');">Delete</a></li>
+                                    <li><a onclick="show_seller_payment_modal('{{$seller->id}}');">{{__('Pay')}}</a></li>
+                                    <li><a href="{{route('sellers.edit', $seller->id)}}">{{__('Edit')}}</a></li>
+                                    <li><a onclick="confirm_modal('{{route('sellers.destroy', $seller->id)}}');">{{__('Delete')}}</a></li>
                                 </ul>
                             </div>
                         </td>

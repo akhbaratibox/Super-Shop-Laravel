@@ -16,16 +16,16 @@
                             <div class="row align-items-center">
                                 <div class="col-md-6">
                                     <h2 class="heading heading-6 text-capitalize strong-600 mb-0">
-                                        {{__('Add Product')}}
+                                        {{__('Add Your Product')}}
                                     </h2>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="float-md-right">
                                         <ul class="breadcrumb">
                                             <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
-                                            <li><a href="{{ route('dashboard') }}">{{__('dashboard')}}</a></li>
-                                            <li><a href="{{ route('seller.products') }}">{{__('products')}}</a></li>
-                                            <li class="active"><a href="{{ route('seller.products.upload') }}">{{__('Add Product')}}</a></li>
+                                            <li><a href="{{ route('dashboard') }}">{{__('Dashboard')}}</a></li>
+                                            <li><a href="{{ route('seller.products') }}">{{__('Products')}}</a></li>
+                                            <li class="active"><a href="{{ route('seller.products.upload') }}">{{__('Add New Product')}}</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -42,10 +42,10 @@
                                 <div class="form-box-content p-3">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('product_name')}} <span class="required-star">*</span></label>
+                                            <label>{{__('Product Name')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control mb-3" name="name" placeholder="{{__('product_name')}}" required>
+                                            <input type="text" class="form-control mb-3" name="name" placeholder="{{__('Product Name')}}" required>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -53,7 +53,7 @@
                                             <label>{{__('Product Category')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
-                                            <div class="form-control mb-3 c-pointer" data-toggle="modal" data-target="#categorySelectModal" id="product_category">Select a category</div>
+                                            <div class="form-control mb-3 c-pointer" data-toggle="modal" data-target="#categorySelectModal" id="product_category">{{__('Select a category')}}</div>
                                             <input type="hidden" name="category_id" id="category_id" value="" required>
                                             <input type="hidden" name="subcategory_id" id="subcategory_id" value="" required>
                                             <input type="hidden" name="subsubcategory_id" id="subsubcategory_id" value="" required>
@@ -131,7 +131,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('featured')}}</label>
+                                            <label>{{__('Featured')}}</label>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="featured_img" id="file-3" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
@@ -173,19 +173,19 @@
                                         <div class="col-md-10">
                                             <div class="mb-3">
                                                 <select class="form-control selectpicker" data-minimum-results-for-search="Infinity" name="video_provider">
-                                                    <option value="youtube">Youtube</option>
-            										<option value="dailymotion">Dailymotion</option>
-            										<option value="vimeo">Vimeo</option>
+                                                    <option value="youtube">{{__('Youtube')}}</option>
+            										<option value="dailymotion">{{__('Dailymotion')}}</option>
+            										<option value="vimeo">{{__('Vimeo')}}</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>Video URL</label>
+                                            <label>{{__('Video URL')}}</label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control mb-3" name="video_link" placeholder="Video link">
+                                            <input type="text" class="form-control mb-3" name="video_link" placeholder="{{__('Video link')}}">
                                         </div>
                                     </div>
                                 </div>
@@ -235,7 +235,7 @@
                                 <div class="form-box-content p-3">
                                     <div class="row mb-3">
                                         <div class="col-8 col-md-3 order-1 order-md-0">
-        									<input type="text" class="form-control" value="{{__('colors')}}" disabled>
+        									<input type="text" class="form-control" value="{{__('Colors')}}" disabled>
         								</div>
         								<div class="col-12 col-md-7 col-xl-8 order-3 order-md-0 mt-2 mt-md-0">
         									<select class="form-control color-var-select" name="colors[]" id="colors" multiple>
@@ -256,7 +256,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-2">
-        									<button type="button" class="btn btn-info" onclick="add_more_customer_choice_option()">{{ __('add_more_customer_choice_option') }}</button>
+        									<button type="button" class="btn btn-info" onclick="add_more_customer_choice_option()">{{ __('Add More Customer Choice Option') }}</button>
         								</div>
                                     </div>
                                 </div>
@@ -268,26 +268,26 @@
                                 <div class="form-box-content p-3">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('unit_price')}} <span class="required-star">*</span></label>
+                                            <label>{{__('Unit Price')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="unit_price" placeholder="Unit Price (Base Price)">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="unit_price" placeholder="{{__('Unit Price')}} {{__('(Base Price)')}}">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('purchase_price')}}</label>
+                                            <label>{{__('Purchase Price')}}</label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="purchase_price" placeholder="Purchase Price">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="purchase_price" placeholder="{{__('Purchase Price')}}">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('tax')}}</label>
+                                            <label>{{__('Tax')}}</label>
                                         </div>
                                         <div class="col-8">
-                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="tax" placeholder="Tax">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="tax" placeholder="{{__('Tax')}}">
                                         </div>
                                         <div class="col-4 col-md-2">
                                             <div class="mb-3">
@@ -300,10 +300,10 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('discount')}}</label>
+                                            <label>{{__('Discount')}}</label>
                                         </div>
                                         <div class="col-8">
-                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="discount" placeholder="Discount">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="discount" placeholder="{{__('Discount')}}">
                                         </div>
                                         <div class="col-4 col-md-2">
                                             <div class="mb-3">
@@ -323,12 +323,12 @@
                             </div>
                             <div class="form-box bg-white mt-4">
                                 <div class="form-box-title px-3 py-2">
-                                    {{__('description')}}
+                                    {{__('Description')}}
                                 </div>
                                 <div class="form-box-content p-3">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('description')}}</label>
+                                            <label>{{__('Description')}}</label>
                                         </div>
                                         <div class="col-md-10">
                                             <div class="mb-3">
@@ -361,7 +361,7 @@
                                 </div>
                             </div>
                             <div class="form-box mt-4 text-right">
-                                <button type="submit" class="btn btn-styled btn-base-1">{{ __('save') }}</button>
+                                <button type="submit" class="btn btn-styled btn-base-1">{{ __('Save') }}</button>
                             </div>
                         </form>
                     </div>

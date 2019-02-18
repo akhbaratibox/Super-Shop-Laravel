@@ -15,15 +15,15 @@
             	@csrf
                 <div class="panel-body">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="name">{{__('name')}}</label>
+                        <label class="col-sm-2 control-label" for="name">{{__('Name')}}</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="{{__('name')}}" name="name" value="{{ Auth::user()->name }}" required>
+                            <input type="text" class="form-control" placeholder="{{__('Name')}}" name="name" value="{{ Auth::user()->name }}" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="name">{{__('email')}}</label>
+                        <label class="col-sm-2 control-label" for="name">{{__('Email')}}</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" placeholder="{{__('email')}}" name="email" value="{{ Auth::user()->email }}">
+                            <input type="email" class="form-control" placeholder="{{__('Email')}}" name="email" value="{{ Auth::user()->email }}">
                         </div>
                     </div>
                     <div class="form-group">
@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="panel-footer text-right">
-                    <button class="btn btn-purple" type="submit">{{__('save')}}</button>
+                    <button class="btn btn-purple" type="submit">{{__('Save')}}</button>
                 </div>
             </form>
             <!--===================================================-->

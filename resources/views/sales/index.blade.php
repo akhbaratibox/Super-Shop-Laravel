@@ -67,12 +67,12 @@
                         <td>
                             <div class="btn-group dropdown">
                                 <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
-                                    Actions <i class="dropdown-caret"></i>
+                                    {{__('Actions')}} <i class="dropdown-caret"></i>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="{{route('sales.show', $order->id)}}">View</a></li>
+                                    <li><a href="{{route('sales.show', $order->id)}}">{{__('View')}}</a></li>
                                     <li><a href="{{ route('customer.invoice.download', $order->id) }}">{{__('Download Invoice')}}</a></li>
-                                    <li><a onclick="confirm_modal('{{route('orders.destroy', $order->id)}}');">Delete</a></li>
+                                    <li><a onclick="confirm_modal('{{route('orders.destroy', $order->id)}}');">{{__('Delete')}}</a></li>
                                 </ul>
                             </div>
                         </td>

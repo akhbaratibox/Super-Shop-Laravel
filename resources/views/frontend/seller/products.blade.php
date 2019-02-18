@@ -16,17 +16,17 @@
                             <div class="row align-items-center">
                                 <div class="col-md-6">
                                     <h2 class="heading heading-6 text-capitalize strong-600 mb-0 d-inline-block">
-                                        {{__('products')}}
+                                        {{__('Products')}}
                                     </h2>
-                                    <a href="{{ route('seller.products.upload')}}" class="btn btn-base-1 ml-3">{{__('add_new')}}</a>
+                                    <a href="{{ route('seller.products.upload')}}" class="btn btn-base-1 ml-3">{{__('Add New Product')}}</a>
 
                                 </div>
                                 <div class="col-md-6">
                                     <div class="float-md-right">
                                         <ul class="breadcrumb">
                                             <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
-                                            <li><a href="{{ route('dashboard') }}">{{__('dashboard')}}</a></li>
-                                            <li><a href="{{ route('seller.products') }}">{{__('products')}}</a></li>
+                                            <li><a href="{{ route('dashboard') }}">{{__('Dashboard')}}</a></li>
+                                            <li><a href="{{ route('seller.products') }}">{{__('Products')}}</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -40,13 +40,13 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>{{__('name')}}</th>
-                                            <th>{{__('subsubcategory')}}</th>
-                                            <th>{{__('current_qty')}}</th>
-                                            <th>{{__('base_price')}}</th>
-                                            <th>{{__('published')}}</th>
-                                            <th>{{__('featured')}}</th>
-                                            <th>{{__('options')}}</th>
+                                            <th>{{__('Name')}}</th>
+                                            <th>{{__('Subsubcategory')}}</th>
+                                            <th>{{__('Current Qty')}}</th>
+                                            <th>{{__('Base Price')}}</th>
+                                            <th>{{__('Published')}}</th>
+                                            <th>{{__('Featured')}}</th>
+                                            <th>{{__('Options')}}</th>
                                         </tr>
                                     </thead>
 
@@ -82,7 +82,7 @@
 
                                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton-{{ $key }}">
                                                             <a href="{{route('seller.products.edit', $product->id)}}" class="dropdown-item">{{__('Edit')}}</a>
-        					                                <button onclick="confirm_modal('{{route('products.destroy', $product->id)}}')" class="dropdown-item">Delete</button>
+        					                                <button onclick="confirm_modal('{{route('products.destroy', $product->id)}}')" class="dropdown-item">{{__('Delete')}}</button>
                                                             <a href="{{route('products.duplicate', $product->id)}}" class="dropdown-item">{{__('Duplicate')}}</a>
                                                         </div>
                                                     </div>

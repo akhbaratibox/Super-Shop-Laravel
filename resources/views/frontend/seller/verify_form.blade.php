@@ -24,7 +24,7 @@
                                     <div class="float-md-right">
                                         <ul class="breadcrumb">
                                             <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
-                                            <li><a href="{{ route('dashboard') }}">{{__('dashboard')}}</a></li>
+                                            <li><a href="{{ route('dashboard') }}">{{__('Dashboard')}}</a></li>
                                             <li class="active"><a href="{{ route('shops.index') }}">{{__('Shop Settings')}}</a></li>
                                         </ul>
                                     </div>
@@ -118,7 +118,7 @@
                          </div>
                         </div>
                         <div class="text-right mt-4">
-                            <button type="submit" class="btn btn-styled btn-base-1">{{__('save')}}</button>
+                            <button type="submit" class="btn btn-styled btn-base-1">{{__('Apply')}}</button>
                         </div>
                         </form>
                     </div>

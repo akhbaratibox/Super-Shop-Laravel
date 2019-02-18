@@ -9,41 +9,41 @@
 		@csrf
 		<div class="panel">
 			<div class="panel-heading">
-				<h3 class="panel-title">Product Information</h3>
+				<h3 class="panel-title">{{__('Product Information')}}</h3>
 			</div>
 			<div class="panel-body">
 				<div class="tab-base tab-stacked-left">
 				    <!--Nav tabs-->
 				    <ul class="nav nav-tabs">
 						<li class="active">
-				            <a data-toggle="tab" href="#demo-stk-lft-tab-1" aria-expanded="true">General</a>
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-1" aria-expanded="true">{{__('General')}}</a>
 				        </li>
 				        <li class="">
-				            <a data-toggle="tab" href="#demo-stk-lft-tab-2" aria-expanded="false">Images</a>
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-2" aria-expanded="false">{{__('Images')}}</a>
 				        </li>
 						<li class="">
-				            <a data-toggle="tab" href="#demo-stk-lft-tab-3" aria-expanded="false">Videos</a>
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-3" aria-expanded="false">{{__('Videos')}}</a>
 				        </li>
 				        <li class="">
-				            <a data-toggle="tab" href="#demo-stk-lft-tab-4" aria-expanded="false">Meta Tags</a>
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-4" aria-expanded="false">{{__('Meta Tags')}}</a>
 				        </li>
 						<li class="">
-				            <a data-toggle="tab" href="#demo-stk-lft-tab-5" aria-expanded="false">Customer Choice</a>
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-5" aria-expanded="false">{{__('Customer Choice')}}</a>
 				        </li>
 						<li class="">
-				            <a data-toggle="tab" href="#demo-stk-lft-tab-6" aria-expanded="false">Price</a>
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-6" aria-expanded="false">{{__('Price')}}</a>
 				        </li>
 						<li class="">
-				            <a data-toggle="tab" href="#demo-stk-lft-tab-7" aria-expanded="false">Description</a>
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-7" aria-expanded="false">{{__('Description')}}</a>
 				        </li>
 						{{-- <li class="">
 				            <a data-toggle="tab" href="#demo-stk-lft-tab-8" aria-expanded="false">Display Settings</a>
 				        </li> --}}
 						<li class="">
-				            <a data-toggle="tab" href="#demo-stk-lft-tab-9" aria-expanded="false">Shipping Info</a>
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-9" aria-expanded="false">{{__('Shipping Info')}}</a>
 				        </li>
 						<li class="">
-				            <a data-toggle="tab" href="#demo-stk-lft-tab-10" aria-expanded="false">PDF Specs</a>
+				            <a data-toggle="tab" href="#demo-stk-lft-tab-10" aria-expanded="false">{{__('PDF Specification')}}</a>
 				        </li>
 				    </ul>
 
@@ -51,13 +51,13 @@
 				    <div class="tab-content">
 				        <div id="demo-stk-lft-tab-1" class="tab-pane fade active in">
 							<div class="form-group">
-	                            <label class="col-lg-2 control-label">{{__('product_name')}}</label>
+	                            <label class="col-lg-2 control-label">{{__('Product Name')}}</label>
 	                            <div class="col-lg-7">
-	                                <input type="text" class="form-control" name="name" placeholder="{{__('product_name')}}" value="{{$product->name}}" required>
+	                                <input type="text" class="form-control" name="name" placeholder="{{__('Product Name')}}" value="{{$product->name}}" required>
 	                            </div>
 	                        </div>
 	                        <div class="form-group" id="category">
-	                            <label class="col-lg-2 control-label">{{__('category')}}</label>
+	                            <label class="col-lg-2 control-label">{{__('Category')}}</label>
 	                            <div class="col-lg-7">
 	                                <select class="form-control demo-select2-placeholder" name="category_id" id="category_id" required>
 	                                	<option>Select an option</option>
@@ -68,7 +68,7 @@
 	                            </div>
 	                        </div>
 	                        <div class="form-group" id="subcategory">
-	                            <label class="col-lg-2 control-label">{{__('subcategory')}}</label>
+	                            <label class="col-lg-2 control-label">{{__('Subcategory')}}</label>
 	                            <div class="col-lg-7">
 	                                <select class="form-control demo-select2-placeholder" name="subcategory_id" id="subcategory_id" required>
 
@@ -76,7 +76,7 @@
 	                            </div>
 	                        </div>
 	                        <div class="form-group" id="subsubcategory">
-	                            <label class="col-lg-2 control-label">{{__('subsubcategory')}}</label>
+	                            <label class="col-lg-2 control-label">{{__('Subsubcategory')}}</label>
 	                            <div class="col-lg-7">
 	                                <select class="form-control demo-select2-placeholder" name="subsubcategory_id" id="subsubcategory_id" required>
 
@@ -84,7 +84,7 @@
 	                            </div>
 	                        </div>
 	                        <div class="form-group" id="brand">
-	                            <label class="col-lg-2 control-label">{{__('brand')}}</label>
+	                            <label class="col-lg-2 control-label">{{__('Brand')}}</label>
 	                            <div class="col-lg-7">
 	                                <select class="form-control demo-select2-placeholder" name="brand_id" id="brand_id" required>
 
@@ -92,13 +92,13 @@
 	                            </div>
 	                        </div>
 	                        <div class="form-group">
-	                            <label class="col-lg-2 control-label">{{__('unit')}}</label>
+	                            <label class="col-lg-2 control-label">{{__('Unit')}}</label>
 	                            <div class="col-lg-7">
 	                                <input type="text" class="form-control" name="unit" placeholder="Unit (e.g. KG, Pc etc)" value="{{$product->unit}}" required>
 	                            </div>
 	                        </div>
 	                        <div class="form-group">
-	                            <label class="col-lg-2 control-label">{{__('tags')}}</label>
+	                            <label class="col-lg-2 control-label">{{__('Tags')}}</label>
 	                            <div class="col-lg-7">
 	                                <input type="text" class="form-control" name="tags[]" id="tags" value="{{ $product->tags }}" placeholder="Type to add a tag" data-role="tagsinput">
 	                            </div>
@@ -106,7 +106,7 @@
 				        </div>
 				        <div id="demo-stk-lft-tab-2" class="tab-pane fade">
 							<div class="form-group">
-								<label class="col-lg-2 control-label">Main Images</label>
+								<label class="col-lg-2 control-label">{{__('Main Images')}}</label>
 								<div class="col-lg-7">
 									<div id="photos">
 										@foreach (json_decode($product->photos) as $key => $photo)
@@ -122,7 +122,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">Thumbnail Image</label>
+								<label class="col-lg-2 control-label">{{__('Thumbnail Image')}}</label>
 								<div class="col-lg-7">
 									<div id="thumbnail_img">
 										@if ($product->thumbnail_img != null)
@@ -138,7 +138,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">Featured</label>
+								<label class="col-lg-2 control-label">{{__('Featured')}}</label>
 								<div class="col-lg-7">
 									<div id="featured_img">
 										@if ($product->featured_img != null)
@@ -154,7 +154,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">Flash Deal</label>
+								<label class="col-lg-2 control-label">{{__('Flash Deal')}}</label>
 								<div class="col-lg-7">
 									<div id="flash_deal_img">
 										@if ($product->flash_deal_img != null)
@@ -172,17 +172,17 @@
 				        </div>
 				        <div id="demo-stk-lft-tab-3" class="tab-pane fade">
 							<div class="form-group">
-								<label class="col-lg-2 control-label">Video Provider</label>
+								<label class="col-lg-2 control-label">{{__('Video Provider')}}</label>
 								<div class="col-lg-7">
 									<select class="form-control demo-select2-placeholder" name="video_provider" id="video_provider">
-										<option value="youtube" <?php if($product->video_provider == 'youtube') echo "selected";?> >Youtube</option>
-										<option value="dailymotion" <?php if($product->video_provider == 'dailymotion') echo "selected";?> >Dailymotion</option>
-										<option value="vimeo" <?php if($product->video_provider == 'vimeo') echo "selected";?> >Vimeo</option>
+										<option value="youtube" <?php if($product->video_provider == 'youtube') echo "selected";?> >{{__('Youtube')}}</option>
+										<option value="dailymotion" <?php if($product->video_provider == 'dailymotion') echo "selected";?> >{{__('Dailymotion')}}</option>
+										<option value="vimeo" <?php if($product->video_provider == 'vimeo') echo "selected";?> >{{__('Vimeo')}}</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">Video Link</label>
+								<label class="col-lg-2 control-label">{{__('Video Link')}}</label>
 								<div class="col-lg-7">
 									<input type="text" class="form-control" name="video_link" value="{{ $product->video_link }}" placeholder="Video Link">
 								</div>
@@ -221,7 +221,7 @@
 						<div id="demo-stk-lft-tab-5" class="tab-pane fade">
 							<div class="form-group">
 								<div class="col-lg-2">
-									<input type="text" class="form-control" value="{{__('colors')}}" disabled>
+									<input type="text" class="form-control" value="{{__('Colors')}}" disabled>
 								</div>
 								<div class="col-lg-7">
 									<select class="form-control color-var-select" name="colors[]" id="colors" multiple>
@@ -256,25 +256,25 @@
 							</div>
 							<div class="form-group">
 								<div class="col-lg-2">
-									<button type="button" class="btn btn-info" onclick="add_more_customer_choice_option()">{{ __('add_more_customer_choice_option') }}</button>
+									<button type="button" class="btn btn-info" onclick="add_more_customer_choice_option()">{{ __('Add more customer choice option') }}</button>
 								</div>
 							</div>
 				        </div>
 						<div id="demo-stk-lft-tab-6" class="tab-pane fade">
 							<div class="form-group">
-	                            <label class="col-lg-2 control-label">{{__('unit_price')}}</label>
+	                            <label class="col-lg-2 control-label">{{__('Unit price')}}</label>
 	                            <div class="col-lg-7">
-	                                <input type="text" placeholder="{{__('unit_price')}}" name="unit_price" class="form-control" value="{{$product->unit_price}}" required>
+	                                <input type="text" placeholder="{{__('Unit price')}}" name="unit_price" class="form-control" value="{{$product->unit_price}}" required>
 	                            </div>
 	                        </div>
 	                        <div class="form-group">
-	                            <label class="col-lg-2 control-label">{{__('purchase_price')}}</label>
+	                            <label class="col-lg-2 control-label">{{__('Purchase price')}}</label>
 	                            <div class="col-lg-7">
-	                                <input type="number" min="0" step="0.01" placeholder="{{__('purchase_price')}}" name="purchase_price" class="form-control" value="{{$product->purchase_price}}" required>
+	                                <input type="number" min="0" step="0.01" placeholder="{{__('Purchase price')}}" name="purchase_price" class="form-control" value="{{$product->purchase_price}}" required>
 	                            </div>
 	                        </div>
 	                        <div class="form-group">
-	                            <label class="col-lg-2 control-label">{{__('tax')}}</label>
+	                            <label class="col-lg-2 control-label">{{__('Tax')}}</label>
 	                            <div class="col-lg-7">
 	                                <input type="number" min="0" step="0.01" placeholder="{{__('tax')}}" name="tax" class="form-control" value="{{$product->tax}}" required>
 	                            </div>
@@ -286,9 +286,9 @@
 	                            </div>
 	                        </div>
 	                        <div class="form-group">
-	                            <label class="col-lg-2 control-label">{{__('discount')}}</label>
+	                            <label class="col-lg-2 control-label">{{__('Discount')}}</label>
 	                            <div class="col-lg-7">
-	                                <input type="number" min="0" step="0.01" placeholder="{{__('discount')}}" name="discount" class="form-control" value="{{$product->discount}}" required>
+	                                <input type="number" min="0" step="0.01" placeholder="{{__('Discount')}}" name="discount" class="form-control" value="{{$product->discount}}" required>
 	                            </div>
 	                            <div class="col-lg-1">
 	                                <select class="demo-select2" name="discount_type" required>
@@ -304,7 +304,7 @@
 				        </div>
 						<div id="demo-stk-lft-tab-7" class="tab-pane fade">
 							<div class="form-group">
-	                            <label class="col-lg-2 control-label">{{__('description')}}</label>
+	                            <label class="col-lg-2 control-label">{{__('Description')}}</label>
 	                            <div class="col-lg-9">
 	                                <textarea class="editor" name="description">{{$product->description}}</textarea>
 	                            </div>
@@ -315,7 +315,7 @@
 				        </div> --}}
 						<div id="demo-stk-lft-tab-9" class="tab-pane fade">
 							<div class="form-group">
-								<label class="col-lg-2 control-label">{{__('shipping_cost')}}</label>
+								<label class="col-lg-2 control-label">{{__('Shipping cost')}}</label>
 								<div class="col-lg-7">
 									<input type="number" min="0" step="0.01" value="{{ $product->shipping_cost }}" name="shipping_cost" class="form-control">
 								</div>
@@ -367,7 +367,7 @@
 				</div>
 			</div>
 			<div class="panel-footer text-right">
-				<button type="submit" name="button" class="btn btn-purple">{{ __('save') }}</button>
+				<button type="submit" name="button" class="btn btn-purple">{{ __('Save') }}</button>
 			</div>
 		</div>
 	</form>

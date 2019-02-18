@@ -161,7 +161,7 @@
                                         @endfor
                                     @endif
                                 </span>
-                                <span class="rating-count d-block ml-0">({{ $total }} customer reviews)</span>
+                                <span class="rating-count d-block ml-0">({{ $total }} {{__('customer reviews')}})</span>
                             </div>
                         </div>
                         <div class="row no-gutters">
@@ -304,7 +304,7 @@
                                         </div>
                                         <div class="cart-add">
                                             <button type="button" class=" btn btn-block btn-icon-left" onclick="showAddToCartModal({{ $product->id }})">
-                                                <i class="icon ion-android-cart"></i>Add to cart
+                                                <i class="icon ion-android-cart"></i>{{__('Add to cart')}}
                                             </button>
                                         </div>
                                     </div>

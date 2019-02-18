@@ -9,7 +9,7 @@
                         <div class="card">
                             <div class="text-center px-35 pt-5">
                                 <h3 class="heading heading-4 strong-500">
-                                    Create an account.
+                                    {{__('Create an account.')}}
                                 </h3>
                             </div>
                             <div class="px-5 py-3 py-lg-5">
@@ -22,7 +22,7 @@
                                                     <div class="form-group">
                                                         <!-- <label>{{ __('name') }}</label> -->
                                                         <div class="input-group input-group--style-1">
-                                                            <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name') }}" placeholder="{{ __('name') }}" name="name">
+                                                            <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name') }}" placeholder="{{ __('Name') }}" name="name">
                                                             <span class="input-group-addon">
                                                                 <i class="text-md la la-user"></i>
                                                             </span>
@@ -36,7 +36,7 @@
                                                     <div class="form-group">
                                                         <!-- <label>{{ __('email') }}</label> -->
                                                         <div class="input-group input-group--style-1">
-                                                            <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{ __('email') }}" name="email">
+                                                            <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{ __('Email') }}" name="email">
                                                             <span class="input-group-addon">
                                                                 <i class="text-md la la-envelope"></i>
                                                             </span>
@@ -50,7 +50,7 @@
                                                     <div class="form-group">
                                                         <!-- <label>{{ __('password') }}</label> -->
                                                         <div class="input-group input-group--style-1">
-                                                            <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('password') }}" name="password">
+                                                            <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" name="password">
                                                             <span class="input-group-addon">
                                                                 <i class="text-md la la-lock"></i>
                                                             </span>
@@ -64,7 +64,7 @@
                                                     <div class="form-group">
                                                         <!-- <label>{{ __('confirm_password') }}</label> -->
                                                         <div class="input-group input-group--style-1">
-                                                            <input type="password" class="form-control" placeholder="{{ __('confirm_password') }}" name="password_confirmation">
+                                                            <input type="password" class="form-control" placeholder="{{ __('Confirm Password') }}" name="password_confirmation">
                                                             <span class="input-group-addon">
                                                                 <i class="text-md la la-lock"></i>
                                                             </span>
@@ -92,14 +92,14 @@
                                                 <div class="col-12">
                                                     <div class="checkbox pad-btm text-left">
                                                         <input class="magic-checkbox" type="checkbox" name="checkbox_example_1" id="checkboxExample_1a" required>
-                                                        <label for="checkboxExample_1a" class="text-sm">By signing up you agree to our terms and conditions.</label>
+                                                        <label for="checkboxExample_1a" class="text-sm">{{__('By signing up you agree to our terms and conditions.')}}</label>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="row align-items-center">
                                                 <div class="col-12 text-right  mt-3">
-                                                    <button type="submit" class="btn btn-styled btn-base-1 w-100 btn-md">{{ __('create_account') }}</button>
+                                                    <button type="submit" class="btn btn-styled btn-base-1 w-100 btn-md">{{ __('Create Account') }}</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -109,20 +109,20 @@
                                     </div>
                                     <div class="col-12 col-lg">
                                         <a href="{{ route('social.login', ['provider' => 'google']) }}" class="btn btn-styled btn-block btn-google btn-icon--2 btn-icon-left px-4 my-4">
-                                            <i class="icon fa fa-google"></i> Login with Google
+                                            <i class="icon fa fa-google"></i> {{__('Login with Google')}}
                                         </a>
                                         <a href="{{ route('social.login', ['provider' => 'facebook']) }}" class="btn btn-styled btn-block btn-facebook btn-icon--2 btn-icon-left px-4 my-4">
-                                            <i class="icon fa fa-facebook"></i> Login with Facebook
+                                            <i class="icon fa fa-facebook"></i> {{__('Login with Facebook')}}
                                         </a>
                                         <a href="{{ route('social.login', ['provider' => 'twitter']) }}" class="btn btn-styled btn-block btn-twitter btn-icon--2 btn-icon-left px-4 my-4">
-                                            <i class="icon fa fa-twitter"></i> Login with Twitter
+                                            <i class="icon fa fa-twitter"></i> {{__('Login with Twitter')}}
                                         </a>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center px-35 pb-3">
                                 <p class="text-md">
-                                    Allready have an account? <a href="{{ route('user.login') }}" class="strong-600">Log In</a>
+                                    {{__('Already have an account?')}}<a href="{{ route('user.login') }}" class="strong-600">{{__('Log In')}}</a>
                                 </p>
                             </div>
                         </div>

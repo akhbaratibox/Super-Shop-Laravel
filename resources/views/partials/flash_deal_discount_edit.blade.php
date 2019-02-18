@@ -1,20 +1,20 @@
 @if(count($product_ids) > 0)
-    <label class="col-sm-3 control-label">Discounts</label>
+    <label class="col-sm-3 control-label">{{__('Discounts')}}</label>
     <div class="col-sm-9">
         <table class="table table-bordered">
     		<thead>
     			<tr>
     				<td class="text-center" width="40%">
-    					<label for="" class="control-label">Product</label>
+    					<label for="" class="control-label">{{__('Product')}}</label>
     				</td>
                     <td class="text-center">
-    					<label for="" class="control-label">Base Price</label>
+    					<label for="" class="control-label">{{__('Base Price')}}</label>
     				</td>
     				<td class="text-center">
-    					<label for="" class="control-label">Discount</label>
+    					<label for="" class="control-label">{{__('Discount')}}</label>
     				</td>
                     <td>
-                        <label for="" class="control-label">Discount Type</label>
+                        <label for="" class="control-label">{{__('Discount Type')}}</label>
                     </td>
     			</tr>
     		</thead>

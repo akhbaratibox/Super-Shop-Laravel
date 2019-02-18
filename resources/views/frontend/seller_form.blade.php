@@ -19,7 +19,7 @@
                                     <div class="float-md-right">
                                         <ul class="breadcrumb">
                                             <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
-                                            <li><a href="{{ route('dashboard') }}">{{__('dashboard')}}</a></li>
+                                            <li><a href="{{ route('dashboard') }}">{{__('Dashboard')}}</a></li>
                                             <li class="active"><a href="{{ route('shops.create') }}">{{__('Create Shop')}}</a></li>
                                         </ul>
                                     </div>
@@ -37,9 +37,9 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <!-- <label>{{ __('name') }}</label> -->
+                                                    <!-- <label>{{ __('Name') }}</label> -->
                                                     <div class="input-group input-group--style-1">
-                                                        <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name') }}" placeholder="{{ __('name') }}" name="name">
+                                                        <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name') }}" placeholder="{{ __('Name') }}" name="name">
                                                         <span class="input-group-addon">
                                                             <i class="text-md la la-user"></i>
                                                         </span>
@@ -51,9 +51,9 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <!-- <label>{{ __('email') }}</label> -->
+                                                    <!-- <label>{{ __('Email') }}</label> -->
                                                     <div class="input-group input-group--style-1">
-                                                        <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{ __('email') }}" name="email">
+                                                        <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{ __('Email') }}" name="email">
                                                         <span class="input-group-addon">
                                                             <i class="text-md la la-envelope"></i>
                                                         </span>
@@ -65,9 +65,9 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <!-- <label>{{ __('password') }}</label> -->
+                                                    <!-- <label>{{ __('Password') }}</label> -->
                                                     <div class="input-group input-group--style-1">
-                                                        <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('password') }}" name="password">
+                                                        <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" name="password">
                                                         <span class="input-group-addon">
                                                             <i class="text-md la la-lock"></i>
                                                         </span>
@@ -79,9 +79,9 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <!-- <label>{{ __('confirm_password') }}</label> -->
+                                                    <!-- <label>{{ __('Confirm Password') }}</label> -->
                                                     <div class="input-group input-group--style-1">
-                                                        <input type="password" class="form-control" placeholder="{{ __('confirm_password') }}" name="password_confirmation">
+                                                        <input type="password" class="form-control" placeholder="{{ __('Confirm Password') }}" name="password_confirmation">
                                                         <span class="input-group-addon">
                                                             <i class="text-md la la-lock"></i>
                                                         </span>
@@ -102,12 +102,12 @@
                                             <label>{{__('Shop Name')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control mb-3" placeholder="Shop name" name="name" required>
+                                            <input type="text" class="form-control mb-3" placeholder="{{__('Shop Name')}}" name="name" required>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('logo')}}</label>
+                                            <label>{{__('Logo')}}</label>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="logo" id="file-2" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
@@ -125,13 +125,13 @@
                                             <label>{{__('Address')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control mb-3" placeholder="Address" name="address" required>
+                                            <input type="text" class="form-control mb-3" placeholder="{{__('Address')}}" name="address" required>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-right mt-4">
-                                <button type="submit" class="btn btn-styled btn-base-1">{{__('save')}}</button>
+                                <button type="submit" class="btn btn-styled btn-base-1">{{__('Save')}}</button>
                             </div>
                         </form>
                     </div>

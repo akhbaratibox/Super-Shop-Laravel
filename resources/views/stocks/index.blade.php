@@ -4,8 +4,8 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <a href="{{ route('stocks.create')}}" class="btn btn-danger pull-right">Destroy</a>
-        <a href="{{ route('stocks.create')}}" class="btn btn-info pull-right" style="margin-right: 10px;">Create Stock</a>
+        <a href="{{ route('stocks.create')}}" class="btn btn-danger pull-right">{{__('Destroy')}}</a>
+        <a href="{{ route('stocks.create')}}" class="btn btn-info pull-right" style="margin-right: 10px;">{{__('Create Stock')}}</a>
     </div>
 </div>
 
@@ -15,18 +15,18 @@
 <!--===================================================-->
 <div class="panel">
     <div class="panel-heading">
-        <h3 class="panel-title">Product Stocks</h3>
+        <h3 class="panel-title">{{__('Product Stocks')}}</h3>
     </div>
     <div class="panel-body">
         <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Product Name</th>
-                    <th>Entry Type</th>
-                    <th>Quantity</th>
-                    <th>Note</th>
-                    <th width="10%">Options</th>
+                    <th>{{__('Product Name')}}</th>
+                    <th>{{__('Entry Type')}}</th>
+                    <th>{{__('Quantity')}}</th>
+                    <th>{{__('Note')}}</th>
+                    <th width="10%">{{__('Options')}}</th>
                 </tr>
             </thead>
             <tbody>

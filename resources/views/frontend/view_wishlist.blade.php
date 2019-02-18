@@ -20,15 +20,15 @@
                             <div class="row align-items-center">
                                 <div class="col-md-6 col-12">
                                     <h2 class="heading heading-6 text-capitalize strong-600 mb-0">
-                                        Wishlist
+                                        {{__('Wishlist')}}
                                     </h2>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="float-md-right">
                                         <ul class="breadcrumb">
-                                            <li><a href="{{ route('home') }}">Home</a></li>
-                                            <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                            <li class="active"><a href="{{ route('wishlists.index') }}">Wishlist</a></li>
+                                            <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
+                                            <li><a href="{{ route('dashboard') }}">{{__('Dashboard')}}</a></li>
+                                            <li class="active"><a href="{{ route('wishlists.index') }}">{{__('Wishlist')}}</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                                                     </div>
                                                     <div class="col-10">
                                                         <button type="button" class="btn btn-block btn-base-1 btn-circle btn-icon-left" onclick="showAddToCartModal({{ $wishlist->product->id }})">
-                                                            <i class="la la-shopping-cart mr-2"></i>Add to cart
+                                                            <i class="la la-shopping-cart mr-2"></i>{{__('Add to cart')}}
                                                         </button>
                                                     </div>
                                                 </div>

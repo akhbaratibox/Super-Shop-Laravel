@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="tag">{{__('Keyword')}}</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="tags[]" value="{{ $seosetting->keyword }}" placeholder="Type and Hit Enter" data-role="tagsinput">
+                            <input type="text" class="form-control" name="tags[]" value="{{ $seosetting->keyword }}" placeholder="{{__('Type and Hit Enter')}}" data-role="tagsinput">
                         </div>
                     </div>
                     <div class="form-group">
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="panel-footer text-right">
-                    <button class="btn btn-purple" type="submit">{{__('save')}}</button>
+                    <button class="btn btn-purple" type="submit">{{__('Save')}}</button>
                 </div>
             </form>
             <!--===================================================-->

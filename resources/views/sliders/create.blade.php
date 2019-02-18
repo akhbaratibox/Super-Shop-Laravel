@@ -1,6 +1,6 @@
 <div class="panel">
     <div class="panel-heading">
-        <h3 class="panel-title">{{__('slider_information')}}</h3>
+        <h3 class="panel-title">{{__('Slider Information')}}</h3>
     </div>
 
     <!--Horizontal Form-->
@@ -10,7 +10,7 @@
         <div class="panel-body">
             <div class="form-group">
                 <div class="col-sm-3">
-                    <label class="control-label">Slider Images</label>
+                    <label class="control-label">{{__('Slider Images')}}</label>
                     <strong>(850px*315px)</strong>
                 </div>
                 <div class="col-sm-9">
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="panel-footer text-right">
-            <button class="btn btn-purple" type="submit">{{__('save')}}</button>
+            <button class="btn btn-purple" type="submit">{{__('Save')}}</button>
         </div>
     </form>
     <!--===================================================-->

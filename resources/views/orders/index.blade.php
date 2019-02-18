@@ -6,21 +6,21 @@
 <!--===================================================-->
 <div class="panel">
     <div class="panel-heading">
-        <h3 class="panel-title">{{__('orders')}}</h3>
+        <h3 class="panel-title">{{__('Orders')}}</h3>
     </div>
     <div class="panel-body">
         <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Order Code</th>
-                    <th>Num. of Products</th>
-                    <th>Customer</th>
-                    <th>Amount</th>
-                    <th>Delivery Status</th>
-                    <th>Payment Method</th>
-                    <th>Payment Status</th>
-                    <th width="10%">{{__('options')}}</th>
+                    <th>{{__('Order Code')}}</th>
+                    <th>{{__('Num. of Products')}}</th>
+                    <th>{{__('Customer')}}</th>
+                    <th>{{__('Amount')}}</th>
+                    <th>{{__('Delivery Status')}}</th>
+                    <th>{{__('Payment Method')}}</th>
+                    <th>{{__('Payment Status')}}</th>
+                    <th width="10%">{{__('Options')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -70,12 +70,12 @@
                             <td>
                                 <div class="btn-group dropdown">
                                     <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
-                                        Actions <i class="dropdown-caret"></i>
+                                        {{__('Actions')}} <i class="dropdown-caret"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="{{ route('orders.show', $order->id) }}">View</a></li>
+                                        <li><a href="{{ route('orders.show', $order->id) }}">{{__('View')}}</a></li>
                                         <li><a href="{{ route('seller.invoice.download', $order->id) }}">{{__('Download Invoice')}}</a></li>
-                                        <li><a onclick="confirm_modal('{{route('orders.destroy', $order->id)}}');">Delete</a></li>
+                                        <li><a onclick="confirm_modal('{{route('orders.destroy', $order->id)}}');">{{__('Delete')}}</a></li>
                                     </ul>
                                 </div>
                             </td>

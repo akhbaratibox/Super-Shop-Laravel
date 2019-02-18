@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="panel-footer text-right">
-                    <button class="btn btn-purple" type="submit">{{__('save')}}</button>
+                    <button class="btn btn-purple" type="submit">{{__('Save')}}</button>
                 </div>
             </form>
             <!--===================================================-->

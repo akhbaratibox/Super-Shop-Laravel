@@ -24,7 +24,7 @@
                                     <div class="float-md-right">
                                         <ul class="breadcrumb">
                                             <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
-                                            <li><a href="{{ route('dashboard') }}">{{__('dashboard')}}</a></li>
+                                            <li><a href="{{ route('dashboard') }}">{{__('Dashboard')}}</a></li>
                                             <li class="active"><a href="{{ route('shops.index') }}">{{__('Shop Settings')}}</a></li>
                                         </ul>
                                     </div>
@@ -44,12 +44,12 @@
                                             <label>{{__('Shop Name')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control mb-3" placeholder="Shop name" name="name" value="{{ $shop->name }}" required>
+                                            <input type="text" class="form-control mb-3" placeholder="{{__('Shop Name')}}" name="name" value="{{ $shop->name }}" required>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('logo')}}</label>
+                                            <label>{{__('Logo')}}</label>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="logo" id="file-2" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
@@ -67,13 +67,13 @@
                                             <label>{{__('Address')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control mb-3" placeholder="Address" name="address" value="{{ $shop->address }}" required>
+                                            <input type="text" class="form-control mb-3" placeholder="{{__('Address')}}" name="address" value="{{ $shop->address }}" required>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-right mt-4">
-                                <button type="submit" class="btn btn-styled btn-base-1">{{__('save')}}</button>
+                                <button type="submit" class="btn btn-styled btn-base-1">{{__('Save')}}</button>
                             </div>
                         </form>
 
@@ -121,7 +121,7 @@
                                 </div>
                             </div>
                             <div class="text-right mt-4">
-                                <button type="submit" class="btn btn-styled btn-base-1">{{__('save')}}</button>
+                                <button type="submit" class="btn btn-styled btn-base-1">{{__('Save')}}</button>
                             </div>
                         </form>
 
@@ -138,7 +138,7 @@
                                             <label>{{__('Facebook')}} </label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control mb-3" placeholder="Facebook" name="facebook" value="{{ $shop->facebook }}">
+                                            <input type="text" class="form-control mb-3" placeholder="{{__('Facebook')}}" name="facebook" value="{{ $shop->facebook }}">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -146,7 +146,7 @@
                                             <label>{{__('Google')}} </label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control mb-3" placeholder="Google" name="google" value="{{ $shop->google }}">
+                                            <input type="text" class="form-control mb-3" placeholder="{{__('Google')}}" name="google" value="{{ $shop->google }}">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -154,7 +154,7 @@
                                             <label>{{__('Twitter')}} </label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control mb-3" placeholder="Twitter" name="twitter" value="{{ $shop->twitter }}">
+                                            <input type="text" class="form-control mb-3" placeholder="{{__('Twitter')}}" name="twitter" value="{{ $shop->twitter }}">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -162,13 +162,13 @@
                                             <label>{{__('Youtube')}} </label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control mb-3" placeholder="Youtube" name="youtube" value="{{ $shop->youtube }}">
+                                            <input type="text" class="form-control mb-3" placeholder="{{__('Youtube')}}" name="youtube" value="{{ $shop->youtube }}">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-right mt-4">
-                                <button type="submit" class="btn btn-styled btn-base-1">{{__('save')}}</button>
+                                <button type="submit" class="btn btn-styled btn-base-1">{{__('Save')}}</button>
                             </div>
                         </form>
                     </div>

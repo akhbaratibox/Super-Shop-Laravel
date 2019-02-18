@@ -7,8 +7,8 @@
 <div class="panel">
     <div class="panel-heading">
         <div class="panel-control">
-            <a href="{{ route('sellers.reject', $seller->id) }}" class="btn btn-default btn-rounded d-innline-block">Reject</a></li>
-            <a href="{{ route('sellers.approve', $seller->id) }}" class="btn btn-primary btn-rounded d-innline-block">Accept</a>
+            <a href="{{ route('sellers.reject', $seller->id) }}" class="btn btn-default btn-rounded d-innline-block">{{__('Reject')}}</a></li>
+            <a href="{{ route('sellers.approve', $seller->id) }}" class="btn btn-primary btn-rounded d-innline-block">{{__('Accept')}}</a>
         </div>
         <h3 class="panel-title">{{__('Seller Verification')}}</h3>
     </div>
@@ -18,13 +18,13 @@
                 <h3 class="text-lg">{{__('User Info')}}</h3>
             </div>
             <div class="row">
-                <label class="col-sm-3 control-label" for="name">{{__('name')}}</label>
+                <label class="col-sm-3 control-label" for="name">{{__('Name')}}</label>
                 <div class="col-sm-9">
                     <p>{{ $seller->user->name }}</p>
                 </div>
             </div>
             <div class="row">
-                <label class="col-sm-3 control-label" for="name">{{__('email')}}</label>
+                <label class="col-sm-3 control-label" for="name">{{__('Email')}}</label>
                 <div class="col-sm-9">
                     <p>{{ $seller->user->email }}</p>
                 </div>
@@ -77,7 +77,7 @@
                                 </td>
                             @elseif ($info->type == 'file')
                                 <td>
-                                    <a href="{{ asset($info->value) }}" target="_blank" class="btn-info">Click here</a>
+                                    <a href="{{ asset($info->value) }}" target="_blank" class="btn-info">{{__('Click here')}}</a>
                                 </td>
                             @endif
                         </tr>
@@ -85,8 +85,8 @@
                 </tbody>
             </table>
             <div class="text-center">
-                <a href="{{ route('sellers.reject', $seller->id) }}" class="btn btn-default d-innline-block">Reject</a></li>
-                <a href="{{ route('sellers.approve', $seller->id) }}" class="btn btn-primary d-innline-block">Accept</a>
+                <a href="{{ route('sellers.reject', $seller->id) }}" class="btn btn-default d-innline-block">{{__('Reject')}}</a></li>
+                <a href="{{ route('sellers.approve', $seller->id) }}" class="btn btn-primary d-innline-block">{{__('Accept')}}</a>
             </div>
         </div>
     </div>

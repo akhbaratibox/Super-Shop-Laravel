@@ -88,7 +88,7 @@
                         <li class="{{ areActiveRoutes(['admin.dashboard'])}}">
                             <a class="nav-link" href="{{route('admin.dashboard')}}">
                                 <i class="fa fa-home"></i>
-                                <span class="menu-title">{{__('dashboard')}}</span>
+                                <span class="menu-title">{{__('Dashboard')}}</span>
                             </a>
                         </li>
 
@@ -97,26 +97,26 @@
                             <li>
                                 <a href="#">
                                     <i class="fa fa-shopping-cart"></i>
-                                    <span class="menu-title">{{__('products')}}</span>
+                                    <span class="menu-title">{{__('Products')}}</span>
                                     <i class="arrow"></i>
                                 </a>
 
                                 <!--Submenu-->
                                 <ul class="collapse">
                                     <li class="{{ areActiveRoutes(['brands.index', 'brands.create', 'brands.edit'])}}">
-                                        <a class="nav-link" href="{{route('brands.index')}}">{{__('brand')}}</a>
+                                        <a class="nav-link" href="{{route('brands.index')}}">{{__('Brand')}}</a>
                                     </li>
                                     <li class="{{ areActiveRoutes(['categories.index', 'categories.create', 'categories.edit'])}}">
-                                        <a class="nav-link" href="{{route('categories.index')}}">{{__('category')}}</a>
+                                        <a class="nav-link" href="{{route('categories.index')}}">{{__('Category')}}</a>
                                     </li>
                                     <li class="{{ areActiveRoutes(['subcategories.index', 'subcategories.create', 'subcategories.edit'])}}">
-                                        <a class="nav-link" href="{{route('subcategories.index')}}">{{__('subcategory')}}</a>
+                                        <a class="nav-link" href="{{route('subcategories.index')}}">{{__('Subcategory')}}</a>
                                     </li>
                                     <li class="{{ areActiveRoutes(['subsubcategories.index', 'subsubcategories.create', 'subsubcategories.edit'])}}">
-                                        <a class="nav-link" href="{{route('subsubcategories.index')}}">{{__('subsubcategory')}}</a>
+                                        <a class="nav-link" href="{{route('subsubcategories.index')}}">{{__('Subsubcategory')}}</a>
                                     </li>
                                     <li class="{{ areActiveRoutes(['products.index', 'products.create', 'products.edit'])}}">
-                                        <a class="nav-link" href="{{route('products.index')}}">{{__('all_product')}}</a>
+                                        <a class="nav-link" href="{{route('products.index')}}">{{__('All product')}}</a>
                                     </li>
                                 </ul>
                             </li>
@@ -126,7 +126,7 @@
                         <li class="{{ areActiveRoutes(['flash_deals.index', 'flash_deals.create', 'flash_deals.edit'])}}">
                             <a class="nav-link" href="{{ route('flash_deals.index') }}">
                                 <i class="fa fa-bolt"></i>
-                                <span class="menu-title">{{__('flash_deal')}}</span>
+                                <span class="menu-title">{{__('Flash Deal')}}</span>
                             </a>
                         </li>
                         @endif
@@ -163,7 +163,7 @@
                         <li>
                             <a href="#">
                                 <i class="fa fa-user-plus"></i>
-                                <span class="menu-title">{{__('sellers')}}</span>
+                                <span class="menu-title">{{__('Sellers')}}</span>
                                 <i class="arrow"></i>
                             </a>
 
@@ -183,14 +183,14 @@
                         <li>
                             <a href="#">
                                 <i class="fa fa-user-plus"></i>
-                                <span class="menu-title">{{__('customers')}}</span>
+                                <span class="menu-title">{{__('Customers')}}</span>
                                 <i class="arrow"></i>
                             </a>
 
                             <!--Submenu-->
                             <ul class="collapse">
                                 <li class="{{ areActiveRoutes(['customers.index'])}}">
-                                    <a class="nav-link" href="{{ route('customers.index') }}">{{__('customer_list')}}</a>
+                                    <a class="nav-link" href="{{ route('customers.index') }}">{{__('Customer list')}}</a>
                                 </li>
                             </ul>
                         </li>
@@ -200,14 +200,14 @@
                         <li>
                             <a href="#">
                                 <i class="fa fa-envelope"></i>
-                                <span class="menu-title">{{__('messaging')}}</span>
+                                <span class="menu-title">{{__('Messaging')}}</span>
                                 <i class="arrow"></i>
                             </a>
 
                             <!--Submenu-->
                             <ul class="collapse">
                                 <li class="{{ areActiveRoutes(['newsletters.index'])}}">
-                                    <a class="nav-link" href="{{route('newsletters.index')}}">{{__('newsletters')}}</a>
+                                    <a class="nav-link" href="{{route('newsletters.index')}}">{{__('Newsletters')}}</a>
                                 </li>
                             </ul>
                         </li>
@@ -217,17 +217,17 @@
                         <li>
                             <a href="#">
                                 <i class="fa fa-briefcase"></i>
-                                <span class="menu-title">{{__('business_settings')}}</span>
+                                <span class="menu-title">{{__('Business Settings')}}</span>
                                 <i class="arrow"></i>
                             </a>
 
                             <!--Submenu-->
                             <ul class="collapse">
                                 <li class="{{ areActiveRoutes(['activation.index'])}}">
-                                    <a class="nav-link" href="{{route('activation.index')}}">{{__('activation')}}</a>
+                                    <a class="nav-link" href="{{route('activation.index')}}">{{__('Activation')}}</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['payment_method.index'])}}">
-                                    <a class="nav-link" href="{{ route('payment_method.index') }}">{{__('payment_mothod')}}</a>
+                                    <a class="nav-link" href="{{ route('payment_method.index') }}">{{__('Payment method')}}</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['smtp_settings.index'])}}">
                                     <a class="nav-link" href="{{ route('smtp_settings.index') }}">{{__('SMTP Settings')}}</a>
@@ -236,16 +236,16 @@
                                     <a class="nav-link" href="{{ route('google_analytics.index') }}">{{__('Google Analytics')}}</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['social_login.index'])}}">
-                                    <a class="nav-link" href="{{ route('social_login.index') }}">Social Media Login</a>
+                                    <a class="nav-link" href="{{ route('social_login.index') }}">{{__('Social Media Login')}}</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['currency.index'])}}">
-                                    <a class="nav-link" href="{{route('currency.index')}}">{{__('currency')}}</a>
+                                    <a class="nav-link" href="{{route('currency.index')}}">{{__('Currency')}}</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['languages.index', 'languages.create', 'languages.store', 'languages.show', 'languages.edit'])}}">
-                                    <a class="nav-link" href="{{route('languages.index')}}">Languages</a>
+                                    <a class="nav-link" href="{{route('languages.index')}}">{{__('Languages')}}</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['seller_verification_form.index'])}}">
-                                    <a class="nav-link" href="{{route('seller_verification_form.index')}}">{{__('seller_verification_form')}}</a>
+                                    <a class="nav-link" href="{{route('seller_verification_form.index')}}">{{__('Seller verification form')}}</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['business_settings.vendor'])}}">
                                     <a class="nav-link" href="{{ route('business_settings.vendor', 'vendor_commission') }}">{{__('Seller Commission')}}</a>
@@ -261,7 +261,7 @@
                         <li>
                             <a href="#">
                                 <i class="fa fa-desktop"></i>
-                                <span class="menu-title">{{__('frontend_settings')}}</span>
+                                <span class="menu-title">{{__('Frontend Settings')}}</span>
                                 <i class="arrow"></i>
                             </a>
 
@@ -317,17 +317,17 @@
                         <li>
                             <a href="#">
                                 <i class="fa fa-user"></i>
-                                <span class="menu-title">{{__('staffs')}}</span>
+                                <span class="menu-title">{{__('Staffs')}}</span>
                                 <i class="arrow"></i>
                             </a>
 
                             <!--Submenu-->
                             <ul class="collapse">
                                 <li class="{{ areActiveRoutes(['staffs.index', 'staffs.create', 'staffs.edit'])}}">
-                                    <a class="nav-link" href="{{ route('staffs.index') }}">{{__('all_staffs')}}</a>
+                                    <a class="nav-link" href="{{ route('staffs.index') }}">{{__('All staffs')}}</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['roles.index', 'roles.create', 'roles.edit'])}}">
-                                    <a class="nav-link" href="{{route('roles.index')}}">{{__('staff_permissions')}}</a>
+                                    <a class="nav-link" href="{{route('roles.index')}}">{{__('Staff permissions')}}</a>
                                 </li>
                             </ul>
                         </li>

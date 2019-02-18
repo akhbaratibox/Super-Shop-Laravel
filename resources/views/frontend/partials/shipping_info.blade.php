@@ -124,7 +124,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="control-label">{{__('Name')}}</label>
-                                                <input type="text" class="form-control" name="name" placeholder="Name" required>
+                                                <input type="text" class="form-control" name="name" placeholder="{{__('Name')}}" required>
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +133,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="control-label">{{__('Email')}}</label>
-                                                <input type="text" class="form-control" name="email" placeholder="Email" required>
+                                                <input type="text" class="form-control" name="email" placeholder="{{__('Email')}}" required>
                                             </div>
                                         </div>
                                     </div>
@@ -142,7 +142,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="control-label">{{__('Address')}}</label>
-                                                <input type="text" class="form-control" name="address" placeholder="Address" required>
+                                                <input type="text" class="form-control" name="address" placeholder="{{__('Address')}}" required>
                                             </div>
                                         </div>
                                     </div>
@@ -161,7 +161,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group has-feedback">
                                                 <label class="control-label">{{__('City')}}</label>
-                                                <input type="text" class="form-control" placeholder="City" name="city" required>
+                                                <input type="text" class="form-control" placeholder="{{__('City')}}" name="city" required>
                                             </div>
                                         </div>
                                     </div>
@@ -170,13 +170,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group has-feedback">
                                                 <label class="control-label">{{__('Postal code')}}</label>
-                                                <input type="text" class="form-control" placeholder="Postal Code" name="postal_code" required>
+                                                <input type="text" class="form-control" placeholder="{{__('Postal code')}}" name="postal_code" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group has-feedback">
                                                 <label class="control-label">{{__('Phone')}}</label>
-                                                <input type="text" class="form-control" placeholder="Phone" name="phone" required>
+                                                <input type="text" class="form-control" placeholder="{{__('Phone')}}" name="phone" required>
                                             </div>
                                         </div>
                                     </div>

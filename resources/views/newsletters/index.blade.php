@@ -5,7 +5,7 @@
 <div class="col-sm-12">
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">{{__('send_newsletter')}}</h3>
+            <h3 class="panel-title">{{__('Send Newsletter')}}</h3>
         </div>
         <!--Horizontal Form-->
         <!--===================================================-->
@@ -13,7 +13,7 @@
         	@csrf
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="name">{{__('emails')}} ({{__('users')}})</label>
+                    <label class="col-sm-2 control-label" for="name">{{__('Emails')}} ({{__('Users')}})</label>
                     <div class="col-sm-10">
                         <select class="form-control demo-select2-multiple-selects" name="user_emails[]" multiple required>
                             @foreach($users as $user)
@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="name">{{__('emails')}} ({{__('subscribers')}})</label>
+                    <label class="col-sm-2 control-label" for="name">{{__('Emails')}} ({{__('Subscribers')}})</label>
                     <div class="col-sm-10">
                         <select class="form-control demo-select2-multiple-selects" name="subscriber_emails[]" multiple>
                             @foreach($subscribers as $subscriber)
@@ -33,20 +33,20 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="subject">{{__('newsletter_subject')}}</label>
+                    <label class="col-sm-2 control-label" for="subject">{{__('Newsletter subject')}}</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="subject" id="subject" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="name">{{__('newsletter_content')}}</label>
+                    <label class="col-sm-2 control-label" for="name">{{__('Newsletter content')}}</label>
                     <div class="col-sm-10">
                         <textarea class="editor" name="content" required></textarea>
                     </div>
                 </div>
             </div>
             <div class="panel-footer text-right">
-                <button class="btn btn-purple" type="submit">{{__('send')}}</button>
+                <button class="btn btn-purple" type="submit">{{__('Send')}}</button>
             </div>
         </form>
         <!--===================================================-->

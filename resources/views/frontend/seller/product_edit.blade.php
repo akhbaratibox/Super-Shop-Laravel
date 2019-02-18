@@ -24,7 +24,7 @@
                                         <ul class="breadcrumb">
                                             <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
                                             <li><a href="{{ route('dashboard') }}">{{__('Dashboard')}}</a></li>
-                                            <li><a href="{{ route('seller.products') }}">{{__('products')}}</a></li>
+                                            <li><a href="{{ route('seller.products') }}">{{__('Products')}}</a></li>
                                             <li class="active"><a href="{{ route('seller.products.edit', $product->id) }}">{{__('Edit Product')}}</a></li>
                                         </ul>
                                     </div>
@@ -44,10 +44,10 @@
                                 <div class="form-box-content p-3">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('product_name')}} <span class="required-star">*</span></label>
+                                            <label>{{__('Product Name')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control mb-3" name="name" placeholder="{{__('product_name')}}" value="{{ $product->name }}">
+                                            <input type="text" class="form-control mb-3" name="name" placeholder="{{__('Product Name')}}" value="{{ $product->name }}">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -157,7 +157,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('featured')}}</label>
+                                            <label>{{__('Featured')}}</label>
                                         </div>
                                         <div class="col-md-10">
                                             <div class="row">
@@ -183,7 +183,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('flash_deal')}}</label>
+                                            <label>{{__('Flash Deal')}}</label>
                                         </div>
                                         <div class="col-md-10">
                                             <div class="row">
@@ -221,19 +221,19 @@
                                         <div class="col-md-10">
                                             <div class="mb-3">
                                                 <select class="form-control selectpicker" data-minimum-results-for-search="Infinity" name="video_provider">
-                                                    <option value="youtube" <?php if($product->video_provider == 'youtube') echo "selected";?> >Youtube</option>
-            										<option value="dailymotion" <?php if($product->video_provider == 'dailymotion') echo "selected";?> >Dailymotion</option>
-            										<option value="vimeo" <?php if($product->video_provider == 'vimeo') echo "selected";?> >Vimeo</option>
+                                                    <option value="youtube" <?php if($product->video_provider == 'youtube') echo "selected";?> >{{__('Youtube')}}</option>
+            										<option value="dailymotion" <?php if($product->video_provider == 'dailymotion') echo "selected";?> >{{__('Dailymotion')}}</option>
+            										<option value="vimeo" <?php if($product->video_provider == 'vimeo') echo "selected";?> >{{__('Vimeo')}}</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>Video URL</label>
+                                            <label>{{__('Video URL')}}</label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control mb-3" name="video_link" placeholder="Video link" value="{{ $product->video_link }}">
+                                            <input type="text" class="form-control mb-3" name="video_link" placeholder="{{__('Video link')}}" value="{{ $product->video_link }}">
                                         </div>
                                     </div>
                                 </div>
@@ -294,7 +294,7 @@
                                 <div class="form-box-content p-3">
                                     <div class="row mb-3">
                                         <div class="col-8 col-md-3 order-1 order-md-0">
-        									<input type="text" class="form-control" value="{{__('colors')}}" disabled>
+        									<input type="text" class="form-control" value="{{__('Colors')}}" disabled>
         								</div>
         								<div class="col-12 col-md-7 col-xl-8 order-3 order-md-0 mt-2 mt-md-0">
         									<select class="form-control color-var-select" name="colors[]" id="colors" multiple>
@@ -328,7 +328,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-2">
-        									<button type="button" class="btn btn-info" onclick="add_more_customer_choice_option()">{{ __('add_more_customer_choice_option') }}</button>
+        									<button type="button" class="btn btn-info" onclick="add_more_customer_choice_option()">{{ __('Add More Customer Choice Option') }}</button>
         								</div>
                                     </div>
                                 </div>
@@ -340,26 +340,26 @@
                                 <div class="form-box-content p-3">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('unit_price')}} <span class="required-star">*</span></label>
+                                            <label>{{__('Unit Price')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="unit_price" placeholder="Unit Price (Base Price)" value="{{$product->unit_price}}">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="unit_price" placeholder="{{__('Unit Price')}} {{__('(Base Price)')}}" value="{{$product->unit_price}}">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('purchase_price')}}</label>
+                                            <label>{{__('Purchase Price')}}</label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="purchase_price" placeholder="Purchase Price" value="{{$product->purchase_price}}">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="purchase_price" placeholder="{{__('Purchase Price')}}" value="{{$product->purchase_price}}">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('tax')}}</label>
+                                            <label>{{__('Tax')}}</label>
                                         </div>
                                         <div class="col-8">
-                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="tax" placeholder="Tax" value="{{$product->tax}}">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="tax" placeholder="{{__('Tax')}}" value="{{$product->tax}}">
                                         </div>
                                         <div class="col-md-2 col-4">
                                             <div class="mb-3">
@@ -372,10 +372,10 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('discount')}}</label>
+                                            <label>{{__('Discount')}}</label>
                                         </div>
                                         <div class="col-8">
-                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="discount" placeholder="Discount" value="{{$product->discount}}">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="discount" placeholder="{{__('Discount')}}" value="{{$product->discount}}">
                                         </div>
                                         <div class="col-md-2 col-4">
                                             <div class="mb-3">
@@ -433,7 +433,7 @@
                                 </div>
                             </div>
                             <div class="form-box mt-4 text-right">
-                                <button type="submit" class="btn btn-styled btn-base-1">{{ __('save') }}</button>
+                                <button type="submit" class="btn btn-styled btn-base-1">{{ __('Update This Product') }}</button>
                             </div>
                         </form>
                     </div>
@@ -455,7 +455,7 @@
                 <div class="modal-body">
                     <div class="target-category heading-6">
                         <span class="mr-3">{{__('Target Category')}}:</span>
-                        <span>{{__('category')}} > {{__('subcategory')}} > {{__('subsubcategory')}}</span>
+                        <span>{{__('Category')}} > {{__('Subcategory')}} > {{__('Subsubcategory')}}</span>
                     </div>
                     <div class="row no-gutters modal-categories mt-4 mb-2">
                         <div class="col-4">
@@ -514,7 +514,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('cancel')}}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Cancel')}}</button>
                     <button type="button" class="btn btn-primary" onclick="closeModal()">{{__('Confirm')}}</button>
                 </div>
             </div>

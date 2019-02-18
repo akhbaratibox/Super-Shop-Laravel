@@ -11,7 +11,7 @@
                             <i class="icon-hotel-restaurant-105"></i>
                         </div>
                         <div class="block-content d-none d-md-block">
-                            <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">1. My Cart</h3>
+                            <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">1. {{__('My Cart')}}</h3>
                         </div>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                             <i class="icon-finance-067"></i>
                         </div>
                         <div class="block-content d-none d-md-block">
-                            <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">2. Shipping info</h3>
+                            <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">2. {{__('Shipping info')}}</h3>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                             <i class="icon-finance-059"></i>
                         </div>
                         <div class="block-content d-none d-md-block">
-                            <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">3. Payment</h3>
+                            <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">3. {{__('Payment')}}</h3>
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                                     <thead>
                                         <tr>
                                             <th class="product-image"></th>
-                                            <th class="product-name">{{__('product')}}</th>
+                                            <th class="product-name">{{__('Product')}}</th>
                                             <th class="product-price d-none d-lg-table-cell">{{__('Price')}}</th>
                                             <th class="product-quanity d-none d-md-table-cell">{{__('Quantity')}}</th>
                                             <th class="product-total">{{__('Total')}}</th>
@@ -160,7 +160,7 @@
         <div class="modal-dialog modal-lg modal-dialog-zoom" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 class="modal-title" id="exampleModalLabel">{{__('login')}}</h6>
+                    <h6 class="modal-title" id="exampleModalLabel">{{__('Login')}}</h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -176,7 +176,7 @@
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <div class="input-group input-group--style-1">
-                                                        <input type="email" name="email" class="form-control" placeholder="Email">
+                                                        <input type="email" name="email" class="form-control" placeholder="{{__('Email')}}">
                                                         <span class="input-group-addon">
                                                             <i class="text-md ion-person"></i>
                                                         </span>
@@ -189,7 +189,7 @@
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <div class="input-group input-group--style-1">
-                                                        <input type="password" name="password" class="form-control" placeholder="Password">
+                                                        <input type="password" name="password" class="form-control" placeholder="{{__('Password')}}">
                                                         <span class="input-group-addon">
                                                             <i class="text-md ion-locked"></i>
                                                         </span>
@@ -216,17 +216,17 @@
                                 <div class="card-body px-4">
                                     @if(\App\BusinessSetting::where('type', 'google_login')->first()->value == 1)
                                         <a href="{{ route('social.login', ['provider' => 'google']) }}" class="btn btn-styled btn-block btn-google btn-icon--2 btn-icon-left px-4 my-4">
-                                            <i class="icon fa fa-google"></i> Login with Google
+                                            <i class="icon fa fa-google"></i> {{__('Login with Google')}}
                                         </a>
                                     @endif
                                     @if (\App\BusinessSetting::where('type', 'facebook_login')->first()->value == 1)
                                         <a href="{{ route('social.login', ['provider' => 'facebook']) }}" class="btn btn-styled btn-block btn-facebook btn-icon--2 btn-icon-left px-4 my-4">
-                                            <i class="icon fa fa-facebook"></i> Login with Facebook
+                                            <i class="icon fa fa-facebook"></i> {{__('Login with Facebook')}}
                                         </a>
                                     @endif
                                     @if (\App\BusinessSetting::where('type', 'twitter_login')->first()->value == 1)
                                     <a href="{{ route('social.login', ['provider' => 'twitter']) }}" class="btn btn-styled btn-block btn-twitter btn-icon--2 btn-icon-left px-4 my-4">
-                                        <i class="icon fa fa-twitter"></i> Login with Twitter
+                                        <i class="icon fa fa-twitter"></i> {{__('Login with Twitter')}}
                                     </a>
                                     @endif
                                 </div>
@@ -234,7 +234,7 @@
                         </div>
                     </div>
                     <div class="or or--1 mt-2">
-                        <span>or</span>
+                        <span>{{__('or')}}</span>
                     </div>
                     <div class="text-center">
                         <a href="{{ route('checkout.shipping_info') }}" class="btn btn-styled btn-base-1">{{__('Guest Checkout')}}</a>

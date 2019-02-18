@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <a href="{{ route('products.create')}}" class="btn btn-info pull-right">{{__('add_new')}}</a>
+        <a href="{{ route('products.create')}}" class="btn btn-info pull-right">{{__('Add New Product')}}</a>
     </div>
 </div>
 
@@ -35,13 +35,13 @@
                                 <tr>
                                     <th>#</th>
                                     <th width="30%">{{__('name')}}</th>
-                                    <th>{{__('photo')}}</th>
-                                    <th>{{__('current_qty')}}</th>
-                                    <th>{{__('base_price')}}</th>
-                                    <th>{{__('todays_deal')}}</th>
-                                    <th>{{__('published')}}</th>
-                                    <th>{{__('featured')}}</th>
-                                    <th>{{__('options')}}</th>
+                                    <th>{{__('Photo')}}</th>
+                                    <th>{{__('Current qty')}}</th>
+                                    <th>{{__('Base Price')}}</th>
+                                    <th>{{__('Todays Deal')}}</th>
+                                    <th>{{__('Published')}}</th>
+                                    <th>{{__('Featured')}}</th>
+                                    <th>{{__('Options')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -72,12 +72,12 @@
                                         <td>
                                             <div class="btn-group dropdown">
 					                            <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
-					                                Actions <i class="dropdown-caret"></i>
+					                                {{__('Actions')}} <i class="dropdown-caret"></i>
 					                            </button>
 					                            <ul class="dropdown-menu dropdown-menu-right">
-					                                <li><a href="{{route('products.edit', $product->id)}}">Edit</a></li>
-					                                <li><a onclick="confirm_modal('{{route('products.destroy', $product->id)}}');">Delete</a></li>
-                                                    <li><a href="{{route('products.duplicate', $product->id)}}">Duplicate</a></li>
+					                                <li><a href="{{route('products.edit', $product->id)}}">{{__('Edit')}}</a></li>
+					                                <li><a onclick="confirm_modal('{{route('products.destroy', $product->id)}}');">{{__('Delete')}}</a></li>
+                                                    <li><a href="{{route('products.duplicate', $product->id)}}">{{__('Duplicate')}}</a></li>
 					                            </ul>
 					                        </div>
                                         </td>
@@ -99,13 +99,13 @@
                                 <tr>
                                     <th>#</th>
                                     <th width="20%">{{__('name')}}</th>
-                                    <th>{{__('photo')}}</th>
-                                    <th>{{__('current_qty')}}</th>
-                                    <th>{{__('base_price')}}</th>
-                                    <th>{{__('todays_deal')}}</th>
-                                    <th>{{__('published')}}</th>
-                                    <th>{{__('featured')}}</th>
-                                    <th>{{__('options')}}</th>
+                                    <th>{{__('Photo')}}</th>
+                                    <th>{{__('Current qty')}}</th>
+                                    <th>{{__('Base Price')}}</th>
+                                    <th>{{__('Todays Deal')}}</th>
+                                    <th>{{__('Published')}}</th>
+                                    <th>{{__('Featured')}}</th>
+                                    <th>{{__('Options')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -136,12 +136,12 @@
                                         <td>
                                             <div class="btn-group dropdown">
 					                            <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
-					                                Actions <i class="dropdown-caret"></i>
+					                                {{__('Actions')}} <i class="dropdown-caret"></i>
 					                            </button>
 					                            <ul class="dropdown-menu dropdown-menu-right">
-					                                <li><a href="{{route('products.edit', $product->id)}}">Edit</a></li>
-					                                <li><a onclick="confirm_modal('{{route('products.destroy', $product->id)}}');">Delete</a></li>
-                                                    <li><a href="{{route('products.duplicate', $product->id)}}">Duplicate</a></li>
+					                                <li><a href="{{route('products.edit', $product->id)}}">{{__('Edit')}}</a></li>
+					                                <li><a onclick="confirm_modal('{{route('products.destroy', $product->id)}}');">{{__('Delete')}}</a></li>
+                                                    <li><a href="{{route('products.duplicate', $product->id)}}">{{__('Duplicate')}}</a></li>
 					                            </ul>
 					                        </div>
                                         </td>

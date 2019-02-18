@@ -22,7 +22,7 @@
     				<tbody>
     				<tr>
     					<td class="text-main text-bold">
-    						Order #
+    						{{__('Order #')}}
     					</td>
     					<td class="text-right text-info text-bold">
     						{{ $order->code }}
@@ -30,7 +30,7 @@
     				</tr>
     				<tr>
     					<td class="text-main text-bold">
-    						Order Status
+    						{{__('Order Status')}}
     					</td>
                         @php
                             $status = $order->orderDetails->first()->delivery_status;
@@ -45,7 +45,7 @@
     				</tr>
     				<tr>
     					<td class="text-main text-bold">
-    						Order Date
+    						{{__('Order Date')}}
     					</td>
     					<td class="text-right">
     						{{ date('d-m-Y H:m A', $order->date) }}
@@ -53,7 +53,7 @@
     				</tr>
                     <tr>
     					<td class="text-main text-bold">
-    						Total amount
+    						{{__('Total amount')}}
     					</td>
     					<td class="text-right">
     						{{ single_price($order->orderDetails->sum('price') + $order->orderDetails->sum('tax')) }}
@@ -61,7 +61,7 @@
     				</tr>
                     <tr>
     					<td class="text-main text-bold">
-    						Payment method
+    						{{__('Payment method')}}
     					</td>
     					<td class="text-right">
     						{{ ucfirst(str_replace('_', ' ', $order->payment_type)) }}
@@ -79,16 +79,16 @@
             				<tr class="bg-trans-dark">
                                 <th class="min-col">#</th>
             					<th class="text-uppercase">
-            						Description
+            						{{__('Description')}}
             					</th>
             					<th class="min-col text-center text-uppercase">
-            						Qty
+            						{{__('Qty')}}
             					</th>
             					<th class="min-col text-center text-uppercase">
-            						Price
+            						{{__('Price')}}
             					</th>
             					<th class="min-col text-right text-uppercase">
-            						Total
+            						{{__('Total')}}
             					</th>
             				</tr>
         				</thead>
@@ -120,7 +120,7 @@
     			<tbody>
     			<tr>
     				<td>
-    					<strong>Sub Total :</strong>
+    					<strong>{{__('Sub Total')}} :</strong>
     				</td>
     				<td>
     					{{ single_price($order->orderDetails->sum('price')) }}
@@ -128,7 +128,7 @@
     			</tr>
     			<tr>
     				<td>
-    					<strong>TAX :</strong>
+    					<strong>{{__('Tax')}} :</strong>
     				</td>
     				<td>
     					{{ single_price($order->orderDetails->sum('tax')) }}
@@ -136,7 +136,7 @@
     			</tr>
                 <tr>
     				<td>
-    					<strong>Shipping :</strong>
+    					<strong>{{__('Shipping')}} :</strong>
     				</td>
     				<td>
     					{{ single_price($order->orderDetails->sum('shipping_cost')) }}
@@ -144,7 +144,7 @@
     			</tr>
     			<tr>
     				<td>
-    					<strong>TOTAL :</strong>
+    					<strong>{{__('TOTAL')}} :</strong>
     				</td>
     				<td class="text-bold h4">
     					{{ single_price($order->grand_total) }}

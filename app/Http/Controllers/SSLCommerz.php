@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\BusinessSetting;
+use App\Seller;
 use Session;
 
 # IF BROWSE FROM LOCAL HOST, KEEP true
@@ -28,13 +29,13 @@ class SSLCommerz
                     define("SSLCZ_IS_SANDBOX", false);
                 }
 
-                $this->setSSLCommerzMode((true) ? 1 : 0);
+                $this->setSSLCommerzMode((SSLCZ_IS_SANDBOX) ? 1 : 0);
                 $this->store_id = env('SSLCZ_STORE_ID');
                 $this->store_pass = env('SSLCZ_STORE_PASSWD');
             }
             elseif (Session::get('payment_type') == 'seller_payment') {
-                $seller = Seller::findOrFail(Session::get('payment_details')['seller_id']);
-                $this->setSSLCommerzMode((SSLCZ_IS_SANDBOX) ? 1 : 0);
+                $seller = Seller::findOrFail(Session::get('payment_data')['seller_id']);
+                $this->setSSLCommerzMode((true) ? 1 : 0);
                 $this->store_id = $seller->ssl_store_id;
                 $this->store_pass = $seller->ssl_password;
             }

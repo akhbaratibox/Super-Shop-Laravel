@@ -118,6 +118,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::resource('generalsettings','GeneralSettingController');
 	Route::get('/logo','GeneralSettingController@logo')->name('generalsettings.logo');
 	Route::post('/logo','GeneralSettingController@storeLogo')->name('generalsettings.logo.store');
+	Route::get('/color','GeneralSettingController@color')->name('generalsettings.color');
 
 	Route::resource('seosetting','SEOController');
 

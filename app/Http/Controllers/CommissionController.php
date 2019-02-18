@@ -27,10 +27,10 @@ class CommissionController extends Controller
         //     $stripe = new StripePaymentController;
         //     return $stripe->stripe();
         // }
-        // elseif ($request->payment_option == 'sslcommerz') {
-        //     $sslcommerz = new PublicSslCommerzPaymentController;
-        //     return $sslcommerz->index($request);
-        // }
+        elseif ($request->payment_option == 'sslcommerz') {
+            $sslcommerz = new PublicSslCommerzPaymentController;
+            return $sslcommerz->index($request);
+        }
         elseif ($request->payment_option == 'cash') {
             return $this->seller_payment_done($request->session()->get('payment_data'), null);
         }

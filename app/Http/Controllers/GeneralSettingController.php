@@ -65,6 +65,12 @@ class GeneralSettingController extends Controller
         }
     }
 
+    public function color()
+    {
+        $generalsetting = GeneralSetting::first();
+        return view("general_settings.color", compact("generalsetting"));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

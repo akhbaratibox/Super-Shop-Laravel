@@ -8,6 +8,9 @@ use Illuminate\Routing\UrlGenerator;
 use App\Http\Controllers;
 use App\Order;
 use App\BusinessSetting;
+use App\Seller;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CommissionController;
 session_start();
 
 class PublicSslCommerzPaymentController extends Controller
@@ -19,29 +22,54 @@ class PublicSslCommerzPaymentController extends Controller
             # Here you have to receive all the order data to initate the payment.
             # Lets your oder trnsaction informations are saving in a table called "orders"
             # In orders table order uniq identity is "order_id","order_status" field contain status of the transaction, "grand_total" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
+            if(Session::has('payment_type')){
+                if(Session::get('payment_type') == 'cart_payment'){
+                    $post_data = array();
+                    $post_data['total_amount'] = '10'; # You cant not pay less than 10
+                    $post_data['currency'] = "BDT";
+                    $post_data['tran_id'] = substr(md5($request->session()->get('order_id')), 0, 10); // tran_id must be unique
 
-            $post_data = array();
-            $post_data['total_amount'] = '10'; # You cant not pay less than 10
-            $post_data['currency'] = "BDT";
-            $post_data['tran_id'] = substr(md5($request->session()->get('order_id')), 0, 10); // tran_id must be unique
+                    #Start to save these value  in session to pick in success page.
+                    $_SESSION['payment_values']['tran_id']=$post_data['tran_id'];
+                    $_SESSION['payment_values']['order_id']=$request->session()->get('order_id');
+                    $_SESSION['payment_values']['payment_type']=$request->session()->get('payment_type');
+                    #End to save these value  in session to pick in success page.
 
-            #Start to save these value  in session to pick in success page.
-            $_SESSION['payment_values']['tran_id']=$post_data['tran_id'];
-            #End to save these value  in session to pick in success page.
+                    # CUSTOMER INFORMATION
+                    $post_data['cus_name'] = $request->session()->get('shipping_info')['name'];
+                    $post_data['cus_add1'] = $request->session()->get('shipping_info')['address'];
+                    $post_data['cus_city'] = $request->session()->get('shipping_info')['city'];
+                    $post_data['cus_postcode'] = $request->session()->get('shipping_info')['postal_code'];
+                    $post_data['cus_country'] = $request->session()->get('shipping_info')['country'];
+                    $post_data['cus_phone'] = $request->session()->get('shipping_info')['phone'];
+                }
+                elseif (Session::get('payment_type') == 'seller_payment') {
+                    $post_data = array();
+                    $post_data['total_amount'] = $request->session()->get('payment_data')['amount']; # You cant not pay less than 10
+                    $post_data['currency'] = "BDT";
+                    $post_data['tran_id'] = substr(md5($request->session()->get('payment_data')['seller_id']), 0, 10); // tran_id must be unique
 
+                    #Start to save these value  in session to pick in success page.
+                    $_SESSION['payment_values']['tran_id']=$post_data['tran_id'];
+                    $_SESSION['payment_values']['payment_data']=$request->session()->get('payment_data');
+                    $_SESSION['payment_values']['payment_type']=$request->session()->get('payment_type');
+                    #End to save these value  in session to pick in success page.
+
+                    # CUSTOMER INFORMATION
+                    $seller = Seller::findOrFail($request->session()->get('payment_data')['seller_id']);
+                    $post_data['cus_name'] = $seller->user->name;
+                    $post_data['cus_add1'] = $seller->user->address;
+                    $post_data['cus_city'] = $seller->user->city;
+                    $post_data['cus_postcode'] = $seller->user->postal_code;
+                    $post_data['cus_country'] = $seller->user->country;
+                    $post_data['cus_phone'] = $seller->user->phone;
+                }
+            }
 
             $server_name=$request->root()."/";
             $post_data['success_url'] = $server_name . "sslcommerz/success";
             $post_data['fail_url'] = $server_name . "sslcommerz/fail";
             $post_data['cancel_url'] = $server_name . "sslcommerz/cancel";
-
-            # CUSTOMER INFORMATION
-            $post_data['cus_name'] = $request->session()->get('shipping_info')['name'];
-            $post_data['cus_add1'] = $request->session()->get('shipping_info')['address'];
-            $post_data['cus_city'] = $request->session()->get('shipping_info')['city'];
-            $post_data['cus_postcode'] = $request->session()->get('shipping_info')['postal_code'];
-            $post_data['cus_country'] = $request->session()->get('shipping_info')['country'];
-            $post_data['cus_phone'] = $request->session()->get('shipping_info')['phone'];
 
             # SHIPMENT INFORMATION
             // $post_data['ship_name'] = 'ship_name';
@@ -53,7 +81,7 @@ class PublicSslCommerzPaymentController extends Controller
             // $post_data['ship_country'] = "Bangladesh";
 
             # OPTIONAL PARAMETERS
-            $post_data['value_a'] = $request->session()->get('order_id');
+            // $post_data['value_a'] = "ref001";
             // $post_data['value_b'] = "ref002";
             // $post_data['value_c'] = "ref003";
             // $post_data['value_d'] = "ref004";
@@ -77,26 +105,18 @@ class PublicSslCommerzPaymentController extends Controller
         #Start to received these value from session. which was saved in index function.
         $tran_id = $_SESSION['payment_values']['tran_id'];
         #End to received these value from session. which was saved in index function.
-        //dd($request->value_a);
-        $order = Order::find($request->value_a);
-        $order->payment_status = 'paid';
-        $order->payment_details = json_encode($request->all());
-        $order->save();
+        $payment = json_encode($request->all());
 
-        $commission_percentage = BusinessSetting::where('type', 'vendor_commission')->first()->value;
-        foreach ($order->orderDetails as $key => $orderDetail) {
-            if($orderDetail->product->user->user_type == 'seller'){
-                $seller = $orderDetail->product->user->seller;
-                $seller->admin_to_pay = $seller->admin_to_pay + ($orderDetail->price*(100-$commission_percentage))/100;
-                $seller->save();
+        if(isset($_SESSION['payment_values']['payment_type'])){
+            if($_SESSION['payment_values']['payment_type'] == 'cart_payment'){
+                $checkoutController = new CheckoutController;
+                return $checkoutController->checkout_done($_SESSION['payment_values']['order_id'], $payment);
+            }
+            elseif ($_SESSION['payment_values']['payment_type'] == 'seller_payment') {
+                $commissionController = new CommissionController;
+                return $commissionController->seller_payment_done($_SESSION['payment_values']['payment_data'], $payment);
             }
         }
-
-        Session::put('cart', collect([]));
-        Session::forget('order_id');
-
-        flash(__('Payment completed'))->success();
-    	return redirect()->route('home');
     }
 
     public function fail(Request $request)

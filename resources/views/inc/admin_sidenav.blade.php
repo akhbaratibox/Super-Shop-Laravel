@@ -306,6 +306,9 @@
                                 <li class="{{ areActiveRoutes(['generalsettings.logo'])}}">
                                     <a class="nav-link" href="{{route('generalsettings.logo')}}">{{__('Logo Settings')}}</a>
                                 </li>
+                                <li class="{{ areActiveRoutes(['generalsettings.color'])}}">
+                                    <a class="nav-link" href="{{route('generalsettings.color')}}">{{__('Color Settings')}}</a>
+                                </li>
                             </ul>
                         </li>
                         @endif

@@ -132,12 +132,19 @@
                 $('.active-link').parent().addClass('in');
             }
 
-            $('#language').on('change', function(){
-                var locale = $('#language').val();
-                $.post('{{ route('language.change') }}',{_token:'{{ csrf_token() }}', locale:locale}, function(data){
-                    location.reload();
+            if ($('#lang-change').length > 0) {
+                $('#lang-change .dropdown-item a').each(function() {
+                    $(this).on('click', function(e){
+                        e.preventDefault();
+                        var $this = $(this);
+                        var locale = $this.data('flag');
+                        $.post('{{ route('language.change') }}',{_token:'{{ csrf_token() }}', locale:locale}, function(data){
+                            location.reload();
+                        });
+
+                    });
                 });
-            });
+            }
 
         });
 

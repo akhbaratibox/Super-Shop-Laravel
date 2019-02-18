@@ -70,6 +70,28 @@
                     $sellers = \App\Seller::where('verification_status', 0)->where('verification_info', '!=', null)->count();
                 @endphp
 
+                <li class="dropdown" id="lang-change">
+                    @php
+                        if(Session::has('locale')){
+                            $locale = Session::get('locale', Config::get('app.locale'));
+                        }
+                        else{
+                            $locale = 'en';
+                        }
+                    @endphp
+                    <a href="" class="dropdown-toggle top-bar-item" data-toggle="dropdown">
+                        <img src="{{ asset('frontend/images/icons/flags/'.$locale.'.png') }}" class="flag" style="margin-right:6px;"><span class="language">{{ \App\Language::where('code', $locale)->first()->name }}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        @foreach (\App\Language::all() as $key => $language)
+                            <li class="dropdown-item @if($locale == $language) active @endif">
+                                <a href="#" data-flag="{{ $language->code }}"><img src="{{ asset('frontend/images/icons/flags/'.$language->code.'.png') }}" class="flag" style="margin-right:6px;"><span class="language">{{ $language->name }}</span></a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+                
+
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="true">
                         <i class="demo-pli-bell"></i>

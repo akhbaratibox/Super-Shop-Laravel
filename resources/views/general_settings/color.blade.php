@@ -5,7 +5,7 @@
     <div class="col-lg-6 col-lg-offset-3">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title">{{__('General Settings')}}</h3>
+                <h3 class="panel-title">{{__('Color Settings')}}</h3>
             </div>
 
             <!--Horizontal Form-->
@@ -14,64 +14,54 @@
             	@csrf
                 <input type="hidden" name="_method" value="PATCH">
                 <div class="panel-body">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label" for="name">{{__('Site Name')}}</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="name" name="name" value="{{ $generalsetting->site_name }}" class="form-control" required>
+                    <div class="row">
+                        <div class="color-radio col-sm-3">
+                            <label>
+                                <input type="radio" name="frontend-color" class="color-control-input" value="default" checked>
+                                <span class="color-control-box" style="background:#e62e04;"></span>
+                            </label>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label" for="address">{{__('Address')}}</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="address" name="address" value="{{ $generalsetting->address }}" class="form-control" required>
+                        <div class="color-radio col-sm-3">
+                            <label>
+                                <input type="radio" name="frontend-color" class="color-control-input" value="1">
+                                <span class="color-control-box" style="background:#1abc9c;"></span>
+                            </label>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label" for="name">{{__('Footer Text')}}</label>
-                        <div class="col-sm-9">
-                            <textarea class="form-control" rows="4" name="description" required>{{$generalsetting->description}}</textarea>
+                        <div class="color-radio col-sm-3">
+                            <label>
+                                <input type="radio" name="frontend-color" class="color-control-input" value="2">
+                                <span class="color-control-box" style="background:#3498db;"></span>
+                            </label>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label" for="phone">{{__('Phone')}}</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="phone" name="phone" value="{{ $generalsetting->phone }}" class="form-control" required>
+                        <div class="color-radio col-sm-3">
+                            <label>
+                                <input type="radio" name="frontend-color" class="color-control-input" value="3">
+                                <span class="color-control-box" style="background:#72bf40;"></span>
+                            </label>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label" for="email">{{__('email')}}</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="email" name="email" value="{{ $generalsetting->email }}" class="form-control" required>
+                        <div class="color-radio col-sm-3">
+                            <label>
+                                <input type="radio" name="frontend-color" class="color-control-input" value="4">
+                                <span class="color-control-box" style="background:#F79F1F;"></span>
+                            </label>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label" for="facebook">{{__('Facebook')}}</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="facebook" name="facebook" value="{{ $generalsetting->facebook }}" class="form-control">
+                        <div class="color-radio col-sm-3">
+                            <label>
+                                <input type="radio" name="frontend-color" class="color-control-input" value="5">
+                                <span class="color-control-box" style="background:#12CBC4;"></span>
+                            </label>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label" for="instagram">{{__('Instagram')}}</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="instagram" name="instagram" value="{{ $generalsetting->instagram }}" class="form-control">
+                        <div class="color-radio col-sm-3">
+                            <label>
+                                <input type="radio" name="frontend-color" class="color-control-input" value="6">
+                                <span class="color-control-box" style="background:#8e44ad;"></span>
+                            </label>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label" for="twitter">{{__('Twitter')}}</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="twitter" name="twitter" value="{{ $generalsetting->twitter }}" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label" for="youtube">{{__('Youtube')}}</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="youtube" name="youtube" value="{{ $generalsetting->youtube }}" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label" for="google_plus">{{__('Google Plus')}}</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="google_plus" name="google_plus" value="{{ $generalsetting->google_plus }}" class="form-control">
+                        <div class="color-radio col-sm-3">
+                            <label>
+                                <input type="radio" name="frontend-color" class="color-control-input" value="7">
+                                <span class="color-control-box" style="background:#ED4C67;"></span>
+                            </label>
                         </div>
                     </div>
                 </div>

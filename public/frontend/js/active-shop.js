@@ -302,7 +302,8 @@ $(document).ready(function() {
                 max: parseInt(c.getAttribute('data-range-value-max'))
             }
         }), c.noUiSlider.on("update", function(a, b) {
-            f[b].textContent = a[b]
+            f[b].textContent = a[b];
+            rangefilter(a);
         })
     }
 

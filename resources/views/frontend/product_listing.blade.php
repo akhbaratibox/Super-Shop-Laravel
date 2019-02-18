@@ -82,7 +82,7 @@
                                     </div>
 
                                     <div class="col-6 text-right">
-                                        <span class="range-slider-value value-high" data-range-value-high="5000" id="input-slider-range-value-high">
+                                        <span class="range-slider-value value-high" data-range-value-high="2000" id="input-slider-range-value-high">
                                     </div>
                                 </div>
                             </div>
@@ -271,6 +271,9 @@
     <script type="text/javascript">
         function filter(){
             $('#search-form').submit();
+        }
+        function rangefilter(arg){
+            console.log(arg);
         }
     </script>
 @endsection

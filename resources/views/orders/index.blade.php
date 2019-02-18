@@ -60,7 +60,7 @@
                             </td>
                             <td>
                                 <span class="badge badge--2 mr-4">
-                                    @if ($order->payment_status == 'paid')
+                                    @if ($order->orderDetails->where('seller_id',  Auth::user()->id)->first()->payment_status == 'paid')
                                         <i class="bg-green"></i> Paid
                                     @else
                                         <i class="bg-red"></i> Unpaid

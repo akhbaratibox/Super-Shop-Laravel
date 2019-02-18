@@ -64,12 +64,24 @@ class PaypalController extends Controller
     	$payer->setPaymentMethod('paypal');
     	$amount = PayPal::Amount();
     	$amount->setCurrency('USD');
-    	$amount->setTotal(.05); // This is the simple way,
+
+        if(Session::has('payment_type')){
+            if(Session::get('payment_type') == 'cart_payment'){
+                $order = Order::findOrFail(Session::get('order_id'));
+                $amount->setTotal(convert_to_usd($order->grand_total));
+                $description = 'Payment for order completion';
+            }
+            elseif (Session::get('payment_type') == 'seller_payment') {
+                $amount->setTotal(convert_to_usd(Session::get('payment_data')['amount']));
+                $description = 'Payment to seller';
+            }
+        }
+    	// This is the simple way,
     	// you can alternatively describe everything in the order separately;
     	// Reference the PayPal PHP REST SDK for details.
     	$transaction = PayPal::Transaction();
     	$transaction->setAmount($amount);
-    	$transaction->setDescription('Payment for verification');
+    	$transaction->setDescription($description);
     	$redirectUrls = PayPal:: RedirectUrls();
     	$redirectUrls->setReturnUrl(url('paypal/payment/done'));
     	$redirectUrls->setCancelUrl(url('paypal/payment/cancel'));
@@ -89,6 +101,7 @@ class PaypalController extends Controller
     {
         // Curse and humiliate the user for cancelling this most sacred payment (yours)
         $request->session()->forget('order_id');
+        $request->session()->forget('payment_data');
         flash(__('Payment cancelled'))->success();
     	return redirect()->url()->previous();
     }

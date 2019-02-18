@@ -122,6 +122,7 @@ class PublicSslCommerzPaymentController extends Controller
     public function fail(Request $request)
     {
         $request->session()->forget('order_id');
+        $request->session()->forget('payment_data');
         flash(__('Payment Failed'))->success();
         return redirect()->url()->previous();
     }
@@ -129,6 +130,7 @@ class PublicSslCommerzPaymentController extends Controller
      public function cancel(Request $request)
     {
         $request->session()->forget('order_id');
+        $request->session()->forget('payment_data');
         flash(__('Payment cancelled'))->success();
     	return redirect()->url()->previous();
     }

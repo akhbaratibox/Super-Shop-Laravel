@@ -131,7 +131,7 @@
                         <th>{{__('Currency name')}}</th>
                         <th>{{__('Currency symbol')}}</th>
                         <th>{{__('Currency code')}}</th>
-                        <th>{{__('Exchange rate')}}</th>
+                        <th>{{__('Exchange rate')}}(1 USD = ?)</th>
                         <th>{{__('Status')}}</th>
                         <th width="10%">{{__('Options')}}</th>
                     </tr>

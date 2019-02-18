@@ -73,16 +73,16 @@
                         <div class="box-content">
                             <div class="range-slider-wrapper mt-3">
                                 <!-- Range slider container -->
-                                <div id="input-slider-range" data-range-value-min="1000" data-range-value-max="5000"></div>
+                                <div id="input-slider-range" data-range-value-min="{{ $products->min('unit_price') }}" data-range-value-max="{{ $products->max('unit_price') }}"></div>
 
                                 <!-- Range slider values -->
                                 <div class="row">
                                     <div class="col-6">
-                                        <span class="range-slider-value value-low" data-range-value-low="1500" id="input-slider-range-value-low">
+                                        <span class="range-slider-value value-low" data-range-value-low="{{ $products->min('unit_price') }}" id="input-slider-range-value-low">
                                     </div>
 
                                     <div class="col-6 text-right">
-                                        <span class="range-slider-value value-high" data-range-value-high="2000" id="input-slider-range-value-high">
+                                        <span class="range-slider-value value-high" data-range-value-high="{{ $products->max('unit_price') }}" id="input-slider-range-value-high">
                                     </div>
                                 </div>
                             </div>
@@ -148,6 +148,10 @@
                             @isset($category_id)
                                 <input type="hidden" name="category" value="{{ $category_id }}">
                             @endisset
+
+                            <input type="hidden" name="min_price" value="">
+                            <input type="hidden" name="max_price" value="">
+
                             <div class="sort-by-bar row no-gutters bg-white mb-3 px-3">
                                 <div class="col-lg-4 col-md-5">
                                     <div class="sort-by-box">
@@ -273,7 +277,9 @@
             $('#search-form').submit();
         }
         function rangefilter(arg){
-            console.log(arg);
+            $('input[name=min_price]').val(arg[0]);
+            $('input[name=max_price]').val(arg[1]);
+            filter();
         }
     </script>
 @endsection

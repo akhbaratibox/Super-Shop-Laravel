@@ -5,10 +5,10 @@
 // Background image holder with fullscreen option
 $(window).on('load resize', function() {
 
-       
 
-    
-    
+
+
+
     // Headroom
     if ($(window).width() > 0) {
         if ($("[data-toggle='headroom']").length > 0) {
@@ -303,6 +303,7 @@ $(document).ready(function() {
             }
         }), c.noUiSlider.on("update", function(a, b) {
             f[b].textContent = a[b];
+        }), c.noUiSlider.on("change", function(a, b) {
             rangefilter(a);
         })
     }

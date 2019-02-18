@@ -331,6 +331,10 @@ class HomeController extends Controller
 
         $products = Product::where($conditions);
 
+        if($request->has('min_price') && $request->has('max_price')){
+            $products = $products->where('unit_price', '>=', $request->min_price)->where('unit_price', '<=', $request->max_price);
+        }
+
         if($query != null){
             $searchController = new SearchController;
             $searchController->store($request);
@@ -357,9 +361,12 @@ class HomeController extends Controller
             }
         }
 
+        $min_price = $products->get()->min('unit_price');
+        $max_price = $products->get()->max('max_price');
+
         $products = filter_products($products)->paginate(9);
 
-        return view('frontend.product_listing', compact('products', 'query', 'category_id', 'brand_id', 'sort_by'));
+        return view('frontend.product_listing', compact('products', 'query', 'category_id', 'brand_id', 'sort_by', 'min_price', 'max_price'));
     }
 
     public function home_settings(Request $request)

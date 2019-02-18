@@ -71,6 +71,21 @@ class GeneralSettingController extends Controller
         return view("general_settings.color", compact("generalsetting"));
     }
 
+    public function storeColor(Request $request)
+    {
+        $generalsetting = GeneralSetting::first();
+        $generalsetting->frontend_color = $request->frontend_color;
+
+        if($generalsetting->save()){
+            flash('Color settings has been updated successfully')->success();
+            return redirect()->route('generalsettings.color');
+        }
+        else{
+            flash('Something went wrong')->error();
+            return back();
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Seller;
 use App\User;
 use App\Shop;
+use App\Product;
+use App\Order;
+use App\OrderDetail;
 use Illuminate\Support\Facades\Hash;
 
 class SellerController extends Controller
@@ -119,7 +122,12 @@ class SellerController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy(Seller::findOrFail($id)->user->id);
+        $seller = Seller::findOrFail($id);
+        Shop::destroy($seller->user->id);
+        Product::where('user_id', $seller->user->id)->delete();
+        Order::where('user_id', $seller->user->id)->delete();
+        OrderDetail::where('seller_id', $seller->user->id)->delete();
+        User::destroy($seller->user->id);
         if(Seller::destroy($id)){
             flash(__('Seller has been deleted successfully'))->success();
             return redirect()->route('sellers.index');

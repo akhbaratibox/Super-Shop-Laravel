@@ -24,6 +24,7 @@
                     <th>{{__('Name')}}</th>
                     <th>{{__('Email Address')}}</th>
                     <th>{{__('Status')}}</th>
+                    <th>{{ __('Num. of Products') }}</th>
                     <th>{{ __('Due to seller') }}</th>
                     <th width="10%">{{__('Options')}}</th>
                 </tr>
@@ -51,6 +52,7 @@
                                 </div>
                             @endif
                         </td>
+                        <td>{{ \App\Product::where('user_id', $seller->user->id)->count() }}</td>
                         <td>
                             @if ($seller->admin_to_pay > 0)
                                 {{ single_price($seller->admin_to_pay) }}

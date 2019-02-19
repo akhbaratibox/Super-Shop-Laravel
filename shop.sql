@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2019 at 09:23 AM
+-- Generation Time: Feb 19, 2019 at 12:56 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -771,12 +771,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 8, '2018-10-17 02:35:55', '2018-10-17 02:35:55'),
-(2, 9, '2018-12-03 03:17:22', '2018-12-03 03:17:22'),
-(3, 10, '2018-12-05 01:33:13', '2018-12-05 01:33:13'),
-(4, 11, '2018-12-06 03:03:23', '2018-12-06 03:03:23'),
-(5, 12, '2018-12-10 01:04:01', '2018-12-10 01:04:01'),
-(6, 13, '2018-12-11 03:10:13', '2018-12-11 03:10:13');
+(1, 8, '2018-10-17 02:35:55', '2018-10-17 02:35:55');
 
 -- --------------------------------------------------------
 
@@ -837,6 +832,7 @@ INSERT INTO `flash_deal_products` (`id`, `flash_deal_id`, `product_id`, `discoun
 
 CREATE TABLE `general_settings` (
   `id` int(11) NOT NULL,
+  `frontend_color` varchar(255) COLLATE utf32_bin NOT NULL DEFAULT 'default',
   `logo` varchar(255) COLLATE utf32_bin DEFAULT NULL,
   `admin_logo` varchar(255) COLLATE utf32_bin DEFAULT NULL,
   `admin_login_background` varchar(255) COLLATE utf32_bin DEFAULT NULL,
@@ -860,8 +856,8 @@ CREATE TABLE `general_settings` (
 -- Dumping data for table `general_settings`
 --
 
-INSERT INTO `general_settings` (`id`, `logo`, `admin_logo`, `admin_login_background`, `admin_login_sidebar`, `favicon`, `site_name`, `address`, `description`, `phone`, `email`, `facebook`, `instagram`, `twitter`, `youtube`, `google_plus`, `created_at`, `updated_at`) VALUES
-(1, 'uploads/logo/Fa89OvWTh2drEMec9uhpPHIJMl7ljpQRWGaJ2z7D.png', 'uploads/admin_logo/nmgFkFV6bLTw9LgyKeLurZ7pqeqgHKaQFB6JNkww.png', NULL, NULL, 'uploads/favicon/nwDwQmnJBTOwgpKOtJPReBH0Gq68IFYUsk6KvRsr.png', 'Active Super Shop', '1234 Street Name, City, England', 'Active Super Shop Multi vendor system is such a platform to build a border less marketplace both for physical and digital goods.', '1234567890', 'admin@example.com', 'https://www.facebook.com', 'https://www.instagram.com', 'https://www.twitter.com', 'https://www.youtube.com', 'https://www.googleplus.com', '2019-02-12 10:38:04', '2019-02-12 10:38:04');
+INSERT INTO `general_settings` (`id`, `frontend_color`, `logo`, `admin_logo`, `admin_login_background`, `admin_login_sidebar`, `favicon`, `site_name`, `address`, `description`, `phone`, `email`, `facebook`, `instagram`, `twitter`, `youtube`, `google_plus`, `created_at`, `updated_at`) VALUES
+(1, '2', 'uploads/logo/dYj38SFfmTDyNa5n2X0hXTYDxEq87O5bm2GhLwoC.png', 'uploads/admin_logo/nmgFkFV6bLTw9LgyKeLurZ7pqeqgHKaQFB6JNkww.png', NULL, NULL, 'uploads/favicon/nwDwQmnJBTOwgpKOtJPReBH0Gq68IFYUsk6KvRsr.png', 'Active Super Shop', '1234 Street Name, City, England', 'Active Super Shop Multi vendor system is such a platform to build a border less marketplace both for physical and digital goods.', '1234567890', 'admin@example.com', 'https://www.facebook.com', 'https://www.instagram.com', 'https://www.twitter.com', 'https://www.youtube.com', 'https://www.googleplus.com', '2019-02-19 09:40:19', '2019-02-19 03:40:19');
 
 -- --------------------------------------------------------
 
@@ -910,7 +906,7 @@ CREATE TABLE `languages` (
 
 INSERT INTO `languages` (`id`, `name`, `code`, `created_at`, `updated_at`) VALUES
 (1, 'English', 'en', '2019-01-20 12:13:20', '2019-01-20 12:13:20'),
-(2, 'Bangla', 'bd', '2019-01-20 12:13:20', '2019-01-20 12:13:20');
+(3, 'Bangla', 'bd', '2019-02-17 06:35:37', '2019-02-18 06:49:51');
 
 -- --------------------------------------------------------
 
@@ -1022,8 +1018,8 @@ INSERT INTO `order_details` (`id`, `order_id`, `seller_id`, `product_id`, `varia
 (3, 3, 1, 9, 'Gold-64GB', 989.10, 0.00, 0.00, 1, 'unpaid', 'pending', '2019-02-12 12:12:15', '2019-02-12 12:12:15'),
 (4, 4, 1, 9, 'Gold-64GB', 989.10, 0.00, 0.00, 1, 'unpaid', 'pending', '2019-02-12 12:12:37', '2019-02-12 12:12:37'),
 (5, 5, 3, 52, 'Black-40', 85.00, 5.00, 0.00, 1, 'unpaid', 'pending', '2019-02-13 19:51:33', '2019-02-13 19:51:33'),
-(6, 6, 1, 9, 'Gold-64GB', 989.10, 0.00, 0.00, 1, 'unpaid', 'pending', '2019-02-16 07:17:23', '2019-02-16 07:26:52'),
-(7, 6, 1, 20, 'RoyalBlue-L', 21.00, 0.42, 6.00, 3, 'unpaid', 'pending', '2019-02-16 07:17:23', '2019-02-16 07:26:52'),
+(6, 6, 1, 9, 'Gold-64GB', 989.10, 0.00, 0.00, 1, 'paid', 'pending', '2019-02-16 07:17:23', '2019-02-18 01:30:04'),
+(7, 6, 1, 20, 'RoyalBlue-L', 21.00, 0.42, 6.00, 3, 'paid', 'pending', '2019-02-16 07:17:23', '2019-02-18 01:30:04'),
 (8, 6, 3, 45, 'DarkOrange-20inch', 390.00, 10.00, 0.00, 1, 'unpaid', 'pending', '2019-02-16 07:17:24', '2019-02-16 07:17:24'),
 (9, 6, 25, 76, 'WhiteSmoke-sleeveless-Full', 102.05, 3.06, 0.00, 1, 'unpaid', 'pending', '2019-02-16 07:17:24', '2019-02-16 07:17:24'),
 (10, 6, 25, 74, 'DarkRed-full', 90.00, 4.50, 0.00, 1, 'unpaid', 'pending', '2019-02-16 07:17:24', '2019-02-16 07:17:24');
@@ -1049,7 +1045,7 @@ CREATE TABLE `password_resets` (
 CREATE TABLE `payments` (
   `id` int(11) NOT NULL,
   `seller_id` int(11) NOT NULL,
-  `amount` int(11) NOT NULL DEFAULT '0',
+  `amount` double(8,2) NOT NULL DEFAULT '0.00',
   `payment_details` longtext COLLATE utf8_bin,
   `payment_type` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -1061,7 +1057,11 @@ CREATE TABLE `payments` (
 --
 
 INSERT INTO `payments` (`id`, `seller_id`, `amount`, `payment_details`, `payment_type`, `created_at`, `updated_at`) VALUES
-(1, 1, 50, NULL, 'cash', '2019-02-16 08:01:33', '2019-02-16 08:01:33');
+(1, 1, 50.00, NULL, 'cash', '2019-02-16 08:01:33', '2019-02-16 08:01:33'),
+(2, 1, 2.00, '{\"tran_id\":\"c4ca4238a0\",\"val_id\":\"190219160158wXTJMnMUaCtcz9x\",\"amount\":\"2\",\"card_type\":\"VISA-Dutch Bangla\",\"store_amount\":\"1.95\",\"card_no\":\"418117XXXXXX7814\",\"bank_tran_id\":\"1902191601580Y7nSCj9nlMpkM6\",\"status\":\"VALID\",\"tran_date\":\"2019-02-19 16:01:54\",\"currency\":\"BDT\",\"card_issuer\":\"TRUST BANK, LTD.\",\"card_brand\":\"VISA\",\"card_issuer_country\":\"Bangladesh\",\"card_issuer_country_code\":\"BD\",\"store_id\":\"activ5c3c5dac9254d\",\"verify_sign\":\"3fcbbf157dba530a63aee73f2b409ff8\",\"verify_key\":\"amount,bank_tran_id,base_fair,card_brand,card_issuer,card_issuer_country,card_issuer_country_code,card_no,card_type,currency,currency_amount,currency_rate,currency_type,risk_level,risk_title,status,store_amount,store_id,tran_date,tran_id,val_id,value_a,value_b,value_c,value_d\",\"verify_sign_sha2\":\"f2806d00dc778e9b80dc56afe2da53a15393efd3674ecc2cb080fb0c41afa72e\",\"currency_type\":\"BDT\",\"currency_amount\":\"2.00\",\"currency_rate\":\"1.0000\",\"base_fair\":\"0.00\",\"value_a\":null,\"value_b\":null,\"value_c\":null,\"value_d\":null,\"risk_level\":\"0\",\"risk_title\":\"Safe\"}', 'sslcommerz', '2019-02-19 03:58:44', '2019-02-19 03:58:44'),
+(3, 1, 1.00, '{\"id\":\"ch_1E5WcwJeDAgLbwN0iXSGG38Z\",\"object\":\"charge\",\"amount\":100,\"amount_refunded\":0,\"application\":null,\"application_fee\":null,\"application_fee_amount\":null,\"balance_transaction\":\"txn_1E5WcwJeDAgLbwN0kwzCVmNO\",\"captured\":true,\"created\":1550575146,\"currency\":\"usd\",\"customer\":null,\"description\":null,\"destination\":null,\"dispute\":null,\"failure_code\":null,\"failure_message\":null,\"fraud_details\":[],\"invoice\":null,\"livemode\":false,\"metadata\":[],\"on_behalf_of\":null,\"order\":null,\"outcome\":{\"network_status\":\"approved_by_network\",\"reason\":null,\"risk_level\":\"normal\",\"risk_score\":28,\"seller_message\":\"Payment complete.\",\"type\":\"authorized\"},\"paid\":true,\"payment_intent\":null,\"receipt_email\":null,\"receipt_number\":null,\"receipt_url\":\"https:\\/\\/pay.stripe.com\\/receipts\\/acct_1DxpNuJeDAgLbwN0\\/ch_1E5WcwJeDAgLbwN0iXSGG38Z\\/rcpt_EYdu6u3A7d3tsc2SAb780K0Nrk42bkv\",\"refunded\":false,\"refunds\":{\"object\":\"list\",\"data\":[],\"has_more\":false,\"total_count\":0,\"url\":\"\\/v1\\/charges\\/ch_1E5WcwJeDAgLbwN0iXSGG38Z\\/refunds\"},\"review\":null,\"shipping\":null,\"source\":{\"id\":\"card_1E5WcuJeDAgLbwN0XfmSgZ7P\",\"object\":\"card\",\"address_city\":null,\"address_country\":null,\"address_line1\":null,\"address_line1_check\":null,\"address_line2\":null,\"address_state\":null,\"address_zip\":null,\"address_zip_check\":null,\"brand\":\"Visa\",\"country\":\"US\",\"customer\":null,\"cvc_check\":\"pass\",\"dynamic_last4\":null,\"exp_month\":12,\"exp_year\":2020,\"fingerprint\":\"qmxc3fM7CnpVrZJc\",\"funding\":\"credit\",\"last4\":\"4242\",\"metadata\":[],\"name\":null,\"tokenization_method\":null},\"source_transfer\":null,\"statement_descriptor\":null,\"status\":\"succeeded\",\"transfer_data\":null,\"transfer_group\":null}', 'stripe', '2019-02-19 05:18:59', '2019-02-19 05:18:59'),
+(4, 1, 1.00, '{\"id\":\"ch_1E5WcvJeDAgLbwN0phdSeaZy\",\"object\":\"charge\",\"amount\":100,\"amount_refunded\":0,\"application\":null,\"application_fee\":null,\"application_fee_amount\":null,\"balance_transaction\":\"txn_1E5WcwJeDAgLbwN0orYIOGGs\",\"captured\":true,\"created\":1550575145,\"currency\":\"usd\",\"customer\":null,\"description\":null,\"destination\":null,\"dispute\":null,\"failure_code\":null,\"failure_message\":null,\"fraud_details\":[],\"invoice\":null,\"livemode\":false,\"metadata\":[],\"on_behalf_of\":null,\"order\":null,\"outcome\":{\"network_status\":\"approved_by_network\",\"reason\":null,\"risk_level\":\"normal\",\"risk_score\":30,\"seller_message\":\"Payment complete.\",\"type\":\"authorized\"},\"paid\":true,\"payment_intent\":null,\"receipt_email\":null,\"receipt_number\":null,\"receipt_url\":\"https:\\/\\/pay.stripe.com\\/receipts\\/acct_1DxpNuJeDAgLbwN0\\/ch_1E5WcvJeDAgLbwN0phdSeaZy\\/rcpt_EYduZwSUlCw69Or5FOEkPdSjHeEjM2Y\",\"refunded\":false,\"refunds\":{\"object\":\"list\",\"data\":[],\"has_more\":false,\"total_count\":0,\"url\":\"\\/v1\\/charges\\/ch_1E5WcvJeDAgLbwN0phdSeaZy\\/refunds\"},\"review\":null,\"shipping\":null,\"source\":{\"id\":\"card_1E5WctJeDAgLbwN01WJVLjwz\",\"object\":\"card\",\"address_city\":null,\"address_country\":null,\"address_line1\":null,\"address_line1_check\":null,\"address_line2\":null,\"address_state\":null,\"address_zip\":null,\"address_zip_check\":null,\"brand\":\"Visa\",\"country\":\"US\",\"customer\":null,\"cvc_check\":\"pass\",\"dynamic_last4\":null,\"exp_month\":12,\"exp_year\":2020,\"fingerprint\":\"qmxc3fM7CnpVrZJc\",\"funding\":\"credit\",\"last4\":\"4242\",\"metadata\":[],\"name\":null,\"tokenization_method\":null},\"source_transfer\":null,\"statement_descriptor\":null,\"status\":\"succeeded\",\"transfer_data\":null,\"transfer_group\":null}', 'stripe', '2019-02-19 05:18:59', '2019-02-19 05:18:59'),
+(5, 1, 0.50, '{\"id\":\"ch_1E5WfHJeDAgLbwN0Dka2sAo5\",\"object\":\"charge\",\"amount\":50,\"amount_refunded\":0,\"application\":null,\"application_fee\":null,\"application_fee_amount\":null,\"balance_transaction\":\"txn_1E5WfHJeDAgLbwN01ZzEaSMD\",\"captured\":true,\"created\":1550575291,\"currency\":\"usd\",\"customer\":null,\"description\":null,\"destination\":null,\"dispute\":null,\"failure_code\":null,\"failure_message\":null,\"fraud_details\":[],\"invoice\":null,\"livemode\":false,\"metadata\":[],\"on_behalf_of\":null,\"order\":null,\"outcome\":{\"network_status\":\"approved_by_network\",\"reason\":null,\"risk_level\":\"normal\",\"risk_score\":16,\"seller_message\":\"Payment complete.\",\"type\":\"authorized\"},\"paid\":true,\"payment_intent\":null,\"receipt_email\":null,\"receipt_number\":null,\"receipt_url\":\"https:\\/\\/pay.stripe.com\\/receipts\\/acct_1DxpNuJeDAgLbwN0\\/ch_1E5WfHJeDAgLbwN0Dka2sAo5\\/rcpt_EYdxheEYRbAt2ZufKXyGnZEIvojcQYX\",\"refunded\":false,\"refunds\":{\"object\":\"list\",\"data\":[],\"has_more\":false,\"total_count\":0,\"url\":\"\\/v1\\/charges\\/ch_1E5WfHJeDAgLbwN0Dka2sAo5\\/refunds\"},\"review\":null,\"shipping\":null,\"source\":{\"id\":\"card_1E5WfFJeDAgLbwN060qSkKMR\",\"object\":\"card\",\"address_city\":null,\"address_country\":null,\"address_line1\":null,\"address_line1_check\":null,\"address_line2\":null,\"address_state\":null,\"address_zip\":null,\"address_zip_check\":null,\"brand\":\"Visa\",\"country\":\"US\",\"customer\":null,\"cvc_check\":\"pass\",\"dynamic_last4\":null,\"exp_month\":12,\"exp_year\":2020,\"fingerprint\":\"qmxc3fM7CnpVrZJc\",\"funding\":\"credit\",\"last4\":\"4242\",\"metadata\":[],\"name\":null,\"tokenization_method\":null},\"source_transfer\":null,\"statement_descriptor\":null,\"status\":\"succeeded\",\"transfer_data\":null,\"transfer_group\":null}', 'stripe', '2019-02-19 05:21:24', '2019-02-19 05:21:24');
 
 -- --------------------------------------------------------
 
@@ -1320,10 +1320,11 @@ INSERT INTO `searches` (`id`, `query`, `count`, `created_at`, `updated_at`) VALU
 (1, 'iphone xs max', 2, '2019-02-12 15:19:22', '2019-02-15 15:27:26'),
 (2, 'snow bike', 2, '2019-02-13 10:03:21', '2019-02-15 15:27:31'),
 (3, 'car', 1, '2019-02-13 14:09:39', '2019-02-13 14:09:39'),
-(4, 'iphone', 1, '2019-02-13 14:09:44', '2019-02-13 14:09:44'),
+(4, 'iphone', 20, '2019-02-13 14:09:44', '2019-02-19 01:29:06'),
 (5, 'iphone case', 1, '2019-02-13 14:09:50', '2019-02-13 14:09:50'),
 (6, 'iphone cover', 1, '2019-02-13 14:09:55', '2019-02-13 14:09:55'),
-(7, 'shirt', 1, '2019-02-13 14:10:00', '2019-02-13 14:10:00');
+(7, 'shirt', 1, '2019-02-13 14:10:00', '2019-02-13 14:10:00'),
+(8, 'apple', 3, '2019-02-19 01:23:26', '2019-02-19 01:23:54');
 
 -- --------------------------------------------------------
 
@@ -1356,7 +1357,7 @@ CREATE TABLE `sellers` (
 --
 
 INSERT INTO `sellers` (`id`, `user_id`, `verification_status`, `verification_info`, `cash_on_delivery_status`, `sslcommerz_status`, `stripe_status`, `paypal_status`, `paypal_client_id`, `paypal_client_secret`, `ssl_store_id`, `ssl_password`, `stripe_key`, `stripe_secret`, `admin_to_pay`, `created_at`, `updated_at`) VALUES
-(1, 3, 1, '[{\"type\":\"text\",\"label\":\"Name\",\"value\":\"Mr. Seller\"},{\"type\":\"select\",\"label\":\"Marital Status\",\"value\":\"Married\"},{\"type\":\"multi_select\",\"label\":\"Company\",\"value\":\"[\\\"Company\\\"]\"},{\"type\":\"select\",\"label\":\"Gender\",\"value\":\"Male\"},{\"type\":\"file\",\"label\":\"Image\",\"value\":\"uploads\\/verification_form\\/CRWqFifcbKqibNzllBhEyUSkV6m1viknGXMEhtiW.png\"}]', 1, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 23.50, '2018-10-07 04:42:57', '2019-02-16 08:01:59'),
+(1, 3, 1, '[{\"type\":\"text\",\"label\":\"Name\",\"value\":\"Mr. Seller\"},{\"type\":\"select\",\"label\":\"Marital Status\",\"value\":\"Married\"},{\"type\":\"multi_select\",\"label\":\"Company\",\"value\":\"[\\\"Company\\\"]\"},{\"type\":\"select\",\"label\":\"Gender\",\"value\":\"Male\"},{\"type\":\"file\",\"label\":\"Image\",\"value\":\"uploads\\/verification_form\\/CRWqFifcbKqibNzllBhEyUSkV6m1viknGXMEhtiW.png\"}]', 1, 1, 1, 0, NULL, NULL, 'activ5c3c5dac9254d', 'activ5c3c5dac9254d@ssl', 'pk_test_CqAfBW85ZifDyuEOhGaD4ZbE', 'sk_test_mRRMmV4GnBJ4UT7qeLlDe5F8', 20.00, '2018-10-07 04:42:57', '2019-02-19 05:21:24'),
 (11, 23, 0, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0.00, '2019-02-12 11:46:18', '2019-02-12 11:46:18'),
 (13, 24, 1, '[{\"type\":\"text\",\"label\":\"Name\",\"value\":\"Computer seller\"},{\"type\":\"select\",\"label\":\"Marital Status\",\"value\":\"Unmarried\"},{\"type\":\"multi_select\",\"label\":\"Company\",\"value\":\"[\\\"Company\\\"]\"},{\"type\":\"select\",\"label\":\"Gender\",\"value\":\"Male\"},{\"type\":\"file\",\"label\":\"Image\",\"value\":\"uploads\\/verification_form\\/ACNyjogZTfCbHVeXqrx0e8uZkjKJ5xxu63ot67hx.png\"}]', 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0.00, '2019-02-12 15:10:13', '2019-02-12 17:23:32'),
 (14, 25, 1, '[{\"type\":\"text\",\"label\":\"Your name\",\"value\":\"Cloth Seller\"},{\"type\":\"text\",\"label\":\"Shop name\",\"value\":\"Dress House\"},{\"type\":\"text\",\"label\":\"Email\",\"value\":\"clothseller@shop.com\"},{\"type\":\"text\",\"label\":\"License No\",\"value\":\"123456\"},{\"type\":\"text\",\"label\":\"Full Address\",\"value\":\"Demo, Demo, Demo\"},{\"type\":\"text\",\"label\":\"Phone Number\",\"value\":\"123456789\"},{\"type\":\"file\",\"label\":\"Tax Papers\",\"value\":\"uploads\\/verification_form\\/TurW5czXr7TisDcvWYoBylowl47lWMNxVsbWgdwd.pdf\"}]', 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0.00, '2019-02-13 06:27:48', '2019-02-16 07:28:50');
@@ -1455,13 +1456,6 @@ CREATE TABLE `staff` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `staff`
---
-
-INSERT INTO `staff` (`id`, `user_id`, `role_id`, `created_at`, `updated_at`) VALUES
-(3, 9, 1, '2018-10-17 06:26:53', '2018-10-17 06:26:53');
 
 -- --------------------------------------------------------
 
@@ -1785,8 +1779,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `provider_id`, `user_type`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `avatar`, `avatar_original`, `address`, `country`, `city`, `postal_code`, `phone`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'admin', 'Admin', 'admin@example.com', '2018-12-11 18:00:00', '$2y$10$aEw8avP2ZGG8B3FjYUC71.ZjvSt5UoM.7x.OfdtNRAPTMbwyrwFvK', 'btXMKvT1O26HxtFbSQOWDPGPmXXAQergoM58fwNpnJx1SSx7prffA4RpL1vt', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', '', NULL, NULL, NULL, NULL, '2018-09-26 02:08:48', '2018-12-12 01:26:01'),
-(3, NULL, 'seller', 'Mr. Seller', 'seller@example.com', '2018-12-11 18:00:00', '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', 'yguCeFQ15tuhvdOLf4DBnhK8adFXrCjnXOWesCdEiid4LHP0O47FRfxLDitR', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'uploads/HO7BJ0Wxep8TNRELVW5PfQ9p9PdwG9Ji12S4NRK6.jpeg', 'Demo address', 'US', 'Demo city', '1234', '12345678', '2018-10-07 04:42:57', '2019-02-12 11:07:24'),
+(1, NULL, 'admin', 'Admin', 'admin@example.com', '2018-12-11 18:00:00', '$2y$10$aEw8avP2ZGG8B3FjYUC71.ZjvSt5UoM.7x.OfdtNRAPTMbwyrwFvK', '6G1wrqnPjEIiUGuDtcgs1D1zNXjiZDhAygsfMAt9rGVBIWXoPKYhZJ7FHvLt', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', '', NULL, NULL, NULL, NULL, '2018-09-26 02:08:48', '2018-12-12 01:26:01'),
+(3, NULL, 'seller', 'Mr. Seller', 'seller@example.com', '2018-12-11 18:00:00', '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', 'L76ex6f1c9weij5vGuieqYM1R6kK4vE90MiHrq2x5mwzjPPQdkBMXqqTUrYT', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'uploads/HO7BJ0Wxep8TNRELVW5PfQ9p9PdwG9Ji12S4NRK6.jpeg', 'Demo address', 'US', 'Demo city', '1234', '12345678', '2018-10-07 04:42:57', '2019-02-12 11:07:24'),
 (8, NULL, 'customer', 'Mr. Demo Customer', 'customer@example.com', '2018-12-12 02:24:31', '$2y$10$MUHJSlPUDFwq9oNJeogg7eIRrXBQZWxjSpgaDv1ZJ7P1Icv882aom', 'Q6P0f57BD1YOHBXXqku935zSxZE5xWkJO9tnSkIngjSuFdx3oHUOCv146DIN', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'uploads/Sig1AulqoyXBj05Xk5KZPEgtQhi3fb71NMKyvWcK.jpeg', 'House : 001, Street: 002, Section : 003, \r\nNew York, United States.', 'US', 'New York', '1234', '0123456789', '2018-10-17 06:26:52', '2019-02-10 15:43:21'),
 (23, NULL, 'seller', 'Computer Accessories Seller', 'seller1@example.com', '2019-02-12 00:00:00', '$2y$10$HX2A3uwppkKIEd01RQ7cN.74lZOO9R.5ETnQEQ96bh3hdGUXw4wMG', 'wB9jtYGiu8ym2UByz352RMX4LpV6UgpjUA6sOKnzpjdhvXCdUf6iWVp0GmxH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-02-12 11:32:22', '2019-02-12 11:46:18'),
 (24, NULL, 'seller', 'Computer seller', 'computerseller@shop.com', NULL, '$2y$10$H41NqWbkVOj.RStUEWRXNe08k3fE3WuqCA2YG8YgatnLoqZKo57Ti', 'y967HWPmXAJVcePfblxh4nj9qBLsujcXmG7UJfPy33PFvYufnpc3xgonIeSo', NULL, 'uploads/1mMxQH4KIoCtVVpOBt7k7uYymbWNMQ3jJuTj7y3u.jpeg', NULL, 'AF', NULL, NULL, NULL, '2019-02-12 15:10:13', '2019-02-12 17:23:32'),
@@ -2086,7 +2080,7 @@ ALTER TABLE `currencies`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `flash_deals`
@@ -2116,7 +2110,7 @@ ALTER TABLE `home_categories`
 -- AUTO_INCREMENT for table `languages`
 --
 ALTER TABLE `languages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `links`
@@ -2146,7 +2140,7 @@ ALTER TABLE `order_details`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `policies`
@@ -2182,7 +2176,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `searches`
 --
 ALTER TABLE `searches`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `sellers`

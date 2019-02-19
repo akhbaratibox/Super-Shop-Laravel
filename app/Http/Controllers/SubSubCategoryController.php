@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\SubSubCategory;
 use App\Brand;
+use App\Product;
 
 class SubSubCategoryController extends Controller
 {
@@ -115,6 +116,7 @@ class SubSubCategoryController extends Controller
     public function destroy($id)
     {
         $subsubcategory = SubSubCategory::findOrFail($id);
+        Product::where('subsubcategory_id', $subsubcategory->id)->delete();
         if(SubSubCategory::destroy($id)){
             flash(__('SubSubCategory has been deleted successfully'))->success();
             return redirect()->route('subsubcategories.index');

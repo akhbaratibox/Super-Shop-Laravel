@@ -16,7 +16,7 @@
             </div>
 
             <div class="modal-body">
-                <p>{{__('Delete Confirmation message')}}</p>
+                <p>{{__('Delete confirmation message')}}</p>
             </div>
 
             <div class="modal-footer">

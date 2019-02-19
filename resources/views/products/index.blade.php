@@ -16,11 +16,11 @@
         <!--Nav Tabs-->
         <ul class="nav nav-tabs">
             <li class="active">
-                <a data-toggle="tab" href="#demo-lft-tab-1" aria-expanded="true">{{__('admin_products')}} <span class="badge badge-info">{{count(\App\Product::where('added_by','admin')->get())}}</span></a>
+                <a data-toggle="tab" href="#demo-lft-tab-1" aria-expanded="true">{{__('Admin Products')}} <span class="badge badge-info">{{count(\App\Product::where('added_by','admin')->get())}}</span></a>
             </li>
             @if(\App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)
                 <li class="">
-                    <a data-toggle="tab" href="#demo-lft-tab-2" aria-expanded="false">{{__('seller_products')}} <span class="badge badge-purple">{{count(\App\Product::where('added_by','seller')->get())}}</span></a>
+                    <a data-toggle="tab" href="#demo-lft-tab-2" aria-expanded="false">{{__('Seller Products')}} <span class="badge badge-purple">{{count(\App\Product::where('added_by','seller')->get())}}</span></a>
                 </li>
             @endif
         </ul>
@@ -34,7 +34,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th width="30%">{{__('name')}}</th>
+                                    <th width="20%">{{__('Name')}}</th>
                                     <th>{{__('Photo')}}</th>
                                     <th>{{__('Current qty')}}</th>
                                     <th>{{__('Base Price')}}</th>
@@ -98,7 +98,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th width="20%">{{__('name')}}</th>
+                                    <th width="20%">{{__('Name')}}</th>
                                     <th>{{__('Photo')}}</th>
                                     <th>{{__('Current qty')}}</th>
                                     <th>{{__('Base Price')}}</th>

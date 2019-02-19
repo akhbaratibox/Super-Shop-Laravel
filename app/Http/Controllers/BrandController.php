@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Brand;
+use App\Product;
 
 class BrandController extends Controller
 {
@@ -110,6 +111,7 @@ class BrandController extends Controller
     public function destroy($id)
     {
         $brand = Brand::findOrFail($id);
+        Product::where('brand_id', $brand->id)->delete();
         if(Brand::destroy($id)){
             if($brand->logo != null){
                 unlink($brand->logo);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Product;
 
 class CategoryController extends Controller
 {
@@ -116,6 +117,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
+        Product::where('category_id', $category->id)->delete();
         if(Category::destroy($id)){
             if($category->banner != null){
                 unlink($category->banner);

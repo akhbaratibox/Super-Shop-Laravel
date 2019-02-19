@@ -23,10 +23,10 @@ class CommissionController extends Controller
             $paypal = new PaypalController;
             return $paypal->getCheckout();
         }
-        // elseif ($request->payment_option == 'stripe') {
-        //     $stripe = new StripePaymentController;
-        //     return $stripe->stripe();
-        // }
+        elseif ($request->payment_option == 'stripe') {
+            $stripe = new StripePaymentController;
+            return $stripe->stripe();
+        }
         elseif ($request->payment_option == 'sslcommerz') {
             $sslcommerz = new PublicSslCommerzPaymentController;
             return $sslcommerz->index($request);

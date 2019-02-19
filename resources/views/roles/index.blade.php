@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <a href="{{ route('roles.create')}}" class="btn btn-info pull-right">{{__('Add New Role')}}</a>
+        <a href="{{ route('roles.create')}}" class="btn btn-rounded btn-info pull-right">{{__('Add New Role')}}</a>
     </div>
 </div>
 
@@ -19,7 +19,7 @@
     <div class="panel-body">
         <table class="table table-striped table-bordered demo-dt-basic" cellspacing="0" width="100%">
             <thead>
-                <__tr>
+                <tr>
                     <th width="10%">#</th>
                     <th>{{__('Name')}}</th>
                     <th width="10%">{{__('Options')}}</th>

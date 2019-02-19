@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-sm-12">
-            <a href="{{ route('links.create')}}" class="btn btn-info pull-right">{{__('Add New Link')}}</a>
+            <a href="{{ route('links.create')}}" class="btn btn-rounded btn-info pull-right">{{__('Add New Link')}}</a>
         </div>
     </div>
 

@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <a href="{{ route('subsubcategories.create')}}" class="btn btn-info pull-right">{{__('Add New Subsubcategory')}}</a>
+        <a href="{{ route('subsubcategories.create')}}" class="btn btn-rounded btn-info pull-right">{{__('Add New Subsubcategory')}}</a>
     </div>
 </div>
 

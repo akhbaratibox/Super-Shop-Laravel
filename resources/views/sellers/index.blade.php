@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <a href="{{ route('sellers.create')}}" class="btn btn-info pull-right">{{__('Add New Seller')}}</a>
+        <a href="{{ route('sellers.create')}}" class="btn btn-rounded btn-info pull-right">{{__('Add New Seller')}}</a>
     </div>
 </div>
 

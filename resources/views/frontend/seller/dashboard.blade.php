@@ -149,7 +149,7 @@
                                 <div class="bg-white mt-4 p-4 text-center">
                                     <div class="heading-4 strong-700">{{__('Payment')}}</div>
                                     <p>{{__('Configure your payment method')}}</p>
-                                    <a href="" class="btn btn-styled btn-base-1 btn-outline btn-sm">{{__('Configure Now')}}</a>
+                                    <a href="{{ route('profile') }}" class="btn btn-styled btn-base-1 btn-outline btn-sm">{{__('Configure Now')}}</a>
                                 </div>
                             </div>
                         </div>

@@ -318,7 +318,10 @@ class HomeController extends Controller
         $query = $request->q;
         $brand_id = $request->brand_id;
         $sort_by = $request->sort_by;
-        $category_id = $request->category;
+        $category_id = $request->category_id;
+        $min_price = $request->min_price;
+        $max_price = $request->max_price;
+        $seller_id = $request->seller_id;
 
         $conditions = ['published' => 1];
 
@@ -328,11 +331,14 @@ class HomeController extends Controller
         if($category_id != null){
             $conditions = array_merge($conditions, ['category_id' => $category_id]);
         }
+        if($seller_id != null){
+            $conditions = array_merge($conditions, ['user_id' => Seller::findOrFail($seller_id)->user->id]);
+        }
 
         $products = Product::where($conditions);
 
-        if($request->has('min_price') && $request->has('max_price')){
-            $products = $products->where('unit_price', '>=', $request->min_price)->where('unit_price', '<=', $request->max_price);
+        if($min_price != null && $max_price != null){
+            $products = $products->where('unit_price', '>=', $min_price)->where('unit_price', '<=', $max_price);
         }
 
         if($query != null){
@@ -361,12 +367,9 @@ class HomeController extends Controller
             }
         }
 
-        $min_price = $products->get()->min('unit_price');
-        $max_price = $products->get()->max('max_price');
+        $products = filter_products($products)->paginate(9)->appends(request()->query());
 
-        $products = filter_products($products)->paginate(9);
-
-        return view('frontend.product_listing', compact('products', 'query', 'category_id', 'brand_id', 'sort_by', 'min_price', 'max_price'));
+        return view('frontend.product_listing', compact('products', 'query', 'category_id', 'brand_id', 'sort_by', 'seller_id','min_price', 'max_price'));
     }
 
     public function home_settings(Request $request)

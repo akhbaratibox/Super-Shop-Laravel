@@ -80,7 +80,7 @@ Route::post('/orders/update_status', 'OrderController@update_status')->name('ord
 
 Route::get('/categories', 'HomeController@all_categories')->name('categories.all');
 Route::get('/search', 'HomeController@search')->name('search');
-Route::post('/search', 'HomeController@search')->name('search');
+// Route::post('/search', 'HomeController@search')->name('search');
 Route::get('/search?q={search}', 'HomeController@search')->name('suggestion.search');
 Route::post('/ajax-search', 'HomeController@ajax_search')->name('search.ajax');
 

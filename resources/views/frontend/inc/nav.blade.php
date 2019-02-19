@@ -280,7 +280,14 @@
 
                             <!-- Brand/Logo -->
                             <a class="navbar-brand w-100" href="{{ route('home') }}">
-                                <img src="{{ asset('frontend/images/logo/logo.png') }}" class="" alt="active shop">
+                                @php
+                                    $generalsetting = \App\GeneralSetting::first();
+                                @endphp
+                                @if($generalsetting->logo != null)
+                                    <img src="{{ asset($generalsetting->logo) }}" class="" alt="active shop">
+                                @else
+                                    <img src="{{ asset('frontend/images/logo/logo.png') }}" class="" alt="active shop">
+                                @endif
                             </a>
 
                             @if(Route::currentRouteName() != 'home' && Route::currentRouteName() != 'categories.all')
@@ -304,10 +311,16 @@
                                             <input type="text" aria-label="Search" id="search" name="q" class="w-100" placeholder="I'm shopping for..." autocomplete="off">
                                         </div>
                                         <div class="form-group category-select d-none d-xl-block">
-                                            <select class="form-control selectpicker" name="category">
+                                            <select class="form-control selectpicker" name="category_id">
                                                 <option value="">{{__('All Categories')}}</option>
                                                 @foreach (\App\Category::all() as $key => $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                <option value="{{ $category->id }}"
+                                                    @isset($category_id)
+                                                        @if ($category_id == $category->id)
+                                                            selected
+                                                        @endif
+                                                    @endisset
+                                                    >{{ $category->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

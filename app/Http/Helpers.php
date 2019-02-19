@@ -52,6 +52,21 @@ function saveJSONFile($code, $data){
     file_put_contents(base_path('resources/lang/'.$code.'.json'), stripslashes($jsonData));
 }
 
+/**
+ * Save JSON File
+ * @return Response
+*/
+if (! function_exists('convert_to_usd')) {
+    function convert_to_usd($amount) {
+        $business_settings = BusinessSetting::where('type', 'system_default_currency')->first();
+        if($business_settings!=null){
+            $currency = Currency::find($business_settings->value);
+            return floatval($amount) / floatval($currency->exchange_rate);
+        }
+    }
+}
+
+
 //returns combinations of customer choice options array
 if (! function_exists('combinations')) {
     function combinations($arrays) {
@@ -81,7 +96,7 @@ if (! function_exists('filter_products')) {
     }
 }
 
-//converts currency
+//converts currency to home default currency
 if (! function_exists('convert_price')) {
     function convert_price($price)
     {
@@ -116,7 +131,7 @@ if (! function_exists('format_price')) {
     }
 }
 
-//converts price to home default price
+//formats price to home default price with convertion
 if (! function_exists('single_price')) {
     function single_price($price)
     {

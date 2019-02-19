@@ -26,7 +26,7 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <a onclick="add_slider()" class="btn btn-info pull-right">{{__('Add New Slider')}}</a>
+                        <a onclick="add_slider()" class="btn btn-rounded btn-info pull-right">{{__('Add New Slider')}}</a>
                     </div>
                 </div>
 
@@ -74,7 +74,7 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <a onclick="add_banner()" class="btn btn-info pull-right">{{__('Add New Banner')}}</a>
+                        <a onclick="add_banner()" class="btn btn-rounded btn-info pull-right">{{__('Add New Banner')}}</a>
                     </div>
                 </div>
 
@@ -122,7 +122,7 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <a onclick="add_home_category()" class="btn btn-info pull-right">{{__('Add New Category')}}</a>
+                        <a onclick="add_home_category()" class="btn btn-rounded btn-info pull-right">{{__('Add New Category')}}</a>
                     </div>
                 </div>
 

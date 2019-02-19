@@ -73,16 +73,28 @@
                         <div class="box-content">
                             <div class="range-slider-wrapper mt-3">
                                 <!-- Range slider container -->
-                                <div id="input-slider-range" data-range-value-min="1000" data-range-value-max="5000"></div>
+                                <div id="input-slider-range" data-range-value-min="{{ \App\Product::all()->min('unit_price') }}" data-range-value-max="{{ \App\Product::all()->max('unit_price') }}"></div>
 
                                 <!-- Range slider values -->
                                 <div class="row">
                                     <div class="col-6">
-                                        <span class="range-slider-value value-low" data-range-value-low="1500" id="input-slider-range-value-low">
+                                        <span class="range-slider-value value-low"
+                                            @if (isset($min_price))
+                                                data-range-value-low="{{ $min_price }}"
+                                            @else
+                                                data-range-value-low="{{ $products->min('unit_price') }}"
+                                            @endif
+                                            id="input-slider-range-value-low">
                                     </div>
 
                                     <div class="col-6 text-right">
-                                        <span class="range-slider-value value-high" data-range-value-high="2000" id="input-slider-range-value-high">
+                                        <span class="range-slider-value value-high"
+                                            @if (isset($max_price))
+                                                data-range-value-high="{{ $max_price }}"
+                                            @else
+                                                data-range-value-high="{{ $products->max('unit_price') }}"
+                                            @endif
+                                            id="input-slider-range-value-high">
                                     </div>
                                 </div>
                             </div>
@@ -128,10 +140,18 @@
                                                     @endphp
                                                 @endforeach
                                             @endforeach
+                                        @else
+                                            @php
+                                                foreach (\App\Brand::all() as $key => $brand){
+                                                    if(!in_array($brand->id, $brands)){
+                                                        array_push($brands, $brand->id);
+                                                    }
+                                                }
+                                            @endphp
                                         @endif
 
-                                        @foreach ($brands as $key => $brand_id)
-                                            <li><a href="{{ route('products.brand', $brand_id) }}"><img src="{{ asset(\App\Brand::find($brand_id)->logo) }}" alt="" class="img-fluid"></a></li>
+                                        @foreach ($brands as $key => $id)
+                                            <li><a href="{{ route('products.brand', $id) }}"><img src="{{ asset(\App\Brand::find($id)->logo) }}" alt="" class="img-fluid"></a></li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -143,11 +163,11 @@
                                 </button>
                             </div>
                         </div>
-                        <form class="" id="search-form" action="{{ route('search') }}" method="POST">
-                            @csrf
+                        <form class="" id="search-form" action="{{ route('search') }}" method="GET">
                             @isset($category_id)
-                                <input type="hidden" name="category" value="{{ $category_id }}">
+                                <input type="hidden" name="category_id" value="{{ $category_id }}">
                             @endisset
+
                             <div class="sort-by-bar row no-gutters bg-white mb-3 px-3">
                                 <div class="col-lg-4 col-md-5">
                                     <div class="sort-by-box">
@@ -183,8 +203,8 @@
                                                     <label>{{__('Brands')}}</label>
                                                     <select class="form-control sortSelect" data-placeholder="{{__('All Brands')}}" name="brand_id" onchange="filter()">
                                                         <option value="">{{__('All Brands')}}</option>
-                                                        @foreach (\App\Brand::all() as $key => $brand)
-                                                            <option value="{{ $brand->id }}"   @isset($brand_id) @if ($brand_id == $brand->id) selected @endif @endisset>{{ $brand->name }}</option>
+                                                        @foreach ($brands as $key => $id)
+                                                            <option value="{{ $id }}" @isset($brand_id) @if ($brand_id == $id) selected @endif @endisset>{{ \App\Brand::find($id)->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -194,10 +214,11 @@
                                             <div class="sort-by-box px-1">
                                                 <div class="form-group">
                                                     <label>{{__('Sellers')}}</label>
-                                                    <select class="form-control sortSelect" data-placeholder="This is a placeholder">
+                                                    <select class="form-control sortSelect" data-placeholder="{{__('All Sellers')}}" name="seller_id" onchange="filter()">
                                                         <option>{{__('All Sellers')}}</option>
-                                                        <option value="1">{{__('Seller Name')}}</option>
-                                                        <option value="2">{{__('Brand Name')}}</option>
+                                                        @foreach (\App\Seller::all() as $key => $seller)
+                                                            <option value="{{ $seller->id }}" @isset($seller_id) @if ($seller_id == $seller->id) selected @endif @endisset>{{ $seller->user->shop->name }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -205,6 +226,8 @@
                                     </div>
                                 </div>
                             </div>
+                            <input type="hidden" name="min_price" value="">
+                            <input type="hidden" name="max_price" value="">
                         </form>
                         <!-- <hr class=""> -->
                         <div class="products-box-bar p-3 bg-white">
@@ -214,7 +237,6 @@
                                         <div class="product-card-1 mb-3">
                                             <figure class="product-image-container">
                                                 <a href="{{ route('product', $product->slug) }}" class="product-image d-block" style="background-image:url('{{ asset($product->thumbnail_img) }}');">
-                                                    <!-- <img src="{{ asset(json_decode($product->photos)[0]) }}" alt="product" class="img-center img-fluid"> -->
                                                 </a>
                                                 <button class="btn-quickview" onclick="showAddToCartModal({{ $product->id }})"><i class="la la-eye"></i></button>
                                                 @if (strtotime($product->created_at) > strtotime('-10 day'))
@@ -273,7 +295,9 @@
             $('#search-form').submit();
         }
         function rangefilter(arg){
-            console.log(arg);
+            $('input[name=min_price]').val(arg[0]);
+            $('input[name=max_price]').val(arg[1]);
+            filter();
         }
     </script>
 @endsection

@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <a href="{{ route('flash_deals.create')}}" class="btn btn-info pull-right">{{__('Add New Flash Deal Products')}}</a>
+        <a href="{{ route('flash_deals.create')}}" class="btn btn-rounded btn-info pull-right">{{__('Add New Flash Deal Products')}}</a>
     </div>
 </div>
 

@@ -234,7 +234,7 @@
                                                 </span>
                                             </div>
                                             @if(count(json_decode($product->variations, true)) >= 1)
-                                                <div class="avialable-amount">({{ $qty }} {{__('pc available')}})</div>
+                                                <div class="avialable-amount">({{ $qty }} {{__('available')}})</div>
                                             @endif
                                         </div>
                                     </div>

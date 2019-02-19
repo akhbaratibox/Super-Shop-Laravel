@@ -173,7 +173,7 @@
                                     @php
                                         $sellers = \App\Seller::where('verification_status', 0)->where('verification_info', '!=', null)->count();
                                     @endphp
-                                    <a class="nav-link" href="{{route('sellers.index')}}">{{__('seller_list')}} @if($sellers > 0)<span class="pull-right badge badge-info">{{ $sellers }}</span> @endif</a>
+                                    <a class="nav-link" href="{{route('sellers.index')}}">{{__('Seller list')}} @if($sellers > 0)<span class="pull-right badge badge-info">{{ $sellers }}</span> @endif</a>
                                 </li>
                             </ul>
                         </li>

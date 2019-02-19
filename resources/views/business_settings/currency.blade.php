@@ -131,7 +131,7 @@
                         <th>{{__('Currency name')}}</th>
                         <th>{{__('Currency symbol')}}</th>
                         <th>{{__('Currency code')}}</th>
-                        <th>{{__('Exchange rate')}}</th>
+                        <th>{{__('Exchange rate')}}(1 USD = ?)</th>
                         <th>{{__('Status')}}</th>
                         <th width="10%">{{__('Options')}}</th>
                     </tr>
@@ -145,7 +145,7 @@
                             <td>{{$currencies[$i]->code}}</td>
                             <td><input id="exchange_rate_{{ $currencies[$i]->id }}" class="form-control" type="number" min="0" step="0.01" value="{{$currencies[$i]->exchange_rate}}"></td>
                             <td><label class="switch"><input id="status_{{ $currencies[$i]->id }}" type="checkbox" <?php if($currencies[$i]->status == 1) echo "checked";?> ><span class="slider round"></span></label></td>
-                            <td><button class="btn btn-purple" type="submit" onclick="updateCurrency({{ $currencies[$i]->id }})">{{__('save')}}</button></td>
+                            <td><button class="btn btn-purple" type="submit" onclick="updateCurrency({{ $currencies[$i]->id }})">{{__('Save')}}</button></td>
                         </tr>
                     @endfor
                     <tr>
@@ -155,7 +155,7 @@
                         <td><input id="code_{{ $currencies[count($currencies)-1]->id }}" class="form-control" type="text" value="{{$currencies[count($currencies)-1]->code}}"></td>
                         <td><input id="exchange_rate_{{ $currencies[count($currencies)-1]->id }}" class="form-control" type="number" min="0" step="0.01" value="{{$currencies[count($currencies)-1]->exchange_rate}}"></td>
                         <td><label class="switch"><input id="status_{{ $currencies[count($currencies)-1]->id }}" class="demo-sw" type="checkbox" <?php if($currencies[count($currencies)-1]->status == 1) echo "checked";?> ><span class="slider round"></span></label></td>
-                        <td><button class="btn btn-purple" type="submit" onclick="updateYourCurrency({{ $currencies[count($currencies)-1]->id }})" >{{__('save')}}</button></td>
+                        <td><button class="btn btn-purple" type="submit" onclick="updateYourCurrency({{ $currencies[count($currencies)-1]->id }})" >{{__('Save')}}</button></td>
                     </tr>
                 </tbody>
             </table>

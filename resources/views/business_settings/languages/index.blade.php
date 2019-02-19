@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <a href="{{ route('languages.create')}}" class="btn btn-info pull-right">{{__('add_new')}}</a>
+            <a href="{{ route('languages.create')}}" class="btn btn-rounded btn-info pull-right">{{__('Add New Language')}}</a>
         </div>
     </div>
 

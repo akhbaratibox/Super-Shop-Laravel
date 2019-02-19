@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Stripe;
 use App\Order;
 use App\BusinessSetting;
+use Session;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CommissionController;
 
@@ -28,9 +29,12 @@ class StripePaymentController extends Controller
      */
     public function stripePost(Request $request)
     {
+        $order = Order::findOrFail(Session::get('order_id'));
+        
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
         $payment = json_encode(Stripe\Charge::create ([
-                "amount" => 100 * 100,
+                "amount" => convert_to_usd($order->grand_total) * 100,
                 "currency" => "usd",
                 "source" => $request->stripeToken
         ]));

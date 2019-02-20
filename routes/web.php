@@ -30,10 +30,10 @@ Route::post('/subsubcategories/get_brands_by_subsubcategory', 'SubSubCategoryCon
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/product/{slug}', 'HomeController@product')->name('product');
 Route::get('/products', 'HomeController@listing')->name('products');
-Route::get('/products/category/{id}', 'HomeController@listing_by_category')->name('products.category');
-Route::get('/products/subcategory/{id}', 'HomeController@listing_by_subcategory')->name('products.subcategory');
-Route::get('/products/subsubcategory/{id}', 'HomeController@listing_by_subsubcategory')->name('products.subsubcategory');
-Route::get('/products/brand/{id}', 'HomeController@listing_by_brand')->name('products.brand');
+Route::get('/search?category_id={category_id}', 'HomeController@search')->name('products.category');
+Route::get('/search?subcategory_id={subcategory_id}', 'HomeController@search')->name('products.subcategory');
+Route::get('/search?subsubcategory_id={subsubcategory_id}', 'HomeController@search')->name('products.subsubcategory');
+Route::get('//search?brand_id={brand_id}', 'HomeController@search')->name('products.brand');
 Route::post('/product/variant_price', 'HomeController@variant_price')->name('products.variant_price');
 Route::get('/shops/visit/{slug}', 'HomeController@shop')->name('shop.visit');
 Route::get('/shops/visit/{slug}/{type}', 'HomeController@filter_shop')->name('shop.visit.type');
@@ -80,7 +80,6 @@ Route::post('/orders/update_status', 'OrderController@update_status')->name('ord
 
 Route::get('/categories', 'HomeController@all_categories')->name('categories.all');
 Route::get('/search', 'HomeController@search')->name('search');
-// Route::post('/search', 'HomeController@search')->name('search');
 Route::get('/search?q={search}', 'HomeController@search')->name('suggestion.search');
 Route::post('/ajax-search', 'HomeController@ajax_search')->name('search.ajax');
 

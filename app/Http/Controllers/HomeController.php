@@ -236,33 +236,6 @@ class HomeController extends Controller
         return view('frontend.all_category', compact('categories'));
     }
 
-    public function listing_by_category($id)
-    {
-        $products = filter_products(Product::where('published', 1)->where('category_id', $id)->orderBy('created_at', 'desc'))->paginate(9);
-        $category_id = $id;
-        return view('frontend.product_listing', compact('products', 'category_id'));
-    }
-
-    public function listing_by_subcategory($id)
-    {
-        $products = filter_products(Product::where('published', 1)->where('subcategory_id', $id)->orderBy('created_at', 'desc'))->paginate(9);
-        $subcategory_id = $id;
-        return view('frontend.product_listing', compact('products', 'subcategory_id'));
-    }
-
-    public function listing_by_subsubcategory($id)
-    {
-        $products = filter_products(Product::where('published', 1)->where('subsubcategory_id', $id)->orderBy('created_at', 'desc'))->paginate(9);
-        $subsubcategory_id = $id;
-        return view('frontend.product_listing', compact('products', 'subsubcategory_id'));
-    }
-
-    public function listing_by_brand($id)
-    {
-        $products = filter_products(Product::where('published', 1)->where('brand_id', $id)->orderBy('created_at', 'desc'))->paginate(9);
-        return view('frontend.product_listing', compact('products'));
-    }
-
     public function show_product_upload_form(Request $request)
     {
         $categories = Category::all();
@@ -319,6 +292,8 @@ class HomeController extends Controller
         $brand_id = $request->brand_id;
         $sort_by = $request->sort_by;
         $category_id = $request->category_id;
+        $subcategory_id = $request->subcategory_id;
+        $subsubcategory_id = $request->subsubcategory_id;
         $min_price = $request->min_price;
         $max_price = $request->max_price;
         $seller_id = $request->seller_id;
@@ -330,6 +305,12 @@ class HomeController extends Controller
         }
         if($category_id != null){
             $conditions = array_merge($conditions, ['category_id' => $category_id]);
+        }
+        if($subcategory_id != null){
+            $conditions = array_merge($conditions, ['subcategory_id' => $subcategory_id]);
+        }
+        if($subsubcategory_id != null){
+            $conditions = array_merge($conditions, ['subsubcategory_id' => $subsubcategory_id]);
         }
         if($seller_id != null){
             $conditions = array_merge($conditions, ['user_id' => Seller::findOrFail($seller_id)->user->id]);
@@ -369,7 +350,7 @@ class HomeController extends Controller
 
         $products = filter_products($products)->paginate(9)->appends(request()->query());
 
-        return view('frontend.product_listing', compact('products', 'query', 'category_id', 'brand_id', 'sort_by', 'seller_id','min_price', 'max_price'));
+        return view('frontend.product_listing', compact('products', 'query', 'category_id', 'subcategory_id', 'subsubcategory_id', 'brand_id', 'sort_by', 'seller_id','min_price', 'max_price'));
     }
 
     public function home_settings(Request $request)

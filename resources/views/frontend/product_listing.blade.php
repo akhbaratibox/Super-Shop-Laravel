@@ -167,6 +167,12 @@
                             @isset($category_id)
                                 <input type="hidden" name="category_id" value="{{ $category_id }}">
                             @endisset
+                            @isset($subcategory_id)
+                                <input type="hidden" name="subcategory_id" value="{{ $subcategory_id }}">
+                            @endisset
+                            @isset($subsubcategory_id)
+                                <input type="hidden" name="subsubcategory_id" value="{{ $subsubcategory_id }}">
+                            @endisset
 
                             <div class="sort-by-bar row no-gutters bg-white mb-3 px-3">
                                 <div class="col-lg-4 col-md-5">
@@ -215,7 +221,7 @@
                                                 <div class="form-group">
                                                     <label>{{__('Sellers')}}</label>
                                                     <select class="form-control sortSelect" data-placeholder="{{__('All Sellers')}}" name="seller_id" onchange="filter()">
-                                                        <option>{{__('All Sellers')}}</option>
+                                                        <option value="">{{__('All Sellers')}}</option>
                                                         @foreach (\App\Seller::all() as $key => $seller)
                                                             <option value="{{ $seller->id }}" @isset($seller_id) @if ($seller_id == $seller->id) selected @endif @endisset>{{ $seller->user->shop->name }}</option>
                                                         @endforeach

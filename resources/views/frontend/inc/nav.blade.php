@@ -254,6 +254,19 @@
                             </div>
                         </div>
                     @endif
+                    <div class="sidebar-widget-title py-0">
+                        <span>Categories</span>
+                    </div>
+                    <ul class="side-seller-menu">
+                        @foreach (\App\Category::all() as $key => $category)
+                            <li>
+                            <a href="{{ route('products.category', $category->id) }}" class="text-truncate">
+                                <img class="cat-image" src="{{ asset($category->icon) }}" width="13">
+                                <span>{{ $category->name }}</span>
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>

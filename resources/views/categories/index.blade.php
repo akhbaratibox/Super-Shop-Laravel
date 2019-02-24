@@ -44,7 +44,7 @@
                                     {{__('Actions')}} <i class="dropdown-caret"></i>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="{{route('categories.edit', $category->id)}}">{{__('Edit')}}</a></li>
+                                    <li><a href="{{route('categories.edit', encrypt($category->id))}}">{{__('Edit')}}</a></li>
                                     <li><a onclick="confirm_modal('{{route('categories.destroy', $category->id)}}');">{{__('Delete')}}</a></li>
                                 </ul>
                             </div>

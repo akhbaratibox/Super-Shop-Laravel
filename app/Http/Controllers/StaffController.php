@@ -78,7 +78,7 @@ class StaffController extends Controller
      */
     public function edit($id)
     {
-        $staff = Staff::findOrFail($id);
+        $staff = Staff::findOrFail(decrypt($id));
         $roles = Role::all();
         return view('staffs.edit', compact('staff', 'roles'));
     }

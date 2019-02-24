@@ -44,7 +44,7 @@
                                     {{__('Actions')}} <i class="dropdown-caret"></i>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="{{route('flash_deals.edit', $flash_deal->id)}}">{{__('Edit')}}</a></li>
+                                    <li><a href="{{route('flash_deals.edit', encrypt($flash_deal->id))}}">{{__('Edit')}}</a></li>
                                     <li><a onclick="confirm_modal('{{route('flash_deals.destroy', $flash_deal->id)}}');">{{__('Delete')}}</a></li>
                                 </ul>
                             </div>

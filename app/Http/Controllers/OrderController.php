@@ -70,7 +70,7 @@ class OrderController extends Controller
      */
     public function sales_show($id)
     {
-        $order = Order::findOrFail($id);
+        $order = Order::findOrFail(decrypt($id));
         return view('sales.show', compact('order'));
     }
 
@@ -167,7 +167,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $order = Order::findOrFail($id);
+        $order = Order::findOrFail(decrypt($id));
         $order->viewed = 1;
         $order->save();
         return view('orders.show', compact('order'));

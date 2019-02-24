@@ -73,7 +73,7 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        $brand = Brand::findOrFail($id);
+        $brand = Brand::findOrFail(decrypt($id));
         return view('brands.edit', compact('brand'));
     }
 

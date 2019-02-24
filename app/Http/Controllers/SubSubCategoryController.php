@@ -76,7 +76,7 @@ class SubSubCategoryController extends Controller
      */
     public function edit($id)
     {
-        $subsubcategory = SubSubCategory::findOrFail($id);
+        $subsubcategory = SubSubCategory::findOrFail(decrypt($id));
         $categories = Category::all();
         $brands = Brand::all();
         return view('subsubcategories.edit', compact('subsubcategory', 'categories', 'brands'));

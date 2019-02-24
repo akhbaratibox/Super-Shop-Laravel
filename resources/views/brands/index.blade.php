@@ -38,7 +38,7 @@
                                     {{__('Actions')}} <i class="dropdown-caret"></i>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="{{route('brands.edit', $brand->id)}}">{{__('Edit')}}</a></li>
+                                    <li><a href="{{route('brands.edit', encrypt($brand->id))}}">{{__('Edit')}}</a></li>
                                     <li><a onclick="confirm_modal('{{route('brands.destroy', $brand->id)}}');">{{__('Delete')}}</a></li>
                                 </ul>
                             </div>

@@ -83,7 +83,7 @@ class SellerController extends Controller
      */
     public function edit($id)
     {
-        $seller = Seller::findOrFail($id);
+        $seller = Seller::findOrFail(decrypt($id));
         return view('sellers.edit', compact('seller'));
     }
 

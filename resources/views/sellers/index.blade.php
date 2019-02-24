@@ -67,7 +67,7 @@
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li><a onclick="show_seller_payment_modal('{{$seller->id}}');">{{__('Pay')}}</a></li>
-                                    <li><a href="{{route('sellers.edit', $seller->id)}}">{{__('Edit')}}</a></li>
+                                    <li><a href="{{route('sellers.edit', encrypt($seller->id))}}">{{__('Edit')}}</a></li>
                                     <li><a onclick="confirm_modal('{{route('sellers.destroy', $seller->id)}}');">{{__('Delete')}}</a></li>
                                 </ul>
                             </div>

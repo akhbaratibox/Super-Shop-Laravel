@@ -45,13 +45,13 @@ class LanguageController extends Controller
 
     public function show($id)
     {
-        $language = Language::findOrFail($id);
+        $language = Language::findOrFail(decrypt($id));
         return view('business_settings.languages.language_view', compact('language'));
     }
 
     public function edit($id)
     {
-        $language = Language::findOrFail($id);
+        $language = Language::findOrFail(decrypt($id));
         return view('business_settings.languages.edit', compact('language'));
     }
 

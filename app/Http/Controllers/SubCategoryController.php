@@ -72,7 +72,7 @@ class SubCategoryController extends Controller
      */
     public function edit($id)
     {
-        $subcategory = SubCategory::findOrFail($id);
+        $subcategory = SubCategory::findOrFail(decrypt($id));
         $categories = Category::all();
         return view('subcategories.edit', compact('categories', 'subcategory'));
     }

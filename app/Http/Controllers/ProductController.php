@@ -201,7 +201,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::findOrFail(decrypt($id));
         //dd(json_decode($product->price_variations)->choices_0_S_price);
         $tags = json_decode($product->tags);
         $categories = Category::all();

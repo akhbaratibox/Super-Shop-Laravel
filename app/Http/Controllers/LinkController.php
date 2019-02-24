@@ -72,7 +72,7 @@ class LinkController extends Controller
      */
     public function edit($id)
     {
-        $link = Link::findOrFail($id);
+        $link = Link::findOrFail(decrypt($id));
         return view('links.edit', compact('link'));
     }
 

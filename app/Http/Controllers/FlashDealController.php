@@ -78,7 +78,7 @@ class FlashDealController extends Controller
      */
     public function edit($id)
     {
-        $flash_deal = FlashDeal::findOrFail($id);
+        $flash_deal = FlashDeal::findOrFail(decrypt($id));
         return view('flash_deals.edit', compact('flash_deal'));
     }
 

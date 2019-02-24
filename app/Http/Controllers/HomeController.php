@@ -245,7 +245,7 @@ class HomeController extends Controller
     public function show_product_edit_form(Request $request, $id)
     {
         $categories = Category::all();
-        $product = Product::find($id);
+        $product = Product::find(decrypt($id));
         return view('frontend.seller.product_edit', compact('categories', 'product'));
     }
 

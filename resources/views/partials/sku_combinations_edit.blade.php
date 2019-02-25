@@ -76,7 +76,7 @@
                     else{
                         echo '10';
                     }
-                @endphp" min="1" step="1" class="form-control" required>
+                @endphp" min="0" step="1" class="form-control" required>
 			</td>
 		</tr>
 	@endif

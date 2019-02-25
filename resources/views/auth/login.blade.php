@@ -13,42 +13,23 @@
     @else
         style="background-image:url('{{ asset('img/bg-img/login-box.jpg') }}');"
     @endif>
+
+    </div>
+    <div class="flex-col-xl-6">
+        <div class="pad-all">
         <div class="text-center">
             <br>
-            <br>
-            <br>
-            @if($generalsetting->logo != null)
+			@if($generalsetting->logo != null)
                 <img src="{{ asset($generalsetting->logo) }}" class="" height="44">
             @else
                 <img src="{{ asset('frontend/images/logo/logo.png') }}" class="" height="44">
             @endif
-
-            <div class="cls-content-sm panel">
-                <div class="pad-all">
-                    <table class="table table-responsive table-bordered">
-                        <tbody>
-                            <tr>
-                                <td>admin@example.com</td>
-                                <td>123456</td>
-                                <td><button class="btn btn-info btn-xs" onclick="autoFill()">copy</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            
             <br>
             <br>
             <br>
 
         </div>
-    </div>
-    <div class="flex-col-xl-6">
-        <div class="pad-all">
-            <br>
-            <br>
-            <div class="mar-ver pad-btm pad-lft">
-                <h1 class="h3">{{__('Admin Login')}}</h1>
-            </div>
             <form class="pad-hor" method="POST" role="form" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group">
@@ -86,9 +67,21 @@
                     {{ __('Login') }}
                 </button>
             </form>
-            <br>
-            <br>
-            <br>
+            <div class="col-sm-6">
+                <div class="cls-content-sm panel" style="width: 100% !important;">
+                    <div class="pad-all">
+                        <table class="table table-responsive table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td>admin@example.com</td>
+                                    <td>123456</td>
+                                    <td><button class="btn btn-info btn-xs" onclick="autoFill()">copy</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

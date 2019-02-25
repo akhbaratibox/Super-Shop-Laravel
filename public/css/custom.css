@@ -339,3 +339,7 @@ body, #content-container, #navbar {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+ul.list-group > li{
+border-bottom: 1px solid #3d4451;	
+}
+

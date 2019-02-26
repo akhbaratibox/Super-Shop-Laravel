@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2019 at 12:56 PM
+-- Generation Time: Feb 26, 2019 at 08:33 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -1047,7 +1047,7 @@ CREATE TABLE `payments` (
   `seller_id` int(11) NOT NULL,
   `amount` double(8,2) NOT NULL DEFAULT '0.00',
   `payment_details` longtext COLLATE utf8_bin,
-  `payment_type` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `payment_method` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -1056,7 +1056,7 @@ CREATE TABLE `payments` (
 -- Dumping data for table `payments`
 --
 
-INSERT INTO `payments` (`id`, `seller_id`, `amount`, `payment_details`, `payment_type`, `created_at`, `updated_at`) VALUES
+INSERT INTO `payments` (`id`, `seller_id`, `amount`, `payment_details`, `payment_method`, `created_at`, `updated_at`) VALUES
 (1, 1, 50.00, NULL, 'cash', '2019-02-16 08:01:33', '2019-02-16 08:01:33'),
 (2, 1, 2.00, '{\"tran_id\":\"c4ca4238a0\",\"val_id\":\"190219160158wXTJMnMUaCtcz9x\",\"amount\":\"2\",\"card_type\":\"VISA-Dutch Bangla\",\"store_amount\":\"1.95\",\"card_no\":\"418117XXXXXX7814\",\"bank_tran_id\":\"1902191601580Y7nSCj9nlMpkM6\",\"status\":\"VALID\",\"tran_date\":\"2019-02-19 16:01:54\",\"currency\":\"BDT\",\"card_issuer\":\"TRUST BANK, LTD.\",\"card_brand\":\"VISA\",\"card_issuer_country\":\"Bangladesh\",\"card_issuer_country_code\":\"BD\",\"store_id\":\"activ5c3c5dac9254d\",\"verify_sign\":\"3fcbbf157dba530a63aee73f2b409ff8\",\"verify_key\":\"amount,bank_tran_id,base_fair,card_brand,card_issuer,card_issuer_country,card_issuer_country_code,card_no,card_type,currency,currency_amount,currency_rate,currency_type,risk_level,risk_title,status,store_amount,store_id,tran_date,tran_id,val_id,value_a,value_b,value_c,value_d\",\"verify_sign_sha2\":\"f2806d00dc778e9b80dc56afe2da53a15393efd3674ecc2cb080fb0c41afa72e\",\"currency_type\":\"BDT\",\"currency_amount\":\"2.00\",\"currency_rate\":\"1.0000\",\"base_fair\":\"0.00\",\"value_a\":null,\"value_b\":null,\"value_c\":null,\"value_d\":null,\"risk_level\":\"0\",\"risk_title\":\"Safe\"}', 'sslcommerz', '2019-02-19 03:58:44', '2019-02-19 03:58:44'),
 (3, 1, 1.00, '{\"id\":\"ch_1E5WcwJeDAgLbwN0iXSGG38Z\",\"object\":\"charge\",\"amount\":100,\"amount_refunded\":0,\"application\":null,\"application_fee\":null,\"application_fee_amount\":null,\"balance_transaction\":\"txn_1E5WcwJeDAgLbwN0kwzCVmNO\",\"captured\":true,\"created\":1550575146,\"currency\":\"usd\",\"customer\":null,\"description\":null,\"destination\":null,\"dispute\":null,\"failure_code\":null,\"failure_message\":null,\"fraud_details\":[],\"invoice\":null,\"livemode\":false,\"metadata\":[],\"on_behalf_of\":null,\"order\":null,\"outcome\":{\"network_status\":\"approved_by_network\",\"reason\":null,\"risk_level\":\"normal\",\"risk_score\":28,\"seller_message\":\"Payment complete.\",\"type\":\"authorized\"},\"paid\":true,\"payment_intent\":null,\"receipt_email\":null,\"receipt_number\":null,\"receipt_url\":\"https:\\/\\/pay.stripe.com\\/receipts\\/acct_1DxpNuJeDAgLbwN0\\/ch_1E5WcwJeDAgLbwN0iXSGG38Z\\/rcpt_EYdu6u3A7d3tsc2SAb780K0Nrk42bkv\",\"refunded\":false,\"refunds\":{\"object\":\"list\",\"data\":[],\"has_more\":false,\"total_count\":0,\"url\":\"\\/v1\\/charges\\/ch_1E5WcwJeDAgLbwN0iXSGG38Z\\/refunds\"},\"review\":null,\"shipping\":null,\"source\":{\"id\":\"card_1E5WcuJeDAgLbwN0XfmSgZ7P\",\"object\":\"card\",\"address_city\":null,\"address_country\":null,\"address_line1\":null,\"address_line1_check\":null,\"address_line2\":null,\"address_state\":null,\"address_zip\":null,\"address_zip_check\":null,\"brand\":\"Visa\",\"country\":\"US\",\"customer\":null,\"cvc_check\":\"pass\",\"dynamic_last4\":null,\"exp_month\":12,\"exp_year\":2020,\"fingerprint\":\"qmxc3fM7CnpVrZJc\",\"funding\":\"credit\",\"last4\":\"4242\",\"metadata\":[],\"name\":null,\"tokenization_method\":null},\"source_transfer\":null,\"statement_descriptor\":null,\"status\":\"succeeded\",\"transfer_data\":null,\"transfer_group\":null}', 'stripe', '2019-02-19 05:18:59', '2019-02-19 05:18:59'),
@@ -1779,7 +1779,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `provider_id`, `user_type`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `avatar`, `avatar_original`, `address`, `country`, `city`, `postal_code`, `phone`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'admin', 'Admin', 'admin@example.com', '2018-12-11 18:00:00', '$2y$10$aEw8avP2ZGG8B3FjYUC71.ZjvSt5UoM.7x.OfdtNRAPTMbwyrwFvK', '6G1wrqnPjEIiUGuDtcgs1D1zNXjiZDhAygsfMAt9rGVBIWXoPKYhZJ7FHvLt', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', '', NULL, NULL, NULL, NULL, '2018-09-26 02:08:48', '2018-12-12 01:26:01'),
+(1, NULL, 'admin', 'Admin', 'admin@example.com', '2018-12-11 18:00:00', '$2y$10$aEw8avP2ZGG8B3FjYUC71.ZjvSt5UoM.7x.OfdtNRAPTMbwyrwFvK', 'rdkP9R9xjIoJ7nVxnCq9XIygdAGwdvrtesh9HO44iWxhjE1yQfdRrcLdbpWv', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg', '', NULL, NULL, NULL, NULL, '2018-09-26 02:08:48', '2018-12-12 01:26:01'),
 (3, NULL, 'seller', 'Mr. Seller', 'seller@example.com', '2018-12-11 18:00:00', '$2y$10$eUKRlkmm2TAug75cfGQ4i.WoUbcJ2uVPqUlVkox.cv4CCyGEIMQEm', 'L76ex6f1c9weij5vGuieqYM1R6kK4vE90MiHrq2x5mwzjPPQdkBMXqqTUrYT', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'uploads/HO7BJ0Wxep8TNRELVW5PfQ9p9PdwG9Ji12S4NRK6.jpeg', 'Demo address', 'US', 'Demo city', '1234', '12345678', '2018-10-07 04:42:57', '2019-02-12 11:07:24'),
 (8, NULL, 'customer', 'Mr. Demo Customer', 'customer@example.com', '2018-12-12 02:24:31', '$2y$10$MUHJSlPUDFwq9oNJeogg7eIRrXBQZWxjSpgaDv1ZJ7P1Icv882aom', 'Q6P0f57BD1YOHBXXqku935zSxZE5xWkJO9tnSkIngjSuFdx3oHUOCv146DIN', 'https://lh3.googleusercontent.com/-7OnRtLyua5Q/AAAAAAAAAAI/AAAAAAAADRk/VqWKMl4f8CI/photo.jpg?sz=50', 'uploads/Sig1AulqoyXBj05Xk5KZPEgtQhi3fb71NMKyvWcK.jpeg', 'House : 001, Street: 002, Section : 003, \r\nNew York, United States.', 'US', 'New York', '1234', '0123456789', '2018-10-17 06:26:52', '2019-02-10 15:43:21'),
 (23, NULL, 'seller', 'Computer Accessories Seller', 'seller1@example.com', '2019-02-12 00:00:00', '$2y$10$HX2A3uwppkKIEd01RQ7cN.74lZOO9R.5ETnQEQ96bh3hdGUXw4wMG', 'wB9jtYGiu8ym2UByz352RMX4LpV6UgpjUA6sOKnzpjdhvXCdUf6iWVp0GmxH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-02-12 11:32:22', '2019-02-12 11:46:18'),
@@ -2080,7 +2080,7 @@ ALTER TABLE `currencies`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `flash_deals`
@@ -2206,7 +2206,7 @@ ALTER TABLE `sliders`
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `subscribers`

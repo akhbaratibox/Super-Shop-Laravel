@@ -55,7 +55,7 @@
                                                         {{ single_price($payment->amount) }}
                                                     </td>
                                                     <td>
-                                                        {{ ucfirst(str_replace('_', ' ', $payment->payment_type)) }}
+                                                        {{ ucfirst(str_replace('_', ' ', $payment->payment_method)) }}
                                                     </td>
                                                 </tr>
                                             @endforeach

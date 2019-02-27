@@ -117,11 +117,19 @@
                        </h4>
 
                        <ul class="footer-links">
-                            <li>
-                                <a href="{{ route('user.login') }}" title="Home">
-                                    {{__('Login')}}
-                                </a>
-                            </li>
+                            @if (Auth::check())
+                                <li>
+                                    <a href="{{ route('logout') }}" title="Home">
+                                        {{__('Logout')}}
+                                    </a>
+                                </li>
+                            @else
+                                <li>
+                                    <a href="{{ route('user.login') }}" title="Home">
+                                        {{__('Login')}}
+                                    </a>
+                                </li>
+                            @endif
                             <li>
                                 <a href="{{ route('purchase_history.index') }}" title="About us">
                                     {{__('Order History')}}

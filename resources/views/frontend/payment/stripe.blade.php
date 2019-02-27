@@ -48,7 +48,7 @@
                                 </div>
 
                                 <div class='form-row'>
-                                    <div class='col-12 error form-group hide'>
+                                    <div class='col-12 error form-group d-none'>
                                         <div class='alert-danger alert'>{{__('Please correct the errors and try again.')}}</div>
                                     </div>
                                 </div>
@@ -83,14 +83,14 @@
                 $inputs       = $form.find('.required').find(inputSelector),
                 $errorMessage = $form.find('div.error'),
                 valid         = true;
-                $errorMessage.addClass('hide');
+                $errorMessage.addClass('d-none');
 
                 $('.has-error').removeClass('has-error');
                 $inputs.each(function(i, el) {
                   var $input = $(el);
                   if ($input.val() === '') {
                     $input.parent().addClass('has-error');
-                    $errorMessage.removeClass('hide');
+                    $errorMessage.removeClass('d-none');
                     e.preventDefault();
                   }
                 });
@@ -111,7 +111,7 @@
           function stripeResponseHandler(status, response) {
                 if (response.error) {
                     $('.error')
-                        .removeClass('hide')
+                        .removeClass('d-none')
                         .find('.alert')
                         .text(response.error.message);
                 } else {

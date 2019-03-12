@@ -98,7 +98,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-white p-4 mx-auto mt-4">
+                    {{-- <div class="bg-white p-4 mx-auto mt-4">
                         <div class="">
                             <table class="table table-responsive table-bordered mb-0">
                                 <tbody>
@@ -113,7 +113,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>

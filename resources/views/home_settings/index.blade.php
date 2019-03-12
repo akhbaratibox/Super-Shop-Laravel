@@ -106,7 +106,7 @@
                                                     {{__('Actions')}} <i class="dropdown-caret"></i>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li><a onclick="confirm_modal('{{route('home_banners.destroy', $banner->id)}}');">{{__('Actions')}}</a></li>
+                                                    <li><a onclick="confirm_modal('{{route('home_banners.destroy', $banner->id)}}');">{{__('Delete')}}</a></li>
                                                 </ul>
                                             </div>
                                         </td>

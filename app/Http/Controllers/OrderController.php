@@ -149,7 +149,7 @@ class OrderController extends Controller
             $array['subject'] = 'Order Placed - '.$order->code;
             $array['from'] = env('MAIL_USERNAME');
             $array['content'] = 'Hi. Your order has been placed';
-            $array['file'] = 'invoices/Order#'.$order->code.'.pdf';
+            $array['file'] = 'public/invoices/Order#'.$order->code.'.pdf';
             $array['file_name'] = 'Order#'.$order->code.'.pdf';
 
             Mail::to($request->session()->get('shipping_info')['email'])->queue(new InvoiceEmailManager($array));

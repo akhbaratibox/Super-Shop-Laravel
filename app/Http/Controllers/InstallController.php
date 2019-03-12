@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use URL;
 use DB;
+use Hash;
 use App\GeneralSetting;
 use App\BusinessSetting;
+use App\User;
 
 class InstallController extends Controller
 {
@@ -43,14 +45,6 @@ class InstallController extends Controller
         return view('installation.step5');
     }
 
-    public function step6() {
-        $previousRouteServiceProvier = base_path('app/Providers/RouteServiceProvider.php');
-        $newRouteServiceProvier      = base_path('app/Providers/RouteServiceProvider.txt');
-        copy($newRouteServiceProvier, $previousRouteServiceProvier);
-        sleep(5);
-        return view('installation.step6');
-    }
-
     public function purchase_code(Request $request) {
         $request->session()->put('purchase_code', $request->purchase_code);
         return redirect('step3');
@@ -70,13 +64,20 @@ class InstallController extends Controller
 
         $this->writeEnvironmentFile('APP_NAME', $request->system_name);
 
-        // $user->name      = $request->admin_name;
-        // $user->email     = $request->admin_email;
-        // $user->password  = Hash::make($request->admin_password);
-        // $user->user_type = 'admin';
-        // $user->save();
+        $user = new User;
+        $user->name      = $request->admin_name;
+        $user->email     = $request->admin_email;
+        $user->password  = Hash::make($request->admin_password);
+        $user->user_type = 'admin';
+        $user->save();
 
-        return redirect('step6');
+        $previousRouteServiceProvier = base_path('app/Providers/RouteServiceProvider.php');
+        $newRouteServiceProvier      = base_path('app/Providers/RouteServiceProvider.txt');
+        copy($newRouteServiceProvier, $previousRouteServiceProvier);
+        //sleep(5);
+        return view('installation.step6');
+
+        // return redirect('step6');
     }
     public function database_installation(Request $request) {
 

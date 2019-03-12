@@ -117,7 +117,14 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
+        foreach ($category->subcategories as $key => $subcategory) {
+            foreach ($subcategory->subsubcategories as $key => $subsubcategory) {
+                $subsubcategory->delete();
+            }
+            $subcategory->delete();
+        }
         Product::where('category_id', $category->id)->delete();
+
         if(Category::destroy($id)){
             if($category->banner != null){
                 //($category->banner);

@@ -24,8 +24,10 @@ class PublicSslCommerzPaymentController extends Controller
             # In orders table order uniq identity is "order_id","order_status" field contain status of the transaction, "grand_total" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
             if(Session::has('payment_type')){
                 if(Session::get('payment_type') == 'cart_payment'){
+                    $order = Order::findOrFail(Session::get('order_id'));
+
                     $post_data = array();
-                    $post_data['total_amount'] = '10'; # You cant not pay less than 10
+                    $post_data['total_amount'] = $order->grand_total; # You cant not pay less than 10
                     $post_data['currency'] = "BDT";
                     $post_data['tran_id'] = substr(md5($request->session()->get('order_id')), 0, 10); // tran_id must be unique
 

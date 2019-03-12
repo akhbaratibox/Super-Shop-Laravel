@@ -67,7 +67,7 @@
                     {{ __('Login') }}
                 </button>
             </form>
-            <div class="col-sm-6">
+            {{-- <div class="col-sm-6">
                 <div class="cls-content-sm panel" style="width: 100% !important;">
                     <div class="pad-all">
                         <table class="table table-responsive table-bordered">
@@ -81,7 +81,7 @@
                         </table>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

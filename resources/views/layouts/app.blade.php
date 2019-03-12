@@ -18,20 +18,14 @@
     <!--Bootstrap Stylesheet [ REQUIRED ]-->
     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
-    <!--Nifty Stylesheet [ REQUIRED ]-->
-    <link href="{{ asset('css/nifty.min.css')}}" rel="stylesheet">
+    <!--active-shop Stylesheet [ REQUIRED ]-->
+    <link href="{{ asset('css/active-shop.min.css')}}" rel="stylesheet">
 
-    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
-    <link href="{{ asset('css/demo/nifty-demo-icons.min.css')}}" rel="stylesheet">
+    <!--active-shop Premium Icon [ DEMONSTRATION ]-->
+    <link href="{{ asset('css/demo/active-shop-demo-icons.min.css')}}" rel="stylesheet">
 
     <!--Font Awesome [ OPTIONAL ]-->
     <link href="{{ asset('plugins/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
-
-    <!--Demo [ DEMONSTRATION ]-->
-    <link href="{{ asset('css/demo/nifty-demo-icons.min.css') }}" rel="stylesheet">
-
-    <!--Animate.css [ OPTIONAL ]-->
-    <link href="{{ asset('plugins/animate-css/animate.min.css')}}" rel="stylesheet">
 
     <!--Switchery [ OPTIONAL ]-->
     <link href="{{ asset('plugins/switchery/switchery.min.css')}}" rel="stylesheet">
@@ -74,8 +68,8 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
 
-    <!--NiftyJS [ RECOMMENDED ]-->
-    <script src="{{ asset('js/nifty.min.js') }}"></script>
+    <!--active-shop [ RECOMMENDED ]-->
+    <script src="{{ asset('js/active-shop.min.js') }}"></script>
 
     <!--Alerts [ SAMPLE ]-->
     <script src="{{ asset('js/demo/ui-alerts.js') }}"></script>

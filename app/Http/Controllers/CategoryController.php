@@ -120,10 +120,10 @@ class CategoryController extends Controller
         Product::where('category_id', $category->id)->delete();
         if(Category::destroy($id)){
             if($category->banner != null){
-                unlink($category->banner);
+                //($category->banner);
             }
             if($category->icon != null){
-                unlink($category->icon);
+                //unlink($category->icon);
             }
             flash(__('Category has been deleted successfully'))->success();
             return redirect()->route('categories.index');

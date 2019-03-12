@@ -276,10 +276,10 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('Purchase Price')}}</label>
+                                            <label>{{__('Purchase Price')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="purchase_price" placeholder="{{__('Purchase Price')}}">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="purchase_price" placeholder="{{__('Purchase Price')}}" required>
                                         </div>
                                     </div>
                                     <div class="row">

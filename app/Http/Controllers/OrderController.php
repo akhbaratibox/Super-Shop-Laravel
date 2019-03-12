@@ -143,7 +143,7 @@ class OrderController extends Controller
 
             $pdf = PDF::loadView('invoices.customer_invoice', compact('order'));
             $output = $pdf->output();
-    		file_put_contents('invoices/'.'Order#'.$order->code.'.pdf', $output);
+    		file_put_contents('public/invoices/'.'Order#'.$order->code.'.pdf', $output);
 
             $array['view'] = 'emails.invoice';
             $array['subject'] = 'Order Placed - '.$order->code;

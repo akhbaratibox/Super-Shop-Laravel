@@ -20,7 +20,7 @@ class SellerController extends Controller
      */
     public function index()
     {
-        $sellers = Seller::all();
+        $sellers = Seller::orderBy('created_at', 'desc')->get();
         return view('sellers.index', compact('sellers'));
     }
 
@@ -42,6 +42,10 @@ class SellerController extends Controller
      */
     public function store(Request $request)
     {
+        if(User::where('email', $request->email)->first() != null){
+            flash(__('Email already exists!'))->error();
+            return back();
+        }
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;

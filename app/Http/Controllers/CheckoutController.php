@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Category;
 use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\PayumoneyController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\PublicSslCommerzPaymentController;
 use App\Http\Controllers\OrderController;
@@ -40,6 +41,10 @@ class CheckoutController extends Controller
             elseif ($request->payment_option == 'sslcommerz') {
                 $sslcommerz = new PublicSslCommerzPaymentController;
                 return $sslcommerz->index($request);
+            }
+            elseif ($request->payment_option == 'payumoney') {
+                $payumoney = new PayumoneyController;
+                return $payumoney->index($request);
             }
             elseif ($request->payment_option == 'cash_on_delivery') {
                 $order = Order::findOrFail($request->session()->get('order_id'));

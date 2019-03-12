@@ -125,6 +125,10 @@
 
         $( document ).ready(function() {
             //$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+            if($('.active-link').parent().parent().parent().is('ul')){
+                $('.active-link').parent().parent().addClass('in');
+                $('.active-link').parent().parent().parent().addClass('in');
+            }
             if($('.active-link').parent().parent().is('li')){
                 $('.active-link').parent().parent().addClass('active-sub');
             }

@@ -89,9 +89,6 @@ Route::get('/supportpolicy', 'HomeController@supportpolicy')->name('supportpolic
 Route::get('/terms', 'HomeController@terms')->name('terms');
 Route::get('/privacypolicy', 'HomeController@privacypolicy')->name('privacypolicy');
 
-Route::resource('wishlists','WishlistController');
-Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
-
 Route::group(['middleware' => ['user', 'verified']], function(){
 	Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 	Route::get('/profile', 'HomeController@profile')->name('profile');

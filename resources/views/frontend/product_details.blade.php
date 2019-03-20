@@ -561,7 +561,7 @@
                                                         <div class="row no-gutters">
                                                             <div class="col">
                                                                 <h3 class="heading heading-6">
-                                                                    <a href="javascript:;">David Wally</a>
+                                                                    <a href="javascript:;">{{ $review->user->name }}</a>
                                                                 </h3>
                                                                 <span class="comment-date">
                                                                     {{ date('d-m-Y', strtotime($review->created_at)) }}

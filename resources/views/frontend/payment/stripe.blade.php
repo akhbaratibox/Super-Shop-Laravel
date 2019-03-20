@@ -55,7 +55,7 @@
 
                                 <div class="row">
                                     <div class="col-12">
-                                        <button class="btn btn-base-1 btn-block" type="submit">{{__('Pay Now')}} (${{ convert_to_usd(\App\Order::findOrFail(Session::get('order_id'))->grand_total) }})</button>
+                                        <button class="btn btn-base-1 btn-block" type="submit">{{__('Pay Now')}} (${{ number_format(convert_to_usd(\App\Order::findOrFail(Session::get('order_id'))->grand_total), 2) }})</button>
                                     </div>
                                 </div>
 

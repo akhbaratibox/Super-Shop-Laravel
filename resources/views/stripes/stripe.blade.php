@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="panel-footer text-right">
-                    <button class="btn btn-purple" type="submit">{{__('Pay Now')}} (${{ convert_to_usd(Session::get('payment_data')['amount']) }})</button>
+                    <button class="btn btn-purple" type="submit">{{__('Pay Now')}} (${{ number_format(convert_to_usd(Session::get('payment_data')['amount']), 2) }})</button>
                 </div>
             </form>
             <!--===================================================-->

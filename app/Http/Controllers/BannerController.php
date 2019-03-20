@@ -114,7 +114,7 @@ class BannerController extends Controller
     {
         $banner = Banner::findOrFail($id);
         if(Banner::destroy($id)){
-            unlink($banner->photo);
+            //unlink($banner->photo);
             flash(__('Banner has been deleted successfully'))->success();
         }
         else{

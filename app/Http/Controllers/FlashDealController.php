@@ -124,7 +124,18 @@ class FlashDealController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $flash_deal = FlashDeal::findOrFail($id);
+        foreach ($flash_deal->flash_deal_products as $key => $flash_deal_product) {
+            $flash_deal_product->delete();
+        }
+        if(FlashDeal::destroy($id)){
+            flash(__('FlashDeal has been deleted successfully'))->success();
+            return redirect()->route('flash_deals.index');
+        }
+        else{
+            flash(__('Something went wrong'))->error();
+            return back();
+        }
     }
 
     public function update_status(Request $request)

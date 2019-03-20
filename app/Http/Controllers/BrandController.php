@@ -114,7 +114,7 @@ class BrandController extends Controller
         Product::where('brand_id', $brand->id)->delete();
         if(Brand::destroy($id)){
             if($brand->logo != null){
-                unlink($brand->logo);
+                //unlink($brand->logo);
             }
             flash(__('Brand has been deleted successfully'))->success();
             return redirect()->route('brands.index');

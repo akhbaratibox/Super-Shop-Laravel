@@ -113,7 +113,7 @@
                     @csrf
                     <input type="hidden" name="payment_method" value="sslcommerz">
                     <div class="form-group">
-                        <input type="hidden" name="types[]" value="STRIPE_STORE_ID">
+                        <input type="hidden" name="types[]" value="STRIPE_KEY">
                         <div class="col-lg-3">
                             <label class="control-label">{{__('Stripe Key')}}</label>
                         </div>

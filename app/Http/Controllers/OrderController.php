@@ -248,6 +248,7 @@ class OrderController extends Controller
             }
         }
         $order->payment_status == $status;
+        $order->save();
         return 1;
     }
 }

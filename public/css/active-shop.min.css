@@ -6007,16 +6007,22 @@ blockquote {
 	border:0
 }
 .tab-base .nav-tabs>li:not(.active)>a {
-	background-color:#dbe3ec;
+	background-color:#386ab6;
 	transition:background-color,0.3s
 }
 .tab-base .nav-tabs>li:not(.active)>a:hover {
-	background-color:rgba(255,255,255,0.55);
+	background-color:#e2eeff;
+	color:#000 !important;
 	border-color:transparent;
 	transition:background-color,0.3s
 }
+.nav-tabs li a{
+	color:#fff !important;	
+}
 .tab-base .nav-tabs>.active>a,.tab-base .nav-tabs>.active a:hover,.tab-base .nav-tabs>.active>a:focus {
-	border-color:transparent
+	border-color:transparent;
+	background-color:#e2eeff;
+	color:#000 !important;
 }
 .tab-base .nav-tabs.tabs-right {
 	text-align:right

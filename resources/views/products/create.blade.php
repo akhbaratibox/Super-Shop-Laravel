@@ -104,7 +104,7 @@
 				        </div>
 				        <div id="demo-stk-lft-tab-2" class="tab-pane fade">
 							<div class="form-group">
-								<label class="col-lg-2 control-label">{{__('Main Images')}}</label>
+								<label class="col-lg-2 control-label">{{__('Main Images')}} </label>
 								<div class="col-lg-7">
 									<div id="photos">
 
@@ -112,7 +112,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">{{__('Thumbnail Image')}}</label>
+								<label class="col-lg-2 control-label">{{__('Thumbnail Image')}} <small>(290x300)</small></label>
 								<div class="col-lg-7">
 									<div id="thumbnail_img">
 
@@ -120,7 +120,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">{{__('Featured')}}</label>
+								<label class="col-lg-2 control-label">{{__('Featured')}} <small>(290x300)</small></label>
 								<div class="col-lg-7">
 									<div id="featured_img">
 
@@ -128,7 +128,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">{{__('Flash Deal')}}</label>
+								<label class="col-lg-2 control-label">{{__('Flash Deal')}} <small>(290x300)</small></label>
 								<div class="col-lg-7">
 									<div id="flash_deal_img">
 

@@ -49,7 +49,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('Logo')}}</label>
+                                            <label>{{__('Logo')}} <small>(120x120)</small></label>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="logo" id="file-2" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
@@ -88,7 +88,7 @@
                                     <div id="shop-slider-images">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <label>{{__('Sliders')}}</label>
+                                                <label>{{__('Slider Images')}} <small>(1400x400)</small></label>
                                             </div>
                                             <div class="offset-2 offset-md-0 col-10 col-md-10">
                                                 <div class="row">

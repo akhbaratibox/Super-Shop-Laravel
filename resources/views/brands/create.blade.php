@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="logo">{{__('Logo')}}</label>
+                    <label class="col-sm-2 control-label" for="logo">{{__('Logo')}} <small>(120x80)</small></label>
                     <div class="col-sm-10">
                         <input type="file" id="logo" name="logo" class="form-control">
                     </div>

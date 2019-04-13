@@ -116,7 +116,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('Thumbnail Image')}} <span class="required-star">*</span></label>
+                                            <label>{{__('Thumbnail Image')}} <small>(290x300)</small> <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="thumbnail_img" id="file-2" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
@@ -131,7 +131,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('Featured')}}</label>
+                                            <label>{{__('Featured')}} <small>(290x300)</small></label>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="featured_img" id="file-3" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />
@@ -146,7 +146,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('Flash Deal')}}</label>
+                                            <label>{{__('Flash Deal')}} <small>(290x300)</small></label>
                                         </div>
                                         <div class="col-md-10">
                                             <input type="file" name="flash_deal_img" id="file-4" class="custom-input-file custom-input-file--4" data-multiple-caption="{count} files selected" accept="image/*" />

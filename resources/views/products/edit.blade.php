@@ -122,7 +122,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">{{__('Thumbnail Image')}}</label>
+								<label class="col-lg-2 control-label">{{__('Thumbnail Image')}} <small>(290x300)</small></label>
 								<div class="col-lg-7">
 									<div id="thumbnail_img">
 										@if ($product->thumbnail_img != null)
@@ -138,7 +138,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">{{__('Featured')}}</label>
+								<label class="col-lg-2 control-label">{{__('Featured')}} <small>(290x300)</small></label>
 								<div class="col-lg-7">
 									<div id="featured_img">
 										@if ($product->featured_img != null)
@@ -154,7 +154,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">{{__('Flash Deal')}}</label>
+								<label class="col-lg-2 control-label">{{__('Flash Deal')}} <small>(290x300)</small></label>
 								<div class="col-lg-7">
 									<div id="flash_deal_img">
 										@if ($product->flash_deal_img != null)

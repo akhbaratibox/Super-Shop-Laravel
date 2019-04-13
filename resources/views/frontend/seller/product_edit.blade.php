@@ -131,7 +131,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('Thumbnail Image')}} <span class="required-star">*</span></label>
+                                            <label>{{__('Thumbnail Image')}} <small>(290x300)</small> <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
                                             <div class="row">
@@ -157,7 +157,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('Featured')}}</label>
+                                            <label>{{__('Featured')}} <small>(290x300)</small></label>
                                         </div>
                                         <div class="col-md-10">
                                             <div class="row">
@@ -183,7 +183,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('Flash Deal')}}</label>
+                                            <label>{{__('Flash Deal')}} <small>(290x300)</small></label>
                                         </div>
                                         <div class="col-md-10">
                                             <div class="row">

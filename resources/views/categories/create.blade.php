@@ -20,13 +20,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="banner">{{__('Banner')}}</label>
+                    <label class="col-sm-2 control-label" for="banner">{{__('Banner')}} <small>(200x300)</small></label>
                     <div class="col-sm-10">
                         <input type="file" id="banner" name="banner" class="form-control" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="icon">{{__('Icon')}}</label>
+                    <label class="col-sm-2 control-label" for="icon">{{__('Icon')}} <small>(32x32)</small></label>
                     <div class="col-sm-10">
                         <input type="file" id="icon" name="icon" class="form-control">
                     </div>

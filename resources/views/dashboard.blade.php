@@ -132,7 +132,7 @@
                         <tbody>
                             @foreach (\App\Category::all() as $key => $category)
                                 <tr>
-                                    <td>{{ $category->name }}</td>
+                                    <td>{{ __($category->name) }}</td>
                                     <td>{{ \App\Product::where('category_id', $category->id)->sum('num_of_sale') }}</td>
                                 </tr>
                             @endforeach
@@ -171,7 +171,7 @@
                                     }
                                 @endphp
                                 <tr>
-                                    <td>{{ $category->name }}</td>
+                                    <td>{{ __($category->name) }}</td>
                                     <td>{{ $qty }}</td>
                                 </tr>
                             @endforeach

@@ -32,7 +32,7 @@
                 @foreach($categories as $key => $category)
                     <tr>
                         <td>{{$key+1}}</td>
-                        <td>{{$category->name}}</td>
+                        <td>{{__($category->name)}}</td>
                         <td><img class="img-md" src="{{ asset($category->banner) }}" alt="{{__('banner')}}"></td>
                         <td><img class="img-xs" src="{{ asset($category->icon) }}" alt="{{__('icon')}}"></td>
                         <td><label class="switch">

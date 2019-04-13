@@ -24,7 +24,7 @@
                     <div class="col-sm-9">
                         <select name="category_id" required class="form-control demo-select2-placeholder">
                             @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                <option value="{{$category->id}}">{{__($category->name)}}</option>
                             @endforeach
                         </select>
                     </div>

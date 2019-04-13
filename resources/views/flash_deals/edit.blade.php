@@ -40,7 +40,7 @@
                                 @php
                                     $flash_deal_product = \App\FlashDealProduct::where('flash_deal_id', $flash_deal->id)->where('product_id', $product->id)->first();
                                 @endphp
-                                <option value="{{$product->id}}" <?php if($flash_deal_product != null) echo "selected";?> >{{$product->name}}</option>
+                                <option value="{{$product->id}}" <?php if($flash_deal_product != null) echo "selected";?> >{{__($product->name)}}</option>
                             @endforeach
                         </select>
                     </div>

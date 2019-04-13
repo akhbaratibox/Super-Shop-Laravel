@@ -5,7 +5,7 @@
 <div class="col-lg-6 col-lg-offset-3">
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">{{__('Subsubcategory Information')}}</h3>
+            <h3 class="panel-title">{{__('Sub Subcategory Information')}}</h3>
         </div>
 
         <!--Horizontal Form-->
@@ -25,7 +25,7 @@
                     <div class="col-sm-9">
                         <select name="category_id" id="category_id" class="form-control demo-select2" required>
                             @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                <option value="{{$category->id}}">{{__($category->name)}}</option>
                             @endforeach
                         </select>
                     </div>

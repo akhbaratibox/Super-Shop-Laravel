@@ -22,7 +22,7 @@
             <div class="product-description-wrapper">
                 <!-- Product title -->
                 <h2 class="product-title">
-                    {{ $product->name }}
+                    {{ __($product->name) }}
                 </h2>
 
                 <div class="row no-gutters mt-4">

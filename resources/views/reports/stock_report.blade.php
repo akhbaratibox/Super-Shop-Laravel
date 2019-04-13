@@ -9,7 +9,7 @@
                  <div class="select">
                      <select id="demo-ease" class="demo-select2" name="category_id" required>
                          @foreach (\App\Category::all() as $key => $category)
-                             <option value="{{ $category->id }}">{{ $category->name }}</option>
+                             <option value="{{ $category->id }}">{{ __($category->name) }}</option>
                          @endforeach
                      </select>
                  </div>

@@ -18,7 +18,7 @@
                     <div class="col-lg-9">
                         <select name="category_id" id="category_id" class="form-control demo-select2-placeholder" required>
                             @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                <option value="{{$category->id}}">{{__($category->name)}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 control-label" for="name">{{__('Subsubcategory')}}</label>
+                    <label class="col-lg-3 control-label" for="name">{{__('Sub Subcategory')}}</label>
                     <div class="col-lg-9">
                         <select name="subsubcategory_id" id="subsubcategory_id" class="form-control demo-select2-placeholder" required>
 

@@ -62,7 +62,7 @@
 	                                <select class="form-control demo-select2-placeholder" name="category_id" id="category_id" required>
 	                                	<option>Select an option</option>
 	                                	@foreach($categories as $category)
-	                                	    <option value="{{$category->id}}" <?php if($product->category_id == $category->id) echo "selected"; ?> >{{$category->name}}</option>
+	                                	    <option value="{{$category->id}}" <?php if($product->category_id == $category->id) echo "selected"; ?> >{{__($category->name)}}</option>
 	                                	@endforeach
 	                                </select>
 	                            </div>
@@ -76,7 +76,7 @@
 	                            </div>
 	                        </div>
 	                        <div class="form-group" id="subsubcategory">
-	                            <label class="col-lg-2 control-label">{{__('Subsubcategory')}}</label>
+	                            <label class="col-lg-2 control-label">{{__('Sub Subcategory')}}</label>
 	                            <div class="col-lg-7">
 	                                <select class="form-control demo-select2-placeholder" name="subsubcategory_id" id="subsubcategory_id" required>
 
@@ -332,7 +332,7 @@
 									</div>
 								</div>
 							</div>
-							
+
 							<div class="row bord-btm">
 								<div class="col-md-2">
 									<div class="panel-heading">

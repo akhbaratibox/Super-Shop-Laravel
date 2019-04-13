@@ -130,7 +130,7 @@
                                         <ul class="clearfix">
                                             @foreach (\App\Category::all() as $key => $category)
                                                 @if(count($category->products->where('user_id', Auth::user()->id))>0)
-                                                    <li><a>{{ $category->name }}<span>({{ count($category->products->where('user_id', Auth::user()->id)) }})</span></a></li>
+                                                    <li><a>{{ __($category->name) }}<span>({{ count($category->products->where('user_id', Auth::user()->id)) }})</span></a></li>
                                                 @endif
                                             @endforeach
                                         </ul>

@@ -57,7 +57,7 @@
                         <div class="product-description-wrapper">
                             <!-- Product title -->
                             <h2 class="product-title">
-                                {{ $product->name }}
+                                {{ __($product->name) }}
                             </h2>
                             <ul class="breadcrumb">
                                 <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
@@ -684,7 +684,7 @@
                                                     <span class="product-price strong-600">{{ home_discounted_base_price($related_product->id) }}</span>
                                                 </div>
                                                 <h2 class="product-title p-0 mt-2 text-truncate-2">
-                                                    <a href="{{ route('product', $related_product->slug) }}">{{ $related_product->name }}</a>
+                                                    <a href="{{ route('product', $related_product->slug) }}">{{ __($related_product->name) }}</a>
                                                 </h2>
                                             </div>
                                         </div>

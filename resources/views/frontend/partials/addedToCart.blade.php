@@ -10,7 +10,7 @@
             </div>
             <div class="block-body">
                 <h6 class="strong-600">
-                    {{ $product->name }}
+                    {{ __($product->name) }}
                 </h6>
                 <div class="row no-gutters mt-2 mb-2">
                     <div class="col-2">

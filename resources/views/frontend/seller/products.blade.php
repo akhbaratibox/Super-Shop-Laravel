@@ -41,7 +41,7 @@
                                         <tr>
                                             <th>#</th>
                                             <th>{{__('Name')}}</th>
-                                            <th>{{__('Subsubcategory')}}</th>
+                                            <th>{{__('Sub Subcategory')}}</th>
                                             <th>{{__('Current Qty')}}</th>
                                             <th>{{__('Base Price')}}</th>
                                             <th>{{__('Published')}}</th>
@@ -54,7 +54,7 @@
                                         @foreach ($products as $key => $product)
                                             <tr>
                                                 <td>{{ $key+1 }}</td>
-                                                <td><a href="{{ route('product', $product->slug) }}" target="_blank">{{ $product->name }}</a></td>
+                                                <td><a href="{{ route('product', $product->slug) }}" target="_blank">{{ __($product->name) }}</a></td>
                                                 <td>{{ $product->subsubcategory->name }}</td>
                                                 <td>
                                                     @php

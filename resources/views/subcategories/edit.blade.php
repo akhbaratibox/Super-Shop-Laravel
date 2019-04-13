@@ -25,7 +25,7 @@
                     <div class="col-sm-9">
                         <select name="category_id" required class="form-control demo-select2">
                             @foreach($categories as $category)
-                                <option value="{{$category->id}}" <?php if($subcategory->category_id == $category->id) echo "selected";?> >{{$category->name}}</option>
+                                <option value="{{$category->id}}" <?php if($subcategory->category_id == $category->id) echo "selected";?> >{{__($category->name)}}</option>
                             @endforeach
                         </select>
                     </div>

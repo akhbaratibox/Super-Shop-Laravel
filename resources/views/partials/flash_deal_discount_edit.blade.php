@@ -30,7 +30,7 @@
                                 <img class="img-md" src="{{ asset($product->thumbnail_img)}}" alt="Image">
                                 </div>
                                 <div class="col-sm-9">
-                				<label for="" class="control-label">{{ $product->name }}</label>
+                				<label for="" class="control-label">{{ __($product->name) }}</label>
                                 </div>
                 			</td>
                             <td>

@@ -37,7 +37,7 @@
                     <div class="col-sm-9">
                         <select name="products[]" id="products" class="form-control demo-select2" multiple required data-placeholder="Choose Products">
                             @foreach(\App\Product::all() as $product)
-                                <option value="{{$product->id}}">{{$product->name}}</option>
+                                <option value="{{$product->id}}">{{__($product->name)}}</option>
                             @endforeach
                         </select>
                     </div>

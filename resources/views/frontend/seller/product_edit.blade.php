@@ -47,7 +47,7 @@
                                             <label>{{__('Product Name')}} <span class="required-star">*</span></label>
                                         </div>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control mb-3" name="name" placeholder="{{__('Product Name')}}" value="{{ $product->name }}">
+                                            <input type="text" class="form-control mb-3" name="name" placeholder="{{__('Product Name')}}" value="{{ __($product->name) }}">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -504,7 +504,7 @@
                 <div class="modal-body">
                     <div class="target-category heading-6">
                         <span class="mr-3">{{__('Target Category')}}:</span>
-                        <span>{{__('Category')}} > {{__('Subcategory')}} > {{__('Subsubcategory')}}</span>
+                        <span>{{__('Category')}} > {{__('Subcategory')}} > {{__('Sub Subcategory')}}</span>
                     </div>
                     <div class="row no-gutters modal-categories mt-4 mb-2">
                         <div class="col-4">
@@ -520,7 +520,7 @@
                                 <div class="modal-category-list has-right-arrow">
                                     <ul id="categories">
                                         @foreach ($categories as $key => $category)
-                                            <li onclick="get_subcategories_by_category(this, {{ $category->id }})">{{ $category->name }}</li>
+                                            <li onclick="get_subcategories_by_category(this, {{ $category->id }})">{{ __($category->name) }}</li>
                                         @endforeach
                                     </ul>
                                 </div>

@@ -113,7 +113,7 @@
                                         <a class="nav-link" href="{{route('subcategories.index')}}">{{__('Subcategory')}}</a>
                                     </li>
                                     <li class="{{ areActiveRoutes(['subsubcategories.index', 'subsubcategories.create', 'subsubcategories.edit'])}}">
-                                        <a class="nav-link" href="{{route('subsubcategories.index')}}">{{__('Subsubcategory')}}</a>
+                                        <a class="nav-link" href="{{route('subsubcategories.index')}}">{{__('Sub Subcategory')}}</a>
                                     </li>
                                     <li class="{{ areActiveRoutes(['products.admin', 'products.create', 'products.admin.edit'])}}">
                                         <a class="nav-link" href="{{route('products.admin')}}">{{__('In House Products')}}</a>

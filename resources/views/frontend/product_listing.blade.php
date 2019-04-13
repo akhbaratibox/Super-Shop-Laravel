@@ -42,19 +42,19 @@
                                 @foreach (\App\Category::all() as $key => $category)
                                     <div class="single-category">
                                         <button class="btn w-100 category-name collapsed" type="button" data-toggle="collapse" data-target="#category-{{ $key }}" aria-expanded="true">
-                                            {{ $category->name }}
+                                            {{ __($category->name) }}
                                         </button>
 
                                         <div id="category-{{ $key }}" class="collapse">
                                             @foreach ($category->subcategories as $key2 => $subcategory)
                                                 <div class="single-sub-category">
                                                     <button class="btn w-100 sub-category-name" type="button" data-toggle="collapse" data-target="#subCategory-{{ $key }}-{{ $key2 }}" aria-expanded="true">
-                                                        {{ $subcategory->name }}
+                                                        {{ __($subcategory->name) }}
                                                     </button>
                                                     <div id="subCategory-{{ $key }}-{{ $key2 }}" class="collapse">
                                                         <ul class="sub-sub-category-list">
                                                             @foreach ($subcategory->subsubcategories as $key3 => $subsubcategory)
-                                                                <li><a href="{{ route('products.subsubcategory', $subsubcategory->id) }}">{{ $subsubcategory->name }}</a></li>
+                                                                <li><a href="{{ route('products.subsubcategory', $subsubcategory->id) }}">{{ __($subsubcategory->name) }}</a></li>
                                                             @endforeach
                                                         </ul>
                                                     </div>
@@ -251,7 +251,7 @@
                                             </figure>
                                             <div class="product-details text-center">
                                                 <h2 class="product-title text-truncate-2">
-                                                    <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
+                                                    <a href="{{ route('product', $product->slug) }}">{{ __($product->name) }}</a>
                                                 </h2>
                                                 <div class="price-box">
                                                     @if(home_base_price($product->id) != home_discounted_base_price($product->id))

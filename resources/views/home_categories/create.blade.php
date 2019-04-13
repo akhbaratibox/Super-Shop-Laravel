@@ -14,14 +14,14 @@
                     <select class="form-control demo-select2-placeholder" name="category_id" id="category_id" required>
                         @foreach(\App\Category::all() as $category)
                             @if (\App\HomeCategory::where('category_id', $category->id)->first() == null)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                <option value="{{$category->id}}">{{__($category->name)}}</option>
                             @endif
                         @endforeach
                     </select>
                 </div>
             </div>
             <div class="form-group" id="subsubcategory">
-                <label class="col-lg-2 control-label">{{__('Subsubcategory')}}</label>
+                <label class="col-lg-2 control-label">{{__('Sub Subcategory')}}</label>
                 <div class="col-lg-7">
                     <select class="form-control demo-select2-max-4" name="subsubcategories[]" id="subsubcategory_id" data-placeholder="Choose Options (max 4)" multiple required>
 

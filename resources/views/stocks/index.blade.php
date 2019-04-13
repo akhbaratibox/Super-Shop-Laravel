@@ -33,7 +33,7 @@
                 {{-- @foreach($subcategories as $key => $subcategory)
                     <tr>
                         <td>{{$key+1}}</td>
-                        <td>{{$subcategory->name}}</td>
+                        <td>{{__($subcategory->name)}}</td>
                         <td>{{$subcategory->category->name}}</td>
                         <td><img class="img-md" src="{{ asset($subcategory->banner) }}" alt="Banner"></td>
                         <td>

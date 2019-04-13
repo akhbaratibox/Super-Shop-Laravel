@@ -26,7 +26,7 @@
                                 <li>
                                     <a href="{{ route('products.category', $category->id) }}">
                                         <img class="cat-image" src="{{ asset($category->icon) }}" width="30">
-                                        <span class="cat-name">{{ $category->name }}</span>
+                                        <span class="cat-name">{{ __($category->name) }}</span>
                                     </a>
                                     @if(count($category->subcategories)>0)
                                         <div class="sub-cat-menu c-scrollbar">
@@ -38,7 +38,7 @@
                                                                 @foreach ($category->subcategories as $subcategory)
                                                                     <div class="card">
                                                                         <ul class="sub-cat-items">
-                                                                            <li class="sub-cat-name"><a href="{{ route('products.subcategory', $subcategory->id) }}">{{ $subcategory->name }}</a></li>
+                                                                            <li class="sub-cat-name"><a href="{{ route('products.subcategory', $subcategory->id) }}">{{ __($subcategory->name) }}</a></li>
                                                                             @foreach ($subcategory->subsubcategories as $subsubcategory)
                                                                                 @php
                                                                                     foreach (json_decode($subsubcategory->brands) as $brand) {
@@ -47,7 +47,7 @@
                                                                                         }
                                                                                     }
                                                                                 @endphp
-                                                                                <li><a href="{{ route('products.subsubcategory', $subsubcategory->id) }}">{{ $subsubcategory->name }}</a></li>
+                                                                                <li><a href="{{ route('products.subsubcategory', $subsubcategory->id) }}">{{ __($subsubcategory->name) }}</a></li>
                                                                             @endforeach
                                                                         </ul>
                                                                     </div>
@@ -125,7 +125,7 @@
                                 <li @if ($key == 0) class="active" @endif>
                                     <div class="trend-category-single">
                                         <a href="{{ route('products.category', $category->id) }}" class="d-block">
-                                            <div class="name">{{ $category->name }}</div>
+                                            <div class="name">{{ __($category->name) }}</div>
                                             <div class="img" style="background-image:url('{{ asset($category->banner) }}')">
                                             </div>
                                         </a>
@@ -265,7 +265,7 @@
                                                 <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
                                             </div>
                                             <h2 class="product-title p-0 mt-2 text-truncate-2">
-                                                <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
+                                                <a href="{{ route('product', $product->slug) }}">{{ __($product->name) }}</a>
                                             </h2>
                                         </div>
                                     </div>
@@ -317,7 +317,7 @@
                                     <div class="col-8 border-left">
                                         <div class="p-3">
                                             <h2 class="product-title mb-3 p-0 text-truncate-2">
-                                                <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
+                                                <a href="{{ route('product', $product->slug) }}">{{ __($product->name) }}</a>
                                             </h2>
                                             <div class="clearfix">
                                                 <div class="price-box float-left">
@@ -385,7 +385,7 @@
                                             </div>
                                             <div class="p-3 border-top">
                                                 <h2 class="product-title mb-3 p-0 text-truncate-2">
-                                                    <a href="{{ route('product', $product->slug) }}" tabindex="0">{{ $product->name }}</a>
+                                                    <a href="{{ route('product', $product->slug) }}" tabindex="0">{{ __($product->name) }}</a>
                                                 </h2>
                                                 <div class="clearfix">
                                                     <div class="price-box float-left">
@@ -431,7 +431,7 @@
                                     </div>
                                     <div class="product-details float-left">
                                         <h4 class="title text-truncate-2">
-                                            <a href="{{ route('product', $product->slug) }}" class="d-block">{{ $product->name }}</a>
+                                            <a href="{{ route('product', $product->slug) }}" class="d-block">{{ __($product->name) }}</a>
                                         </h4>
                                         <div class="price-box">
                                             @if(home_base_price($product->id) != home_discounted_base_price($product->id))
@@ -460,7 +460,7 @@
                                     </div>
                                     <div class="product-details float-left">
                                         <h4 class="title text-truncate-2">
-                                            <a href="{{ route('product', $product->slug) }}" class="d-block">{{ $product->name }}</a>
+                                            <a href="{{ route('product', $product->slug) }}" class="d-block">{{ __($product->name) }}</a>
                                         </h4>
                                         <div class="price-box">
                                             @if(home_base_price($product->id) != home_discounted_base_price($product->id))
@@ -489,7 +489,7 @@
                                     </div>
                                     <div class="product-details float-left">
                                         <h4 class="title text-truncate-2">
-                                            <a href="{{ route('product', $product->slug) }}" class="d-block">{{ $product->name }}</a>
+                                            <a href="{{ route('product', $product->slug) }}" class="d-block">{{ __($product->name) }}</a>
                                         </h4>
                                         <div class="price-box">
                                             @if(home_base_price($product->id) != home_discounted_base_price($product->id))

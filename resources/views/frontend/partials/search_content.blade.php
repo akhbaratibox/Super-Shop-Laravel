@@ -13,7 +13,7 @@
         <div class="title">{{__('Category Suggestions')}}</div>
         <ul>
             @foreach ($subsubcategories as $key => $subsubcategory)
-                <li><a href="{{ route('products.subsubcategory', $subsubcategory->id) }}">{{ $subsubcategory->name }}</a></li>
+                <li><a href="{{ route('products.subsubcategory', $subsubcategory->id) }}">{{ __($subsubcategory->name) }}</a></li>
             @endforeach
         </ul>
     @endif
@@ -30,7 +30,7 @@
                             </div>
                             <div class="w-100 overflow--hidden">
                                 <div class="product-name text-truncate">
-                                    {{ $product->name }}
+                                    {{ __($product->name) }}
                                 </div>
                                 <div class="clearfix">
                                     <div class="price-box float-left">
@@ -77,7 +77,7 @@
                                 <div class="w-100 overflow--hidden ">
                                     <div class="product-name text-truncate heading-6 strong-600">
                                         {{ $shop->name }}
-                                        
+
                                         <div class="stock-box d-inline-block">
                                             @if($shop->user->seller->verification_status == 1)
                                                 <span class="ml-2"><i class="fa fa-check-circle" style="color:green"></i></span>

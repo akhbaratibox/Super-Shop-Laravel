@@ -105,7 +105,7 @@
                                                         <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
                                                     </div>
                                                     <h2 class="product-title p-0 mt-2 text-truncate-2">
-                                                        <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
+                                                        <a href="{{ route('product', $product->slug) }}">{{ __($product->name) }}</a>
                                                     </h2>
                                                 </div>
                                             </div>
@@ -223,7 +223,7 @@
                                                                         }
                                                                     }
                                                                 @endphp
-                                                                <li><a href="{{ route('products.subsubcategory', $subsubcategory->id) }}">{{$subsubcategory->name }}</a></li>
+                                                                <li><a href="{{ route('products.subsubcategory', $subsubcategory->id) }}">{{__($subsubcategory->name) }}</a></li>
                                                             @endforeach
                                                     </div>
                                                 </div>
@@ -282,7 +282,7 @@
                                     </div>
                                     <div class="card-body p-0">
                                         <div class="title p-3 text-truncate-2">
-                                            <a href="{{ route('product', $product->slug) }}">{{ $product->name }}</a>
+                                            <a href="{{ route('product', $product->slug) }}">{{ __($product->name) }}</a>
                                         </div>
                                         <div class="price-bar row no-gutters">
                                             <div class="price col-8">

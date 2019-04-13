@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <a href="{{ route('subsubcategories.create')}}" class="btn btn-rounded btn-info pull-right">{{__('Add New Subsubcategory')}}</a>
+        <a href="{{ route('subsubcategories.create')}}" class="btn btn-rounded btn-info pull-right">{{__('Add New Sub Subcategory')}}</a>
     </div>
 </div>
 
@@ -21,7 +21,7 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>{{__('Subsubcategory')}}</th>
+                    <th>{{__('Sub Subcategory')}}</th>
                     <th>{{__('Subcategory')}}</th>
                     <th>{{__('Category')}}</th>
                     <th>{{__('Brands')}}</th>
@@ -32,7 +32,7 @@
                 @foreach($subsubcategories as $key => $subsubcategory)
                     <tr>
                         <td>{{$key+1}}</td>
-                        <td>{{$subsubcategory->name}}</td>
+                        <td>{{__($subsubcategory->name)}}</td>
                         <td>{{$subsubcategory->subcategory->name}}</td>
                         <td>{{$subsubcategory->subcategory->category->name}}</td>
                         <td>

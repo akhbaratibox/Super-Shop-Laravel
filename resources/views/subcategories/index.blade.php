@@ -30,7 +30,7 @@
                 @foreach($subcategories as $key => $subcategory)
                     <tr>
                         <td>{{$key+1}}</td>
-                        <td>{{$subcategory->name}}</td>
+                        <td>{{__($subcategory->name)}}</td>
                         <td>{{$subcategory->category->name}}</td>
                         <td>
                             <div class="btn-group dropdown">

@@ -262,7 +262,7 @@
                             <li>
                             <a href="{{ route('products.category', $category->id) }}" class="text-truncate">
                                 <img class="cat-image" src="{{ asset($category->icon) }}" width="13">
-                                <span>{{ $category->name }}</span>
+                                <span>{{ __($category->name) }}</span>
                             </a>
                         </li>
                         @endforeach
@@ -333,7 +333,7 @@
                                                             selected
                                                         @endif
                                                     @endisset
-                                                    >{{ $category->name }}</option>
+                                                    >{{ __($category->name) }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -428,7 +428,7 @@
                                                                             <div class="dc-content">
                                                                                 <span class="d-block dc-product-name text-capitalize strong-600 mb-1">
                                                                                     <a href="{{ route('product', $product->slug) }}">
-                                                                                        {{ $product->name }}
+                                                                                        {{ __($product->name) }}
                                                                                     </a>
                                                                                 </span>
 
@@ -500,7 +500,7 @@
                                     <li>
                                         <a href="{{ route('products.category', $category->id) }}">
                                             <img class="cat-image" src="{{ asset($category->icon) }}" width="30">
-                                            <span class="cat-name">{{ $category->name }}</span>
+                                            <span class="cat-name">{{ __($category->name) }}</span>
                                         </a>
                                         @if(count($category->subcategories)>0)
                                             <div class="sub-cat-menu c-scrollbar">
@@ -512,7 +512,7 @@
                                                                     @foreach ($category->subcategories as $subcategory)
                                                                         <div class="card">
                                                                             <ul class="sub-cat-items">
-                                                                                <li class="sub-cat-name"><a href="{{ route('products.subcategory', $subcategory->id) }}">{{ $subcategory->name }}</a></li>
+                                                                                <li class="sub-cat-name"><a href="{{ route('products.subcategory', $subcategory->id) }}">{{ __($subcategory->name) }}</a></li>
                                                                                 @foreach ($subcategory->subsubcategories as $subsubcategory)
                                                                                     @php
                                                                                         foreach (json_decode($subsubcategory->brands) as $brand) {
@@ -521,7 +521,7 @@
                                                                                             }
                                                                                         }
                                                                                     @endphp
-                                                                                    <li><a href="{{ route('products.subsubcategory', $subsubcategory->id) }}">{{ $subsubcategory->name }}</a></li>
+                                                                                    <li><a href="{{ route('products.subsubcategory', $subsubcategory->id) }}">{{ __($subsubcategory->name) }}</a></li>
                                                                                 @endforeach
                                                                             </ul>
                                                                         </div>

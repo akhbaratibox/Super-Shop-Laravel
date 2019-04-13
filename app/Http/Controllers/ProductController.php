@@ -18,9 +18,23 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function admin_products()
     {
-        return view('products.index');
+        $type = 'In House';
+        $products = Product::where('added_by', 'admin')->orderBy('created_at', 'desc')->get();
+        return view('products.index', compact('products','type'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function seller_products()
+    {
+        $type = 'Seller';
+        $products = Product::where('added_by', 'seller')->orderBy('created_at', 'desc')->get();
+        return view('products.index', compact('products','type'));
     }
 
     /**
@@ -214,7 +228,22 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function admin_product_edit($id)
+    {
+        $product = Product::findOrFail(decrypt($id));
+        //dd(json_decode($product->price_variations)->choices_0_S_price);
+        $tags = json_decode($product->tags);
+        $categories = Category::all();
+        return view('products.edit', compact('product', 'categories', 'tags'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function seller_product_edit($id)
     {
         $product = Product::findOrFail(decrypt($id));
         //dd(json_decode($product->price_variations)->choices_0_S_price);

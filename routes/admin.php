@@ -26,9 +26,11 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::resource('brands','BrandController');
 	Route::get('/brands/destroy/{id}', 'BrandController@destroy')->name('brands.destroy');
 
-	Route::get('/products','ProductController@index')->name('products.index');
+	Route::get('/products/admin','ProductController@admin_products')->name('products.admin');
+	Route::get('/products/seller','ProductController@seller_products')->name('products.seller');
 	Route::get('/products/create','ProductController@create')->name('products.create');
-	Route::get('/products/{id}/edit','ProductController@edit')->name('products.edit');
+	Route::get('/products/admin/{id}/edit','ProductController@admin_product_edit')->name('products.admin.edit');
+	Route::get('/products/seller/{id}/edit','ProductController@seller_product_edit')->name('products.seller.edit');
 	Route::post('/products/todays_deal', 'ProductController@updateTodaysDeal')->name('products.todays_deal');
 	Route::post('/products/get_products_by_subsubcategory', 'ProductController@get_products_by_subsubcategory')->name('products.get_products_by_subsubcategory');
 

@@ -115,9 +115,14 @@
                                     <li class="{{ areActiveRoutes(['subsubcategories.index', 'subsubcategories.create', 'subsubcategories.edit'])}}">
                                         <a class="nav-link" href="{{route('subsubcategories.index')}}">{{__('Subsubcategory')}}</a>
                                     </li>
-                                    <li class="{{ areActiveRoutes(['products.index', 'products.create', 'products.edit'])}}">
-                                        <a class="nav-link" href="{{route('products.index')}}">{{__('All product')}}</a>
+                                    <li class="{{ areActiveRoutes(['products.admin', 'products.create', 'products.admin.edit'])}}">
+                                        <a class="nav-link" href="{{route('products.admin')}}">{{__('In House Products')}}</a>
                                     </li>
+                                    @if(\App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)
+                                        <li class="{{ areActiveRoutes(['products.seller', 'products.seller.edit'])}}">
+                                            <a class="nav-link" href="{{route('products.seller')}}">{{__('Seller Products')}}</a>
+                                        </li>
+                                    @endif
                                 </ul>
                             </li>
                         @endif

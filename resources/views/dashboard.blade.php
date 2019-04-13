@@ -20,7 +20,7 @@
                 @endif
                 <p class="text-lg text-main">Total admin's products: <span class="text-bold">{{ \App\Product::where('published', 1)->where('added_by', 'admin')->get()->count() }}</span></p>
                 <br>
-                <a href="{{ route('products.index') }}" class="btn btn-primary mar-top">Manage Products <i class="fa fa-long-arrow-right"></i></a>
+                <a href="{{ route('products.admin') }}" class="btn btn-primary mar-top">Manage Products <i class="fa fa-long-arrow-right"></i></a>
             </div>
         </div>
     </div>

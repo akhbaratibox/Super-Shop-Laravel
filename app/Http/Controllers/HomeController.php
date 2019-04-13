@@ -7,6 +7,7 @@ use Session;
 use Auth;
 use Hash;
 use App\Category;
+use App\SubCategory;
 use App\SubSubCategory;
 use App\Product;
 use App\User;

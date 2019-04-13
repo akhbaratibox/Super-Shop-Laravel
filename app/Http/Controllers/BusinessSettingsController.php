@@ -221,9 +221,9 @@ class BusinessSettingsController extends Controller
         return '1';
     }
 
-    public function vendor($type)
+    public function vendor_commission(Request $request)
     {
-        $business_settings = BusinessSetting::where('type', $type)->first();
+        $business_settings = BusinessSetting::where('type', 'vendor_commission')->first();
         return view('business_settings.vendor_commission', compact('business_settings'));
     }
 

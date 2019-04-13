@@ -175,6 +175,12 @@
                                     @endphp
                                     <a class="nav-link" href="{{route('sellers.index')}}">{{__('Seller list')}} @if($sellers > 0)<span class="pull-right badge badge-info">{{ $sellers }}</span> @endif</a>
                                 </li>
+                                <li class="{{ areActiveRoutes(['seller_verification_form.index'])}}">
+                                    <a class="nav-link" href="{{route('seller_verification_form.index')}}">{{__('Seller verification form')}}</a>
+                                </li>
+                                <li class="{{ areActiveRoutes(['business_settings.vendor_commission'])}}">
+                                    <a class="nav-link" href="{{ route('business_settings.vendor_commission') }}">{{__('Seller Commission')}}</a>
+                                </li>
                             </ul>
                         </li>
                         @endif
@@ -247,15 +253,6 @@
                                 <li class="{{ areActiveRoutes(['languages.index', 'languages.create', 'languages.store', 'languages.show', 'languages.edit'])}}">
                                     <a class="nav-link" href="{{route('languages.index')}}">{{__('Languages')}}</a>
                                 </li>
-                                <li class="{{ areActiveRoutes(['seller_verification_form.index'])}}">
-                                    <a class="nav-link" href="{{route('seller_verification_form.index')}}">{{__('Seller verification form')}}</a>
-                                </li>
-                                <li class="{{ areActiveRoutes(['business_settings.vendor'])}}">
-                                    <a class="nav-link" href="{{ route('business_settings.vendor', 'vendor_commission') }}">{{__('Seller Commission')}}</a>
-                                </li>
-                                <li class="{{ areActiveRoutes(['seosetting.index'])}}">
-                                    <a class="nav-link" href="{{ route('seosetting.index') }}">{{__('SEO Setting')}}</a>
-                                </li>
                             </ul>
                         </li>
                         @endif
@@ -316,6 +313,15 @@
                         </li>
                         @endif
 
+                        @if(Auth::user()->user_type == 'admin' || in_array('11', json_decode(Auth::user()->staff->role->permissions)))
+                        <li class="{{ areActiveRoutes(['seosetting.index'])}}">
+                            <a class="nav-link" href="{{ route('seosetting.index') }}">
+                                <i class="fa fa-search"></i>
+                                <span class="menu-title">{{__('SEO Setting')}}</span>
+                            </a>
+                        </li>
+                        @endif
+
                         @if(Auth::user()->user_type == 'admin' || in_array('10', json_decode(Auth::user()->staff->role->permissions)))
                         <li>
                             <a href="#">
@@ -335,7 +341,6 @@
                             </ul>
                         </li>
                         @endif
-
                     </ul>
                 </div>
             </div>

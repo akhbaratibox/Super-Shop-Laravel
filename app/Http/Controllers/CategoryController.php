@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\HomeCategory;
 use App\Product;
 use App\Language;
 
@@ -136,7 +137,9 @@ class CategoryController extends Controller
             }
             $subcategory->delete();
         }
+        
         Product::where('category_id', $category->id)->delete();
+        HomeCategory::where('category_id', $category->id)->delete();
 
         if(Category::destroy($id)){
             foreach (Language::all() as $key => $language) {

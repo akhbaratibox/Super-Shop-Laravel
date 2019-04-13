@@ -139,7 +139,7 @@
 					                                {{__('Actions')}} <i class="dropdown-caret"></i>
 					                            </button>
 					                            <ul class="dropdown-menu dropdown-menu-right">
-					                                <li><a href="{{route('products.edit', $product->id)}}">{{__('Edit')}}</a></li>
+					                                <li><a href="{{route('products.edit', encrypt($product->id))}}">{{__('Edit')}}</a></li>
 					                                <li><a onclick="confirm_modal('{{route('products.destroy', $product->id)}}');">{{__('Delete')}}</a></li>
                                                     <li><a href="{{route('products.duplicate', $product->id)}}">{{__('Duplicate')}}</a></li>
 					                            </ul>

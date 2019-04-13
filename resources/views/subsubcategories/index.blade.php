@@ -37,7 +37,9 @@
                         <td>{{$subsubcategory->subcategory->category->name}}</td>
                         <td>
                             @foreach(json_decode($subsubcategory->brands) as $brand_id)
-                                <span class="badge badge-info">{{\App\Brand::find($brand_id)->name}}</span>
+                                @if (\App\Brand::find($brand_id) != null)
+                                    <span class="badge badge-info">{{\App\Brand::find($brand_id)->name}}</span>
+                                @endif
                             @endforeach
                         </td>
                         <td>

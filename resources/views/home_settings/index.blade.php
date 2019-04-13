@@ -148,7 +148,9 @@
                                         <td>{{$home_category->category->name}}</td>
                                         <td>
                                             @foreach (json_decode($home_category->subsubcategories) as $key => $subsubcategory_id)
-                                                <span class="badge badge-info">{{\App\SubSubCategory::find($subsubcategory_id)->name}}</span>
+                                                @if (\App\SubSubCategory::find($subsubcategory_id) != null)
+                                                    <span class="badge badge-info">{{\App\SubSubCategory::find($subsubcategory_id)->name}}</span>
+                                                @endif
                                             @endforeach
                                         </td>
                                         <td><label class="switch">

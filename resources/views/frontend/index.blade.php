@@ -354,13 +354,16 @@
                     </h3>
                     <ul class="inline-links float-right nav d-none d-lg-inline-block">
                         @foreach (json_decode($homeCategory->subsubcategories) as $key => $subsubcategory)
-                            <li class="@php if($key == 0) echo 'active'; @endphp"><a href="#subsubcat-{{ $subsubcategory }}" data-toggle="tab" class="@php if($key == 0) echo 'active'; @endphp">{{ \App\SubSubCategory::find($subsubcategory)->name }}</a></li>
+                            @if (\App\SubSubCategory::find($subsubcategory) != null)
+                                <li class="@php if($key == 0) echo 'active'; @endphp"><a href="#subsubcat-{{ $subsubcategory }}" data-toggle="tab" class="@php if($key == 0) echo 'active'; @endphp">{{ \App\SubSubCategory::find($subsubcategory)->name }}</a></li>
+                            @endif
                         @endforeach
                     </ul>
                 </div>
                 <div class="tab-content">
                     @foreach (json_decode($homeCategory->subsubcategories) as $key => $subsubcategory)
-                        <div class="tab-pane fade @php if($key == 0) echo 'show active'; @endphp" id="subsubcat-{{ $subsubcategory }}">
+                        @if (\App\SubSubCategory::find($subsubcategory) != null)
+                            <div class="tab-pane fade @php if($key == 0) echo 'show active'; @endphp" id="subsubcat-{{ $subsubcategory }}">
                             <div class="row">
                                 @foreach (filter_products(\App\Product::where('published', 1)->where('subsubcategory_id', $subsubcategory))->limit(4)->get() as $key => $product)
                                     <div class="col-lg-3 col-md-6">
@@ -403,6 +406,7 @@
                                 @endforeach
                             </div>
                         </div>
+                        @endif
                     @endforeach
                 </div>
             </div>

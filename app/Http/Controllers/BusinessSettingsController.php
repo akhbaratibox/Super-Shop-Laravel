@@ -233,7 +233,7 @@ class BusinessSettingsController extends Controller
         $business_settings->value = $request->value;
         $business_settings->save();
 
-        flash('Seller Commission updated successfully');
+        flash('Seller Commission updated successfully')->success();
         return back();
     }
 }

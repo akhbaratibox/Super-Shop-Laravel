@@ -359,7 +359,7 @@
                     setting
                 </p>
                 <br>
-                <a href="{{ route('business_settings.vendor', 'vendor_commission') }}" class="btn btn-primary mar-top btn-block">Click Here</a>
+                <a href="{{ route('business_settings.vendor_commission') }}" class="btn btn-primary mar-top btn-block">Click Here</a>
             </div>
         </div>
     </div>

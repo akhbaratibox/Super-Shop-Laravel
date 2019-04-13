@@ -65,7 +65,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('/verification/form', 'BusinessSettingsController@seller_verification_form')->name('seller_verification_form.index');
 	Route::post('/verification/form', 'BusinessSettingsController@seller_verification_form_update')->name('seller_verification_form.update');
 	Route::get('/vendor_commission', 'BusinessSettingsController@vendor_commission')->name('business_settings.vendor_commission');
-	Route::post('/business_settings/vendor_commission_update', 'BusinessSettingsController@vendor_commission_update')->name('business_settings.vendor.commission');
+	Route::post('/vendor_commission_update', 'BusinessSettingsController@vendor_commission_update')->name('business_settings.vendor_commission');
 
 	Route::resource('/languages', 'LanguageController');
 	Route::get('/languages/destroy/{id}', 'LanguageController@destroy')->name('languages.destroy');

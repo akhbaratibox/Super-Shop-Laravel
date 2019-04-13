@@ -6,7 +6,7 @@
         <div class="panel">
             <!--Horizontal Form-->
 
-            <form class="form-horizontal" action="{{ route('business_settings.vendor.commission') }}" method="POST" enctype="multipart/form-data">
+            <form class="form-horizontal" action="{{ route('business_settings.vendor_commission') }}" method="POST" enctype="multipart/form-data">
             	@csrf
                 <div class="panel-body">
                     <div class="form-group">

@@ -75,37 +75,36 @@ class CartController extends Controller
         //discount calculation based on flash deal and regular discount
         //calculation of taxes
         $flash_deal = \App\FlashDeal::where('status', 1)->first();
-        if ($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date) {
-            $flash_deal_product = \App\FlashDealProduct::where('flash_deal_id', $flash_deal->id)->where('product_id', $product->id)->first();
-            if($flash_deal_product != null){
-                if($flash_deal_product->discount_type == 'percent'){
-                    $price -= ($price*$flash_deal_product->discount)/100;
-                }
-                elseif($flash_deal_product->discount_type == 'amount'){
-                    $price -= $flash_deal_product->discount;
-                }
+        if ($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date && FlashDealProduct::where('flash_deal_id', $flash_deal->id)->where('product_id', $id)->first() != null) {
+            $flash_deal_product = FlashDealProduct::where('flash_deal_id', $flash_deal->id)->where('product_id', $id)->first();
+            if($flash_deal_product->discount_type == 'percent'){
+                $price -= ($price*$flash_deal_product->discount)/100;
             }
-            else{
-                if($product->discount_type == 'percent'){
-                    $price -= ($price*$product->discount)/100;
-                }
-                elseif($product->discount_type == 'amount'){
-                    $price -= $product->discount;
-                }
+            elseif($flash_deal_product->discount_type == 'amount'){
+                $price -= $flash_deal_product->discount;
             }
-            if($product->tax_type == 'percent'){
-                $tax = ($price*$product->tax)/100;
+        }
+        else{
+            if($product->discount_type == 'percent'){
+                $price -= ($price*$product->discount)/100;
             }
-            elseif($product->tax_type == 'amount'){
-                $tax = $product->tax;
+            elseif($product->discount_type == 'amount'){
+                $price -= $product->discount;
             }
+        }
+
+        if($product->tax_type == 'percent'){
+            $price += ($price*$product->tax)/100;
+        }
+        elseif($product->tax_type == 'amount'){
+            $price += $product->tax;
         }
 
         $data['quantity'] = $request['quantity'];
         $data['price'] = $price;
         $data['tax'] = $tax;
         $data['shipping_type'] = $product->shipping_type;
-        
+
         if($product->shipping_type == 'free'){
             $data['shipping'] = 0;
         }

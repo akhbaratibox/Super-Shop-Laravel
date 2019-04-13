@@ -202,6 +202,39 @@
                         </li>
                         @endif
 
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-file"></i>
+                                <span class="menu-title">{{__('Reports')}}</span>
+                                <i class="arrow"></i>
+                            </a>
+
+                            <!--Submenu-->
+                            <ul class="collapse">
+                                <li class="{{ areActiveRoutes(['stock_report.index'])}}">
+                                    <a class="nav-link" href="{{ route('stock_report.index') }}">{{__('Stock Report')}}</a>
+                                </li>
+                                <li class="{{ areActiveRoutes(['in_house_sale_report.index'])}}">
+                                    <a class="nav-link" href="{{ route('in_house_sale_report.index') }}">{{__('In House Sale Report')}}</a>
+                                </li>
+                                <li class="{{ areActiveRoutes(['seller_report.index'])}}">
+                                    <a class="nav-link" href="{{ route('seller_report.index') }}">{{__('Seller Report')}}</a>
+                                </li>
+                                <li class="{{ areActiveRoutes(['seller_sale_report.index'])}}">
+                                    <a class="nav-link" href="{{ route('seller_sale_report.index') }}">{{__('Seller Based Selling Report')}}</a>
+                                </li>
+                                <li class="{{ areActiveRoutes(['wish_report.index'])}}">
+                                    <a class="nav-link" href="{{ route('wish_report.index') }}">{{__('Product Wish Report')}}</a>
+                                </li>
+                                <li class="{{ areActiveRoutes(['classified_user_report.index'])}}">
+                                    <a class="nav-link" href="{{ route('classified_user_report.index') }}">{{__('Classified User Report')}}</a>
+                                </li>
+                                <li class="{{ areActiveRoutes(['classified_sale_report.index'])}}">
+                                    <a class="nav-link" href="{{ route('classified_sale_report.index') }}">{{__('Classified Product Sale Report')}}</a>
+                                </li>
+                            </ul>
+                        </li>
+
                         @if(Auth::user()->user_type == 'admin' || in_array('7', json_decode(Auth::user()->staff->role->permissions)))
                         <li>
                             <a href="#">

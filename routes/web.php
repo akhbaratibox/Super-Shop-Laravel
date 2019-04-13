@@ -11,7 +11,7 @@
 |
 */
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::post('/language', 'LanguageController@changeLanguage')->name('language.change');
 Route::post('/currency', 'CurrencyController@changeCurrency')->name('currency.change');
@@ -82,6 +82,7 @@ Route::get('/categories', 'HomeController@all_categories')->name('categories.all
 Route::get('/search', 'HomeController@search')->name('search');
 Route::get('/search?q={search}', 'HomeController@search')->name('suggestion.search');
 Route::post('/ajax-search', 'HomeController@ajax_search')->name('search.ajax');
+Route::post('/config_content', 'HomeController@product_content')->name('configs.update_status');
 
 Route::get('/sellerpolicy', 'HomeController@sellerpolicy')->name('sellerpolicy');
 Route::get('/returnpolicy', 'HomeController@returnpolicy')->name('returnpolicy');
@@ -103,6 +104,9 @@ Route::group(['middleware' => ['user', 'verified']], function(){
 	Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
 
 	Route::resource('/reviews', 'ReviewController');
+
+	Route::get('/wallet', 'WalletController@index')->name('wallet.index');
+	Route::post('/recharge', 'WalletController@recharge')->name('wallet.recharge');
 });
 
 Route::group(['prefix' =>'seller', 'middleware' => ['seller', 'verified']], function(){
@@ -110,6 +114,9 @@ Route::group(['prefix' =>'seller', 'middleware' => ['seller', 'verified']], func
 	Route::get('/product/upload', 'HomeController@show_product_upload_form')->name('seller.products.upload');
 	Route::get('/product/{id}/edit', 'HomeController@show_product_edit_form')->name('seller.products.edit');
 	Route::resource('payments','PaymentController');
+
+	Route::get('/shop/apply_for_verification', 'ShopController@verify_form')->name('shop.verify');
+	Route::post('/shop/apply_for_verification', 'ShopController@verify_form_store')->name('shop.verify.store');
 });
 
 Route::group(['middleware' => ['auth']], function(){
@@ -132,5 +139,3 @@ Route::group(['middleware' => ['auth']], function(){
 });
 
 Route::resource('shops', 'ShopController');
-Route::get('/shop/apply_for_verification', 'ShopController@verify_form')->name('shop.verify');
-Route::post('/shop/apply_for_verification', 'ShopController@verify_form_store')->name('shop.verify.store');

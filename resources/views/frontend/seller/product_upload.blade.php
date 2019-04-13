@@ -323,6 +323,55 @@
                             </div>
                             <div class="form-box bg-white mt-4">
                                 <div class="form-box-title px-3 py-2">
+                                    {{__('Shipping')}}
+                                </div>
+                                <div class="form-box-content p-3">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>{{__('Local Pickup')}}</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="local_pickup_shipping_cost" placeholder="{{__('Local Pickup Cost')}}">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label class="switch" style="margin-top:5px;">
+                                                <input type="radio" name="shipping_type" value="local_pickup" checked>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>{{__('Flat Rate')}}</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="flat_shipping_cost" placeholder="{{__('Flat Rate Cost')}}">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label class="switch" style="margin-top:5px;">
+                                                <input type="radio" name="shipping_type" value="flat_rate" checked>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>{{__('Free Shipping')}}</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="free_shipping_cost" value="0" disabled placeholder="{{__('Flat Rate Cost')}}">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label class="switch" style="margin-top:5px;">
+                                                <input type="radio" name="shipping_type" value="free" checked>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-box bg-white mt-4">
+                                <div class="form-box-title px-3 py-2">
                                     {{__('Description')}}
                                 </div>
                                 <div class="form-box-content p-3">

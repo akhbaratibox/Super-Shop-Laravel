@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
+use App\Language;
 
 class CategoryController extends Controller
 {
@@ -39,6 +40,10 @@ class CategoryController extends Controller
     {
         $category = new Category;
         $category->name = $request->name;
+
+        $data = openJSONFile('en');
+        $data[$category->name] = $category->name;
+        saveJSONFile('en', $data);
 
         if($request->hasFile('banner')){
             $category->banner = $request->file('banner')->store('uploads/categories/banner');
@@ -90,6 +95,14 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $category = Category::findOrFail($id);
+
+        foreach (Language::all() as $key => $language) {
+            $data = openJSONFile($language->code);
+            unset($data[$category->name]);
+            $data[$request->name] = "";
+            saveJSONFile($language->code, $data);
+        }
+
         $category->name = $request->name;
         if($request->hasFile('banner')){
             $category->banner = $request->file('banner')->store('uploads/categories/banner');
@@ -126,6 +139,12 @@ class CategoryController extends Controller
         Product::where('category_id', $category->id)->delete();
 
         if(Category::destroy($id)){
+            foreach (Language::all() as $key => $language) {
+                $data = openJSONFile($language->code);
+                unset($data[$category->name]);
+                saveJSONFile($language->code, $data);
+            }
+
             if($category->banner != null){
                 //($category->banner);
             }

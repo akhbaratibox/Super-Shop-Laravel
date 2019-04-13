@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
+use App\Language;
 use Auth;
 use App\SubSubCategory;
 use Session;
@@ -88,7 +89,16 @@ class ProductController extends Controller
         $product->tax_type = $request->tax_type;
         $product->discount = $request->discount;
         $product->discount_type = $request->discount_type;
-        $product->shipping_cost = $request->shipping_cost;
+        $product->shipping_type = $request->shipping_type;
+        if($request->shipping_type == 'free'){
+            $product->shipping_cost = 0;
+        }
+        elseif ($request->shipping_type == 'local_pickup') {
+            $product->shipping_cost = $request->local_pickup_shipping_cost;
+        }
+        elseif ($request->shipping_type == 'flat_rate') {
+            $product->shipping_cost = $request->flat_shipping_cost;
+        }
         $product->meta_title = $request->meta_title;
         $product->meta_description = $request->meta_description;
 
@@ -138,6 +148,7 @@ class ProductController extends Controller
             }
         }
 
+        //Generates the combinations of customer choice options
         $combinations = combinations($options);
         if(count($combinations[0]) > 0){
             foreach ($combinations as $key => $combination){
@@ -166,6 +177,10 @@ class ProductController extends Controller
         //combinations end
 
         $product->variations = json_encode($variations);
+
+        $data = openJSONFile('en');
+        $data[$product->name] = $product->name;
+        saveJSONFile('en', $data);
 
         if($product->save()){
             flash(__('Product has been inserted successfully'))->success();
@@ -268,7 +283,16 @@ class ProductController extends Controller
         $product->tax = $request->tax;
         $product->tax_type = $request->tax_type;
         $product->discount = $request->discount;
-        $product->shipping_cost = $request->shipping_cost;
+        $product->shipping_type = $request->shipping_type;
+        if($request->shipping_type == 'free'){
+            $product->shipping_cost = 0;
+        }
+        elseif ($request->shipping_type == 'local_pickup') {
+            $product->shipping_cost = $request->local_pickup_shipping_cost;
+        }
+        elseif ($request->shipping_type == 'flat_rate') {
+            $product->shipping_cost = $request->flat_shipping_cost;
+        }
         $product->discount_type = $request->discount_type;
         $product->meta_title = $request->meta_title;
         $product->meta_description = $request->meta_description;
@@ -302,6 +326,13 @@ class ProductController extends Controller
         }
 
         $product->choice_options = json_encode($choice_options);
+
+        foreach (Language::all() as $key => $language) {
+            $data = openJSONFile($language->code);
+            unset($data[$product->name]);
+            $data[$request->name] = "";
+            saveJSONFile($language->code, $data);
+        }
 
         $variations = array();
 
@@ -374,6 +405,11 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         if(Product::destroy($id)){
+            foreach (Language::all() as $key => $language) {
+                $data = openJSONFile($language->code);
+                unset($data[$product->name]);
+                saveJSONFile($language->code, $data);
+            }
             if($product->thumbnail_img != null){
                 //unlink($product->thumbnail_img);
             }
@@ -431,6 +467,12 @@ class ProductController extends Controller
     {
         $products = Product::where('subsubcategory_id', $request->subsubcategory_id)->get();
         return $products;
+    }
+
+    public function get_products_by_brand(Request $request)
+    {
+        $products = Product::where('brand_id', $request->brand_id)->get();
+        return view('partials.product_select', compact('products'));
     }
 
     public function updateTodaysDeal(Request $request)

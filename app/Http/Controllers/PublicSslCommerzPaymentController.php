@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Session;
+use Auth;
 use Illuminate\Routing\UrlGenerator;
 use App\Http\Controllers;
 use App\Order;
@@ -11,6 +12,7 @@ use App\BusinessSetting;
 use App\Seller;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CommissionController;
+use App\Http\Controllers\WalletController;
 session_start();
 
 class PublicSslCommerzPaymentController extends Controller
@@ -24,10 +26,8 @@ class PublicSslCommerzPaymentController extends Controller
             # In orders table order uniq identity is "order_id","order_status" field contain status of the transaction, "grand_total" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
             if(Session::has('payment_type')){
                 if(Session::get('payment_type') == 'cart_payment'){
-                    $order = Order::findOrFail(Session::get('order_id'));
-
                     $post_data = array();
-                    $post_data['total_amount'] = $order->grand_total; # You cant not pay less than 10
+                    $post_data['total_amount'] = '10'; # You cant not pay less than 10
                     $post_data['currency'] = "BDT";
                     $post_data['tran_id'] = substr(md5($request->session()->get('order_id')), 0, 10); // tran_id must be unique
 
@@ -65,6 +65,27 @@ class PublicSslCommerzPaymentController extends Controller
                     $post_data['cus_postcode'] = $seller->user->postal_code;
                     $post_data['cus_country'] = $seller->user->country;
                     $post_data['cus_phone'] = $seller->user->phone;
+                }
+                elseif (Session::get('payment_type') == 'wallet_payment') {
+                    $post_data = array();
+                    $post_data['total_amount'] = $request->session()->get('payment_data')['amount']; # You cant not pay less than 10
+                    $post_data['currency'] = "BDT";
+                    $post_data['tran_id'] = substr(md5(Auth::user()->id), 0, 10); // tran_id must be unique
+
+                    #Start to save these value  in session to pick in success page.
+                    $_SESSION['payment_values']['tran_id']=$post_data['tran_id'];
+                    $_SESSION['payment_values']['payment_data']=$request->session()->get('payment_data');
+                    $_SESSION['payment_values']['payment_type']=$request->session()->get('payment_type');
+                    #End to save these value  in session to pick in success page.
+
+                    # CUSTOMER INFORMATION
+                    $user = Auth::user();
+                    $post_data['cus_name'] = $user->name;
+                    $post_data['cus_add1'] = $user->address;
+                    $post_data['cus_city'] = $user->city;
+                    $post_data['cus_postcode'] = $user->postal_code;
+                    $post_data['cus_country'] = $user->country;
+                    $post_data['cus_phone'] = $user->phone;
                 }
             }
 
@@ -117,6 +138,10 @@ class PublicSslCommerzPaymentController extends Controller
             elseif ($_SESSION['payment_values']['payment_type'] == 'seller_payment') {
                 $commissionController = new CommissionController;
                 return $commissionController->seller_payment_done($_SESSION['payment_values']['payment_data'], $payment);
+            }
+            elseif ($_SESSION['payment_values']['payment_type'] == 'wallet_payment') {
+                $walletController = new WalletController;
+                return $walletController->wallet_payment_done($_SESSION['payment_values']['payment_data'], $payment);
             }
         }
     }

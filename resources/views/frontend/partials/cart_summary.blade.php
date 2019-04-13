@@ -53,9 +53,34 @@
                     </tr>
                 @endforeach
             </tbody>
+        </table>
+
+        <table class="table-cart table-cart-review my-4">
+            <thead>
+                <tr>
+                    <th class="product-name">{{__('Product Shipping charge')}}</th>
+                    <th class="product-total text-right">{{__('Amount')}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Session::get('cart') as $key => $cartItem)
+                    <tr class="cart_item">
+                        <td class="product-name">
+                            {{ \App\Product::find($cartItem['id'])->name }}
+                            <strong class="product-quantity">× {{ $cartItem['quantity'] }}</strong>
+                        </td>
+                        <td class="product-total text-right">
+                            <span class="pl-4">{{ single_price($cartItem['shipping']*$cartItem['quantity']) }} ({{ ucfirst(str_replace('_', ' ', $cartItem['shipping_type'])) }})</span>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+        <table class="table-cart table-cart-review">
 
             <tfoot>
-                <tr class="cart-subtotal no-border">
+                <tr class="cart-subtotal">
                     <th>{{__('Subtotal')}}</th>
                     <td class="text-right">
                         <span class="strong-600">{{ single_price($subtotal) }}</span>
@@ -70,7 +95,7 @@
                 </tr>
 
                 <tr class="cart-shipping">
-                    <th>{{__('Shipping')}}</th>
+                    <th>{{__('Total Shipping')}}</th>
                     <td class="text-right">
                         <span class="text-italic">{{ single_price($shipping) }}</span>
                     </td>

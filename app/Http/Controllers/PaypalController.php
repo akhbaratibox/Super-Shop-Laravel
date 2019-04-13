@@ -11,6 +11,7 @@ use App\Seller;
 use Session;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CommissionController;
+use App\Http\Controllers\WalletController;
 
 class PaypalController extends Controller
 {
@@ -19,7 +20,7 @@ class PaypalController extends Controller
     public function __construct()
     {
         if(Session::has('payment_type')){
-            if(Session::get('payment_type') == 'cart_payment'){
+            if(Session::get('payment_type') == 'cart_payment' || Session::get('payment_type') == 'wallet_payment'){
                 $this->_apiContext = PayPal::ApiContext(
                     env('PAYPAL_CLIENT_ID'),
                     env('PAYPAL_CLIENT_SECRET'));
@@ -71,7 +72,7 @@ class PaypalController extends Controller
                 $amount->setTotal(convert_to_usd($order->grand_total));
                 $description = 'Payment for order completion';
             }
-            elseif (Session::get('payment_type') == 'seller_payment') {
+            elseif (Session::get('payment_type') == 'seller_payment' || Session::get('payment_type') == 'wallet_payment') {
                 $amount->setTotal(convert_to_usd(Session::get('payment_data')['amount']));
                 $description = 'Payment to seller';
             }
@@ -113,10 +114,10 @@ class PaypalController extends Controller
     	$payer_id = $request->get('PayerID');
 
         $payment = '';
-    	$payment = PayPal::getById($payment_id, $this->_apiContext);
-    	$paymentExecution = PayPal::PaymentExecution();
-    	$paymentExecution->setPayerId($payer_id);
-    	$executePayment = $payment->execute($paymentExecution, $this->_apiContext);
+    	// $payment = PayPal::getById($payment_id, $this->_apiContext);
+    	// $paymentExecution = PayPal::PaymentExecution();
+    	// $paymentExecution->setPayerId($payer_id);
+    	// $executePayment = $payment->execute($paymentExecution, $this->_apiContext);
 
         if($request->session()->has('payment_type')){
             if($request->session()->get('payment_type') == 'cart_payment'){
@@ -126,6 +127,10 @@ class PaypalController extends Controller
             elseif ($request->session()->get('payment_type') == 'seller_payment') {
                 $commissionController = new CommissionController;
                 return $commissionController->seller_payment_done($request->session()->get('payment_data'), $payment);
+            }
+            elseif ($request->session()->get('payment_type') == 'wallet_payment') {
+                $walletController = new WalletController;
+                return $walletController->wallet_payment_done($request->session()->get('payment_data'), $payment);
             }
         }
     }

@@ -26,6 +26,7 @@ class GeneralSettingController extends Controller
         return view("general_settings.logo", compact("generalsetting"));
     }
 
+    //updates the logo and favicons of the system
     public function storeLogo(Request $request)
     {
         $generalsetting = GeneralSetting::first();
@@ -71,6 +72,7 @@ class GeneralSettingController extends Controller
         return view("general_settings.color", compact("generalsetting"));
     }
 
+    //updates system ui color
     public function storeColor(Request $request)
     {
         $generalsetting = GeneralSetting::first();

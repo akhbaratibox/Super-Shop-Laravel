@@ -120,7 +120,12 @@ class OrderController extends Controller
                 }
                 foreach (json_decode($product->choice_options) as $choice){
                     $str = $choice->name; // example $str =  choice_0
-                    $product_variation .= '-'.str_replace(' ', '', $cartItem[$str]);
+                    if ($product_variation != null) {
+                        $product_variation .= '-'.str_replace(' ', '', $cartItem[$str]);
+                    }
+                    else {
+                        $product_variation .= str_replace(' ', '', $cartItem[$str]);
+                    }
                 }
 
                 $order_detail = new OrderDetail;
@@ -141,6 +146,7 @@ class OrderController extends Controller
             $order->grand_total = $subtotal + $tax + $shipping;
             $order->save();
 
+            //stores the pdf for invoice
             $pdf = PDF::loadView('invoices.customer_invoice', compact('order'));
             $output = $pdf->output();
     		file_put_contents('public/invoices/'.'Order#'.$order->code.'.pdf', $output);
@@ -152,6 +158,7 @@ class OrderController extends Controller
             $array['file'] = 'public/invoices/Order#'.$order->code.'.pdf';
             $array['file_name'] = 'Order#'.$order->code.'.pdf';
 
+            //sends email to customer with the invoice pdf attached
             Mail::to($request->session()->get('shipping_info')['email'])->queue(new InvoiceEmailManager($array));
             unlink($array['file']);
 

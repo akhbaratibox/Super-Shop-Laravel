@@ -41,6 +41,14 @@
                         </span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('wallet.index') }}" class="{{ areActiveRoutesHome(['wallet.index'])}}">
+                        <i class="la la-dollar"></i>
+                        <span class="category-name">
+                            {{__('My Wallet')}}
+                        </span>
+                    </a>
+                </li>
             </ul>
         </div>
         @if (\App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)

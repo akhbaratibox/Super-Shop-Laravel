@@ -19,6 +19,7 @@ class NewsletterController extends Controller
 
     public function send(Request $request)
     {
+        //sends newsletter to selected users
     	foreach ($request->user_emails as $key => $email) {
             $array['view'] = 'emails.newsletter';
             $array['subject'] = $request->subject;
@@ -28,6 +29,7 @@ class NewsletterController extends Controller
             Mail::to($email)->queue(new EmailManager($array));
     	}
 
+        //sends newsletter to subscribers
         foreach ($request->subscriber_emails as $key => $email) {
             $array['view'] = 'emails.newsletter';
             $array['subject'] = $request->subject;

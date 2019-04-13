@@ -38,11 +38,13 @@ class CartController extends Controller
         $str = '';
         $tax = 0;
 
+        //check the color enabled or disabled for the product
         if($request->has('color')){
             $data['color'] = $request['color'];
             $str = Color::where('code', $request['color'])->first()->name;
         }
 
+        //Gets all the choice values of customer choice option and generate a string like Black-S-Cotton
         foreach (json_decode(Product::find($request->id)->choice_options) as $key => $choice) {
             $data[$choice->name] = $request[$choice->name];
             if($str != null){
@@ -53,6 +55,7 @@ class CartController extends Controller
             }
         }
 
+        //Check the string and decreases quantity for the stock
         if($str != null){
             $variations = json_decode($product->variations);
             $price = $variations->$str->price;
@@ -69,7 +72,8 @@ class CartController extends Controller
             $price = $product->unit_price;
         }
 
-        //discount calculation
+        //discount calculation based on flash deal and regular discount
+        //calculation of taxes
         $flash_deal = \App\FlashDeal::where('status', 1)->first();
         if ($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date) {
             $flash_deal_product = \App\FlashDealProduct::where('flash_deal_id', $flash_deal->id)->where('product_id', $product->id)->first();
@@ -100,7 +104,14 @@ class CartController extends Controller
         $data['quantity'] = $request['quantity'];
         $data['price'] = $price;
         $data['tax'] = $tax;
-        $data['shipping'] = $product->shipping_cost;
+        $data['shipping_type'] = $product->shipping_type;
+        
+        if($product->shipping_type == 'free'){
+            $data['shipping'] = 0;
+        }
+        else{
+            $data['shipping'] = $product->shipping_cost;
+        }
 
         if($request->session()->has('cart')){
             $cart = $request->session()->get('cart', collect([]));
@@ -114,6 +125,7 @@ class CartController extends Controller
         return view('frontend.partials.addedToCart', compact('product', 'data'));
     }
 
+    //removes from Cart
     public function removeFromCart(Request $request)
     {
         if($request->session()->has('cart')){
@@ -125,6 +137,7 @@ class CartController extends Controller
         return view('frontend.partials.cart_details');;
     }
 
+    //updated the quantity for a cart item
     public function updateQuantity(Request $request)
     {
         $cart = $request->session()->get('cart', collect([]));

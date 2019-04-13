@@ -10,6 +10,7 @@ use App\Seller;
 use Session;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CommissionController;
+use App\Http\Controllers\WalletController;
 
 class StripePaymentController extends Controller
 {
@@ -21,7 +22,7 @@ class StripePaymentController extends Controller
     public function stripe()
     {
         if(Session::has('payment_type')){
-            if(Session::get('payment_type') == 'cart_payment'){
+            if(Session::get('payment_type') == 'cart_payment' || Session::get('payment_type') == 'wallet_payment'){
                 return view('frontend.payment.stripe');
             }
             elseif (Session::get('payment_type') == 'seller_payment') {
@@ -45,7 +46,7 @@ class StripePaymentController extends Controller
                 Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
                 $payment = json_encode(Stripe\Charge::create ([
-                        "amount" => round(convert_to_usd($order->grand_total) * 100),
+                        "amount" => convert_to_usd($order->grand_total) * 100,
                         "currency" => "usd",
                         "source" => $request->stripeToken
                 ]));
@@ -59,13 +60,26 @@ class StripePaymentController extends Controller
                 Stripe\Stripe::setApiKey($seller->stripe_secret);
 
                 $payment = json_encode(Stripe\Charge::create ([
-                        "amount" => round(convert_to_usd($request->session()->get('payment_data')['amount']) * 100),
+                        "amount" => convert_to_usd($request->session()->get('payment_data')['amount']) * 100,
                         "currency" => "usd",
                         "source" => $request->stripeToken
                 ]));
 
                 $commissionController = new CommissionController;
                 return $commissionController->seller_payment_done($request->session()->get('payment_data'), $payment);
+            }
+            elseif ($request->session()->get('payment_type') == 'wallet_payment') {
+
+                Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+                $payment = json_encode(Stripe\Charge::create ([
+                        "amount" => convert_to_usd($request->session()->get('payment_data')['amount']) * 100,
+                        "currency" => "usd",
+                        "source" => $request->stripeToken
+                ]));
+
+                $walletController = new WalletController;
+                return $walletController->wallet_payment_done($request->session()->get('payment_data'), $payment);
             }
         }
     }

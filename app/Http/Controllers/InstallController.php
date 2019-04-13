@@ -9,6 +9,7 @@ use Hash;
 use App\GeneralSetting;
 use App\BusinessSetting;
 use App\User;
+use App\Product;
 
 class InstallController extends Controller
 {
@@ -50,13 +51,13 @@ class InstallController extends Controller
         return redirect('step3');
     }
 
-
     public function system_settings(Request $request) {
         $generalsetting = GeneralSetting::first();
         $generalsetting->site_name = $request->name;
         $generalsetting->address = $request->address;
         $generalsetting->phone = $request->phone;
         $generalsetting->email = $request->email;
+        $generalsetting->save();
 
         $businessSetting = BusinessSetting::where('type', 'system_default_currency')->first();
         $businessSetting->value = $request->system_default_currency;
@@ -69,7 +70,13 @@ class InstallController extends Controller
         $user->email     = $request->admin_email;
         $user->password  = Hash::make($request->admin_password);
         $user->user_type = 'admin';
+        $user->email_verified_at = date('Y-m-d H:m:s');
         $user->save();
+
+        foreach(Product::all() as $product){
+            $product->user_id = $user->id;
+            $product->save();
+        }
 
         $previousRouteServiceProvier = base_path('app/Providers/RouteServiceProvider.php');
         $newRouteServiceProvier      = base_path('app/Providers/RouteServiceProvider.txt');

@@ -14,12 +14,14 @@ class CompareController extends Controller
         return view('frontend.view_compare', compact('categories'));
     }
 
+    //clears the session data for compare
     public function reset(Request $request)
     {
         $request->session()->forget('compare');
         return back();
     }
 
+    //store comparing products ids in session
     public function addToCompare(Request $request)
     {
         if($request->session()->has('compare')){

@@ -235,6 +235,9 @@
                                 <li class="{{ areActiveRoutes(['google_analytics.index'])}}">
                                     <a class="nav-link" href="{{ route('google_analytics.index') }}">{{__('Google Analytics')}}</a>
                                 </li>
+                                <li class="{{ areActiveRoutes(['facebook_chat.index'])}}">
+                                    <a class="nav-link" href="{{ route('facebook_chat.index') }}">{{__('Facebook Chat')}}</a>
+                                </li>
                                 <li class="{{ areActiveRoutes(['social_login.index'])}}">
                                     <a class="nav-link" href="{{ route('social_login.index') }}">{{__('Social Media Login')}}</a>
                                 </li>

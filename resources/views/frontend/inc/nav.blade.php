@@ -563,9 +563,11 @@
                                                         <div class="sub-cat-brand">
                                                             <ul class="sub-brand-list">
                                                                 @foreach ($brands as $brand_id)
-                                                                    <li class="sub-brand-item">
-                                                                        <a href="{{ route('products.brand', $brand_id) }}" ><img src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid"></a>
-                                                                    </li>
+                                                                    @if(\App\Brand::find($brand_id) != null)
+                                                                        <li class="sub-brand-item">
+                                                                            <a href="{{ route('products.brand', $brand_id) }}" ><img src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid"></a>
+                                                                        </li>
+                                                                    @endif
                                                                 @endforeach
                                                             </ul>
                                                         </div>

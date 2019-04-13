@@ -22,6 +22,7 @@ class CheckoutController extends Controller
         //
     }
 
+    //check the selected payment gateway and redirect to that controller accordingly
     public function checkout(Request $request)
     {
         $orderController = new OrderController;
@@ -63,9 +64,16 @@ class CheckoutController extends Controller
                 flash("Your order has been placed successfully")->success();
             	return redirect()->route('home');
             }
+            elseif ($request->payment_option == 'wallet') {
+                $user = Auth::user();
+                $user->balance -= Order::findOrFail($request->session()->get('order_id'))->grand_total;
+                $user->save();
+                return $this->checkout_done($request->session()->get('order_id'), null);
+            }
         }
     }
 
+    //redirects to this method after a successfull checkout
     public function checkout_done($order_id, $payment)
     {
         $order = Order::findOrFail($order_id);

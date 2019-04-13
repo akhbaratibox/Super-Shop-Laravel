@@ -13,7 +13,9 @@
                 <div class="col-lg-7">
                     <select class="form-control demo-select2-placeholder" name="category_id" id="category_id" required>
                         @foreach(\App\Category::all() as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
+                            @if (\App\HomeCategory::where('category_id', $category->id)->first() == null)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endif
                         @endforeach
                     </select>
                 </div>

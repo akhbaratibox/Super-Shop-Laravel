@@ -101,7 +101,14 @@ class HomeCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(HomeCategory::destroy($id)){
+            flash(__('Home Page Category has been deleted successfully'))->success();
+            return redirect()->route('home_settings.index');
+        }
+        else{
+            flash(__('Something went wrong'))->error();
+            return back();
+        }
     }
 
     public function update_status(Request $request)

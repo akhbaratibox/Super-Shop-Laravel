@@ -28,11 +28,21 @@ class BusinessSettingsController extends Controller
         return view('business_settings.google_analytics');
     }
 
+    public function facebook_chat(Request $request)
+    {
+        return view('business_settings.facebook_chat');
+    }
+
     public function payment_method(Request $request)
     {
         return view('business_settings.payment_method');
     }
 
+    /**
+     * Update the API key's for payment methods.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function payment_method_update(Request $request)
     {
         foreach ($request->types as $key => $type) {
@@ -40,19 +50,26 @@ class BusinessSettingsController extends Controller
         }
 
         $business_settings = BusinessSetting::where('type', $request->payment_method.'_sandbox')->first();
-        if ($request->has($request->payment_method.'_sandbox')) {
-            $business_settings->value = 1;
-            $business_settings->save();
-        }
-        else{
-            $business_settings->value = 0;
-            $business_settings->save();
+        if($business_settings != null){
+            if ($request->has($request->payment_method.'_sandbox')) {
+                $business_settings->value = 1;
+                $business_settings->save();
+            }
+            else{
+                $business_settings->value = 0;
+                $business_settings->save();
+            }
         }
 
         flash("Settings updated successfully")->success();
         return back();
     }
 
+    /**
+     * Update the API key's for GOOGLE analytics.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function google_analytics_update(Request $request)
     {
         foreach ($request->types as $key => $type) {
@@ -74,6 +91,37 @@ class BusinessSettingsController extends Controller
         return back();
     }
 
+    /**
+     * Update the API key's for GOOGLE analytics.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function facebook_chat_update(Request $request)
+    {
+        foreach ($request->types as $key => $type) {
+                $this->overWriteEnvFile($type, $request[$type]);
+        }
+
+        $business_settings = BusinessSetting::where('type', 'facebook_chat')->first();
+
+        if ($request->has('facebook_chat')) {
+            $business_settings->value = 1;
+            $business_settings->save();
+        }
+        else{
+            $business_settings->value = 0;
+            $business_settings->save();
+        }
+
+        flash("Settings updated successfully")->success();
+        return back();
+    }
+
+    /**
+     * Update the API key's for other methods.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function env_key_update(Request $request)
     {
         foreach ($request->types as $key => $type) {
@@ -84,14 +132,25 @@ class BusinessSettingsController extends Controller
         return back();
     }
 
+    /**
+     * overWrite the Env File values.
+     * @param  String type
+     * @param  String value
+     * @return \Illuminate\Http\Response
+     */
     public function overWriteEnvFile($type, $val)
     {
         $path = base_path('.env');
         if (file_exists($path)) {
             $val = '"'.trim($val).'"';
-            file_put_contents($path, str_replace(
-                $type.'="'.env($type).'"', $type.'='.$val, file_get_contents($path)
-            ));
+            if(strpos(file_get_contents($path), 'FACEBOOK_PAGE_ID') > 0){
+                file_put_contents($path, str_replace(
+                    $type.'="'.env($type).'"', $type.'='.$val, file_get_contents($path)
+                ));
+            }
+            else{
+                file_put_contents($path, file_get_contents($path).$type.'='.$val);
+            }
         }
     }
 
@@ -100,6 +159,11 @@ class BusinessSettingsController extends Controller
     	return view('business_settings.seller_verification_form');
     }
 
+    /**
+     * Update sell verification form.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function seller_verification_form_update(Request $request)
     {
         $form = array();

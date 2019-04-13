@@ -14,6 +14,7 @@ class PolicyController extends Controller
         return view('policies.index', compact('policy'));
     }
 
+    //updates the policy pages
     public function store(Request $request){
         $policy = Policy::where('name', $request->name)->first();
         $policy->name = $request->name;

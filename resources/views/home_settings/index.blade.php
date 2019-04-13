@@ -227,6 +227,7 @@
     function add_home_category(){
         $.get('{{ route('home_categories.create')}}', {}, function(data){
             $('#demo-lft-tab-3').html(data);
+            $('.demo-select2-placeholder').select2();
         });
     }
 
@@ -235,6 +236,7 @@
         url = url.replace('home_category_id', id);
         $.get(url, {}, function(data){
             $('#demo-lft-tab-3').html(data);
+            $('.demo-select2-placeholder').select2();
         });
     }
 

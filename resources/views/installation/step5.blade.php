@@ -18,7 +18,7 @@
             </div>
 
             <div class="form-group">
-                <label for="admin_password">Admin Password</label>
+                <label for="admin_password">Admin Password (At least 6 characters)</label>
                 <input type="password" class="form-control" id="admin_password" name="admin_password" required>
             </div>
 
@@ -34,12 +34,12 @@
 
             <div class="form-group">
                 <label for="running_session">Shop Address</label>
-                <input type="text" class="form-control" id="address" name="address">
+                <input type="text" class="form-control" id="address" name="address" required>
             </div>
 
             <div class="form-group">
                 <label for="running_session">Shop Phone</label>
-                <input type="text" class="form-control" id="phone" name="phone">
+                <input type="text" class="form-control" id="phone" name="phone" required>
             </div>
 
             <div class="form-group">

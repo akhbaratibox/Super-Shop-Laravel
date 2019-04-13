@@ -288,7 +288,7 @@
 	                        <div class="form-group">
 	                            <label class="col-lg-2 control-label">{{__('Discount')}}</label>
 	                            <div class="col-lg-7">
-	                                <input type="number" min="0" step="0.01" placeholder="{{__('Discount')}}" name="discount" class="form-control" value="{{$product->discount}}" required>
+	                                <input type="number" min="0" step="0.01" placeholder="{{__('Discount')}}" name="discount" class="form-control" value="{{ $product->discount }}" required>
 	                            </div>
 	                            <div class="col-lg-1">
 	                                <select class="demo-select2" name="discount_type" required>
@@ -314,52 +314,58 @@
 
 				        </div> --}}
 						<div id="demo-stk-lft-tab-9" class="tab-pane fade">
+							<div class="panel-heading">
+								<h3 class="panel-title">{{__('Free Shipping')}}</h3>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">{{__('Status')}}</label>
+								<div class="col-lg-7">
+									<label class="switch" style="margin-top:5px;">
+										<input type="radio" name="shipping_type" value="free" @if($product->shipping_type == 'free') checked @endif>
+										<span class="slider round"></span>
+									</label>
+								</div>
+							</div>
+
+							<div class="panel-heading">
+								<h3 class="panel-title">{{__('Local Pickup')}}</h3>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">{{__('Status')}}</label>
+								<div class="col-lg-7">
+									<label class="switch" style="margin-top:5px;">
+										<input type="radio" name="shipping_type" value="local_pickup" @if($product->shipping_type == 'local_pickup') checked @endif>
+										<span class="slider round"></span>
+									</label>
+								</div>
+							</div>
 							<div class="form-group">
 								<label class="col-lg-2 control-label">{{__('Shipping cost')}}</label>
 								<div class="col-lg-7">
-									<input type="number" min="0" step="0.01" value="{{ $product->shipping_cost }}" name="shipping_cost" class="form-control">
+									<input type="number" min="0" step="0.01" placeholder="{{__('Shipping cost')}}" name="local_pickup_shipping_cost" class="form-control" value="{{ $product->shipping_cost }}" required>
 								</div>
 							</div>
-							{{-- <div class="col-sm-4">
-						        <div class="panel">
-						            <div class="panel-heading">
-						                <h3 class="panel-title text-center">DHL</h3>
-						            </div>
-						            <div class="panel-body text-center">
-						                <label class="switch">
-						                    <input type="checkbox" name="dhl" value="1" checked>
-						                    <span class="slider round"></span>
-						                </label>
-						            </div>
-						        </div>
-						    </div>
-							<div class="col-sm-4">
-						        <div class="panel">
-						            <div class="panel-heading">
-						                <h3 class="panel-title text-center">FedX</h3>
-						            </div>
-						            <div class="panel-body text-center">
-						                <label class="switch">
-						                    <input type="checkbox" name="fedx" value="1" checked>
-						                    <span class="slider round"></span>
-						                </label>
-						            </div>
-						        </div>
-						    </div>
-							<div class="col-sm-4">
-						        <div class="panel">
-						            <div class="panel-heading">
-						                <h3 class="panel-title text-center">UPS</h3>
-						            </div>
-						            <div class="panel-body text-center">
-						                <label class="switch">
-						                    <input type="checkbox" name="ups" value="1" checked>
-						                    <span class="slider round"></span>
-						                </label>
-						            </div>
-						        </div>
-						    </div>
-				        </div> --}}
+
+							<div class="panel-heading">
+								<h3 class="panel-title">{{__('Flat Rate')}}</h3>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">{{__('Status')}}</label>
+								<div class="col-lg-7">
+									<label class="switch" style="margin-top:5px;">
+										<input type="radio" name="shipping_type" value="flat_rate" @if($product->shipping_type == 'flat_rate') checked @endif>
+										<span class="slider round"></span>
+									</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-2 control-label">{{__('Shipping cost')}}</label>
+								<div class="col-lg-7">
+									<input type="number" min="0" step="0.01" placeholder="{{__('Shipping cost')}}" name="flat_shipping_cost" class="form-control" value="{{ $product->shipping_cost }}" required>
+								</div>
+							</div>
+
+				        </div>
 						<div id="demo-stk-lft-tab-10" class="tab-pane fade">
 
 				        </div>

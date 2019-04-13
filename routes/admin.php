@@ -54,9 +54,11 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('/social-login', 'BusinessSettingsController@social_login')->name('social_login.index');
 	Route::get('/smtp-settings', 'BusinessSettingsController@smtp_settings')->name('smtp_settings.index');
 	Route::get('/google-analytics', 'BusinessSettingsController@google_analytics')->name('google_analytics.index');
+	Route::get('/facebook-chat', 'BusinessSettingsController@facebook_chat')->name('facebook_chat.index');
 	Route::post('/env_key_update', 'BusinessSettingsController@env_key_update')->name('env_key_update.update');
 	Route::post('/payment_method_update', 'BusinessSettingsController@payment_method_update')->name('payment_method.update');
 	Route::post('/google_analytics', 'BusinessSettingsController@google_analytics_update')->name('google_analytics.update');
+	Route::post('/facebook_chat', 'BusinessSettingsController@facebook_chat_update')->name('facebook_chat.update');
 	Route::get('/currency', 'CurrencyController@currency')->name('currency.index');
     Route::post('/currency/update', 'CurrencyController@updateCurrency')->name('currency.update');
     Route::post('/your-currency/update', 'CurrencyController@updateYourCurrency')->name('your_currency.update');
@@ -124,4 +126,5 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::resource('seosetting','SEOController');
 
 	Route::post('/pay_to_seller', 'CommissionController@pay_to_seller')->name('commissions.pay_to_seller');
+
 });

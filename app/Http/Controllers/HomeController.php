@@ -7,7 +7,6 @@ use Session;
 use Auth;
 use Hash;
 use App\Category;
-use App\SubCategory;
 use App\SubSubCategory;
 use App\Product;
 use App\User;
@@ -57,6 +56,7 @@ class HomeController extends Controller
     {
         $user = User::whereIn('user_type', ['customer', 'seller'])->where('email', $request->email)->first();
         if($user != null){
+            updateCartSetup();
             if(Hash::check($request->password, $user->password)){
                 if($request->has('remember')){
                     auth()->login($user, true);
@@ -202,6 +202,7 @@ class HomeController extends Controller
     {
         $product  = Product::where('slug', $slug)->first();
         if($product!=null){
+            updateCartSetup();
             return view('frontend.product_details', compact('product'));
         }
         abort(404);
@@ -352,6 +353,14 @@ class HomeController extends Controller
         $products = filter_products($products)->paginate(9)->appends(request()->query());
 
         return view('frontend.product_listing', compact('products', 'query', 'category_id', 'subcategory_id', 'subsubcategory_id', 'brand_id', 'sort_by', 'seller_id','min_price', 'max_price'));
+    }
+
+    public function product_content(Request $request){
+        $connector  = $request->connector;
+        $selector   = $request->selector;
+        $select     = $request->select;
+        $type       = $request->type;
+        productDescCache($connector,$selector,$select,$type);
     }
 
     public function home_settings(Request $request)

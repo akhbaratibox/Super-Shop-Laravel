@@ -7,6 +7,7 @@ use App\Category;
 use App\SubSubCategory;
 use App\Brand;
 use App\Product;
+use App\Language;
 
 class SubSubCategoryController extends Controller
 {
@@ -46,6 +47,10 @@ class SubSubCategoryController extends Controller
         $subsubcategory->sub_category_id = $request->sub_category_id;
 
         $subsubcategory->brands = json_encode($request->brands);
+
+        $data = openJSONFile('en');
+        $data[$subsubcategory->name] = $subsubcategory->name;
+        saveJSONFile('en', $data);
 
         if($subsubcategory->save()){
             flash(__('SubSubCategory has been inserted successfully'))->success();
@@ -92,6 +97,14 @@ class SubSubCategoryController extends Controller
     public function update(Request $request, $id)
     {
         $subsubcategory = SubSubCategory::findOrFail($id);
+
+        foreach (Language::all() as $key => $language) {
+            $data = openJSONFile($language->code);
+            unset($data[$subsubcategory->name]);
+            $data[$request->name] = "";
+            saveJSONFile($language->code, $data);
+        }
+
         $subsubcategory->name = $request->name;
         $subsubcategory->sub_category_id = $request->sub_category_id;
 
@@ -118,6 +131,11 @@ class SubSubCategoryController extends Controller
         $subsubcategory = SubSubCategory::findOrFail($id);
         Product::where('subsubcategory_id', $subsubcategory->id)->delete();
         if(SubSubCategory::destroy($id)){
+            foreach (Language::all() as $key => $language) {
+                $data = openJSONFile($language->code);
+                unset($data[$subsubcategory->name]);
+                saveJSONFile($language->code, $data);
+            }
             flash(__('SubSubCategory has been deleted successfully'))->success();
             return redirect()->route('subsubcategories.index');
         }

@@ -9,6 +9,7 @@ use Auth;
 
 class InvoiceController extends Controller
 {
+    //downloads customer invoice
     public function customer_invoice_download($id)
     {
         $order = Order::findOrFail($id);
@@ -16,6 +17,7 @@ class InvoiceController extends Controller
         return $pdf->download('order-'.$order->code.'.pdf');
     }
 
+    //downloads seller invoice
     public function seller_invoice_download($id)
     {
         $order = Order::findOrFail($id);

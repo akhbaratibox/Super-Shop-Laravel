@@ -111,7 +111,7 @@
             <div class="panel-body">
                 <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
                     @csrf
-                    <input type="hidden" name="payment_method" value="sslcommerz">
+                    <input type="hidden" name="payment_method" value="stripe">
                     <div class="form-group">
                         <input type="hidden" name="types[]" value="STRIPE_KEY">
                         <div class="col-lg-3">

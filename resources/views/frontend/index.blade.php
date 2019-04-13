@@ -1,7 +1,6 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-
     <section class="home-banner-area">
         <div class="container">
             <div class="row no-gutters position-relative">
@@ -90,9 +89,11 @@
                                                     <div class="sub-cat-brand">
                                                         <ul class="sub-brand-list">
                                                             @foreach ($brands as $brand_id)
-                                                                <li class="sub-brand-item">
-                                                                    <a href="{{ route('products.brand', $brand_id) }}" ><img src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid"></a>
-                                                                </li>
+                                                                @if(\App\Brand::find($brand_id) != null)
+                                                                    <li class="sub-brand-item">
+                                                                        <a href="{{ route('products.brand', $brand_id) }}" ><img src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid"></a>
+                                                                    </li>
+                                                                @endif
                                                             @endforeach
                                                         </ul>
                                                     </div>

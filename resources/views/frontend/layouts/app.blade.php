@@ -46,6 +46,9 @@
 <!-- Custom style -->
 <link type="text/css" href="{{ asset('frontend/css/custom-style.css') }}" rel="stylesheet">
 
+<!-- Facebook Chat style -->
+<link href="{{ asset('frontend/css/fb-style.css')}}" rel="stylesheet">
+
 <!-- color theme -->
 <link href="{{ asset('frontend/css/colors/'.\App\GeneralSetting::first()->frontend_color.'.css')}}" rel="stylesheet">
 
@@ -95,6 +98,16 @@
             </div>
         </div>
     </div>
+
+    @if (\App\BusinessSetting::where('type', 'facebook_chat')->first()->value == 1)
+        <div class="fb-customerchat fb_invisible_flow"
+            page_id="{{ env('FACEBOOK_PAGE_ID') }}"
+            theme_color="#459645"
+            logged_in_greeting="Hi! How can we help you?"
+            logged_out_greeting="GoodBye!... Hope to see you soon."
+            minimized="true">
+        </div>
+    @endif
 
 </div><!-- END: body-wrap -->
 
@@ -463,6 +476,7 @@
 <!-- App JS -->
 <script src="{{ asset('frontend/js/active-shop.js') }}"></script>
 <script src="{{ asset('frontend/js/main.js') }}"></script>
+<script src="{{ asset('frontend/js/fb-script.js') }}"></script>
 
 @yield('script')
 

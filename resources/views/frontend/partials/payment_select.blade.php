@@ -92,6 +92,13 @@
                                     </li>
                                 @endif
                             </ul>
+                            @if (Auth::check())
+                                <div class="text-center mt-4">
+                                    or
+                                    <div class="h5">Your wallet balance : <strong>{{ single_price(Auth::user()->balance) }}</strong></div>
+                                    <button onclick="use_wallet()" class="btn btn-base-1" @if(Auth::user()->balance < $total) disabled @endif>Use your Wallet</button>
+                                </div>
+                            @endif
                         </div>
                     </div>
 
@@ -115,3 +122,10 @@
         </div>
     </div>
 </section>
+
+<script type="text/javascript">
+    function use_wallet(){
+        $('input[name=payment_option]').val('wallet');
+        $('#checkout-form').submit();
+    }
+</script>

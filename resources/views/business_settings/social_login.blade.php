@@ -49,7 +49,7 @@
                     <div class="form-group">
                         <input type="hidden" name="types[]" value="FACEBOOK_CLIENT_ID">
                         <div class="col-lg-3">
-                            <label class="control-label">{{__('Client ID')}}</label>
+                            <label class="control-label">{{__('App ID')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <input type="text" class="form-control" name="FACEBOOK_CLIENT_ID" value="{{ env('FACEBOOK_CLIENT_ID') }}" placeholder="Facebook Client ID" required>
@@ -58,7 +58,7 @@
                     <div class="form-group">
                         <input type="hidden" name="types[]" value="FACEBOOK_CLIENT_SECRET">
                         <div class="col-lg-3">
-                            <label class="control-label">{{__('Client Secret')}}</label>
+                            <label class="control-label">{{__('App Secret')}}</label>
                         </div>
                         <div class="col-lg-6">
                             <input type="text" class="form-control" name="FACEBOOK_CLIENT_SECRET" value="{{ env('FACEBOOK_CLIENT_SECRET') }}" placeholder="Facebook Client Secret" required>

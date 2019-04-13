@@ -226,12 +226,6 @@
                                 <li class="{{ areActiveRoutes(['wish_report.index'])}}">
                                     <a class="nav-link" href="{{ route('wish_report.index') }}">{{__('Product Wish Report')}}</a>
                                 </li>
-                                <li class="{{ areActiveRoutes(['classified_user_report.index'])}}">
-                                    <a class="nav-link" href="{{ route('classified_user_report.index') }}">{{__('Classified User Report')}}</a>
-                                </li>
-                                <li class="{{ areActiveRoutes(['classified_sale_report.index'])}}">
-                                    <a class="nav-link" href="{{ route('classified_sale_report.index') }}">{{__('Classified Product Sale Report')}}</a>
-                                </li>
                             </ul>
                         </li>
 

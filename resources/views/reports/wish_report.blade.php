@@ -38,10 +38,12 @@
                         </thead>
                         <tbody>
                             @foreach ($products as $key => $product)
-                                <tr>
-                                    <td>{{ __($product->name) }}</td>
-                                    <td>{{ $product->wishlists->count() }}</td>
-                                </tr>
+                                @if($product->wishlists != null)
+                                    <tr>
+                                        <td>{{ __($product->name) }}</td>
+                                        <td>{{ $product->wishlists->count() }}</td>
+                                    </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>

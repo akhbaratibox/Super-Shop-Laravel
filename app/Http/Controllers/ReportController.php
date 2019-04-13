@@ -63,16 +63,4 @@ class ReportController extends Controller
         }
         return view('reports.wish_report', compact('products'));
     }
-
-    public function classified_user_report(Request $request)
-    {
-        $users = User::all();
-        return view('reports.classified_user_report', compact('users'));
-    }
-
-    public function classified_sale_report(Request $request)
-    {
-        $users = User::all();
-        return view('reports.classified_sale_report', compact('users'));
-    }
 }

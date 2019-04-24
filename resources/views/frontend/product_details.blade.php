@@ -668,7 +668,7 @@
                         </div>
                         <div class="caorusel-box">
                             <div class="slick-carousel" data-slick-items="4" data-slick-lg-items="4"  data-slick-md-items="3" data-slick-sm-items="2" data-slick-xs-items="1">
-                                @foreach (filter_products(\App\Product::where('subcategory_id', $product->subcategory_id)->where('id', '!=', $product->id))->limit(10)->get() as $key => $related_product)
+                                @foreach (filter_products(\App\Product::where('subcategory_id', $product->subcategory_id)->where('published', 1)->where('id', '!=', $product->id))->limit(10)->get() as $key => $related_product)
                                     <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
                                         <div class="card-body p-0">
                                             <div class="card-image">

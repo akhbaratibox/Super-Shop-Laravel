@@ -74,6 +74,7 @@ class InstallController extends Controller
         $user->save();
 
         foreach(Product::all() as $product){
+            $product->added_by = 'admin';
             $product->user_id = $user->id;
             $product->save();
         }

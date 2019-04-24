@@ -35,13 +35,29 @@ class RouteServiceProvider extends ServiceProvider
    */
   public function map()
   {
-    $this->mapApiRoutes();
+    //$this->mapApiRoutes();
 
-    $this->mapWebRoutes();
+    //$this->mapWebRoutes();
 
-    $this->mapAdminRoutes();
+    //$this->mapAdminRoutes();
 
-    // $this->mapInstallRoutes();
+    $this->mapInstallRoutes();
+
+    //$this->mapUpdateRoutes();
+  }
+
+  /**
+   * Define the "installation" routes for the application.
+   *
+   * These routes all receive session state, CSRF protection, etc.
+   *
+   * @return void
+   */
+  protected function mapUpdateRoutes()
+  {
+    Route::middleware('web')
+       ->namespace($this->namespace)
+       ->group(base_path('routes/update.php'));
   }
 
   /**

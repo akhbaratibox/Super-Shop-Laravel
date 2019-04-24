@@ -199,7 +199,7 @@ class ProductController extends Controller
         if($product->save()){
             flash(__('Product has been inserted successfully'))->success();
             if(Auth::user()->user_type == 'admin'){
-                return redirect()->route('products.index');
+                return redirect()->route('products.admin');
             }
             else{
                 return redirect()->route('seller.products');
@@ -412,7 +412,7 @@ class ProductController extends Controller
         if($product->save()){
             flash(__('Product has been updated successfully'))->success();
             if(Auth::user()->user_type == 'admin'){
-                return redirect()->route('products.index');
+                return redirect()->route('products.admin');
             }
             else{
                 return redirect()->route('seller.products');
@@ -453,7 +453,7 @@ class ProductController extends Controller
             }
             flash(__('Product has been deleted successfully'))->success();
             if(Auth::user()->user_type == 'admin'){
-                return redirect()->route('products.index');
+                return redirect()->route('products.admin');
             }
             else{
                 return redirect()->route('seller.products');
@@ -480,7 +480,7 @@ class ProductController extends Controller
         if($product_new->save()){
             flash(__('Product has been duplicated successfully'))->success();
             if(Auth::user()->user_type == 'admin'){
-                return redirect()->route('products.index');
+                return redirect()->route('products.admin');
             }
             else{
                 return redirect()->route('seller.products');

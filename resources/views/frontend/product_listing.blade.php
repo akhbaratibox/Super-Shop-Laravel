@@ -81,8 +81,10 @@
                                         <span class="range-slider-value value-low"
                                             @if (isset($min_price))
                                                 data-range-value-low="{{ $min_price }}"
-                                            @else
+                                            @elseif($products->min('unit_price') > 0)
                                                 data-range-value-low="{{ $products->min('unit_price') }}"
+                                            @else
+                                                data-range-value-low="0"
                                             @endif
                                             id="input-slider-range-value-low">
                                     </div>
@@ -91,8 +93,10 @@
                                         <span class="range-slider-value value-high"
                                             @if (isset($max_price))
                                                 data-range-value-high="{{ $max_price }}"
-                                            @else
+                                            @elseif($products->max('unit_price') > 0)
                                                 data-range-value-high="{{ $products->max('unit_price') }}"
+                                            @else
+                                                data-range-value-high="0"
                                             @endif
                                             id="input-slider-range-value-high">
                                     </div>

@@ -73,7 +73,7 @@
                         <div class="box-content">
                             <div class="range-slider-wrapper mt-3">
                                 <!-- Range slider container -->
-                                <div id="input-slider-range" data-range-value-min="{{ \App\Product::all()->min('unit_price') }}" data-range-value-max="{{ \App\Product::all()->max('unit_price') }}"></div>
+                                <div id="input-slider-range" data-range-value-min="{{ filter_products(\App\Product::all())->min('unit_price') }}" data-range-value-max="{{ filter_products(\App\Product::all())->max('unit_price') }}"></div>
 
                                 <!-- Range slider values -->
                                 <div class="row">
@@ -155,7 +155,9 @@
                                         @endif
 
                                         @foreach ($brands as $key => $id)
-                                            <li><a href="{{ route('products.brand', $id) }}"><img src="{{ asset(\App\Brand::find($id)->logo) }}" alt="" class="img-fluid"></a></li>
+                                            @if (\App\Brand::find($id) != null)
+                                                <li><a href="{{ route('products.brand', $id) }}"><img src="{{ asset(\App\Brand::find($id)->logo) }}" alt="" class="img-fluid"></a></li>
+                                            @endif
                                         @endforeach
                                     </ul>
                                 </div>
@@ -214,7 +216,9 @@
                                                     <select class="form-control sortSelect" data-placeholder="{{__('All Brands')}}" name="brand_id" onchange="filter()">
                                                         <option value="">{{__('All Brands')}}</option>
                                                         @foreach ($brands as $key => $id)
-                                                            <option value="{{ $id }}" @isset($brand_id) @if ($brand_id == $id) selected @endif @endisset>{{ \App\Brand::find($id)->name }}</option>
+                                                            @if (\App\Brand::find($id) != null)
+                                                                <option value="{{ $id }}" @isset($brand_id) @if ($brand_id == $id) selected @endif @endisset>{{ \App\Brand::find($id)->name }}</option>
+                                                            @endif
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -243,7 +247,7 @@
                         <div class="products-box-bar p-3 bg-white">
                             <div class="row">
                                 @foreach ($products as $key => $product)
-                                    <div class="col-lg-4 col-md-6">
+                                    <div class="col-lg-4 col-6">
                                         <div class="product-card-1 mb-3">
                                             <figure class="product-image-container">
                                                 <a href="{{ route('product', $product->slug) }}" class="product-image d-block" style="background-image:url('{{ asset($product->thumbnail_img) }}');">

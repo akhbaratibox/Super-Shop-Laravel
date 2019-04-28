@@ -60,9 +60,9 @@ class CartController extends Controller
             $variations = json_decode($product->variations);
             $price = $variations->$str->price;
             if($variations->$str->qty >= $request['quantity']){
-                $variations->$str->qty -= $request['quantity'];
-                $product->variations = json_encode($variations);
-                $product->save();
+                // $variations->$str->qty -= $request['quantity'];
+                // $product->variations = json_encode($variations);
+                // $product->save();
             }
             else{
                 return view('frontend.partials.outOfStockCart');

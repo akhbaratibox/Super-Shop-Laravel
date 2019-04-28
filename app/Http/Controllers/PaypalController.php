@@ -20,21 +20,22 @@ class PaypalController extends Controller
     public function __construct()
     {
         if(Session::has('payment_type')){
+
+            if(BusinessSetting::where('type', 'paypal_sandbox')->first()->value == 1){
+                $mode = 'sandbox';
+            }
+            else{
+                $mode = 'live';
+            }
+
             if(Session::get('payment_type') == 'cart_payment' || Session::get('payment_type') == 'wallet_payment'){
                 $this->_apiContext = PayPal::ApiContext(
                     env('PAYPAL_CLIENT_ID'),
                     env('PAYPAL_CLIENT_SECRET'));
 
-                if(BusinessSetting::where('type', 'paypal_sandbox')->first()->value == 1){
-                    $mode = 'sandbox';
-                }
-                else{
-                    $mode = 'live';
-                }
-
         		$this->_apiContext->setConfig(array(
         			'mode' => $mode,
-        			'service.EndPoint' => 'https://api.sandbox.paypal.com',
+        			'service.EndPoint' => 'https://api.paypal.com',
         			'http.ConnectionTimeOut' => 30,
         			'log.LogEnabled' => true,
         			'log.FileName' => public_path('logs/paypal.log'),
@@ -48,8 +49,8 @@ class PaypalController extends Controller
                     $seller->paypal_client_secret);
 
         		$this->_apiContext->setConfig(array(
-        			'mode' => 'sandbox',
-        			'service.EndPoint' => 'https://api.sandbox.paypal.com',
+        			'mode' => $mode,
+        			'service.EndPoint' => 'https://api.paypal.com',
         			'http.ConnectionTimeOut' => 30,
         			'log.LogEnabled' => true,
         			'log.FileName' => public_path('logs/paypal.log'),

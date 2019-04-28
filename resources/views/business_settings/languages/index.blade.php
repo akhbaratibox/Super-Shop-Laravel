@@ -22,6 +22,7 @@
                             <th>#</th>
                             <th>{{__('Name')}}</th>
                             <th>{{__('Code')}}</th>
+                            <th>{{__('RTL')}}</th>
                             <th width="10%">{{__('Options')}}</th>
                         </tr>
                     </thead>
@@ -34,16 +35,20 @@
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $language->name }}</td>
                                 <td>{{ $language->code }}</td>
+                                <td><label class="switch">
+                                    <input onchange="update_rtl_status(this)" value="{{ $language->id }}" type="checkbox" <?php if($language->rtl == 1) echo "checked";?> >
+                                    <span class="slider round"></span></label>
+                                </td>
                                 <td>
                                     <div class="btn-group dropdown">
                                         <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
-                                            Actions <i class="dropdown-caret"></i>
+                                            {{__('Actions')}} <i class="dropdown-caret"></i>
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-right">
-                                            <li><a href="{{route('languages.show', encrypt($language->id))}}">Translation</a></li>
-                                            <li><a href="{{route('languages.edit', encrypt($language->id))}}">Edit</a></li>
+                                            <li><a href="{{route('languages.show', encrypt($language->id))}}">{{__('Translation')}}</a></li>
+                                            <li><a href="{{route('languages.edit', encrypt($language->id))}}">{{__('Edit')}}</a></li>
                                             @if($language->code != 'en')
-                                                <li><a onclick="confirm_modal('{{route('languages.destroy', $language->id)}}');">Delete</a></li>
+                                                <li><a onclick="confirm_modal('{{route('languages.destroy', $language->id)}}');">{{__('Delete')}}</a></li>
                                             @endif
                                         </ul>
                                     </div>
@@ -60,4 +65,25 @@
         </div>
     </div>
 
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        function update_rtl_status(el){
+            if(el.checked){
+                var status = 1;
+            }
+            else{
+                var status = 0;
+            }
+            $.post('{{ route('languages.update_rtl_status') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
+                if(data == 1){
+                    location.reload();
+                }
+                else{
+                    showAlert('danger', 'Something went wrong');
+                }
+            });
+        }
+    </script>
 @endsection

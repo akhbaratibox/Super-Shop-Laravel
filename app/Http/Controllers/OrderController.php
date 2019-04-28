@@ -128,6 +128,13 @@ class OrderController extends Controller
                     }
                 }
 
+                if($product_variation != null){
+                    $variations = json_decode($product->variations);
+                    $variations->$product_variation->qty -= $cartItem['quantity'];
+                    $product->variations = json_encode($variations);
+                    $product->save();
+                }
+
                 $order_detail = new OrderDetail;
                 $order_detail->order_id  =$order->id;
                 $order_detail->seller_id = $product->user_id;
@@ -159,7 +166,9 @@ class OrderController extends Controller
             $array['file_name'] = 'Order#'.$order->code.'.pdf';
 
             //sends email to customer with the invoice pdf attached
-            Mail::to($request->session()->get('shipping_info')['email'])->queue(new InvoiceEmailManager($array));
+            if(env('MAIL_USERNAME') != null && env('MAIL_PASSWORD') != null){
+                Mail::to($request->session()->get('shipping_info')['email'])->queue(new InvoiceEmailManager($array));
+            }
             unlink($array['file']);
 
             $request->session()->put('order_id', $order->id);

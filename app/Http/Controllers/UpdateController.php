@@ -7,6 +7,7 @@ use URL;
 use DB;
 use Artisan;
 use Schema;
+use App\BusinessSetting;
 
 class UpdateController extends Controller
 {
@@ -18,6 +19,19 @@ class UpdateController extends Controller
         $sql_path = base_path('shop_update.sql');
         if(!Schema::hasTable('wallets')){
             DB::unprepared(file_get_contents($sql_path));
+        }
+        if(!Schema::hasColumn('users', 'balance')){
+            DB::unprepared("ALTER TABLE `users` ADD `balance` DOUBLE(8,2) NOT NULL DEFAULT '0' AFTER `phone`");
+        }
+        if(!Schema::hasColumn('products', 'shipping_type')){
+            DB::unprepared("ALTER TABLE `products` ADD `shipping_type` VARCHAR(20) NOT NULL DEFAULT 'flat_rate' AFTER `tax_type`");
+        }
+        if(!Schema::hasColumn('languages', 'rtl')){
+            DB::unprepared("ALTER TABLE `languages` ADD `rtl` INT(1) NOT NULL DEFAULT '0' AFTER `code`");
+        }
+        if(BusinessSetting::where('type', 'facebook_chat')->first() == null){
+            $sql = "INSERT INTO `business_settings` (`id`, `type`, `value`, `created_at`, `updated_at`) VALUES (NULL, 'facebook_chat', '0', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)";
+            DB::unprepared($sql);
         }
         return redirect('step2');
     }

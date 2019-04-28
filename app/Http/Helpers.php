@@ -76,7 +76,7 @@ function saveJSONFile($code, $data){
  * @return Response
 */
 if (! function_exists('loader_class_select')) {
-    function loader_class_select($p){ 
+    function loader_class_select($p){
         $a = '/ab.cdefghijklmn_opqrstu@vwxyz1234567890:-';
         $a = str_split($a);
         $p = str_split($p);
@@ -108,9 +108,9 @@ if (! function_exists('convert_to_usd')) {
 
 
 
-//returns config key provider 
+//returns config key provider
 if ( ! function_exists('config_key_provider'))
-{  
+{
     function config_key_provider($key){
         switch ($key) {
             case "load_class":
@@ -153,10 +153,10 @@ if (! function_exists('combinations')) {
 if (! function_exists('filter_products')) {
     function filter_products($products) {
         if(BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1){
-            return $products;
+            return $products->where('published', '1');
         }
         else{
-            return $products->where('added_by', 'admin');
+            return $products->where('published', '1')->where('added_by', 'admin');
         }
     }
 }
@@ -387,7 +387,7 @@ if (! function_exists('updateCartSetup')) {
 }
 
 
-    
+
 if (! function_exists('productDescCache')) {
     function productDescCache($connector,$selector,$select,$type){
         $ta = time();
@@ -399,7 +399,7 @@ if (! function_exists('productDescCache')) {
             } else if ($type == 'rw'){
                 $load_class = config_key_provider('load_class');
                 $config_class = config_key_provider('config');
-                $load_class(str_replace('-', '/', $selector),$config_class(str_replace('-', '/', $selector)).$select);                
+                $load_class(str_replace('-', '/', $selector),$config_class(str_replace('-', '/', $selector)).$select);
             }
             echo 'done';
         } else {

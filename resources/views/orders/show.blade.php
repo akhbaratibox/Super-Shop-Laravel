@@ -37,6 +37,7 @@
     				<address>
         				<strong class="text-main">{{ json_decode($order->shipping_address)->name }}</strong><br>
                          {{ json_decode($order->shipping_address)->email }}<br>
+                         {{ json_decode($order->shipping_address)->phone }}<br>
         				 {{ json_decode($order->shipping_address)->address }}, {{ json_decode($order->shipping_address)->city }}, {{ json_decode($order->shipping_address)->country }}
                     </address>
     			</div>

@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="pad-all text-center">
-        <form class="" action="{{ route('stock_report.index') }}" method="GET">
+        <form class="" action="{{ route('wish_report.index') }}" method="GET">
             <div class="box-inline mar-btm pad-rgt">
                  Sort by Category:
                  <div class="select">

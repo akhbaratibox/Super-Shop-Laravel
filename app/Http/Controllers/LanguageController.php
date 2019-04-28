@@ -9,7 +9,6 @@ use App\Language;
 
 class LanguageController extends Controller
 {
-    //switch language, stores language code in session
     public function changeLanguage(Request $request)
     {
     	$request->session()->put('locale', $request->locale);
@@ -28,7 +27,6 @@ class LanguageController extends Controller
         return view('business_settings.languages.create');
     }
 
-    //Store new language and flag for it
     public function store(Request $request)
     {
         $language = new Language;
@@ -72,7 +70,6 @@ class LanguageController extends Controller
         }
     }
 
-    //updates the key values for a specified language
     public function key_value_store(Request $request)
     {
         $language = Language::findOrFail($request->id);
@@ -83,6 +80,17 @@ class LanguageController extends Controller
         saveJSONFile($language->code, $data);
         flash(__('Key-Value updated  for ').$language->name)->success();
         return back();
+    }
+
+    public function update_rtl_status(Request $request)
+    {
+        $language = Language::findOrFail($request->id);
+        $language->rtl = $request->status;
+        if($language->save()){
+            flash(__('RTL status updated successfully'))->success();
+            return 1;
+        }
+        return 0;
     }
 
     public function destroy($id)

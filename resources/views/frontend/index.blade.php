@@ -243,7 +243,7 @@
                     </h3>
                 </div>
                 <div class="caorusel-box">
-                    <div class="slick-carousel" data-slick-items="5" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="2" data-slick-xs-items="1">
+                    <div class="slick-carousel" data-slick-items="5" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="2" data-slick-xs-items="2">
                         @foreach ($flash_deal->flash_deal_products as $key => $flash_deal_product)
                             @php
                                 $product = \App\Product::find($flash_deal_product->product_id);
@@ -366,7 +366,7 @@
                             <div class="tab-pane fade @php if($key == 0) echo 'show active'; @endphp" id="subsubcat-{{ $subsubcategory }}">
                             <div class="row">
                                 @foreach (filter_products(\App\Product::where('published', 1)->where('subsubcategory_id', $subsubcategory))->limit(4)->get() as $key => $product)
-                                    <div class="col-lg-3 col-md-6">
+                                    <div class="col-lg-3 col-md-4 col-6">
                                         <div class="product-box-2 bg-white alt-box">
                                             <div class="position-relative overflow-hidden">
                                                 <a href="{{ route('product', $product->slug) }}" class="d-block product-image h-100" style="background-image:url('{{ asset($product->thumbnail_img) }}');" tabindex="0">

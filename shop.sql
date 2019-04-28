@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2019 at 01:54 PM
+-- Generation Time: Apr 24, 2019 at 02:37 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -30,12 +30,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `banners` (
   `id` int(11) NOT NULL,
-  `photo` varchar(255) DEFAULT NULL,
-  `url` varchar(1000) DEFAULT NULL,
+  `photo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `url` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
   `published` int(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `banners`
@@ -54,11 +54,11 @@ INSERT INTO `banners` (`id`, `photo`, `url`, `published`, `created_at`, `updated
 
 CREATE TABLE `brands` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `logo` varchar(100) DEFAULT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `logo` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `brands`
@@ -76,11 +76,11 @@ INSERT INTO `brands` (`id`, `name`, `logo`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `business_settings` (
   `id` int(11) NOT NULL,
-  `type` varchar(30) NOT NULL,
-  `value` longtext,
+  `type` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `value` longtext COLLATE utf8_unicode_ci,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `business_settings`
@@ -121,13 +121,13 @@ INSERT INTO `business_settings` (`id`, `type`, `value`, `created_at`, `updated_a
 
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `banner` varchar(100) DEFAULT NULL,
-  `icon` varchar(100) DEFAULT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `banner` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `icon` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `featured` int(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `categories`
@@ -146,11 +146,11 @@ INSERT INTO `categories` (`id`, `name`, `banner`, `icon`, `featured`, `created_a
 
 CREATE TABLE `colors` (
   `id` int(11) NOT NULL,
-  `name` varchar(30) DEFAULT NULL,
-  `code` varchar(10) DEFAULT NULL,
+  `name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `code` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `colors`
@@ -309,9 +309,9 @@ INSERT INTO `colors` (`id`, `name`, `code`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `countries` (
   `id` int(11) NOT NULL,
-  `code` varchar(2) NOT NULL DEFAULT '',
-  `name` varchar(100) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `code` varchar(2) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `countries`
@@ -623,14 +623,14 @@ INSERT INTO `countries` (`id`, `code`, `name`) VALUES
 
 CREATE TABLE `currencies` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `symbol` varchar(255) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `symbol` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `exchange_rate` double(10,5) NOT NULL,
   `status` int(10) NOT NULL DEFAULT '0',
-  `code` varchar(20) DEFAULT NULL,
+  `code` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `currencies`
@@ -673,7 +673,7 @@ CREATE TABLE `customers` (
   `user_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -683,13 +683,13 @@ CREATE TABLE `customers` (
 
 CREATE TABLE `flash_deals` (
   `id` int(11) NOT NULL,
-  `title` varchar(255) DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `start_date` int(20) DEFAULT NULL,
   `end_date` int(20) DEFAULT NULL,
   `status` int(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `flash_deals`
@@ -709,10 +709,10 @@ CREATE TABLE `flash_deal_products` (
   `flash_deal_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `discount` double(8,2) DEFAULT '0.00',
-  `discount_type` varchar(20) DEFAULT NULL,
+  `discount_type` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `flash_deal_products`
@@ -730,25 +730,25 @@ INSERT INTO `flash_deal_products` (`id`, `flash_deal_id`, `product_id`, `discoun
 
 CREATE TABLE `general_settings` (
   `id` int(11) NOT NULL,
-  `frontend_color` varchar(255) COLLATE utf32_bin NOT NULL DEFAULT 'default',
-  `logo` varchar(255) COLLATE utf32_bin DEFAULT NULL,
-  `admin_logo` varchar(255) COLLATE utf32_bin DEFAULT NULL,
-  `admin_login_background` varchar(255) COLLATE utf32_bin DEFAULT NULL,
-  `admin_login_sidebar` varchar(255) COLLATE utf32_bin DEFAULT NULL,
-  `favicon` varchar(255) COLLATE utf32_bin DEFAULT NULL,
-  `site_name` varchar(255) COLLATE utf32_bin DEFAULT NULL,
-  `address` varchar(1000) COLLATE utf32_bin DEFAULT NULL,
-  `description` mediumtext COLLATE utf32_bin NOT NULL,
-  `phone` varchar(100) COLLATE utf32_bin DEFAULT NULL,
-  `email` varchar(255) COLLATE utf32_bin DEFAULT NULL,
-  `facebook` varchar(1000) COLLATE utf32_bin DEFAULT NULL,
-  `instagram` varchar(1000) COLLATE utf32_bin DEFAULT NULL,
-  `twitter` varchar(1000) COLLATE utf32_bin DEFAULT NULL,
-  `youtube` varchar(1000) COLLATE utf32_bin DEFAULT NULL,
-  `google_plus` varchar(1000) COLLATE utf32_bin DEFAULT NULL,
+  `frontend_color` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'default',
+  `logo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `admin_logo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `admin_login_background` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `admin_login_sidebar` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `favicon` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `site_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `address` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `facebook` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `instagram` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `twitter` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `youtube` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `google_plus` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `general_settings`
@@ -766,11 +766,11 @@ INSERT INTO `general_settings` (`id`, `frontend_color`, `logo`, `admin_logo`, `a
 CREATE TABLE `home_categories` (
   `id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
-  `subsubcategories` varchar(1000) DEFAULT NULL,
+  `subsubcategories` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` int(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `home_categories`
@@ -788,19 +788,20 @@ INSERT INTO `home_categories` (`id`, `category_id`, `subsubcategories`, `status`
 
 CREATE TABLE `languages` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `code` varchar(100) NOT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `code` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `rtl` int(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `languages`
 --
 
-INSERT INTO `languages` (`id`, `name`, `code`, `created_at`, `updated_at`) VALUES
-(1, 'English', 'en', '2019-01-20 12:13:20', '2019-01-20 12:13:20'),
-(3, 'Bangla', 'bd', '2019-02-17 06:35:37', '2019-02-18 06:49:51');
+INSERT INTO `languages` (`id`, `name`, `code`, `rtl`, `created_at`, `updated_at`) VALUES
+(1, 'English', 'en', 0, '2019-01-20 12:13:20', '2019-01-20 12:13:20'),
+(3, 'Bangla', 'bd', 0, '2019-02-17 06:35:37', '2019-02-18 06:49:51');
 
 -- --------------------------------------------------------
 
@@ -810,11 +811,11 @@ INSERT INTO `languages` (`id`, `name`, `code`, `created_at`, `updated_at`) VALUE
 
 CREATE TABLE `links` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) COLLATE utf32_bin NOT NULL,
-  `url` varchar(200) COLLATE utf32_bin NOT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `url` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -824,9 +825,9 @@ CREATE TABLE `links` (
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -846,17 +847,17 @@ CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `guest_id` int(11) DEFAULT NULL,
-  `shipping_address` mediumtext,
-  `payment_type` varchar(20) DEFAULT NULL,
-  `payment_status` varchar(20) DEFAULT 'unpaid',
-  `payment_details` longtext,
+  `shipping_address` longtext COLLATE utf8_unicode_ci,
+  `payment_type` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `payment_status` varchar(20) COLLATE utf8_unicode_ci DEFAULT 'unpaid',
+  `payment_details` longtext COLLATE utf8_unicode_ci,
   `grand_total` double(8,2) DEFAULT NULL,
-  `code` text,
+  `code` mediumtext COLLATE utf8_unicode_ci,
   `date` int(20) NOT NULL,
   `viewed` int(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `orders`
@@ -876,16 +877,16 @@ CREATE TABLE `order_details` (
   `order_id` int(11) NOT NULL,
   `seller_id` int(11) DEFAULT NULL,
   `product_id` int(11) NOT NULL,
-  `variation` longtext,
+  `variation` longtext COLLATE utf8_unicode_ci,
   `price` double(8,2) DEFAULT NULL,
   `tax` double(8,2) NOT NULL DEFAULT '0.00',
   `shipping_cost` double(8,2) NOT NULL DEFAULT '0.00',
   `quantity` int(11) DEFAULT NULL,
-  `payment_status` varchar(10) NOT NULL DEFAULT 'unpaid',
-  `delivery_status` varchar(20) DEFAULT 'pending',
+  `payment_status` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'unpaid',
+  `delivery_status` varchar(20) COLLATE utf8_unicode_ci DEFAULT 'pending',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `order_details`
@@ -901,10 +902,10 @@ INSERT INTO `order_details` (`id`, `order_id`, `seller_id`, `product_id`, `varia
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -916,11 +917,11 @@ CREATE TABLE `payments` (
   `id` int(11) NOT NULL,
   `seller_id` int(11) NOT NULL,
   `amount` double(8,2) NOT NULL DEFAULT '0.00',
-  `payment_details` longtext COLLATE utf8_bin,
-  `payment_method` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `payment_details` longtext COLLATE utf8_unicode_ci,
+  `payment_method` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -930,11 +931,11 @@ CREATE TABLE `payments` (
 
 CREATE TABLE `policies` (
   `id` int(11) NOT NULL,
-  `name` varchar(35) COLLATE utf32_bin NOT NULL,
-  `content` longtext COLLATE utf32_bin NOT NULL,
+  `name` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `policies`
@@ -957,46 +958,46 @@ INSERT INTO `policies` (`id`, `name`, `content`, `created_at`, `updated_at`) VAL
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
-  `name` varchar(200) NOT NULL,
-  `added_by` varchar(6) NOT NULL DEFAULT 'admin',
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `added_by` varchar(6) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'admin',
   `user_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
   `subcategory_id` int(11) NOT NULL,
   `subsubcategory_id` int(11) NOT NULL,
   `brand_id` int(11) NOT NULL,
-  `photos` varchar(2000) DEFAULT NULL,
-  `thumbnail_img` varchar(100) DEFAULT NULL,
-  `featured_img` varchar(100) DEFAULT NULL,
-  `flash_deal_img` varchar(100) DEFAULT NULL,
-  `video_provider` varchar(20) DEFAULT NULL,
-  `video_link` varchar(100) DEFAULT NULL,
-  `tags` text,
-  `description` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `photos` varchar(2000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `thumbnail_img` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `featured_img` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `flash_deal_img` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `video_provider` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `video_link` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tags` mediumtext COLLATE utf8_unicode_ci,
+  `description` longtext COLLATE utf8_unicode_ci,
   `unit_price` double(8,2) NOT NULL,
   `purchase_price` double(8,2) NOT NULL,
-  `choice_options` text,
-  `colors` text,
-  `variations` text NOT NULL,
+  `choice_options` mediumtext COLLATE utf8_unicode_ci,
+  `colors` mediumtext COLLATE utf8_unicode_ci,
+  `variations` mediumtext COLLATE utf8_unicode_ci NOT NULL,
   `todays_deal` int(11) NOT NULL DEFAULT '0',
   `published` int(11) NOT NULL DEFAULT '1',
   `featured` int(11) NOT NULL DEFAULT '0',
   `current_stock` int(10) NOT NULL DEFAULT '0',
-  `unit` varchar(20) DEFAULT NULL,
+  `unit` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `discount` double(8,2) DEFAULT NULL,
-  `discount_type` varchar(10) DEFAULT NULL,
+  `discount_type` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `tax` double(8,2) DEFAULT NULL,
-  `tax_type` varchar(10) DEFAULT NULL,
-  `shipping_type` varchar(20) NOT NULL DEFAULT 'flat_rate',
+  `tax_type` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `shipping_type` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'flat_rate',
   `shipping_cost` double(8,2) DEFAULT '0.00',
   `num_of_sale` int(11) NOT NULL DEFAULT '0',
-  `meta_title` text,
-  `meta_description` longtext,
-  `meta_img` varchar(255) DEFAULT NULL,
-  `pdf` varchar(255) DEFAULT NULL,
-  `slug` text NOT NULL,
+  `meta_title` mediumtext COLLATE utf8_unicode_ci,
+  `meta_description` longtext COLLATE utf8_unicode_ci,
+  `meta_img` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pdf` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `slug` mediumtext COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `products`
@@ -1022,10 +1023,10 @@ INSERT INTO `products` (`id`, `name`, `added_by`, `user_id`, `category_id`, `sub
 CREATE TABLE `product_stocks` (
   `id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `stocks` text NOT NULL,
+  `stocks` mediumtext COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1038,10 +1039,10 @@ CREATE TABLE `reviews` (
   `product_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `rating` int(11) NOT NULL DEFAULT '0',
-  `comment` text NOT NULL,
+  `comment` mediumtext COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1051,11 +1052,11 @@ CREATE TABLE `reviews` (
 
 CREATE TABLE `roles` (
   `id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `permissions` text NOT NULL,
+  `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `permissions` mediumtext COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `roles`
@@ -1073,11 +1074,11 @@ INSERT INTO `roles` (`id`, `name`, `permissions`, `created_at`, `updated_at`) VA
 
 CREATE TABLE `searches` (
   `id` int(11) NOT NULL,
-  `query` varchar(1000) NOT NULL,
+  `query` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `count` int(11) NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1089,21 +1090,21 @@ CREATE TABLE `sellers` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `verification_status` int(1) NOT NULL DEFAULT '0',
-  `verification_info` longtext,
+  `verification_info` longtext COLLATE utf8_unicode_ci,
   `cash_on_delivery_status` int(1) NOT NULL DEFAULT '0',
   `sslcommerz_status` int(1) NOT NULL DEFAULT '0',
   `stripe_status` int(1) DEFAULT '0',
   `paypal_status` int(1) NOT NULL DEFAULT '0',
-  `paypal_client_id` varchar(255) DEFAULT NULL,
-  `paypal_client_secret` varchar(255) DEFAULT NULL,
-  `ssl_store_id` varchar(255) DEFAULT NULL,
-  `ssl_password` varchar(255) DEFAULT NULL,
-  `stripe_key` varchar(255) DEFAULT NULL,
-  `stripe_secret` varchar(255) DEFAULT NULL,
+  `paypal_client_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `paypal_client_secret` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ssl_store_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ssl_password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `stripe_key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `stripe_secret` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `admin_to_pay` double(8,2) NOT NULL DEFAULT '0.00',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `sellers`
@@ -1120,14 +1121,14 @@ INSERT INTO `sellers` (`id`, `user_id`, `verification_status`, `verification_inf
 
 CREATE TABLE `seo_settings` (
   `id` int(11) NOT NULL,
-  `keyword` varchar(255) COLLATE utf8_bin NOT NULL,
-  `author` varchar(255) COLLATE utf8_bin NOT NULL,
+  `keyword` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `author` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `revisit` int(11) NOT NULL,
-  `sitemap_link` varchar(255) COLLATE utf8_bin NOT NULL,
-  `description` longtext COLLATE utf8_bin NOT NULL,
+  `sitemap_link` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` longtext COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `seo_settings`
@@ -1145,18 +1146,18 @@ INSERT INTO `seo_settings` (`id`, `keyword`, `author`, `revisit`, `sitemap_link`
 CREATE TABLE `shops` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `name` varchar(200) DEFAULT NULL,
-  `logo` varchar(255) DEFAULT NULL,
-  `sliders` longtext,
-  `address` varchar(500) DEFAULT NULL,
-  `facebook` varchar(255) DEFAULT NULL,
-  `google` varchar(255) DEFAULT NULL,
-  `twitter` varchar(255) DEFAULT NULL,
-  `youtube` varchar(255) DEFAULT NULL,
-  `slug` varchar(255) DEFAULT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `logo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sliders` longtext COLLATE utf8_unicode_ci,
+  `address` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `facebook` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `google` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `twitter` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `youtube` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `shops`
@@ -1173,11 +1174,11 @@ INSERT INTO `shops` (`id`, `user_id`, `name`, `logo`, `sliders`, `address`, `fac
 
 CREATE TABLE `sliders` (
   `id` int(11) NOT NULL,
-  `photo` varchar(255) DEFAULT NULL,
+  `photo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `published` int(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `sliders`
@@ -1199,7 +1200,7 @@ CREATE TABLE `staff` (
   `role_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1209,10 +1210,10 @@ CREATE TABLE `staff` (
 
 CREATE TABLE `subscribers` (
   `id` int(11) NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1222,11 +1223,11 @@ CREATE TABLE `subscribers` (
 
 CREATE TABLE `sub_categories` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `category_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `sub_categories`
@@ -1252,11 +1253,11 @@ INSERT INTO `sub_categories` (`id`, `name`, `category_id`, `created_at`, `update
 CREATE TABLE `sub_sub_categories` (
   `id` int(11) NOT NULL,
   `sub_category_id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `brands` varchar(100) NOT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `brands` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `sub_sub_categories`
@@ -1289,24 +1290,24 @@ INSERT INTO `sub_sub_categories` (`id`, `sub_category_id`, `name`, `brands`, `cr
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
-  `provider_id` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_type` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'customer',
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `provider_id` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_type` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'customer',
+  `name` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `avatar` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `avatar_original` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `country` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `city` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `postal_code` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(191) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `avatar` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `avatar_original` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `address` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `country` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `city` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `postal_code` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `balance` double(8,2) NOT NULL DEFAULT '0.00',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `users`
@@ -1325,11 +1326,11 @@ CREATE TABLE `wallets` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `amount` double(8,2) NOT NULL,
-  `payment_method` varchar(255) COLLATE utf32_bin NOT NULL,
-  `payment_details` longtext COLLATE utf32_bin,
+  `payment_method` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `payment_details` longtext COLLATE utf8_unicode_ci,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1343,7 +1344,7 @@ CREATE TABLE `wishlists` (
   `product_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Indexes for dumped tables

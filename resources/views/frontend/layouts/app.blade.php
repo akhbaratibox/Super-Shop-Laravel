@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html>
+@if(\App\Language::where('code', Session::get('locale', Config::get('app.locale')))->first()->rtl == 1)
+    <html dir="rtl">
+@else
+    <html>
+@endif
 <head>
 
 @php
@@ -45,6 +49,11 @@
 
 <!-- Custom style -->
 <link type="text/css" href="{{ asset('frontend/css/custom-style.css') }}" rel="stylesheet">
+
+@if(\App\Language::where('code', Session::get('locale', Config::get('app.locale')))->first()->rtl == 1)
+     <!-- RTL -->
+    <link type="text/css" href="{{ asset('frontend/css/active.rtl.css') }}" rel="stylesheet">
+@endif
 
 <!-- Facebook Chat style -->
 <link href="{{ asset('frontend/css/fb-style.css')}}" rel="stylesheet">

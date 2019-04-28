@@ -115,11 +115,18 @@ function sideMenuClose(){
 
 $(document).ready(function() {
     searchOpen.init();
+    var zoomXoffset = 20;
+    var zoomposition = 'right';
+    if ($('html').attr('dir') === 'rtl') {
+        zoomXoffset = -20
+        zoomposition = 'left';
+    }
     $('.xzoom, .xzoom-gallery').xzoom({
-        Xoffset: 20,
+        Xoffset: zoomXoffset,
         bg: true,
         tint: '#000',
-        defaultScale: -1
+        defaultScale: -1,
+        position: zoomposition
     });
 
 
@@ -149,6 +156,8 @@ $(document).ready(function() {
         $('.slick-carousel').each(function() {
             var $this = $(this);
 
+            var slidesRtl = false;
+
             var slidesPerViewXs = $this.data('slick-xs-items');
             var slidesPerViewSm = $this.data('slick-sm-items');
             var slidesPerViewMd = $this.data('slick-md-items');
@@ -172,12 +181,17 @@ $(document).ready(function() {
             slidesRows = !slidesRows ? 1 : slidesRows;
             slidesAutoplay = !slidesAutoplay ? false : slidesAutoplay;
 
+            if ($('html').attr('dir') === 'rtl') {
+                slidesRtl = true
+            }
+
             $this.slick({
                 slidesToShow: slidesPerViewXl,
                 autoplay: slidesAutoplay,
                 dots: slidesDots,
                 arrows: slidesArrows,
                 infinite: true,
+                rtl: slidesRtl,
                 rows: slidesRows,
                 centerPadding: '0px',
                 centerMode: slidesCenterMode,

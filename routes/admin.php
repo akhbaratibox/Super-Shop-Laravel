@@ -70,6 +70,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::post('/vendor_commission_update', 'BusinessSettingsController@vendor_commission_update')->name('business_settings.vendor_commission.update');
 
 	Route::resource('/languages', 'LanguageController');
+	Route::post('/languages/update_rtl_status', 'LanguageController@update_rtl_status')->name('languages.update_rtl_status');
 	Route::get('/languages/destroy/{id}', 'LanguageController@destroy')->name('languages.destroy');
 	Route::get('/languages/{id}/edit', 'LanguageController@edit')->name('languages.edit');
 	Route::post('/languages/{id}/update', 'LanguageController@update')->name('languages.update');

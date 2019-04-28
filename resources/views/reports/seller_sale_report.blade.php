@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="pad-all text-center">
-        <form class="" action="{{ route('seller_report.index') }}" method="GET">
+        <form class="" action="{{ route('seller_sale_report.index') }}" method="GET">
             <div class="box-inline mar-btm pad-rgt">
                  Sort by verificarion status:
                  <div class="select">

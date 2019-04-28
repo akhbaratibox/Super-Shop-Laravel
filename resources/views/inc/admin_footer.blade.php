@@ -6,7 +6,7 @@
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
 	<div class="col-sm-10">
-		<p class="pad-lft">&#0169; {{ date('Y') }} Active Super Shop</p>
+		<p class="pad-lft">&#0169; {{ date('Y') }} {{ \App\GeneralSetting::first()->site_name }}</p>
 	</div>
 
 </footer>

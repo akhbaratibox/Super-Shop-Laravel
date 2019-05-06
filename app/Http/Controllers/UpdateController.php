@@ -8,6 +8,7 @@ use DB;
 use Artisan;
 use Schema;
 use App\BusinessSetting;
+use App\Language;
 
 class UpdateController extends Controller
 {
@@ -33,6 +34,15 @@ class UpdateController extends Controller
             $sql = "INSERT INTO `business_settings` (`id`, `type`, `value`, `created_at`, `updated_at`) VALUES (NULL, 'facebook_chat', '0', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)";
             DB::unprepared($sql);
         }
+        if(Language::where('code', 'sa')->first() == null){
+            $sql = "INSERT INTO `languages` (`id`, `name`, `code`, `rtl`, `created_at`, `updated_at`) VALUES (NULL, 'Arabic', 'sa', '1', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)";
+            DB::unprepared($sql);
+        }
+        if (BusinessSetting::where('type', 'email_verification')->first() == null) {
+            $sql = "INSERT INTO `business_settings` (`id`, `type`, `value`, `created_at`, `updated_at`) VALUES (NULL, 'email_verification', '0', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)";
+            DB::unprepared($sql);
+        }
+
         return redirect('step2');
     }
 

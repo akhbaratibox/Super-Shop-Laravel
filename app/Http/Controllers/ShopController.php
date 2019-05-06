@@ -41,6 +41,7 @@ class ShopController extends Controller
      */
     public function store(Request $request)
     {
+        $user = null;
         if(!Auth::check()){
             if(User::where('email', $request->email)->first() != null){
                 flash(__('Email already exists!'))->error();
@@ -65,6 +66,11 @@ class ShopController extends Controller
                 $user->customer->delete();
             }
             $user->user_type = "seller";
+            $user->save();
+        }
+
+        if(BusinessSetting::where('type', 'email_verification')->first()->value != 1){
+            $user->email_verified_at = date('Y-m-d H:m:s');
             $user->save();
         }
 

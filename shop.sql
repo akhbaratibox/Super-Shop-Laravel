@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2019 at 02:37 PM
+-- Generation Time: Apr 30, 2019 at 09:42 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -88,7 +88,7 @@ CREATE TABLE `business_settings` (
 
 INSERT INTO `business_settings` (`id`, `type`, `value`, `created_at`, `updated_at`) VALUES
 (1, 'home_default_currency', '1', '2018-10-16 01:35:52', '2019-01-28 01:26:53'),
-(2, 'system_default_currency', '27', '2018-10-16 01:36:58', '2019-03-13 01:49:19'),
+(2, 'system_default_currency', '1', '2018-10-16 01:36:58', '2019-03-13 01:49:19'),
 (3, 'currency_format', '1', '2018-10-17 03:01:59', '2018-10-17 03:01:59'),
 (4, 'symbol_format', '1', '2018-10-17 03:01:59', '2019-01-20 02:10:55'),
 (5, 'no_of_decimals', '0', '2018-10-17 03:01:59', '2018-10-17 03:01:59'),
@@ -102,16 +102,17 @@ INSERT INTO `business_settings` (`id`, `type`, `value`, `created_at`, `updated_a
 (13, 'best_selling', '1', '2018-12-24 08:13:44', '2019-02-14 05:29:13'),
 (14, 'paypal_sandbox', '1', '2019-01-16 12:44:18', '2019-01-16 12:44:18'),
 (15, 'sslcommerz_sandbox', '1', '2019-01-16 12:44:18', '2019-03-14 00:07:26'),
-(16, 'sslcommerz_payment', '1', '2019-01-24 09:39:07', '2019-01-29 06:13:46'),
+(16, 'sslcommerz_payment', '0', '2019-01-24 09:39:07', '2019-01-29 06:13:46'),
 (17, 'vendor_commission', '20', '2019-01-31 06:18:04', '2019-04-13 06:49:26'),
 (18, 'verification_form', '[{\"type\":\"text\",\"label\":\"Your name\"},{\"type\":\"text\",\"label\":\"Shop name\"},{\"type\":\"text\",\"label\":\"Email\"},{\"type\":\"text\",\"label\":\"License No\"},{\"type\":\"text\",\"label\":\"Full Address\"},{\"type\":\"text\",\"label\":\"Phone Number\"},{\"type\":\"file\",\"label\":\"Tax Papers\"}]', '2019-02-03 11:36:58', '2019-02-16 06:14:42'),
-(19, 'google_analytics', '1', '2019-02-06 12:22:35', '2019-02-06 12:22:35'),
-(20, 'facebook_login', '1', '2019-02-07 12:51:59', '2019-02-08 19:41:15'),
-(21, 'google_login', '1', '2019-02-07 12:52:10', '2019-02-08 19:41:14'),
-(22, 'twitter_login', '1', '2019-02-07 12:52:20', '2019-02-08 02:32:56'),
+(19, 'google_analytics', '0', '2019-02-06 12:22:35', '2019-02-06 12:22:35'),
+(20, 'facebook_login', '0', '2019-02-07 12:51:59', '2019-02-08 19:41:15'),
+(21, 'google_login', '0', '2019-02-07 12:52:10', '2019-02-08 19:41:14'),
+(22, 'twitter_login', '0', '2019-02-07 12:52:20', '2019-02-08 02:32:56'),
 (23, 'payumoney_payment', '1', '2019-03-05 11:38:17', '2019-03-05 11:38:17'),
 (24, 'payumoney_sandbox', '1', '2019-03-05 11:38:17', '2019-03-05 05:39:18'),
-(36, 'facebook_chat', '0', '2019-04-15 11:45:04', '2019-04-15 11:45:04');
+(36, 'facebook_chat', '0', '2019-04-15 11:45:04', '2019-04-15 11:45:04'),
+(37, 'email_verification', '0', '2019-04-30 07:30:07', '2019-04-30 07:30:07');
 
 -- --------------------------------------------------------
 
@@ -801,7 +802,8 @@ CREATE TABLE `languages` (
 
 INSERT INTO `languages` (`id`, `name`, `code`, `rtl`, `created_at`, `updated_at`) VALUES
 (1, 'English', 'en', 0, '2019-01-20 12:13:20', '2019-01-20 12:13:20'),
-(3, 'Bangla', 'bd', 0, '2019-02-17 06:35:37', '2019-02-18 06:49:51');
+(3, 'Bangla', 'bd', 0, '2019-02-17 06:35:37', '2019-02-18 06:49:51'),
+(4, 'Arabic', 'sa', 1, '2019-04-28 18:34:12', '2019-04-28 18:34:12');
 
 -- --------------------------------------------------------
 
@@ -1590,7 +1592,7 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT for table `business_settings`
 --
 ALTER TABLE `business_settings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -1650,7 +1652,7 @@ ALTER TABLE `home_categories`
 -- AUTO_INCREMENT for table `languages`
 --
 ALTER TABLE `languages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `links`

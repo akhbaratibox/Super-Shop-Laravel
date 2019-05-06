@@ -12,19 +12,19 @@
 <div class="modal-body gry-bg px-3 pt-0">
     <div class="pt-4">
         <ul class="process-steps clearfix">
-            <li class="done">
+            <li @if($status == 'pending') class="active" @else class="done" @endif>
                 <div class="icon">1</div>
                 <div class="title">{{__('Order placed')}}</div>
             </li>
-            <li @if($status == 'pending') class="active" @else class="done" @endif>
+            <li @if($status == 'on_review') class="active" @elseif($status == 'on_delivery' || $status == 'delivered') class="done" @endif>
                 <div class="icon">2</div>
                 <div class="title">{{__('On review')}}</div>
             </li>
-            <li @if($status == 'delivered' || $status == 'on_delivery') class="done" @else class="active" @endif>
+            <li @if($status == 'on_delivery') class="active" @elseif($status == 'delivered') class="done" @endif>
                 <div class="icon">3</div>
                 <div class="title">{{__('On delivery')}}</div>
             </li>
-            <li @if($status == 'delivered') class="done" @else class="active" @endif>
+            <li @if($status == 'delivered') class="done" @endif>
                 <div class="icon">4</div>
                 <div class="title">{{__('Delivered')}}</div>
             </li>

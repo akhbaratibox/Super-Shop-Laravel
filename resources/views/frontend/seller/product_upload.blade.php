@@ -331,7 +331,7 @@
                                             <label>{{__('Local Pickup')}}</label>
                                         </div>
                                         <div class="col-md-8">
-                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="local_pickup_shipping_cost" placeholder="{{__('Local Pickup Cost')}}">
+                                            <input type="number" min="0" step="0.01" value="0" class="form-control mb-3" name="local_pickup_shipping_cost" placeholder="{{__('Local Pickup Cost')}}">
                                         </div>
                                         <div class="col-md-2">
                                             <label class="switch" style="margin-top:5px;">
@@ -359,7 +359,7 @@
                                             <label>{{__('Free Shipping')}}</label>
                                         </div>
                                         <div class="col-md-8">
-                                            <input type="number" min="0" step="0.01" class="form-control mb-3" name="free_shipping_cost" value="0" disabled placeholder="{{__('Flat Rate Cost')}}">
+                                            <input type="number" min="0" step="0.01" value="0" class="form-control mb-3" name="free_shipping_cost" value="0" disabled placeholder="{{__('Flat Rate Cost')}}">
                                         </div>
                                         <div class="col-md-2">
                                             <label class="switch" style="margin-top:5px;">

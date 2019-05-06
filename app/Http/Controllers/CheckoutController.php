@@ -117,6 +117,18 @@ class CheckoutController extends Controller
 
         $shipping_info = $data;
         $request->session()->put('shipping_info', $shipping_info);
-        return view('frontend.partials.payment_select');
+
+        $subtotal = 0;
+        $tax = 0;
+        $shipping = 0;
+        foreach (Session::get('cart') as $key => $cartItem){
+            $subtotal += $cartItem['price']*$cartItem['quantity'];
+            $tax += $cartItem['tax']*$cartItem['quantity'];
+            $shipping += $cartItem['shipping']*$cartItem['quantity'];
+        }
+
+        $total = $subtotal+$tax+$shipping;
+
+        return view('frontend.partials.payment_select', compact('total'));
     }
 }

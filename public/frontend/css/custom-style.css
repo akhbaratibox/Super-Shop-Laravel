@@ -3916,3 +3916,27 @@ ul.inline-links > li {
 .model-3d-1 .pinterest .back {
 	background: #cb2026;
 }
+
+
+@media (max-width: 991px){
+    .logo-bar-area{
+        transition: transform 0.3s;
+        -webkit-transition: transform 0.3s;
+    }
+    .sm-fixed-top{
+        position:fixed !important;
+        top:-64px;
+        background: #fff;
+        width: 100%;
+        left: 0;
+        transform: translateY(100%);
+    }
+}
+@media (max-width: 576px){
+    .product-box-2.alt-box .product-image {
+      min-height: 160px;
+    }
+    .hamburger-icon{
+        top: 0;
+    }
+}

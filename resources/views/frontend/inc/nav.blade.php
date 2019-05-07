@@ -277,7 +277,7 @@
         <div class="">
             <div class="container">
                 <div class="row no-gutters align-items-center">
-                    <div class="col-lg-3 col-10">
+                    <div class="col-lg-3 col-8">
                         <div class="d-flex">
                             <div class="d-block d-lg-none mobile-menu-icon-box">
                                 <!-- Navbar toggler  -->
@@ -312,7 +312,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-lg-9 col-2 position-static">
+                    <div class="col-lg-9 col-4 position-static">
                         <div class="d-flex w-100">
                             <div class="search-box flex-grow-1 px-4">
                                 <form action="{{ route('search') }}" method="GET">
@@ -390,7 +390,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="d-none d-lg-inline-block" data-hover="dropdown">
+                                <div class="d-inline-block" data-hover="dropdown">
                                     <div class="nav-cart-box dropdown" id="cart_items">
                                         <a href="" class="nav-box-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="la la-shopping-cart d-inline-block nav-box-icon"></i>

@@ -13,6 +13,7 @@ use App\User;
 use App\Seller;
 use App\Shop;
 use App\Color;
+use App\Order;
 use App\BusinessSetting;
 use App\Http\Controllers\SearchController;
 use ImageOptimizer;
@@ -196,6 +197,17 @@ class HomeController extends Controller
         //     ImageOptimizer::optimize(base_path('public/uploads/categories/').$file);
         // }
         return view('frontend.index');
+    }
+
+    public function trackOrder(Request $request)
+    {
+        if($request->has('order_code')){
+            $order = Order::where('code', $request->order_code)->first();
+            if($order != null){
+                return view('frontend.track_order', compact('order'));
+            }
+        }
+        return view('frontend.track_order');
     }
 
     public function product($slug)

@@ -52,6 +52,9 @@
 
                 <div class="col-5 text-right d-none d-lg-block">
                     <ul class="inline-links">
+                        <li>
+                            <a href="{{ route('orders.track') }}" class="top-bar-item">{{__('Track Order')}}</a>
+                        </li>
                         @auth
                         <li>
                             <a href="{{ route('dashboard') }}" class="top-bar-item">{{__('My Profile')}}</a>

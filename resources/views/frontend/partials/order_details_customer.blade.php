@@ -39,7 +39,7 @@
                 <div class="col-lg-6">
                     <table class="details-table table">
                         <tr>
-                            <td class="w-50 strong-600">{{__('Order id')}}:</td>
+                            <td class="w-50 strong-600">{{__('Order Code')}}:</td>
                             <td>{{ $order->code }}</td>
                         </tr>
                         <tr>
@@ -78,7 +78,7 @@
                         </tr>
                         <tr>
                             <td class="w-50 strong-600">{{__('Payment method')}}:</td>
-                            <td>{{ $order->payment_type }}</td>
+                            <td>{{ ucfirst(str_replace('_', ' ', $order->payment_type)) }}</td>
                         </tr>
                     </table>
                 </div>

@@ -154,11 +154,12 @@ class ShopController extends Controller
 
         $shop->sliders = json_encode($sliders);
 
-        if($request->has('facebook') || $request->has('google') || $request->has('twitter') || $request->has('youtube')){
+        if($request->has('facebook') || $request->has('google') || $request->has('twitter') || $request->has('youtube') || $request->has('instagram')){
             $shop->facebook = $request->facebook;
             $shop->google = $request->google;
             $shop->twitter = $request->twitter;
             $shop->youtube = $request->youtube;
+            $shop->instagram = $request->instagram;
         }
 
         if($shop->save()){

@@ -25,26 +25,41 @@
                 </div>
                 <div class="col-md-6">
                     <ul class="text-md-right mt-4 mt-md-0 social-nav model-2">
-                        <li>
-                            <a href="{{ $shop->facebook }}" class="facebook social_a" target="_blank" data-toggle="tooltip" data-original-title="Facebook">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ $shop->google }}" class="google-plus social_a" target="_blank" data-toggle="tooltip" data-original-title="Google">
-                                <i class="fa fa-google-plus"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ $shop->twitter }}" class="twitter social_a" target="_blank" data-toggle="tooltip" data-original-title="Twitter">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ $shop->youtube }}" class="youtube social_a" target="_blank" data-toggle="tooltip" data-original-title="Youtube">
-                                <i class="fa fa-youtube"></i>
-                            </a>
-                        </li>
+                        @if ($shop->facebook != null)
+                            <li>
+                                <a href="{{ $shop->facebook }}" class="facebook social_a" target="_blank" data-toggle="tooltip" data-original-title="Facebook">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                        @endif
+                        @if ($shop->twitter != null)
+                            <li>
+                                <a href="{{ $shop->twitter }}" class="twitter social_a" target="_blank" data-toggle="tooltip" data-original-title="Twitter">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                        @endif
+                        @if ($shop->instagram != null)
+                            <li>
+                                <a href="{{ $shop->instagram }}" class="instagram social_a" target="_blank" data-toggle="tooltip" data-original-title="Instagram">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                        @endif
+                        @if ($shop->google != null)
+                            <li>
+                                <a href="{{ $shop->google }}" class="google-plus social_a" target="_blank" data-toggle="tooltip" data-original-title="Google">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </li>
+                        @endif
+                        @if ($shop->youtube != null)
+                            <li>
+                                <a href="{{ $shop->youtube }}" class="youtube social_a" target="_blank" data-toggle="tooltip" data-original-title="Youtube">
+                                    <i class="fa fa-youtube"></i>
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>

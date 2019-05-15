@@ -42,6 +42,9 @@ class UpdateController extends Controller
             $sql = "INSERT INTO `business_settings` (`id`, `type`, `value`, `created_at`, `updated_at`) VALUES (NULL, 'email_verification', '0', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)";
             DB::unprepared($sql);
         }
+        if(!Schema::hasColumn('shops', 'instagram')){
+            DB::unprepared("ALTER TABLE `shops` ADD `instagram` VARCHAR(255) NULL DEFAULT NULL AFTER `youtube`");
+        }
 
         return redirect('step2');
     }

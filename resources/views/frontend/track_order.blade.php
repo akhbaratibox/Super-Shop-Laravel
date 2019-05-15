@@ -97,7 +97,7 @@
 
                 @foreach ($order->orderDetails as $key => $orderDetail)
                     @php
-                        $status = $orderDetail->status;
+                        $status = $orderDetail->delivery_status;
                     @endphp
                     <div class="card mt-4">
                         <div class="card-header py-2 px-3 heading-6 strong-600 clearfix">

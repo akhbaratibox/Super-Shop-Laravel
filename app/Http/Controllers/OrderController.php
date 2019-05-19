@@ -154,7 +154,10 @@ class OrderController extends Controller
             $order->save();
 
             //stores the pdf for invoice
-            $pdf = PDF::loadView('invoices.customer_invoice', compact('order'));
+            $pdf = PDF::setOptions([
+                            'logOutputFile' => storage_path('logs/log.htm'),
+                            'tempDir' => storage_path('logs/')
+                        ])->loadView('invoices.customer_invoice', compact('order'));
             $output = $pdf->output();
     		file_put_contents('public/invoices/'.'Order#'.$order->code.'.pdf', $output);
 

@@ -220,7 +220,7 @@
         <div class="container">
             <div class="row">
                 @foreach (\App\Banner::where('published', 1)->get() as $key => $banner)
-                    <div class="col-lg-4">
+                    <div class="col-lg-{{ 12/count(\App\Banner::where('published', 1)->get()) }}">
                         <div class="media-banner mb-3 mb-lg-0">
                             <a href="{{ $banner->url }}" target="_blank" class="banner-container" style="background-image:url('{{ asset($banner->photo) }}');"></a>
                         </div>

@@ -13,7 +13,10 @@ class InvoiceController extends Controller
     public function customer_invoice_download($id)
     {
         $order = Order::findOrFail($id);
-        $pdf = PDF::loadView('invoices.customer_invoice', compact('order'));
+        $pdf = PDF::setOptions([
+                        'logOutputFile' => storage_path('logs/log.htm'),
+                        'tempDir' => storage_path('logs/')
+                    ])->loadView('invoices.customer_invoice', compact('order'));
         return $pdf->download('order-'.$order->code.'.pdf');
     }
 
@@ -21,7 +24,10 @@ class InvoiceController extends Controller
     public function seller_invoice_download($id)
     {
         $order = Order::findOrFail($id);
-        $pdf = PDF::loadView('invoices.seller_invoice', compact('order'));
+        $pdf = PDF::setOptions([
+                        'logOutputFile' => storage_path('logs/log.htm'),
+                        'tempDir' => storage_path('logs/')
+                    ])->loadView('invoices.seller_invoice', compact('order'));
         return $pdf->download('order-'.$order->code.'.pdf');
     }
 }

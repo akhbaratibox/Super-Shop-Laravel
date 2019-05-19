@@ -41,14 +41,16 @@
                         </span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('wallet.index') }}" class="{{ areActiveRoutesHome(['wallet.index'])}}">
-                        <i class="la la-dollar"></i>
-                        <span class="category-name">
-                            {{__('My Wallet')}}
-                        </span>
-                    </a>
-                </li>
+                @if (\App\BusinessSetting::where('type', 'wallet_system')->first()->value == 1)
+                    <li>
+                        <a href="{{ route('wallet.index') }}" class="{{ areActiveRoutesHome(['wallet.index'])}}">
+                            <i class="la la-dollar"></i>
+                            <span class="category-name">
+                                {{__('My Wallet')}}
+                            </span>
+                        </a>
+                    </li>
+                @endif
             </ul>
         </div>
         @if (\App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)

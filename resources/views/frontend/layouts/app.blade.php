@@ -13,8 +13,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
-<meta name="description" content="{{ $seosetting->description }}">
-<meta name="keywords" content="{{ $seosetting->keyword }}">
+<meta name="description" content="@yield('meta_description', $seosetting->description)" />
+<meta name="keywords" content="@yield('meta_keywords', $seosetting->keyword)">
 <meta name="author" content="{{ $seosetting->author }}">
 <meta name="sitemap_link" content="{{ $seosetting->sitemap_link }}">
 @yield('meta')
@@ -22,7 +22,7 @@
 <!-- Favicon -->
 <link name="favicon" type="image/x-icon" href="{{ asset(\App\GeneralSetting::first()->favicon) }}" rel="shortcut icon" />
 
-<title>{{ config('app.name', 'Laravel') }}</title>
+<title>@yield('meta_title', config('app.name', 'Laravel'))</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">

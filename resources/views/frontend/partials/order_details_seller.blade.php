@@ -7,6 +7,7 @@
 
 @php
     $status = $order->orderDetails->first()->delivery_status;
+    $payment_status = $order->orderDetails->first()->payment_status;
 @endphp
 
 <div class="modal-body gry-bg px-3 pt-0">
@@ -34,8 +35,8 @@
         <div class="offset-lg-2 col-lg-4 col-sm-6">
             <div class="form-inline">
                 <select class="form-control selectpicker form-control-sm"  data-minimum-results-for-search="Infinity" id="update_payment_status">
-                    <option value="paid" @if ($status == 'pending') selected @endif>{{__('Unpaid')}}</option>
-                    <option value="unpaid" @if ($status == 'on_review') selected @endif>{{__('Paid')}}</option>
+                    <option value="unpaid" @if ($payment_status == 'unpaid') selected @endif>{{__('Unpaid')}}</option>
+                    <option value="paid" @if ($payment_status == 'paid') selected @endif>{{__('Paid')}}</option>
                 </select>
                 <label class="my-2" >{{__('Payment Status')}}</label>
             </div>
@@ -189,6 +190,17 @@
         $.post('{{ route('orders.update_delivery_status') }}', {_token:'{{ @csrf_token() }}',order_id:order_id,status:status}, function(data){
             $('#order_details').modal('hide');
             showFrontendAlert('success', 'Order status has been updated');
+            location.reload().setTimeOut(500);
+        });
+    });
+
+    $('#update_payment_status').on('change', function(){
+        var order_id = {{ $order->id }};
+        var status = $('#update_payment_status').val();
+        $.post('{{ route('orders.update_payment_status') }}', {_token:'{{ @csrf_token() }}',order_id:order_id,status:status}, function(data){
+            $('#order_details').modal('hide');
+            //console.log(data);
+            showFrontendAlert('success', 'Payment status has been updated');
             location.reload().setTimeOut(500);
         });
     });

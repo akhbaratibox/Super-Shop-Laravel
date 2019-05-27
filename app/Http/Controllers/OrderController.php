@@ -262,11 +262,11 @@ class OrderController extends Controller
         }
         $status = 'paid';
         foreach($order->orderDetails as $key => $orderDetail){
-            if($orderDetail->payment_status == 'unpaid'){
+            if($orderDetail->payment_status != 'paid'){
                 $status = 'unpaid';
             }
         }
-        $order->payment_status == $status;
+        $order->payment_status = $status;
         $order->save();
         return 1;
     }

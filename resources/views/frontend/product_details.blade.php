@@ -594,6 +594,12 @@
                                             </div>
                                         @endforeach
 
+                                        @if(count($product->reviews) <= 0)
+                                            <div class="text-center">
+                                                {{ __('There have been no reviews for this product yet.') }}
+                                            </div>
+                                        @endif
+
                                         @if(Auth::check())
                                             @php
                                                 $commentable = false;

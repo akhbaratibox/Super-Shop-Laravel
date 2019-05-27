@@ -245,9 +245,9 @@
                         </form>
                         <!-- <hr class=""> -->
                         <div class="products-box-bar p-3 bg-white">
-                            <div class="row">
+                            <div class="row sm-no-gutters gutters-5">
                                 @foreach ($products as $key => $product)
-                                    <div class="col-lg-4 col-6">
+                                    <div class="col-xl-3 col-lg-4 col-6">
                                         <div class="product-card-1 mb-3">
                                             <figure class="product-image-container">
                                                 <a href="{{ route('product', $product->slug) }}" class="product-image d-block" style="background-image:url('{{ asset($product->thumbnail_img) }}');">

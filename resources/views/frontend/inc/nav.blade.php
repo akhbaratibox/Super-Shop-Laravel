@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header bg-white">
     <!-- Top Bar -->
     <div class="top-navbar">
         <div class="container">

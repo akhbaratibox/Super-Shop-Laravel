@@ -81,7 +81,7 @@
 
 
 <!-- MAIN WRAPPER -->
-<div class="body-wrap shop-default shop-cards shop-tech">
+<div class="body-wrap shop-default shop-cards shop-tech gry-bg">
 
     <!-- Header -->
     @include('frontend.inc.nav')

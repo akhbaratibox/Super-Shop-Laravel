@@ -240,7 +240,7 @@ class HomeController extends Controller
 
     public function listing(Request $request)
     {
-        $products = filter_products(Product::orderBy('created_at', 'desc'))->paginate(9);
+        $products = filter_products(Product::orderBy('created_at', 'desc'))->paginate(12);
         return view('frontend.product_listing', compact('products'));
     }
 
@@ -362,7 +362,7 @@ class HomeController extends Controller
             }
         }
 
-        $products = filter_products($products)->paginate(9)->appends(request()->query());
+        $products = filter_products($products)->paginate(12)->appends(request()->query());
 
         return view('frontend.product_listing', compact('products', 'query', 'category_id', 'subcategory_id', 'subsubcategory_id', 'brand_id', 'sort_by', 'seller_id','min_price', 'max_price'));
     }

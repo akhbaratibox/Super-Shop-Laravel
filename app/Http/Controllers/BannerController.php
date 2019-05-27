@@ -82,7 +82,7 @@ class BannerController extends Controller
         $banner = Banner::find($id);
         $banner->published = $request->status;
         if($request->status == 1){
-            if(count(Banner::where('published', 1)->get()) < 3)
+            if(count(Banner::where('published', 1)->get()) < 4)
             {
                 if($banner->save()){
                     return '1';

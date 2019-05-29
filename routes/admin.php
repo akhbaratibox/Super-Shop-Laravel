@@ -136,4 +136,10 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('/seller_report', 'ReportController@seller_report')->name('seller_report.index');
 	Route::get('/seller_sale_report', 'ReportController@seller_sale_report')->name('seller_sale_report.index');
 	Route::get('/wish_report', 'ReportController@wish_report')->name('wish_report.index');
+
+	//Coupons
+	Route::resource('coupon','CouponController');
+	Route::post('/coupon/get_form', 'CouponController@get_coupon_form')->name('coupon.get_coupon_form');
+	Route::post('/coupon/get_form_edit', 'CouponController@get_coupon_form_edit')->name('coupon.get_coupon_form_edit');
+	Route::get('/coupon/destroy/{id}', 'CouponController@destroy')->name('coupon.destroy');
 });

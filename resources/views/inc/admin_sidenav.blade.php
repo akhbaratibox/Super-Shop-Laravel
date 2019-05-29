@@ -345,6 +345,25 @@
                         </li>
                         @endif
 
+                        @if(Auth::user()->user_type == 'admin' || in_array('12', json_decode(Auth::user()->staff->role->permissions)))
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-desktop"></i>
+                                <span class="menu-title">{{__('E-commerce Setup')}}</span>
+                                <i class="arrow"></i>
+                            </a>
+
+                            <!--Submenu-->
+                            <ul class="collapse">
+                                <li>
+                                    <li class="{{ areActiveRoutes(['coupon.index','coupon.create','coupon.edit',])}}">
+                                        <a class="nav-link" href="{{route('coupon.index')}}">{{__('Coupon')}}</a>
+                                    </li>
+                                </li>
+                            </ul>
+                        </li>
+                        @endif
+
                         @if(Auth::user()->user_type == 'admin' || in_array('11', json_decode(Auth::user()->staff->role->permissions)))
                         <li class="{{ areActiveRoutes(['seosetting.index'])}}">
                             <a class="nav-link" href="{{ route('seosetting.index') }}">

@@ -47,7 +47,8 @@ Route::post('/cart/updateQuantity', 'CartController@updateQuantity')->name('cart
 
 Route::post('/checkout/payment', 'CheckoutController@checkout')->name('payment.checkout');
 Route::get('/checkout', 'CheckoutController@get_shipping_info')->name('checkout.shipping_info');
-Route::post('/checkout/payment_info', 'CheckoutController@get_payment_info')->name('checkout.payment_info');
+Route::post('/checkout/payment_select', 'CheckoutController@get_payment_info')->name('checkout.payment_info');
+Route::post('/checkout/apply_coupon_code', 'CheckoutController@apply_coupon_code')->name('checkout.apply_coupon_code');
 
 //Paypal START
 Route::get('/paypal/payment/done', 'PaypalController@getDone')->name('payment.done');

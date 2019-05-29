@@ -151,6 +151,12 @@ class OrderController extends Controller
             }
 
             $order->grand_total = $subtotal + $tax + $shipping;
+
+            if(Session::has('coupon_discount')){
+                $order->grand_total -= Session::get('coupon_discount');
+                $order->coupon_discount = Session::get('coupon_discount');
+            }
+
             $order->save();
 
             //stores the pdf for invoice

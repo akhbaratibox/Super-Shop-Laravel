@@ -109,12 +109,11 @@
     </div>
 
     @if (\App\BusinessSetting::where('type', 'facebook_chat')->first()->value == 1)
-        <div class="fb-customerchat fb_invisible_flow"
-            page_id="{{ env('FACEBOOK_PAGE_ID') }}"
-            theme_color="#459645"
-            logged_in_greeting="Hi! How can we help you?"
-            logged_out_greeting="GoodBye!... Hope to see you soon."
-            minimized="true">
+        <div id="fb-root"></div>
+        <!-- Your customer chat code -->
+        <div class="fb-customerchat"
+          attribution=setup_tool
+          page_id="{{ env('FACEBOOK_PAGE_ID') }}">
         </div>
     @endif
 

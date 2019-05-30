@@ -40,7 +40,7 @@
     $(document).ready(function(){
         $("#photos").spartanMultiImagePicker({
             fieldName:        'photos[]',
-            maxCount:         10,
+            maxCount:         1,
             rowHeight:        '200px',
             groupClassName:   'col-md-4 col-sm-9 col-xs-6',
             maxFileSize:      '',

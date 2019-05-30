@@ -163,7 +163,8 @@ $(document).ready(function() {
             var slidesPerViewSm = $this.data('slick-sm-items');
             var slidesPerViewMd = $this.data('slick-md-items');
             var slidesPerViewLg = $this.data('slick-lg-items');
-            var slidesPerViewXl = $this.data('slick-items');
+            var slidesPerViewXl = $this.data('slick-xl-items');
+            var slidesPerView = $this.data('slick-items');
 
             var slidesCenterMode = $this.data('slick-center');
             var slidesArrows = $this.data('slick-arrows');
@@ -171,11 +172,12 @@ $(document).ready(function() {
             var slidesRows = $this.data('slick-rows');
             var slidesAutoplay = $this.data('slick-autoplay');
 
-            slidesPerViewXs = !slidesPerViewXs ? slidesPerViewXl : slidesPerViewXs;
-            slidesPerViewSm = !slidesPerViewSm ? slidesPerViewXl : slidesPerViewSm;
-            slidesPerViewMd = !slidesPerViewMd ? slidesPerViewXl : slidesPerViewMd;
-            slidesPerViewLg = !slidesPerViewLg ? slidesPerViewXl : slidesPerViewLg;
-            slidesPerViewXl = !slidesPerViewXl ? 1 : slidesPerViewXl;
+            slidesPerViewXs = !slidesPerViewXs ? slidesPerView : slidesPerViewXs;
+            slidesPerViewSm = !slidesPerViewSm ? slidesPerView : slidesPerViewSm;
+            slidesPerViewMd = !slidesPerViewMd ? slidesPerView : slidesPerViewMd;
+            slidesPerViewLg = !slidesPerViewLg ? slidesPerView : slidesPerViewLg;
+            slidesPerViewXl = !slidesPerViewXl ? slidesPerView : slidesPerViewXl;
+            slidesPerView = !slidesPerView ? 1 : slidesPerView;
             slidesCenterMode = !slidesCenterMode ? false : slidesCenterMode;
             slidesArrows = !slidesArrows ? true : slidesArrows;
             slidesDots = !slidesDots ? false : slidesDots;
@@ -187,7 +189,7 @@ $(document).ready(function() {
             }
 
             $this.slick({
-                slidesToShow: slidesPerViewXl,
+                slidesToShow: slidesPerView,
                 autoplay: slidesAutoplay,
                 dots: slidesDots,
                 arrows: slidesArrows,
@@ -200,6 +202,12 @@ $(document).ready(function() {
                 prevArrow: '<button type="button" class="slick-prev"><span class="prev-icon"></span></button>',
                 nextArrow: '<button type="button" class="slick-next"><span class="next-icon"></span></button>',
                 responsive: [
+                    {
+                        breakpoint: 1500,
+                        settings: {
+                            slidesToShow: slidesPerViewXl,
+                        }
+                    },
                     {
                         breakpoint: 1200,
                         settings: {

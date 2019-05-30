@@ -95,10 +95,10 @@
                                         @if ($total > 0)
                                             <span class="star-rating star-rating-sm">
                                                 @for ($i=0; $i < floor($rating/$total); $i++)
-                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star active"></i>
                                                 @endfor
                                                 @for ($i=0; $i < ceil(5-$rating/$total); $i++)
-                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star"></i>
                                                 @endfor
                                             </span>
                                             <span class="rating-count">({{ $total }} {{__('customer reviews')}})</span>
@@ -395,10 +395,10 @@
                                 <div class="rating text-center d-block">
                                     <span class="star-rating star-rating-sm d-block">
                                         @for ($i=0; $i < floor($rating/$total); $i++)
-                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star active"></i>
                                         @endfor
                                         @for ($i=0; $i < ceil(5-$rating/$total); $i++)
-                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star"></i>
                                         @endfor
                                     </span>
                                     <span class="rating-count d-block ml-0">({{ $total }} {{__('customer reviews')}})</span>
@@ -481,9 +481,16 @@
                                         <a href="{{ route('product', $top_product->slug) }}" style="background-image:url('{{ asset($top_product->thumbnail_img) }}');"></a>
                                     </div>
                                     <div class="product-details float-left">
-                                        <h4 class="title text-truncate-2">
+                                        <h4 class="title text-truncate">
                                             <a href="{{ route('product', $top_product->slug) }}" class="d-block">{{ $top_product->name }}</a>
                                         </h4>
+                                        <div class="star-rating star-rating-sm mt-1">
+                                            <i class="fa fa-star active"></i>
+                                            <i class="fa fa-star active"></i>
+                                            <i class="fa fa-star active"></i>
+                                            <i class="fa fa-star half"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
                                         <div class="price-box">
                                             <!-- @if(home_base_price($top_product->id) != home_discounted_base_price($top_product->id))
                                                 <del class="old-product-price strong-400">{{ home_base_price($top_product->id) }}</del>
@@ -575,12 +582,12 @@
                                                             </div>
                                                             <div class="col">
                                                                 <div class="rating text-right clearfix d-block">
-                                                                    <span class="star-rating float-right">
+                                                                    <span class="star-rating star-rating-sm float-right">
                                                                         @for ($i=0; $i < $review->rating; $i++)
-                                                                            <i class="fa fa-star"></i>
+                                                                            <i class="fa fa-star active"></i>
                                                                         @endfor
                                                                         @for ($i=0; $i < 5-$review->rating; $i++)
-                                                                            <i class="fa fa-star-o"></i>
+                                                                            <i class="fa fa-star"></i>
                                                                         @endfor
                                                                     </span>
                                                                 </div>
@@ -679,28 +686,56 @@
                             </h3>
                         </div>
                         <div class="caorusel-box">
-                            <div class="slick-carousel" data-slick-items="4" data-slick-lg-items="4"  data-slick-md-items="3" data-slick-sm-items="2" data-slick-xs-items="2">
+                            <div class="slick-carousel" data-slick-items="3" data-slick-xl-items="2" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="1" data-slick-xs-items="1"  data-slick-rows="2">
                                 @foreach (filter_products(\App\Product::where('subcategory_id', $product->subcategory_id)->where('id', '!=', $product->id))->limit(10)->get() as $key => $related_product)
-                                    <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
-                                        <div class="card-body p-0">
-                                            <div class="card-image">
-                                                <a href="{{ route('product', $related_product->slug) }}" class="d-block" style="background-image:url('{{ asset($related_product->thumbnail_img) }}');">
+                                <div class="p-2">
+                                    <div class="row no-gutters product-box-2 align-items-center">
+                                        <div class="col-4">
+                                            <div class="position-relative overflow-hidden h-100">
+                                                <a href="{{ route('product', $related_product->slug) }}" class="d-block product-image h-100" style="background-image:url('{{ asset($related_product->thumbnail_img) }}');">
                                                 </a>
-                                            </div>
-
-                                            <div class="p-3">
-                                                <div class="price-box">
-                                                    @if(home_base_price($related_product->id) != home_discounted_base_price($related_product->id))
-                                                        <del class="old-product-price strong-400">{{ home_base_price($related_product->id) }}</del>
-                                                    @endif
-                                                    <span class="product-price strong-600">{{ home_discounted_base_price($related_product->id) }}</span>
+                                                <div class="product-btns">
+                                                    <button class="btn add-wishlist" title="Add to Wishlist" onclick="addToWishList({{ $related_product->id }})">
+                                                        <i class="la la-heart-o"></i>
+                                                    </button>
+                                                    <button class="btn add-compare" title="Add to Compare" onclick="addToCompare({{ $related_product->id }})">
+                                                        <i class="la la-refresh"></i>
+                                                    </button>
+                                                    <button class="btn quick-view" title="Quick view" onclick="showAddToCartModal({{ $related_product->id }})">
+                                                        <i class="la la-eye"></i>
+                                                    </button>
                                                 </div>
-                                                <h2 class="product-title p-0 mt-2 text-truncate-2">
+                                            </div>
+                                        </div>
+                                        <div class="col-8 border-left">
+                                            <div class="p-3">
+                                                <h2 class="product-title mb-0 p-0 text-truncate-2">
                                                     <a href="{{ route('product', $related_product->slug) }}">{{ __($related_product->name) }}</a>
                                                 </h2>
+                                                <div class="star-rating star-rating-sm mb-2">
+                                                    <i class="fa fa-star active"></i>
+                                                    <i class="fa fa-star active"></i>
+                                                    <i class="fa fa-star active"></i>
+                                                    <i class="fa fa-star half"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="price-box float-left">
+                                                        @if(home_base_price($related_product->id) != home_discounted_base_price($related_product->id))
+                                                            <del class="old-product-price strong-400">{{ home_base_price($related_product->id) }}</del>
+                                                        @endif
+                                                        <span class="product-price strong-600">{{ home_discounted_base_price($related_product->id) }}</span>
+                                                    </div>
+                                                    <div class="float-right">
+                                                        <button class="add-to-cart btn" title="Add to Cart" onclick="showAddToCartModal({{ $related_product->id }})">
+                                                            <i class="la la-shopping-cart"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                                 @endforeach
                             </div>
                         </div>

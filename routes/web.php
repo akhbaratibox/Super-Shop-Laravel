@@ -74,6 +74,7 @@ Route::post('/compare/addToCompare', 'CompareController@addToCompare')->name('co
 
 Route::resource('subscribers','SubscriberController');
 
+Route::get('/brands', 'HomeController@all_brands')->name('brands.all');
 Route::get('/categories', 'HomeController@all_categories')->name('categories.all');
 Route::get('/search', 'HomeController@search')->name('search');
 Route::get('/search?q={search}', 'HomeController@search')->name('suggestion.search');

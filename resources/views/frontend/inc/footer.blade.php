@@ -1,5 +1,5 @@
 
-<section class="slice-sm footer-top-bar">
+<section class="slice-sm footer-top-bar bg-white">
     <div class="container sct-inner">
         <div class="row no-gutters">
             <div class="col-lg-3 col-md-6">

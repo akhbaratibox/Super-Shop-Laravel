@@ -232,53 +232,51 @@
         </div>
     </section>
 
-    @php
-        $flash_deal = \App\FlashDeal::where('status', 1)->first();
-    @endphp
-    @if($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date)
-        <section class="slice">
-            <div class="container">
-                <div class="section-title section-title--style-1">
-                    <h3 class="section-title-inner heading-4 strong-700 text-capitalize">
-                        <span class="mr-4">{{__('Flash Deal')}}</span>
-                        <small class="countdown countdown-sm d-inline-block" data-countdown-date="{{ date('m/d/Y', $flash_deal->end_date) }}" data-countdown-label="hide"></small>
+    <section class="mb-4">
+        <div class="container">
+            <div class="p-4 bg-white shadow-sm">
+                <div class="section-title-1 clearfix">
+                    <h3 class="heading-5 strong-700 mb-0 float-left">
+                        <span class="mr-4">{{__('Featured Products')}}</span>
                     </h3>
                 </div>
                 <div class="caorusel-box">
-                    <div class="slick-carousel" data-slick-items="5" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="2" data-slick-xs-items="2">
-                        @foreach ($flash_deal->flash_deal_products as $key => $flash_deal_product)
-                            @php
-                                $product = \App\Product::find($flash_deal_product->product_id);
-                            @endphp
-                            @if ($product != null)
-                                <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
-                                    <div class="card-body p-0">
+                    <div class="slick-carousel" data-slick-items="6" data-slick-xl-items="5" data-slick-lg-items="4"  data-slick-md-items="3" data-slick-sm-items="2" data-slick-xs-items="2">
+                        @foreach (filter_products(\App\Product::where('published', 1)->where('featured', '1'))->limit(12)->get() as $key => $product)
+                        <div class="product-card-2 card card-product m-2 shop-cards shop-tech">
+                            <div class="card-body p-0">
 
-                                        <div class="card-image">
-                                            <a href="{{ route('product', $product->slug) }}" class="d-block" style="background-image:url('{{ asset($product->flash_deal_img) }}');">
-                                            </a>
-                                        </div>
-
-                                        <div class="p-3">
-                                            <div class="price-box">
-                                                @if(home_base_price($product->id) != home_discounted_base_price($product->id))
-                                                    <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
-                                                @endif
-                                                <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
-                                            </div>
-                                            <h2 class="product-title p-0 mt-2 text-truncate-2">
-                                                <a href="{{ route('product', $product->slug) }}">{{ __($product->name) }}</a>
-                                            </h2>
-                                        </div>
-                                    </div>
+                                <div class="card-image">
+                                    <a href="{{ route('product', $product->slug) }}" class="d-block" style="background-image:url('{{ asset($product->flash_deal_img) }}');">
+                                    </a>
                                 </div>
-                            @endif
+
+                                <div class="p-3">
+                                    <div class="price-box">
+                                        @if(home_base_price($product->id) != home_discounted_base_price($product->id))
+                                            <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
+                                        @endif
+                                        <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                                    </div>
+                                    <div class="star-rating star-rating-sm mt-1">
+                                        <i class="fa fa-star active"></i>
+                                        <i class="fa fa-star active"></i>
+                                        <i class="fa fa-star active"></i>
+                                        <i class="fa fa-star half"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <h2 class="product-title p-0 text-truncate-2">
+                                        <a href="{{ route('product', $product->slug) }}">{{ __($product->name) }}</a>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
                         @endforeach
                     </div>
                 </div>
             </div>
-        </section>
-    @endif
+        </div>
+    </section>
 
     @if (\App\BusinessSetting::where('type', 'best_selling')->first()->value == 1)
         <section class="mb-4">
@@ -290,16 +288,13 @@
                         </h3>
                         <ul class="inline-links float-right">
                             <li><a  class="active">{{__('Top 20')}}</a></li>
-                            {{-- <li><a href="" >Category name</a></li>
-                            <li><a href="" >Category name</a></li>
-                            <li><a href="" >Category name</a></li> --}}
                         </ul>
                     </div>
                     <div class="caorusel-box">
                         <div class="slick-carousel" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="2" data-slick-xs-items="1" data-slick-dots="true" data-slick-rows="2">
                             @foreach (filter_products(\App\Product::where('published', 1)->orderBy('num_of_sale', 'desc'))->limit(20)->get() as $key => $product)
                                 <div class="p-2">
-                                    <div class="row no-gutters product-box-2">
+                                    <div class="row no-gutters product-box-2 align-items-center">
                                         <div class="col-4">
                                             <div class="position-relative overflow-hidden h-100">
                                                 <a href="{{ route('product', $product->slug) }}" class="d-block product-image h-100" style="background-image:url('{{ asset($product->thumbnail_img) }}');">
@@ -319,9 +314,16 @@
                                         </div>
                                         <div class="col-8 border-left">
                                             <div class="p-3">
-                                                <h2 class="product-title mb-3 p-0 text-truncate-2">
+                                                <h2 class="product-title mb-0 p-0 text-truncate-2">
                                                     <a href="{{ route('product', $product->slug) }}">{{ __($product->name) }}</a>
                                                 </h2>
+                                                <div class="star-rating star-rating-sm mb-2">
+                                                    <i class="fa fa-star active"></i>
+                                                    <i class="fa fa-star active"></i>
+                                                    <i class="fa fa-star active"></i>
+                                                    <i class="fa fa-star half"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
                                                 <div class="clearfix">
                                                     <div class="price-box float-left">
                                                         @if(home_base_price($product->id) != home_discounted_base_price($product->id))
@@ -387,7 +389,7 @@
                             <div class="tab-pane fade @php if($key == 0) echo 'show active'; @endphp" id="subsubcat-{{ $subsubcategory }}">
                                 <div class="row gutters-5 sm-no-gutters">
                                     @foreach (filter_products(\App\Product::where('published', 1)->where('subsubcategory_id', $subsubcategory))->limit(6)->get() as $key => $product)
-                                        <div class="col-xl-2 col-lg-3 col-6">
+                                        <div class="col-xl-2 col-lg-3 col-md-4 col-6">
                                             <div class="product-box-2 bg-white alt-box my-2">
                                                 <div class="position-relative overflow-hidden">
                                                     <a href="{{ route('product', $product->slug) }}" class="d-block product-image h-100" style="background-image:url('{{ asset($product->thumbnail_img) }}');" tabindex="0">
@@ -405,9 +407,16 @@
                                                     </div>
                                                 </div>
                                                 <div class="p-3 border-top">
-                                                    <h2 class="product-title mb-3 p-0 text-truncate-2">
+                                                    <h2 class="product-title p-0 text-truncate">
                                                         <a href="{{ route('product', $product->slug) }}" tabindex="0">{{ __($product->name) }}</a>
                                                     </h2>
+                                                    <div class="star-rating mb-1">
+                                                        <i class="fa fa-star active"></i>
+                                                        <i class="fa fa-star active"></i>
+                                                        <i class="fa fa-star active"></i>
+                                                        <i class="fa fa-star half"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
                                                     <div class="clearfix">
                                                         <div class="price-box float-left">
                                                             @if(home_base_price($product->id) != home_discounted_base_price($product->id))
@@ -415,11 +424,11 @@
                                                             @endif
                                                             <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
                                                         </div>
-                                                        <div class="float-right">
+                                                        <!-- <div class="float-right">
                                                             <button class="add-to-cart btn" title="Add to Cart" onclick="showAddToCartModal({{ $product->id }})" tabindex="0">
                                                                 <i class="la la-shopping-cart"></i>
                                                             </button>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -435,114 +444,110 @@
         </section>
     @endforeach
 
-    <section class="my-5">
+    <section class="mb-5">
         <div class="container">
-            <div class="row gutters-10">
-                @foreach (\App\Banner::where('published', 1)->get() as $key => $banner)
-                    <div class="col-lg-{{ 12/count(\App\Banner::where('published', 1)->get()) }}">
-                        <div class="media-banner mb-3 mb-lg-0">
-                            <a href="{{ $banner->url }}" target="_blank" class="banner-container">
-                                <img src="{{ asset($banner->photo) }}" alt="" class="img-fluid">
-                            </a>
-                        </div>
+            <div class="p-4 bg-white shadow-sm">
+                <div class="section-title-1 clearfix">
+                    <h3 class="heading-5 strong-700 mb-0 float-left">
+                        <span class="mr-4">{{__('Best Sellers')}}</span>
+                    </h3>
+                    <ul class="inline-links float-right">
+                        <li><a  class="active">{{__('Top 20')}}</a></li>
+                    </ul>
+                </div>
+                <div class="caorusel-box">
+                    <div class="slick-carousel" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="2" data-slick-xs-items="1" data-slick-dots="true" data-slick-rows="2">
+                        @foreach (filter_products(\App\Product::where('published', 1)->orderBy('num_of_sale', 'desc'))->limit(20)->get() as $key => $product)
+                            <div class="p-2">
+                                <div class="row no-gutters box-3 align-items-center border">
+                                    <div class="col-4">
+                                        <a href="{{ route('product', $product->slug) }}" class="d-block product-image p-3">
+                                            <img src="{{ asset($product->thumbnail_img) }}" alt="" class="img-fluid">
+                                        </a>
+                                    </div>
+                                    <div class="col-8 border-left">
+                                        <div class="p-3">
+                                            <h2 class="product-title mb-0 p-0 text-truncate">
+                                                <a href="{{ route('product', $product->slug) }}">{{ __($product->name) }}</a>
+                                            </h2>
+                                            <div class="star-rating star-rating-sm mb-2">
+                                                <i class="fa fa-star active"></i>
+                                                <i class="fa fa-star active"></i>
+                                                <i class="fa fa-star active"></i>
+                                                <i class="fa fa-star half"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="">
+                                                <a href="" >
+                                                    Visit Store <i class="la la-angle-right text-sm"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                @endforeach
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="mb-4">
+    <section class="mb-3">
         <div class="container">
             <div class="row gutters-10">
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <div class="section-title-1 clearfix">
                         <h3 class="heading-5 strong-700 mb-0 float-left">
-                            <span class="mr-4">{{__('Top Selling Products')}}</span>
+                            <span class="mr-4">{{__('Top 10 Catogories')}}</span>
                         </h3>
+                        <ul class="float-right inline-links">
+                            <li>
+                                <a href="{{ route('categories.all') }}" class="active">{{__('View All')}}</a>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="row">
-                        @foreach (filter_products(\App\Product::where('published', 1)->orderBy('num_of_sale', 'desc'))->limit(4)->get() as $key => $product)
-                            <div class="mb-3 col-md-6 col-lg-12">
-                                <div class="d-flex product-box-4 bg-white align-items-center">
-                                    <div class="product-image">
-                                        <a href="{{ route('product', $product->slug) }}" class="d-block">
-                                            <img src="{{ asset($product->thumbnail_img) }}" alt="{{ __($product->name) }}" class="img-fluid">
-                                        </a>
-                                    </div>
-                                    <div class="product-details flex-grow-1">
-                                        <h4 class="title text-truncate">
-                                            <a href="{{ route('product', $product->slug) }}" class="d-block">{{ __($product->name) }}</a>
-                                        </h4>
-                                        <div class="price-box">
-                                            @if(home_base_price($product->id) != home_discounted_base_price($product->id))
-                                                <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
-                                            @endif
-                                            <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                    <div class="row gutters-5">
+                        @foreach (filter_products(\App\Product::where('published', 1)->where('featured', '1'))->limit(10)->get() as $key => $product)
+                            <div class="mb-3 col-6">
+                                <a href="{{ route('product', $product->slug) }}" class="bg-white border d-block c-base-2 box-2 pl-2">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col-3 text-center">
+                                            <img src="{{ asset($product->featured_img) }}" alt="" class="img-fluid img">
+                                        </div>
+                                        <div class="info col-9">
+                                            <div class="name text-truncate pl-3 py-4">Cellphones & Tabs</div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         @endforeach
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <div class="section-title-1 clearfix">
                         <h3 class="heading-5 strong-700 mb-0 float-left">
-                            <span class="mr-4">{{__('Featured Products')}}</span>
+                            <span class="mr-4">{{__('Top 10 Brands')}}</span>
                         </h3>
+                        <ul class="float-right inline-links">
+                            <li>
+                                <a href="{{ route('brands.all') }}" class="active">{{__('View All')}}</a>
+                            </li>
+                        </ul>
                     </div>
                     <div class="row">
-                        @foreach (filter_products(\App\Product::where('published', 1)->where('featured', '1'))->limit(4)->get() as $key => $product)
-                            <div class="mb-3 col-md-6 col-lg-12">
-                                <div class="d-flex product-box-4 bg-white align-items-center">
-                                    <div class="product-image">
-                                        <a href="{{ route('product', $product->slug) }}">
-                                            <img src="{{ asset($product->featured_img) }}" alt="{{ __($product->name) }}" class="img-fluid">
-                                        </a>
-                                    </div>
-                                    <div class="product-details flex-grow-1">
-                                        <h4 class="title text-truncate-2">
-                                            <a href="{{ route('product', $product->slug) }}" class="d-block">{{ __($product->name) }}</a>
-                                        </h4>
-                                        <div class="price-box">
-                                            @if(home_base_price($product->id) != home_discounted_base_price($product->id))
-                                                <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
-                                            @endif
-                                            <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                        @foreach (filter_products(\App\Product::where('published', 1)->where('todays_deal', '1'))->limit(10)->get() as $key => $product)
+                            <div class="mb-3 col-6">
+                                <a href="{{ route('product', $product->slug) }}" class="bg-white border d-block c-base-2 box-2 pl-2">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col-3 text-center">
+                                            <img src="{{ asset($product->featured_img) }}" alt="" class="img-fluid img">
+                                        </div>
+                                        <div class="info col-9">
+                                            <div class="name text-truncate pl-3 py-4">Brand name</div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="section-title-1 clearfix">
-                        <h3 class="heading-5 strong-700 mb-0 float-left">
-                            <span class="mr-4">{{__('Todays Deal')}}</span>
-                        </h3>
-                    </div>
-                    <div class="row">
-                        @foreach (filter_products(\App\Product::where('published', 1)->where('todays_deal', '1'))->limit(4)->get() as $key => $product)
-                            <div class="mb-3 col-md-6 col-lg-12">
-                                <div class="d-flex product-box-4 bg-white align-items-center">
-                                    <div class="product-image">
-                                        <a href="{{ route('product', $product->slug) }}">
-                                            <img src="{{ asset($product->thumbnail_img) }}" alt="{{ __($product->name) }}" class="img-fluid">
-                                        </a>
-                                    </div>
-                                    <div class="product-details flex-grow-1">
-                                        <h4 class="title text-truncate-2">
-                                            <a href="{{ route('product', $product->slug) }}" class="d-block">{{ __($product->name) }}</a>
-                                        </h4>
-                                        <div class="price-box">
-                                            @if(home_base_price($product->id) != home_discounted_base_price($product->id))
-                                                <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
-                                            @endif
-                                            <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                </a>
                             </div>
                         @endforeach
                     </div>

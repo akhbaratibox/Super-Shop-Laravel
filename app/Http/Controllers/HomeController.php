@@ -7,6 +7,7 @@ use Session;
 use Auth;
 use Hash;
 use App\Category;
+use App\Brand;
 use App\SubSubCategory;
 use App\Product;
 use App\User;
@@ -248,6 +249,11 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         return view('frontend.all_category', compact('categories'));
+    }
+    public function all_brands(Request $request)
+    {
+        $categories = Category::all();
+        return view('frontend.all_brand', compact('categories'));
     }
 
     public function show_product_upload_form(Request $request)

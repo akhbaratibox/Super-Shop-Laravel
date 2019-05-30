@@ -106,6 +106,7 @@
                                                     {{__('Actions')}} <i class="dropdown-caret"></i>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li><a onclick="edit_home_banner({{ $banner->id }})">{{__('Edit')}}</a></li>
                                                     <li><a onclick="confirm_modal('{{route('home_banners.destroy', $banner->id)}}');">{{__('Delete')}}</a></li>
                                                 </ul>
                                             </div>
@@ -226,6 +227,15 @@
         });
     }
 
+    function edit_home_banner(id){
+        var url = '{{ route("home_banners.edit", "home_banner_id") }}';
+        url = url.replace('home_banner_id', id);
+        $.get(url, {}, function(data){
+            $('#demo-lft-tab-2').html(data);
+            $('.demo-select2-placeholder').select2();
+        });
+    }
+
     function add_home_category(){
         $.get('{{ route('home_categories.create')}}', {}, function(data){
             $('#demo-lft-tab-3').html(data);
@@ -266,12 +276,9 @@
         else{
             var status = 0;
         }
-        var url = '{{ route('home_banners.update', 'banner_id') }}';
-        url = url.replace('banner_id', el.value);
-
-        $.post(url, {_token:'{{ csrf_token() }}', status:status, _method:'PATCH'}, function(data){
+        $.post('{{ route('home_banners.update_status') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
             if(data == 1){
-                showAlert('success', 'Published banners updated successfully');
+                showAlert('success', 'Banner status updated successfully');
             }
             else{
                 showAlert('danger', 'Something went wrong');

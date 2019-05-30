@@ -54,6 +54,14 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('reviews.seller') }}" class="{{ areActiveRoutesHome(['reviews.seller'])}}">
+                        <i class="la la-star-o"></i>
+                        <span class="category-name">
+                            {{__('Product Reviews')}}
+                        </span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('shops.index') }}" class="{{ areActiveRoutesHome(['shops.index'])}}">
                         <i class="la la-cog"></i>
                         <span class="category-name">
@@ -91,7 +99,7 @@
         </div>
 
         <div class="sidebar-widget-title py-3">
-            <span>{{__('Earinngs')}}</span>
+            <span>{{__('Earnings')}}</span>
         </div>
         <div class="widget-balance pb-3 pt-1">
             <div class="text-center">

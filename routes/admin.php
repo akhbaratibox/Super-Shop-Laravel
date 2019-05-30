@@ -91,6 +91,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	    Route::get('/sliders/destroy/{id}', 'SliderController@destroy')->name('sliders.destroy');
 
 		Route::resource('home_banners','BannerController');
+		Route::post('/home_banners/update_status', 'BannerController@update_status')->name('home_banners.update_status');
 	    Route::get('/home_banners/destroy/{id}', 'BannerController@destroy')->name('home_banners.destroy');
 
 		Route::resource('home_categories','HomeCategoryController');
@@ -142,4 +143,8 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::post('/coupon/get_form', 'CouponController@get_coupon_form')->name('coupon.get_coupon_form');
 	Route::post('/coupon/get_form_edit', 'CouponController@get_coupon_form_edit')->name('coupon.get_coupon_form_edit');
 	Route::get('/coupon/destroy/{id}', 'CouponController@destroy')->name('coupon.destroy');
+
+	//Reviews
+	Route::get('/reviews', 'ReviewController@index')->name('reviews.index');
+	Route::post('/reviews/published', 'ReviewController@updatePublished')->name('reviews.published');
 });

@@ -123,6 +123,9 @@
                                             <a class="nav-link" href="{{route('products.seller')}}">{{__('Seller Products')}}</a>
                                         </li>
                                     @endif
+                                    <li class="{{ areActiveRoutes(['reviews.index'])}}">
+                                        <a class="nav-link" href="{{route('reviews.index')}}">{{__('Product Reviews')}}</a>
+                                    </li>
                                 </ul>
                             </li>
                         @endif

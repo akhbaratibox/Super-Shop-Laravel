@@ -208,7 +208,7 @@
                             </li>
                         </ul>
                         <div class="sidebar-widget-title py-0">
-                            <span>{{__('Earinngs')}}</span>
+                            <span>{{__('Earnings')}}</span>
                         </div>
                         <div class="widget-balance py-3">
                             <div class="text-center">

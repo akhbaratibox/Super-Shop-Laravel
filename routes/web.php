@@ -100,8 +100,6 @@ Route::group(['middleware' => ['user', 'verified']], function(){
 	Route::resource('wishlists','WishlistController');
 	Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
 
-	Route::resource('/reviews', 'ReviewController');
-
 	Route::get('/wallet', 'WalletController@index')->name('wallet.index');
 	Route::post('/recharge', 'WalletController@recharge')->name('wallet.recharge');
 });
@@ -114,6 +112,8 @@ Route::group(['prefix' =>'seller', 'middleware' => ['seller', 'verified']], func
 
 	Route::get('/shop/apply_for_verification', 'ShopController@verify_form')->name('shop.verify');
 	Route::post('/shop/apply_for_verification', 'ShopController@verify_form_store')->name('shop.verify.store');
+
+	Route::get('/reviews', 'ReviewController@seller_reviews')->name('reviews.seller');
 });
 
 Route::group(['middleware' => ['auth']], function(){
@@ -134,6 +134,8 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::post('/orders/details', 'OrderController@order_details')->name('orders.details');
 	Route::post('/orders/update_delivery_status', 'OrderController@update_delivery_status')->name('orders.update_delivery_status');
 	Route::post('/orders/update_payment_status', 'OrderController@update_payment_status')->name('orders.update_payment_status');
+
+	Route::resource('/reviews', 'ReviewController');
 });
 
 Route::resource('shops', 'ShopController');

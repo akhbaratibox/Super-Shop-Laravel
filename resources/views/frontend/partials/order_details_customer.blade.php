@@ -144,6 +144,12 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th>{{__('Coupon Discount')}}</th>
+                                <td class="text-right">
+                                    <span class="text-italic">{{ single_price($order->coupon_discount) }}</span>
+                                </td>
+                            </tr>
+                            <tr>
                                 <th><span class="strong-600">{{__('Total')}}</span></th>
                                 <td class="text-right">
                                     <strong><span>{{ single_price($order->grand_total) }}</span></strong>

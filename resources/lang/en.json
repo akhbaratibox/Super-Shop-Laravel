@@ -136,7 +136,7 @@
     "Downloads": "",
     "Due to seller": "",
     "Duplicate": "",
-    "Earinngs": "",
+    "Earnings": "",
     "Edit": "",
     "Edit Product": "",
     "Email": "",
@@ -590,5 +590,7 @@
     "SubSubCategory has been updated successfully":"",
     "SubSubCategory has been deleted successfully":"",
     "Track Order":"",
-    "There have been no reviews for this product yet.":""
+    "There have been no reviews for this product yet.":"",
+    "Product Reviews":"",
+    "Coupon Discount":""
 }

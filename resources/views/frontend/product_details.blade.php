@@ -612,7 +612,7 @@
                                                 $commentable = false;
                                             @endphp
                                             @foreach ($product->orderDetails as $key => $orderDetail)
-                                                @if($orderDetail->order->user_id == Auth::user()->id)
+                                                @if($orderDetail->order->user_id == Auth::user()->id && $orderDetail->delivery_status == 'delivered' && \App\Review::where('user_id', Auth::user()->id)->where('product_id', $product->id)->first() == null)
                                                     @php
                                                         $commentable = true;
                                                     @endphp
@@ -751,7 +751,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
     		$('#share').share({
-    			networks: ['facebook','googleplus','twitter','linkedin','tumblr','in1','stumbleupon','digg'],
+    			networks: ['facebook','twitter','linkedin','tumblr','in1','stumbleupon','digg'],
     			theme: 'square'
     		});
     	});

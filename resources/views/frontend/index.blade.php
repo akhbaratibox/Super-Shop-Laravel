@@ -259,18 +259,7 @@
                                         <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
                                     </div>
                                     <div class="star-rating star-rating-sm mt-1">
-                                        @for ($i=0; $i < floor($product->rating); $i++)
-                                            <i class="fa fa-star active"></i>
-                                        @endfor
-                                        @for ($i=0; $i < ceil(5-$product->rating); $i++)
-                                            <i class="fa fa-star
-                                                @if($i==0 && ($product->rating - floor($product->rating)) > 0 && ($product->rating - floor($product->rating)) <= 0.5)
-                                                    half
-                                                @elseif($i==0 && (ceil($product->rating) - $product->rating) > 0 && (ceil($product->rating) - $product->rating) <= 0.5)
-                                                    active
-                                                @endif">
-                                            </i>
-                                        @endfor
+                                        {{ renderStarRating($product->rating) }}
                                     </div>
                                     <h2 class="product-title p-0 text-truncate-2">
                                         <a href="{{ route('product', $product->slug) }}">{{ __($product->name) }}</a>
@@ -325,18 +314,6 @@
                                                     <a href="{{ route('product', $product->slug) }}">{{ __($product->name) }}</a>
                                                 </h2>
                                                 <div class="star-rating star-rating-sm mb-2">
-                                                    {{-- @for ($i=0; $i < floor($product->rating); $i++)
-                                                        <i class="fa fa-star active"></i>
-                                                    @endfor
-                                                    @for ($i=0; $i < ceil(5-$product->rating); $i++)
-                                                        <i class="fa fa-star
-                                                            @if($i==0 && ($product->rating - floor($product->rating)) > 0 && ($product->rating - floor($product->rating)) <= 0.5)
-                                                                half
-                                                            @elseif($i==0 && (ceil($product->rating) - $product->rating) > 0 && (ceil($product->rating) - $product->rating) <= 0.5)
-                                                                active
-                                                            @endif">
-                                                        </i>
-                                                    @endfor --}}
                                                     {{ renderStarRating($product->rating) }}
                                                 </div>
                                                 <div class="clearfix">
@@ -426,18 +403,7 @@
                                                         <a href="{{ route('product', $product->slug) }}" tabindex="0">{{ __($product->name) }}</a>
                                                     </h2>
                                                     <div class="star-rating mb-1">
-                                                        @for ($i=0; $i < floor($product->rating); $i++)
-                                                            <i class="fa fa-star active"></i>
-                                                        @endfor
-                                                        @for ($i=0; $i < ceil(5-$product->rating); $i++)
-                                                            <i class="fa fa-star
-                                                                @if($i==0 && ($product->rating - floor($product->rating)) > 0 && ($product->rating - floor($product->rating)) <= 0.5)
-                                                                    half
-                                                                @elseif($i==0 && (ceil($product->rating) - $product->rating) > 0 && (ceil($product->rating) - $product->rating) <= 0.5)
-                                                                    active
-                                                                @endif">
-                                                            </i>
-                                                        @endfor
+                                                        {{ renderStarRating($product->rating) }}
                                                     </div>
                                                     <div class="clearfix">
                                                         <div class="price-box float-left">
@@ -446,11 +412,6 @@
                                                             @endif
                                                             <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
                                                         </div>
-                                                        <!-- <div class="float-right">
-                                                            <button class="add-to-cart btn" title="Add to Cart" onclick="showAddToCartModal({{ $product->id }})" tabindex="0">
-                                                                <i class="la la-shopping-cart"></i>
-                                                            </button>
-                                                        </div> -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -493,18 +454,7 @@
                                                 <a href="{{ route('product', $product->slug) }}">{{ __($product->name) }}</a>
                                             </h2>
                                             <div class="star-rating star-rating-sm mb-2">
-                                                @for ($i=0; $i < floor($product->rating); $i++)
-                                                    <i class="fa fa-star active"></i>
-                                                @endfor
-                                                @for ($i=0; $i < ceil(5-$product->rating); $i++)
-                                                    <i class="fa fa-star
-                                                        @if($i==0 && ($product->rating - floor($product->rating)) > 0 && ($product->rating - floor($product->rating)) <= 0.5)
-                                                            half
-                                                        @elseif($i==0 && (ceil($product->rating) - $product->rating) > 0 && (ceil($product->rating) - $product->rating) <= 0.5)
-                                                            active
-                                                        @endif">
-                                                    </i>
-                                                @endfor
+                                                {{ renderStarRating($product->rating) }}
                                             </div>
                                             <div class="">
                                                 <a href="" >

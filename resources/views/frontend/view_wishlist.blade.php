@@ -51,11 +51,7 @@
                                                 <a href="{{ route('product', $wishlist->product->slug) }}">{{ $wishlist->product->name }}</a>
                                             </h2>
                                             <div class="star-rating star-rating-sm mb-1">
-                                                <i class="fa fa-star active"></i>
-                                                <i class="fa fa-star active"></i>
-                                                <i class="fa fa-star active"></i>
-                                                <i class="fa fa-star half"></i>
-                                                <i class="fa fa-star"></i>
+                                                {{ renderStarRating($wishlist->product->rating) }}
                                             </div>
                                             <div class="mt-2">
                                                 <div class="price-box">

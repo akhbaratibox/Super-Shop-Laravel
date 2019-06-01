@@ -131,11 +131,7 @@
                                                         <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
                                                     </div>
                                                     <div class="star-rating star-rating-sm mt-1">
-                                                        <i class="fa fa-star active"></i>
-                                                        <i class="fa fa-star active"></i>
-                                                        <i class="fa fa-star active"></i>
-                                                        <i class="fa fa-star half"></i>
-                                                        <i class="fa fa-star"></i>
+                                                        {{ renderStarRating($product->rating) }}
                                                     </div>
                                                     <h2 class="product-title p-0 text-truncate-2">
                                                         <a href="{{ route('product', $product->slug) }}">{{ __($product->name) }}</a>
@@ -307,7 +303,7 @@
                             }
                         @endphp
                         @foreach ($products as $key => $product)
-                            <div class="col-xxl-3 col-xl-4 col-lg-3 col-md-4 col-6">
+                            <div class="col-lg-3 col-md-4 col-6">
                                 <div class="card product-box-1 mb-3">
                                     <div class="card-image">
                                         <a href="{{ route('product', $product->slug) }}" class="d-block" style="background-image:url('{{ asset($product->thumbnail_img) }}');" tabindex="0">
@@ -330,11 +326,7 @@
                                             </div>
                                             <div class="col-5">
                                                 <div class="star-rating star-rating-sm float-right">
-                                                    <i class="fa fa-star active"></i>
-                                                    <i class="fa fa-star active"></i>
-                                                    <i class="fa fa-star active"></i>
-                                                    <i class="fa fa-star half"></i>
-                                                    <i class="fa fa-star"></i>
+                                                    {{ renderStarRating($product->rating) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -346,7 +338,7 @@
                                                     <i class="la la-refresh"></i>
                                                 </button>
                                                 <button type="button" class="btn btn-block btn-icon-left" onclick="showAddToCartModal({{ $product->id }})">
-                                                    {{__('Add to cart')}}<i class="la la-shopping-cart ml-2"></i>
+                                                    <span class="d-none d-sm-inline-block">{{__('Add to cart')}}</span><i class="la la-shopping-cart ml-2"></i>
                                                 </button>
                                         </div>
                                     </div>

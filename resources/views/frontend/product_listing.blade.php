@@ -262,11 +262,7 @@
                                                     <a href="{{ route('product', $product->slug) }}">{{ __($product->name) }}</a>
                                                 </h2>
                                                 <div class="star-rating star-rating-sm mt-1 mb-2">
-                                                    <i class="fa fa-star active"></i>
-                                                    <i class="fa fa-star active"></i>
-                                                    <i class="fa fa-star active"></i>
-                                                    <i class="fa fa-star half"></i>
-                                                    <i class="fa fa-star"></i>
+                                                    {{ renderStarRating($product->rating) }}
                                                 </div>
                                                 <div class="price-box">
                                                     @if(home_base_price($product->id) != home_discounted_base_price($product->id))

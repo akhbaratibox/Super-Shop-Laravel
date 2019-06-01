@@ -73,35 +73,25 @@
                                 <li class="active"><a href="{{ route('products.subsubcategory', $product->subsubcategory_id) }}">{{ $product->subsubcategory->name }}</a></li>
                             </ul>
 
-                            <div class="row align-items-center">
+                            <div class="row">
                                 <div class="col-6">
+                                    <!-- Rating stars -->
+                                    <div class="rating mb-1">
+                                        @php
+                                            $total = 0;
+                                            $total += $product->reviews->count();
+                                        @endphp
+                                        <span class="star-rating">
+                                            {{ renderStarRating($product->rating) }}
+                                        </span>
+                                        <span class="rating-count">({{ $total }} {{__('customer reviews')}})</span>
+                                    </div>
                                     <div class="sold-by">
                                         <small class="mr-2">{{__('Sold by')}}: </small>
                                         @if ($product->added_by == 'seller' && \App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)
                                             <a href="{{ route('shop.visit', $product->user->shop->slug) }}">{{ $product->user->name }}</a>
                                         @else
                                             {{ __('Inhouse product') }}
-                                        @endif
-                                    </div>
-                                    <!-- Rating stars -->
-                                    <div class="rating">
-                                        @php
-                                            $rating = 0; $total = 0;
-                                            foreach ($product->user->products as $key => $seller_product) {
-                                                $rating += $seller_product->reviews->sum('rating');
-                                                $total += $seller_product->reviews->count();
-                                            }
-                                        @endphp
-                                        @if ($total > 0)
-                                            <span class="star-rating star-rating-sm">
-                                                @for ($i=0; $i < floor($rating/$total); $i++)
-                                                    <i class="fa fa-star active"></i>
-                                                @endfor
-                                                @for ($i=0; $i < ceil(5-$rating/$total); $i++)
-                                                    <i class="fa fa-star"></i>
-                                                @endfor
-                                            </span>
-                                            <span class="rating-count">({{ $total }} {{__('customer reviews')}})</span>
                                         @endif
                                     </div>
                                 </div>
@@ -485,11 +475,7 @@
                                             <a href="{{ route('product', $top_product->slug) }}" class="d-block">{{ $top_product->name }}</a>
                                         </h4>
                                         <div class="star-rating star-rating-sm mt-1">
-                                            <i class="fa fa-star active"></i>
-                                            <i class="fa fa-star active"></i>
-                                            <i class="fa fa-star active"></i>
-                                            <i class="fa fa-star half"></i>
-                                            <i class="fa fa-star"></i>
+                                            {{ renderStarRating($top_product->rating) }}
                                         </div>
                                         <div class="price-box">
                                             <!-- @if(home_base_price($top_product->id) != home_discounted_base_price($top_product->id))
@@ -709,15 +695,11 @@
                                         </div>
                                         <div class="col-8 border-left">
                                             <div class="p-3">
-                                                <h2 class="product-title mb-0 p-0 text-truncate-2">
+                                                <h2 class="product-title mb-0 p-0 text-truncate">
                                                     <a href="{{ route('product', $related_product->slug) }}">{{ __($related_product->name) }}</a>
                                                 </h2>
                                                 <div class="star-rating star-rating-sm mb-2">
-                                                    <i class="fa fa-star active"></i>
-                                                    <i class="fa fa-star active"></i>
-                                                    <i class="fa fa-star active"></i>
-                                                    <i class="fa fa-star half"></i>
-                                                    <i class="fa fa-star"></i>
+                                                    {{ renderStarRating($related_product->rating) }}
                                                 </div>
                                                 <div class="clearfix">
                                                     <div class="price-box float-left">

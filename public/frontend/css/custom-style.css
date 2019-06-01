@@ -1508,6 +1508,7 @@ label.payment_option input:checked + span:after{
 }
 .product-title a{
     color: #111;
+    display: block;
 }
 .price-box .old-product-price{
     font-size: 15px;
@@ -2175,7 +2176,7 @@ ul.seller-brand-list .brand-item {
 
 .product-box-1 .card-image a {
     display: block;
-    height: 230px;
+    height: 200px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

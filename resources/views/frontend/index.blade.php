@@ -325,7 +325,7 @@
                                                     <a href="{{ route('product', $product->slug) }}">{{ __($product->name) }}</a>
                                                 </h2>
                                                 <div class="star-rating star-rating-sm mb-2">
-                                                    @for ($i=0; $i < floor($product->rating); $i++)
+                                                    {{-- @for ($i=0; $i < floor($product->rating); $i++)
                                                         <i class="fa fa-star active"></i>
                                                     @endfor
                                                     @for ($i=0; $i < ceil(5-$product->rating); $i++)
@@ -336,7 +336,8 @@
                                                                 active
                                                             @endif">
                                                         </i>
-                                                    @endfor
+                                                    @endfor --}}
+                                                    {{ renderStarRating($product->rating) }}
                                                 </div>
                                                 <div class="clearfix">
                                                     <div class="price-box float-left">

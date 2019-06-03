@@ -4151,3 +4151,11 @@ ul.inline-links > li {
 .brand-box .name {
     padding-left:10px;
 }
+.hov-bounce:hover{
+    transform: translateY(-3px);
+    -webkit-transform: translateY(-3px);
+    -ms-webkit-transform: translateY(-3px);
+}
+.fade-btn:hover{
+    color: #fff;
+}

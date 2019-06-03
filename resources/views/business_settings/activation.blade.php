@@ -111,6 +111,19 @@
             </div>
         </div>
     </div>
+    <div class="col-lg-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">{{__('Coupon System Activation')}}</h3>
+            </div>
+            <div class="panel-body text-center">
+                <label class="switch">
+                    <input type="checkbox" onchange="updateSettings(this, 'coupon_system')" <?php if(\App\BusinessSetting::where('type', 'coupon_system')->first()->value == 1) echo "checked";?>>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="row">

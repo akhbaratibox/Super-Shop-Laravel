@@ -49,9 +49,11 @@
             <div class="container">
                 <div class="row cols-xs-space cols-sm-space cols-md-space">
                     <div class="col-lg-8">
-                        <div class="card">
-                            <button type="submit" class="btn btn-base-1" onclick="coupon_code_modal()">{{__('Apply Coupon code')}}</button>
-                        </div>
+                        @if (Auth::check() && \App\BusinessSetting::where('type', 'coupon_system')->first()->value == 1)
+                            <div class="card">
+                                <button type="submit" class="btn btn-base-1" onclick="coupon_code_modal()">{{__('Apply Coupon code')}}</button>
+                            </div>
+                        @endif
                         <form action="{{ route('payment.checkout') }}" class="form-default" data-toggle="validator" role="form" method="POST">
                             @csrf
                             <div class="card">

@@ -376,7 +376,7 @@
                             @endphp
                         <li class="{{ areActiveRoutes(['support_ticket.admin_index'])}}">
                             <a class="nav-link" href="{{ route('support_ticket.admin_index') }}">
-                                <i class="fa fa-money"></i>
+                                <i class="fa fa-support"></i>
                                 <span class="menu-title">{{__('Suppot Ticket')}} @if($support_ticket > 0)<span class="pull-right badge badge-info">{{ $support_ticket }}</span>@endif</span>
                             </a>
                         </li>

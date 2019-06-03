@@ -384,12 +384,7 @@
                             @if ($total > 0)
                                 <div class="rating text-center d-block">
                                     <span class="star-rating star-rating-sm d-block">
-                                        @for ($i=0; $i < floor($rating/$total); $i++)
-                                            <i class="fa fa-star active"></i>
-                                        @endfor
-                                        @for ($i=0; $i < ceil(5-$rating/$total); $i++)
-                                            <i class="fa fa-star"></i>
-                                        @endfor
+                                        {{ renderStarRating($rating) }}
                                     </span>
                                     <span class="rating-count d-block ml-0">({{ $total }} {{__('customer reviews')}})</span>
                                 </div>

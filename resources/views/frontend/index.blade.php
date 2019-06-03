@@ -457,7 +457,7 @@
                                                 {{ renderStarRating($product->rating) }}
                                             </div>
                                             <div class="">
-                                                <a href="" >
+                                                <a href="" class="icon-anim">
                                                     Visit Store <i class="la la-angle-right text-sm"></i>
                                                 </a>
                                             </div>
@@ -482,20 +482,23 @@
                         </h3>
                         <ul class="float-right inline-links">
                             <li>
-                                <a href="{{ route('categories.all') }}" class="active">{{__('View All')}}</a>
+                                <a href="{{ route('categories.all') }}" class="active">{{__('View All Catogories')}}</a>
                             </li>
                         </ul>
                     </div>
                     <div class="row gutters-5">
                         @foreach (filter_products(\App\Product::where('published', 1)->where('featured', '1'))->limit(10)->get() as $key => $product)
                             <div class="mb-3 col-6">
-                                <a href="{{ route('product', $product->slug) }}" class="bg-white border d-block c-base-2 box-2 pl-2">
+                                <a href="{{ route('product', $product->slug) }}" class="bg-white border d-block c-base-2 box-2 icon-anim pl-2">
                                     <div class="row align-items-center no-gutters">
                                         <div class="col-3 text-center">
                                             <img src="{{ asset($product->featured_img) }}" alt="" class="img-fluid img">
                                         </div>
-                                        <div class="info col-9">
+                                        <div class="info col-7">
                                             <div class="name text-truncate pl-3 py-4">Cellphones & Tabs</div>
+                                        </div>
+                                        <div class="col-2">
+                                            <i class="la la-angle-right c-base-1"></i>
                                         </div>
                                     </div>
                                 </a>
@@ -510,20 +513,23 @@
                         </h3>
                         <ul class="float-right inline-links">
                             <li>
-                                <a href="{{ route('brands.all') }}" class="active">{{__('View All')}}</a>
+                                <a href="{{ route('brands.all') }}" class="active">{{__('View All Brands')}}</a>
                             </li>
                         </ul>
                     </div>
                     <div class="row">
                         @foreach (filter_products(\App\Product::where('published', 1)->where('todays_deal', '1'))->limit(10)->get() as $key => $product)
                             <div class="mb-3 col-6">
-                                <a href="{{ route('product', $product->slug) }}" class="bg-white border d-block c-base-2 box-2 pl-2">
+                                <a href="{{ route('product', $product->slug) }}" class="bg-white border d-block c-base-2 box-2 icon-anim pl-2">
                                     <div class="row align-items-center no-gutters">
                                         <div class="col-3 text-center">
                                             <img src="{{ asset($product->featured_img) }}" alt="" class="img-fluid img">
                                         </div>
-                                        <div class="info col-9">
+                                        <div class="info col-7">
                                             <div class="name text-truncate pl-3 py-4">Brand name</div>
+                                        </div>
+                                        <div class="col-2">
+                                            <i class="la la-angle-right c-base-1"></i>
                                         </div>
                                     </div>
                                 </a>

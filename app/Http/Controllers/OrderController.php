@@ -7,6 +7,7 @@ use App\Order;
 use App\Product;
 use App\Color;
 use App\OrderDetail;
+use App\CouponUsage;
 use Auth;
 use Session;
 use DB;
@@ -155,6 +156,11 @@ class OrderController extends Controller
             if(Session::has('coupon_discount')){
                 $order->grand_total -= Session::get('coupon_discount');
                 $order->coupon_discount = Session::get('coupon_discount');
+
+                $coupon_usage = new CouponUsage;
+                $coupon_usage->user_id = Auth::user()->id;
+                $coupon_usage->coupon_id = Session::get('coupon_id');
+                $coupon_usage->save();
             }
 
             $order->save();

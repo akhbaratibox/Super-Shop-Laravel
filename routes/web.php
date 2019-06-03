@@ -102,6 +102,9 @@ Route::group(['middleware' => ['user', 'verified']], function(){
 
 	Route::get('/wallet', 'WalletController@index')->name('wallet.index');
 	Route::post('/recharge', 'WalletController@recharge')->name('wallet.recharge');
+
+	Route::resource('support_ticket','SupportTicketController');
+	Route::post('support_ticket/reply','SupportTicketController@seller_store')->name('support_ticket.seller_store');
 });
 
 Route::group(['prefix' =>'seller', 'middleware' => ['seller', 'verified']], function(){

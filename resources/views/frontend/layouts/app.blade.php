@@ -337,6 +337,30 @@
         }
     }
 
+    function buyNow(){
+        if(checkAddToCartValidity()) {
+            $('#addToCart').modal();
+            $('.c-preloader').show();
+            $.ajax({
+               type:"POST",
+               url: '{{ route('cart.addToCart') }}',
+               data: $('#option-choice-form').serializeArray(),
+               success: function(data){
+                   //$('#addToCart-modal-body').html(null);
+                   //$('.c-preloader').hide();
+                   //$('#modal-size').removeClass('modal-lg');
+                   //$('#addToCart-modal-body').html(data);
+                   updateNavCart();
+                   $('#cart_items_sidenav').html(parseInt($('#cart_items_sidenav').html())+1);
+                   window.location.replace("{{ route('checkout.shipping_info') }}");
+               }
+           });
+        }
+        else{
+            showFrontendAlert('warning', 'Please choose all the options');
+        }
+    }
+
     function show_purchase_history_details(order_id)
     {
         $('#order-details-modal-body').html(null);

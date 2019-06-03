@@ -147,4 +147,9 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	//Reviews
 	Route::get('/reviews', 'ReviewController@index')->name('reviews.index');
 	Route::post('/reviews/published', 'ReviewController@updatePublished')->name('reviews.published');
+
+	//Support_Ticket
+	Route::get('support_ticket/','SupportticketController@admin_index')->name('support_ticket.admin_index');
+	Route::get('support_ticket/{id}/show','SupportticketController@admin_show')->name('support_ticket.admin_show');
+	Route::post('support_ticket/reply','SupportticketController@admin_store')->name('support_ticket.admin_store');
 });

@@ -1,7 +1,7 @@
 <div class="sidebar sidebar--style-3 no-border stickyfill p-0">
     <div class="widget mb-0">
         <div class="widget-profile-box text-center p-3">
-            <div class="image" style="background-image:url('{{ Auth::user()->avatar_original }}')"></div>
+            <div class="image" style="background-image:url('{{ asset(Auth::user()->avatar_original) }}')"></div>
             <div class="name">{{ Auth::user()->name }}</div>
         </div>
         <div class="sidebar-widget-title py-3">
@@ -51,6 +51,14 @@
                         </a>
                     </li>
                 @endif
+                <li>
+                    <a href="{{ route('support_ticket.index') }}" class="{{ areActiveRoutesHome(['support_ticket.index'])}}">
+                        <i class="la la-support"></i>
+                        <span class="category-name">
+                            {{__('Support Ticket')}}
+                        </span>
+                    </a>
+                </li>
             </ul>
         </div>
         @if (\App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)

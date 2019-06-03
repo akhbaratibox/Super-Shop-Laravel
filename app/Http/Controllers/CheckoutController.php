@@ -12,6 +12,7 @@ use App\Http\Controllers\PublicSslCommerzPaymentController;
 use App\Http\Controllers\OrderController;
 use App\Order;
 use App\BusinessSetting;
+use App\CouponUsage;
 use Session;
 
 class CheckoutController extends Controller
@@ -140,7 +141,7 @@ class CheckoutController extends Controller
         //dd($request->all());
         $coupon = Coupon::where('code', $request->code)->first();
 
-        if($coupon != null){
+        if($coupon != null && strtotime(date('d-m-Y')) >= $coupon->start_date && strtotime(date('d-m-Y')) <= $coupon->end_date && CouponUsage::where('user_id', Auth::user()->id)->where('coupon_id', $coupon->id)->first() == null){
             $coupon_details = json_decode($coupon->details);
 
             if ($coupon->type == 'cart_base')
@@ -168,6 +169,7 @@ class CheckoutController extends Controller
                     }
 
                     if(!Session::has('coupon_discount')){
+                        $request->session()->put('coupon_id', $coupon->id);
                         $request->session()->put('coupon_discount', $coupon_discount);
                         flash('Coupon has been applied')->success();
                     }

@@ -95,6 +95,14 @@
                         </a>
                     </li>
                 @endif
+                <li>
+                    <a href="{{ route('support_ticket.index') }}" class="{{ areActiveRoutesHome(['support_ticket.index'])}}">
+                        <i class="la la-support"></i>
+                        <span class="category-name">
+                            {{__('Support Ticket')}}
+                        </span>
+                    </a>
+                </li>
             </ul>
         </div>
 

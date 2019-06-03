@@ -89,7 +89,7 @@
                                     <div class="sold-by">
                                         <small class="mr-2">{{__('Sold by')}}: </small>
                                         @if ($product->added_by == 'seller' && \App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)
-                                            <a href="{{ route('shop.visit', $product->user->shop->slug) }}">{{ $product->user->name }}</a>
+                                            <a href="{{ route('shop.visit', $product->user->shop->slug) }}">{{ $product->user->shop->name }}</a>
                                         @else
                                             {{ __('Inhouse product') }}
                                         @endif
@@ -256,9 +256,13 @@
                             <div class="d-table width-100 mt-3">
                                 <div class="d-table-cell">
                                     <!-- Buy Now button -->
-                                    <button type="button" class="btn btn-styled btn-base-1 btn-icon-left strong-700 hov-bounce hov-shaddow" onclick="addToCart()">
-                                        <i class="la la-shopping-cart"></i> {{__('Buy Now')}}
-                                    </button>
+                                    @if(count(json_decode($product->variations, true)) >= 1)
+                                        @if ($qty > 0)
+                                            <button type="button" class="btn btn-styled btn-base-1 btn-icon-left strong-700 hov-bounce hov-shaddow" onclick="buyNow()">
+                                                <i class="la la-shopping-cart"></i> {{__('Buy Now')}}
+                                            </button>
+                                        @endif
+                                    @endif
                                     <!-- Add to cart button -->
                                     <button type="button" class="btn btn-styled btn-alt-base-1 c-white btn-icon-left strong-700 hov-bounce hov-shaddow ml-2" onclick="addToCart()">
                                         <i class="la la-shopping-cart"></i>
@@ -267,7 +271,7 @@
                                 </div>
                             </div>
 
-                            
+
                             <hr class="mt-3 mb-0">
 
                             <div class="d-table width-100 mt-2">

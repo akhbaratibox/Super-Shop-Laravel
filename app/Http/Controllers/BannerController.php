@@ -23,9 +23,9 @@ class BannerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($position)
     {
-        return view('banners.create');
+        return view('banners.create', compact('position'));
     }
 
     /**
@@ -40,6 +40,7 @@ class BannerController extends Controller
             $banner = new Banner;
             $banner->photo = $request->photo->store('uploads/banners');
             $banner->url = $request->url;
+            $banner->position = $request->position;
             $banner->save();
             flash(__('Banner has been inserted successfully'))->success();
         }
@@ -95,7 +96,7 @@ class BannerController extends Controller
         $banner = Banner::find($request->id);
         $banner->published = $request->status;
         if($request->status == 1){
-            if(count(Banner::where('published', 1)->get()) < 4)
+            if(count(Banner::where('published', 1)->where('position', $banner->position)->get()) < 4)
             {
                 if($banner->save()){
                     return '1';

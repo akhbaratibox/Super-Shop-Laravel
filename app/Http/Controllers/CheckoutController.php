@@ -12,6 +12,7 @@ use App\Http\Controllers\PublicSslCommerzPaymentController;
 use App\Http\Controllers\OrderController;
 use App\Order;
 use App\BusinessSetting;
+use App\Coupon;
 use App\CouponUsage;
 use Session;
 
@@ -105,7 +106,7 @@ class CheckoutController extends Controller
         return view('frontend.shipping_info', compact('categories'));
     }
 
-    public function get_payment_info(Request $request)
+    public function store_shipping_info(Request $request)
     {
         $data['name'] = $request->name;
         $data['email'] = $request->email;
@@ -119,6 +120,26 @@ class CheckoutController extends Controller
         $shipping_info = $data;
         $request->session()->put('shipping_info', $shipping_info);
 
+        $subtotal = 0;
+        $tax = 0;
+        $shipping = 0;
+        foreach (Session::get('cart') as $key => $cartItem){
+            $subtotal += $cartItem['price']*$cartItem['quantity'];
+            $tax += $cartItem['tax']*$cartItem['quantity'];
+            $shipping += $cartItem['shipping']*$cartItem['quantity'];
+        }
+
+        $total = $subtotal + $tax + $shipping;
+
+        if(Session::has('coupon_discount')){
+                $total -= Session::get('coupon_discount');
+        }
+
+        return view('frontend.payment_select', compact('total'));
+    }
+
+    public function get_payment_info(Request $request)
+    {
         $subtotal = 0;
         $tax = 0;
         $shipping = 0;
@@ -194,6 +215,7 @@ class CheckoutController extends Controller
                     }
                 }
                 if(!Session::has('coupon_discount')){
+                    $request->session()->put('coupon_id', $coupon->id);
                     $request->session()->put('coupon_discount', $coupon_discount);
                     flash('Coupon has been applied')->success();
                 }

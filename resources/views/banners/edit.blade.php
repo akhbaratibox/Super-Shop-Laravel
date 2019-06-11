@@ -30,7 +30,7 @@
                             </div>
                         </div>
                     @endif
-                    <div id="photos">
+                    <div id="photo">
 
                     </div>
                 </div>
@@ -53,7 +53,9 @@
             $(this).parents(".col-md-4").remove();
         });
 
-        $("#photos").spartanMultiImagePicker({
+        $('.demo-select2').select2();
+
+        $("#photo").spartanMultiImagePicker({
             fieldName:        'photo',
             maxCount:         1,
             rowHeight:        '200px',

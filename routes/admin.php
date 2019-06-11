@@ -77,6 +77,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::post('/languages/key_value_store', 'LanguageController@key_value_store')->name('languages.key_value_store');
 
 	Route::get('/frontend_settings/home', 'HomeController@home_settings')->name('home_settings.index');
+	Route::post('/frontend_settings/home/top_10', 'HomeController@top_10_settings')->name('top_10_settings.store');
 	Route::get('/sellerpolicy/{type}', 'PolicyController@index')->name('sellerpolicy.index');
 	Route::get('/returnpolicy/{type}', 'PolicyController@index')->name('returnpolicy.index');
 	Route::get('/supportpolicy/{type}', 'PolicyController@index')->name('supportpolicy.index');
@@ -91,6 +92,7 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	    Route::get('/sliders/destroy/{id}', 'SliderController@destroy')->name('sliders.destroy');
 
 		Route::resource('home_banners','BannerController');
+		Route::get('/home_banners/create/{position}', 'BannerController@create')->name('home_banners.create');
 		Route::post('/home_banners/update_status', 'BannerController@update_status')->name('home_banners.update_status');
 	    Route::get('/home_banners/destroy/{id}', 'BannerController@destroy')->name('home_banners.destroy');
 

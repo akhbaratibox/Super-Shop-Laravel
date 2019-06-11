@@ -219,8 +219,8 @@
     <section class="mb-4">
         <div class="container">
             <div class="row gutters-10">
-                @foreach (\App\Banner::where('published', 1)->get() as $key => $banner)
-                    <div class="col-lg-{{ 12/count(\App\Banner::where('published', 1)->get()) }}">
+                @foreach (\App\Banner::where('position', 1)->where('published', 1)->get() as $key => $banner)
+                    <div class="col-lg-{{ 12/count(\App\Banner::where('position', 1)->where('published', 1)->get()) }}">
                         <div class="media-banner mb-3 mb-lg-0">
                             <a href="{{ $banner->url }}" target="_blank" class="banner-container">
                                 <img src="{{ asset($banner->photo) }}" alt="" class="img-fluid">
@@ -344,8 +344,8 @@
     <section class="mb-4">
         <div class="container">
             <div class="row gutters-10">
-                @foreach (\App\Banner::where('published', 1)->get() as $key => $banner)
-                    <div class="col-lg-{{ 12/count(\App\Banner::where('published', 1)->get()) }}">
+                @foreach (\App\Banner::where('position', 2)->where('published', 1)->get() as $key => $banner)
+                    <div class="col-lg-{{ 12/count(\App\Banner::where('position', 2)->where('published', 1)->get()) }}">
                         <div class="media-banner mb-3 mb-lg-0">
                             <a href="{{ $banner->url }}" target="_blank" class="banner-container">
                                 <img src="{{ asset($banner->photo) }}" alt="" class="img-fluid">
@@ -427,50 +427,74 @@
         </section>
     @endforeach
 
-    <section class="mb-5">
-        <div class="container">
-            <div class="p-4 bg-white shadow-sm">
-                <div class="section-title-1 clearfix">
-                    <h3 class="heading-5 strong-700 mb-0 float-left">
-                        <span class="mr-4">{{__('Best Sellers')}}</span>
-                    </h3>
-                    <ul class="inline-links float-right">
-                        <li><a  class="active">{{__('Top 20')}}</a></li>
-                    </ul>
-                </div>
-                <div class="caorusel-box">
-                    <div class="slick-carousel" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="2" data-slick-xs-items="1" data-slick-dots="true" data-slick-rows="2">
-                        @foreach (filter_products(\App\Product::where('published', 1)->orderBy('num_of_sale', 'desc'))->limit(20)->get() as $key => $product)
-                            <div class="p-2">
-                                <div class="row no-gutters box-3 align-items-center border">
-                                    <div class="col-4">
-                                        <a href="{{ route('product', $product->slug) }}" class="d-block product-image p-3">
-                                            <img src="{{ asset($product->thumbnail_img) }}" alt="" class="img-fluid">
-                                        </a>
-                                    </div>
-                                    <div class="col-8 border-left">
-                                        <div class="p-3">
-                                            <h2 class="product-title mb-0 p-0 text-truncate">
-                                                <a href="{{ route('product', $product->slug) }}">{{ __($product->name) }}</a>
-                                            </h2>
-                                            <div class="star-rating star-rating-sm mb-2">
-                                                {{ renderStarRating($product->rating) }}
-                                            </div>
-                                            <div class="">
-                                                <a href="" class="icon-anim">
-                                                    Visit Store <i class="la la-angle-right text-sm"></i>
+    @if (\App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)
+        @php
+            $array = array();
+            foreach (\App\Seller::all() as $key => $seller) {
+                if($seller->user != null && $seller->user->shop != null){
+                    $total_sale = 0;
+                    foreach ($seller->user->products as $key => $product) {
+                        $total_sale += $product->num_of_sale;
+                    }
+                    $array[$seller->id] = $total_sale;
+                }
+            }
+            asort($array);
+        @endphp
+        <section class="mb-5">
+            <div class="container">
+                <div class="p-4 bg-white shadow-sm">
+                    <div class="section-title-1 clearfix">
+                        <h3 class="heading-5 strong-700 mb-0 float-left">
+                            <span class="mr-4">{{__('Best Sellers')}}</span>
+                        </h3>
+                        <ul class="inline-links float-right">
+                            <li><a  class="active">{{__('Top 20')}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="caorusel-box">
+                        <div class="slick-carousel" data-slick-items="3" data-slick-lg-items="3"  data-slick-md-items="2" data-slick-sm-items="2" data-slick-xs-items="1" data-slick-dots="true" data-slick-rows="2">
+                            @php
+                                $count = 0;
+                            @endphp
+                            @foreach ($array as $key => $value)
+                                @if ($count < 20)
+                                    @php
+                                        $count ++;
+                                        $seller = \App\Seller::find($key);
+                                    @endphp
+                                    <div class="p-2">
+                                        <div class="row no-gutters box-3 align-items-center border">
+                                            <div class="col-4">
+                                                <a href="{{ route('shop.visit', $seller->user->shop->slug) }}" class="d-block product-image p-3">
+                                                    <img src="{{ asset($seller->user->shop->logo) }}" alt="" class="img-fluid">
                                                 </a>
+                                            </div>
+                                            <div class="col-8 border-left">
+                                                <div class="p-3">
+                                                    <h2 class="product-title mb-0 p-0 text-truncate">
+                                                        <a href="{{ route('shop.visit', $seller->user->shop->slug) }}">{{ __($seller->user->shop->name) }}</a>
+                                                    </h2>
+                                                    <div class="star-rating star-rating-sm mb-2">
+                                                        {{ renderStarRating($seller->user->products->avg('rating')) }}
+                                                    </div>
+                                                    <div class="">
+                                                        <a href="{{ route('shop.visit', $seller->user->shop->slug) }}" class="icon-anim">
+                                                            {{ __('Visit Store') }} <i class="la la-angle-right text-sm"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        @endforeach
+                                @endif
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <section class="mb-3">
         <div class="container">
@@ -487,15 +511,15 @@
                         </ul>
                     </div>
                     <div class="row gutters-5">
-                        @foreach (filter_products(\App\Product::where('published', 1)->where('featured', '1'))->limit(10)->get() as $key => $product)
+                        @foreach (\App\Category::where('top', 1)->get() as $category)
                             <div class="mb-3 col-6">
-                                <a href="{{ route('product', $product->slug) }}" class="bg-white border d-block c-base-2 box-2 icon-anim pl-2">
+                                <a href="{{ route('products.category', $category->id) }}" class="bg-white border d-block c-base-2 box-2 icon-anim pl-2">
                                     <div class="row align-items-center no-gutters">
                                         <div class="col-3 text-center">
-                                            <img src="{{ asset($product->featured_img) }}" alt="" class="img-fluid img">
+                                            <img src="{{ asset($category->banner) }}" alt="" class="img-fluid img">
                                         </div>
                                         <div class="info col-7">
-                                            <div class="name text-truncate pl-3 py-4">Cellphones & Tabs</div>
+                                            <div class="name text-truncate pl-3 py-4">{{ __($category->name) }}</div>
                                         </div>
                                         <div class="col-2">
                                             <i class="la la-angle-right c-base-1"></i>
@@ -518,15 +542,15 @@
                         </ul>
                     </div>
                     <div class="row">
-                        @foreach (filter_products(\App\Product::where('published', 1)->where('todays_deal', '1'))->limit(10)->get() as $key => $product)
+                        @foreach (\App\Brand::where('top', 1)->get() as $brand)
                             <div class="mb-3 col-6">
-                                <a href="{{ route('product', $product->slug) }}" class="bg-white border d-block c-base-2 box-2 icon-anim pl-2">
+                                <a href="{{ route('products.brand', $brand->id) }}" class="bg-white border d-block c-base-2 box-2 icon-anim pl-2">
                                     <div class="row align-items-center no-gutters">
                                         <div class="col-3 text-center">
-                                            <img src="{{ asset($product->featured_img) }}" alt="" class="img-fluid img">
+                                            <img src="{{ asset($brand->logo) }}" alt="" class="img-fluid img">
                                         </div>
                                         <div class="info col-7">
-                                            <div class="name text-truncate pl-3 py-4">Brand name</div>
+                                            <div class="name text-truncate pl-3 py-4">{{ __($brand->name) }}</div>
                                         </div>
                                         <div class="col-2">
                                             <i class="la la-angle-right c-base-1"></i>

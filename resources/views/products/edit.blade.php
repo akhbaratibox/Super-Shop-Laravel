@@ -387,7 +387,12 @@
 
 				        </div>
 						<div id="demo-stk-lft-tab-10" class="tab-pane fade">
-
+							<div class="form-group">
+								<label class="col-lg-2 control-label">{{__('PDF Specification')}}</label>
+								<div class="col-lg-7">
+									<input type="file" class="form-control" placeholder="{{__('PDF')}}" name="pdf" accept="application/pdf">
+								</div>
+							</div>
 				        </div>
 				    </div>
 				</div>

@@ -5,6 +5,13 @@
         <img src="https://via.placeholder.com/2000x300.jpg" alt="" class="img-fluid">
     </section> -->
 
+    @php
+        $rating = 0;
+        foreach ($shop->user->products as $key => $seller_product) {
+            $rating += $seller_product->reviews->sum('rating');
+        }
+    @endphp
+
     <section class="gry-bg pt-4 ">
         <div class="container">
             <div class="row align-items-baseline">
@@ -20,11 +27,7 @@
                                 @endif
                             </h3>
                             <div class="star-rating star-rating-sm mb-1">
-                                <i class="fa fa-star active"></i>
-                                <i class="fa fa-star active"></i>
-                                <i class="fa fa-star active"></i>
-                                <i class="fa fa-star half"></i>
-                                <i class="fa fa-star"></i>
+                                {{ renderStarRating($shop->user->products->avg('rating')) }}
                             </div>
                             <div class="location alpha-6">{{ $shop->address }}</div>
                         </div>
@@ -175,19 +178,13 @@
                             <div class="rating text-center d-block">
                                 <span class="star-rating star-rating-sm d-block">
                                     @php
-                                        $rating = 0; $total = 0;
+                                        $total = 0;
                                         foreach ($shop->user->products as $key => $seller_product) {
-                                            $rating += $seller_product->reviews->sum('rating');
                                             $total += $seller_product->reviews->count();
                                         }
                                     @endphp
                                     @if ($total > 0)
-                                        @for ($i=0; $i < floor($rating/$total); $i++)
-                                            <i class="fa fa-star active"></i>
-                                        @endfor
-                                        @for ($i=0; $i < ceil(5-$rating/$total); $i++)
-                                            <i class="fa fa-star"></i>
-                                        @endfor
+                                        {{ renderStarRating($product->user->products->avg('rating')) }}
                                     @endif
                                 </span>
                                 <span class="rating-count d-block ml-0">({{ $total }} {{__('customer reviews')}})</span>

@@ -34,7 +34,7 @@
                                     {{ __('Product Base') }}
                             @endif</td>
                             <td>{{ date('d-m-Y', $coupon->start_date) }}</td>
-                            <td>{{ date('d-m-Y', $coupon->start_date) }}</td>
+                            <td>{{ date('d-m-Y', $coupon->end_date) }}</td>
                             <td>
                                 <div class="btn-group dropdown">
                                     <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">

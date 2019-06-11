@@ -49,6 +49,10 @@ class UpdateController extends Controller
         if(!Schema::hasColumn('shops', 'instagram')){
             DB::unprepared("ALTER TABLE `shops` ADD `instagram` VARCHAR(255) NULL DEFAULT NULL AFTER `youtube`");
         }
+        if(!Schema::hasTable('coupons')){
+            $sql_path = base_path('shop_update_14.sql');
+            DB::unprepared(file_get_contents($sql_path));
+        }
 
         return redirect('step2');
     }

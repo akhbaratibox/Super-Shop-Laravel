@@ -46,7 +46,7 @@
             <div class="container">
                 <div class="row cols-xs-space cols-sm-space cols-md-space">
                     <div class="col-lg-8">
-                        <form class="form-default" data-toggle="validator" action="{{ route('checkout.payment_info') }}" role="form" method="POST">
+                        <form class="form-default" data-toggle="validator" action="{{ route('checkout.store_shipping_infostore') }}" role="form" method="POST">
                             @csrf
                             <div class="card">
                                 @if(Auth::check())

@@ -43,7 +43,7 @@
                 <div class="row no-gutters cols-xs-space cols-sm-space cols-md-space">
                     <div class="col-lg-6">
                         <div class="product-gal sticky-top d-flex flex-row-reverse">
-                            @if(is_array(json_decode($product->photos)))
+                            @if(is_array(json_decode($product->photos)) && count(json_decode($product->photos)) > 0)
                                 <div class="product-gal-img">
                                     <img class="xzoom img-fluid" src="{{ asset(json_decode($product->photos)[0]) }}" xoriginal="{{ asset(json_decode($product->photos)[0]) }}" />
                                 </div>

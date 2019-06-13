@@ -43,20 +43,20 @@
                 <div class="row no-gutters cols-xs-space cols-sm-space cols-md-space">
                     <div class="col-lg-6">
                         <div class="product-gal sticky-top d-flex flex-row-reverse">
-                            <div class="product-gal-img">
-                                <img class="xzoom img-fluid" src="{{ asset(json_decode($product->photos)[0]) }}" xoriginal="{{ asset(json_decode($product->photos)[0]) }}" />
-                            </div>
-                            <div class="product-gal-thumb">
-                                <div class="xzoom-thumbs">
-                                    @if(is_array(json_decode($product->photos)))
+                            @if(is_array(json_decode($product->photos)))
+                                <div class="product-gal-img">
+                                    <img class="xzoom img-fluid" src="{{ asset(json_decode($product->photos)[0]) }}" xoriginal="{{ asset(json_decode($product->photos)[0]) }}" />
+                                </div>
+                                <div class="product-gal-thumb">
+                                    <div class="xzoom-thumbs">
                                         @foreach (json_decode($product->photos) as $key => $photo)
                                             <a href="{{ asset($photo) }}">
                                                 <img class="xzoom-gallery" width="80" src="{{ asset($photo) }}"  @if($key == 0) xpreview="{{ asset($photo) }}" @endif>
                                             </a>
                                         @endforeach
-                                    @endif
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
 

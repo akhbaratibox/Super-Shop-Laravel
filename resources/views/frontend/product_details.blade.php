@@ -48,11 +48,13 @@
                             </div>
                             <div class="product-gal-thumb">
                                 <div class="xzoom-thumbs">
-                                    @foreach (json_decode($product->photos) as $key => $photo)
-                                        <a href="{{ asset($photo) }}">
-                                            <img class="xzoom-gallery" width="80" src="{{ asset($photo) }}"  @if($key == 0) xpreview="{{ asset($photo) }}" @endif>
-                                        </a>
-                                    @endforeach
+                                    @if(is_array(json_decode($product->photos)))
+                                        @foreach (json_decode($product->photos) as $key => $photo)
+                                            <a href="{{ asset($photo) }}">
+                                                <img class="xzoom-gallery" width="80" src="{{ asset($photo) }}"  @if($key == 0) xpreview="{{ asset($photo) }}" @endif>
+                                            </a>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>

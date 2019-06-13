@@ -252,7 +252,7 @@
                         @csrf
                         <div class="panel-body">
                             <div class="form-group">
-                                <label class="col-sm-3" for="url">{{__('Banner Position')}}</label>
+                                <label class="col-sm-3" for="url">{{__('Top Categories')}}</label>
                                 <div class="col-sm-9">
                                     <select class="form-control demo-select2-max-10" name="top_categories[]" multiple required>
                                         @foreach (\App\Category::all() as $key => $category)
@@ -262,7 +262,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3" for="url">{{__('Banner Position')}}</label>
+                                <label class="col-sm-3" for="url">{{__('Top Brands')}}</label>
                                 <div class="col-sm-9">
                                     <select class="form-control demo-select2-max-10" name="top_brands[]" multiple required>
                                         @foreach (\App\Brand::all() as $key => $brand)
@@ -345,7 +345,7 @@
 
     function add_home_category(){
         $.get('{{ route('home_categories.create')}}', {}, function(data){
-            $('#demo-lft-tab-3').html(data);
+            $('#demo-lft-tab-4').html(data);
             $('.demo-select2-placeholder').select2();
         });
     }
@@ -354,7 +354,7 @@
         var url = '{{ route("home_categories.edit", "home_category_id") }}';
         url = url.replace('home_category_id', id);
         $.get(url, {}, function(data){
-            $('#demo-lft-tab-3').html(data);
+            $('#demo-lft-tab-4').html(data);
             $('.demo-select2-placeholder').select2();
         });
     }

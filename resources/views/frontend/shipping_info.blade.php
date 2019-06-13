@@ -87,7 +87,7 @@
                                                     <label class="control-label">{{__('Select your country')}}</label>
                                                     <select class="form-control selectpicker" data-live-search="true" name="country">
                                                         @foreach (\App\Country::all() as $key => $country)
-                                                            <option value="{{ $country->name }}">{{ $country->name }}</option>
+                                                            <option value="{{ $country->name }}" @if ($country->code == $user->country) selected @endif>{{ $country->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>

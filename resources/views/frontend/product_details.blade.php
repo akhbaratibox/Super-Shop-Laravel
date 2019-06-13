@@ -181,7 +181,7 @@
                                         <ul class="list-inline checkbox-alphanumeric checkbox-alphanumeric--style-1 mb-2">
                                             @foreach ($choice->options as $key => $option)
                                                 <li>
-                                                    <input type="radio" id="{{ $choice->name }}-{{ $option }}" name="{{ $choice->name }}" value="{{ $option }}">
+                                                    <input type="radio" id="{{ $choice->name }}-{{ $option }}" name="{{ $choice->name }}" value="{{ $option }}" @if($key == 0) checked @endif>
                                                     <label for="{{ $choice->name }}-{{ $option }}">{{ $option }}</label>
                                                 </li>
                                             @endforeach
@@ -200,7 +200,7 @@
                                             <ul class="list-inline checkbox-color mb-1">
                                                 @foreach (json_decode($product->colors) as $key => $color)
                                                     <li>
-                                                        <input type="radio" id="{{ $product->id }}-color-{{ $key }}" name="color" value="{{ $color }}">
+                                                        <input type="radio" id="{{ $product->id }}-color-{{ $key }}" name="color" value="{{ $color }}" @if($key == 0) checked @endif>
                                                         <label style="background: {{ $color }};" for="{{ $product->id }}-color-{{ $key }}" data-toggle="tooltip"></label>
                                                     </li>
                                                 @endforeach
@@ -744,6 +744,9 @@
 @section('script')
     <script type="text/javascript">
         $(document).ready(function() {
+
+            getVariantPrice();
+
     		$('#share').share({
     			networks: ['facebook','twitter','linkedin','tumblr','in1','stumbleupon','digg'],
     			theme: 'square'

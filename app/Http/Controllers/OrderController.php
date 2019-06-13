@@ -104,7 +104,7 @@ class OrderController extends Controller
         $order->shipping_address = json_encode($request->session()->get('shipping_info'));
         $order->payment_type = $request->payment_option;
         $order->code = date('Ymd-his');
-        $order->date = strtotime(date('d-m-Y'));
+        $order->date = strtotime(date('d-m-Y h:i:s'));
 
         if($order->save()){
             $subtotal = 0;

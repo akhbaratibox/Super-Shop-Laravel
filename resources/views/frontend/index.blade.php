@@ -247,7 +247,7 @@
                             <div class="card-body p-0">
 
                                 <div class="card-image">
-                                    <a href="{{ route('product', $product->slug) }}" class="d-block" style="background-image:url('{{ asset($product->flash_deal_img) }}');">
+                                    <a href="{{ route('product', $product->slug) }}" class="d-block" style="background-image:url('{{ asset($product->featured_img) }}');">
                                     </a>
                                 </div>
 
@@ -341,21 +341,6 @@
         </section>
     @endif
 
-    <section class="mb-4">
-        <div class="container">
-            <div class="row gutters-10">
-                @foreach (\App\Banner::where('position', 2)->where('published', 1)->get() as $key => $banner)
-                    <div class="col-lg-{{ 12/count(\App\Banner::where('position', 2)->where('published', 1)->get()) }}">
-                        <div class="media-banner mb-3 mb-lg-0">
-                            <a href="{{ $banner->url }}" target="_blank" class="banner-container">
-                                <img src="{{ asset($banner->photo) }}" alt="" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
 
     @foreach (\App\HomeCategory::where('status', 1)->get() as $key => $homeCategory)
         <section class="mb-4">
@@ -426,6 +411,22 @@
             </div>
         </section>
     @endforeach
+    
+    <section class="mb-4">
+        <div class="container">
+            <div class="row gutters-10">
+                @foreach (\App\Banner::where('position', 2)->where('published', 1)->get() as $key => $banner)
+                    <div class="col-lg-{{ 12/count(\App\Banner::where('position', 2)->where('published', 1)->get()) }}">
+                        <div class="media-banner mb-3 mb-lg-0">
+                            <a href="{{ $banner->url }}" target="_blank" class="banner-container">
+                                <img src="{{ asset($banner->photo) }}" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
 
     @if (\App\BusinessSetting::where('type', 'vendor_system_activation')->first()->value == 1)
         @php

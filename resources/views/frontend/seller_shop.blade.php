@@ -6,8 +6,10 @@
     </section> -->
 
     @php
+        $total = 0;
         $rating = 0;
         foreach ($shop->user->products as $key => $seller_product) {
+            $total += $seller_product->reviews->count();
             $rating += $seller_product->reviews->sum('rating');
         }
     @endphp
@@ -27,7 +29,11 @@
                                 @endif
                             </h3>
                             <div class="star-rating star-rating-sm mb-1">
-                                {{ renderStarRating($shop->user->products->avg('rating')) }}
+                                @if ($total > 0)
+                                    {{ renderStarRating($rating/$total) }}
+                                @else
+                                    {{ renderStarRating(0) }}
+                                @endif
                             </div>
                             <div class="location alpha-6">{{ $shop->address }}</div>
                         </div>
@@ -177,14 +183,10 @@
                             <div class="location">{{ $shop->address }}</div>
                             <div class="rating text-center d-block">
                                 <span class="star-rating star-rating-sm d-block">
-                                    @php
-                                        $total = 0;
-                                        foreach ($shop->user->products as $key => $seller_product) {
-                                            $total += $seller_product->reviews->count();
-                                        }
-                                    @endphp
                                     @if ($total > 0)
-                                        {{ renderStarRating($product->user->products->avg('rating')) }}
+                                        {{ renderStarRating($rating/$total) }}
+                                    @else
+                                        {{ renderStarRating(0) }}
                                     @endif
                                 </span>
                                 <span class="rating-count d-block ml-0">({{ $total }} {{__('customer reviews')}})</span>

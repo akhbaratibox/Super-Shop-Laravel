@@ -394,18 +394,23 @@
                             @endif
                             @php
                                 $total = 0;
+                                $rating = 0;
                                 foreach ($product->user->products as $key => $seller_product) {
                                     $total += $seller_product->reviews->count();
+                                    $rating += $seller_product->reviews->sum('rating');
                                 }
                             @endphp
-                            @if ($total > 0)
-                                <div class="rating text-center d-block">
-                                    <span class="star-rating star-rating-sm d-block">
-                                        {{ renderStarRating($product->user->products->avg('rating')) }}
-                                    </span>
-                                    <span class="rating-count d-block ml-0">({{ $total }} {{__('customer reviews')}})</span>
-                                </div>
-                            @endif
+
+                            <div class="rating text-center d-block">
+                                <span class="star-rating star-rating-sm d-block">
+                                    @if ($total > 0)
+                                        {{ renderStarRating($rating/$total) }}
+                                    @else
+                                        {{ renderStarRating(0) }}
+                                    @endif
+                                </span>
+                                <span class="rating-count d-block ml-0">({{ $total }} {{__('customer reviews')}})</span>
+                            </div>
                         </div>
                         <div class="row no-gutters align-items-center">
                             @if($product->added_by == 'seller')

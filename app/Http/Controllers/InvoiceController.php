@@ -14,6 +14,7 @@ class InvoiceController extends Controller
     {
         $order = Order::findOrFail($id);
         $pdf = PDF::setOptions([
+                        'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
                         'logOutputFile' => storage_path('logs/log.htm'),
                         'tempDir' => storage_path('logs/')
                     ])->loadView('invoices.customer_invoice', compact('order'));
@@ -25,6 +26,7 @@ class InvoiceController extends Controller
     {
         $order = Order::findOrFail($id);
         $pdf = PDF::setOptions([
+                        'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
                         'logOutputFile' => storage_path('logs/log.htm'),
                         'tempDir' => storage_path('logs/')
                     ])->loadView('invoices.seller_invoice', compact('order'));

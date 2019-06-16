@@ -411,7 +411,7 @@
             </div>
         </section>
     @endforeach
-    
+
     <section class="mb-4">
         <div class="container">
             <div class="row gutters-10">
@@ -463,6 +463,12 @@
                                     @php
                                         $count ++;
                                         $seller = \App\Seller::find($key);
+                                        $total = 0;
+                                        $rating = 0;
+                                        foreach ($seller->user->products as $key => $seller_product) {
+                                            $total += $seller_product->reviews->count();
+                                            $rating += $seller_product->reviews->sum('rating');
+                                        }
                                     @endphp
                                     <div class="p-2">
                                         <div class="row no-gutters box-3 align-items-center border">
@@ -477,7 +483,11 @@
                                                         <a href="{{ route('shop.visit', $seller->user->shop->slug) }}">{{ __($seller->user->shop->name) }}</a>
                                                     </h2>
                                                     <div class="star-rating star-rating-sm mb-2">
-                                                        {{ renderStarRating($seller->user->products->avg('rating')) }}
+                                                        @if ($total > 0)
+                                                            {{ renderStarRating($rating/$total) }}
+                                                        @else
+                                                            {{ renderStarRating(0) }}
+                                                        @endif
                                                     </div>
                                                     <div class="">
                                                         <a href="{{ route('shop.visit', $seller->user->shop->slug) }}" class="icon-anim">

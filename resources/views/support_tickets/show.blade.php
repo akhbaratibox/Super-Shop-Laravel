@@ -15,15 +15,17 @@
                         <input type="hidden" name="ticket_id" value="{{$ticket->id}}">
                         <label class="col-lg-2 control-label" for="subject"><strong>{{__('Subject')}}</strong></label>
                         <div class="col-lg-9">
-                            <p class="form-control">@php echo $ticket->subject; @endphp</p>
+                            @php echo $ticket->subject; @endphp
                         </div>
                     </div>
+                    <br>
                     <div class="form-group row">
                         <label class="col-lg-2 control-label" for="subject"><strong>{{__('Details')}}</strong></label>
                         <div class="col-lg-9">
-                            <p class="form-control">@php echo $ticket->details; @endphp</p>
+                            @php echo $ticket->details; @endphp
                         </div>
                     </div>
+                    <br>
                     <div class="form-group row">
                         <label class="col-lg-2 control-label" for="subject"><strong>{{__('Reply')}}</strong></label>
                         <div class="col-lg-9">
@@ -39,9 +41,6 @@
                         </div>
                     </div>
             </form>
-{{-- Modal Start --}}
-
-{{-- Modal End --}}
 
             @foreach($ticket_replies as $ticketreply)
                 <div class="form-group">
@@ -60,21 +59,6 @@
                     </div>
                 </div>
             @endforeach
-            <div class="form-group">
-                <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src="{{ asset($ticket->user->avatar_original) }}">
-                </a>
-                <div class="media-body">
-                    <div class="comment-header">
-                        <a href="#" class="media-heading box-inline text-main text-bold">{{ $ticket->user->name }}</a>
-                        <p class="text-muted text-sm">{{$ticket->created_at}}</p>
-                    </div>
-                    <p>
-                        @php
-                            echo $ticket->details;
-                        @endphp
-                    </p>
-                </div>
-            </div>
         </div>
     </div>
 </div>

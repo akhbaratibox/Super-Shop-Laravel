@@ -39,15 +39,21 @@
                             <div class="form-box-content mt-3">
                                 <label class="col-sm-2 control-label"><strong>{{__('Subject')}}</strong></label>
                                 <div class="col-sm-9">
-                                    <p class="form-control mb-3">{{$ticket->subject}}</p>
+                                    @php
+                                        echo $ticket->subject;
+                                    @endphp
                                 </div>
                             </div>
+                            <br>
                             <div class="form-box-content">
                                 <label class="col-sm-2 control-label" for="subject"><strong>{{__('Deatils')}}</strong></label>
                                 <div class="col-sm-9">
-                                <p class="form-control">{{$ticket->details}}</p>
+                                    @php
+                                        echo $ticket->details;
+                                    @endphp
                                 </div>
                             </div>
+                            <br>
                             <div class="form-box-content">
                                 <label class="col-sm-2 control-label" for="subject"><strong>{{__('Leave A Reply')}}</strong></label>
                                 <div class="col-sm-9">
@@ -91,11 +97,8 @@
                                     </div>
                                 @endforeach
                             </div>
-
                     </div>
                 </div>
-
-
 
             </div>
         </div>

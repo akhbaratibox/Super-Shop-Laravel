@@ -112,9 +112,18 @@
                             <div class="col-md-10">
                                 <div class="mb-3">
                                     <select class="form-control selectpicker" data-minimum-results-for-search="Infinity" name="payment_option">
-                                        <option value="paypal">{{__('Paypal')}}</option>
-                                        <option value="stripe">{{__('Stripe')}}</option>
-                                        <option value="sslcommerz">{{__('SSLCommerz')}}</option>
+                                        @if (\App\BusinessSetting::where('type', 'paypal_payment')->first()->value == 1)
+                                            <option value="paypal">{{__('Paypal')}}</option>
+                                        @endif
+                                        @if (\App\BusinessSetting::where('type', 'stripe_payment')->first()->value == 1)
+                                            <option value="stripe">{{__('Stripe')}}</option>
+                                        @endif
+                                        @if (\App\BusinessSetting::where('type', 'sslcommerz_payment')->first()->value == 1)
+                                            <option value="sslcommerz">{{__('SSLCommerz')}}</option>
+                                        @endif
+                                        @if (\App\BusinessSetting::where('type', 'instamojo_payment')->first()->value == 1)
+                                            <option value="instamojo">{{__('Instamojo')}}</option>
+                                        @endif
                                     </select>
                                 </div>
                             </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\PublicSslCommerzPaymentController;
+use App\Http\Controllers\InstamojoController;
 use App\Seller;
 use App\Payment;
 use Session;
@@ -29,6 +30,10 @@ class CommissionController extends Controller
         elseif ($request->payment_option == 'stripe') {
             $stripe = new StripePaymentController;
             return $stripe->stripe();
+        }
+        elseif ($request->payment_option == 'instamojo') {
+            $instamojo = new InstamojoController;
+            return $instamojo->pay($request);
         }
         elseif ($request->payment_option == 'sslcommerz') {
             $sslcommerz = new PublicSslCommerzPaymentController;

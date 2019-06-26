@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\PublicSslCommerzPaymentController;
+use App\Http\Controllers\InstamojoController;
 use Auth;
 use Session;
 use App\Wallet;
@@ -39,6 +40,10 @@ class WalletController extends Controller
         elseif ($request->payment_option == 'sslcommerz') {
             $sslcommerz = new PublicSslCommerzPaymentController;
             return $sslcommerz->index($request);
+        }
+        elseif ($request->payment_option == 'instamojo') {
+            $instamojo = new InstamojoController;
+            return $instamojo->pay($request);
         }
     }
 

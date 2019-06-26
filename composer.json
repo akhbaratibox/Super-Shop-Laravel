@@ -10,6 +10,7 @@
         "fideloper/proxy": "^4.0",
         "gabrielbull/ups-api": "^0.8.0",
         "laracasts/flash": "^3.0",
+        "instamojo/instamojo-php": "^0.4.0",
         "laravel/framework": "5.7.*",
         "laravel/socialite": "^3.1",
         "laravel/tinker": "^1.0",

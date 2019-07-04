@@ -35,6 +35,10 @@ class CommissionController extends Controller
             $instamojo = new InstamojoController;
             return $instamojo->pay($request);
         }
+        elseif ($request->payment_option == 'razorpay') {
+            $razorpay = new RazorpayController;
+            return $razorpay->payWithRazorpay($request);
+        }
         elseif ($request->payment_option == 'sslcommerz') {
             $sslcommerz = new PublicSslCommerzPaymentController;
             return $sslcommerz->index($request);

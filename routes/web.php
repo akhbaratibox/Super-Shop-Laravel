@@ -144,3 +144,7 @@ Route::group(['middleware' => ['auth']], function(){
 
 Route::resource('shops', 'ShopController');
 Route::get('/track_your_order', 'HomeController@trackOrder')->name('orders.track');
+
+Route::get('/instamojo/payment/pay-success', 'InstamojoController@success')->name('instamojo.success');
+
+Route::post('payments', 'RazorpayController@payment')->name('payment.rozer');

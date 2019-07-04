@@ -45,6 +45,10 @@ class WalletController extends Controller
             $instamojo = new InstamojoController;
             return $instamojo->pay($request);
         }
+        elseif ($request->payment_option == 'razorpay') {
+            $razorpay = new RazorpayController;
+            return $razorpay->payWithRazorpay($request);
+        }
     }
 
     public function wallet_payment_done($payment_data, $payment_details){

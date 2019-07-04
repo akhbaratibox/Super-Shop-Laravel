@@ -53,6 +53,11 @@ class CheckoutController extends Controller
                 $instamojo = new InstamojoController;
                 return $instamojo->index($request);
             }
+            elseif ($request->payment_option == 'razorpay') {
+                $order = Order::findOrFail($request->session()->get('order_id'));
+                $razorpay = new RazorpayController;
+                return $razorpay->payWithRazorpay($request);
+            }
             elseif ($request->payment_option == 'cash_on_delivery') {
                 $order = Order::findOrFail($request->session()->get('order_id'));
                 $commission_percentage = BusinessSetting::where('type', 'vendor_commission')->first()->value;

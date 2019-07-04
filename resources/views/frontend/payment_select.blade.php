@@ -94,6 +94,26 @@
                                                 </label>
                                             </li>
                                         @endif
+                                        @if(\App\BusinessSetting::where('type', 'instamojo_payment')->first()->value == 1)
+                                            <li>
+                                                <label class="payment_option">
+                                                    <input type="radio" id="" name="payment_option" value="instamojo" checked>
+                                                    <span>
+                                                        <img src="{{ asset('frontend/images/icons/cards/instamojo.png')}}" class="img-fluid">
+                                                    </span>
+                                                </label>
+                                            </li>
+                                        @endif
+                                        @if(\App\BusinessSetting::where('type', 'razorpay')->first()->value == 1)
+                                            <li>
+                                                <label class="payment_option">
+                                                    <input type="radio" id="" name="payment_option" value="razorpay" checked>
+                                                    <span>
+                                                        <img src="{{ asset('frontend/images/icons/cards/rozarpay.png')}}" class="img-fluid">
+                                                    </span>
+                                                </label>
+                                            </li>
+                                        @endif
                                         @if(\App\BusinessSetting::where('type', 'cash_payment')->first()->value == 1)
                                             <li>
                                                 <label class="payment_option">

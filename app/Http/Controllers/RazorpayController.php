@@ -38,7 +38,14 @@ class RazorpayController extends Controller
         //Input items of form
         $input = Input::all();
         //get API Configuration
-        $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
+        if(Session::get('payment_type') == 'cart_payment' || Session::get('payment_type') == 'wallet_payment'){
+            $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
+        }
+        elseif (Session::get('payment_type') == 'seller_payment') {
+            $seller = Seller::findOrFail(Session::get('payment_details')['seller_id']);
+            $api = new Api($seller->razorpay_api_key, $seller->razorpay_secret);
+        }
+
         //Fetch payment information by razorpay_payment_id
         $payment = $api->payment->fetch($input['razorpay_payment_id']);
 

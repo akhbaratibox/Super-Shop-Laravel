@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2019 at 02:03 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.3
+-- Generation Time: Jul 06, 2019 at 12:21 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `shop`
+-- Database: `test`
 --
 
 -- --------------------------------------------------------
@@ -121,7 +121,10 @@ INSERT INTO `business_settings` (`id`, `type`, `value`, `created_at`, `updated_a
 (37, 'email_verification', '0', '2019-04-30 07:30:07', '2019-04-30 07:30:07'),
 (38, 'wallet_system', '0', '2019-05-19 08:05:44', '2019-05-19 02:11:57'),
 (39, 'coupon_system', '0', '2019-06-11 09:46:18', '2019-06-11 09:46:18'),
-(40, 'current_version', '1.4', '2019-06-11 09:46:18', '2019-06-11 09:46:18');
+(40, 'current_version', '1.5', '2019-06-11 09:46:18', '2019-06-11 09:46:18'),
+(41, 'instamojo_payment', '0', '2019-07-06 09:58:03', '2019-07-06 09:58:03'),
+(42, 'instamojo_sandbox', '1', '2019-07-06 09:58:43', '2019-07-06 09:58:43'),
+(43, 'razorpay', '0', '2019-07-06 09:58:43', '2019-07-06 09:58:43');
 
 -- --------------------------------------------------------
 
@@ -1154,6 +1157,12 @@ CREATE TABLE `sellers` (
   `ssl_password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `stripe_key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `stripe_secret` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `instamojo_status` int(1) NOT NULL DEFAULT '0',
+  `instamojo_api_key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `instamojo_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `razorpay_status` int(1) NOT NULL DEFAULT '0',
+  `razorpay_api_key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `razorpay_secret` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `admin_to_pay` double(8,2) NOT NULL DEFAULT '0.00',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -1163,8 +1172,8 @@ CREATE TABLE `sellers` (
 -- Dumping data for table `sellers`
 --
 
-INSERT INTO `sellers` (`id`, `user_id`, `verification_status`, `verification_info`, `cash_on_delivery_status`, `sslcommerz_status`, `stripe_status`, `paypal_status`, `paypal_client_id`, `paypal_client_secret`, `ssl_store_id`, `ssl_password`, `stripe_key`, `stripe_secret`, `admin_to_pay`, `created_at`, `updated_at`) VALUES
-(1, 3, 1, '[{\"type\":\"text\",\"label\":\"Name\",\"value\":\"Mr. Seller\"},{\"type\":\"select\",\"label\":\"Marital Status\",\"value\":\"Married\"},{\"type\":\"multi_select\",\"label\":\"Company\",\"value\":\"[\\\"Company\\\"]\"},{\"type\":\"select\",\"label\":\"Gender\",\"value\":\"Male\"},{\"type\":\"file\",\"label\":\"Image\",\"value\":\"uploads\\/verification_form\\/CRWqFifcbKqibNzllBhEyUSkV6m1viknGXMEhtiW.png\"}]', 1, 1, 1, 0, NULL, NULL, 'activ5c3c5dac9254d', 'activ5c3c5dac9254d@ssl', 'pk_test_CqAfBW85ZifDyuEOhGaD4ZbE', 'sk_test_mRRMmV4GnBJ4UT7qeLlDe5F8', 20.00, '2018-10-07 04:42:57', '2019-05-19 02:14:08');
+INSERT INTO `sellers` (`id`, `user_id`, `verification_status`, `verification_info`, `cash_on_delivery_status`, `sslcommerz_status`, `stripe_status`, `paypal_status`, `paypal_client_id`, `paypal_client_secret`, `ssl_store_id`, `ssl_password`, `stripe_key`, `stripe_secret`, `instamojo_status`, `instamojo_api_key`, `instamojo_token`, `razorpay_status`, `razorpay_api_key`, `razorpay_secret`, `admin_to_pay`, `created_at`, `updated_at`) VALUES
+(1, 3, 1, '[{\"type\":\"text\",\"label\":\"Name\",\"value\":\"Mr. Seller\"},{\"type\":\"select\",\"label\":\"Marital Status\",\"value\":\"Married\"},{\"type\":\"multi_select\",\"label\":\"Company\",\"value\":\"[\\\"Company\\\"]\"},{\"type\":\"select\",\"label\":\"Gender\",\"value\":\"Male\"},{\"type\":\"file\",\"label\":\"Image\",\"value\":\"uploads\\/verification_form\\/CRWqFifcbKqibNzllBhEyUSkV6m1viknGXMEhtiW.png\"}]', 1, 1, 1, 0, NULL, NULL, 'activ5c3c5dac9254d', 'activ5c3c5dac9254d@ssl', 'pk_test_CqAfBW85ZifDyuEOhGaD4ZbE', 'sk_test_mRRMmV4GnBJ4UT7qeLlDe5F8', 0, NULL, NULL, 0, NULL, NULL, 20.00, '2018-10-07 04:42:57', '2019-05-19 02:14:08');
 
 -- --------------------------------------------------------
 
@@ -1698,7 +1707,7 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT for table `business_settings`
 --
 ALTER TABLE `business_settings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `categories`

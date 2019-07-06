@@ -61,7 +61,7 @@ class InstamojoController extends Controller
                       print('Error: ' . $e->getMessage());
                   }
            }
-           elseif (Session::get('payment_type') == 'wallet_payment' || Session::get('payment_type') == 'seller_payment') {
+           elseif (Session::get('payment_type') == 'wallet_payment') {
                if(BusinessSetting::where('type', 'instamojo_sandbox')->first()->value == 1){
                    $endPoint = 'https://test.instamojo.com/api/1.1/';
                }
@@ -72,6 +72,39 @@ class InstamojoController extends Controller
                $api = new \Instamojo\Instamojo(
                     env('IM_API_KEY'),
                     env('IM_AUTH_TOKEN'),
+                    $endPoint
+                  );
+                  try {
+                      $response = $api->paymentRequestCreate(array(
+                          "purpose" => ucfirst(str_replace('_', ' ', Session::get('payment_type'))),
+                          "amount" => Session::get('payment_data')['amount'],
+                          "send_email" => true,
+                          "email" => Auth::user()->email,
+                          "phone" => Auth::user()->phone,
+                          "redirect_url" => url('instamojo/payment/pay-success')
+                          ));
+
+                          return redirect($response['longurl']);
+
+                  }catch (Exception $e) {
+                      return back();
+                      //print('Error: ' . $e->getMessage());
+                  }
+           }
+
+           elseif (Session::get('payment_type') == 'seller_payment') {
+               if(BusinessSetting::where('type', 'instamojo_sandbox')->first()->value == 1){
+                   $endPoint = 'https://test.instamojo.com/api/1.1/';
+               }
+               else{
+                   $endPoint = 'https://www.instamojo.com/api/1.1/payment-requests/';
+               }
+
+               $seller = Seller::findOrFail(Session::get('payment_details')['seller_id']);
+
+               $api = new \Instamojo\Instamojo(
+                    $seller->instamojo_api_key,
+                    $seller->instamojo_token
                     $endPoint
                   );
                   try {

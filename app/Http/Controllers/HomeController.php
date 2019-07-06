@@ -176,6 +176,12 @@ class HomeController extends Controller
         $seller->stripe_status = $request->stripe_status;
         $seller->stripe_key = $request->stripe_key;
         $seller->stripe_secret = $request->stripe_secret;
+        $seller->instamojo_status = $request->instamojo_status;
+        $seller->instamojo_api_key = $request->instamojo_api_key;
+        $seller->instamojo_token = $request->instamojo_token;
+        $seller->razorpay_status = $request->razorpay_status;
+        $seller->razorpay_api_key = $request->razorpay_api_key;
+        $seller->razorpay_secret = $request->razorpay_secret;
 
         if($user->save() && $seller->save()){
             flash(__('Your Profile has been updated successfully!'))->success();

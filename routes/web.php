@@ -147,4 +147,4 @@ Route::get('/track_your_order', 'HomeController@trackOrder')->name('orders.track
 
 Route::get('/instamojo/payment/pay-success', 'InstamojoController@success')->name('instamojo.success');
 
-Route::post('payments', 'RazorpayController@payment')->name('payment.rozer');
+Route::post('rozer/payment/pay-success', 'RazorpayController@payment')->name('payment.rozer');

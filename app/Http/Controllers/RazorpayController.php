@@ -25,7 +25,6 @@ class RazorpayController extends Controller
                 $seller = Seller::findOrFail(Session::get('payment_data')['seller_id']);
                 return view('razorpay.payWithRazorpay', compact('seller'));
             }
-
             elseif (Session::get('payment_type') == 'wallet_payment') {
                 return view('frontend.razor_wallet.payWithRazorpay');
             }

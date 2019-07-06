@@ -9,9 +9,9 @@
                 data-key="{{ env('RAZOR_KEY') }}"
                 data-amount={{Session::get('payment_data')['amount']*100}}
                 data-buttontext=""
-                data-name="Laravelcode"
-                data-description="Order Value"
-                data-image="yout_logo_url"
+                data-name="{{ env('APP_NAME') }}"
+                data-description="Wallet Payment"
+                data-image="{{ asset(\App\GeneralSetting::first()->logo) }}"
                 data-prefill.name= {{ Auth::user()->name}}
                 data-prefill.email= {{ Auth::user()->email}}
                 data-theme.color="#ff7529">

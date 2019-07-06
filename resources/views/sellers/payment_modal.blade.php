@@ -43,6 +43,9 @@
                         @if($seller->instamojo_status == 1)
                             <option value="instamojo">{{__('Instamojo')}}</option>
                         @endif
+                        @if($seller->razorpay_status == 1)
+                            <option value="razorpay">{{__('RazorPay')}}</option>
+                        @endif
                         @if($seller->sslcommerz_status == 1)
                             <option value="sslcommerz">{{__('SSLCommerz')}}</option>
                         @endif

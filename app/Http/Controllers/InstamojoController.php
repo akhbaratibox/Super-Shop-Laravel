@@ -16,16 +16,6 @@ use Auth;
 
 class InstamojoController extends Controller
 {
-    public function index($request)
-   {
-       if(Session::has('payment_type')){
-           if(Session::get('payment_type') == 'cart_payment'){
-               $instamojo = new InstamojoController;
-               return $instamojo->pay($request);
-           }
-       }
-
-   }
    public function pay($request){
        if(Session::has('payment_type')){
            if(Session::get('payment_type') == 'cart_payment'){
@@ -77,7 +67,7 @@ class InstamojoController extends Controller
                   try {
                       $response = $api->paymentRequestCreate(array(
                           "purpose" => ucfirst(str_replace('_', ' ', Session::get('payment_type'))),
-                          "amount" => Session::get('payment_data')['amount'],
+                          "amount" => round(Session::get('payment_data')['amount']),
                           "send_email" => true,
                           "email" => Auth::user()->email,
                           "phone" => Auth::user()->phone,
@@ -91,7 +81,6 @@ class InstamojoController extends Controller
                       //print('Error: ' . $e->getMessage());
                   }
            }
-
            elseif (Session::get('payment_type') == 'seller_payment') {
                if(BusinessSetting::where('type', 'instamojo_sandbox')->first()->value == 1){
                    $endPoint = 'https://test.instamojo.com/api/1.1/';
@@ -110,7 +99,7 @@ class InstamojoController extends Controller
                   try {
                       $response = $api->paymentRequestCreate(array(
                           "purpose" => ucfirst(str_replace('_', ' ', Session::get('payment_type'))),
-                          "amount" => Session::get('payment_data')['amount'],
+                          "amount" => round(Session::get('payment_data')['amount']),
                           "send_email" => true,
                           "email" => Auth::user()->email,
                           "phone" => Auth::user()->phone,
@@ -136,15 +125,28 @@ class InstamojoController extends Controller
          else{
              $endPoint = 'https://www.instamojo.com/api/1.1/payment-requests/';
          }
-        $api = new \Instamojo\Instamojo(
-            env('IM_API_KEY'),
-            env('IM_AUTH_TOKEN'),
-            $endPoint
-        );
+
+         if(Session::has('payment_type')){
+             if(Session::get('payment_type') == 'cart_payment' || Session::get('payment_type') == 'wallet_payment'){
+                 $api = new \Instamojo\Instamojo(
+                     env('IM_API_KEY'),
+                     env('IM_AUTH_TOKEN'),
+                     $endPoint
+                 );
+             }
+             elseif(Session::get('payment_type') == 'seller_payment'){
+                 $seller = Seller::findOrFail(Session::get('payment_details')['seller_id']);
+                 $api = new \Instamojo\Instamojo(
+                      $seller->instamojo_api_key,
+                      $seller->instamojo_token
+                      $endPoint
+                 );
+             }
+         }
 
         $response = $api->paymentRequestStatus(request('payment_request_id'));
 
-        if( !isset($response['payments'][0]['status']) ) {
+        if(!isset($response['payments'][0]['status']) ) {
             flash('Payment Failed')->error();
             return redirect()->route('home');
         } else if($response['payments'][0]['status'] != 'Credit') {
@@ -156,7 +158,6 @@ class InstamojoController extends Controller
           return redirect()->route('home');
      }
 
-// dd($response);
     $payment = json_encode($response);
 
     if(Session::has('payment_type')){

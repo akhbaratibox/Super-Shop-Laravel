@@ -51,10 +51,9 @@ class CheckoutController extends Controller
             }
             elseif ($request->payment_option == 'instamojo') {
                 $instamojo = new InstamojoController;
-                return $instamojo->index($request);
+                return $instamojo->pay($request);
             }
             elseif ($request->payment_option == 'razorpay') {
-                $order = Order::findOrFail($request->session()->get('order_id'));
                 $razorpay = new RazorpayController;
                 return $razorpay->payWithRazorpay($request);
             }

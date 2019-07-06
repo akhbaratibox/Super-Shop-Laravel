@@ -9,11 +9,11 @@
                 data-key="{{ env('RAZOR_KEY') }}"
                 data-amount={{round($order->grand_total) * 100}}
                 data-buttontext=""
-                data-name="Laravelcode"
-                data-description="Order Value"
-                data-image="yout_logo_url"
-                data-prefill.name= {{Session::get('shipping_info')['name']}}
-                data-prefill.email= {{Session::get('shipping_info')['email']}}
+                data-name="{{ env('APP_NAME') }}"
+                data-description="Cart Payment"
+                data-image="{{ asset(\App\GeneralSetting::first()->logo) }}"
+                data-prefill.name= {{ Session::get('shipping_info')['name'] }}
+                data-prefill.email= {{ Session::get('shipping_info')['email'] }}
                 data-theme.color="#ff7529">
         </script>
         <input type="hidden" name="_token" value="{!!csrf_token()!!}">

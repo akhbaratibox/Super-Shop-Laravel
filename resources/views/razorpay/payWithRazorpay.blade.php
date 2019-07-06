@@ -6,12 +6,12 @@
         <!-- Note that the amount is in paise = 50 INR -->
         <!--amount need to be in paisa-->
         <script src="https://checkout.razorpay.com/v1/checkout.js"
-                data-key="{{ env('RAZOR_KEY') }}"
+                data-key="{{ $seller->razorpay_api_key }}"
                 data-amount={{Session::get('payment_data')['amount']*100}}
                 data-buttontext=""
-                data-name="Laravelcode"
-                data-description="Order Value"
-                data-image="yout_logo_url"
+                data-name="{{ env('APP_NAME') }}"
+                data-description="Seller Commission Payment"
+                data-image="{{ asset(\App\GeneralSetting::first()->logo) }}"
                 data-prefill.name= {{ Auth::user()->name}}
                 data-prefill.email= {{ Auth::user()->email}}
                 data-theme.color="#ff7529">

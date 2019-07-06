@@ -72,6 +72,38 @@
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-heading">
+                <h3 class="panel-title text-center">{{__('Instamojo Payment Activation')}}</h3>
+            </div>
+            <div class="panel-body text-center">
+                <label class="switch">
+                    <input type="checkbox" onchange="updateSettings(this, 'instamojo_payment')" <?php if(\App\BusinessSetting::where('type', 'instamojo_payment')->first()->value == 1) echo "checked";?>>
+                    <span class="slider round"></span>
+                </label>
+                <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
+                    You need to configure Stripe correctly to enable this feature. <a href="{{ route('payment_method.index') }}">Configure Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">{{__('Razor Pay Activation')}}</h3>
+            </div>
+            <div class="panel-body text-center">
+                <label class="switch">
+                    <input type="checkbox" onchange="updateSettings(this, 'razorpay')" <?php if(\App\BusinessSetting::where('type', 'razorpay')->first()->value == 1) echo "checked";?>>
+                    <span class="slider round"></span>
+                </label>
+                <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
+                    You need to configure Stripe correctly to enable this feature. <a href="{{ route('payment_method.index') }}">Configure Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel">
+            <div class="panel-heading">
                 <h3 class="panel-title text-center">{{__('SSlCommerz Activation')}}</h3>
             </div>
             <div class="panel-body text-center">

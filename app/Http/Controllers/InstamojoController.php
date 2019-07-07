@@ -93,7 +93,7 @@ class InstamojoController extends Controller
 
                $api = new \Instamojo\Instamojo(
                     $seller->instamojo_api_key,
-                    $seller->instamojo_token
+                    $seller->instamojo_token,
                     $endPoint
                   );
                   try {
@@ -138,7 +138,7 @@ class InstamojoController extends Controller
                  $seller = Seller::findOrFail(Session::get('payment_data')['seller_id']);
                  $api = new \Instamojo\Instamojo(
                       $seller->instamojo_api_key,
-                      $seller->instamojo_token
+                      $seller->instamojo_token,
                       $endPoint
                  );
              }

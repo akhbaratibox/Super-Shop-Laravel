@@ -89,7 +89,7 @@ class InstamojoController extends Controller
                    $endPoint = 'https://www.instamojo.com/api/1.1/payment-requests/';
                }
 
-               $seller = Seller::findOrFail(Session::get('payment_details')['seller_id']);
+               $seller = Seller::findOrFail(Session::get('payment_data')['seller_id']);
 
                $api = new \Instamojo\Instamojo(
                     $seller->instamojo_api_key,
@@ -135,7 +135,7 @@ class InstamojoController extends Controller
                  );
              }
              elseif(Session::get('payment_type') == 'seller_payment'){
-                 $seller = Seller::findOrFail(Session::get('payment_details')['seller_id']);
+                 $seller = Seller::findOrFail(Session::get('payment_data')['seller_id']);
                  $api = new \Instamojo\Instamojo(
                       $seller->instamojo_api_key,
                       $seller->instamojo_token

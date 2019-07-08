@@ -30,7 +30,13 @@ class ShopController extends Controller
      */
     public function create()
     {
-        return view('frontend.seller_form');
+        if(Auth::check() && Auth::user()->user_type == 'admin'){
+            flash(__('Admin can not be a seller'))->error();
+            return back();
+        }
+        else{
+            return view('frontend.seller_form');
+        }
     }
 
     /**
@@ -89,6 +95,11 @@ class ShopController extends Controller
                 auth()->login($user, false);
                 flash(__('Your Shop has been created successfully!'))->success();
                 return redirect()->route('shops.index');
+            }
+            else{
+                $seller->delete();
+                $user->user_type == 'customer';
+                $user->save();
             }
         }
 

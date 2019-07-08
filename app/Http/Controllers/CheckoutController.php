@@ -45,10 +45,6 @@ class CheckoutController extends Controller
                 $sslcommerz = new PublicSslCommerzPaymentController;
                 return $sslcommerz->index($request);
             }
-            elseif ($request->payment_option == 'payumoney') {
-                $payumoney = new PayumoneyController;
-                return $payumoney->index($request);
-            }
             elseif ($request->payment_option == 'instamojo') {
                 $instamojo = new InstamojoController;
                 return $instamojo->pay($request);

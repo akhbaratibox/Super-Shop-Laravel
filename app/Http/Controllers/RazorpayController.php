@@ -75,6 +75,5 @@ class RazorpayController extends Controller
                 }
             }
         }
-        //return redirect()->route('home');
     }
 }

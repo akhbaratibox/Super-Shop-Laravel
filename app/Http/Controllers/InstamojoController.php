@@ -22,9 +22,11 @@ class InstamojoController extends Controller
                $order = Order::findOrFail(Session::get('order_id'));
 
                if(BusinessSetting::where('type', 'instamojo_sandbox')->first()->value == 1){
+                   // testing_url
                    $endPoint = 'https://test.instamojo.com/api/1.1/';
                }
                else{
+                   // live_url
                    $endPoint = 'https://www.instamojo.com/api/1.1/payment-requests/';
                }
 
@@ -47,7 +49,6 @@ class InstamojoController extends Controller
                           return redirect($response['longurl']);
 
                   }catch (Exception $e) {
-                      // return back();
                       print('Error: ' . $e->getMessage());
                   }
            }
@@ -78,7 +79,6 @@ class InstamojoController extends Controller
 
                   }catch (Exception $e) {
                       return back();
-                      //print('Error: ' . $e->getMessage());
                   }
            }
            elseif (Session::get('payment_type') == 'seller_payment') {
@@ -110,13 +110,13 @@ class InstamojoController extends Controller
 
                   }catch (Exception $e) {
                       return back();
-                      //print('Error: ' . $e->getMessage());
                   }
            }
        }
 
  }
 
+// success response method.
  public function success(Request $request){
      try {
          if(BusinessSetting::where('type', 'instamojo_sandbox')->first()->value == 1){

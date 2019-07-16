@@ -424,6 +424,7 @@ class HomeController extends Controller
     {
         $product = Product::find($request->id);
         $str = '';
+        $quantity = 0;
 
         if($request->has('color')){
             $data['color'] = $request['color'];
@@ -441,6 +442,7 @@ class HomeController extends Controller
 
         if($str != null){
             $price = json_decode($product->variations)->$str->price;
+            $quantity = json_decode($product->variations)->$str->qty;
         }
         else{
             $price = $product->unit_price;
@@ -472,7 +474,7 @@ class HomeController extends Controller
         elseif($product->tax_type == 'amount'){
             $price += $product->tax;
         }
-        return single_price($price*$request->quantity);
+        return array('price' => single_price($price*$request->quantity), 'quantity' => $quantity);
     }
 
     public function sellerpolicy(){

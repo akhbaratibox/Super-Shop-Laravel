@@ -293,7 +293,8 @@
                data: $('#option-choice-form').serializeArray(),
                success: function(data){
                    $('#option-choice-form #chosen_price_div').removeClass('d-none');
-                   $('#option-choice-form #chosen_price_div #chosen_price').html(data);
+                   $('#option-choice-form #chosen_price_div #chosen_price').html(data.price);
+                   $('#available-quantity').html(data.quantity);
                }
            });
         }

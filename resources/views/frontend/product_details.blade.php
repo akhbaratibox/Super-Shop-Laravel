@@ -232,7 +232,7 @@
                                                 </span>
                                             </div>
                                             @if(count(json_decode($product->variations, true)) >= 1)
-                                                <div class="avialable-amount">({{ $qty }} {{__('available')}})</div>
+                                                <div class="avialable-amount">(<span id="available-quantity">{{ $qty }}</span> {{__('available')}})</div>
                                             @endif
                                         </div>
                                     </div>
@@ -749,13 +749,11 @@
 @section('script')
     <script type="text/javascript">
         $(document).ready(function() {
-
-            getVariantPrice();
-
     		$('#share').share({
     			networks: ['facebook','twitter','linkedin','tumblr','in1','stumbleupon','digg'],
     			theme: 'square'
     		});
+            getVariantPrice();
     	});
 
     </script>

@@ -89,6 +89,8 @@ class CheckoutController extends Controller
 
         $commission_percentage = BusinessSetting::where('type', 'vendor_commission')->first()->value;
         foreach ($order->orderDetails as $key => $orderDetail) {
+            $orderDetail->payment_status = 'paid';
+            $orderDetail->save();
             if($orderDetail->product->user->user_type == 'seller'){
                 $seller = $orderDetail->product->user->seller;
                 $seller->admin_to_pay = $seller->admin_to_pay + ($orderDetail->price*(100-$commission_percentage))/100;

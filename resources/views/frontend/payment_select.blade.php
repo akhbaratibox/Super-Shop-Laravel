@@ -114,6 +114,16 @@
                                                 </label>
                                             </li>
                                         @endif
+                                        @if(\App\BusinessSetting::where('type', 'paystack')->first()->value == 1)
+                                            <li>
+                                                <label class="payment_option">
+                                                    <input type="radio" id="" name="payment_option" value="paystack" checked>
+                                                    <span>
+                                                        <img src="{{ asset('frontend/images/icons/cards/paystack.png')}}" class="img-fluid">
+                                                    </span>
+                                                </label>
+                                            </li>
+                                        @endif
                                         @if(\App\BusinessSetting::where('type', 'cash_payment')->first()->value == 1)
                                             <li>
                                                 <label class="payment_option">

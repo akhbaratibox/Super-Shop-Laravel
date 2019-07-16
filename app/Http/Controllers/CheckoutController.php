@@ -53,6 +53,10 @@ class CheckoutController extends Controller
                 $razorpay = new RazorpayController;
                 return $razorpay->payWithRazorpay($request);
             }
+            elseif ($request->payment_option == 'paystack') {
+                $paystack = new PaystackController;
+                return $paystack->payWithRazorpay($request);
+            }
             elseif ($request->payment_option == 'cash_on_delivery') {
                 $order = Order::findOrFail($request->session()->get('order_id'));
                 $commission_percentage = BusinessSetting::where('type', 'vendor_commission')->first()->value;

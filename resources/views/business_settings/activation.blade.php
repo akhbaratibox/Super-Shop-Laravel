@@ -141,7 +141,7 @@
                     </label>
                 </div>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    You need to configure Stripe correctly to enable this feature. <a href="{{ route('payment_method.index') }}">Configure Now</a>
+                    You need to configure Instamojo Payment correctly to enable this feature. <a href="{{ route('payment_method.index') }}">Configure Now</a>
                 </div>
             </div>
         </div>
@@ -160,12 +160,34 @@
                     </label>
                 </div>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    You need to configure Stripe correctly to enable this feature. <a href="{{ route('payment_method.index') }}">Configure Now</a>
+                    You need to configure Razor correctly to enable this feature. <a href="{{ route('payment_method.index') }}">Configure Now</a>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="col-lg-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">{{__('PayStack Activation')}}</h3>
+            </div>
+            <div class="panel-body text-center">
+                <div class="clearfix">
+                    <img class="pull-left" src="{{ asset('frontend/images/icons/cards/paystack.png') }}" height="30">
+                    <label class="switch pull-right">
+                        <input type="checkbox" onchange="updateSettings(this, 'paystack')" <?php if(\App\BusinessSetting::where('type', 'paystack')->first()->value == 1) echo "checked";?>>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
+                    You need to configure PayStack correctly to enable this feature. <a href="{{ route('payment_method.index') }}">Configure Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-heading">
@@ -183,7 +205,6 @@
         </div>
     </div>
 </div>
-
 
 <div class="row">
     <h3 class="text-center">{{__('Social Media Login')}}</h3>

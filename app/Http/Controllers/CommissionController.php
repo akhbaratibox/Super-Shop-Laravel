@@ -7,6 +7,7 @@ use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\PublicSslCommerzPaymentController;
 use App\Http\Controllers\InstamojoController;
+use App\Http\Controllers\PaystackController;
 use App\Seller;
 use App\Payment;
 use Session;
@@ -42,6 +43,10 @@ class CommissionController extends Controller
         elseif ($request->payment_option == 'sslcommerz') {
             $sslcommerz = new PublicSslCommerzPaymentController;
             return $sslcommerz->index($request);
+        }
+        elseif ($request->payment_option == 'paystack') {
+            $paystack = new PaystackController;
+            return $paystack->redirectToGateway($request);
         }
         elseif ($request->payment_option == 'cash') {
             return $this->seller_payment_done($request->session()->get('payment_data'), null);

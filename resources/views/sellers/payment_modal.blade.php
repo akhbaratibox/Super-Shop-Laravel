@@ -46,6 +46,9 @@
                         @if($seller->razorpay_status == 1)
                             <option value="razorpay">{{__('RazorPay')}}</option>
                         @endif
+                        @if($seller->paystack_status == 1)
+                            <option value="paystack">{{__('PayStack')}}</option>
+                        @endif
                         @if($seller->sslcommerz_status == 1)
                             <option value="sslcommerz">{{__('SSLCommerz')}}</option>
                         @endif

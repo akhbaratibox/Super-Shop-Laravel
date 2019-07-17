@@ -295,6 +295,33 @@
                                             <input type="text" class="form-control mb-3" placeholder="{{__('Razor Secret')}}" value="{{ Auth::user()->seller->razorpay_secret }}" name="razorpay_secret">
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>{{__('PayStack')}}</label>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <label class="switch mb-3">
+                                                <input value="1" name="paystack_status" type="checkbox" @if (Auth::user()->seller->paystack_status == 1) checked @endif>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>{{__('PayStack Public Key')}}</label>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control mb-3" placeholder="{{__('PayStack Public Key')}}" value="{{ Auth::user()->seller->paystack_public_key }}" name="paystack_public_key">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>{{__('PayStack Secret Key')}}</label>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control mb-3" placeholder="{{__('PayStack Secret Key')}}" value="{{ Auth::user()->seller->paystack_secret_key }}" name="paystack_secret_key">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 

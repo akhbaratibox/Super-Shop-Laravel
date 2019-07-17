@@ -55,7 +55,7 @@ class CheckoutController extends Controller
             }
             elseif ($request->payment_option == 'paystack') {
                 $paystack = new PaystackController;
-                return $paystack->payWithRazorpay($request);
+                return $paystack->redirectToGateway($request);
             }
             elseif ($request->payment_option == 'cash_on_delivery') {
                 $order = Order::findOrFail($request->session()->get('order_id'));

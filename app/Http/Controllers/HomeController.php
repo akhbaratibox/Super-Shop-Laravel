@@ -182,6 +182,9 @@ class HomeController extends Controller
         $seller->razorpay_status = $request->razorpay_status;
         $seller->razorpay_api_key = $request->razorpay_api_key;
         $seller->razorpay_secret = $request->razorpay_secret;
+        $seller->paystack_status = $request->paystack_status;
+        $seller->paystack_public_key = $request->paystack_public_key;
+        $seller->paystack_secret_key = $request->paystack_secret_key;
 
         if($user->save() && $seller->save()){
             flash(__('Your Profile has been updated successfully!'))->success();

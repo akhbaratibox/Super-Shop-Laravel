@@ -124,6 +124,9 @@
                                         @if (\App\BusinessSetting::where('type', 'instamojo_payment')->first()->value == 1)
                                             <option value="instamojo">{{__('Instamojo')}}</option>
                                         @endif
+                                        @if (\App\BusinessSetting::where('type', 'paystack')->first()->value == 1)
+                                            <option value="paystack">{{__('Paystack')}}</option>
+                                        @endif
                                     </select>
                                 </div>
                             </div>

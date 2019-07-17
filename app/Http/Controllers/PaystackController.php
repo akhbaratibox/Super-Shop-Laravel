@@ -16,13 +16,16 @@ class PaystackController extends Controller
 {
     public function redirectToGateway(Request $request)
     {
-        if(Session::get('payment_type') == 'cart_payment'){
+        if(Session::get('payment_type') == 'cart_payment' || Session::get('payment_type') == 'wallet_payment'){
             $order = Order::findOrFail(Session::get('order_id'));
             $paystack = new Paystack();
             $user = Auth::user();
             $request->email = $user->email;
             if (Session::get('payment_type') == 'cart_payment') {
                 $request->amount = round(convert_to_usd($order->grand_total) * 100);
+            }
+            elseif (Session::get('payment_type') == 'wallet_payment') {
+                $request->amount = round(convert_to_usd($request->session()->get('payment_data')['amount']) * 100);
             }
             $request->key = env('PAYSTACK_SECRET_KEY');
             $request->reference = $paystack->genTranxRef();
@@ -38,6 +41,15 @@ class PaystackController extends Controller
             $request->reference = $paystack->genTranxRef();
             return $paystack->getAuthorizationUrl()->redirectNow();
         }
+        // elseif(Session::get('payment_type') == 'wallet_payment'){
+        //     $paystack = new Paystack();
+        //     $user = Auth::user();
+        //     $request->email = $user->email;
+        //     $request->amount = round(convert_to_usd($request->session()->get('payment_data')['amount']) * 100);
+        //     $request->key = env('PAYSTACK_SECRET_KEY');
+        //     $request->reference = $paystack->genTranxRef();
+        //     return $paystack->getAuthorizationUrl()->redirectNow();
+        // }
     }
 
 

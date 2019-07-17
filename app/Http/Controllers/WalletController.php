@@ -49,6 +49,10 @@ class WalletController extends Controller
             $razorpay = new RazorpayController;
             return $razorpay->payWithRazorpay($request);
         }
+        elseif ($request->payment_option == 'paystack') {
+            $paystack = new PaystackController;
+            return $paystack->redirectToGateway($request);
+        }
     }
 
     public function wallet_payment_done($payment_data, $payment_details){

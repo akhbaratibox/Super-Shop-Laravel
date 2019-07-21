@@ -24,7 +24,7 @@
 
     <!-- Open Graph data -->
     <meta property="og:title" content="{{ $product->meta_title }}" />
-    <meta property="og:type" content="article" />
+    <meta property="og:type" content="product" />
     <meta property="og:url" content="{{ route('product', $product->slug) }}" />
     <meta property="og:image" content="{{ asset($product->meta_img) }}" />
     <meta property="og:description" content="{{ $product->meta_description }}" />

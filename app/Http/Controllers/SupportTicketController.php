@@ -102,14 +102,13 @@ class SupportTicketController extends Controller
     {
         $ticket = Ticket::findOrFail(decrypt($id));
         $ticket_replies = $ticket->ticketreplies;
-        return view('frontend.support_ticket.edit', compact('ticket','ticket_replies'));
+        return view('frontend.support_ticket.show', compact('ticket','ticket_replies'));
     }
 
     public function admin_show($id)
     {
         $ticket = Ticket::findOrFail(decrypt($id));
-        $ticket_replies = $ticket->ticketreplies;
-        return view('support_tickets.show', compact('ticket','ticket_replies'));
+        return view('support_tickets.show', compact('ticket'));
     }
 
     /**

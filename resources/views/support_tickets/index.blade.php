@@ -13,7 +13,10 @@
                     <th>#</th>
                     <th>{{ __('Sending Date') }}</th>
                     <th>{{__('Subject')}}</th>
-                    <th>{{__('Seller Name')}}</th>
+                    <th>{{__('User')}}</th>
+                    <th>{{__('Status')}}</th>
+                    <th>{{__('Last reply')}}</th>
+                    <th>{{__('New Reply')}}</th>
                     <th>{{__('Options')}}</th>
                 </tr>
             </thead>
@@ -24,15 +27,13 @@
                         <td>{{ $ticket->created_at }}</td>
                         <td>{{ $ticket->subject }}</td>
                         <td>{{ $ticket->user->name }}</td>
+                        <td><span class="badge badge-pill badge-secondary">Open</span></td>
+                        <!-- <td><span class="badge badge-pill badge-success">Solved</span></td>
+                        <td><span class="badge badge-pill badge-danger">Pending</span></td> -->
+                        <td>{{ $ticket->created_at }}</td>
+                        <td><span class="badge badge-pill badge-info">2 new</span></td>
                         <td>
-                            <div class="btn-group dropdown">
-                                <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
-                                    {{__('Actions')}} <i class="dropdown-caret"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="{{route('support_ticket.admin_show', encrypt($ticket->id))}}">{{__('View')}}</a></li>
-                                </ul>
-                            </div>
+                            <a href="{{route('support_ticket.admin_show', encrypt($ticket->id))}}" class="btn-link">{{__('View Details')}}</a>
                         </td>
                     </tr>
                 @endforeach

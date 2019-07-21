@@ -104,13 +104,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group has-feedback">
                                                     <label class="control-label">{{__('Postal code')}}</label>
-                                                    <input type="text" class="form-control" value="{{ $user->postal_code }}" name="postal_code" required>
+                                                    <input type="number" min="0" class="form-control" value="{{ $user->postal_code }}" name="postal_code" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group has-feedback">
                                                     <label class="control-label">{{__('Phone')}}</label>
-                                                    <input type="text" class="form-control" value="{{ $user->phone }}" name="phone" required>
+                                                    <input type="number" min="0" class="form-control" value="{{ $user->phone }}" name="phone" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -169,13 +169,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group has-feedback">
                                                     <label class="control-label">{{__('Postal code')}}</label>
-                                                    <input type="text" class="form-control" placeholder="{{__('Postal code')}}" name="postal_code" required>
+                                                    <input type="number" min="0" class="form-control" placeholder="{{__('Postal code')}}" name="postal_code" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group has-feedback">
                                                     <label class="control-label">{{__('Phone')}}</label>
-                                                    <input type="text" class="form-control" placeholder="{{__('Phone')}}" name="phone" required>
+                                                    <input type="number" min="0" class="form-control" placeholder="{{__('Phone')}}" name="phone" required>
                                                 </div>
                                             </div>
                                         </div>

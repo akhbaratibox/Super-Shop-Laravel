@@ -12,6 +12,12 @@ use Hash;
 
 class ShopController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('user', ['only' => ['index']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

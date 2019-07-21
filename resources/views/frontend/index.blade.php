@@ -234,7 +234,7 @@
 
     <section class="mb-4">
         <div class="container">
-            <div class="p-4 bg-white shadow-sm">
+            <div class="px-2 py-4 p-md-4 bg-white shadow-sm">
                 <div class="section-title-1 clearfix">
                     <h3 class="heading-5 strong-700 mb-0 float-left">
                         <span class="mr-4">{{__('Featured Products')}}</span>
@@ -277,7 +277,7 @@
     @if (\App\BusinessSetting::where('type', 'best_selling')->first()->value == 1)
         <section class="mb-4">
             <div class="container">
-                <div class="p-4 bg-white shadow-sm">
+                <div class="px-2 py-4 p-md-4 bg-white shadow-sm">
                     <div class="section-title-1 clearfix">
                         <h3 class="heading-5 strong-700 mb-0 float-left">
                             <span class="mr-4">{{__('Best Selling')}}</span>
@@ -345,7 +345,7 @@
     @foreach (\App\HomeCategory::where('status', 1)->get() as $key => $homeCategory)
         <section class="mb-4">
             <div class="container">
-                <div class="p-4 bg-white shadow-sm">
+                <div class="px-2 py-4 p-md-4 bg-white shadow-sm">
                     <div class="section-title-1 clearfix">
                         <h3 class="heading-5 strong-700 mb-0 float-left">
                             <span class="mr-4">{{ $homeCategory->category->name }}</span>
@@ -444,7 +444,7 @@
         @endphp
         <section class="mb-5">
             <div class="container">
-                <div class="p-4 bg-white shadow-sm">
+                <div class="px-2 py-4 p-md-4 bg-white shadow-sm">
                     <div class="section-title-1 clearfix">
                         <h3 class="heading-5 strong-700 mb-0 float-left">
                             <span class="mr-4">{{__('Best Sellers')}}</span>

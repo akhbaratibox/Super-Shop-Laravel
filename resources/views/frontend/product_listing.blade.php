@@ -248,7 +248,40 @@
                             <div class="row sm-no-gutters gutters-5">
                                 @foreach ($products as $key => $product)
                                     <div class="col-xxl-3 col-xl-4 col-lg-3 col-md-4 col-6">
-                                        <div class="product-card-1 mb-2">
+                                        <div class="product-box-2 bg-white alt-box my-2">
+                                            <div class="position-relative overflow-hidden">
+                                                <a href="{{ route('product', $product->slug) }}" class="d-block product-image h-100" style="background-image:url('{{ asset($product->thumbnail_img) }}');" tabindex="0">
+                                                </a>
+                                                <div class="product-btns clearfix">
+                                                    <button class="btn add-wishlist" title="Add to Wishlist" onclick="addToWishList({{ $product->id }})" tabindex="0">
+                                                        <i class="la la-heart-o"></i>
+                                                    </button>
+                                                    <button class="btn add-compare" title="Add to Compare" onclick="addToCompare({{ $product->id }})" tabindex="0">
+                                                        <i class="la la-refresh"></i>
+                                                    </button>
+                                                    <button class="btn quick-view" title="Quick view" onclick="showAddToCartModal({{ $product->id }})" tabindex="0">
+                                                        <i class="la la-eye"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="p-3 border-top">
+                                                <h2 class="product-title p-0 text-truncate">
+                                                    <a href="{{ route('product', $product->slug) }}" tabindex="0">{{ __($product->name) }}</a>
+                                                </h2>
+                                                <div class="star-rating mb-1">
+                                                    {{ renderStarRating($product->rating) }}
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="price-box float-left">
+                                                        @if(home_base_price($product->id) != home_discounted_base_price($product->id))
+                                                            <del class="old-product-price strong-400">{{ home_base_price($product->id) }}</del>
+                                                        @endif
+                                                        <span class="product-price strong-600">{{ home_discounted_base_price($product->id) }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="product-card-1 mb-2">
                                             <figure class="product-image-container">
                                                 <a href="{{ route('product', $product->slug) }}" class="product-image d-block" style="background-image:url('{{ asset($product->thumbnail_img) }}');">
                                                 </a>
@@ -269,7 +302,7 @@
                                                         <span class="old-product-price strong-300">{{ home_base_price($product->id) }}</span>
                                                     @endif
                                                     <span class="product-price strong-300"><strong>{{ home_discounted_base_price($product->id) }}</strong></span>
-                                                </div><!-- End .price-box -->
+                                                </div>
 
                                                 <div class="product-card-1-action">
                                                     <button class="paction add-wishlist" title="Add to Wishlist" onclick="addToWishList({{ $product->id }})">
@@ -283,9 +316,9 @@
                                                     <button class="paction add-compare" title="Add to Compare" onclick="addToCompare({{ $product->id }})">
                                                         <i class="la la-refresh"></i>
                                                     </button>
-                                                </div><!-- End .product-action -->
-                                            </div><!-- End .product-details -->
-                                        </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
                                     </div>
                                 @endforeach
                             </div>

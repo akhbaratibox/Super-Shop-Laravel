@@ -118,6 +118,12 @@
                                         </button>
                                     </span>
                                 </div>
+                                @php
+                                    $qty = 0;
+                                    foreach (json_decode($product->variations) as $key => $variation) {
+                                        $qty += $variation->qty;
+                                    }
+                                @endphp
                                 @if(count(json_decode($product->variations, true)) >= 1)
                                     <div class="avialable-amount">(<span id="available-quantity">{{ $qty }}</span> {{__('available')}})</div>
                                 @endif

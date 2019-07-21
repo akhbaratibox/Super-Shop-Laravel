@@ -5,7 +5,7 @@
         <div class="profile">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-10 offset-xl-1">
+                    <div class="col-xl-8 offset-xl-2">
                         <div class="card">
                             <div class="text-center px-35 pt-5">
                                 <h3 class="heading heading-4 strong-500">

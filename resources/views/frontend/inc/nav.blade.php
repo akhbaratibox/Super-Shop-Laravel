@@ -57,7 +57,7 @@
                         </li>
                         @auth
                         <li>
-                            <a href="{{ route('dashboard') }}" class="top-bar-item">{{__('My Profile')}}</a>
+                            <a href="{{ route('dashboard') }}" class="top-bar-item">{{__('My Panel')}}</a>
                         </li>
                         <li>
                             <a href="{{ route('logout') }}" class="top-bar-item">{{__('Logout')}}</a>
@@ -462,16 +462,18 @@
                                                             </div>
                                                             <div class="py-2 text-center dc-btn">
                                                                 <ul class="inline-links inline-links--style-3">
-                                                                    <li class="pr-3">
+                                                                    <li class="px-1">
                                                                         <a href="{{ route('cart') }}" class="link link--style-1 text-capitalize btn btn-base-1 px-3 py-1">
                                                                             <i class="la la-shopping-cart"></i> {{__('View cart')}}
                                                                         </a>
                                                                     </li>
-                                                                    <li>
+                                                                    @if (Auth::check())
+                                                                    <li class="px-1">
                                                                         <a href="{{ route('checkout.shipping_info') }}" class="link link--style-1 text-capitalize btn btn-base-1 px-3 py-1 light-text">
                                                                             <i class="la la-mail-forward"></i> {{__('Checkout')}}
                                                                         </a>
                                                                     </li>
+                                                                    @endif
                                                                 </ul>
                                                             </div>
                                                         @else

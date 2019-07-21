@@ -139,6 +139,9 @@
 
 <script type="text/javascript">
     function showFrontendAlert(type, message){
+        if(type == 'danger'){
+            type = 'error';
+        }
         swal({
             position: 'top-end',
             type: type,
@@ -278,6 +281,7 @@
                 tint: '#000',
                 defaultScale: -1
             });
+            getVariantPrice();
         });
     }
 

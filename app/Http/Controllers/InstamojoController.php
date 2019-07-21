@@ -35,21 +35,27 @@ class InstamojoController extends Controller
                     env('IM_AUTH_TOKEN'),
                     $endPoint
                   );
-                  try {
-                      $response = $api->paymentRequestCreate(array(
-                          "purpose" => ucfirst(str_replace('_', ' ', Session::get('payment_type'))),
-                          "amount" => round($order->grand_total),
-                          "buyer_name" => Session::get('shipping_info')['name'],
-                          "send_email" => true,
-                          "email" => Session::get('shipping_info')['email'],
-                          "phone" => Session::get('shipping_info')['phone'],
-                          "redirect_url" => url('instamojo/payment/pay-success')
-                          ));
+                  if(preg_match_all('/^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$/im', Session::get('shipping_info')['phone'])){
+                    try {
+                        $response = $api->paymentRequestCreate(array(
+                            "purpose" => ucfirst(str_replace('_', ' ', Session::get('payment_type'))),
+                            "amount" => round($order->grand_total),
+                            "buyer_name" => Session::get('shipping_info')['name'],
+                            "send_email" => true,
+                            "email" => Session::get('shipping_info')['email'],
+                            "phone" => Session::get('shipping_info')['phone'],
+                            "redirect_url" => url('instamojo/payment/pay-success')
+                        ));
 
-                          return redirect($response['longurl']);
-
-                  }catch (Exception $e) {
-                      print('Error: ' . $e->getMessage());
+                        return redirect($response['longurl']);
+  
+                    }catch (Exception $e) {
+                        print('Error: ' . $e->getMessage());
+                    }
+                  }
+                  else{
+                      flash('Invalid phone number')->error();
+                      return redirect()->route('checkout.shipping_info');
                   }
            }
            elseif (Session::get('payment_type') == 'wallet_payment') {

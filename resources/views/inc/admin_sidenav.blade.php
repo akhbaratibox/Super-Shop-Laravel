@@ -374,7 +374,7 @@
                                             ->select('id')
                                             ->count();
                             @endphp
-                        <li class="{{ areActiveRoutes(['support_ticket.admin_index'])}}">
+                        <li class="{{ areActiveRoutes(['support_ticket.admin_index', 'support_ticket.admin_show'])}}">
                             <a class="nav-link" href="{{ route('support_ticket.admin_index') }}">
                                 <i class="fa fa-support"></i>
                                 <span class="menu-title">{{__('Suppot Ticket')}} @if($support_ticket > 0)<span class="pull-right badge badge-info">{{ $support_ticket }}</span>@endif</span>

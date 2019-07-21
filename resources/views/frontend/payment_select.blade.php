@@ -49,11 +49,6 @@
             <div class="container">
                 <div class="row cols-xs-space cols-sm-space cols-md-space">
                     <div class="col-lg-8">
-                        @if (Auth::check() && \App\BusinessSetting::where('type', 'coupon_system')->first()->value == 1)
-                            <div class="card">
-                                <button type="submit" class="btn btn-base-1" onclick="coupon_code_modal()">{{__('Apply Coupon code')}}</button>
-                            </div>
-                        @endif
                         <form action="{{ route('payment.checkout') }}" class="form-default" data-toggle="validator" role="form" method="POST">
                             @csrf
                             <div class="card">
@@ -165,33 +160,6 @@
                 </div>
             </div>
         </section>
-
-        <div class="modal fade" id="coupon_code_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
-                <div class="modal-content position-relative">
-                    <div class="modal-header">
-                        <h5 class="modal-title strong-600 heading-5">{{__('Apply Coupon Code')}}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form class="" action="{{ route('checkout.apply_coupon_code') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="modal-body gry-bg px-3 pt-3">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <input type="text" class="form-control mb-3" name="code" placeholder="Code" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('cancel')}}</button>
-                            <button type="submit" class="btn btn-base-1">{{__('Apply')}}</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
 @endsection
 
@@ -200,10 +168,6 @@
         function use_wallet(){
             $('input[name=payment_option]').val('wallet');
             $('#checkout-form').submit();
-        }
-
-        function coupon_code_modal(){
-            $('#coupon_code_modal').modal('show');
         }
     </script>
 @endsection

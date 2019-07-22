@@ -172,6 +172,25 @@
                                 <span>{{__('Manage Profile')}}</span>
                             </a>
                         </li>
+                        
+                        @if (\App\BusinessSetting::where('type', 'wallet_system')->first()->value == 1)
+                            <li>
+                                <a href="{{ route('wallet.index') }}" class="{{ areActiveRoutesHome(['wallet.index'])}}">
+                                    <i class="la la-dollar"></i>
+                                    <span class="category-name">
+                                        {{__('My Wallet')}}
+                                    </span>
+                                </a>
+                            </li>
+                        @endif
+                        <li>
+                            <a href="{{ route('support_ticket.index') }}" class="{{ areActiveRoutesHome(['support_ticket.index', 'support_ticket.show'])}}">
+                                <i class="la la-support"></i>
+                                <span class="category-name">
+                                    {{__('Support Ticket')}}
+                                </span>
+                            </a>
+                        </li>
 
                     </ul>
                     @if (Auth::check() && Auth::user()->user_type == 'seller')

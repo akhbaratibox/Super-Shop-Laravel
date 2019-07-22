@@ -7888,7 +7888,8 @@ a > .block {
   margin: 2rem 0;
 }
 
-.or--1 {
+.or--1,
+.or--2 {
   position: relative;
 }
 
@@ -7913,7 +7914,6 @@ a > .block {
   display: inline-block;
   height: 30px;
   position: relative;
-  left: 50%;
   transform: translate(-50%, 50%);
   font-size: 0.875rem;
   color: #d8d8d8;

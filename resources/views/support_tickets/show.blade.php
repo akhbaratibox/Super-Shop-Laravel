@@ -23,8 +23,16 @@
                 <div class="form-group">
                     <input type="file" name="attachment" class="form-control" required>
                 </div>
-                <div class="form-group text-right">
-                    <button class="btn btn-purple" type="submit">{{__('Send Your Reply')}}</button>
+                <div class="form-group text-right pos-rel">
+                    <button type="button" class="btn btn-primary">Submit as <strong>Open</strong></button>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#">Submit as <strong>Open</strong></a></li>
+                        <li><a href="#">Submit as <strong>Solved</strong></a></li>
+                        <!-- default new ticket status pending. after admin first reply it will be open -->
+                    </ul>
                 </div>
             </form>
             <div class="pad-top">
@@ -37,11 +45,28 @@
                                 <a href="#" class="media-heading box-inline text-main text-bold">{{ $ticketreply->user->name }}</a>
                                 <p class="text-muted text-sm">{{$ticketreply->created_at}}</p>
                             </div>
-                            <p>
+                            <div>
                                 @php
                                     echo $ticketreply->reply;
                                 @endphp
-                            </p>
+                                <div>
+                                    <div>
+                                        <a href="" class="support-file-attach bg-gray pad-all rounded">
+                                            <i class="fa fa-link mar-rgt"></i> 6sfdsdg51g5dfg151d6gd6fgd1.png
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="" class="support-file-attach bg-gray pad-all rounded">
+                                            <i class="fa fa-link mar-rgt"></i> 6sfdsdg51g5dfg151d6gd6fgd1.png
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="" class="support-file-attach bg-gray pad-all rounded">
+                                            <i class="fa fa-link mar-rgt"></i> 6sfdsdg51g5dfg151d6gd6fgd1.png
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 @endforeach

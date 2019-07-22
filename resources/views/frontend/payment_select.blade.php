@@ -49,7 +49,7 @@
             <div class="container">
                 <div class="row cols-xs-space cols-sm-space cols-md-space">
                     <div class="col-lg-8">
-                        <form action="{{ route('payment.checkout') }}" class="form-default" data-toggle="validator" role="form" method="POST">
+                        <form action="{{ route('payment.checkout') }}" class="form-default" data-toggle="validator" role="form" method="POST" id="checkout-form">
                             @csrf
                             <div class="card">
                                 <div class="card-title px-4 py-3">
@@ -143,7 +143,11 @@
                                                 <div class="text-center bg-gray py-4">
                                                     <i class="fa"></i>
                                                     <div class="h5 mb-4">Your wallet balance : <strong>{{ single_price(Auth::user()->balance) }}</strong></div>
-                                                    <button onclick="use_wallet()" class="btn btn-base-1" @if(Auth::user()->balance < $total) disabled @endif>Use your Wallet</button>
+                                                    @if(Auth::user()->balance < $total) 
+                                                        <button type="button" class="btn btn-base-2" disabled>Insufficient balance</button>
+                                                    @else
+                                                        <button  type="button" onclick="use_wallet()" class="btn btn-base-1" >Pay with wallet</button>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

@@ -45,7 +45,7 @@
                         <table class="table table-sm table-hover table-responsive-md">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>{{ __('Ticket ID') }}</th>
                                     <th>{{ __('Sending Date') }}</th>
                                     <th>{{__('Subject')}}</th>
                                     <th>{{__('Status')}}</th>
@@ -56,12 +56,18 @@
                                 @if(count($tickets) > 0)
                                     @foreach ($tickets as $key => $ticket)
                                         <tr>
-                                            <td>{{ $key+1 }}</td>
+                                            <td>#{{ $ticket->code }}</td>
                                             <td>{{ $ticket->created_at }}</td>
                                             <td>{{ $ticket->subject }}</td>
-                                            <td><span class="badge badge-pill badge-secondary">Open</span></td>
-                                            <!-- <td><span class="badge badge-pill badge-success">Solved</span></td>
-                                            <td><span class="badge badge-pill badge-danger">Pending</span></td> -->
+                                            <td>
+                                                @if ($ticket->status == 'pending')
+                                                    <span class="badge badge-pill badge-danger">Pending</span>
+                                                @elseif ($ticket->status == 'open')
+                                                    <span class="badge badge-pill badge-secondary">Open</span>
+                                                @else
+                                                    <span class="badge badge-pill badge-success">Solved</span>
+                                                @endif
+                                            </td>
                                             <td>
                                                 <a href="{{route('support_ticket.show', encrypt($ticket->id))}}" class="btn btn-styled btn-link py-1 px-0 icon-anim text-underline--none">
                                                     {{__('View Details')}}
@@ -104,7 +110,7 @@
                 </button>
             </div>
             <div class="modal-body px-3 pt-3">
-                <form class="" action="{{ route('support_ticket.store') }}" method="post">
+                <form class="" action="{{ route('support_ticket.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label>Subject <span class="text-danger">*</span></label>
@@ -112,10 +118,10 @@
                     </div>
                     <div class="form-group">
                         <label>Provide a detailed description <span class="text-danger">*</span></label>
-                        <textarea class="form-control editor" name="reply" placeholder="Type your reply" data-buttons="bold,underline,italic,|,ul,ol,|,paragraph,|,undo,redo"></textarea>
+                        <textarea class="form-control editor" name="details" placeholder="Type your reply" data-buttons="bold,underline,italic,|,ul,ol,|,paragraph,|,undo,redo"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="file" name="file-2[]" id="file-2" class="custom-input-file custom-input-file--2" data-multiple-caption="{count} files selected" multiple />
+                        <input type="file" name="attachments[]" id="file-2" class="custom-input-file custom-input-file--2" data-multiple-caption="{count} files selected" multiple />
                         <label for="file-2" class=" mw-100 mb-0">
                             <i class="fa fa-upload"></i>
                             <span>Attach files.</span>

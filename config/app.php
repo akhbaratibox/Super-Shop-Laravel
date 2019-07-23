@@ -150,7 +150,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         Netshell\Paypal\PaypalServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
-        Unicodeveloper\Paystack\PaystackServiceProvider::class,
+        Mehedi\Paystack\PaystackServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -215,7 +215,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Paypal' => Netshell\Paypal\Facades\Paypal::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
-        'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
+        'Paystack' => Mehedi\Paystack\Facades\Paystack::class,
     ],
 
 ];

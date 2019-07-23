@@ -16,7 +16,7 @@
                     <div class="main-content">
                         <div class="card">
                             <div class="card-header py-3">
-                                <h3 class="heading-5">{{ $ticket->subject }}</h3>
+                                <h3 class="heading-5">{{ $ticket->subject }} #{{ $ticket->code }}</h3>
                                 <ul class="list-inline alpha-6 mb-0">
                                     <li class="list-inline-item">{{ date('h:i:m A d-m-Y', strtotime($ticket->created_at)) }}</li>
                                     <li class="list-inline-item"><span class="badge badge-pill badge-secondary">Open</span></li>
@@ -32,7 +32,7 @@
                                             <textarea class="form-control editor" name="reply" placeholder="Type your reply" data-buttons="bold,underline,italic,|,ul,ol,|,paragraph,|,undo,redo"></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <input type="file" name="file-2[]" id="file-2" class="custom-input-file custom-input-file--2" data-multiple-caption="{count} files selected" multiple />
+                                            <input type="file" name="attachments[]" id="file-2" class="custom-input-file custom-input-file--2" data-multiple-caption="{count} files selected" multiple />
                                             <label for="file-2" class=" mw-100 mb-0">
                                                 <i class="fa fa-upload"></i>
                                                 <span>Attach files.</span>
@@ -56,6 +56,29 @@
                                                     <div class="flex-grow-1 ml-5 pl-5">
                                                         <div class="p-3 bg-gray rounded">
                                                             @php echo $ticketreply->reply; @endphp
+                                                            @if($ticketreply->files != null && is_array(json_decode($ticketreply->files)))
+                                                                <div class="mt-3 clearfix">
+                                                                    @foreach (json_decode($ticketreply->files) as $key => $file)
+                                                                        <div class="float-right bg-white p-2 rounded ml-2">
+                                                                            <a href="{{ asset($file->path) }}" download="{{ $file->name }}" class="file-preview d-block text-black-50" style="width:100px">
+                                                                                <div class="text-center h4">
+                                                                                    <i class="la la-file"></i>
+                                                                                </div>
+                                                                                <div class="d-flex">
+                                                                                    <div class="flex-grow-1 minw-0">
+                                                                                        <div class="text-truncate">
+                                                                                            {{ explode('.', $file->name)[0] }}
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        .{{ explode('.', $file->name)[1] }}
+                                                                                    </div>
+                                                                                </div>
+                                                                            </a>
+                                                                        </div>
+                                                                    @endforeach
+                                                                </div>
+                                                            @endif
                                                         </div>
                                                         <span class="comment-date alpha-5 text-sm mt-1 d-block text-right">
                                                             {{ date('h:i:m d-m-Y', strtotime($ticketreply->created_at)) }}
@@ -74,6 +97,29 @@
                                                     <div class="flex-grow-1 mr-5 pr-5">
                                                         <div class="p-3 bg-gray rounded">
                                                             @php echo $ticketreply->reply; @endphp
+                                                            @if($ticketreply->files != null && is_array(json_decode($ticketreply->files)))
+                                                                <div class="mt-3 clearfix">
+                                                                    @foreach (json_decode($ticketreply->files) as $key => $file)
+                                                                        <div class="float-right bg-white p-2 rounded ml-2">
+                                                                            <a href="{{ asset($file->path) }}" download="{{ $file->name }}" class="file-preview d-block text-black-50" style="width:100px">
+                                                                                <div class="text-center h4">
+                                                                                    <i class="la la-file"></i>
+                                                                                </div>
+                                                                                <div class="d-flex">
+                                                                                    <div class="flex-grow-1 minw-0">
+                                                                                        <div class="text-truncate">
+                                                                                            {{ explode('.', $file->name)[0] }}
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        .{{ explode('.', $file->name)[1] }}
+                                                                                    </div>
+                                                                                </div>
+                                                                            </a>
+                                                                        </div>
+                                                                    @endforeach
+                                                                </div>
+                                                            @endif
                                                         </div>
                                                         <span class="comment-date alpha-5 text-sm mt-1 d-block">
                                                             {{ date('h:i:m d-m-Y', strtotime($ticketreply->created_at)) }}
@@ -93,59 +139,29 @@
                                             <div class="flex-grow-1 ml-5 pl-5">
                                                 <div class="p-3 bg-gray rounded">
                                                     @php echo $ticket->details; @endphp
-                                                    <div class="mt-3 clearfix">
-                                                        <div class="float-right bg-white p-2 rounded ml-2">
-                                                            <a href="" class="file-preview d-block text-black-50" style="width:100px">
-                                                                <div class="text-center h4">
-                                                                    <i class="la la-file"></i>
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <div class="flex-grow-1 minw-0">
-                                                                        <div class="text-truncate">
-                                                                            6sfdsdg51g5dfg151d6gd6fgd1
+                                                    @if($ticket->files != null && is_array(json_decode($ticket->files)))
+                                                        <div class="mt-3 clearfix">
+                                                            @foreach (json_decode($ticket->files) as $key => $file)
+                                                                <div class="float-right bg-white p-2 rounded ml-2">
+                                                                    <a href="{{ asset($file->path) }}" download="{{ $file->name }}" class="file-preview d-block text-black-50" style="width:100px">
+                                                                        <div class="text-center h4">
+                                                                            <i class="la la-file"></i>
                                                                         </div>
-                                                                    </div>
-                                                                    <div>
-                                                                        .png
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="float-right bg-white p-2 rounded ml-2">
-                                                            <a href="" class="file-preview d-block text-black-50" style="width:100px">
-                                                                <div class="text-center h4">
-                                                                    <i class="la la-file"></i>
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <div class="flex-grow-1 minw-0">
-                                                                        <div class="text-truncate">
-                                                                            6sfdsdg51g5dfg151d6gd6fgd1
+                                                                        <div class="d-flex">
+                                                                            <div class="flex-grow-1 minw-0">
+                                                                                <div class="text-truncate">
+                                                                                    {{ explode('.', $file->name)[0] }}
+                                                                                </div>
+                                                                            </div>
+                                                                            <div>
+                                                                                .{{ explode('.', $file->name)[1] }}
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div>
-                                                                        .png
-                                                                    </div>
+                                                                    </a>
                                                                 </div>
-                                                            </a>
+                                                            @endforeach
                                                         </div>
-                                                        <div class="float-right bg-white p-2 rounded ml-2">
-                                                            <a href="" class="file-preview d-block text-black-50" style="width:100px">
-                                                                <div class="text-center h4">
-                                                                    <i class="la la-file"></i>
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <div class="flex-grow-1 minw-0">
-                                                                        <div class="text-truncate">
-                                                                            6sfdsdg51g5dfg151d6gd6fgd1
-                                                                        </div>
-                                                                    </div>
-                                                                    <div>
-                                                                        .png
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </div>
+                                                    @endif
                                                 </div>
                                                 <span class="comment-date alpha-5 text-sm mt-1 d-block text-right">
                                                     {{ date('h:i:m d-m-Y', strtotime($ticket->created_at)) }}

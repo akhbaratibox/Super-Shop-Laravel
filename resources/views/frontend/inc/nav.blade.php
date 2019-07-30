@@ -28,12 +28,11 @@
 
                         <li class="dropdown" id="currency-change">
                             @php
-                                $code = \App\Currency::findOrFail(\App\BusinessSetting::where('type', 'home_default_currency')->first()->value)->code;
                                 if(Session::has('currency_code')){
                                     $currency_code = Session::get('currency_code', $code);
                                 }
                                 else{
-                                    $currency_code = $code;
+                                    $currency_code = \App\Currency::findOrFail(\App\BusinessSetting::where('type', 'system_default_currency')->first()->value)->code;
                                 }
                             @endphp
                             <a href="" class="dropdown-toggle top-bar-item" data-toggle="dropdown">
@@ -172,7 +171,7 @@
                                 <span>{{__('Manage Profile')}}</span>
                             </a>
                         </li>
-                        
+
                         @if (\App\BusinessSetting::where('type', 'wallet_system')->first()->value == 1)
                             <li>
                                 <a href="{{ route('wallet.index') }}" class="{{ areActiveRoutesHome(['wallet.index'])}}">

@@ -70,9 +70,9 @@
                             <ul class="breadcrumb">
                                 <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
                                 <li><a href="{{ route('categories.all') }}">{{__('All Categories')}}</a></li>
-                                <li><a href="{{ route('products.category', $product->category_id) }}">{{ $product->category->name }}</a></li>
-                                <li><a href="{{ route('products.subcategory', $product->subcategory_id) }}">{{ $product->subcategory->name }}</a></li>
-                                <li class="active"><a href="{{ route('products.subsubcategory', $product->subsubcategory_id) }}">{{ $product->subsubcategory->name }}</a></li>
+                                <li><a href="{{ route('products.category', $product->category->slug) }}">{{ $product->category->name }}</a></li>
+                                <li><a href="{{ route('products.subcategory', $product->subcategory->slug) }}">{{ $product->subcategory->name }}</a></li>
+                                <li class="active"><a href="{{ route('products.subsubcategory', $product->subsubcategory->slug) }}">{{ $product->subsubcategory->name }}</a></li>
                             </ul>
 
                             <div class="row">
@@ -465,7 +465,7 @@
                                                     <div id="subCategory-{{ $subcategory->subcategory_id }}" class="collapse show">
                                                         <ul class="sub-sub-category-list">
                                                             @foreach (\App\Product::where('user_id', $product->user_id)->where('category_id',            $category->category_id)->where('subcategory_id', $subcategory->subcategory_id)->select('subsubcategory_id')->distinct()->get() as $subsubcategory)
-                                                                <li><a href="{{ route('products.subsubcategory', $subsubcategory->subsubcategory_id) }}">{{ App\SubSubCategory::findOrFail($subsubcategory->subsubcategory_id)->name }}</a></li>
+                                                                <li><a href="{{ route('products.subsubcategory', App\SubSubCategory::findOrFail($subsubcategory->subsubcategory_id)->slug) }}">{{ App\SubSubCategory::findOrFail($subsubcategory->subsubcategory_id)->name }}</a></li>
                                                             @endforeach
                                                     </div>
                                                 </div>

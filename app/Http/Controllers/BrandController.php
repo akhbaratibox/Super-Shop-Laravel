@@ -42,7 +42,7 @@ class BrandController extends Controller
         $brand->meta_title = $request->meta_title;
         $brand->meta_description = $request->meta_description;
         if ($request->slug != null) {
-            $brand->slug = $request->slug;
+            $brand->slug = str_replace(' ', '-', $request->slug);
         }
         else {
             $brand->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->name)).'-'.str_random(5);
@@ -95,9 +95,10 @@ class BrandController extends Controller
     {
         $brand = Brand::findOrFail($id);
         $brand->name = $request->name;
+        $brand->meta_title = $request->meta_title;
         $brand->meta_description = $request->meta_description;
         if ($request->slug != null) {
-            $brand->slug = $request->slug;
+            $brand->slug = str_replace(' ', '-', $request->slug);
         }
         else {
             $brand->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->name)).'-'.str_random(5);

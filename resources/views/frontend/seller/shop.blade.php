@@ -70,6 +70,22 @@
                                             <input type="text" class="form-control mb-3" placeholder="{{__('Address')}}" name="address" value="{{ $shop->address }}" required>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>{{__('Meta Title')}} <span class="required-star">*</span></label>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control mb-3" placeholder="{{__('Meta Title')}}" name="meta_title" value="{{ $shop->meta_title }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>{{__('Meta Description')}} <span class="required-star">*</span></label>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <textarea name="meta_description" rows="6" class="form-control mb-3" required>{{ $shop->meta_description }}</textarea>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="text-right mt-4">

@@ -1,20 +1,48 @@
 @extends('frontend.layouts.app')
 
 @if(isset($subsubcategory_id))
-    @section('meta_title'){{ \App\SubSubCategory::find($subsubcategory_id)->meta_title }}@stop
-    @section('meta_description'){{ \App\SubSubCategory::find($subsubcategory_id)->meta_description }}@stop
-@elseif (isset($brand_id))
-    @section('meta_title'){{ \App\Brand::find($brand_id)->meta_title }}@stop
-    @section('meta_description'){{ \App\Brand::find($brand_id)->meta_description }}@stop
-@elseif (isset($category_id))
-    @section('meta_title'){{ \App\Category::find($category_id)->meta_title }}@stop
-    @section('meta_description'){{ \App\Category::find($category_id)->meta_description }}@stop
+    @php
+        $meta_title = \App\SubSubCategory::find($subsubcategory_id)->meta_title;
+        $meta_description = \App\SubSubCategory::find($subsubcategory_id)->meta_description;
+    @endphp
 @elseif (isset($subcategory_id))
-    @section('meta_title'){{ \App\SubCategory::find($subcategory_id)->meta_title }}@stop
-    @section('meta_description'){{ \App\SubCategory::find($subcategory_id)->meta_description }}@stop
+    @php
+        $meta_title = \App\SubCategory::find($subcategory_id)->meta_title;
+        $meta_description = \App\SubCategory::find($subcategory_id)->meta_description;
+    @endphp
+@elseif (isset($category_id))
+    @php
+        $meta_title = \App\Category::find($category_id)->meta_title;
+        $meta_description = \App\Category::find($category_id)->meta_description;
+    @endphp
+@elseif (isset($brand_id))
+    @php
+        $meta_title = \App\Brand::find($brand_id)->meta_title;
+        $meta_description = \App\Brand::find($brand_id)->meta_description;
+    @endphp
 @else
-    @section('meta_title'){{ env('APP_NAME') }}@stop
+    @php
+        $meta_title = env('APP_NAME');
+        $meta_description = \App\SeoSetting::first()->description;
+    @endphp
 @endif
+
+@section('meta_title'){{ $meta_title }}@stop
+@section('meta_description'){{ $meta_description }}@stop
+
+@section('meta')
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="{{ $meta_title }}">
+    <meta itemprop="description" content="{{ $meta_description }}">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:title" content="{{ $meta_title }}">
+    <meta name="twitter:description" content="{{ $meta_description }}">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="{{ $meta_title }}" />
+    <meta property="og:description" content="{{ $meta_description }}" />
+@endsection
 
 @section('content')
 
@@ -26,16 +54,16 @@
                         <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
                         <li><a href="{{ route('products') }}">{{__('All Categories')}}</a></li>
                         @if(isset($category_id))
-                            <li class="active"><a href="{{ route('products.category', $category_id) }}">{{ \App\Category::find($category_id)->name }}</a></li>
+                            <li class="active"><a href="{{ route('products.category', \App\Category::find($category_id)->slug) }}">{{ \App\Category::find($category_id)->name }}</a></li>
                         @endif
                         @if(isset($subcategory_id))
                             <li ><a href="{{ route('products.category', \App\SubCategory::find($subcategory_id)->category->slug) }}">{{ \App\SubCategory::find($subcategory_id)->category->name }}</a></li>
-                            <li class="active"><a href="{{ route('products.subcategory', $subcategory_id) }}">{{ \App\SubCategory::find($subcategory_id)->name }}</a></li>
+                            <li class="active"><a href="{{ route('products.subcategory', \App\SubCategory::find($subcategory_id)->slug) }}">{{ \App\SubCategory::find($subcategory_id)->name }}</a></li>
                         @endif
                         @if(isset($subsubcategory_id))
                             <li ><a href="{{ route('products.category', \App\SubSubCategory::find($subsubcategory_id)->subcategory->category->slug) }}">{{ \App\SubSubCategory::find($subsubcategory_id)->subcategory->category->name }}</a></li>
                             <li ><a href="{{ route('products.subcategory', \App\SubsubCategory::find($subsubcategory_id)->subcategory->slug) }}">{{ \App\SubsubCategory::find($subsubcategory_id)->subcategory->name }}</a></li>
-                            <li class="active"><a href="{{ route('products.subsubcategory', $subsubcategory_id) }}">{{ \App\SubSubCategory::find($subsubcategory_id)->name }}</a></li>
+                            <li class="active"><a href="{{ route('products.subsubcategory', \App\SubSubCategory::find($subsubcategory_id)->slug) }}">{{ \App\SubSubCategory::find($subsubcategory_id)->name }}</a></li>
                         @endif
                     </ul>
                 </div>

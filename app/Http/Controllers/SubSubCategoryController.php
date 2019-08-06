@@ -50,7 +50,7 @@ class SubSubCategoryController extends Controller
         $subsubcategory->meta_title = $request->meta_title;
         $subsubcategory->meta_description = $request->meta_description;
         if ($request->slug != null) {
-            $subsubcategory->slug = $request->slug;
+            $subsubcategory->slug = str_replace(' ', '-', $request->slug);
         }
         else {
             $subsubcategory->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->name)).'-'.str_random(5);
@@ -120,7 +120,7 @@ class SubSubCategoryController extends Controller
         $subsubcategory->meta_title = $request->meta_title;
         $subsubcategory->meta_description = $request->meta_description;
         if ($request->slug != null) {
-            $subsubcategory->slug = $request->slug;
+            $subsubcategory->slug = str_replace(' ', '-', $request->slug);
         }
         else {
             $subsubcategory->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->name)).'-'.str_random(5);

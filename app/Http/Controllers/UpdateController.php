@@ -9,6 +9,10 @@ use Artisan;
 use Schema;
 use App\BusinessSetting;
 use App\Language;
+use App\Category;
+use App\Brand;
+use App\SubCategory;
+use App\SubSubCategory;
 
 class UpdateController extends Controller
 {
@@ -70,6 +74,30 @@ class UpdateController extends Controller
 
             $sql_path = base_path('sqlupdates/v16.sql');
             DB::unprepared(file_get_contents($sql_path));
+        }
+
+        foreach (Category::all() as $key => $value) {
+            $value->slug = str_replace(' ', '-', $value->name);
+            $value->meta_title = $value->name;
+            $value->save();
+        }
+
+        foreach (SubCategory::all() as $key => $value) {
+            $value->slug = str_replace(' ', '-', $value->name);
+            $value->meta_title = $value->name;
+            $value->save();
+        }
+
+        foreach (SubSubCategory::all() as $key => $value) {
+            $value->slug = str_replace(' ', '-', $value->name);
+            $value->meta_title = $value->name;
+            $value->save();
+        }
+
+        foreach (Brand::all() as $key => $value) {
+            $value->slug = str_replace(' ', '-', $value->name);
+            $value->meta_title = $value->name;
+            $value->save();
         }
 
         return redirect('step2');

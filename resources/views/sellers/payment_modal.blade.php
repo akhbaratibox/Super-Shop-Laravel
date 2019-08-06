@@ -10,7 +10,7 @@
             <table class="table table-responsive">
                 <tbody>
                     <tr>
-                        @if($seller->admin_to_pay => 0)
+                        @if($seller->admin_to_pay >= 0)
                             <td>{{ __('Due to seller') }}</td>
                             <td>{{ single_price($seller->admin_to_pay) }}</td>
                         @endif

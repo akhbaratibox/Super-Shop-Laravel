@@ -44,7 +44,7 @@ class CategoryController extends Controller
         $category->meta_title = $request->meta_title;
         $category->meta_description = $request->meta_description;
         if ($request->slug != null) {
-            str_replace(' ', '-', $request->slug);
+            $category->slug = str_replace(' ', '-', $request->slug);
         }
         else {
             $category->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->name)).'-'.str_random(5);

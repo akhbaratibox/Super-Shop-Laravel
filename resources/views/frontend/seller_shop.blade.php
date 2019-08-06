@@ -251,7 +251,7 @@
                                                                         }
                                                                     }
                                                                 @endphp
-                                                                <li><a href="{{ route('products.subsubcategory', $subsubcategory->id) }}">{{__($subsubcategory->name) }}</a></li>
+                                                                <li><a href="{{ route('products.subsubcategory', $subsubcategory->slug) }}">{{__($subsubcategory->name) }}</a></li>
                                                             @endforeach
                                                     </div>
                                                 </div>
@@ -271,7 +271,7 @@
                         		<ul class="seller-brand-list">
                                     @foreach ($brands as $brand_id)
                                         <li class="brand-item">
-                                            <a href="{{ route('products.brand', $brand_id) }}"><img src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid"></a>
+                                            <a href="{{ route('products.brand', \App\Brand::find($brand_id)->slug) }}"><img src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid"></a>
                                         </li>
                                     @endforeach
                         		</ul>

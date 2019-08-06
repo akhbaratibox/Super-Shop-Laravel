@@ -1,5 +1,21 @@
 @extends('frontend.layouts.app')
 
+@if(isset($subsubcategory_id))
+    @section('meta_title'){{ \App\SubSubCategory::find($subsubcategory_id)->meta_title }}@stop
+    @section('meta_description'){{ \App\SubSubCategory::find($subsubcategory_id)->meta_description }}@stop
+@elseif (isset($brand_id))
+    @section('meta_title'){{ \App\Brand::find($brand_id)->meta_title }}@stop
+    @section('meta_description'){{ \App\Brand::find($brand_id)->meta_description }}@stop
+@elseif (isset($category_id))
+    @section('meta_title'){{ \App\Category::find($category_id)->meta_title }}@stop
+    @section('meta_description'){{ \App\Category::find($category_id)->meta_description }}@stop
+@elseif (isset($subcategory_id))
+    @section('meta_title'){{ \App\SubCategory::find($subcategory_id)->meta_title }}@stop
+    @section('meta_description'){{ \App\SubCategory::find($subcategory_id)->meta_description }}@stop
+@else
+    @section('meta_title'){{ env('APP_NAME') }}@stop
+@endif
+
 @section('content')
 
     <div class="breadcrumb-area">
@@ -13,12 +29,12 @@
                             <li class="active"><a href="{{ route('products.category', $category_id) }}">{{ \App\Category::find($category_id)->name }}</a></li>
                         @endif
                         @if(isset($subcategory_id))
-                            <li ><a href="{{ route('products.category', \App\SubCategory::find($subcategory_id)->category->id) }}">{{ \App\SubCategory::find($subcategory_id)->category->name }}</a></li>
+                            <li ><a href="{{ route('products.category', \App\SubCategory::find($subcategory_id)->category->slug) }}">{{ \App\SubCategory::find($subcategory_id)->category->name }}</a></li>
                             <li class="active"><a href="{{ route('products.subcategory', $subcategory_id) }}">{{ \App\SubCategory::find($subcategory_id)->name }}</a></li>
                         @endif
                         @if(isset($subsubcategory_id))
-                            <li ><a href="{{ route('products.category', \App\SubSubCategory::find($subsubcategory_id)->subcategory->category->id) }}">{{ \App\SubSubCategory::find($subsubcategory_id)->subcategory->category->name }}</a></li>
-                            <li ><a href="{{ route('products.subcategory', \App\SubsubCategory::find($subsubcategory_id)->subcategory->id) }}">{{ \App\SubsubCategory::find($subsubcategory_id)->subcategory->name }}</a></li>
+                            <li ><a href="{{ route('products.category', \App\SubSubCategory::find($subsubcategory_id)->subcategory->category->slug) }}">{{ \App\SubSubCategory::find($subsubcategory_id)->subcategory->category->name }}</a></li>
+                            <li ><a href="{{ route('products.subcategory', \App\SubsubCategory::find($subsubcategory_id)->subcategory->slug) }}">{{ \App\SubsubCategory::find($subsubcategory_id)->subcategory->name }}</a></li>
                             <li class="active"><a href="{{ route('products.subsubcategory', $subsubcategory_id) }}">{{ \App\SubSubCategory::find($subsubcategory_id)->name }}</a></li>
                         @endif
                     </ul>
@@ -54,7 +70,7 @@
                                                     <div id="subCategory-{{ $key }}-{{ $key2 }}" class="collapse">
                                                         <ul class="sub-sub-category-list">
                                                             @foreach ($subcategory->subsubcategories as $key3 => $subsubcategory)
-                                                                <li><a href="{{ route('products.subsubcategory', $subsubcategory->id) }}">{{ __($subsubcategory->name) }}</a></li>
+                                                                <li><a href="{{ route('products.subsubcategory', $subsubcategory->slug) }}">{{ __($subsubcategory->name) }}</a></li>
                                                             @endforeach
                                                         </ul>
                                                     </div>
@@ -156,7 +172,7 @@
 
                                         @foreach ($brands as $key => $id)
                                             @if (\App\Brand::find($id) != null)
-                                                <li><a href="{{ route('products.brand', $id) }}"><img src="{{ asset(\App\Brand::find($id)->logo) }}" alt="" class="img-fluid"></a></li>
+                                                <li><a href="{{ route('products.brand', \App\Brand::find($id)->slug) }}"><img src="{{ asset(\App\Brand::find($id)->logo) }}" alt="" class="img-fluid"></a></li>
                                             @endif
                                         @endforeach
                                     </ul>
@@ -171,13 +187,13 @@
                         </div>
                         <form class="" id="search-form" action="{{ route('search') }}" method="GET">
                             @isset($category_id)
-                                <input type="hidden" name="category_id" value="{{ $category_id }}">
+                                <input type="hidden" name="category" value="{{ \App\Category::find($category_id)->slug }}">
                             @endisset
                             @isset($subcategory_id)
-                                <input type="hidden" name="subcategory_id" value="{{ $subcategory_id }}">
+                                <input type="hidden" name="subcategory" value="{{ \App\SubCategory::find($subcategory_id)->slug }}">
                             @endisset
                             @isset($subsubcategory_id)
-                                <input type="hidden" name="subsubcategory_id" value="{{ $subsubcategory_id }}">
+                                <input type="hidden" name="subsubcategory" value="{{ \App\SubSubCategory::find($subsubcategory_id)->slug }}">
                             @endisset
 
                             <div class="sort-by-bar row no-gutters bg-white mb-3 px-3">
@@ -213,11 +229,11 @@
                                             <div class="sort-by-box px-1">
                                                 <div class="form-group">
                                                     <label>{{__('Brands')}}</label>
-                                                    <select class="form-control sortSelect" data-placeholder="{{__('All Brands')}}" name="brand_id" onchange="filter()">
+                                                    <select class="form-control sortSelect" data-placeholder="{{__('All Brands')}}" name="brand" onchange="filter()">
                                                         <option value="">{{__('All Brands')}}</option>
                                                         @foreach ($brands as $key => $id)
                                                             @if (\App\Brand::find($id) != null)
-                                                                <option value="{{ $id }}" @isset($brand_id) @if ($brand_id == $id) selected @endif @endisset>{{ \App\Brand::find($id)->name }}</option>
+                                                                <option value="{{ \App\Brand::find($id)->slug }}" @isset($brand_id) @if ($brand_id == $id) selected @endif @endisset>{{ \App\Brand::find($id)->name }}</option>
                                                             @endif
                                                         @endforeach
                                                     </select>

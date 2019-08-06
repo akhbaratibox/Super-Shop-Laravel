@@ -8,6 +8,7 @@ use Auth;
 use Hash;
 use App\Category;
 use App\Brand;
+use App\SubCategory;
 use App\SubSubCategory;
 use App\Product;
 use App\User;
@@ -318,11 +319,11 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $query = $request->q;
-        $brand_id = $request->brand_id;
+        $brand_id = (Brand::where('slug', $request->brand)->first() != null) ? Brand::where('slug', $request->brand)->first()->id : null;
         $sort_by = $request->sort_by;
-        $category_id = $request->category_id;
-        $subcategory_id = $request->subcategory_id;
-        $subsubcategory_id = $request->subsubcategory_id;
+        $category_id = (Category::where('slug', $request->category)->first() != null) ? Category::where('slug', $request->category)->first()->id : null;
+        $subcategory_id = (SubCategory::where('slug', $request->subcategory)->first() != null) ? SubCategory::where('slug', $request->subcategory)->first()->id : null;
+        $subsubcategory_id = (SubSubCategory::where('slug', $request->subsubcategory)->first() != null) ? SubSubCategory::where('slug', $request->subsubcategory)->first()->id : null;
         $min_price = $request->min_price;
         $max_price = $request->max_price;
         $seller_id = $request->seller_id;
@@ -330,7 +331,7 @@ class HomeController extends Controller
         $conditions = ['published' => 1];
 
         if($brand_id != null){
-            $conditions = array_merge($conditions, ['brand_id' => $request->brand_id]);
+            $conditions = array_merge($conditions, ['brand_id' => $brand_id]);
         }
         if($category_id != null){
             $conditions = array_merge($conditions, ['category_id' => $category_id]);

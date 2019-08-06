@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2019 at 12:35 PM
+-- Generation Time: Aug 06, 2019 at 03:30 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ecommerce_16`
+-- Database: `shop`
 --
 
 -- --------------------------------------------------------
@@ -62,6 +62,9 @@ CREATE TABLE `brands` (
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `logo` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `top` int(1) NOT NULL DEFAULT 0,
+  `slug` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_description` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -70,9 +73,9 @@ CREATE TABLE `brands` (
 -- Dumping data for table `brands`
 --
 
-INSERT INTO `brands` (`id`, `name`, `logo`, `top`, `created_at`, `updated_at`) VALUES
-(1, 'Demo brand', 'uploads/brands/brand.jpg', 1, '2019-03-12 06:05:56', '2019-06-11 04:25:59'),
-(2, 'Demo brand1', 'uploads/brands/brand.jpg', 1, '2019-03-12 06:06:13', '2019-06-11 04:25:59');
+INSERT INTO `brands` (`id`, `name`, `logo`, `top`, `slug`, `meta_title`, `meta_description`, `created_at`, `updated_at`) VALUES
+(1, 'Demo brand', 'uploads/brands/brand.jpg', 1, 'Demo-brand-12', 'Demo brand', NULL, '2019-03-12 06:05:56', '2019-08-06 06:52:40'),
+(2, 'Demo brand1', 'uploads/brands/brand.jpg', 1, 'Demo-brand1', 'Demo brand1', NULL, '2019-03-12 06:06:13', '2019-08-06 06:07:26');
 
 -- --------------------------------------------------------
 
@@ -140,18 +143,21 @@ CREATE TABLE `categories` (
   `icon` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `featured` int(1) NOT NULL DEFAULT 0,
   `top` int(1) NOT NULL DEFAULT 0,
+  `slug` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_description` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id`, `name`, `banner`, `icon`, `featured`, `top`, `created_at`, `updated_at`) VALUES
-(1, 'Demo category 1', 'uploads/categories/banner/category-banner.jpg', 'uploads/categories/icon/KjJP9wuEZNL184XVUk3S7EiZ8NnBN99kiU4wdvp3.png', 1, 1, '2019-06-13 11:40:40', '2019-06-11 04:25:59'),
-(2, 'Demo category 2', 'uploads/categories/banner/category-banner.jpg', 'uploads/categories/icon/h9XhWwI401u6sRoLITEk9SUMRAlWN8moGrpPfS6I.png', 1, 0, '2019-06-13 11:40:40', '2019-03-12 06:45:37'),
-(3, 'Demo category 3', 'uploads/categories/banner/category-banner.jpg', 'uploads/categories/icon/rKAPw5rNlS84JtD9ZQqn366jwE11qyJqbzAe5yaA.png', 1, 1, '2019-06-13 11:40:40', '2019-06-11 04:25:59');
+INSERT INTO `categories` (`id`, `name`, `banner`, `icon`, `featured`, `top`, `slug`, `meta_title`, `meta_description`, `created_at`, `updated_at`) VALUES
+(1, 'Demo category 1', 'uploads/categories/banner/category-banner.jpg', 'uploads/categories/icon/KjJP9wuEZNL184XVUk3S7EiZ8NnBN99kiU4wdvp3.png', 1, 1, 'Demo-category-1', 'Demo category 1', NULL, '2019-08-06 12:06:58', '2019-08-06 06:06:58'),
+(2, 'Demo category 2', 'uploads/categories/banner/category-banner.jpg', 'uploads/categories/icon/h9XhWwI401u6sRoLITEk9SUMRAlWN8moGrpPfS6I.png', 1, 0, 'Demo-category-2', 'Demo category 2', NULL, '2019-08-06 12:06:58', '2019-08-06 06:06:58'),
+(3, 'Demo category 3', 'uploads/categories/banner/category-banner.jpg', 'uploads/categories/icon/rKAPw5rNlS84JtD9ZQqn366jwE11qyJqbzAe5yaA.png', 1, 1, 'Demo-category-3', 'Demo category 3', NULL, '2019-08-06 12:06:58', '2019-08-06 06:06:58');
 
 -- --------------------------------------------------------
 
@@ -1236,6 +1242,8 @@ CREATE TABLE `shops` (
   `twitter` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `youtube` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `slug` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_description` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -1244,8 +1252,8 @@ CREATE TABLE `shops` (
 -- Dumping data for table `shops`
 --
 
-INSERT INTO `shops` (`id`, `user_id`, `name`, `logo`, `sliders`, `address`, `facebook`, `google`, `twitter`, `youtube`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 3, 'Demo Seller Shop', 'uploads/hop/logo/Gt1xw7vjTpMnwpADkGSilc35qrAfcw02kuZ36Jdn.png', '[\"uploads\\/shop\\/sliders\\/lToeKDeUyWcxy1HRs2yH37oBLyIwEwyPkqdyXBRO.jpeg\",\"uploads\\/shop\\/sliders\\/asDBJ3Bro1ijNaNnx3Hpnp6uq3n66ndyLczOJ0F6.jpeg\",\"uploads\\/shop\\/sliders\\/ltwUfHND4QP1K7bPFbuOC4i8v6zL9KHJKzex4zaX.jpeg\"]', 'House : Demo, Road : Demo, Section : Demo', 'www.facebook.com', 'www.google.com', 'www.twitter.com', 'www.youtube.com', 'Demo-Seller-Shop-1', '2018-11-27 10:23:13', '2019-02-09 23:56:31');
+INSERT INTO `shops` (`id`, `user_id`, `name`, `logo`, `sliders`, `address`, `facebook`, `google`, `twitter`, `youtube`, `slug`, `meta_title`, `meta_description`, `created_at`, `updated_at`) VALUES
+(1, 3, 'Demo Seller Shop', 'uploads/shop/logo/Gt1xw7vjTpMnwpADkGSilc35qrAfcw02kuZ36Jdn.png', '[\"uploads\\/shop\\/sliders\\/lToeKDeUyWcxy1HRs2yH37oBLyIwEwyPkqdyXBRO.jpeg\",\"uploads\\/shop\\/sliders\\/asDBJ3Bro1ijNaNnx3Hpnp6uq3n66ndyLczOJ0F6.jpeg\",\"uploads\\/shop\\/sliders\\/ltwUfHND4QP1K7bPFbuOC4i8v6zL9KHJKzex4zaX.jpeg\"]', 'House : Demo, Road : Demo, Section : Demo', 'www.facebook.com', 'www.google.com', 'www.twitter.com', 'www.youtube.com', 'Demo-Seller-Shop-1', 'Demo Seller Shop Title', 'Demo description', '2018-11-27 10:23:13', '2019-08-06 06:43:16');
 
 -- --------------------------------------------------------
 
@@ -1306,6 +1314,9 @@ CREATE TABLE `sub_categories` (
   `id` int(11) NOT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `category_id` int(11) NOT NULL,
+  `slug` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_description` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -1314,16 +1325,16 @@ CREATE TABLE `sub_categories` (
 -- Dumping data for table `sub_categories`
 --
 
-INSERT INTO `sub_categories` (`id`, `name`, `category_id`, `created_at`, `updated_at`) VALUES
-(1, 'Demo sub category 1', 1, '2019-03-12 06:13:24', '2019-03-12 06:13:24'),
-(2, 'Demo sub category 2', 1, '2019-03-12 06:13:44', '2019-03-12 06:13:44'),
-(3, 'Demo sub category 3', 1, '2019-03-12 06:13:59', '2019-03-12 06:13:59'),
-(4, 'Demo sub category 1', 2, '2019-03-12 06:18:25', '2019-03-12 06:18:25'),
-(5, 'Demo sub category 2', 2, '2019-03-12 06:18:38', '2019-03-12 06:18:38'),
-(6, 'Demo sub category 3', 2, '2019-03-12 06:18:51', '2019-03-12 06:18:51'),
-(7, 'Demo sub category 1', 3, '2019-03-12 06:19:05', '2019-03-12 06:19:05'),
-(8, 'Demo sub category 2', 3, '2019-03-12 06:19:13', '2019-03-12 06:19:13'),
-(9, 'Demo sub category 3', 3, '2019-03-12 06:19:22', '2019-03-12 06:19:22');
+INSERT INTO `sub_categories` (`id`, `name`, `category_id`, `slug`, `meta_title`, `meta_description`, `created_at`, `updated_at`) VALUES
+(1, 'Demo sub category 1', 1, 'Demo-sub-category-1', 'Demo sub category 1', NULL, '2019-03-12 06:13:24', '2019-08-06 06:07:14'),
+(2, 'Demo sub category 2', 1, 'Demo-sub-category-2', 'Demo sub category 2', NULL, '2019-03-12 06:13:44', '2019-08-06 06:07:14'),
+(3, 'Demo sub category 3', 1, 'Demo-sub-category-3', 'Demo sub category 3', NULL, '2019-03-12 06:13:59', '2019-08-06 06:07:14'),
+(4, 'Demo sub category 1', 2, 'Demo-sub-category-1', 'Demo sub category 1', NULL, '2019-03-12 06:18:25', '2019-08-06 06:07:14'),
+(5, 'Demo sub category 2', 2, 'Demo-sub-category-2', 'Demo sub category 2', NULL, '2019-03-12 06:18:38', '2019-08-06 06:07:14'),
+(6, 'Demo sub category 3', 2, 'Demo-sub-category-3', 'Demo sub category 3', NULL, '2019-03-12 06:18:51', '2019-08-06 06:07:14'),
+(7, 'Demo sub category 1', 3, 'Demo-sub-category-1', 'Demo sub category 1', NULL, '2019-03-12 06:19:05', '2019-08-06 06:07:14'),
+(8, 'Demo sub category 2', 3, 'Demo-sub-category-2', 'Demo sub category 2', NULL, '2019-03-12 06:19:13', '2019-08-06 06:07:14'),
+(9, 'Demo sub category 3', 3, 'Demo-sub-category-3', 'Demo sub category 3', NULL, '2019-03-12 06:19:22', '2019-08-06 06:07:14');
 
 -- --------------------------------------------------------
 
@@ -1336,6 +1347,9 @@ CREATE TABLE `sub_sub_categories` (
   `sub_category_id` int(11) NOT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `brands` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_description` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -1344,24 +1358,24 @@ CREATE TABLE `sub_sub_categories` (
 -- Dumping data for table `sub_sub_categories`
 --
 
-INSERT INTO `sub_sub_categories` (`id`, `sub_category_id`, `name`, `brands`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Demo sub sub category', '[\"1\",\"2\"]', '2019-03-12 06:19:49', '2019-03-12 06:19:49'),
-(2, 1, 'Demo sub sub category 2', '[\"1\",\"2\"]', '2019-03-12 06:20:23', '2019-03-12 06:20:23'),
-(3, 1, 'Demo sub sub category 3', '[\"1\",\"2\"]', '2019-03-12 06:20:43', '2019-03-12 06:20:43'),
-(4, 2, 'Demo sub sub category 1', '[\"1\",\"2\"]', '2019-03-12 06:21:28', '2019-03-12 06:21:28'),
-(5, 2, 'Demo sub sub category 2', '[\"1\",\"2\"]', '2019-03-12 06:21:40', '2019-03-12 06:23:11'),
-(6, 2, 'Demo sub sub category 3', '[\"1\",\"2\"]', '2019-03-12 06:21:56', '2019-03-12 06:21:56'),
-(7, 3, 'Demo sub sub category 1', '[\"1\",\"2\"]', '2019-03-12 06:23:31', '2019-03-12 06:23:31'),
-(8, 3, 'Demo sub sub category 3', '[\"1\",\"2\"]', '2019-03-12 06:23:48', '2019-03-12 06:23:48'),
-(9, 3, 'Demo sub sub category 3', '[\"1\",\"2\"]', '2019-03-12 06:24:01', '2019-03-12 06:24:01'),
-(10, 4, 'Demo sub sub category 1', '[\"1\",\"2\"]', '2019-03-12 06:24:37', '2019-03-12 06:24:37'),
-(11, 4, 'Demo sub sub category 2', '[\"1\",\"2\"]', '2019-03-12 06:25:14', '2019-03-12 06:25:14'),
-(12, 4, 'Demo sub sub category', '[\"1\",\"2\"]', '2019-03-12 06:25:25', '2019-03-12 06:25:25'),
-(13, 5, 'Demo sub sub category 1', '[\"1\",\"2\"]', '2019-03-12 06:25:58', '2019-03-12 06:26:57'),
-(14, 6, 'Demo sub sub category 1', '[\"1\",\"2\"]', '2019-03-12 06:26:16', '2019-03-12 06:26:45'),
-(15, 7, 'Demo sub sub category', '[\"1\",\"2\"]', '2019-03-12 06:27:17', '2019-03-12 06:27:17'),
-(16, 8, 'Demo sub sub category', '[\"1\",\"2\"]', '2019-03-12 06:27:29', '2019-03-12 06:27:29'),
-(17, 9, 'Demo sub sub category', '[\"1\",\"2\"]', '2019-03-12 06:27:41', '2019-03-12 06:27:41');
+INSERT INTO `sub_sub_categories` (`id`, `sub_category_id`, `name`, `brands`, `slug`, `meta_title`, `meta_description`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Demo sub sub category', '[\"1\",\"2\"]', 'Demo-sub-sub-category', 'Demo sub sub category', NULL, '2019-03-12 06:19:49', '2019-08-06 06:07:19'),
+(2, 1, 'Demo sub sub category 2', '[\"1\",\"2\"]', 'Demo-sub-sub-category-2', 'Demo sub sub category 2', NULL, '2019-03-12 06:20:23', '2019-08-06 06:07:19'),
+(3, 1, 'Demo sub sub category 3', '[\"1\",\"2\"]', 'Demo-sub-sub-category-3', 'Demo sub sub category 3', NULL, '2019-03-12 06:20:43', '2019-08-06 06:07:19'),
+(4, 2, 'Demo sub sub category 1', '[\"1\",\"2\"]', 'Demo-sub-sub-category-1', 'Demo sub sub category 1', NULL, '2019-03-12 06:21:28', '2019-08-06 06:07:19'),
+(5, 2, 'Demo sub sub category 2', '[\"1\",\"2\"]', 'Demo-sub-sub-category-2', 'Demo sub sub category 2', NULL, '2019-03-12 06:21:40', '2019-08-06 06:07:19'),
+(6, 2, 'Demo sub sub category 3', '[\"1\",\"2\"]', 'Demo-sub-sub-category-3', 'Demo sub sub category 3', NULL, '2019-03-12 06:21:56', '2019-08-06 06:07:19'),
+(7, 3, 'Demo sub sub category 1', '[\"1\",\"2\"]', 'Demo-sub-sub-category-1', 'Demo sub sub category 1', NULL, '2019-03-12 06:23:31', '2019-08-06 06:07:19'),
+(8, 3, 'Demo sub sub category 3', '[\"1\",\"2\"]', 'Demo-sub-sub-category-3', 'Demo sub sub category 3', NULL, '2019-03-12 06:23:48', '2019-08-06 06:07:19'),
+(9, 3, 'Demo sub sub category 3', '[\"1\",\"2\"]', 'Demo-sub-sub-category-3', 'Demo sub sub category 3', NULL, '2019-03-12 06:24:01', '2019-08-06 06:07:19'),
+(10, 4, 'Demo sub sub category 1', '[\"1\",\"2\"]', 'Demo-sub-sub-category-1', 'Demo sub sub category 1', NULL, '2019-03-12 06:24:37', '2019-08-06 06:07:19'),
+(11, 4, 'Demo sub sub category 2', '[\"1\",\"2\"]', 'Demo-sub-sub-category-2', 'Demo sub sub category 2', NULL, '2019-03-12 06:25:14', '2019-08-06 06:07:19'),
+(12, 4, 'Demo sub sub category', '[\"1\",\"2\"]', 'Demo-sub-sub-category', 'Demo sub sub category', NULL, '2019-03-12 06:25:25', '2019-08-06 06:07:19'),
+(13, 5, 'Demo sub sub category 1', '[\"1\",\"2\"]', 'Demo-sub-sub-category-1', 'Demo sub sub category 1', NULL, '2019-03-12 06:25:58', '2019-08-06 06:07:19'),
+(14, 6, 'Demo sub sub category 1', '[\"1\",\"2\"]', 'Demo-sub-sub-category-1', 'Demo sub sub category 1', NULL, '2019-03-12 06:26:16', '2019-08-06 06:07:19'),
+(15, 7, 'Demo sub sub category', '[\"1\",\"2\"]', 'Demo-sub-sub-category', 'Demo sub sub category', NULL, '2019-03-12 06:27:17', '2019-08-06 06:07:19'),
+(16, 8, 'Demo sub sub category', '[\"1\",\"2\"]', 'Demo-sub-sub-category', 'Demo sub sub category', NULL, '2019-03-12 06:27:29', '2019-08-06 06:07:19'),
+(17, 9, 'Demo sub sub category', '[\"1\",\"2\"]', 'Demo-sub-sub-category', 'Demo sub sub category', NULL, '2019-03-12 06:27:41', '2019-08-06 06:07:19');
 
 -- --------------------------------------------------------
 
@@ -1725,7 +1739,7 @@ ALTER TABLE `banners`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `business_settings`

@@ -38,22 +38,22 @@ class HomeController extends Controller
         return view('frontend.user_registration');
     }
 
-    public function user_login(Request $request)
-    {
-        $user = User::whereIn('user_type', ['customer', 'seller'])->where('email', $request->email)->first();
-        if($user != null){
-            if(Hash::check($request->password, $user->password)){
-                if($request->has('remember')){
-                    auth()->login($user, true);
-                }
-                else{
-                    auth()->login($user, false);
-                }
-                return redirect()->route('dashboard');
-            }
-        }
-        return back();
-    }
+    // public function user_login(Request $request)
+    // {
+    //     $user = User::whereIn('user_type', ['customer', 'seller'])->where('email', $request->email)->first();
+    //     if($user != null){
+    //         if(Hash::check($request->password, $user->password)){
+    //             if($request->has('remember')){
+    //                 auth()->login($user, true);
+    //             }
+    //             else{
+    //                 auth()->login($user, false);
+    //             }
+    //             return redirect()->route('dashboard');
+    //         }
+    //     }
+    //     return back();
+    // }
 
     public function cart_login(Request $request)
     {
@@ -135,7 +135,7 @@ class HomeController extends Controller
         }
 
         if($request->hasFile('photo')){
-            $user->avatar_original = $request->photo->store('uploads');
+            $user->avatar_original = $request->photo->store('uploads/users');
         }
 
         if($user->save()){

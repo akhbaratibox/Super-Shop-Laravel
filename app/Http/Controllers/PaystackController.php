@@ -23,7 +23,7 @@ class PaystackController extends Controller
             $paystack = new Paystack(env('PAYSTACK_SECRET_KEY'), $baseUrl);
             $user = Auth::user();
             $request->email = $user->email;
-            $request->amount = round(convert_to_usd($order->grand_total) * 100);
+            $request->amount = round($order->grand_total * 100);
             //$request->key = env('PAYSTACK_SECRET_KEY');
             $request->reference = $paystack->genTranxRef();
             return $paystack->getAuthorizationUrl()->redirectNow();
@@ -33,7 +33,7 @@ class PaystackController extends Controller
             $paystack = new Paystack($seller->paystack_secret_key, $baseUrl);
             $user = Auth::user();
             $request->email = $user->email;
-            $request->amount = round(convert_to_usd($request->session()->get('payment_data')['amount']) * 100);
+            $request->amount = round($request->session()->get('payment_data')['amount'] * 100);
             // $request->key = $seller->paystack_secret_key;
             $request->reference = $paystack->genTranxRef();
             return $paystack->getAuthorizationUrl()->redirectNow();
@@ -42,7 +42,7 @@ class PaystackController extends Controller
             $paystack = new Paystack(env('PAYSTACK_SECRET_KEY'), $baseUrl);
             $user = Auth::user();
             $request->email = $user->email;
-            $request->amount = round(convert_to_usd($request->session()->get('payment_data')['amount']) * 100);
+            $request->amount = round($request->session()->get('payment_data')['amount'] * 100);
             // $request->key = env('PAYSTACK_SECRET_KEY');
             $request->reference = $paystack->genTranxRef();
             return $paystack->getAuthorizationUrl()->redirectNow();

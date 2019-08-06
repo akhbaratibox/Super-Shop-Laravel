@@ -27,7 +27,7 @@ class InstamojoController extends Controller
                }
                else{
                    // live_url
-                   $endPoint = 'https://www.instamojo.com/api/1.1/payment-requests/';
+                   $endPoint = 'https://www.instamojo.com/api/1.1/';
                }
 
                $api = new \Instamojo\Instamojo(
@@ -48,7 +48,7 @@ class InstamojoController extends Controller
                         ));
 
                         return redirect($response['longurl']);
-  
+
                     }catch (Exception $e) {
                         print('Error: ' . $e->getMessage());
                     }
@@ -63,7 +63,7 @@ class InstamojoController extends Controller
                    $endPoint = 'https://test.instamojo.com/api/1.1/';
                }
                else{
-                   $endPoint = 'https://www.instamojo.com/api/1.1/payment-requests/';
+                   $endPoint = 'https://www.instamojo.com/api/1.1/';
                }
 
                $api = new \Instamojo\Instamojo(
@@ -92,7 +92,7 @@ class InstamojoController extends Controller
                    $endPoint = 'https://test.instamojo.com/api/1.1/';
                }
                else{
-                   $endPoint = 'https://www.instamojo.com/api/1.1/payment-requests/';
+                   $endPoint = 'https://www.instamojo.com/api/1.1/';
                }
 
                $seller = Seller::findOrFail(Session::get('payment_data')['seller_id']);
@@ -129,7 +129,7 @@ class InstamojoController extends Controller
              $endPoint = 'https://test.instamojo.com/api/1.1/';
          }
          else{
-             $endPoint = 'https://www.instamojo.com/api/1.1/payment-requests/';
+             $endPoint = 'https://www.instamojo.com/api/1.1/';
          }
 
          if(Session::has('payment_type')){

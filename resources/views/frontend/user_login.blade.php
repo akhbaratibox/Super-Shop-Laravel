@@ -15,7 +15,7 @@
                             <div class="px-5 py-3 py-lg-5">
                                 <div class="row align-items-center">
                                     <div class="col-12 col-lg">
-                                        <form class="form-default" role="form" action="{{ route('user.login.submit') }}" method="POST">
+                                        <form class="form-default" role="form" action="{{ route('login') }}" method="POST">
                                             @csrf
                                             <div class="row">
                                                 <div class="col-12">
@@ -56,9 +56,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-6 text-right">
-                                                    <a href="{{ route('password.request') }}" class="link link-xs link--style-3">{{__('Forgot password?')}}</a>
-                                                </div>
+                                                @if(env('MAIL_USERNAME') != null && env('MAIL_PASSWORD') != null)
+                                                    <div class="col-6 text-right">
+                                                        <a href="{{ route('password.request') }}" class="link link-xs link--style-3">{{__('Forgot password?')}}</a>
+                                                    </div>
+                                                @endif
                                             </div>
 
                                             <div class="row">

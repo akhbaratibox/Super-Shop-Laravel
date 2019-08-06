@@ -17,8 +17,15 @@ class UpdateController extends Controller
     }
 
     public function step1() {
-        if(BusinessSetting::where('type', 'current_version')->first() != null && BusinessSetting::where('type', 'current_version')->first()->value == '1.4'){
+        if(BusinessSetting::where('type', 'current_version')->first() != null && BusinessSetting::where('type', 'current_version')->first()->value == '1.5'){
+            $sql_path = base_path('sqlupdates/v16.sql');
+            DB::unprepared(file_get_contents($sql_path));
+        }
+        elseif(BusinessSetting::where('type', 'current_version')->first() != null && BusinessSetting::where('type', 'current_version')->first()->value == '1.4'){
             $sql_path = base_path('sqlupdates/v15.sql');
+            DB::unprepared(file_get_contents($sql_path));
+
+            $sql_path = base_path('sqlupdates/v16.sql');
             DB::unprepared(file_get_contents($sql_path));
         }
         else{
@@ -59,6 +66,9 @@ class UpdateController extends Controller
                 DB::unprepared(file_get_contents($sql_path));
             }
             $sql_path = base_path('sqlupdates/v15.sql');
+            DB::unprepared(file_get_contents($sql_path));
+
+            $sql_path = base_path('sqlupdates/v16.sql');
             DB::unprepared(file_get_contents($sql_path));
         }
 

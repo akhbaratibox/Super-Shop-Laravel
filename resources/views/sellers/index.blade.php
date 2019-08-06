@@ -54,10 +54,10 @@
                         </td>
                         <td>{{ \App\Product::where('user_id', $seller->user->id)->count() }}</td>
                         <td>
-                            @if ($seller->admin_to_pay > 0)
+                            @if ($seller->admin_to_pay >= 0)
                                 {{ single_price($seller->admin_to_pay) }}
                             @else
-                                {{ single_price(0) }}
+                                {{ single_price(abs($seller->admin_to_pay)) }} (Due to Admin)
                             @endif
                         </td>
                         <td>

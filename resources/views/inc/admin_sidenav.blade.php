@@ -177,17 +177,20 @@
 
                             <!--Submenu-->
                             <ul class="collapse">
-                                <li class="{{ areActiveRoutes(['sellers.index', 'sellers.create', 'sellers.edit'])}}">
+                                <li class="{{ areActiveRoutes(['sellers.index', 'sellers.create', 'sellers.edit', 'sellers.payment_history'])}}">
                                     @php
                                         $sellers = \App\Seller::where('verification_status', 0)->where('verification_info', '!=', null)->count();
                                     @endphp
-                                    <a class="nav-link" href="{{route('sellers.index')}}">{{__('Seller list')}} @if($sellers > 0)<span class="pull-right badge badge-info">{{ $sellers }}</span> @endif</a>
+                                    <a class="nav-link" href="{{route('sellers.index')}}">{{__('Seller List')}} @if($sellers > 0)<span class="pull-right badge badge-info">{{ $sellers }}</span> @endif</a>
                                 </li>
-                                <li class="{{ areActiveRoutes(['seller_verification_form.index'])}}">
-                                    <a class="nav-link" href="{{route('seller_verification_form.index')}}">{{__('Seller verification form')}}</a>
+                                <li class="{{ areActiveRoutes(['sellers.payment_histories'])}}">
+                                    <a class="nav-link" href="{{ route('sellers.payment_histories') }}">{{__('Seller Payments')}}</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['business_settings.vendor_commission'])}}">
                                     <a class="nav-link" href="{{ route('business_settings.vendor_commission') }}">{{__('Seller Commission')}}</a>
+                                </li>
+                                <li class="{{ areActiveRoutes(['seller_verification_form.index'])}}">
+                                    <a class="nav-link" href="{{route('seller_verification_form.index')}}">{{__('Seller Verification Form')}}</a>
                                 </li>
                             </ul>
                         </li>

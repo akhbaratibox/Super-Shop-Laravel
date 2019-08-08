@@ -112,8 +112,12 @@ class CheckoutController extends Controller
 
     public function get_shipping_info(Request $request)
     {
-        $categories = Category::all();
-        return view('frontend.shipping_info', compact('categories'));
+        if(Session::has('cart') && count(Session::get('cart')) > 0){
+            $categories = Category::all();
+            return view('frontend.shipping_info', compact('categories'));
+        }
+        flash(__('Your cart is empty'))->success();
+        return back();
     }
 
     public function store_shipping_info(Request $request)
@@ -176,7 +180,7 @@ class CheckoutController extends Controller
             if(strtotime(date('d-m-Y')) >= $coupon->start_date && strtotime(date('d-m-Y')) <= $coupon->end_date){
                 if(CouponUsage::where('user_id', Auth::user()->id)->where('coupon_id', $coupon->id)->first() == null){
                     $coupon_details = json_decode($coupon->details);
-    
+
                     if ($coupon->type == 'cart_base')
                     {
                         $subtotal = 0;
@@ -189,7 +193,7 @@ class CheckoutController extends Controller
                             $shipping += $cartItem['shipping']*$cartItem['quantity'];
                         }
                         $sum = $subtotal+$tax+$shipping;
-    
+
                         if ($sum > $coupon_details->min_buy) {
                             if ($coupon->discount_type == 'percent') {
                                 $coupon_discount =  ($sum * $coupon->discount)/100;

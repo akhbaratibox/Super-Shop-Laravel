@@ -28,6 +28,9 @@ Route::post('/subsubcategories/get_subsubcategories_by_subcategory', 'SubSubCate
 Route::post('/subsubcategories/get_brands_by_subsubcategory', 'SubSubCategoryController@get_brands_by_subsubcategory')->name('subsubcategories.get_brands_by_subsubcategory');
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/sitemap.xml', function(){
+	return base_path('sitemap.xml');
+});
 Route::get('/product/{slug}', 'HomeController@product')->name('product');
 Route::get('/products', 'HomeController@listing')->name('products');
 Route::get('/search?category={category_slug}', 'HomeController@search')->name('products.category');

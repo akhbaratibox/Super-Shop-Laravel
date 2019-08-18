@@ -76,35 +76,35 @@ class UpdateController extends Controller
             DB::unprepared(file_get_contents($sql_path));
         }
 
-        foreach (Category::all() as $key => $value) {
-            $value->slug = str_replace(' ', '-', $value->name);
-            $value->meta_title = $value->name;
-            $value->save();
-        }
-
-        foreach (SubCategory::all() as $key => $value) {
-            $value->slug = str_replace(' ', '-', $value->name);
-            $value->meta_title = $value->name;
-            $value->save();
-        }
-
-        foreach (SubSubCategory::all() as $key => $value) {
-            $value->slug = str_replace(' ', '-', $value->name);
-            $value->meta_title = $value->name;
-            $value->save();
-        }
-
-        foreach (Brand::all() as $key => $value) {
-            $value->slug = str_replace(' ', '-', $value->name);
-            $value->meta_title = $value->name;
-            $value->save();
-        }
-
         return redirect('step2');
     }
 
     public function step2() {
         Artisan::call('view:clear');
+
+        foreach (Category::all() as $key => $value) {
+            $value->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $value->name));
+            $value->meta_title = $value->name;
+            $value->save();
+        }
+
+        foreach (SubCategory::all() as $key => $value) {
+            $value->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $value->name));
+            $value->meta_title = $value->name;
+            $value->save();
+        }
+
+        foreach (SubSubCategory::all() as $key => $value) {
+            $value->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $value->name));
+            $value->meta_title = $value->name;
+            $value->save();
+        }
+
+        foreach (Brand::all() as $key => $value) {
+            $value->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $value->name));
+            $value->meta_title = $value->name;
+            $value->save();
+        }
 
         $previousRouteServiceProvier = base_path('app/Providers/RouteServiceProvider.php');
         $newRouteServiceProvier      = base_path('app/Providers/RouteServiceProvider.txt');

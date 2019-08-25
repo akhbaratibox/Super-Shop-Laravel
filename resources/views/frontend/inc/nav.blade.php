@@ -29,7 +29,7 @@
                         <li class="dropdown" id="currency-change">
                             @php
                                 if(Session::has('currency_code')){
-                                    $currency_code = Session::get('currency_code', $code);
+                                    $currency_code = Session::get('currency_code');
                                 }
                                 else{
                                     $currency_code = \App\Currency::findOrFail(\App\BusinessSetting::where('type', 'system_default_currency')->first()->value)->code;

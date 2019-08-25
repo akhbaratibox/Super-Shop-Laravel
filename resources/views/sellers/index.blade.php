@@ -31,49 +31,51 @@
             </thead>
             <tbody>
                 @foreach($sellers as $key => $seller)
-                    <tr>
-                        <td>{{$key+1}}</td>
-                        <td>{{$seller->user->name}}</td>
-                        <td>{{$seller->user->email}}</td>
-                        <td>
-                            @if ($seller->verification_status == 1)
-                                <div class="label label-table label-success">
-                                    {{__('Verified')}}
-                                </div>
-                            @elseif ($seller->verification_info != null)
-                                <a href="{{ route('sellers.show_verification_request', $seller->id) }}">
-                                    <div class="label label-table label-info">
-                                        {{__('Requested')}}
+                    @if($seller->user != null)
+                        <tr>
+                            <td>{{$key+1}}</td>
+                            <td>{{$seller->user->name}}</td>
+                            <td>{{$seller->user->email}}</td>
+                            <td>
+                                @if ($seller->verification_status == 1)
+                                    <div class="label label-table label-success">
+                                        {{__('Verified')}}
                                     </div>
-                                </a>
-                            @else
-                                <div class="label label-table label-danger">
-                                    {{__('Not Verified')}}
+                                @elseif ($seller->verification_info != null)
+                                    <a href="{{ route('sellers.show_verification_request', $seller->id) }}">
+                                        <div class="label label-table label-info">
+                                            {{__('Requested')}}
+                                        </div>
+                                    </a>
+                                @else
+                                    <div class="label label-table label-danger">
+                                        {{__('Not Verified')}}
+                                    </div>
+                                @endif
+                            </td>
+                            <td>{{ \App\Product::where('user_id', $seller->user->id)->count() }}</td>
+                            <td>
+                                @if ($seller->admin_to_pay >= 0)
+                                    {{ single_price($seller->admin_to_pay) }}
+                                @else
+                                    {{ single_price(abs($seller->admin_to_pay)) }} (Due to Admin)
+                                @endif
+                            </td>
+                            <td>
+                                <div class="btn-group dropdown">
+                                    <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
+                                        {{__('Actions')}} <i class="dropdown-caret"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a onclick="show_seller_payment_modal('{{$seller->id}}');">{{__('Pay Now')}}</a></li>
+                                        <li><a href="{{route('sellers.payment_history', encrypt($seller->id))}}">{{__('Payment History')}}</a></li>
+                                        <li><a href="{{route('sellers.edit', encrypt($seller->id))}}">{{__('Edit')}}</a></li>
+                                        <li><a onclick="confirm_modal('{{route('sellers.destroy', $seller->id)}}');">{{__('Delete')}}</a></li>
+                                    </ul>
                                 </div>
-                            @endif
-                        </td>
-                        <td>{{ \App\Product::where('user_id', $seller->user->id)->count() }}</td>
-                        <td>
-                            @if ($seller->admin_to_pay >= 0)
-                                {{ single_price($seller->admin_to_pay) }}
-                            @else
-                                {{ single_price(abs($seller->admin_to_pay)) }} (Due to Admin)
-                            @endif
-                        </td>
-                        <td>
-                            <div class="btn-group dropdown">
-                                <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">
-                                    {{__('Actions')}} <i class="dropdown-caret"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a onclick="show_seller_payment_modal('{{$seller->id}}');">{{__('Pay Now')}}</a></li>
-                                    <li><a href="{{route('sellers.payment_history', encrypt($seller->id))}}">{{__('Payment History')}}</a></li>
-                                    <li><a href="{{route('sellers.edit', encrypt($seller->id))}}">{{__('Edit')}}</a></li>
-                                    <li><a onclick="confirm_modal('{{route('sellers.destroy', $seller->id)}}');">{{__('Delete')}}</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>

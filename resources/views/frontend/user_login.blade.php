@@ -85,9 +85,9 @@
                                             </a>
                                         @endif
                                         @if (\App\BusinessSetting::where('type', 'twitter_login')->first()->value == 1)
-                                        <a href="{{ route('social.login', ['provider' => 'twitter']) }}" class="btn btn-styled btn-block btn-twitter btn-icon--2 btn-icon-left px-4 my-4">
-                                            <i class="icon fa fa-twitter"></i> {{__('Login with Twitter')}}
-                                        </a>
+                                            <a href="{{ route('social.login', ['provider' => 'twitter']) }}" class="btn btn-styled btn-block btn-twitter btn-icon--2 btn-icon-left px-4 my-4">
+                                                <i class="icon fa fa-twitter"></i> {{__('Login with Twitter')}}
+                                            </a>
                                         @endif
                                     </div>
                                 </div>

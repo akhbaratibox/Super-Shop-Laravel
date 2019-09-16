@@ -94,10 +94,12 @@ class CartController extends Controller
         }
 
         if($product->tax_type == 'percent'){
-            $price += ($price*$product->tax)/100;
+            $tax = ($price*$product->tax)/100;
+            //$price += $tax;
         }
         elseif($product->tax_type == 'amount'){
-            $price += $product->tax;
+            $tax = $product->tax;
+            //$price += $tax;
         }
 
         $data['quantity'] = $request['quantity'];

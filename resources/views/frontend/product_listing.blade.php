@@ -275,7 +275,9 @@
                                                     <select class="form-control sortSelect" data-placeholder="{{__('All Sellers')}}" name="seller_id" onchange="filter()">
                                                         <option value="">{{__('All Sellers')}}</option>
                                                         @foreach (\App\Seller::all() as $key => $seller)
-                                                            <option value="{{ $seller->id }}" @isset($seller_id) @if ($seller_id == $seller->id) selected @endif @endisset>{{ $seller->user->shop->name }}</option>
+                                                            @if ($seller->user != null && $seller->user->shop != null)
+                                                                <option value="{{ $seller->id }}" @isset($seller_id) @if ($seller_id == $seller->id) selected @endif @endisset>{{ $seller->user->shop->name }}</option>
+                                                            @endif
                                                         @endforeach
                                                     </select>
                                                 </div>

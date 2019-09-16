@@ -21,19 +21,21 @@
             </thead>
             <tbody>
                 @foreach($payments as $key => $payment)
-                    <tr>
-                        <td>{{ $key+1 }}</td>
-                        <td>{{ $payment->created_at }}</td>
-                        <td>
-                            @if (\App\Seller::find($payment->seller_id) != null)
-                                {{ \App\Seller::find($payment->seller_id)->user->name }} ({{ \App\Seller::find($payment->seller_id)->user->shop->name }})
-                            @endif
-                        </td>
-                        <td>
-                            {{ single_price($payment->amount) }}
-                        </td>
-                        <td>{{ ucfirst($payment->payment_method) }}</td>
-                    </tr>
+                    @if (\App\Seller::find($payment->seller_id)->user != null)
+                        <tr>
+                            <td>{{ $key+1 }}</td>
+                            <td>{{ $payment->created_at }}</td>
+                            <td>
+                                @if (\App\Seller::find($payment->seller_id) != null)
+                                    {{ \App\Seller::find($payment->seller_id)->user->name }} ({{ \App\Seller::find($payment->seller_id)->user->shop->name }})
+                                @endif
+                            </td>
+                            <td>
+                                {{ single_price($payment->amount) }}
+                            </td>
+                            <td>{{ ucfirst($payment->payment_method) }}</td>
+                        </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>

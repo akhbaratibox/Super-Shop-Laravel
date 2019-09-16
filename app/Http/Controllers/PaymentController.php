@@ -60,7 +60,11 @@ class PaymentController extends Controller
     public function show($id)
     {
         $payments = Payment::where('seller_id', decrypt($id))->orderBy('created_at', 'desc')->get();
-        return view('sellers.payment', compact('payments'));
+        if($payments->count() > 0){
+            return view('sellers.payment', compact('payments'));
+        }
+        flash('No payment history available for this seller')->warning();
+        return back();
     }
 
     /**

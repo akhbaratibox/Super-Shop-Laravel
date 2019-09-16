@@ -171,7 +171,7 @@
 		        </tr>
 		        <tr>
 		            <th class="text-left strong">Grand Total</td>
-		            <td>{{ single_price($order->orderDetails->where('seller_id', Auth::user()->id)->sum('price') + $order->orderDetails->where('seller_id', Auth::user()->id)->sum('tax') + $order->orderDetails->where('seller_id', Auth::user()->id)->sum('tax')) }}</td>
+		            <td>{{ single_price($order->orderDetails->where('seller_id', Auth::user()->id)->sum('price') + $order->orderDetails->where('seller_id', Auth::user()->id)->sum('shipping_cost') + $order->orderDetails->where('seller_id', Auth::user()->id)->sum('tax')) }}</td>
 		        </tr>
 	        </tbody>
 	    </table>

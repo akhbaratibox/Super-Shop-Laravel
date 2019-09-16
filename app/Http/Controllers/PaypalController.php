@@ -45,7 +45,7 @@ class PaypalController extends Controller
         		));
             }
             elseif (Session::get('payment_type') == 'seller_payment') {
-                $seller = Seller::findOrFail(Session::get('payment_details')['seller_id']);
+                $seller = Seller::findOrFail(Session::get('payment_data')['seller_id']);
                 $this->_apiContext = PayPal::ApiContext(
                     $seller->paypal_client_id,
                     $seller->paypal_client_secret);

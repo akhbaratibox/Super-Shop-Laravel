@@ -22,18 +22,18 @@ class CurrencyController extends Controller
         return view('business_settings.currency', compact('currencies', 'active_currencies'));
     }
 
-    public function updateCurrency(Request $request)
-    {
-        $currency = Currency::findOrFail($request->id);
-        $currency->exchange_rate = $request->exchange_rate;
-        $currency->status = $request->status;
-        if($currency->save()){
-            flash('Currency updated successfully')->success();
-            return '1';
-        }
-        flash('Something went wrong')->error();
-        return '0';
-    }
+    // public function updateCurrency(Request $request)
+    // {
+    //     $currency = Currency::findOrFail($request->id);
+    //     $currency->exchange_rate = $request->exchange_rate;
+    //     $currency->status = $request->status;
+    //     if($currency->save()){
+    //         flash('Currency updated successfully')->success();
+    //         return '1';
+    //     }
+    //     flash('Something went wrong')->error();
+    //     return '0';
+    // }
 
     public function updateYourCurrency(Request $request)
     {

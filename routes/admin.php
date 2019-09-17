@@ -66,6 +66,10 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('/currency', 'CurrencyController@currency')->name('currency.index');
     Route::post('/currency/update', 'CurrencyController@updateCurrency')->name('currency.update');
     Route::post('/your-currency/update', 'CurrencyController@updateYourCurrency')->name('your_currency.update');
+	Route::get('/currency/create', 'CurrencyController@create')->name('currency.create');
+	Route::post('/currency/store', 'CurrencyController@store')->name('currency.store');
+	Route::post('/currency/currency_edit', 'CurrencyController@edit')->name('currency.edit');
+	Route::post('/currency/update_status', 'CurrencyController@update_status')->name('currency.update_status');
 	Route::get('/verification/form', 'BusinessSettingsController@seller_verification_form')->name('seller_verification_form.index');
 	Route::post('/verification/form', 'BusinessSettingsController@seller_verification_form_update')->name('seller_verification_form.update');
 	Route::get('/vendor_commission', 'BusinessSettingsController@vendor_commission')->name('business_settings.vendor_commission');

@@ -3,13 +3,13 @@
         <div class="col-lg-6">
             <div class="product-gal d-flex flex-row-reverse">
                 <div class="product-gal-img">
-                    <img class="xzoom img-fluid" src="{{ asset(json_decode($product->photos)[0]) }}" xoriginal="{{ asset(json_decode($product->photos)[0]) }}" />
+                    <img loading="lazy"  class="xzoom img-fluid" src="{{ asset(json_decode($product->photos)[0]) }}" xoriginal="{{ asset(json_decode($product->photos)[0]) }}" />
                 </div>
                 <div class="product-gal-thumb">
                     <div class="xzoom-thumbs">
                         @foreach (json_decode($product->photos) as $key => $photo)
                             <a href="{{ asset($photo) }}">
-                                <img class="xzoom-gallery" width="80" src="{{ asset($photo) }}"  @if($key == 0) xpreview="{{ asset($photo) }}" @endif>
+                                <img loading="lazy"  class="xzoom-gallery" width="80" src="{{ asset($photo) }}"  @if($key == 0) xpreview="{{ asset($photo) }}" @endif>
                             </a>
                         @endforeach
                     </div>

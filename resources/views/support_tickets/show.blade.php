@@ -39,7 +39,7 @@
             <div class="pad-top">
                 @foreach($ticket->ticketreplies as $ticketreply)
                     <div class="media bord-top pad-top">
-                        <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src="{{ asset($ticketreply->user->avatar_original) }}">
+                        <a class="media-left" href="#"><img loading="lazy"  class="img-circle img-sm" alt="Profile Picture" src="{{ asset($ticketreply->user->avatar_original) }}">
                         </a>
                         <div class="media-body">
                             <div class="comment-header">
@@ -66,7 +66,7 @@
                     </div>
                 @endforeach
                 <div class="media bord-top pad-top">
-                    <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src="{{ asset($ticket->user->avatar_original) }}">
+                    <a class="media-left" href="#"><img loading="lazy"  class="img-circle img-sm" alt="Profile Picture" src="{{ asset($ticket->user->avatar_original) }}">
                     </a>
                     <div class="media-body">
                         <div class="comment-header">

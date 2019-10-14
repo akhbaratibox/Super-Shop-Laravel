@@ -20,9 +20,9 @@
         <div class="text-center">
             <br>
 			@if($generalsetting->logo != null)
-                <img src="{{ asset($generalsetting->logo) }}" class="" height="44">
+                <img loading="lazy"  src="{{ asset($generalsetting->logo) }}" class="" height="44">
             @else
-                <img src="{{ asset('frontend/images/logo/logo.png') }}" class="" height="44">
+                <img loading="lazy"  src="{{ asset('frontend/images/logo/logo.png') }}" class="" height="44">
             @endif
 
             <br>

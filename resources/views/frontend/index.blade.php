@@ -15,7 +15,7 @@
                         <ul class="categories no-scrollbar">
                             <li class="d-lg-none">
                                 <a href="{{ route('categories.all') }}">
-                                    <img class="cat-image" src="{{ asset('frontend/images/icons/list.png') }}" width="30">
+                                    <img loading="lazy"  class="cat-image" src="{{ asset('frontend/images/icons/list.png') }}" width="30">
                                     <span class="cat-name">{{__('All')}} <br> {{__('Categories')}}</span>
                                 </a>
                             </li>
@@ -25,7 +25,7 @@
                                 @endphp
                                 <li>
                                     <a href="{{ route('products.category', $category->slug) }}">
-                                        <img class="cat-image" src="{{ asset($category->icon) }}" width="30">
+                                        <img loading="lazy"  class="cat-image" src="{{ asset($category->icon) }}" width="30">
                                         <span class="cat-name">{{ __($category->name) }}</span>
                                     </a>
                                     @if(count($category->subcategories)>0)
@@ -60,7 +60,7 @@
                                                                     <a href="" >
                                                                         <span class="featured-name">New arrival plus size</span>
                                                                         <span class="featured-img">
-                                                                            <img src="{{ asset('frontend/images/girls/1.png') }}" class="img-fluid">
+                                                                            <img loading="lazy"  src="{{ asset('frontend/images/girls/1.png') }}" class="img-fluid">
                                                                         </span>
                                                                     </a>
                                                                 </li>
@@ -68,7 +68,7 @@
                                                                     <a href="" >
                                                                         <span class="featured-name">Sweater Collection</span>
                                                                         <span class="featured-img">
-                                                                            <img src="{{ asset('frontend/images/girls/2.png') }}" class="img-fluid">
+                                                                            <img loading="lazy"  src="{{ asset('frontend/images/girls/2.png') }}" class="img-fluid">
                                                                         </span>
                                                                     </a>
                                                                 </li>
@@ -76,7 +76,7 @@
                                                                     <a href="" >
                                                                         <span class="featured-name">High Quality Formal Dresses</span>
                                                                         <span class="featured-img">
-                                                                            <img src="{{ asset('frontend/images/girls/3.png') }}" class="img-fluid">
+                                                                            <img loading="lazy"  src="{{ asset('frontend/images/girls/3.png') }}" class="img-fluid">
                                                                         </span>
                                                                     </a>
                                                                 </li>
@@ -91,7 +91,7 @@
                                                             @foreach ($brands as $brand_id)
                                                                 @if(\App\Brand::find($brand_id) != null)
                                                                     <li class="sub-brand-item">
-                                                                        <a href="{{ route('products.brand', \App\Brand::find($brand_id)->slug) }}" ><img src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid"></a>
+                                                                        <a href="{{ route('products.brand', \App\Brand::find($brand_id)->slug) }}" ><img loading="lazy"  src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid"></a>
                                                                     </li>
                                                                 @endif
                                                             @endforeach
@@ -113,7 +113,7 @@
                             <div class="slick-carousel" data-slick-arrows="true" data-slick-dots="true" data-slick-autoplay="true">
                                 @foreach (\App\Slider::where('published', 1)->get() as $key => $slider)
                                     <div class="" style="height:275px;">
-                                        <img class="d-block w-100 h-100" src="{{ asset($slider->photo) }}" alt="Slider Image">
+                                        <img loading="lazy"  class="d-block w-100 h-100" src="{{ asset($slider->photo) }}" alt="Slider Image">
                                     </div>
                                 @endforeach
                             </div>
@@ -223,7 +223,7 @@
                     <div class="col-lg-{{ 12/count(\App\Banner::where('position', 1)->where('published', 1)->get()) }}">
                         <div class="media-banner mb-3 mb-lg-0">
                             <a href="{{ $banner->url }}" target="_blank" class="banner-container">
-                                <img src="{{ asset($banner->photo) }}" alt="" class="img-fluid">
+                                <img loading="lazy"  src="{{ asset($banner->photo) }}" alt="" class="img-fluid">
                             </a>
                         </div>
                     </div>
@@ -419,7 +419,7 @@
                     <div class="col-lg-{{ 12/count(\App\Banner::where('position', 2)->where('published', 1)->get()) }}">
                         <div class="media-banner mb-3 mb-lg-0">
                             <a href="{{ $banner->url }}" target="_blank" class="banner-container">
-                                <img src="{{ asset($banner->photo) }}" alt="" class="img-fluid">
+                                <img loading="lazy"  src="{{ asset($banner->photo) }}" alt="" class="img-fluid">
                             </a>
                         </div>
                     </div>
@@ -474,7 +474,7 @@
                                         <div class="row no-gutters box-3 align-items-center border">
                                             <div class="col-4">
                                                 <a href="{{ route('shop.visit', $seller->user->shop->slug) }}" class="d-block product-image p-3">
-                                                    <img src="{{ asset($seller->user->shop->logo) }}" alt="" class="img-fluid">
+                                                    <img loading="lazy"  src="{{ asset($seller->user->shop->logo) }}" alt="" class="img-fluid">
                                                 </a>
                                             </div>
                                             <div class="col-8 border-left">
@@ -527,7 +527,7 @@
                                 <a href="{{ route('products.category', $category->slug) }}" class="bg-white border d-block c-base-2 box-2 icon-anim pl-2">
                                     <div class="row align-items-center no-gutters">
                                         <div class="col-3 text-center">
-                                            <img src="{{ asset($category->banner) }}" alt="" class="img-fluid img">
+                                            <img loading="lazy"  src="{{ asset($category->banner) }}" alt="" class="img-fluid img">
                                         </div>
                                         <div class="info col-7">
                                             <div class="name text-truncate pl-3 py-4">{{ __($category->name) }}</div>
@@ -558,7 +558,7 @@
                                 <a href="{{ route('products.brand', $brand->slug) }}" class="bg-white border d-block c-base-2 box-2 icon-anim pl-2">
                                     <div class="row align-items-center no-gutters">
                                         <div class="col-3 text-center">
-                                            <img src="{{ asset($brand->logo) }}" alt="" class="img-fluid img">
+                                            <img loading="lazy"  src="{{ asset($brand->logo) }}" alt="" class="img-fluid img">
                                         </div>
                                         <div class="info col-7">
                                             <div class="name text-truncate pl-3 py-4">{{ __($brand->name) }}</div>

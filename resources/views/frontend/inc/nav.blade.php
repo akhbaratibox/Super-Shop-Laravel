@@ -15,12 +15,12 @@
                                 }
                             @endphp
                             <a href="" class="dropdown-toggle top-bar-item" data-toggle="dropdown">
-                                <img src="{{ asset('frontend/images/icons/flags/'.$locale.'.png') }}" class="flag"><span class="language">{{ \App\Language::where('code', $locale)->first()->name }}</span>
+                                <img loading="lazy"  src="{{ asset('frontend/images/icons/flags/'.$locale.'.png') }}" class="flag"><span class="language">{{ \App\Language::where('code', $locale)->first()->name }}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 @foreach (\App\Language::all() as $key => $language)
                                     <li class="dropdown-item @if($locale == $language) active @endif">
-                                        <a href="#" data-flag="{{ $language->code }}"><img src="{{ asset('frontend/images/icons/flags/'.$language->code.'.png') }}" class="flag"><span class="language">{{ $language->name }}</span></a>
+                                        <a href="#" data-flag="{{ $language->code }}"><img loading="lazy"  src="{{ asset('frontend/images/icons/flags/'.$language->code.'.png') }}" class="flag"><span class="language">{{ $language->name }}</span></a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -291,7 +291,7 @@
                         @foreach (\App\Category::all() as $key => $category)
                             <li>
                             <a href="{{ route('products.category', $category->slug) }}" class="text-truncate">
-                                <img class="cat-image" src="{{ asset($category->icon) }}" width="13">
+                                <img loading="lazy"  class="cat-image" src="{{ asset($category->icon) }}" width="13">
                                 <span>{{ __($category->name) }}</span>
                             </a>
                         </li>
@@ -327,9 +327,9 @@
                                     $generalsetting = \App\GeneralSetting::first();
                                 @endphp
                                 @if($generalsetting->logo != null)
-                                    <img src="{{ asset($generalsetting->logo) }}" class="" alt="active shop">
+                                    <img loading="lazy"  src="{{ asset($generalsetting->logo) }}" class="" alt="active shop">
                                 @else
-                                    <img src="{{ asset('frontend/images/logo/logo.png') }}" class="" alt="active shop">
+                                    <img loading="lazy"  src="{{ asset('frontend/images/logo/logo.png') }}" class="" alt="active shop">
                                 @endif
                             </a>
 
@@ -452,7 +452,7 @@
                                                                         <div class="d-flex align-items-center">
                                                                             <div class="dc-image">
                                                                                 <a href="{{ route('product', $product->slug) }}">
-                                                                                    <img src="{{ asset($product->thumbnail_img) }}" class="img-fluid" alt="">
+                                                                                    <img loading="lazy"  src="{{ asset($product->thumbnail_img) }}" class="img-fluid" alt="">
                                                                                 </a>
                                                                             </div>
                                                                             <div class="dc-content">
@@ -531,7 +531,7 @@
                                     @endphp
                                     <li>
                                         <a href="{{ route('products.category', $category->slug) }}">
-                                            <img class="cat-image" src="{{ asset($category->icon) }}" width="30">
+                                            <img loading="lazy"  class="cat-image" src="{{ asset($category->icon) }}" width="30">
                                             <span class="cat-name">{{ __($category->name) }}</span>
                                         </a>
                                         @if(count($category->subcategories)>0)
@@ -566,7 +566,7 @@
                                                                         <a href="" >
                                                                             <span class="featured-name">New arrival plus size</span>
                                                                             <span class="featured-img">
-                                                                                <img src="{{ asset('frontend/images/girls/1.png') }}" class="img-fluid">
+                                                                                <img loading="lazy"  src="{{ asset('frontend/images/girls/1.png') }}" class="img-fluid">
                                                                             </span>
                                                                         </a>
                                                                     </li>
@@ -574,7 +574,7 @@
                                                                         <a href="" >
                                                                             <span class="featured-name">Sweater Collection</span>
                                                                             <span class="featured-img">
-                                                                                <img src="{{ asset('frontend/images/girls/2.png') }}" class="img-fluid">
+                                                                                <img loading="lazy"  src="{{ asset('frontend/images/girls/2.png') }}" class="img-fluid">
                                                                             </span>
                                                                         </a>
                                                                     </li>
@@ -582,7 +582,7 @@
                                                                         <a href="" >
                                                                             <span class="featured-name">High Quality Formal Dresses</span>
                                                                             <span class="featured-img">
-                                                                                <img src="{{ asset('frontend/images/girls/3.png') }}" class="img-fluid">
+                                                                                <img loading="lazy"  src="{{ asset('frontend/images/girls/3.png') }}" class="img-fluid">
                                                                             </span>
                                                                         </a>
                                                                     </li>
@@ -597,7 +597,7 @@
                                                                 @foreach ($brands as $brand_id)
                                                                     @if(\App\Brand::find($brand_id) != null)
                                                                         <li class="sub-brand-item">
-                                                                            <a href="{{ route('products.brand', \App\Brand::find($brand_id)->slug) }}" ><img src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid"></a>
+                                                                            <a href="{{ route('products.brand', \App\Brand::find($brand_id)->slug) }}" ><img loading="lazy"  src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid"></a>
                                                                         </li>
                                                                     @endif
                                                                 @endforeach

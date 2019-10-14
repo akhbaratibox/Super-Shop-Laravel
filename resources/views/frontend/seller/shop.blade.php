@@ -128,7 +128,7 @@
                                                         @foreach (json_decode($shop->sliders) as $key => $sliders)
                                                             <div class="col-md-6">
                                                                 <div class="img-upload-preview">
-                                                                    <img src="{{ asset($sliders) }}" alt="" class="img-fluid">
+                                                                    <img loading="lazy"  src="{{ asset($sliders) }}" alt="" class="img-fluid">
                                                                     <input type="hidden" name="previous_sliders[]" value="{{ $sliders }}">
                                                                     <button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
                                                                 </div>

@@ -9,7 +9,7 @@
                     <div class="card">
                         <div class="align-items-center card-header d-flex justify-content-center text-center" >
                             <h3 class="d-inline-block heading-4 mb-0 mr-3 strong-600" >{{__('Payment Details')}}</h3>
-                            <img class="img-fluid" src="http://i76.imgup.net/accepted_c22e0.png" height="30">
+                            <img loading="lazy"  class="img-fluid" src="http://i76.imgup.net/accepted_c22e0.png" height="30">
                         </div>
                         <div class="card-body">
                             <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation"

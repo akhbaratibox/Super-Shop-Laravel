@@ -91,7 +91,7 @@
                                                     <tr class="cart-item">
                                                         <td class="product-image" width="25%">
                                                             <a href="{{ route('product', \App\Product::find($id)->slug) }}" target="_blank">
-                                                                <img src="{{ asset(\App\Product::find($id)->thumbnail_img) }}">
+                                                                <img loading="lazy"  src="{{ asset(\App\Product::find($id)->thumbnail_img) }}">
                                                             </a>
                                                         </td>
                                                         <td class="product-name strong-600">
@@ -159,7 +159,7 @@
                                                             <tr class="cart-item">
                                                                 <td class="product-image" width="25%">
                                                                     <a href="{{ route('product', \App\Product::find($id)->slug) }}" target="_blank">
-                                                                        <img src="{{ asset(\App\Product::find($id)->thumbnail_img) }}">
+                                                                        <img loading="lazy"  src="{{ asset(\App\Product::find($id)->thumbnail_img) }}">
                                                                     </a>
                                                                 </td>
                                                                 <td class="product-name strong-600">

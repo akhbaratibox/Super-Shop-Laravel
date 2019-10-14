@@ -109,9 +109,9 @@
                                 <div class="bg-white mt-4 p-5 text-center">
                                     <div class="mb-3">
                                         @if(Auth::user()->seller->verification_status == 0)
-                                            <img src="{{ asset('frontend/images/icons/non_verified.png') }}" alt="" width="130">
+                                            <img loading="lazy"  src="{{ asset('frontend/images/icons/non_verified.png') }}" alt="" width="130">
                                         @else
-                                            <img src="{{ asset('frontend/images/icons/verified.png') }}" alt="" width="130">
+                                            <img loading="lazy"  src="{{ asset('frontend/images/icons/verified.png') }}" alt="" width="130">
                                         @endif
                                     </div>
                                     @if(Auth::user()->seller->verification_status == 0)

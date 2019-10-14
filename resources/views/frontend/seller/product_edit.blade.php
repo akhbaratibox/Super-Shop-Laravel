@@ -108,7 +108,7 @@
                                                     @foreach (json_decode($product->photos) as $key => $photo)
                                                         <div class="col-md-3">
                                                             <div class="img-upload-preview">
-                                                                <img src="{{ asset($photo) }}" alt="" class="img-responsive">
+                                                                <img loading="lazy"  src="{{ asset($photo) }}" alt="" class="img-responsive">
                                                                 <input type="hidden" name="previous_photos[]" value="{{ $photo }}">
                                                                 <button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
                                                             </div>
@@ -138,7 +138,7 @@
                                                 @if ($product->thumbnail_img != null)
                                                     <div class="col-md-3">
                                                         <div class="img-upload-preview">
-                                                            <img src="{{ asset($product->thumbnail_img) }}" alt="" class="img-responsive">
+                                                            <img loading="lazy"  src="{{ asset($product->thumbnail_img) }}" alt="" class="img-responsive">
                                                             <input type="hidden" name="previous_thumbnail_img" value="{{ $product->thumbnail_img }}">
                                                             <button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
                                                         </div>
@@ -164,7 +164,7 @@
                                                 @if ($product->featured_img != null)
                                                     <div class="col-md-3">
                                                         <div class="img-upload-preview">
-                                                            <img src="{{ asset($product->featured_img) }}" alt="" class="img-responsive">
+                                                            <img loading="lazy"  src="{{ asset($product->featured_img) }}" alt="" class="img-responsive">
                                                             <input type="hidden" name="previous_featured_img" value="{{ $product->featured_img }}">
                                                             <button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
                                                         </div>
@@ -190,7 +190,7 @@
                                                 @if ($product->flash_deal_img != null)
                                                     <div class="col-md-3">
                                                         <div class="img-upload-preview">
-                                                            <img src="{{ asset($product->flash_deal_img) }}" alt="" class="img-responsive">
+                                                            <img loading="lazy"  src="{{ asset($product->flash_deal_img) }}" alt="" class="img-responsive">
                                                             <input type="hidden" name="previous_flash_deal_img" value="{{ $product->flash_deal_img }}">
                                                             <button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
                                                         </div>
@@ -268,7 +268,7 @@
                                                 @if ($product->meta_img != null)
                                                     <div class="col-md-3">
                                                         <div class="img-upload-preview">
-                                                            <img src="{{ asset($product->meta_img) }}" alt="" class="img-responsive">
+                                                            <img loading="lazy"  src="{{ asset($product->meta_img) }}" alt="" class="img-responsive">
                                                             <input type="hidden" name="previous_meta_img" value="{{ $product->meta_img }}">
                                                             <button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
                                                         </div>

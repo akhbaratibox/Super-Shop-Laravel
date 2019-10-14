@@ -102,7 +102,7 @@ $(document).on('nifty.ready', function() {
     function countryCodeFlag(state) {
         var flagName = $(state.element).data('flag');
         if (!flagName) return state.text;
-        return "<img class='flag' src='" + flagName + "' height='14' />" +  state.text;
+        return "<img loading="lazy"  class='flag' src='" + flagName + "' height='14' />" +  state.text;
     }
 
 });

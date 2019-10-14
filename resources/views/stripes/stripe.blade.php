@@ -19,7 +19,7 @@
 
                     <div class="text-center" >
                         <h3>{{__('Payment Details')}}</h3>
-                        <img class="img-fluid" src="http://i76.imgup.net/accepted_c22e0.png" height="30" style="margin-bottom:10px;">
+                        <img loading="lazy"  class="img-fluid" src="http://i76.imgup.net/accepted_c22e0.png" height="30" style="margin-bottom:10px;">
                     </div>
 
                     <div class="form-group">

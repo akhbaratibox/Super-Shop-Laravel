@@ -58,9 +58,9 @@
 			<tr>
 				<td>
 					@if($generalsetting->logo != null)
-						<img src="{{ asset($generalsetting->logo) }}" height="40" style="display:inline-block;">
+						<img loading="lazy"  src="{{ asset($generalsetting->logo) }}" height="40" style="display:inline-block;">
 					@else
-						<img src="{{ asset('frontend/images/logo/logo.png') }}" height="40" style="display:inline-block;">
+						<img loading="lazy"  src="{{ asset('frontend/images/logo/logo.png') }}" height="40" style="display:inline-block;">
 					@endif
 				</td>
 				<td style="font-size: 2.5rem;" class="text-right strong">INVOICE</td>

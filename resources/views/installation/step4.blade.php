@@ -11,7 +11,7 @@
     <div class="text-center mar-top pad-top">
         <a href="{{ route('import_sql') }}" class = "btn btn-info" onclick="showLoder()">Import SQL</a>
         <div id="loader" style="margin-top: 20px; display: none;">
-            <img src="{{ asset('loader.gif') }}" alt="" width="20">
+            <img loading="lazy"  src="{{ asset('loader.gif') }}" alt="" width="20">
             &nbsp; Importing database ....
         </div>
     </div>

@@ -45,13 +45,13 @@
                         <div class="product-gal sticky-top d-flex flex-row-reverse">
                             @if(is_array(json_decode($product->photos)) && count(json_decode($product->photos)) > 0)
                                 <div class="product-gal-img">
-                                    <img class="xzoom img-fluid" src="{{ asset(json_decode($product->photos)[0]) }}" xoriginal="{{ asset(json_decode($product->photos)[0]) }}" />
+                                    <img loading="lazy"  class="xzoom img-fluid" src="{{ asset(json_decode($product->photos)[0]) }}" xoriginal="{{ asset(json_decode($product->photos)[0]) }}" />
                                 </div>
                                 <div class="product-gal-thumb">
                                     <div class="xzoom-thumbs">
                                         @foreach (json_decode($product->photos) as $key => $photo)
                                             <a href="{{ asset($photo) }}">
-                                                <img class="xzoom-gallery" width="80" src="{{ asset($photo) }}"  @if($key == 0) xpreview="{{ asset($photo) }}" @endif>
+                                                <img loading="lazy"  class="xzoom-gallery" width="80" src="{{ asset($photo) }}"  @if($key == 0) xpreview="{{ asset($photo) }}" @endif>
                                             </a>
                                         @endforeach
                                     </div>
@@ -337,23 +337,23 @@
                                 <div class="col-10">
                                     <ul class="inline-links">
                                         <li>
-                                            <img src="{{ asset('frontend/images/icons/cards/visa.png') }}" width="30" class="">
+                                            <img loading="lazy"  src="{{ asset('frontend/images/icons/cards/visa.png') }}" width="30" class="">
                                         </li>
                                         <li>
-                                            <img src="{{ asset('frontend/images/icons/cards/mastercard.png') }}" width="30" class="">
+                                            <img loading="lazy"  src="{{ asset('frontend/images/icons/cards/mastercard.png') }}" width="30" class="">
                                         </li>
                                         <li>
-                                            <img src="{{ asset('frontend/images/icons/cards/maestro.png') }}" width="30" class="">
+                                            <img loading="lazy"  src="{{ asset('frontend/images/icons/cards/maestro.png') }}" width="30" class="">
                                         </li>
                                         <li>
-                                            <img src="{{ asset('frontend/images/icons/cards/paypal.png') }}" width="30" class="">
+                                            <img loading="lazy"  src="{{ asset('frontend/images/icons/cards/paypal.png') }}" width="30" class="">
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                             {{-- <div class="row no-gutters mt-3">
                                 <div class="col-2">
-                                    <img src="{{ asset('frontend/images/icons/buyer-protection.png') }}" width="40" class="">
+                                    <img loading="lazy"  src="{{ asset('frontend/images/icons/buyer-protection.png') }}" width="40" class="">
                                 </div>
                                 <div class="col-10">
                                     <div class="heading-6 strong-700 text-info d-inline-block">Buyer protection</div><a href="" class="ml-2">View details</a>
@@ -587,7 +587,7 @@
                                         @foreach ($product->reviews as $key => $review)
                                             <div class="block block-comment">
                                                 <div class="block-image">
-                                                    <img src="{{ asset($review->user->avatar_original) }}" class="rounded-circle">
+                                                    <img loading="lazy"  src="{{ asset($review->user->avatar_original) }}" class="rounded-circle">
                                                 </div>
                                                 <div class="block-body">
                                                     <div class="block-body-inner">

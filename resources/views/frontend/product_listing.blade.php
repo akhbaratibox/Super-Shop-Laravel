@@ -200,7 +200,7 @@
 
                                         @foreach ($brands as $key => $id)
                                             @if (\App\Brand::find($id) != null)
-                                                <li><a href="{{ route('products.brand', \App\Brand::find($id)->slug) }}"><img src="{{ asset(\App\Brand::find($id)->logo) }}" alt="" class="img-fluid"></a></li>
+                                                <li><a href="{{ route('products.brand', \App\Brand::find($id)->slug) }}"><img loading="lazy"  src="{{ asset(\App\Brand::find($id)->logo) }}" alt="" class="img-fluid"></a></li>
                                             @endif
                                         @endforeach
                                     </ul>

@@ -12,9 +12,9 @@
         <div class="navbar-header">
             <a href="{{route('admin.dashboard')}}" class="navbar-brand">
                 @if($generalsetting->logo != null)
-                    <img src="{{ asset($generalsetting->admin_logo) }}" class="brand-icon" alt="{{ $generalsetting->site_name }}">
+                    <img loading="lazy"  src="{{ asset($generalsetting->admin_logo) }}" class="brand-icon" alt="{{ $generalsetting->site_name }}">
                 @else
-                    <img src="{{ asset('img/logo_shop.png') }}" class="brand-icon" alt="{{ $generalsetting->site_name }}">
+                    <img loading="lazy"  src="{{ asset('img/logo_shop.png') }}" class="brand-icon" alt="{{ $generalsetting->site_name }}">
                 @endif
                 <div class="brand-title">
                     <span class="brand-text">{{ $generalsetting->site_name }}</span>
@@ -80,12 +80,12 @@
                         }
                     @endphp
                     <a href="" class="dropdown-toggle top-bar-item" data-toggle="dropdown">
-                        <img src="{{ asset('frontend/images/icons/flags/'.$locale.'.png') }}" class="flag" style="margin-right:6px;"><span class="language">{{ \App\Language::where('code', $locale)->first()->name }}</span>
+                        <img loading="lazy"  src="{{ asset('frontend/images/icons/flags/'.$locale.'.png') }}" class="flag" style="margin-right:6px;"><span class="language">{{ \App\Language::where('code', $locale)->first()->name }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         @foreach (\App\Language::all() as $key => $language)
                             <li class="dropdown-item @if($locale == $language) active @endif">
-                                <a href="#" data-flag="{{ $language->code }}"><img src="{{ asset('frontend/images/icons/flags/'.$language->code.'.png') }}" class="flag" style="margin-right:6px;"><span class="language">{{ $language->name }}</span></a>
+                                <a href="#" data-flag="{{ $language->code }}"><img loading="lazy"  src="{{ asset('frontend/images/icons/flags/'.$language->code.'.png') }}" class="flag" style="margin-right:6px;"><span class="language">{{ $language->name }}</span></a>
                             </li>
                         @endforeach
                     </ul>

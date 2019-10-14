@@ -29,7 +29,7 @@
 
 @section('content')
     <!-- <section>
-        <img src="https://via.placeholder.com/2000x300.jpg" alt="" class="img-fluid">
+        <img loading="lazy"  src="https://via.placeholder.com/2000x300.jpg" alt="" class="img-fluid">
     </section> -->
 
     @php
@@ -46,7 +46,7 @@
             <div class="row align-items-baseline">
                 <div class="col-md-6">
                     <div class="d-flex">
-                        <img height="70" src="{{ asset($shop->logo) }}" alt="Shop Logo">
+                        <img loading="lazy"  height="70" src="{{ asset($shop->logo) }}" alt="Shop Logo">
                         <div class="pl-4">
                             <h3 class="strong-700 heading-4 mb-0">{{ $shop->name }}
                                 @if ($shop->user->seller->verification_status == 1)
@@ -132,7 +132,7 @@
                         @if ($shop->sliders != null)
                             @foreach (json_decode($shop->sliders) as $key => $slide)
                                 <div class="">
-                                    <img class="d-block w-100" src="{{ asset($slide) }}" alt="{{ $key }} slide" style="max-height:300px;">
+                                    <img loading="lazy"  class="d-block w-100" src="{{ asset($slide) }}" alt="{{ $key }} slide" style="max-height:300px;">
                                 </div>
                             @endforeach
                         @endif
@@ -298,7 +298,7 @@
                         		<ul class="seller-brand-list">
                                     @foreach ($brands as $brand_id)
                                         <li class="brand-item">
-                                            <a href="{{ route('products.brand', \App\Brand::find($brand_id)->slug) }}"><img src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid"></a>
+                                            <a href="{{ route('products.brand', \App\Brand::find($brand_id)->slug) }}"><img loading="lazy"  src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid"></a>
                                         </li>
                                     @endforeach
                         		</ul>

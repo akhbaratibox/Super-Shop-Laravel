@@ -24,7 +24,7 @@
                     @if ($banner->photo != null)
                         <div class="col-md-4 col-sm-4 col-xs-6">
                             <div class="img-upload-preview">
-                                <img src="{{ asset($banner->photo) }}" alt="" class="img-responsive">
+                                <img loading="lazy"  src="{{ asset($banner->photo) }}" alt="" class="img-responsive">
                                 <input type="hidden" name="previous_photo" value="{{ $banner->photo }}">
                                 <button type="button" class="btn btn-danger close-btn remove-files"><i class="fa fa-times"></i></button>
                             </div>

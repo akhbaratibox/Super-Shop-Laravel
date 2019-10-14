@@ -50,7 +50,7 @@
                                                 <div class="d-flex flex-row-reverse">
                                                     <div class="pl-3">
                                                         <div class="block-image d-block size-40" data-toggle="tooltip" data-title="{{ $ticketreply->user->name }}">
-                                                            <img src="{{ asset($ticketreply->user->avatar_original) }}" class="rounded-circle">
+                                                            <img loading="lazy"  src="{{ asset($ticketreply->user->avatar_original) }}" class="rounded-circle">
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1 ml-5 pl-5">
@@ -91,7 +91,7 @@
                                                 <div class="d-flex">
                                                     <div class="pr-3">
                                                         <div class="block-image d-block size-40" data-toggle="tooltip" data-title="{{ $ticketreply->user->name }}">
-                                                            <img src="{{ asset($ticketreply->user->avatar_original) }}" class="rounded-circle" data-toggle="tooltip" data-title="fsdfsf">
+                                                            <img loading="lazy"  src="{{ asset($ticketreply->user->avatar_original) }}" class="rounded-circle" data-toggle="tooltip" data-title="fsdfsf">
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1 mr-5 pr-5">
@@ -133,7 +133,7 @@
                                         <div class="d-flex flex-row-reverse">
                                             <div class="pl-3">
                                                 <div class="block-image d-block size-40">
-                                                    <img src="{{ asset($ticket->user->avatar_original) }}" class="rounded-circle">
+                                                    <img loading="lazy"  src="{{ asset($ticket->user->avatar_original) }}" class="rounded-circle">
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1 ml-5 pl-5">

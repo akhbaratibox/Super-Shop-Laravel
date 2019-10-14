@@ -51,9 +51,9 @@
                     <div class="col">
                         <a href="{{ route('home') }}" class="d-block">
                             @if($generalsetting->logo != null)
-                                <img src="{{ asset($generalsetting->logo) }}" class="" height="44">
+                                <img loading="lazy"  src="{{ asset($generalsetting->logo) }}" class="" height="44">
                             @else
-                                <img src="{{ asset('frontend/images/logo/logo.png') }}" class="" height="44">
+                                <img loading="lazy"  src="{{ asset('frontend/images/logo/logo.png') }}" class="" height="44">
                             @endif
                         </a>
                         <p class="mt-3">{{ $generalsetting->description }}</p>
@@ -226,37 +226,37 @@
                         <ul class="inline-links">
                             @if (\App\BusinessSetting::where('type', 'paypal_payment')->first()->value == 1)
                                 <li>
-                                    <img src="{{ asset('frontend/images/icons/cards/paypal.png')}}" height="20">
+                                    <img loading="lazy"  src="{{ asset('frontend/images/icons/cards/paypal.png')}}" height="20">
                                 </li>
                             @endif
                             @if (\App\BusinessSetting::where('type', 'stripe_payment')->first()->value == 1)
                                 <li>
-                                    <img src="{{ asset('frontend/images/icons/cards/stripe.png')}}" height="20">
+                                    <img loading="lazy"  src="{{ asset('frontend/images/icons/cards/stripe.png')}}" height="20">
                                 </li>
                             @endif
                             @if (\App\BusinessSetting::where('type', 'sslcommerz_payment')->first()->value == 1)
                                 <li>
-                                    <img src="{{ asset('frontend/images/icons/cards/sslcommerz.png')}}" height="20">
+                                    <img loading="lazy"  src="{{ asset('frontend/images/icons/cards/sslcommerz.png')}}" height="20">
                                 </li>
                             @endif
                             @if (\App\BusinessSetting::where('type', 'instamojo_payment')->first()->value == 1)
                                 <li>
-                                    <img src="{{ asset('frontend/images/icons/cards/instamojo.png')}}" height="20">
+                                    <img loading="lazy"  src="{{ asset('frontend/images/icons/cards/instamojo.png')}}" height="20">
                                 </li>
                             @endif
                             @if (\App\BusinessSetting::where('type', 'razorpay')->first()->value == 1)
                                 <li>
-                                    <img src="{{ asset('frontend/images/icons/cards/rozarpay.png')}}" height="20">
+                                    <img loading="lazy"  src="{{ asset('frontend/images/icons/cards/rozarpay.png')}}" height="20">
                                 </li>
                             @endif
                             @if (\App\BusinessSetting::where('type', 'paystack')->first()->value == 1)
                                 <li>
-                                    <img src="{{ asset('frontend/images/icons/cards/paystack.png')}}" height="20">
+                                    <img loading="lazy"  src="{{ asset('frontend/images/icons/cards/paystack.png')}}" height="20">
                                 </li>
                             @endif
                             @if (\App\BusinessSetting::where('type', 'cash_payment')->first()->value == 1)
                                 <li>
-                                    <img src="{{ asset('frontend/images/icons/cards/cod.png')}}" height="20">
+                                    <img loading="lazy"  src="{{ asset('frontend/images/icons/cards/cod.png')}}" height="20">
                                 </li>
                             @endif
                         </ul>

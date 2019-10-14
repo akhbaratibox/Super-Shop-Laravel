@@ -33,8 +33,8 @@
                     <tr>
                         <td>{{$key+1}}</td>
                         <td>{{__($category->name)}}</td>
-                        <td><img class="img-md" src="{{ asset($category->banner) }}" alt="{{__('banner')}}"></td>
-                        <td><img class="img-xs" src="{{ asset($category->icon) }}" alt="{{__('icon')}}"></td>
+                        <td><img loading="lazy"  class="img-md" src="{{ asset($category->banner) }}" alt="{{__('banner')}}"></td>
+                        <td><img loading="lazy"  class="img-xs" src="{{ asset($category->icon) }}" alt="{{__('icon')}}"></td>
                         <td><label class="switch">
                             <input onchange="update_featured(this)" value="{{ $category->id }}" type="checkbox" <?php if($category->featured == 1) echo "checked";?> >
                             <span class="slider round"></span></label></td>

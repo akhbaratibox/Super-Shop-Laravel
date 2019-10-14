@@ -76,23 +76,23 @@ class SSLCommerz
                             foreach ($sslcz_visa as $gw_value) {
                                 if ($gw_value == 'dbbl_visa') {
                                     //$options['cards'][0]['name'] = "DBBL VISA";
-                                    //$options['cards'][0]['link'] =  "<a class='hvr-pop' href='".$this->sslc_data['redirectGatewayURL']."dbbl_visa'><img style='width:60px; height:60px' src='".$this->_get_image("dbbl_visa", $this->sslc_data)."' alt='dbbl_visa'/></a>";
+                                    //$options['cards'][0]['link'] =  "<a class='hvr-pop' href='".$this->sslc_data['redirectGatewayURL']."dbbl_visa'><img loading="lazy"  style='width:60px; height:60px' src='".$this->_get_image("dbbl_visa", $this->sslc_data)."' alt='dbbl_visa'/></a>";
                                 }
                                 if ($gw_value == 'brac_visa') {
                                     //$options['cards'][1]['name'] = "BRAC VISA";
-                                    //$options['visa'][1]['link'] =  "<a class='hvr-pop' href='".$this->sslc_data['redirectGatewayURL']."brac_visa'><img style='width:60px; height:60px' src='".$this->_get_image("brac_visa", $this->sslc_data)."' alt='brac_visa'/></a>";
+                                    //$options['visa'][1]['link'] =  "<a class='hvr-pop' href='".$this->sslc_data['redirectGatewayURL']."brac_visa'><img loading="lazy"  style='width:60px; height:60px' src='".$this->_get_image("brac_visa", $this->sslc_data)."' alt='brac_visa'/></a>";
                                 }
                                 if ($gw_value == 'city_visa') {
                                     //$options['cards'][2]['name'] = "CITY VISA";
-                                    //$options['cards'][2]['link'] =  "<a class='hvr-pop' href='".$this->sslc_data['redirectGatewayURL']."city_visa'><img style='width:60px; height:60px' src='".$this->_get_image("city_visa", $this->sslc_data)."' alt='city_visa'/></a>";
+                                    //$options['cards'][2]['link'] =  "<a class='hvr-pop' href='".$this->sslc_data['redirectGatewayURL']."city_visa'><img loading="lazy"  style='width:60px; height:60px' src='".$this->_get_image("city_visa", $this->sslc_data)."' alt='city_visa'/></a>";
                                 }
                                 if ($gw_value == 'ebl_visa') {
                                     //$options['cards'][3]['name'] = "EBL VISA";
-                                    //$options['cards'][3]['link'] =  "<a class='hvr-pop' href='".$this->sslc_data['redirectGatewayURL']."ebl_visa'><img style='width:60px; height:60px' src='".$this->_get_image("ebl_visa", $this->sslc_data)."' alt='ebl_visa'/></a>";
+                                    //$options['cards'][3]['link'] =  "<a class='hvr-pop' href='".$this->sslc_data['redirectGatewayURL']."ebl_visa'><img loading="lazy"  style='width:60px; height:60px' src='".$this->_get_image("ebl_visa", $this->sslc_data)."' alt='ebl_visa'/></a>";
                                 }
                                 if ($gw_value == 'visacard') {
                                     $options['cards'][4]['name'] = "VISA";
-                                    $options['cards'][4]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "visacard'><img style='width:60px; height:60px' src='" . $this->_get_image("visacard", $this->sslc_data) . "' alt='visacard'/></a>";
+                                    $options['cards'][4]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "visacard'><img loading="lazy"  style='width:60px; height:60px' src='" . $this->_get_image("visacard", $this->sslc_data) . "' alt='visacard'/></a>";
                                 }
                             }
                         } # END OF VISA
@@ -103,23 +103,23 @@ class SSLCommerz
                             foreach ($sslcz_visa as $gw_value) {
                                 if ($gw_value == 'dbbl_master') {
                                     //$options['cards'][5]['name'] = "DBBL MASTER";
-                                    //$options['cards'][5]['link'] =  "<a class='hvr-pop' href='".$this->sslc_data['redirectGatewayURL']."dbbl_master'><img style='width:60px; height:60px' src='".$this->_get_image("dbbl_master", $this->sslc_data)."' alt='dbbl_master'/></a>";
+                                    //$options['cards'][5]['link'] =  "<a class='hvr-pop' href='".$this->sslc_data['redirectGatewayURL']."dbbl_master'><img loading="lazy"  style='width:60px; height:60px' src='".$this->_get_image("dbbl_master", $this->sslc_data)."' alt='dbbl_master'/></a>";
                                 }
                                 if ($gw_value == 'brac_master') {
                                     //$options['cards'][6]['name'] = "BRAC MASTER";
-                                    //$options['master'][6]['link'] =  "<a class='hvr-pop' href='".$this->sslc_data['redirectGatewayURL']."brac_master'><img style='width:60px; height:60px' src='".$this->_get_image("brac_master", $this->sslc_data)."' alt='brac_master'/></a>";
+                                    //$options['master'][6]['link'] =  "<a class='hvr-pop' href='".$this->sslc_data['redirectGatewayURL']."brac_master'><img loading="lazy"  style='width:60px; height:60px' src='".$this->_get_image("brac_master", $this->sslc_data)."' alt='brac_master'/></a>";
                                 }
                                 if ($gw_value == 'city_master') {
                                     //$options['cards'][7]['name'] = "CITY MASTER";
-                                    //$options['cards'][7]['link'] =  "<a class='hvr-pop' href='".$this->sslc_data['redirectGatewayURL']."city_master'><img style='width:60px; height:60px' src='".$this->_get_image("city_master", $this->sslc_data)."' alt='city_master'/></a>";
+                                    //$options['cards'][7]['link'] =  "<a class='hvr-pop' href='".$this->sslc_data['redirectGatewayURL']."city_master'><img loading="lazy"  style='width:60px; height:60px' src='".$this->_get_image("city_master", $this->sslc_data)."' alt='city_master'/></a>";
                                 }
                                 if ($gw_value == 'ebl_master') {
                                     //$options['cards'][8]['name'] = "EBL MASTER";
-                                    //$options['cards'][8]['link'] =  "<a class='hvr-pop' href='".$this->sslc_data['redirectGatewayURL']."ebl_master'><img style='width:60px; height:60px' src='".$this->_get_image("ebl_master", $this->sslc_data)."' alt='ebl_master'/></a>";
+                                    //$options['cards'][8]['link'] =  "<a class='hvr-pop' href='".$this->sslc_data['redirectGatewayURL']."ebl_master'><img loading="lazy"  style='width:60px; height:60px' src='".$this->_get_image("ebl_master", $this->sslc_data)."' alt='ebl_master'/></a>";
                                 }
                                 if ($gw_value == 'mastercard') {
                                     $options['cards'][9]['name'] = "MASTER";
-                                    $options['cards'][9]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "mastercard'><img style='width:60px; height:60px' src='" . $this->_get_image("mastercard", $this->sslc_data) . "' alt='mastercard'/></a>";
+                                    $options['cards'][9]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "mastercard'><img loading="lazy"  style='width:60px; height:60px' src='" . $this->_get_image("mastercard", $this->sslc_data) . "' alt='mastercard'/></a>";
                                 }
                             }
                         } # END OF MASTER
@@ -131,7 +131,7 @@ class SSLCommerz
                             foreach ($sslcz_visa as $gw_value) {
                                 if ($gw_value == 'city_amex') {
                                     $options['cards'][10]['name'] = "AMEX";
-                                    $options['cards'][10]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "city_amex'><img style='width:60px; height:60px' src='" . $this->_get_image("city_amex", $this->sslc_data) . "' alt='city_amex'/></a>";
+                                    $options['cards'][10]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "city_amex'><img loading="lazy"  style='width:60px; height:60px' src='" . $this->_get_image("city_amex", $this->sslc_data) . "' alt='city_amex'/></a>";
                                 }
 
                             }
@@ -144,17 +144,17 @@ class SSLCommerz
                             foreach ($sslcz_visa as $gw_value) {
                                 if ($gw_value == 'dbbl_nexus') {
                                     $options['others'][0]['name'] = "NEXUS";
-                                    $options['others'][0]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "dbbl_nexus'><img style='width:60px; height:60px' src='" . $this->_get_image("dbbl_nexus", $this->sslc_data) . "' alt='dbbl_nexus'/></a>";
+                                    $options['others'][0]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "dbbl_nexus'><img loading="lazy"  style='width:60px; height:60px' src='" . $this->_get_image("dbbl_nexus", $this->sslc_data) . "' alt='dbbl_nexus'/></a>";
                                 }
 
                                 if ($gw_value == 'qcash') {
                                     $options['others'][1]['name'] = "QCASH";
-                                    $options['others'][1]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "qcash'><img style='width:60px; height:60px' src='" . $this->_get_image("qcash", $this->sslc_data) . "' alt='qcash'/></a>";
+                                    $options['others'][1]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "qcash'><img loading="lazy"  style='width:60px; height:60px' src='" . $this->_get_image("qcash", $this->sslc_data) . "' alt='qcash'/></a>";
                                 }
 
                                 if ($gw_value == 'fastcash') {
                                     $options['others'][2]['name'] = "FASTCASH";
-                                    $options['others'][2]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "fastcash'><img style='width:60px; height:60px' src='" . $this->_get_image("fastcash", $this->sslc_data) . "' alt='fastcash'/></a>";
+                                    $options['others'][2]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "fastcash'><img loading="lazy"  style='width:60px; height:60px' src='" . $this->_get_image("fastcash", $this->sslc_data) . "' alt='fastcash'/></a>";
                                 }
                             }
                         } # END OF OTHER CARDS
@@ -165,22 +165,22 @@ class SSLCommerz
                             foreach ($sslcz_visa as $gw_value) {
                                 if ($gw_value == 'city') {
                                     $options['internet'][0]['name'] = "CITYTOUCH";
-                                    $options['internet'][0]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "city'><img style='width:60px; height:60px' src='" . $this->_get_image("city", $this->sslc_data) . "' alt='city'/></a>";
+                                    $options['internet'][0]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "city'><img loading="lazy"  style='width:60px; height:60px' src='" . $this->_get_image("city", $this->sslc_data) . "' alt='city'/></a>";
                                 }
 
                                 if ($gw_value == 'bankasia') {
                                     $options['internet'][1]['name'] = "BANK ASIA";
-                                    $options['internet'][1]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "bankasia'><img style='width:60px; height:60px' src='" . $this->_get_image("bankasia", $this->sslc_data) . "' alt='bankasia'/></a>";
+                                    $options['internet'][1]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "bankasia'><img loading="lazy"  style='width:60px; height:60px' src='" . $this->_get_image("bankasia", $this->sslc_data) . "' alt='bankasia'/></a>";
                                 }
 
                                 if ($gw_value == 'ibbl') {
                                     $options['internet'][2]['name'] = "IBBL";
-                                    $options['internet'][2]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "ibbl'><img style='width:60px; height:60px' src='" . $this->_get_image("ibbl", $this->sslc_data) . "' alt='ibbl'/></a>";
+                                    $options['internet'][2]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "ibbl'><img loading="lazy"  style='width:60px; height:60px' src='" . $this->_get_image("ibbl", $this->sslc_data) . "' alt='ibbl'/></a>";
                                 }
 
                                 if ($gw_value == 'mtbl') {
                                     $options['internet'][3]['name'] = "MTBL";
-                                    $options['internet'][3]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "mtbl'><img style='width:60px; height:60px' src='" . $this->_get_image("mtbl", $this->sslc_data) . "' alt='mtbl'/></a>";
+                                    $options['internet'][3]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "mtbl'><img loading="lazy"  style='width:60px; height:60px' src='" . $this->_get_image("mtbl", $this->sslc_data) . "' alt='mtbl'/></a>";
                                 }
                             }
                         } # END OF INTERNET BANKING
@@ -191,32 +191,32 @@ class SSLCommerz
                             foreach ($sslcz_visa as $gw_value) {
                                 if ($gw_value == 'dbblmobilebanking') {
                                     $options['mobile'][0]['name'] = "DBBL MOBILE BANKING";
-                                    $options['mobile'][0]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "dbblmobilebanking'><img style='width:60px; height:60px' src='" . $this->_get_image("dbblmobilebanking", $this->sslc_data) . "' alt='dbblmobilebanking'/></a>";
+                                    $options['mobile'][0]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "dbblmobilebanking'><img loading="lazy"  style='width:60px; height:60px' src='" . $this->_get_image("dbblmobilebanking", $this->sslc_data) . "' alt='dbblmobilebanking'/></a>";
                                 }
 
                                 if ($gw_value == 'bkash') {
                                     $options['mobile'][1]['name'] = "Bkash";
-                                    $options['mobile'][1]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "bkash'><img style='width:60px; height:60px' src='" . $this->_get_image("bkash", $this->sslc_data) . "' alt='bkash'/></a>";
+                                    $options['mobile'][1]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "bkash'><img loading="lazy"  style='width:60px; height:60px' src='" . $this->_get_image("bkash", $this->sslc_data) . "' alt='bkash'/></a>";
                                 }
 
                                 if ($gw_value == 'abbank') {
                                     $options['mobile'][2]['name'] = "AB Direct";
-                                    $options['mobile'][2]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "abbank'><img style='width:60px; height:60px' src='" . $this->_get_image("abbank", $this->sslc_data) . "' alt='abbank'/></a>";
+                                    $options['mobile'][2]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "abbank'><img loading="lazy"  style='width:60px; height:60px' src='" . $this->_get_image("abbank", $this->sslc_data) . "' alt='abbank'/></a>";
                                 }
 
                                 if ($gw_value == 'ibbl') {
                                     $options['mobile'][3]['name'] = "IBBL";
-                                    $options['mobile'][3]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "ibbl'><img style='width:60px; height:60px' src='" . $this->_get_image("ibbl", $this->sslc_data) . "' alt='ibbl'/></a>";
+                                    $options['mobile'][3]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "ibbl'><img loading="lazy"  style='width:60px; height:60px' src='" . $this->_get_image("ibbl", $this->sslc_data) . "' alt='ibbl'/></a>";
                                 }
 
                                 if ($gw_value == 'mycash') {
                                     $options['mobile'][4]['name'] = "MYCASH";
-                                    $options['mobile'][4]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "mycash'><img style='width:60px; height:60px' src='" . $this->_get_image("mycash", $this->sslc_data) . "' alt='mycash'/></a>";
+                                    $options['mobile'][4]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "mycash'><img loading="lazy"  style='width:60px; height:60px' src='" . $this->_get_image("mycash", $this->sslc_data) . "' alt='mycash'/></a>";
                                 }
 
                                 if ($gw_value == 'ific') {
                                     $options['mobile'][5]['name'] = "IFIC";
-                                    $options['mobile'][5]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "ific'><img style='width:60px; height:60px' src='" . $this->_get_image("ific", $this->sslc_data) . "' alt='ific'/></a>";
+                                    $options['mobile'][5]['link'] = "<a class='hvr-pop' href='" . $this->sslc_data['redirectGatewayURL'] . "ific'><img loading="lazy"  style='width:60px; height:60px' src='" . $this->_get_image("ific", $this->sslc_data) . "' alt='ific'/></a>";
                                 }
                             }
                         } # END OF MOBILE BANKING

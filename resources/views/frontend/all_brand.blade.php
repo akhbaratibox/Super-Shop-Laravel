@@ -14,7 +14,7 @@
                                     <li class="@php if($i == 0) echo 'active' @endphp">
                                         <a href="#{{ $i }}" class="row no-gutters align-items-center">
                                             <div class="col-md-3">
-                                                <img class="cat-image" src="{{ asset($categories[$i]->icon) }}">
+                                                <img loading="lazy"  class="cat-image" src="{{ asset($categories[$i]->icon) }}">
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="cat-name">{{ $categories[$i]->name }}</div>
@@ -37,7 +37,7 @@
                                     <li class="@php if($key == 0) echo 'active' @endphp">
                                         <a href="#{{ $key }}" class="row no-gutters align-items-center">
                                             <div class="col-md-3">
-                                                <img class="cat-image" src="{{ asset($category->icon) }}">
+                                                <img loading="lazy"  class="cat-image" src="{{ asset($category->icon) }}">
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="cat-name">{{ __($category->name) }}</div>
@@ -84,7 +84,7 @@
                                                         <div class="row no-gutters align-items-center">
                                                             <div class="col-xl-4 col-5">
                                                                 <div class="img">
-                                                                    <img src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid">
+                                                                    <img loading="lazy"  src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid">
                                                                 </div>
                                                             </div>
                                                             <div class="col-xl-8 col-7">
@@ -119,7 +119,7 @@
                                                         <div class="row no-gutters align-items-center">
                                                             <div class="col-xl-4 col-5">
                                                                 <div class="img">
-                                                                    <img src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid">
+                                                                    <img loading="lazy"  src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid">
                                                                 </div>
                                                             </div>
                                                             <div class="col-xl-8 col-7">

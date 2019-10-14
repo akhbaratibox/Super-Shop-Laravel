@@ -31,7 +31,7 @@
                     <tr>
                         <td>{{$key+1}}</td>
                         <td>{{$brand->name}}</td>
-                        <td><img class="img-md" src="{{ asset($brand->logo) }}" alt="Logo"></td>
+                        <td><img loading="lazy"  class="img-md" src="{{ asset($brand->logo) }}" alt="Logo"></td>
                         <td>
                             <div class="btn-group dropdown">
                                 <button class="btn btn-primary dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" type="button">

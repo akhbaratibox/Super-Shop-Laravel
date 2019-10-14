@@ -104,7 +104,7 @@
             </div>
             <div class="panel-body">
                 <div class="clearfix">
-                    <img class="pull-left" src="{{ asset('frontend/images/icons/cards/paypal.png') }}" height="30">
+                    <img loading="lazy"  class="pull-left" src="{{ asset('frontend/images/icons/cards/paypal.png') }}" height="30">
                     <label class="switch pull-right">
                         <input type="checkbox" onchange="updateSettings(this, 'paypal_payment')" <?php if(\App\BusinessSetting::where('type', 'paypal_payment')->first()->value == 1) echo "checked";?>>
                         <span class="slider round"></span>
@@ -123,7 +123,7 @@
             </div>
             <div class="panel-body text-center">
                 <div class="clearfix">
-                    <img class="pull-left" src="{{ asset('frontend/images/icons/cards/stripe.png') }}" height="30">
+                    <img loading="lazy"  class="pull-left" src="{{ asset('frontend/images/icons/cards/stripe.png') }}" height="30">
                     <label class="switch pull-right">
                         <input type="checkbox" onchange="updateSettings(this, 'stripe_payment')" <?php if(\App\BusinessSetting::where('type', 'stripe_payment')->first()->value == 1) echo "checked";?>>
                         <span class="slider round"></span>
@@ -142,7 +142,7 @@
             </div>
             <div class="panel-body text-center">
                 <div class="clearfix">
-                    <img class="pull-left" src="{{ asset('frontend/images/icons/cards/sslcommerz.png') }}" height="30">
+                    <img loading="lazy"  class="pull-left" src="{{ asset('frontend/images/icons/cards/sslcommerz.png') }}" height="30">
                     <label class="switch pull-right">
                         <input type="checkbox" onchange="updateSettings(this, 'sslcommerz_payment')" <?php if(\App\BusinessSetting::where('type', 'sslcommerz_payment')->first()->value == 1) echo "checked";?>>
                         <span class="slider round"></span>
@@ -164,7 +164,7 @@
             </div>
             <div class="panel-body text-center">
                 <div class="clearfix">
-                    <img class="pull-left" src="{{ asset('frontend/images/icons/cards/instamojo.png') }}" height="30">
+                    <img loading="lazy"  class="pull-left" src="{{ asset('frontend/images/icons/cards/instamojo.png') }}" height="30">
                     <label class="switch pull-right">
                         <input type="checkbox" onchange="updateSettings(this, 'instamojo_payment')" <?php if(\App\BusinessSetting::where('type', 'instamojo_payment')->first()->value == 1) echo "checked";?>>
                         <span class="slider round"></span>
@@ -183,7 +183,7 @@
             </div>
             <div class="panel-body text-center">
                 <div class="clearfix">
-                    <img class="pull-left" src="{{ asset('frontend/images/icons/cards/rozarpay.png') }}" height="30">
+                    <img loading="lazy"  class="pull-left" src="{{ asset('frontend/images/icons/cards/rozarpay.png') }}" height="30">
                     <label class="switch pull-right">
                         <input type="checkbox" onchange="updateSettings(this, 'razorpay')" <?php if(\App\BusinessSetting::where('type', 'razorpay')->first()->value == 1) echo "checked";?>>
                         <span class="slider round"></span>
@@ -203,7 +203,7 @@
             </div>
             <div class="panel-body text-center">
                 <div class="clearfix">
-                    <img class="pull-left" src="{{ asset('frontend/images/icons/cards/paystack.png') }}" height="30">
+                    <img loading="lazy"  class="pull-left" src="{{ asset('frontend/images/icons/cards/paystack.png') }}" height="30">
                     <label class="switch pull-right">
                         <input type="checkbox" onchange="updateSettings(this, 'paystack')" <?php if(\App\BusinessSetting::where('type', 'paystack')->first()->value == 1) echo "checked";?>>
                         <span class="slider round"></span>
@@ -225,7 +225,7 @@
             </div>
             <div class="panel-body text-center">
                 <div class="clearfix">
-                    <img class="pull-left" src="{{ asset('frontend/images/icons/cards/vogue.png') }}" height="30">
+                    <img loading="lazy"  class="pull-left" src="{{ asset('frontend/images/icons/cards/vogue.png') }}" height="30">
                     <label class="switch pull-right">
                         <input type="checkbox" onchange="updateSettings(this, 'voguepay')" <?php if(\App\BusinessSetting::where('type', 'voguepay')->first()->value == 1) echo "checked";?>>
                         <span class="slider round"></span>
@@ -244,7 +244,7 @@
             </div>
             <div class="panel-body text-center">
                 <div class="clearfix">
-                    <img class="pull-left" src="{{ asset('frontend/images/icons/cards/cod.png') }}" height="30">
+                    <img loading="lazy"  class="pull-left" src="{{ asset('frontend/images/icons/cards/cod.png') }}" height="30">
                     <label class="switch pull-right">
                         <input type="checkbox" onchange="updateSettings(this, 'cash_payment')" <?php if(\App\BusinessSetting::where('type', 'cash_payment')->first()->value == 1) echo "checked";?>>
                         <span class="slider round"></span>

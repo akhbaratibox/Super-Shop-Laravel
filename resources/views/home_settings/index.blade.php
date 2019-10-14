@@ -53,7 +53,7 @@
                                 @foreach(\App\Slider::all() as $key => $slider)
                                     <tr>
                                         <td>{{$key+1}}</td>
-                                        <td><img class="img-md" src="{{ asset($slider->photo)}}" alt="Slider Image"></td>
+                                        <td><img loading="lazy"  class="img-md" src="{{ asset($slider->photo)}}" alt="Slider Image"></td>
                                         <td><label class="switch">
                                             <input onchange="update_slider_published(this)" value="{{ $slider->id }}" type="checkbox" <?php if($slider->published == 1) echo "checked";?> >
                                             <span class="slider round"></span></label></td>
@@ -104,7 +104,7 @@
                                 @foreach(\App\Banner::where('position', 1)->get() as $key => $banner)
                                     <tr>
                                         <td>{{$key+1}}</td>
-                                        <td><img class="img-md" src="{{ asset($banner->photo)}}" alt="banner Image"></td>
+                                        <td><img loading="lazy"  class="img-md" src="{{ asset($banner->photo)}}" alt="banner Image"></td>
                                         <td>{{ __('Banner Position ') }}{{ $banner->position }}</td>
                                         <td><label class="switch">
                                             <input onchange="update_banner_published(this)" value="{{ $banner->id }}" type="checkbox" <?php if($banner->published == 1) echo "checked";?> >
@@ -157,7 +157,7 @@
                                 @foreach(\App\Banner::where('position', 2)->get() as $key => $banner)
                                     <tr>
                                         <td>{{$key+1}}</td>
-                                        <td><img class="img-md" src="{{ asset($banner->photo)}}" alt="banner Image"></td>
+                                        <td><img loading="lazy"  class="img-md" src="{{ asset($banner->photo)}}" alt="banner Image"></td>
                                         <td>{{ __('Banner Position ') }}{{ $banner->position }}</td>
                                         <td><label class="switch">
                                             <input onchange="update_banner_published(this)" value="{{ $banner->id }}" type="checkbox" <?php if($banner->published == 1) echo "checked";?> >

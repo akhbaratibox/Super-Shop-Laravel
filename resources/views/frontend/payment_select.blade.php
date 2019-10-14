@@ -77,7 +77,7 @@
                                                         <label class="payment_option mb-4" data-toggle="tooltip" data-title="Paypal">
                                                             <input type="radio" id="" name="payment_option" value="paypal" checked>
                                                             <span>
-                                                                <img src="{{ asset('frontend/images/icons/cards/paypal.png')}}" class="img-fluid">
+                                                                <img loading="lazy"  src="{{ asset('frontend/images/icons/cards/paypal.png')}}" class="img-fluid">
                                                             </span>
                                                         </label>
                                                     </div>
@@ -87,7 +87,7 @@
                                                         <label class="payment_option mb-4" data-toggle="tooltip" data-title="Stripe">
                                                             <input type="radio" id="" name="payment_option" value="stripe" checked>
                                                             <span>
-                                                                <img src="{{ asset('frontend/images/icons/cards/stripe.png')}}" class="img-fluid">
+                                                                <img loading="lazy"  src="{{ asset('frontend/images/icons/cards/stripe.png')}}" class="img-fluid">
                                                             </span>
                                                         </label>
                                                     </div>
@@ -97,7 +97,7 @@
                                                         <label class="payment_option mb-4" data-toggle="tooltip" data-title="sslcommerz">
                                                             <input type="radio" id="" name="payment_option" value="sslcommerz" checked>
                                                             <span>
-                                                                <img src="{{ asset('frontend/images/icons/cards/sslcommerz.png')}}" class="img-fluid">
+                                                                <img loading="lazy"  src="{{ asset('frontend/images/icons/cards/sslcommerz.png')}}" class="img-fluid">
                                                             </span>
                                                         </label>
                                                     </div>
@@ -107,7 +107,7 @@
                                                         <label class="payment_option mb-4" data-toggle="tooltip" data-title="Instamojo">
                                                             <input type="radio" id="" name="payment_option" value="instamojo" checked>
                                                             <span>
-                                                                <img src="{{ asset('frontend/images/icons/cards/instamojo.png')}}" class="img-fluid">
+                                                                <img loading="lazy"  src="{{ asset('frontend/images/icons/cards/instamojo.png')}}" class="img-fluid">
                                                             </span>
                                                         </label>
                                                     </div>
@@ -117,7 +117,7 @@
                                                         <label class="payment_option mb-4" data-toggle="tooltip" data-title="Razorpay">
                                                             <input type="radio" id="" name="payment_option" value="razorpay" checked>
                                                             <span>
-                                                                <img src="{{ asset('frontend/images/icons/cards/rozarpay.png')}}" class="img-fluid">
+                                                                <img loading="lazy"  src="{{ asset('frontend/images/icons/cards/rozarpay.png')}}" class="img-fluid">
                                                             </span>
                                                         </label>
                                                     </div>
@@ -127,7 +127,7 @@
                                                         <label class="payment_option mb-4" data-toggle="tooltip" data-title="Paystack">
                                                             <input type="radio" id="" name="payment_option" value="paystack" checked>
                                                             <span>
-                                                                <img src="{{ asset('frontend/images/icons/cards/paystack.png')}}" class="img-fluid">
+                                                                <img loading="lazy"  src="{{ asset('frontend/images/icons/cards/paystack.png')}}" class="img-fluid">
                                                             </span>
                                                         </label>
                                                     </div>
@@ -137,7 +137,7 @@
                                                         <label class="payment_option mb-4" data-toggle="tooltip" data-title="VoguePay">
                                                             <input type="radio" id="" name="payment_option" value="voguepay" checked>
                                                             <span>
-                                                                <img src="{{ asset('frontend/images/icons/cards/vogue.png')}}" class="img-fluid">
+                                                                <img loading="lazy"  src="{{ asset('frontend/images/icons/cards/vogue.png')}}" class="img-fluid">
                                                             </span>
                                                         </label>
                                                     </div>
@@ -147,7 +147,7 @@
                                                         <label class="payment_option mb-4" data-toggle="tooltip" data-title="Cash on Delivery">
                                                             <input type="radio" id="" name="payment_option" value="cash_on_delivery" checked>
                                                             <span>
-                                                                <img src="{{ asset('frontend/images/icons/cards/cod.png')}}" class="img-fluid">
+                                                                <img loading="lazy"  src="{{ asset('frontend/images/icons/cards/cod.png')}}" class="img-fluid">
                                                             </span>
                                                         </label>
                                                     </div>

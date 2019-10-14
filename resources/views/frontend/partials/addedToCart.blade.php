@@ -6,7 +6,7 @@
     <div class="product-box">
         <div class="block">
             <div class="block-image">
-                <img src="{{ asset($product->thumbnail_img) }}" class="" alt="Product Image">
+                <img loading="lazy"  src="{{ asset($product->thumbnail_img) }}" class="" alt="Product Image">
             </div>
             <div class="block-body">
                 <h6 class="strong-600">

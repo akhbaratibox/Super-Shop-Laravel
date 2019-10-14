@@ -59,15 +59,15 @@
 				<td>
 					@if (Auth::user()->user_type == 'seller')
 						@if(Auth::user()->shop->logo != null)
-							<img src="{{ asset(Auth::user()->shop->logo) }}" height="40" style="display:inline-block;">
+							<img loading="lazy"  src="{{ asset(Auth::user()->shop->logo) }}" height="40" style="display:inline-block;">
 						@else
-							<img src="{{ asset('frontend/images/logo/logo.png') }}" height="40" style="display:inline-block;">
+							<img loading="lazy"  src="{{ asset('frontend/images/logo/logo.png') }}" height="40" style="display:inline-block;">
 						@endif
 					@else
 						@if($generalsetting->logo != null)
-							<img src="{{ asset($generalsetting->logo) }}" height="40" style="display:inline-block;">
+							<img loading="lazy"  src="{{ asset($generalsetting->logo) }}" height="40" style="display:inline-block;">
 						@else
-							<img src="{{ asset('frontend/images/logo/logo.png') }}" height="40" style="display:inline-block;">
+							<img loading="lazy"  src="{{ asset('frontend/images/logo/logo.png') }}" height="40" style="display:inline-block;">
 						@endif
 					@endif
 				</td>

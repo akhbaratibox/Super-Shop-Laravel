@@ -28,7 +28,7 @@
                                 <div class="d-flex align-items-center">
                                     <div class="dc-image">
                                         <a href="{{ route('product', $product->slug) }}">
-                                            <img src="{{ asset($product->thumbnail_img) }}" class="img-fluid" alt="">
+                                            <img loading="lazy"  src="{{ asset($product->thumbnail_img) }}" class="img-fluid" alt="">
                                         </a>
                                     </div>
                                     <div class="dc-content">

@@ -53,6 +53,10 @@ class WalletController extends Controller
             $paystack = new PaystackController;
             return $paystack->redirectToGateway($request);
         }
+        elseif ($request->payment_option == 'voguepay') {
+            $voguepay = new VoguePayController;
+            return $voguepay->customer_showForm();
+        }
     }
 
     public function wallet_payment_done($payment_data, $payment_details){

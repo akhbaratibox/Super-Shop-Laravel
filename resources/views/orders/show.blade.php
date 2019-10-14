@@ -91,6 +91,28 @@
     						{{ ucfirst(str_replace('_', ' ', $order->payment_type)) }}
     					</td>
     				</tr>
+                    <tr>
+    					<td class="text-main text-bold">
+    						{{__('Delivery Type')}}
+    					</td>
+    					<td class="text-right">
+    						{{ $order->shipping_type }}
+    					</td>
+    				</tr>
+                    @if ($order->shipping_type == 'Pick-up Point')
+                        <tr>
+        					<td class="text-main text-bold">
+        						{{__('Pickup Point Address')}}
+        					</td>
+        					<td class="text-right">
+        						{{ $order->pickup_point->address }}
+        					</td>
+        				</tr>
+                        <tr>
+                            <td class="text-main text-bold">{{__('Phone')}}:</td>
+                            <td class="text-right">{{ $order->pickup_point->phone }}</td>
+                        </tr>
+                    @endif
     				</tbody>
     				</table>
     			</div>
@@ -121,8 +143,12 @@
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                 					<td>
-                						<strong><a href="{{ route('product', $orderDetail->product->slug) }}" target="_blank">{{ $orderDetail->product->name }}</a></strong>
-                						<small>{{ $orderDetail->variation }}</small>
+                                        @if ($orderDetail->product != null)
+                    						<strong><a href="{{ route('product', $orderDetail->product->slug) }}" target="_blank">{{ $orderDetail->product->name }}</a></strong>
+                    						<small>{{ $orderDetail->variation }}</small>
+                                        @else
+                                            <strong>{{ __('Product Unavailable') }}</strong>
+                                        @endif
                 					</td>
                 					<td class="text-center">
                 						{{ $orderDetail->quantity }}

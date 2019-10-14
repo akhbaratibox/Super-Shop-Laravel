@@ -21,11 +21,15 @@
                         </span>
                     </a>
                 </li>
+                @php
+                    $delivery_viewed = App\Order::where('user_id', Auth::user()->id)->where('delivery_viewed', 0)->get()->count();
+                    $payment_status_viewed = App\Order::where('user_id', Auth::user()->id)->where('payment_status_viewed', 0)->get()->count();
+                @endphp
                 <li>
                     <a href="{{ route('purchase_history.index') }}" class="{{ areActiveRoutesHome(['purchase_history.index'])}}">
                         <i class="la la-file-text"></i>
                         <span class="category-name">
-                            {{__('Purchase History')}}
+                            {{__('Purchase History')}} @if($delivery_viewed > 0 || $payment_status_viewed > 0)<span class="ml-2" style="color:green"><strong>({{ __(' New Notifications') }})</strong></span>@endif
                         </span>
                     </a>
                 </li>
@@ -45,19 +49,39 @@
                         </span>
                     </a>
                 </li>
+                @php
+                    $orders = DB::table('orders')
+                                ->orderBy('code', 'desc')
+                                ->join('order_details', 'orders.id', '=', 'order_details.order_id')
+                                ->where('order_details.seller_id', Auth::user()->id)
+                                ->where('orders.viewed', 0)
+                                ->select('orders.id')
+                                ->distinct()
+                                ->count();
+                @endphp
                 <li>
                     <a href="{{ route('orders.index') }}" class="{{ areActiveRoutesHome(['orders.index'])}}">
                         <i class="la la-file-text"></i>
                         <span class="category-name">
-                            {{__('Orders')}}
+                            {{__('Orders')}} @if($orders > 0)<span class="ml-2" style="color:green"><strong>({{ $orders }} {{ __('Notifications') }})</strong></span></span>@endif
                         </span>
                     </a>
                 </li>
+                @php
+                    $review_count = DB::table('reviews')
+                                ->orderBy('code', 'desc')
+                                ->join('products', 'products.id', '=', 'reviews.product_id')
+                                ->where('products.user_id', Auth::user()->id)
+                                ->where('reviews.viewed', 0)
+                                ->select('reviews.id')
+                                ->distinct()
+                                ->count();
+                @endphp
                 <li>
                     <a href="{{ route('reviews.seller') }}" class="{{ areActiveRoutesHome(['reviews.seller'])}}">
                         <i class="la la-star-o"></i>
                         <span class="category-name">
-                            {{__('Product Reviews')}}
+                            {{__('Product Reviews')}}@if($review_count > 0)<span class="ml-2" style="color:green"><strong>({{ $review_count }} {{ __('Notifications') }})</strong></span>@endif
                         </span>
                     </a>
                 </li>
@@ -85,6 +109,14 @@
                         </span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('withdraw_requests.index') }}" class="{{ areActiveRoutesHome(['withdraw_requests.index'])}}">
+                        <i class="la la-money"></i>
+                        <span class="category-name">
+                            {{__('Money Withdraw')}}
+                        </span>
+                    </a>
+                </li>
                 @if (\App\BusinessSetting::where('type', 'wallet_system')->first()->value == 1)
                     <li>
                         <a href="{{ route('wallet.index') }}" class="{{ areActiveRoutesHome(['wallet.index'])}}">
@@ -95,11 +127,17 @@
                         </a>
                     </li>
                 @endif
+                @php
+                    $support_ticket = DB::table('tickets')
+                                ->where('client_viewed', 0)
+                                ->where('user_id', Auth::user()->id)
+                                ->count();
+                @endphp
                 <li>
                     <a href="{{ route('support_ticket.index') }}" class="{{ areActiveRoutesHome(['support_ticket.index', 'support_ticket.show'])}}">
                         <i class="la la-support"></i>
                         <span class="category-name">
-                            {{__('Support Ticket')}}
+                            {{__('Support Ticket')}} @if($support_ticket > 0)<span class="ml-2" style="color:green"><strong>({{ $support_ticket }} {{ __('New') }})</strong></span></span>@endif
                         </span>
                     </a>
                 </li>

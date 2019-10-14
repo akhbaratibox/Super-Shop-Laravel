@@ -50,7 +50,9 @@ Route::post('/cart/updateQuantity', 'CartController@updateQuantity')->name('cart
 
 Route::post('/checkout/payment', 'CheckoutController@checkout')->name('payment.checkout');
 Route::get('/checkout', 'CheckoutController@get_shipping_info')->name('checkout.shipping_info');
-Route::post('/checkout/payment_select', 'CheckoutController@store_shipping_info')->name('checkout.store_shipping_infostore');
+Route::post('/checkout/delivery_info', 'CheckoutController@store_shipping_info')->name('checkout.store_shipping_infostore');
+Route::post('/checkout/payment_select', 'CheckoutController@store_delivery_info')->name('checkout.store_delivery_info');
+Route::post('/get_pick_ip_points', 'HomeController@get_pick_ip_points')->name('shipping_info.get_pick_ip_points');
 Route::get('/checkout/payment_select', 'CheckoutController@get_payment_info')->name('checkout.payment_info');
 Route::post('/checkout/apply_coupon_code', 'CheckoutController@apply_coupon_code')->name('checkout.apply_coupon_code');
 Route::post('/checkout/remove_coupon_code', 'CheckoutController@remove_coupon_code')->name('checkout.remove_coupon_code');
@@ -144,6 +146,11 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::post('/orders/update_payment_status', 'OrderController@update_payment_status')->name('orders.update_payment_status');
 
 	Route::resource('/reviews', 'ReviewController');
+
+	Route::resource('/withdraw_requests', 'SellerWithdrawRequestController');
+	Route::get('/withdraw_requests_all', 'SellerWithdrawRequestController@request_index')->name('withdraw_requests_all');
+	Route::post('/withdraw_request/payment_modal', 'SellerWithdrawRequestController@payment_modal')->name('withdraw_request.payment_modal');
+	Route::post('/withdraw_request/message_modal', 'SellerWithdrawRequestController@message_modal')->name('withdraw_request.message_modal');
 });
 
 Route::resource('shops', 'ShopController');
@@ -154,3 +161,8 @@ Route::get('/instamojo/payment/pay-success', 'InstamojoController@success')->nam
 Route::post('rozer/payment/pay-success', 'RazorpayController@payment')->name('payment.rozer');
 
 Route::get('/paystack/payment/callback', 'PaystackController@handleGatewayCallback');
+
+
+Route::get('/vogue-pay', 'VoguePayController@showForm');
+Route::get('/vogue-pay/success/{id}', 'VoguePayController@paymentSuccess');
+Route::get('/vogue-pay/failure/{id}', 'VoguePayController@paymentFailure');

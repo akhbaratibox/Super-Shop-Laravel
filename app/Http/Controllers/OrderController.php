@@ -48,7 +48,7 @@ class OrderController extends Controller
                     ->where('order_details.seller_id', Auth::user()->id)
                     ->select('orders.id')
                     ->distinct()
-                    ->paginate(9);
+                    ->get();
 
         return view('orders.index', compact('orders'));
     }
@@ -62,6 +62,31 @@ class OrderController extends Controller
     {
         $orders = Order::orderBy('code', 'desc')->get();
         return view('sales.index', compact('orders'));
+    }
+
+
+    public function order_index(Request $request)
+    {
+        if (Auth::user()->user_type == 'staff') {
+            $orders = Order::where('pickup_point_id', Auth::user()->staff->pick_up_point->id)->get();
+            return view('sales.pickup_point_order', compact('orders'));
+        }
+        else{
+            $orders = Order::where('shipping_type', 'Pick-up Point')->get();
+            return view('sales.pickup_point_order', compact('orders'));
+        }
+    }
+
+    public function pickup_point_order_sales_show($id)
+    {
+        if (Auth::user()->user_type == 'staff') {
+            $order = Order::findOrFail(decrypt($id));
+            return view('sales.pickup_point_order_details', compact('order'));
+        }
+        else{
+            $order = Order::findOrFail(decrypt($id));
+            return view('sales.pickup_point_order_details', compact('order'));
+        }
     }
 
     /**
@@ -102,7 +127,16 @@ class OrderController extends Controller
         }
 
         $order->shipping_address = json_encode($request->session()->get('shipping_info'));
+        if (Session::get('delivery_info')['shipping_type'] == 'Home Delivery') {
+            $order->shipping_type = Session::get('delivery_info')['shipping_type'];
+        }
+        elseif (Session::get('delivery_info')['shipping_type'] == 'Pick-up Point') {
+            $order->shipping_type = Session::get('delivery_info')['shipping_type'];
+            $order->pickup_point_id = Session::get('delivery_info')['pickup_point_id'];
+        }
         $order->payment_type = $request->payment_option;
+        $order->delivery_viewed = '0';
+        $order->payment_status_viewed = '0';
         $order->code = date('Ymd-his');
         $order->date = strtotime('now');
 
@@ -112,9 +146,23 @@ class OrderController extends Controller
             $shipping = 0;
             foreach (Session::get('cart') as $key => $cartItem){
                 $product = Product::find($cartItem['id']);
-                $subtotal += $cartItem['price']*$cartItem['quantity'];
-                $tax += $cartItem['tax']*$cartItem['quantity'];
-                $shipping += $cartItem['shipping']*$cartItem['quantity'];
+                // $subtotal += $cartItem['price']*$cartItem['quantity'];
+                // $tax += $cartItem['tax']*$cartItem['quantity'];
+                // $shipping += $cartItem['shipping']*$cartItem['quantity'];
+                if (Session::get('delivery_info')['shipping_type'] == 'Home Delivery') {
+                    $subtotal += $cartItem['price']*$cartItem['quantity'];
+                    $tax += $cartItem['tax']*$cartItem['quantity'];
+                    $shipping += $cartItem['shipping']*$cartItem['quantity'];
+                }
+                elseif (Session::get('delivery_info')['shipping_type'] == 'Pick-up Point') {
+                    $subtotal += $cartItem['price']*$cartItem['quantity'];
+                    $tax += $cartItem['tax']*$cartItem['quantity'];
+                }
+                else {
+                    $subtotal += $cartItem['price']*$cartItem['quantity'];
+                    $tax += $cartItem['tax']*$cartItem['quantity'];
+                    $shipping += $cartItem['shipping']*$cartItem['quantity'];
+                }
                 $product_variation = null;
                 if(isset($cartItem['color'])){
                     $product_variation .= Color::where('code', $cartItem['color'])->first()->name;
@@ -135,6 +183,10 @@ class OrderController extends Controller
                     $product->variations = json_encode($variations);
                     $product->save();
                 }
+                else {
+                    $product->current_stock = $product->current_stock - $cartItem['quantity'];
+                    $product->save();
+                }
 
                 $order_detail = new OrderDetail;
                 $order_detail->order_id  =$order->id;
@@ -143,7 +195,12 @@ class OrderController extends Controller
                 $order_detail->variation = $product_variation;
                 $order_detail->price = $cartItem['price'] * $cartItem['quantity'];
                 $order_detail->tax = $cartItem['tax'] * $cartItem['quantity'];
-                $order_detail->shipping_cost = $cartItem['shipping']*$cartItem['quantity'];
+                if (Session::get('delivery_info')['shipping_type'] == 'Home Delivery') {
+                    $order_detail->shipping_cost = $cartItem['shipping']*$cartItem['quantity'];
+                }
+                elseif (Session::get('delivery_info')['shipping_type'] == 'Pick-up Point') {
+                    $order_detail->shipping_cost = '0';
+                }
                 $order_detail->quantity = $cartItem['quantity'];
                 $order_detail->save();
 
@@ -253,12 +310,16 @@ class OrderController extends Controller
     public function order_details(Request $request)
     {
         $order = Order::findOrFail($request->order_id);
+        $order->viewed = 1;
+        $order->save();
         return view('frontend.partials.order_details_seller', compact('order'));
     }
 
     public function update_delivery_status(Request $request)
     {
         $order = Order::findOrFail($request->order_id);
+        $order->delivery_viewed = '0';
+        $order->save();
         foreach($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail){
             $orderDetail->delivery_status = $request->status;
             $orderDetail->save();
@@ -269,6 +330,8 @@ class OrderController extends Controller
     public function update_payment_status(Request $request)
     {
         $order = Order::findOrFail($request->order_id);
+        $order->payment_status_viewed = '0';
+        $order->save();
         foreach($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail){
             $orderDetail->payment_status = $request->status;
             $orderDetail->save();

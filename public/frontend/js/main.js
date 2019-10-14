@@ -68,6 +68,18 @@ $(function () {
         return false;
     });
 
+	// language flag select2
+	$('.pickup-select').select2({
+        templateResult: pickupInfo,
+        escapeMarkup: function(m) { return m; }
+    });
+    function pickupInfo(state) {
+        var address = $(state.element).data('address');
+        var phone = $(state.element).data('phone');
+		if (!address && !phone) return state.text;
+        return '<div class="pickup-name strong-600 heading-6 mb-2">' + state.text + '</div><div class="alpha-7 d-flex line-height-1_2 mb-2 pickup-address"><i class="la la-map-marker mr-1"></i>' + address + '</div><div class="alpha-7 d-flex line-height-1_2 pickup-number"><i class="la la-phone mr-1"></i>' + phone + '</div>';
+    }
+
 
 
 });
@@ -266,7 +278,7 @@ $(document).ready(function() {
 
 });
 $(window).on('load', function() {
-    
+
 });
 
 $(window).scroll(function() {
@@ -276,16 +288,16 @@ $(window).scroll(function() {
                 $('.all-category-menu li.active').removeClass('active');
                 $('.all-category-menu li').eq(i).addClass('active');
             }
-    });		
+    });
 
     var b = $(window).scrollTop();
-    
-    if( b > 120 ){		
-        $(".logo-bar-area").addClass("sm-fixed-top");	
+
+    if( b > 120 ){
+        $(".logo-bar-area").addClass("sm-fixed-top");
     } else {
         $(".logo-bar-area").removeClass("sm-fixed-top");
     }
-		
+
 }).scroll();
 
 $(document).ajaxComplete(function(){

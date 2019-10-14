@@ -5,8 +5,8 @@
     <div id="page-content">
         <section class="slice-xs sct-color-2 border-bottom">
             <div class="container container-sm">
-                <div class="row cols-delimited">
-                    <div class="col-4">
+                <div class="row cols-delimited justify-content-center">
+                    <div class="col-3">
                         <div class="icon-block icon-block--style-1-v5 text-center">
                             <div class="block-icon c-gray-light mb-0">
                                 <i class="la la-shopping-cart"></i>
@@ -17,7 +17,7 @@
                         </div>
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-3">
                         <div class="icon-block icon-block--style-1-v5 text-center">
                             <div class="block-icon c-gray-light mb-0">
                                 <i class="la la-truck"></i>
@@ -28,7 +28,18 @@
                         </div>
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-3">
+                        <div class="icon-block icon-block--style-1-v5 text-center">
+                            <div class="block-icon mb-0 c-gray-light">
+                                <i class="la la-truck"></i>
+                            </div>
+                            <div class="block-content d-none d-md-block">
+                                <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">3. {{__('Delivery info')}}</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
                         <div class="icon-block icon-block--style-1-v5 text-center active">
                             <div class="block-icon mb-0">
                                 <i class="la la-credit-card"></i>
@@ -117,6 +128,16 @@
                                                             <input type="radio" id="" name="payment_option" value="paystack" checked>
                                                             <span>
                                                                 <img src="{{ asset('frontend/images/icons/cards/paystack.png')}}" class="img-fluid">
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                @endif
+                                                @if(\App\BusinessSetting::where('type', 'voguepay')->first()->value == 1)
+                                                    <div class="col-6">
+                                                        <label class="payment_option mb-4" data-toggle="tooltip" data-title="VoguePay">
+                                                            <input type="radio" id="" name="payment_option" value="voguepay" checked>
+                                                            <span>
+                                                                <img src="{{ asset('frontend/images/icons/cards/vogue.png')}}" class="img-fluid">
                                                             </span>
                                                         </label>
                                                     </div>

@@ -56,7 +56,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+        // dd($request->all());
         $product = new Product;
         $product->name = $request->name;
         $product->added_by = $request->added_by;
@@ -65,7 +65,7 @@ class ProductController extends Controller
         $product->subcategory_id = $request->subcategory_id;
         $product->subsubcategory_id = $request->subsubcategory_id;
         $product->brand_id = $request->brand_id;
-
+        $product->current_stock = $request->current_stock;
         $photos = array();
 
         if($request->hasFile('photos')){
@@ -271,6 +271,7 @@ class ProductController extends Controller
         $product->subcategory_id = $request->subcategory_id;
         $product->subsubcategory_id = $request->subsubcategory_id;
         $product->brand_id = $request->brand_id;
+        $product->current_stock = $request->current_stock;
 
         if($request->has('previous_photos')){
             $photos = $request->previous_photos;

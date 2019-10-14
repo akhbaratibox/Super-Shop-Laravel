@@ -8,6 +8,7 @@ use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\PublicSslCommerzPaymentController;
 use App\Http\Controllers\InstamojoController;
 use App\Http\Controllers\PaystackController;
+use App\SellerWithdrawRequest;
 use App\Seller;
 use App\Payment;
 use Session;
@@ -20,6 +21,8 @@ class CommissionController extends Controller
         $data['seller_id'] = $request->seller_id;
         $data['amount'] = $request->amount;
         $data['payment_method'] = $request->payment_option;
+        $data['payment_withdraw'] = $request->payment_withdraw;
+        $data['withdraw_request_id'] = $request->withdraw_request_id;
 
         $request->session()->put('payment_type', 'seller_payment');
         $request->session()->put('payment_data', $data);
@@ -48,6 +51,10 @@ class CommissionController extends Controller
             $paystack = new PaystackController;
             return $paystack->redirectToGateway($request);
         }
+        elseif ($request->payment_option == 'voguepay') {
+            $voguepay = new VoguePayController;
+            return $voguepay->customer_showForm();
+        }
         elseif ($request->payment_option == 'cash') {
             return $this->seller_payment_done($request->session()->get('payment_data'), null);
         }
@@ -66,10 +73,23 @@ class CommissionController extends Controller
         $payment->payment_details = $payment_details;
         $payment->save();
 
+        if ($payment_data['payment_withdraw'] == 'withdraw_request') {
+            $seller_withdraw_request = SellerWithdrawRequest::findOrFail($payment_data['withdraw_request_id']);
+            $seller_withdraw_request->status = '1';
+            $seller_withdraw_request->viewed = '1';
+            $seller_withdraw_request->save();
+        }
+
         Session::forget('payment_data');
         Session::forget('payment_type');
 
-        flash(__('Payment completed'))->success();
-        return redirect()->route('sellers.index');
+        if ($payment_data['payment_withdraw'] == 'withdraw_request') {
+            flash(__('Payment completed'))->success();
+            return redirect()->route('withdraw_requests_all');
+        }
+        else {
+            flash(__('Payment completed'))->success();
+            return redirect()->route('sellers.index');
+        }
     }
 }

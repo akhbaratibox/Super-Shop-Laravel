@@ -17,11 +17,15 @@
                         </span>
                     </a>
                 </li>
+                @php
+                $delivery_viewed = App\Order::where('user_id', Auth::user()->id)->where('delivery_viewed', 0)->get()->count();
+                $payment_status_viewed = App\Order::where('user_id', Auth::user()->id)->where('payment_status_viewed', 0)->get()->count();
+                @endphp
                 <li>
                     <a href="{{ route('purchase_history.index') }}" class="{{ areActiveRoutesHome(['purchase_history.index'])}}">
                         <i class="la la-file-text"></i>
                         <span class="category-name">
-                            {{__('Purchase History')}}
+                            {{__('Purchase History')}} @if($delivery_viewed > 0 || $payment_status_viewed > 0)<span class="ml-2" style="color:green"><strong>({{ __('New Notifications') }})</strong></span>@endif
                         </span>
                     </a>
                 </li>
@@ -51,11 +55,17 @@
                         </a>
                     </li>
                 @endif
+                @php
+                    $support_ticket = DB::table('tickets')
+                                ->where('client_viewed', 0)
+                                ->where('user_id', Auth::user()->id)
+                                ->count();
+                @endphp
                 <li>
                     <a href="{{ route('support_ticket.index') }}" class="{{ areActiveRoutesHome(['support_ticket.index'])}}">
                         <i class="la la-support"></i>
                         <span class="category-name">
-                            {{__('Support Ticket')}}
+                            {{__('Support Ticket')}} @if($support_ticket > 0)<span class="ml-2" style="color:green"><strong>({{ $support_ticket }} {{ __('New') }})</strong></span></span>@endif
                         </span>
                     </a>
                 </li>

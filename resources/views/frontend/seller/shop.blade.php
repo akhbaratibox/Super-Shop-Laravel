@@ -47,6 +47,22 @@
                                             <input type="text" class="form-control mb-3" placeholder="{{__('Shop Name')}}" name="name" value="{{ $shop->name }}" required>
                                         </div>
                                     </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-2">
+                                            <label>{{__('Pickup Points')}} <span class="required-star"></span></label>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <select class="form-control mb-3 selectpicker" data-placeholder="Select Pickup Point" id="pick_up_point" name="pick_up_point_id[]" multiple>
+                                                @foreach (\App\PickupPoint::all() as $pick_up_point)
+                                                    @if (Auth::user()->shop->pick_up_point_id != null)
+                                                        <option value="{{ $pick_up_point->id }}" @if (in_array($pick_up_point->id, json_decode(Auth::user()->shop->pick_up_point_id))) selected @endif>{{ $pick_up_point->name }}</option>
+                                                    @else
+                                                        <option value="{{ $pick_up_point->id }}">{{ $pick_up_point->name }}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-2">
                                             <label>{{__('Logo')}} <small>(120x120)</small></label>

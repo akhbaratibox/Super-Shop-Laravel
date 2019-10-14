@@ -127,7 +127,7 @@ class SellerController extends Controller
     public function destroy($id)
     {
         $seller = Seller::findOrFail($id);
-        Shop::destroy($seller->user->id);
+        Shop::where('user_id', $seller->user->id)->delete();
         Product::where('user_id', $seller->user->id)->delete();
         Order::where('user_id', $seller->user->id)->delete();
         OrderDetail::where('seller_id', $seller->user->id)->delete();
@@ -136,9 +136,10 @@ class SellerController extends Controller
             flash(__('Seller has been deleted successfully'))->success();
             return redirect()->route('sellers.index');
         }
-
-        flash(__('Something went wrong'))->error();
-        return back();
+        else {
+            flash(__('Something went wrong'))->error();
+            return back();
+        }
     }
 
     public function show_verification_request($id)

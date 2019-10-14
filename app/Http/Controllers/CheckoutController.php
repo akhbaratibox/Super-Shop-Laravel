@@ -57,6 +57,10 @@ class CheckoutController extends Controller
                 $paystack = new PaystackController;
                 return $paystack->redirectToGateway($request);
             }
+            elseif ($request->payment_option == 'voguepay') {
+                $voguePay = new VoguePayController;
+                return $voguePay->customer_showForm();
+            }
             elseif ($request->payment_option == 'cash_on_delivery') {
                 $order = Order::findOrFail($request->session()->get('order_id'));
                 $commission_percentage = BusinessSetting::where('type', 'vendor_commission')->first()->value;
@@ -70,6 +74,7 @@ class CheckoutController extends Controller
 
                 $request->session()->put('cart', collect([]));
                 $request->session()->forget('order_id');
+                $request->session()->forget('delivery_info');
 
                 flash("Your order has been placed successfully")->success();
             	return redirect()->route('home');
@@ -105,6 +110,9 @@ class CheckoutController extends Controller
         Session::put('cart', collect([]));
         Session::forget('order_id');
         Session::forget('payment_type');
+        Session::forget('delivery_info');
+        Session::forget('coupon_id');
+        Session::forget('coupon_discount');
 
         flash(__('Payment completed'))->success();
         return redirect()->route('home');
@@ -144,6 +152,51 @@ class CheckoutController extends Controller
         }
 
         $total = $subtotal + $tax + $shipping;
+
+        if(Session::has('coupon_discount')){
+                $total -= Session::get('coupon_discount');
+        }
+
+        return view('frontend.delivery_info');
+        // return view('frontend.payment_select', compact('total'));
+    }
+
+    public function store_delivery_info(Request $request)
+    {
+        dd($request->all());
+        if ($request->shippimg_type == 'home_delivery') {
+            $data['shipping_type'] = 'Home Delivery';
+        }
+        elseif ($request->shippimg_type == 'pickup_point') {
+            $data['shipping_type'] = 'Pick-up Point';
+            $data['pickup_point_id'] = $request->pickup_point_id;
+        }
+
+        $delivery_info = $data;
+        $request->session()->put('delivery_info', $delivery_info);
+
+        if (Session::get('delivery_info')['shipping_type'] == 'Home Delivery') {
+            $subtotal = 0;
+            $tax = 0;
+            $shipping = 0;
+            foreach (Session::get('cart') as $key => $cartItem){
+                $subtotal += $cartItem['price']*$cartItem['quantity'];
+                $tax += $cartItem['tax']*$cartItem['quantity'];
+                $shipping += $cartItem['shipping']*$cartItem['quantity'];
+            }
+
+            $total = $subtotal + $tax + $shipping;
+        }
+        elseif (Session::get('delivery_info')['shipping_type'] == 'Pick-up Point') {
+            $subtotal = 0;
+            $tax = 0;
+            foreach (Session::get('cart') as $key => $cartItem){
+                $subtotal += $cartItem['price']*$cartItem['quantity'];
+                $tax += $cartItem['tax']*$cartItem['quantity'];
+            }
+
+            $total = $subtotal + $tax;
+        }
 
         if(Session::has('coupon_discount')){
                 $total -= Session::get('coupon_discount');

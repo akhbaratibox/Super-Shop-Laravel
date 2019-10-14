@@ -23,6 +23,7 @@
                     <th width="10%">#</th>
                     <th>{{__('Name')}}</th>
                     <th>{{__('Email')}}</th>
+                    <th>{{__('Phone')}}</th>
                     <th>{{__('Role')}}</th>
                     <th width="10%">{{__('Options')}}</th>
                 </tr>
@@ -33,6 +34,7 @@
                         <td>{{$key+1}}</td>
                         <td>{{$staff->user->name}}</td>
                         <td>{{$staff->user->email}}</td>
+                        <td>{{$staff->user->phone}}</td>
                         <td>{{$staff->role->name}}</td>
                         <td>
                             <div class="btn-group dropdown">

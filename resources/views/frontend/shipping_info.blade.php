@@ -5,8 +5,8 @@
     <div id="page-content">
         <section class="slice-xs sct-color-2 border-bottom">
             <div class="container container-sm">
-                <div class="row cols-delimited">
-                    <div class="col-4">
+                <div class="row cols-delimited justify-content-center">
+                    <div class="col-3">
                         <div class="icon-block icon-block--style-1-v5 text-center">
                             <div class="block-icon c-gray-light mb-0">
                                 <i class="la la-shopping-cart"></i>
@@ -17,7 +17,7 @@
                         </div>
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-3">
                         <div class="icon-block icon-block--style-1-v5 text-center active">
                             <div class="block-icon mb-0">
                                 <i class="la la-truck"></i>
@@ -28,13 +28,24 @@
                         </div>
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-3">
+                        <div class="icon-block icon-block--style-1-v5 text-center">
+                            <div class="block-icon mb-0 c-gray-light">
+                                <i class="la la-truck"></i>
+                            </div>
+                            <div class="block-content d-none d-md-block">
+                                <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">3. {{__('Delivery info')}}</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
                         <div class="icon-block icon-block--style-1-v5 text-center">
                             <div class="block-icon c-gray-light mb-0">
                                 <i class="la la-credit-card"></i>
                             </div>
                             <div class="block-content d-none d-md-block">
-                                <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">3. {{__('Payment')}}</h3>
+                                <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">4. {{__('Payment')}}</h3>
                             </div>
                         </div>
                     </div>
@@ -186,6 +197,17 @@
                             </div>
 
                             <div class="row align-items-center pt-4">
+                                <div class="col-md-6">
+                                    <a href="{{ route('home') }}" class="link link--style-3">
+                                        <i class="ion-android-arrow-back"></i>
+                                        {{__('Return to shop')}}
+                                    </a>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <button type="submit" class="btn btn-styled btn-base-1">{{__('Continue to Delivery Info')}}</a>
+                                </div>
+                            </div>
+                            {{-- <div class="row align-items-center pt-4">
                                 <div class="col-6">
                                     <a href="{{ route('home') }}" class="link link--style-3">
                                         <i class="ion-android-arrow-back"></i>
@@ -193,9 +215,9 @@
                                     </a>
                                 </div>
                                 <div class="col-6 text-right">
-                                    <button type="submit" class="btn btn-styled btn-base-1">{{__('Continue to Payment')}}</a>
+                                    <button type="submit" class="btn btn-styled btn-base-1">{{__('Continue to Delivery Info')}}</a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </form>
                     </div>
 

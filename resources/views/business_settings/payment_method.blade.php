@@ -237,7 +237,7 @@
                     @csrf
                     <input type="hidden" name="payment_method" value="paystack">
                     <div class="form-group">
-                        <input type="hidden" name="types[]" value="PAYSTACK_PUBLIC_KEY">
+                        <input type="hidden" name="types[]" value="voguepay">
                         <div class="col-lg-3">
                             <label class="control-label">{{__('PUBLIC KEY')}}</label>
                         </div>
@@ -261,6 +261,49 @@
                         </div>
                         <div class="col-lg-6">
                             <input type="text" class="form-control" name="MERCHANT_EMAIL" value="{{  env('MERCHANT_EMAIL') }}" placeholder="MERCHANT EMAIL" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-12 text-right">
+                            <button class="btn btn-purple" type="submit">{{__('Save')}}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">{{__('VoguePay Credential')}}</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="payment_method" value="voguepay">
+                    <div class="form-group">
+                        <input type="hidden" name="types[]" value="VOGUE_MERCHANT_ID">
+                        <div class="col-lg-3">
+                            <label class="control-label">{{__('MERCHANT ID')}}</label>
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" name="VOGUE_MERCHANT_ID" value="{{  env('VOGUE_MERCHANT_ID') }}" placeholder="MERCHANT ID" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-3">
+                            <label class="control-label">{{__('Sandbox Mode')}}</label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="switch">
+                                <input value="1" name="voguepay_sandbox" type="checkbox" @if (\App\BusinessSetting::where('type', 'voguepay_sandbox')->first()->value == 1)
+                                    checked
+                                @endif>
+                                <span class="slider round"></span>
+                            </label>
                         </div>
                     </div>
                     <div class="form-group">

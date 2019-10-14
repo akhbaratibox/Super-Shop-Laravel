@@ -127,7 +127,13 @@
                             @foreach ($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td><a href="{{ route('product', $orderDetail->product->slug) }}" target="_blank">{{ $orderDetail->product->name }}</a></td>
+                                    <td>
+                                        @if ($orderDetail->product != null)
+                                            <a href="{{ route('product', $orderDetail->product->slug) }}" target="_blank">{{ $orderDetail->product->name }}</a>
+                                        @else
+                                            <strong>{{ __('Product Unavailable') }}</strong>
+                                        @endif
+                                    </td>
                                     <td>
                                         {{ $orderDetail->variation }}
                                     </td>

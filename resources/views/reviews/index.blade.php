@@ -34,7 +34,7 @@
                     @if ($review->product != null && $review->user != null)
                         <tr>
                             <td>{{$key+1}}</td>
-                            <td><a href="{{ route('product', $review->product->slug) }}" target="_blank">{{ __($review->product->name) }}</a></td>
+                            <td><a href="{{ route('product', $review->product->slug) }}" target="_blank">{{ __($review->product->name) }}</a>@if ($review->viewed == 0) <span class="badge badge-success">{{ __('New') }}</span> @endif</td>
                             <td>{{ $review->product->added_by }}</td>
                             <td>{{ $review->user->name }} ({{ $review->user->email }})</td>
                             <td>{{ $review->rating }}</td>

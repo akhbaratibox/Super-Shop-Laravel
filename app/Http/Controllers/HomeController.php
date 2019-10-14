@@ -11,6 +11,7 @@ use App\Brand;
 use App\SubCategory;
 use App\SubSubCategory;
 use App\Product;
+use App\PickupPoint;
 use App\User;
 use App\Seller;
 use App\Shop;
@@ -186,6 +187,8 @@ class HomeController extends Controller
         $seller->paystack_status = $request->paystack_status;
         $seller->paystack_public_key = $request->paystack_public_key;
         $seller->paystack_secret_key = $request->paystack_secret_key;
+        $seller->voguepay_status = $request->voguepay_status;
+        $seller->voguepay_merchand_id = $request->voguepay_merchand_id;
 
         if($user->save() && $seller->save()){
             flash(__('Your Profile has been updated successfully!'))->success();
@@ -499,5 +502,11 @@ class HomeController extends Controller
 
     public function privacypolicy(){
         return view("frontend.policies.privacypolicy");
+    }
+
+    public function get_pick_ip_points(Request $request)
+    {
+        $pick_up_points = PickupPoint::all();
+        return view('frontend.partials.pick_up_points', compact('pick_up_points'));
     }
 }

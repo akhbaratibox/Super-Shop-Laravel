@@ -31,7 +31,7 @@
                             </div>
                         </div>
 
-                        
+
                         <!-- Order history table -->
                         <div class="card no-border mt-4">
                             <div>
@@ -58,7 +58,7 @@
                                                             {{ $key+1 }}
                                                         </td>
                                                         <td>
-                                                            <a href="{{ route('product', $review->product->slug) }}" target="_blank">{{ __($review->product->name) }}</a>
+                                                            <a href="{{ route('product', $review->product->slug) }}" target="_blank">{{ __($review->product->name) }}</a>@if ($review->viewed == 0) <span class="badge badge-success">{{ __('New') }}</span> @endif
                                                         </td>
                                                         <td>{{ $review->user->name }} ({{ $review->user->email }})</td>
                                                         <td>

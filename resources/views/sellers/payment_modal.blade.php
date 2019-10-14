@@ -54,6 +54,9 @@
                         @if($seller->sslcommerz_status == 1)
                             <option value="sslcommerz">{{__('SSLCommerz')}}</option>
                         @endif
+                        @if($seller->voguepay_status == 1)
+                            <option value="voguepay">{{__('VoguePay')}}</option>
+                        @endif
                     </select>
                 </div>
             </div>

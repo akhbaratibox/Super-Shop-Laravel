@@ -322,6 +322,25 @@
                                             <input type="text" class="form-control mb-3" placeholder="{{__('PayStack Secret Key')}}" value="{{ Auth::user()->seller->paystack_secret_key }}" name="paystack_secret_key">
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>{{__('VoguePay')}}</label>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <label class="switch mb-3">
+                                                <input value="1" name="voguepay_status" type="checkbox" @if (Auth::user()->seller->voguepay_status == 1) checked @endif>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>{{__('VoguePay Merchant Key')}}</label>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control mb-3" placeholder="{{__('VoguePay Merchant')}}" value="{{ Auth::user()->seller->voguepay_merchand_id }}" name="voguepay_merchand_id">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 

@@ -102,6 +102,19 @@
 		</table>
 	</div>
 
+	<div style="padding: 1.5rem;">
+		<table>
+			<tr><td class="strong small gry-color">Shipping Details:</td></tr>
+			<tr><td class="gry-color small">Shipping Method: {{ $order->shipping_type }}</td></tr>
+			@if ($order->shipping_type == 'Pick-up Point')
+				<tr><td class="gry-color small">Pick-up Point: {{ $order->pickup_point->name }}</td></tr>
+				<tr><td class="gry-color small">Pick-up Point Address: {{ $order->pickup_point->address }}</td></tr>
+				<tr><td class="gry-color small">Pick-up Point Phone: {{ $order->pickup_point->phone }}</td></tr>
+			@endif
+
+		</table>
+	</div>
+
     <div style="padding: 1.5rem;">
 		<table class="padding text-left small border-bottom">
 			<thead>

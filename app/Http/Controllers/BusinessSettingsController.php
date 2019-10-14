@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Currency;
 use App\BusinessSetting;
+use Artisan;
 
 class BusinessSettingsController extends Controller
 {
@@ -50,6 +51,7 @@ class BusinessSettingsController extends Controller
         }
 
         $business_settings = BusinessSetting::where('type', $request->payment_method.'_sandbox')->first();
+        // dd($business_settings->type);
         if($business_settings != null){
             if ($request->has($request->payment_method.'_sandbox')) {
                 $business_settings->value = 1;
@@ -209,6 +211,12 @@ class BusinessSettingsController extends Controller
     {
         $business_settings = BusinessSetting::where('type', $request->type)->first();
         if($business_settings!=null){
+            if ($request->type == 'maintenance_mode' && $request->value == '1') {
+                Artisan::call('down');
+            }
+            elseif ($request->type == 'maintenance_mode' && $request->value == '0') {
+                Artisan::call('up');
+            }
             $business_settings->value = $request->value;
             $business_settings->save();
         }

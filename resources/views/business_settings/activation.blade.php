@@ -2,6 +2,23 @@
 
 @section('content')
 
+<h3 class="text-center">{{__('Maintenance Mode')}}</h3>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">{{__('Maintenance Mode Activation')}}</h3>
+            </div>
+            <div class="panel-body text-center">
+                <label class="switch">
+                    <input type="checkbox" onchange="updateSettings(this, 'maintenance_mode')" <?php if(\App\BusinessSetting::where('type', 'maintenance_mode')->first()->value == 1) echo "checked";?>>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
 <h3 class="text-center">{{__('Business Related')}}</h3>
 <div class="row">
     <div class="col-lg-4">
@@ -46,6 +63,19 @@
 </div>
 
 <div class="row">
+    <div class="col-lg-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">{{__('Pickup Point Activation')}}</h3>
+            </div>
+            <div class="panel-body text-center">
+                <label class="switch">
+                    <input type="checkbox" onchange="updateSettings(this, 'pickup_point')" <?php if(\App\BusinessSetting::where('type', 'pickup_point')->first()->value == 1) echo "checked";?>>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+    </div>
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-heading">
@@ -188,6 +218,25 @@
 </div>
 
 <div class="row">
+    <div class="col-lg-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">{{__('VoguePay Activation')}}</h3>
+            </div>
+            <div class="panel-body text-center">
+                <div class="clearfix">
+                    <img class="pull-left" src="{{ asset('frontend/images/icons/cards/vogue.png') }}" height="30">
+                    <label class="switch pull-right">
+                        <input type="checkbox" onchange="updateSettings(this, 'voguepay')" <?php if(\App\BusinessSetting::where('type', 'voguepay')->first()->value == 1) echo "checked";?>>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
+                    You need to configure VoguePay correctly to enable this feature. <a href="{{ route('payment_method.index') }}">Configure Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-heading">

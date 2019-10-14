@@ -233,6 +233,8 @@
                                             </div>
                                             @if(count(json_decode($product->variations, true)) >= 1)
                                                 <div class="avialable-amount">(<span id="available-quantity">{{ $qty }}</span> {{__('available')}})</div>
+                                            @else
+                                                <div class="avialable-amount">(<span id="">{{ $product->current_stock }}</span> {{__('available')}})</div>
                                             @endif
                                         </div>
                                     </div>
@@ -264,12 +266,27 @@
                                                 <i class="la la-shopping-cart"></i> {{__('Buy Now')}}
                                             </button>
                                         @endif
+                                        <!-- Add to cart button -->
+                                        <button type="button" class="btn btn-styled btn-alt-base-1 c-white btn-icon-left strong-700 hov-bounce hov-shaddow ml-2" onclick="addToCart()">
+                                            <i class="la la-shopping-cart"></i>
+                                            <span class="d-none d-md-inline-block"> {{__('Add to cart')}}</span>
+                                        </button>
+                                    @else
+                                        @if ($product->current_stock > 0)
+                                            <button type="button" class="btn btn-styled btn-base-1 btn-icon-left strong-700 hov-bounce hov-shaddow" onclick="buyNow()">
+                                                <i class="la la-shopping-cart"></i> {{__('Buy Now')}}
+                                            </button>
+                                            <button type="button" class="btn btn-styled btn-alt-base-1 c-white btn-icon-left strong-700 hov-bounce hov-shaddow ml-2" onclick="addToCart()">
+                                                <i class="la la-shopping-cart"></i>
+                                                <span class="d-none d-md-inline-block"> {{__('Add to cart')}}</span>
+                                            </button>
+                                        @else
+                                            <button type="button" class="btn btn-styled btn-base-1 btn-icon-left strong-700 hov-bounce hov-shaddow">
+                                                <i class="la la-cart-arrow-down"></i> {{__('Out of Stock')}}
+                                            </button>
+                                        @endif
                                     @endif
-                                    <!-- Add to cart button -->
-                                    <button type="button" class="btn btn-styled btn-alt-base-1 c-white btn-icon-left strong-700 hov-bounce hov-shaddow ml-2" onclick="addToCart()">
-                                        <i class="la la-shopping-cart"></i>
-                                        <span class="d-none d-md-inline-block"> {{__('Add to cart')}}</span>
-                                    </button>
+
                                 </div>
                             </div>
 

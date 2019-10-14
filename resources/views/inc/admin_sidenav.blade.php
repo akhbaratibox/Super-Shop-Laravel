@@ -123,8 +123,18 @@
                                             <a class="nav-link" href="{{route('products.seller')}}">{{__('Seller Products')}}</a>
                                         </li>
                                     @endif
+                                    @php
+                                        $review_count = DB::table('reviews')
+                                                    ->orderBy('code', 'desc')
+                                                    ->join('products', 'products.id', '=', 'reviews.product_id')
+                                                    ->where('products.user_id', Auth::user()->id)
+                                                    ->where('reviews.viewed', 0)
+                                                    ->select('reviews.id')
+                                                    ->distinct()
+                                                    ->count();
+                                    @endphp
                                     <li class="{{ areActiveRoutes(['reviews.index'])}}">
-                                        <a class="nav-link" href="{{route('reviews.index')}}">{{__('Product Reviews')}}</a>
+                                        <a class="nav-link" href="{{route('reviews.index')}}">{{__('Product Reviews')}}@if($review_count > 0)<span class="pull-right badge badge-info">{{ $review_count }}</span>@endif</a>
                                     </li>
                                 </ul>
                             </li>
@@ -158,6 +168,15 @@
                         </li>
                         @endif
 
+                        @if(Auth::user()->user_type == 'admin' || in_array('14', json_decode(Auth::user()->staff->role->permissions)))
+                        <li class="{{ areActiveRoutes(['pick_up_point.order_index','pick_up_point.order_show'])}}">
+                            <a class="nav-link" href="{{ route('pick_up_point.order_index') }}">
+                                <i class="fa fa-money"></i>
+                                <span class="menu-title">{{__('Pick-up Point Order')}}</span>
+                            </a>
+                        </li>
+                        @endif
+
                         @if(Auth::user()->user_type == 'admin' || in_array('4', json_decode(Auth::user()->staff->role->permissions)))
                         <li class="{{ areActiveRoutes(['sales.index', 'sales.show'])}}">
                             <a class="nav-link" href="{{ route('sales.index') }}">
@@ -180,8 +199,12 @@
                                 <li class="{{ areActiveRoutes(['sellers.index', 'sellers.create', 'sellers.edit', 'sellers.payment_history'])}}">
                                     @php
                                         $sellers = \App\Seller::where('verification_status', 0)->where('verification_info', '!=', null)->count();
+                                        $withdraw_req = \App\SellerWithdrawRequest::where('viewed', '0')->get();
                                     @endphp
                                     <a class="nav-link" href="{{route('sellers.index')}}">{{__('Seller List')}} @if($sellers > 0)<span class="pull-right badge badge-info">{{ $sellers }}</span> @endif</a>
+                                </li>
+                                <li class="{{ areActiveRoutes(['withdraw_requests_all'])}}">
+                                    <a class="nav-link" href="{{ route('withdraw_requests_all') }}">{{__('Seller Request')}}@if(count($withdraw_req) > 0)<span class="pull-right badge badge-info">{{ count($withdraw_req) }}</span> @endif</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['sellers.payment_histories'])}}">
                                     <a class="nav-link" href="{{ route('sellers.payment_histories') }}">{{__('Seller Payments')}}</a>
@@ -364,6 +387,11 @@
                                 <li>
                                     <li class="{{ areActiveRoutes(['coupon.index','coupon.create','coupon.edit',])}}">
                                         <a class="nav-link" href="{{route('coupon.index')}}">{{__('Coupon')}}</a>
+                                    </li>
+                                </li>
+                                <li>
+                                    <li class="{{ areActiveRoutes(['pick_up_points.index','pick_up_points.create','pick_up_points.edit',])}}">
+                                        <a class="nav-link" href="{{route('pick_up_points.index')}}">{{__('Pickup Point')}}</a>
                                     </li>
                                 </li>
                             </ul>

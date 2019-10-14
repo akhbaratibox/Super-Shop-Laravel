@@ -41,7 +41,7 @@
                                     <i class="fa fa-dollar"></i>
                                     <span class="d-block title heading-3 strong-400">{{ single_price(Auth::user()->balance) }}</span>
                                     <span class="d-block sub-title">{{ __('Wallet Balance') }}</span>
-                                    
+
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -54,7 +54,7 @@
 
                         <div class="card no-border mt-5">
                             <div class="card-header py-3">
-                                <h4 class="mb-0 h6">Wallet recharge history</h4>
+                                <h4 class="mb-0 h6">{{__('Wallet recharge history')}}</h4>
                             </div>
                             <div class="card-body">
                                 <table class="table table-sm table-responsive-md mb-0">
@@ -140,6 +140,9 @@
                                         @endif
                                         @if (\App\BusinessSetting::where('type', 'paystack')->first()->value == 1)
                                             <option value="paystack">{{__('Paystack')}}</option>
+                                        @endif
+                                        @if (\App\BusinessSetting::where('type', 'voguepay')->first()->value == 1)
+                                            <option value="voguepay">{{__('VoguePay')}}</option>
                                         @endif
                                     </select>
                                 </div>

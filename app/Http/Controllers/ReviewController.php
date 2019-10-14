@@ -58,6 +58,7 @@ class ReviewController extends Controller
         $review->user_id = Auth::user()->id;
         $review->rating = $request->rating;
         $review->comment = $request->comment;
+        $review->viewed = '0';
         if($review->save()){
             $product = Product::findOrFail($request->product_id);
             if(count(Review::where('product_id', $product->id)->where('status', 1)->get()) > 0){

@@ -299,6 +299,12 @@
 	                                </select>
 	                            </div>
 	                        </div>
+							<div class="form-group" id="quantity">
+								<label class="col-lg-2 control-label">{{__('Quantity')}}</label>
+								<div class="col-lg-7">
+									<input type="number" min="0" value="{{ $product->current_stock }}" step="1" placeholder="{{__('Quantity')}}" name="current_stock" class="form-control" required>
+								</div>
+							</div>
 							<br>
 							<div class="sku_combination" id="sku_combination">
 
@@ -451,6 +457,12 @@
 		   data:$('#choice_form').serialize(),
 		   success: function(data){
 			   $('#sku_combination').html(data);
+			   if (!data) {
+				   $('#quantity').show();
+			   }
+			   else {
+			   		$('#quantity').hide();
+			   }
 		   }
 	   });
 	}

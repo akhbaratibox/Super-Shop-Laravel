@@ -17,7 +17,6 @@
 			</tr>
 		</thead>
 		<tbody>
-@endif
 
 @foreach ($combinations as $key => $combination)
 	@php
@@ -84,3 +83,4 @@
 
 	</tbody>
 </table>
+@endif

@@ -30,9 +30,20 @@
                 @foreach (Session::get('cart') as $key => $cartItem)
                     @php
                     $product = \App\Product::find($cartItem['id']);
-                    $subtotal += $cartItem['price']*$cartItem['quantity'];
-                    $tax += $cartItem['tax']*$cartItem['quantity'];
-                    $shipping += $cartItem['shipping']*$cartItem['quantity'];
+                    if (Session::get('delivery_info')['shipping_type'] == 'Home Delivery') {
+                        $subtotal += $cartItem['price']*$cartItem['quantity'];
+                        $tax += $cartItem['tax']*$cartItem['quantity'];
+                        $shipping += $cartItem['shipping']*$cartItem['quantity'];
+                    }
+                    elseif (Session::get('delivery_info')['shipping_type'] == 'Pick-up Point') {
+                        $subtotal += $cartItem['price']*$cartItem['quantity'];
+                        $tax += $cartItem['tax']*$cartItem['quantity'];
+                    }
+                    else {
+                        $subtotal += $cartItem['price']*$cartItem['quantity'];
+                        $tax += $cartItem['tax']*$cartItem['quantity'];
+                        $shipping += $cartItem['shipping']*$cartItem['quantity'];
+                    }
                     $product_name_with_choice = $product->name;
                     if(isset($cartItem['color'])){
                         $product_name_with_choice .= ' - '.\App\Color::where('code', $cartItem['color'])->first()->name;

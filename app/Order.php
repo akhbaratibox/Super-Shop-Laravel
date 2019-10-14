@@ -15,4 +15,9 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function pickup_point()
+    {
+        return $this->belongsTo(PickupPoint::class);
+    }
 }

@@ -157,6 +157,10 @@ class ShopController extends Controller
             if($request->hasFile('logo')){
                 $shop->logo = $request->logo->store('uploads/shop/logo');
             }
+
+            if ($request->has('pick_up_point_id')) {
+                $shop->pick_up_point_id = json_encode($request->pick_up_point_id);
+            }
         }
 
         elseif($request->has('facebook') || $request->has('google') || $request->has('twitter') || $request->has('youtube') || $request->has('instagram')){

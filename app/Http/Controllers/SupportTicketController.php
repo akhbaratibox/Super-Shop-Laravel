@@ -91,6 +91,7 @@ class SupportTicketController extends Controller
             $ticket_reply->files = json_encode($files);
         }
 
+        $ticket_reply->ticket->client_viewed = 0;
         $ticket_reply->ticket->status = $request->status;
         $ticket_reply->ticket->save();
         if($ticket_reply->save()){
@@ -141,6 +142,8 @@ class SupportTicketController extends Controller
     public function show($id)
     {
         $ticket = Ticket::findOrFail(decrypt($id));
+        $ticket->client_viewed = 1;
+        $ticket->save();
         $ticket_replies = $ticket->ticketreplies;
         return view('frontend.support_ticket.show', compact('ticket','ticket_replies'));
     }

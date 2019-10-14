@@ -64,7 +64,11 @@
                                                         @php
                                                             $status = $order->orderDetails->first()->delivery_status;
                                                         @endphp
-                                                        {{ ucfirst(str_replace('_', ' ', $status)) }}
+                                                        @if($order->delivery_viewed == 0)
+                                                            <span class="ml-2" style="color:green"><strong>({{ __('New') }})</strong></span>
+                                                        @else
+                                                            {{ ucfirst(str_replace('_', ' ', $status)) }}
+                                                        @endif
                                                     </td>
                                                     <td>
                                                         <span class="badge badge--2 mr-4">
@@ -73,6 +77,7 @@
                                                             @else
                                                                 <i class="bg-red"></i> {{__('Unpaid')}}
                                                             @endif
+                                                            @if($order->payment_status_viewed == 0)<span class="ml-2" style="color:green"><strong>({{ __('New') }})</strong></span>@endif
                                                         </span>
                                                     </td>
                                                     <td>
@@ -118,5 +123,13 @@
             </div>
         </div>
     </div>
+
+@endsection
+@section('script')
+    <script type="text/javascript">
+        $('#order_details').on('hidden.bs.modal', function () {
+            location.reload();
+        })
+    </script>
 
 @endsection

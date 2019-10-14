@@ -314,6 +314,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row" id="quantity">
+                                        <div class="col-md-2">
+                                            <label>{{__('Quantity')}} <span class="required-star">*</span></label>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="number" min="0" value="0" step="1" class="form-control mb-3" name="current_stock" placeholder="{{__('Quantity')}}" required>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-12" id="sku_combination">
 
@@ -642,6 +650,12 @@
     		   data:$('#choice_form').serialize(),
     		   success: function(data){
     			   $('#sku_combination').html(data);
+    			   if (!data) {
+    				   $('#quantity').show();
+    			   }
+    			   else {
+    			   		$('#quantity').hide();
+    			   }
     		   }
     	   });
     	}

@@ -63,8 +63,10 @@ class User extends Authenticatable implements MustVerifyEmail
     return $this->hasMany(Order::class);
   }
 
-  public function wallets()
+    public function wallets()
     {
         return $this->hasMany(Wallet::class)->orderBy('created_at', 'desc');
     }
+
+    
 }

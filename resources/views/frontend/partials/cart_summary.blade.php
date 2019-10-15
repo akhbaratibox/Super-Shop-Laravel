@@ -30,20 +30,8 @@
                 @foreach (Session::get('cart') as $key => $cartItem)
                     @php
                     $product = \App\Product::find($cartItem['id']);
-                    if (Session::get('delivery_info')['shipping_type'] == 'Home Delivery') {
-                        $subtotal += $cartItem['price']*$cartItem['quantity'];
-                        $tax += $cartItem['tax']*$cartItem['quantity'];
-                        $shipping += $cartItem['shipping']*$cartItem['quantity'];
-                    }
-                    elseif (Session::get('delivery_info')['shipping_type'] == 'Pick-up Point') {
-                        $subtotal += $cartItem['price']*$cartItem['quantity'];
-                        $tax += $cartItem['tax']*$cartItem['quantity'];
-                    }
-                    else {
-                        $subtotal += $cartItem['price']*$cartItem['quantity'];
-                        $tax += $cartItem['tax']*$cartItem['quantity'];
-                        $shipping += $cartItem['shipping']*$cartItem['quantity'];
-                    }
+                    $subtotal += $cartItem['price']*$cartItem['quantity'];
+                    $tax += $cartItem['tax']*$cartItem['quantity'];
                     $product_name_with_choice = $product->name;
                     if(isset($cartItem['color'])){
                         $product_name_with_choice .= ' - '.\App\Color::where('code', $cartItem['color'])->first()->name;
@@ -81,7 +69,7 @@
                             <strong class="product-quantity">× {{ $cartItem['quantity'] }}</strong>
                         </td>
                         <td class="product-total text-right">
-                            <span class="pl-4">{{ single_price($cartItem['shipping']*$cartItem['quantity']) }} ({{ ucfirst(str_replace('_', ' ', $cartItem['shipping_type'])) }})</span>
+                            <span class="pl-4">{{ single_price($cartItem['shipping']*$cartItem['quantity']) }}</span>
                         </td>
                     </tr>
                 @endforeach

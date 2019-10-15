@@ -108,6 +108,7 @@ class StaffController extends Controller
             $user->password = Hash::make($request->password);
         }
         if($user->save()){
+            $staff->role_id = $request->role_id;
             if($staff->save()){
                 flash(__('Staff has been updated successfully'))->success();
                 return redirect()->route('staffs.index');

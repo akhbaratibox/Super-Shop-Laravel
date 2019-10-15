@@ -163,40 +163,46 @@ class CheckoutController extends Controller
 
     public function store_delivery_info(Request $request)
     {
-        dd($request->all());
-        if ($request->shippimg_type == 'home_delivery') {
-            $data['shipping_type'] = 'Home Delivery';
-        }
-        elseif ($request->shippimg_type == 'pickup_point') {
-            $data['shipping_type'] = 'Pick-up Point';
-            $data['pickup_point_id'] = $request->pickup_point_id;
-        }
+        //dd($request->all());
 
-        $delivery_info = $data;
-        $request->session()->put('delivery_info', $delivery_info);
+        $subtotal = 0;
+        $tax = 0;
+        $shipping = 0;
 
-        if (Session::get('delivery_info')['shipping_type'] == 'Home Delivery') {
-            $subtotal = 0;
-            $tax = 0;
-            $shipping = 0;
-            foreach (Session::get('cart') as $key => $cartItem){
-                $subtotal += $cartItem['price']*$cartItem['quantity'];
-                $tax += $cartItem['tax']*$cartItem['quantity'];
-                $shipping += $cartItem['shipping']*$cartItem['quantity'];
+        $cart = $request->session()->get('cart', collect([]));
+        $cart = $cart->map(function ($object, $key) use ($request, $subtotal, $shipping, $tax) {
+
+            $subtotal += $object['price']*$object['quantity'];
+            $tax += $object['tax']*$object['quantity'];
+
+            if(\App\Product::find($object['id'])->added_by == 'admin'){
+                if($request['shipping_type_admin'] == 'home_delivery'){
+                    $object['shipping_type'] = 'home_delivery';
+                    $shipping += \App\Product::find($object['id'])->shipping_cost*$object['quantity'];
+                }
+                else{
+                    $object['shipping_type'] = 'pickup_point';
+                    $object['pickup_point'] = $request->pickup_point_id_admin;
+                }
             }
-
-            $total = $subtotal + $tax + $shipping;
-        }
-        elseif (Session::get('delivery_info')['shipping_type'] == 'Pick-up Point') {
-            $subtotal = 0;
-            $tax = 0;
-            foreach (Session::get('cart') as $key => $cartItem){
-                $subtotal += $cartItem['price']*$cartItem['quantity'];
-                $tax += $cartItem['tax']*$cartItem['quantity'];
+            else{
+                if($request['shipping_type_'.\App\Product::find($object['id'])->user_id] == 'home_delivery'){
+                    $object['shipping_type'] = 'home_delivery';
+                    $shipping += \App\Product::find($object['id'])->shipping_cost*$object['quantity'];
+                }
+                else{
+                    $object['shipping_type'] = 'pickup_point';
+                    $object['pickup_point'] = $request['pickup_point_id_'.\App\Product::find($object['id'])->user_id];
+                }
             }
+            return $object;
+        });
 
-            $total = $subtotal + $tax;
-        }
+        $total = $subtotal + $tax + $shipping;
+
+        $request->session()->put('cart', $cart);
+
+        //dd($cart);
 
         if(Session::has('coupon_discount')){
                 $total -= Session::get('coupon_discount');

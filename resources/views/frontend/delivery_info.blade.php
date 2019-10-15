@@ -108,7 +108,7 @@
                                             <div class="row">
                                                 <div class="col-6">
                                                     <label class="d-flex align-items-center p-3 border rounded gry-bg c-pointer">
-                                                        <input type="radio" name="shippimg_type_admin" value="home_delivery" checked class="d-none">
+                                                        <input type="radio" name="shipping_type_admin" value="home_delivery" checked class="d-none">
                                                         <span class="radio-box"></span>
                                                         <span class="d-block ml-2 strong-600">
                                                             {{ __('Home Delivery') }}
@@ -117,7 +117,7 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <label class="d-flex align-items-center p-3 border rounded gry-bg c-pointer">
-                                                        <input type="radio" name="shippimg_type_admin" value="pickup_point" class="d-none">
+                                                        <input type="radio" name="shipping_type_admin" value="pickup_point" class="d-none">
                                                         <span class="radio-box"></span>
                                                         <span class="d-block ml-2 strong-600">
                                                             {{ __('Local Pickup') }}
@@ -128,7 +128,7 @@
 
                                             @if (\App\BusinessSetting::where('type', 'pickup_point')->first()->value == 1)
                                                 <div class="mt-3">
-                                                    <select class="pickup-select form-control-lg w-100" name="pickup_point_id" data-placeholder="Select a pickup point">
+                                                    <select class="pickup-select form-control-lg w-100" name="pickup_point_id_admin" data-placeholder="Select a pickup point">
                                                             <option>Select your nearest pickup point</option>
                                                         @foreach (\App\PickupPoint::where('pick_up_status',1)->get() as $key => $pick_up_point)
                                                             <option value="{{ $pick_up_point->id }}" data-address="{{ $pick_up_point->address }}" data-phone="{{ $pick_up_point->phone }}">
@@ -176,7 +176,7 @@
                                                     <div class="row">
                                                         <div class="col-6">
                                                             <label class="d-flex align-items-center p-3 border rounded gry-bg c-pointer">
-                                                                <input type="radio" name="shippimg_type_{{ $key }}" value="home_delivery" checked class="d-none">
+                                                                <input type="radio" name="shipping_type_{{ $key }}" value="home_delivery" checked class="d-none">
                                                                 <span class="radio-box"></span>
                                                                 <span class="d-block ml-2 strong-600">
                                                                     {{ __('Home Delivery') }}
@@ -186,7 +186,7 @@
                                                         @if (json_decode(\App\Shop::where('user_id', $key)->first()->pick_up_point_id) != null)
                                                             <div class="col-6">
                                                                 <label class="d-flex align-items-center p-3 border rounded gry-bg c-pointer">
-                                                                    <input type="radio" name="shippimg_type_{{ $key }}" value="pickup_point" class="d-none">
+                                                                    <input type="radio" name="shipping_type_{{ $key }}" value="pickup_point" class="d-none">
                                                                     <span class="radio-box"></span>
                                                                     <span class="d-block ml-2 strong-600">
                                                                         {{ __('Local Pickup') }}

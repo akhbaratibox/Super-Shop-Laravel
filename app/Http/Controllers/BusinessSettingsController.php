@@ -145,7 +145,7 @@ class BusinessSettingsController extends Controller
         $path = base_path('.env');
         if (file_exists($path)) {
             $val = '"'.trim($val).'"';
-            if(strpos(file_get_contents($path), $type) >= 0){
+            if(strpos(file_get_contents($path), $type) != false && strpos(file_get_contents($path), $type) >= 0){
                 file_put_contents($path, str_replace(
                     $type.'="'.env($type).'"', $type.'='.$val, file_get_contents($path)
                 ));

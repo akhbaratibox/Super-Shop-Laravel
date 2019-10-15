@@ -105,14 +105,16 @@ class CartController extends Controller
         $data['quantity'] = $request['quantity'];
         $data['price'] = $price;
         $data['tax'] = $tax;
-        $data['shipping_type'] = $product->shipping_type;
+        $data['shipping'] = 0;
 
-        if($product->shipping_type == 'free'){
-            $data['shipping'] = 0;
-        }
-        else{
-            $data['shipping'] = $product->shipping_cost;
-        }
+        //$data['shipping_type'] = $product->shipping_type;
+
+        // if($product->shipping_type == 'free'){
+        //
+        // }
+        // else{
+        //     $data['shipping'] = $product->shipping_cost;
+        // }
 
         if($request->session()->has('cart')){
             $cart = $request->session()->get('cart', collect([]));

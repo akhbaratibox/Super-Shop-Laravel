@@ -146,23 +146,13 @@ class OrderController extends Controller
             $shipping = 0;
             foreach (Session::get('cart') as $key => $cartItem){
                 $product = Product::find($cartItem['id']);
-                // $subtotal += $cartItem['price']*$cartItem['quantity'];
-                // $tax += $cartItem['tax']*$cartItem['quantity'];
-                // $shipping += $cartItem['shipping']*$cartItem['quantity'];
-                if (Session::get('delivery_info')['shipping_type'] == 'Home Delivery') {
+
+                if ($cartItem['shipping_type'] == 'home_delivery') {
                     $subtotal += $cartItem['price']*$cartItem['quantity'];
                     $tax += $cartItem['tax']*$cartItem['quantity'];
-                    $shipping += $cartItem['shipping']*$cartItem['quantity'];
+                    $shipping += \App\Product::find($cartItem['id'])->shipping_cost*$cartItem['quantity'];
                 }
-                elseif (Session::get('delivery_info')['shipping_type'] == 'Pick-up Point') {
-                    $subtotal += $cartItem['price']*$cartItem['quantity'];
-                    $tax += $cartItem['tax']*$cartItem['quantity'];
-                }
-                else {
-                    $subtotal += $cartItem['price']*$cartItem['quantity'];
-                    $tax += $cartItem['tax']*$cartItem['quantity'];
-                    $shipping += $cartItem['shipping']*$cartItem['quantity'];
-                }
+
                 $product_variation = null;
                 if(isset($cartItem['color'])){
                     $product_variation .= Color::where('code', $cartItem['color'])->first()->name;
@@ -195,12 +185,16 @@ class OrderController extends Controller
                 $order_detail->variation = $product_variation;
                 $order_detail->price = $cartItem['price'] * $cartItem['quantity'];
                 $order_detail->tax = $cartItem['tax'] * $cartItem['quantity'];
-                if (Session::get('delivery_info')['shipping_type'] == 'Home Delivery') {
-                    $order_detail->shipping_cost = $cartItem['shipping']*$cartItem['quantity'];
+                $order_detail->shipping_type = $cartItem['shipping_type'];
+
+                if ($cartItem['shipping_type'] == 'home_delivery') {
+                    $order_detail->shipping_cost = \App\Product::find($cartItem['id'])->shipping_cost*$cartItem['quantity'];
                 }
-                elseif (Session::get('delivery_info')['shipping_type'] == 'Pick-up Point') {
-                    $order_detail->shipping_cost = '0';
+                else{
+                    $order_detail->shipping_cost = 0;
+                    $order_detail->pickup_point_id = $cartItem['pickup_point'];
                 }
+
                 $order_detail->quantity = $cartItem['quantity'];
                 $order_detail->save();
 

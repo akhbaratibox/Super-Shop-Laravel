@@ -91,14 +91,6 @@
     						{{ ucfirst(str_replace('_', ' ', $order->payment_type)) }}
     					</td>
     				</tr>
-                    <tr>
-    					<td class="text-main text-bold">
-    						{{__('Delivery Type')}}
-    					</td>
-    					<td class="text-right">
-    						{{ $order->shipping_type }}
-    					</td>
-    				</tr>
                     @if ($order->shipping_type == 'Pick-up Point')
                         <tr>
         					<td class="text-main text-bold">
@@ -127,6 +119,9 @@
             					<th class="text-uppercase">
             						{{__('Description')}}
             					</th>
+                                <th class="text-uppercase">
+            						{{__('Delivery Type')}}
+            					</th>
             					<th class="min-col text-center text-uppercase">
             						{{__('Qty')}}
             					</th>
@@ -150,6 +145,15 @@
                                             <strong>{{ __('Product Unavailable') }}</strong>
                                         @endif
                 					</td>
+                                    <td>
+                                        @if ($orderDetail->shipping_type != null && $orderDetail->shipping_type == 'home_delivery')
+                                            {{ __('Home Delivery') }}
+                                        @elseif ($orderDetail->shipping_type == 'pickup_point')
+                                            @if ($orderDetail->pickup_point != null)
+                                                {{ $orderDetail->pickup_point->name }} ({{ __('Pickip Point') }})
+                                            @endif
+                                        @endif
+                                    </td>
                 					<td class="text-center">
                 						{{ $orderDetail->quantity }}
                 					</td>

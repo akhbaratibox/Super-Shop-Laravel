@@ -129,24 +129,12 @@
 		</table>
 	</div>
 
-	<div style="padding: 1.5rem;">
-		<table>
-			<tr><td class="strong small gry-color">Shipping Details:</td></tr>
-			<tr><td class="gry-color small">Shipping Method: {{ $order->shipping_type }}</td></tr>
-			@if ($order->shipping_type == 'Pick-up Point')
-				<tr><td class="gry-color small">Pick-up Point: {{ $order->pickup_point->name }}</td></tr>
-				<tr><td class="gry-color small">Pick-up Point Address: {{ $order->pickup_point->address }}</td></tr>
-				<tr><td class="gry-color small">Pick-up Point Phone: {{ $order->pickup_point->phone }}</td></tr>
-			@endif
-
-		</table>
-	</div>
-
     <div style="padding: 1.5rem;">
 		<table class="padding text-left small border-bottom">
 			<thead>
                 <tr class="gry-color" style="background: #eceff4;">
                     <th width="50%">Product Name</th>
+					<th width="50%">Delivery Type</th>
                     <th width="10%">Qty</th>
                     <th width="15%">Unit Price</th>
                     <th width="10%">Tax</th>
@@ -157,6 +145,15 @@
                 @foreach ($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail)
 	                <tr class="">
 						<td>{{ $orderDetail->product->name }} ({{ $orderDetail->variation }})</td>
+						<td>
+							@if ($orderDetail->shipping_type != null && $orderDetail->shipping_type == 'home_delivery')
+								{{ __('Home Delivery') }}
+							@elseif ($orderDetail->shipping_type == 'pickup_point')
+								@if ($orderDetail->pickup_point != null)
+									{{ $orderDetail->pickup_point->name }} ({{ __('Pickip Point') }})
+								@endif
+							@endif
+						</td>
 						<td class="gry-color">{{ $orderDetail->quantity }}</td>
 						<td class="gry-color">{{ single_price($orderDetail->price/$orderDetail->quantity) }}</td>
 						<td class="gry-color">{{ single_price($orderDetail->tax/$orderDetail->quantity) }}</td>

@@ -96,8 +96,8 @@
                             <td>{{ single_price($order->orderDetails->where('seller_id', Auth::user()->id)->sum('price') + $order->orderDetails->where('seller_id', Auth::user()->id)->sum('tax')) }}</td>
                         </tr>
                         <tr>
-                            <td class="w-50 strong-600">{{__('Shipping method')}}:</td>
-                            <td>{{__('Flat shipping rate')}}</td>
+                            <td class="w-50 strong-600">{{__('Contact')}}:</td>
+                            <td>{{ json_decode($order->shipping_address)->phone }}</td>
                         </tr>
                         <tr>
                             <td class="w-50 strong-600">{{__('Payment method')}}:</td>
@@ -120,6 +120,7 @@
                                 <th width="40%">{{__('Product')}}</th>
                                 <th>{{__('Variation')}}</th>
                                 <th>{{__('Quantity')}}</th>
+                                <th>{{__('Delivery Type')}}</th>
                                 <th>{{__('Price')}}</th>
                             </tr>
                         </thead>
@@ -139,6 +140,15 @@
                                     </td>
                                     <td>
                                         {{ $orderDetail->quantity }}
+                                    </td>
+                                    <td>
+                                        @if ($orderDetail->shipping_type != null && $orderDetail->shipping_type == 'home_delivery')
+                                            {{ __('Home Delivery') }}
+                                        @elseif ($orderDetail->shipping_type == 'pickup_point')
+                                            @if ($orderDetail->pickup_point != null)
+                                                {{ $orderDetail->pickup_point->name }} ({{ __('Pickip Point') }})
+                                            @endif
+                                        @endif
                                     </td>
                                     <td>{{ $orderDetail->price }}</td>
                                 </tr>

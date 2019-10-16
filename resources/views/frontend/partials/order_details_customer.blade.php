@@ -1,4 +1,5 @@
-<div class="modal-header">
+
+<th>{{__('Delivery Type')}}</th><div class="modal-header">
     <h5 class="modal-title strong-600 heading-5">{{__('Order id')}}: {{ $order->code }}</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
@@ -97,6 +98,7 @@
                                 <th width="40%">{{__('Product')}}</th>
                                 <th>{{__('Variation')}}</th>
                                 <th>{{__('Quantity')}}</th>
+                                <th>{{__('Delivery Type')}}</th>
                                 <th>{{__('Price')}}</th>
                             </tr>
                         </thead>
@@ -116,6 +118,15 @@
                                     </td>
                                     <td>
                                         {{ $orderDetail->quantity }}
+                                    </td>
+                                    <td>
+                                        @if ($orderDetail->shipping_type != null && $orderDetail->shipping_type == 'home_delivery')
+                                            {{ __('Home Delivery') }}
+                                        @elseif ($orderDetail->shipping_type == 'pickup_point')
+                                            @if ($orderDetail->pickup_point != null)
+                                                {{ $orderDetail->pickup_point->name }} ({{ __('Pickip Point') }})
+                                            @endif
+                                        @endif
                                     </td>
                                     <td>{{ single_price($orderDetail->price) }}</td>
                                 </tr>

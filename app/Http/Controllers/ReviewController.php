@@ -32,6 +32,12 @@ class ReviewController extends Controller
                     ->distinct()
                     ->paginate(9);
 
+        foreach ($reviews as $key => $value) {
+            $review = \App\Review::find($value->id);
+            $review->viewed = 1;
+            $review->save();
+        }
+
         return view('frontend.seller.reviews', compact('reviews'));
     }
 

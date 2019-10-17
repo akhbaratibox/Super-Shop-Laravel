@@ -2654,7 +2654,7 @@ function readFileAsDataURL(file) {
  */
 function createImage(url) {
     return $$1.Deferred(function (deferred) {
-        var $img = $$1('<img loading="lazy" >');
+        var $img = $$1('<img >');
         $img.one('load', function () {
             $img.off('error abort');
             deferred.resolve($img);

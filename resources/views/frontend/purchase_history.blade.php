@@ -65,7 +65,7 @@
                                                             $status = $order->orderDetails->first()->delivery_status;
                                                         @endphp
                                                         @if($order->delivery_viewed == 0)
-                                                            <span class="ml-2" style="color:green"><strong>({{ __('New') }})</strong></span>
+                                                            <span class="ml-2" style="color:green"><strong>({{ __('Updated') }})</strong></span>
                                                         @else
                                                             {{ ucfirst(str_replace('_', ' ', $status)) }}
                                                         @endif
@@ -77,7 +77,7 @@
                                                             @else
                                                                 <i class="bg-red"></i> {{__('Unpaid')}}
                                                             @endif
-                                                            @if($order->payment_status_viewed == 0)<span class="ml-2" style="color:green"><strong>({{ __('New') }})</strong></span>@endif
+                                                            @if($order->payment_status_viewed == 0)<span class="ml-2" style="color:green"><strong>({{ __('Updated') }})</strong></span>@endif
                                                         </span>
                                                     </td>
                                                     <td>

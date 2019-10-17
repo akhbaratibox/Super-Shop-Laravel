@@ -115,15 +115,17 @@
                                                         </span>
                                                     </label>
                                                 </div>
-                                                <div class="col-6">
-                                                    <label class="d-flex align-items-center p-3 border rounded gry-bg c-pointer">
-                                                        <input type="radio" name="shipping_type_admin" value="pickup_point" class="d-none">
-                                                        <span class="radio-box"></span>
-                                                        <span class="d-block ml-2 strong-600">
-                                                            {{ __('Local Pickup') }}
-                                                        </span>
-                                                    </label>
-                                                </div>
+                                                @if (\App\BusinessSetting::where('type', 'pickup_point')->first()->value == 1)
+                                                    <div class="col-6">
+                                                        <label class="d-flex align-items-center p-3 border rounded gry-bg c-pointer">
+                                                            <input type="radio" name="shipping_type_admin" value="pickup_point" class="d-none">
+                                                            <span class="radio-box"></span>
+                                                            <span class="d-block ml-2 strong-600">
+                                                                {{ __('Local Pickup') }}
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                @endif
                                             </div>
 
                                             @if (\App\BusinessSetting::where('type', 'pickup_point')->first()->value == 1)
@@ -183,21 +185,23 @@
                                                                 </span>
                                                             </label>
                                                         </div>
-                                                        @if (json_decode(\App\Shop::where('user_id', $key)->first()->pick_up_point_id) != null)
-                                                            <div class="col-6">
-                                                                <label class="d-flex align-items-center p-3 border rounded gry-bg c-pointer">
-                                                                    <input type="radio" name="shipping_type_{{ $key }}" value="pickup_point" class="d-none">
-                                                                    <span class="radio-box"></span>
-                                                                    <span class="d-block ml-2 strong-600">
-                                                                        {{ __('Local Pickup') }}
-                                                                    </span>
-                                                                </label>
-                                                            </div>
+                                                        @if (\App\BusinessSetting::where('type', 'pickup_point')->first()->value == 1)
+                                                            @if (is_array(json_decode(\App\Shop::where('user_id', $key)->first()->pick_up_point_id)))
+                                                                <div class="col-6">
+                                                                    <label class="d-flex align-items-center p-3 border rounded gry-bg c-pointer">
+                                                                        <input type="radio" name="shipping_type_{{ $key }}" value="pickup_point" class="d-none">
+                                                                        <span class="radio-box"></span>
+                                                                        <span class="d-block ml-2 strong-600">
+                                                                            {{ __('Local Pickup') }}
+                                                                        </span>
+                                                                    </label>
+                                                                </div>
+                                                            @endif
                                                         @endif
                                                     </div>
 
                                                     @if (\App\BusinessSetting::where('type', 'pickup_point')->first()->value == 1)
-                                                        @if (json_decode(\App\Shop::where('user_id', $key)->first()->pick_up_point_id) != null)
+                                                        @if (is_array(json_decode(\App\Shop::where('user_id', $key)->first()->pick_up_point_id)))
                                                             @foreach (json_decode(\App\Shop::where('user_id', $key)->first()->pick_up_point_id) as $pick_up_point)
                                                                 @if (\App\PickupPoint::find($pick_up_point) != null)
                                                                     <div class="mt-3">

@@ -3,6 +3,38 @@
 @section('content')
 
     <div class="row">
+
+        <div class="col-lg-6">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center">{{__('Default Language')}}</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" action="{{ route('business_settings.update') }}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <div class="col-lg-3">
+                                <label class="control-label">{{__('Default Language')}}</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <select class="form-control demo-select2-placeholder" name="default_language">
+                                    @foreach (\App\Language::all() as $key => $language)
+                                        <option value="{{ $language->id }}" <?php if(\App\BusinessSetting::where('type', 'default_language')->first()->value == $language->id) echo 'selected'?> >{{ $language->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <input type="hidden" name="types[]" value="default_language">
+                            <div class="col-lg-3">
+                                <button class="btn btn-purple" type="submit">{{__('Save')}}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col-sm-12">
             <a href="{{ route('languages.create')}}" class="btn btn-rounded btn-info pull-right">{{__('Add New Language')}}</a>
         </div>

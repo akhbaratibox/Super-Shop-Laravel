@@ -48,9 +48,9 @@
                                     </thead>
                                     <tbody>
                                         @if (count($reviews) > 0)
-                                            @foreach ($reviews as $key => $review)
+                                            @foreach ($reviews as $key => $value)
                                                 @php
-                                                    $review = \App\Review::find($review->id);
+                                                    $review = \App\Review::find($value->id);
                                                 @endphp
                                                 @if($review != null && $review->product != null && $review->user != null)
                                                     <tr>
@@ -58,7 +58,7 @@
                                                             {{ $key+1 }}
                                                         </td>
                                                         <td>
-                                                            <a href="{{ route('product', $review->product->slug) }}" target="_blank">{{ __($review->product->name) }}</a>@if ($review->viewed == 0) <span class="badge badge-success">{{ __('New') }}</span> @endif
+                                                            <a href="{{ route('product', $review->product->slug) }}" target="_blank">{{ __($review->product->name) }}</a>
                                                         </td>
                                                         <td>{{ $review->user->name }} ({{ $review->user->email }})</td>
                                                         <td>

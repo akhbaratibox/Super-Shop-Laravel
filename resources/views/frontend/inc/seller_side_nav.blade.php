@@ -63,7 +63,7 @@
                     <a href="{{ route('orders.index') }}" class="{{ areActiveRoutesHome(['orders.index'])}}">
                         <i class="la la-file-text"></i>
                         <span class="category-name">
-                            {{__('Orders')}} @if($orders > 0)<span class="ml-2" style="color:green"><strong>({{ $orders }} {{ __('Notifications') }})</strong></span></span>@endif
+                            {{__('Orders')}} @if($orders > 0)<span class="ml-2" style="color:green"><strong>({{ $orders }} {{ __('New') }})</strong></span></span>@endif
                         </span>
                     </a>
                 </li>
@@ -81,7 +81,7 @@
                     <a href="{{ route('reviews.seller') }}" class="{{ areActiveRoutesHome(['reviews.seller'])}}">
                         <i class="la la-star-o"></i>
                         <span class="category-name">
-                            {{__('Product Reviews')}}@if($review_count > 0)<span class="ml-2" style="color:green"><strong>({{ $review_count }} {{ __('Notifications') }})</strong></span>@endif
+                            {{__('Product Reviews')}}@if($review_count > 0)<span class="ml-2" style="color:green"><strong>({{ $review_count }} {{ __('New') }})</strong></span>@endif
                         </span>
                     </a>
                 </li>

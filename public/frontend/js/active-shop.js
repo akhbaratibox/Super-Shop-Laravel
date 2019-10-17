@@ -732,7 +732,7 @@ $(document).ready(function() {
                 userId: userId,
                 limit: limit,
                 resolution: 'thumbnail',
-                template: '<div class="col-sm-' + col + ' col-6"><a href="{{link}}"'+lightbox+'><img loading="lazy"  src="{{image}}" class="img-fluid '+classes+'" /></a></div>'
+                template: '<div class="col-sm-' + col + ' col-6"><a href="{{link}}"'+lightbox+'><img src="{{image}}" class="img-fluid '+classes+'" /></a></div>'
             });
             instafeed.run();
         });

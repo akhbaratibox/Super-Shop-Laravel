@@ -32,6 +32,12 @@ class OrderController extends Controller
                     ->distinct()
                     ->paginate(9);
 
+        foreach ($orders as $key => $value) {
+            $order = \App\Order::find($value->id);
+            $order->viewed = 1;
+            $order->save();
+        }
+
         return view('frontend.seller.orders', compact('orders'));
     }
 
@@ -304,7 +310,7 @@ class OrderController extends Controller
     public function order_details(Request $request)
     {
         $order = Order::findOrFail($request->order_id);
-        $order->viewed = 1;
+        //$order->viewed = 1;
         $order->save();
         return view('frontend.partials.order_details_seller', compact('order'));
     }

@@ -180,7 +180,7 @@ class OrderController extends Controller
                     $product->save();
                 }
                 else {
-                    $product->current_stock = $product->current_stock - $cartItem['quantity'];
+                    $product->current_stock -= $cartItem['quantity'];
                     $product->save();
                 }
 

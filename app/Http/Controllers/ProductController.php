@@ -107,9 +107,6 @@ class ProductController extends Controller
         if($request->shipping_type == 'free'){
             $product->shipping_cost = 0;
         }
-        elseif ($request->shipping_type == 'local_pickup') {
-            $product->shipping_cost = $request->local_pickup_shipping_cost;
-        }
         elseif ($request->shipping_type == 'flat_rate') {
             $product->shipping_cost = $request->flat_shipping_cost;
         }
@@ -320,9 +317,6 @@ class ProductController extends Controller
         $product->shipping_type = $request->shipping_type;
         if($request->shipping_type == 'free'){
             $product->shipping_cost = 0;
-        }
-        elseif ($request->shipping_type == 'local_pickup') {
-            $product->shipping_cost = $request->local_pickup_shipping_cost;
         }
         elseif ($request->shipping_type == 'flat_rate') {
             $product->shipping_cost = $request->flat_shipping_cost;

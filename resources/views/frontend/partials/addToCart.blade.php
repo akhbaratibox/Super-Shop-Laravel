@@ -120,11 +120,16 @@
                                 </div>
                                 @php
                                     $qty = 0;
-                                    foreach (json_decode($product->variations) as $key => $variation) {
-                                        $qty += $variation->qty;
+                                    if(is_array(json_decode($product->variations, true)) && !empty(json_decode($product->variations, true))){
+                                        foreach (json_decode($product->variations) as $key => $variation) {
+                                            $qty += $variation->qty;
+                                        }
+                                    }
+                                    else{
+                                        $qty = $product->current_stock;
                                     }
                                 @endphp
-                                @if(count(json_decode($product->variations, true)) >= 1)
+                                @if($qty > 0)
                                     <div class="avialable-amount">(<span id="available-quantity">{{ $qty }}</span> {{__('available')}})</div>
                                 @endif
                             </div>

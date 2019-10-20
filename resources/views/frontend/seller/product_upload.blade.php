@@ -336,20 +336,6 @@
                                 <div class="form-box-content p-3">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>{{__('Local Pickup')}}</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <input type="number" min="0" step="0.01" value="0" class="form-control mb-3" name="local_pickup_shipping_cost" placeholder="{{__('Local Pickup Cost')}}">
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label class="switch" style="margin-top:5px;">
-                                                <input type="radio" name="shipping_type" value="local_pickup" checked>
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2">
                                             <label>{{__('Flat Rate')}}</label>
                                         </div>
                                         <div class="col-md-8">

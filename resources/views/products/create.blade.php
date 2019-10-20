@@ -287,30 +287,6 @@
 									</div>
 								</div>
 							</div>
-							<div class="row bord-btm">
-								<div class="col-md-2">
-									<div class="panel-heading">
-										<h3 class="panel-title">{{__('Local Pickup')}}</h3>
-									</div>
-								</div>
-								<div class="col-md-10">
-									<div class="form-group">
-										<label class="col-lg-2 control-label">{{__('Status')}}</label>
-										<div class="col-lg-7">
-											<label class="switch" style="margin-top:5px;">
-												<input type="radio" name="shipping_type" value="local_pickup" checked>
-												<span class="slider round"></span>
-											</label>
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-lg-2 control-label">{{__('Shipping cost')}}</label>
-										<div class="col-lg-7">
-											<input type="number" min="0" value="0" step="0.01" placeholder="{{__('Shipping cost')}}" name="local_pickup_shipping_cost" class="form-control" required>
-										</div>
-									</div>
-								</div>
-							</div>
 							<div class="row">
 								<div class="col-md-2">
 									<div class="panel-heading">

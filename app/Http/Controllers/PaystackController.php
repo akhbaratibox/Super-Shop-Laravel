@@ -21,8 +21,8 @@ class PaystackController extends Controller
         if(Session::get('payment_type') == 'cart_payment'){
             $order = Order::findOrFail(Session::get('order_id'));
             $paystack = new Paystack(env('PAYSTACK_SECRET_KEY'), $baseUrl);
-            $user = Auth::user();
-            $request->email = $user->email;
+            //$user = Auth::user();
+            $request->email = $request->session()->get('shipping_info')['email'];
             $request->amount = round($order->grand_total * 100);
             //$request->key = env('PAYSTACK_SECRET_KEY');
             $request->reference = $paystack->genTranxRef();

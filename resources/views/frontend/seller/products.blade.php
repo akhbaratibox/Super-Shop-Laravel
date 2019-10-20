@@ -39,7 +39,7 @@
                                 </a>
                             </div>
                         </div>
-                        
+
                         <div class="card no-border mt-4">
                             <div>
                                 <table class="table table-sm table-hover table-responsive-md">
@@ -65,8 +65,13 @@
                                                 <td>
                                                     @php
                                                         $qty = 0;
-                                                        foreach (json_decode($product->variations) as $key => $variation) {
-                                                            $qty += $variation->qty;
+                                                        if(is_array(json_decode($product->variations, true)) && !empty(json_decode($product->variations, true))){
+                                                            foreach (json_decode($product->variations) as $key => $variation) {
+                                                                $qty += $variation->qty;
+                                                            }
+                                                        }
+                                                        else{
+                                                            $qty = $product->current_stock;
                                                         }
                                                         echo $qty;
                                                     @endphp

@@ -101,20 +101,23 @@
                                     <ul class="inline-links inline-links--style-1">
                                         @php
                                             $qty = 0;
-                                            foreach (json_decode($product->variations) as $key => $variation) {
-                                                $qty += $variation->qty;
+                                            if(is_array(json_decode($product->variations, true)) && !empty(json_decode($product->variations, true))){
+                                                foreach (json_decode($product->variations) as $key => $variation) {
+                                                    $qty += $variation->qty;
+                                                }
+                                            }
+                                            else{
+                                                $qty = $product->current_stock;
                                             }
                                         @endphp
-                                        @if(count(json_decode($product->variations, true)) >= 1)
-                                            @if ($qty > 0)
-                                                <li>
-                                                    <span class="badge badge-md badge-pill bg-green">{{__('In stock')}}</span>
-                                                </li>
-                                            @else
-                                                <li>
-                                                    <span class="badge badge-md badge-pill bg-red">{{__('Out of stock')}}</span>
-                                                </li>
-                                            @endif
+                                        @if ($qty > 0)
+                                            <li>
+                                                <span class="badge badge-md badge-pill bg-green">{{__('In stock')}}</span>
+                                            </li>
+                                        @else
+                                            <li>
+                                                <span class="badge badge-md badge-pill bg-red">{{__('Out of stock')}}</span>
+                                            </li>
                                         @endif
                                     </ul>
                                 </div>
@@ -231,11 +234,7 @@
                                                     </button>
                                                 </span>
                                             </div>
-                                            @if(count(json_decode($product->variations, true)) >= 1)
-                                                <div class="avialable-amount">(<span id="available-quantity">{{ $qty }}</span> {{__('available')}})</div>
-                                            @else
-                                                <div class="avialable-amount">(<span id="">{{ $product->current_stock }}</span> {{__('available')}})</div>
-                                            @endif
+                                            <div class="avialable-amount">(<span id="available-quantity">{{ $qty }}</span> {{__('available')}})</div>
                                         </div>
                                     </div>
                                 </div>
@@ -260,33 +259,19 @@
                             <div class="d-table width-100 mt-3">
                                 <div class="d-table-cell">
                                     <!-- Buy Now button -->
-                                    @if(count(json_decode($product->variations, true)) >= 1)
-                                        @if ($qty > 0)
-                                            <button type="button" class="btn btn-styled btn-base-1 btn-icon-left strong-700 hov-bounce hov-shaddow" onclick="buyNow()">
-                                                <i class="la la-shopping-cart"></i> {{__('Buy Now')}}
-                                            </button>
-                                        @endif
-                                        <!-- Add to cart button -->
+                                    @if ($qty > 0)
+                                        <button type="button" class="btn btn-styled btn-base-1 btn-icon-left strong-700 hov-bounce hov-shaddow" onclick="buyNow()">
+                                            <i class="la la-shopping-cart"></i> {{__('Buy Now')}}
+                                        </button>
                                         <button type="button" class="btn btn-styled btn-alt-base-1 c-white btn-icon-left strong-700 hov-bounce hov-shaddow ml-2" onclick="addToCart()">
                                             <i class="la la-shopping-cart"></i>
                                             <span class="d-none d-md-inline-block"> {{__('Add to cart')}}</span>
                                         </button>
                                     @else
-                                        @if ($product->current_stock > 0)
-                                            <button type="button" class="btn btn-styled btn-base-1 btn-icon-left strong-700 hov-bounce hov-shaddow" onclick="buyNow()">
-                                                <i class="la la-shopping-cart"></i> {{__('Buy Now')}}
-                                            </button>
-                                            <button type="button" class="btn btn-styled btn-alt-base-1 c-white btn-icon-left strong-700 hov-bounce hov-shaddow ml-2" onclick="addToCart()">
-                                                <i class="la la-shopping-cart"></i>
-                                                <span class="d-none d-md-inline-block"> {{__('Add to cart')}}</span>
-                                            </button>
-                                        @else
-                                            <button type="button" class="btn btn-styled btn-base-1 btn-icon-left strong-700 hov-bounce hov-shaddow">
-                                                <i class="la la-cart-arrow-down"></i> {{__('Out of Stock')}}
-                                            </button>
-                                        @endif
+                                        <button type="button" class="btn btn-styled btn-base-1 btn-icon-left strong-700 hov-bounce hov-shaddow">
+                                            <i class="la la-cart-arrow-down"></i> {{__('Out of Stock')}}
+                                        </button>
                                     @endif
-
                                 </div>
                             </div>
 

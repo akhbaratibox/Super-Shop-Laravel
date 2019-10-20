@@ -7,6 +7,7 @@ use App;
 use Session;
 use Config;
 use App\BusinessSetting;
+use DB;
 
 class Language
 {
@@ -22,7 +23,7 @@ class Language
         if(Session::has('locale')){
             $locale = Session::get('locale');
         }
-        if(BusinessSetting::where('type', 'default_language')->first()->value != null && \App\Language::find(BusinessSetting::where('type', 'default_language')->first()->value) != null){
+        elseif(DB::connection()->getPdo() && BusinessSetting::where('type', 'default_language')->first()->value != null && \App\Language::find(BusinessSetting::where('type', 'default_language')->first()->value) != null){
             $locale = \App\Language::find(BusinessSetting::where('type', 'default_language')->first()->value)->code;
         }
         else{

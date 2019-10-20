@@ -21,7 +21,11 @@ class UpdateController extends Controller
     }
 
     public function step1() {
-        if(BusinessSetting::where('type', 'current_version')->first() != null && BusinessSetting::where('type', 'current_version')->first()->value == '1.5'){
+        if(BusinessSetting::where('type', 'current_version')->first() != null && BusinessSetting::where('type', 'current_version')->first()->value == '1.6'){
+            $sql_path = base_path('sqlupdates/v17.sql');
+            DB::unprepared(file_get_contents($sql_path));
+        }
+        elseif(BusinessSetting::where('type', 'current_version')->first() != null && BusinessSetting::where('type', 'current_version')->first()->value == '1.5'){
             $sql_path = base_path('sqlupdates/v16.sql');
             DB::unprepared(file_get_contents($sql_path));
         }

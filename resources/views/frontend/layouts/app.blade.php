@@ -324,6 +324,16 @@
                    $('#option-choice-form #chosen_price_div').removeClass('d-none');
                    $('#option-choice-form #chosen_price_div #chosen_price').html(data.price);
                    $('#available-quantity').html(data.quantity);
+                   $('.input-number').prop('max', data.quantity);
+                   //console.log(data.quantity);
+                   if(parseInt(data.quantity) < 1){
+                       $('.buy-now').hide();
+                       $('.add-to-cart').hide();
+                   }
+                   else{
+                       $('.buy-now').show();
+                       $('.add-to-cart').show();
+                   }
                }
            });
         }

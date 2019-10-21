@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2019 at 09:40 AM
+-- Generation Time: Oct 21, 2019 at 11:29 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -1007,6 +1007,24 @@ INSERT INTO `payments` (`id`, `seller_id`, `amount`, `payment_details`, `payment
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pickup_points`
+--
+
+CREATE TABLE `pickup_points` (
+  `id` int(11) NOT NULL,
+  `staff_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `address` text NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `pick_up_status` int(1) DEFAULT NULL,
+  `cash_on_pickup_status` int(1) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `policies`
 --
 
@@ -1211,6 +1229,23 @@ CREATE TABLE `sellers` (
 
 INSERT INTO `sellers` (`id`, `user_id`, `verification_status`, `verification_info`, `cash_on_delivery_status`, `sslcommerz_status`, `stripe_status`, `paypal_status`, `paypal_client_id`, `paypal_client_secret`, `ssl_store_id`, `ssl_password`, `stripe_key`, `stripe_secret`, `instamojo_status`, `instamojo_api_key`, `instamojo_token`, `razorpay_status`, `razorpay_api_key`, `razorpay_secret`, `paystack_status`, `paystack_public_key`, `paystack_secret_key`, `voguepay_status`, `voguepay_merchand_id`, `admin_to_pay`, `created_at`, `updated_at`) VALUES
 (1, 3, 1, '[{\"type\":\"text\",\"label\":\"Name\",\"value\":\"Mr. Seller\"},{\"type\":\"select\",\"label\":\"Marital Status\",\"value\":\"Married\"},{\"type\":\"multi_select\",\"label\":\"Company\",\"value\":\"[\\\"Company\\\"]\"},{\"type\":\"select\",\"label\":\"Gender\",\"value\":\"Male\"},{\"type\":\"file\",\"label\":\"Image\",\"value\":\"uploads\\/verification_form\\/CRWqFifcbKqibNzllBhEyUSkV6m1viknGXMEhtiW.png\"}]', 1, 1, 1, 0, NULL, NULL, 'activ5c3c5dac9254d', 'activ5c3c5dac9254d@ssl', 'pk_test_CqAfBW85ZifDyuEOhGaD4ZbE', 'sk_test_mRRMmV4GnBJ4UT7qeLlDe5F8', 0, NULL, NULL, 0, NULL, NULL, 1, 'pk_test_855c5f39d8f662a5d63fabe25ead64fe21018f15', 'sk_test_1175e92519f88e9c665d0b980f53ff1cfffbbc38', 0, NULL, 0.00, '2018-10-07 04:42:57', '2019-07-23 06:45:03');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seller_withdraw_requests`
+--
+
+CREATE TABLE `seller_withdraw_requests` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `amount` double(8,2) DEFAULT NULL,
+  `message` longtext DEFAULT NULL,
+  `status` int(1) DEFAULT NULL,
+  `viewed` int(1) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1621,6 +1656,12 @@ ALTER TABLE `payments`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `pickup_points`
+--
+ALTER TABLE `pickup_points`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `policies`
 --
 ALTER TABLE `policies`
@@ -1660,6 +1701,12 @@ ALTER TABLE `searches`
 -- Indexes for table `sellers`
 --
 ALTER TABLE `sellers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `seller_withdraw_requests`
+--
+ALTER TABLE `seller_withdraw_requests`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1863,6 +1910,12 @@ ALTER TABLE `payments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `pickup_points`
+--
+ALTER TABLE `pickup_points`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `policies`
 --
 ALTER TABLE `policies`
@@ -1903,6 +1956,12 @@ ALTER TABLE `searches`
 --
 ALTER TABLE `sellers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `seller_withdraw_requests`
+--
+ALTER TABLE `seller_withdraw_requests`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `seo_settings`

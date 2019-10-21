@@ -23,7 +23,7 @@ class Language
         if(Session::has('locale')){
             $locale = Session::get('locale');
         }
-        elseif(DB::connection()->getPdo() && BusinessSetting::where('type', 'default_language')->first()->value != null && \App\Language::find(BusinessSetting::where('type', 'default_language')->first()->value) != null){
+        elseif(env('DB_DATABASE') != null && BusinessSetting::where('type', 'default_language')->first()->value != null && \App\Language::find(BusinessSetting::where('type', 'default_language')->first()->value) != null){
             $locale = \App\Language::find(BusinessSetting::where('type', 'default_language')->first()->value)->code;
         }
         else{

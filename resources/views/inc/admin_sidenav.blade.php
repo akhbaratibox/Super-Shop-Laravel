@@ -199,12 +199,12 @@
                                 <li class="{{ areActiveRoutes(['sellers.index', 'sellers.create', 'sellers.edit', 'sellers.payment_history'])}}">
                                     @php
                                         $sellers = \App\Seller::where('verification_status', 0)->where('verification_info', '!=', null)->count();
-                                        $withdraw_req = \App\SellerWithdrawRequest::where('viewed', '0')->get();
+                                        //$withdraw_req = \App\SellerWithdrawRequest::where('viewed', '0')->get();
                                     @endphp
                                     <a class="nav-link" href="{{route('sellers.index')}}">{{__('Seller List')}} @if($sellers > 0)<span class="pull-right badge badge-info">{{ $sellers }}</span> @endif</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['withdraw_requests_all'])}}">
-                                    <a class="nav-link" href="{{ route('withdraw_requests_all') }}">{{__('Seller Request')}}@if(count($withdraw_req) > 0)<span class="pull-right badge badge-info">{{ count($withdraw_req) }}</span> @endif</a>
+                                    <a class="nav-link" href="{{ route('withdraw_requests_all') }}">{{__('Seller Withdraw Requests')}}</a>
                                 </li>
                                 <li class="{{ areActiveRoutes(['sellers.payment_histories'])}}">
                                     <a class="nav-link" href="{{ route('sellers.payment_histories') }}">{{__('Seller Payments')}}</a>

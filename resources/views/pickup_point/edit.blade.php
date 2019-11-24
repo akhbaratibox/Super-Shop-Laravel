@@ -40,13 +40,6 @@
                             		<span class="slider round"></span>
                             </label>
                         </div>
-                        <label class="col-sm-3 control-label">{{__('Cash on Pickup')}}</label>
-                        <div class="col-sm-3">
-                            <label class="switch" style="margin-top:5px;">
-                            		<input value="1" type="checkbox" name="cash_on_pickup_status"@if ($pickup_point->cash_on_pickup_status == 1) checked @endif>
-                            		<span class="slider round"></span>
-                            </label>
-                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="name">{{__('Pick-up Point Manager')}}</label>

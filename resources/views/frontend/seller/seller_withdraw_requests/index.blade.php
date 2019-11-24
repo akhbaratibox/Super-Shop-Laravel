@@ -79,11 +79,7 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if ($seller_withdraw_request->message != null)
-                                                            <a onclick="show_message_modal('{{$seller_withdraw_request->id}}')"><span class="ml-2" style="color:green"><strong>{{__('SHOW MESSAGE')}}</strong></span></a>
-                                                        @else
-                                                            <span class="ml-2" style="color:blue">{{__('No message You sent')}}</span>
-                                                        @endif
+                                                        {{ $seller_withdraw_request->message }}
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -119,41 +115,49 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form class="" action="{{ route('withdraw_requests.store') }}" method="post">
-                    @csrf
+                @if (Auth::user()->seller->admin_to_pay > 5)
+                    <form class="" action="{{ route('withdraw_requests.store') }}" method="post">
+                        @csrf
+                        <div class="modal-body gry-bg px-3 pt-3">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label>{{__('Amount')}} <span class="required-star">*</span></label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input type="number" class="form-control mb-3" name="amount" min="1" max="{{ Auth::user()->seller->admin_to_pay }}" placeholder="Amount" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label>{{__('Message')}}</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <textarea name="message" rows="8" class="form-control mb-3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-base-1">{{__('Send')}}</button>
+                        </div>
+                    </form>
+                @else
                     <div class="modal-body gry-bg px-3 pt-3">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label>{{__('Amount')}} <span class="required-star">*</span></label>
-                            </div>
-                            <div class="col-md-9">
-                                <input type="number" class="form-control mb-3" name="amount" placeholder="Amount" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label>{{__('Message')}}</label>
-                            </div>
-                            <div class="col-md-9">
-                                <textarea name="message" rows="8" class="form-control mb-3"></textarea>
-                            </div>
+                        <div class="p-5 heading-3">
+                            You don't have enough balance to send withdraw request
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-base-1">{{__('Send')}}</button>
-                    </div>
-                </form>
+                @endif
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="message_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="message_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
             <div class="modal-content position-relative" id="modal-content">
 
             </div>
         </div>
-    </div>
+    </div> --}}
 
 @endsection
 @section('script')

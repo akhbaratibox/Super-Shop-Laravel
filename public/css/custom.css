@@ -279,7 +279,7 @@ body, #content-container, #navbar {
 }
 
 .select2-container{
-    z-index: 10000;
+    z-index: 9999;
 }
 
 #mainnav-container {
@@ -340,7 +340,7 @@ body, #content-container, #navbar {
   transform: rotate(45deg);
 }
 ul.list-group > li{
-border-bottom: 1px solid #3d4451;	
+border-bottom: 1px solid #3d4451;
 }
 
 .text-truncate {

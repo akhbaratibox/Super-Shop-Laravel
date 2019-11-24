@@ -297,9 +297,11 @@
                             <div class="seller-brands">
                         		<ul class="seller-brand-list">
                                     @foreach ($brands as $brand_id)
-                                        <li class="brand-item">
-                                            <a href="{{ route('products.brand', \App\Brand::find($brand_id)->slug) }}"><img loading="lazy"  src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid"></a>
-                                        </li>
+                                        @if (\App\Brand::find($brand_id) != null)
+                                            <li class="brand-item">
+                                                <a href="{{ route('products.brand', \App\Brand::find($brand_id)->slug) }}"><img loading="lazy"  src="{{ asset(\App\Brand::find($brand_id)->logo) }}" class="img-fluid"></a>
+                                            </li>
+                                        @endif
                                     @endforeach
                         		</ul>
                         	</div>

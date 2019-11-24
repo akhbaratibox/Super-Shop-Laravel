@@ -91,20 +91,6 @@
     						{{ ucfirst(str_replace('_', ' ', $order->payment_type)) }}
     					</td>
     				</tr>
-                    @if ($order->shipping_type == 'Pick-up Point')
-                        <tr>
-        					<td class="text-main text-bold">
-        						{{__('Pickup Point Address')}}
-        					</td>
-        					<td class="text-right">
-        						{{ $order->pickup_point->address }}
-        					</td>
-        				</tr>
-                        <tr>
-                            <td class="text-main text-bold">{{__('Phone')}}:</td>
-                            <td class="text-right">{{ $order->pickup_point->phone }}</td>
-                        </tr>
-                    @endif
     				</tbody>
     				</table>
     			</div>
@@ -150,7 +136,9 @@
                                             {{ __('Home Delivery') }}
                                         @elseif ($orderDetail->shipping_type == 'pickup_point')
                                             @if ($orderDetail->pickup_point != null)
-                                                {{ $orderDetail->pickup_point->name }} ({{ __('Pickip Point') }})
+                                                {{ $orderDetail->pickup_point->name }} ({{ __('Pickup Point') }})
+                                            @else
+                                                {{ __('Pickup Point') }}
                                             @endif
                                         @endif
                                     </td>

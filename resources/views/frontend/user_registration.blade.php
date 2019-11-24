@@ -26,6 +26,11 @@
                                                             <span class="input-group-addon">
                                                                 <i class="text-md la la-user"></i>
                                                             </span>
+                                                            @if ($errors->has('name'))
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $errors->first('name') }}</strong>
+                                                                </span>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -40,6 +45,11 @@
                                                             <span class="input-group-addon">
                                                                 <i class="text-md la la-envelope"></i>
                                                             </span>
+                                                            @if ($errors->has('email'))
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $errors->first('email') }}</strong>
+                                                                </span>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -54,6 +64,11 @@
                                                             <span class="input-group-addon">
                                                                 <i class="text-md la la-lock"></i>
                                                             </span>
+                                                            @if ($errors->has('password'))
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $errors->first('password') }}</strong>
+                                                                </span>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>

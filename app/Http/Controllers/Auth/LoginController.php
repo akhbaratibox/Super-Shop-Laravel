@@ -52,6 +52,7 @@ class LoginController extends Controller
         try {
             $user = Socialite::driver($provider)->stateless()->user();
         } catch (\Exception $e) {
+            flash("Something Went wrong. Try again.")->error();
             return redirect()->route('user.login');
         }
 
@@ -108,6 +109,20 @@ class LoginController extends Controller
         else{
             return redirect()->route('dashboard');
         }
+    }
+
+    /**
+     * Get the failed login response instance.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        flash("Invalid email or password")->error();
+        return back();
     }
 
     /**

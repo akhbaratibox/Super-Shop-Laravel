@@ -32,19 +32,15 @@
                                     @endif
                                 </td>
                                 <td>{{ single_price(\App\Seller::find($seller_withdraw_request->user_id)->admin_to_pay) }}</td>
-                                <td>{{ single_price($seller_withdraw_request->amount) }}@if($seller_withdraw_request->viewed == 0) <span class="pull-right badge badge-info">{{ __('New') }}</span> @endif</td>
+                                <td>{{ single_price($seller_withdraw_request->amount) }}</td>
                                 <td>
-                                    @if ($seller_withdraw_request->status == 1)
-                                        <span class="ml-2" style="color:green"><strong>{{__('SENT')}}</strong></span>
-                                    @else
-                                        <span class="ml-2" style="color:red"><strong>{{__('PENDING')}}</strong></span>
-                                    @endif
+                                    {{ $seller_withdraw_request->message }}
                                 </td>
                                 <td>
-                                    @if ($seller_withdraw_request->message != null)
-                                        <a onclick="show_message_modal('{{$seller_withdraw_request->id}}');"><span class="badge badge-info">{{ __('Show Message') }}</span></a>
+                                    @if ($seller_withdraw_request->status == 1)
+                                        <span class="ml-2" style="color:green"><strong>{{__('Paid')}}</strong></span>
                                     @else
-                                        <span class="ml-2" style="color:blue">{{__('No message You sent')}}</span>
+                                        <span class="ml-2" style="color:red"><strong>{{__('Pending')}}</strong></span>
                                     @endif
                                 </td>
                                 <td>

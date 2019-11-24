@@ -32,6 +32,7 @@
                     $product = \App\Product::find($cartItem['id']);
                     $subtotal += $cartItem['price']*$cartItem['quantity'];
                     $tax += $cartItem['tax']*$cartItem['quantity'];
+                    $shipping += $cartItem['shipping']*$cartItem['quantity'];
                     $product_name_with_choice = $product->name;
                     if(isset($cartItem['color'])){
                         $product_name_with_choice .= ' - '.\App\Color::where('code', $cartItem['color'])->first()->name;

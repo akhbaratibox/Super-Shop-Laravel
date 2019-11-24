@@ -108,7 +108,9 @@
                                             {{ __('Home Delivery') }}
                                         @elseif ($orderDetail->shipping_type == 'pickup_point')
                                             @if ($orderDetail->pickup_point != null)
-                                                {{ $orderDetail->pickup_point->name }} ({{ __('Pickip Point') }})
+                                                {{ $orderDetail->pickup_point->name }} ({{ __('Pickup Point') }})
+                                            @else
+                                                {{ __('Pickup Point') }}
                                             @endif
                                         @endif
                                     </td>

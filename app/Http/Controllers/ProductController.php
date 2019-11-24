@@ -58,7 +58,7 @@ class ProductController extends Controller
     {
         // dd($request->all());
         $product = new Product;
-        $product->name = $request->name;
+        $product->name = preg_replace('/[^A-Za-z0-9 \-]/', '', $request->name);
         $product->added_by = $request->added_by;
         $product->user_id = Auth::user()->id;
         $product->category_id = $request->category_id;
@@ -263,7 +263,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::findOrFail($id);
-        $product->name = $request->name;
+        $product->name = $product->name = preg_replace('/[^A-Za-z0-9 \-]/', '', $request->name);
         $product->category_id = $request->category_id;
         $product->subcategory_id = $request->subcategory_id;
         $product->subsubcategory_id = $request->subsubcategory_id;

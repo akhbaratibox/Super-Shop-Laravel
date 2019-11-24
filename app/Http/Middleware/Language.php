@@ -6,8 +6,6 @@ use Closure;
 use App;
 use Session;
 use Config;
-use App\BusinessSetting;
-use DB;
 
 class Language
 {
@@ -23,8 +21,8 @@ class Language
         if(Session::has('locale')){
             $locale = Session::get('locale');
         }
-        elseif(env('DB_DATABASE') != null && BusinessSetting::where('type', 'default_language')->first()->value != null && \App\Language::find(BusinessSetting::where('type', 'default_language')->first()->value) != null){
-            $locale = \App\Language::find(BusinessSetting::where('type', 'default_language')->first()->value)->code;
+        elseif(env('DEFAULT_LANGUAGE') != null){
+            $locale = env('DEFAULT_LANGUAGE');
         }
         else{
             $locale = 'en';

@@ -10,20 +10,20 @@
                     <h3 class="panel-title text-center">{{__('Default Language')}}</h3>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" action="{{ route('business_settings.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('env_key_update.update') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <div class="col-lg-3">
                                 <label class="control-label">{{__('Default Language')}}</label>
                             </div>
+                            <input type="hidden" name="types[]" value="DEFAULT_LANGUAGE">
                             <div class="col-lg-6">
-                                <select class="form-control demo-select2-placeholder" name="default_language">
+                                <select class="form-control demo-select2-placeholder" name="DEFAULT_LANGUAGE">
                                     @foreach (\App\Language::all() as $key => $language)
-                                        <option value="{{ $language->id }}" <?php if(\App\BusinessSetting::where('type', 'default_language')->first()->value == $language->id) echo 'selected'?> >{{ $language->name }}</option>
+                                        <option value="{{ $language->code }}" <?php if(env('DEFAULT_LANGUAGE') == $language->code) echo 'selected'?> >{{ $language->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <input type="hidden" name="types[]" value="default_language">
                             <div class="col-lg-3">
                                 <button class="btn btn-purple" type="submit">{{__('Save')}}</button>
                             </div>

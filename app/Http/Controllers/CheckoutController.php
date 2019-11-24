@@ -75,6 +75,8 @@ class CheckoutController extends Controller
                 $request->session()->put('cart', collect([]));
                 $request->session()->forget('order_id');
                 $request->session()->forget('delivery_info');
+                $request->session()->forget('coupon_id');
+                $request->session()->forget('coupon_discount');
 
                 flash("Your order has been placed successfully")->success();
             	return redirect()->route('home');
@@ -178,6 +180,7 @@ class CheckoutController extends Controller
             if(\App\Product::find($object['id'])->added_by == 'admin'){
                 if($request['shipping_type_admin'] == 'home_delivery'){
                     $object['shipping_type'] = 'home_delivery';
+                    $object['shipping'] = \App\Product::find($object['id'])->shipping_cost;
                     $shipping += \App\Product::find($object['id'])->shipping_cost*$object['quantity'];
                 }
                 else{
@@ -188,6 +191,7 @@ class CheckoutController extends Controller
             else{
                 if($request['shipping_type_'.\App\Product::find($object['id'])->user_id] == 'home_delivery'){
                     $object['shipping_type'] = 'home_delivery';
+                    $object['shipping'] = \App\Product::find($object['id'])->shipping_cost;
                     $shipping += \App\Product::find($object['id'])->shipping_cost*$object['quantity'];
                 }
                 else{

@@ -74,12 +74,28 @@ class OrderController extends Controller
     public function order_index(Request $request)
     {
         if (Auth::user()->user_type == 'staff') {
-            $orders = Order::where('pickup_point_id', Auth::user()->staff->pick_up_point->id)->get();
-            return view('sales.pickup_point_order', compact('orders'));
+            //$orders = Order::where('pickup_point_id', Auth::user()->staff->pick_up_point->id)->get();
+            $orders = DB::table('orders')
+                        ->orderBy('code', 'desc')
+                        ->join('order_details', 'orders.id', '=', 'order_details.order_id')
+                        ->where('order_details.pickup_point_id', Auth::user()->staff->pick_up_point->id)
+                        ->select('orders.id')
+                        ->distinct()
+                        ->get();
+
+            return view('pickup_point.orders.index', compact('orders'));
         }
         else{
-            $orders = Order::where('shipping_type', 'Pick-up Point')->get();
-            return view('sales.pickup_point_order', compact('orders'));
+            //$orders = Order::where('shipping_type', 'Pick-up Point')->get();
+            $orders = DB::table('orders')
+                        ->orderBy('code', 'desc')
+                        ->join('order_details', 'orders.id', '=', 'order_details.order_id')
+                        ->where('order_details.shipping_type', 'pickup_point')
+                        ->select('orders.id')
+                        ->distinct()
+                        ->get();
+
+            return view('pickup_point.orders.index', compact('orders'));
         }
     }
 
@@ -87,11 +103,11 @@ class OrderController extends Controller
     {
         if (Auth::user()->user_type == 'staff') {
             $order = Order::findOrFail(decrypt($id));
-            return view('sales.pickup_point_order_details', compact('order'));
+            return view('pickup_point.orders.show', compact('order'));
         }
         else{
             $order = Order::findOrFail(decrypt($id));
-            return view('sales.pickup_point_order_details', compact('order'));
+            return view('pickup_point.orders.show', compact('order'));
         }
     }
 
@@ -133,13 +149,15 @@ class OrderController extends Controller
         }
 
         $order->shipping_address = json_encode($request->session()->get('shipping_info'));
-        if (Session::get('delivery_info')['shipping_type'] == 'Home Delivery') {
-            $order->shipping_type = Session::get('delivery_info')['shipping_type'];
-        }
-        elseif (Session::get('delivery_info')['shipping_type'] == 'Pick-up Point') {
-            $order->shipping_type = Session::get('delivery_info')['shipping_type'];
-            $order->pickup_point_id = Session::get('delivery_info')['pickup_point_id'];
-        }
+
+        // if (Session::get('delivery_info')['shipping_type'] == 'Home Delivery') {
+        //     $order->shipping_type = Session::get('delivery_info')['shipping_type'];
+        // }
+        // elseif (Session::get('delivery_info')['shipping_type'] == 'Pick-up Point') {
+        //     $order->shipping_type = Session::get('delivery_info')['shipping_type'];
+        //     $order->pickup_point_id = Session::get('delivery_info')['pickup_point_id'];
+        // }
+
         $order->payment_type = $request->payment_option;
         $order->delivery_viewed = '0';
         $order->payment_status_viewed = '0';
@@ -320,9 +338,17 @@ class OrderController extends Controller
         $order = Order::findOrFail($request->order_id);
         $order->delivery_viewed = '0';
         $order->save();
-        foreach($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail){
-            $orderDetail->delivery_status = $request->status;
-            $orderDetail->save();
+        if(Auth::user()->user_type == 'admin' || Auth::user()->user_type == 'seller'){
+            foreach($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail){
+                $orderDetail->delivery_status = $request->status;
+                $orderDetail->save();
+            }
+        }
+        else{
+            foreach($order->orderDetails->where('seller_id', \App\User::where('user_type', 'admin')->first()->id) as $key => $orderDetail){
+                $orderDetail->delivery_status = $request->status;
+                $orderDetail->save();
+            }
         }
         return 1;
     }
@@ -332,10 +358,20 @@ class OrderController extends Controller
         $order = Order::findOrFail($request->order_id);
         $order->payment_status_viewed = '0';
         $order->save();
-        foreach($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail){
-            $orderDetail->payment_status = $request->status;
-            $orderDetail->save();
+
+        if(Auth::user()->user_type == 'admin' || Auth::user()->user_type == 'seller'){
+            foreach($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail){
+                $orderDetail->payment_status = $request->status;
+                $orderDetail->save();
+            }
         }
+        else{
+            foreach($order->orderDetails->where('seller_id', \App\User::where('user_type', 'admin')->first()->id) as $key => $orderDetail){
+                $orderDetail->payment_status = $request->status;
+                $orderDetail->save();
+            }
+        }
+
         $status = 'paid';
         foreach($order->orderDetails as $key => $orderDetail){
             if($orderDetail->payment_status != 'paid'){

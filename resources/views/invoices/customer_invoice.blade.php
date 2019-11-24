@@ -116,22 +116,24 @@
 			</thead>
 			<tbody class="strong">
                 @foreach ($order->orderDetails as $key => $orderDetail)
-	                <tr class="">
-						<td>{{ $orderDetail->product->name }} ({{ $orderDetail->variation }})</td>
-						<td>
-							@if ($orderDetail->shipping_type != null && $orderDetail->shipping_type == 'home_delivery')
-								{{ __('Home Delivery') }}
-							@elseif ($orderDetail->shipping_type == 'pickup_point')
-								@if ($orderDetail->pickup_point != null)
-									{{ $orderDetail->pickup_point->name }} ({{ __('Pickip Point') }})
+	                @if ($orderDetail->product != null)
+						<tr class="">
+							<td>{{ $orderDetail->product->name }} ({{ $orderDetail->variation }})</td>
+							<td>
+								@if ($orderDetail->shipping_type != null && $orderDetail->shipping_type == 'home_delivery')
+									{{ __('Home Delivery') }}
+								@elseif ($orderDetail->shipping_type == 'pickup_point')
+									@if ($orderDetail->pickup_point != null)
+										{{ $orderDetail->pickup_point->name }} ({{ __('Pickip Point') }})
+									@endif
 								@endif
-							@endif
-						</td>
-						<td class="gry-color">{{ $orderDetail->quantity }}</td>
-						<td class="gry-color">{{ single_price($orderDetail->price/$orderDetail->quantity) }}</td>
-						<td class="gry-color">{{ single_price($orderDetail->tax/$orderDetail->quantity) }}</td>
-	                    <td class="text-right">{{ single_price($orderDetail->price+$orderDetail->tax) }}</td>
-					</tr>
+							</td>
+							<td class="gry-color">{{ $orderDetail->quantity }}</td>
+							<td class="gry-color">{{ single_price($orderDetail->price/$orderDetail->quantity) }}</td>
+							<td class="gry-color">{{ single_price($orderDetail->tax/$orderDetail->quantity) }}</td>
+		                    <td class="text-right">{{ single_price($orderDetail->price+$orderDetail->tax) }}</td>
+						</tr>
+	                @endif
 				@endforeach
             </tbody>
 		</table>

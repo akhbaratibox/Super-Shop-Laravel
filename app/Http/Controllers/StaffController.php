@@ -50,9 +50,6 @@ class StaffController extends Controller
             $staff = new Staff;
             $staff->user_id = $user->id;
             $staff->role_id = $request->role_id;
-            $staff->bank_name = $request->bank_name;
-            $staff->bank_acc_name = $request->bank_acc_name;
-            $staff->bank_acc_no = $request->bank_acc_no;
             if($staff->save()){
                 flash(__('Staff has been inserted successfully'))->success();
                 return redirect()->route('staffs.index');
@@ -101,9 +98,6 @@ class StaffController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->mobile;
-        $staff->bank_name = $request->bank_name;
-        $staff->bank_acc_name = $request->bank_acc_name;
-        $staff->bank_acc_no = $request->bank_acc_no;
         if(strlen($request->password) > 0){
             $user->password = Hash::make($request->password);
         }

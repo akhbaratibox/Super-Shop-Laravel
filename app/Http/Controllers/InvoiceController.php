@@ -32,4 +32,16 @@ class InvoiceController extends Controller
                     ])->loadView('invoices.seller_invoice', compact('order'));
         return $pdf->download('order-'.$order->code.'.pdf');
     }
+
+    //downloads admin invoice
+    public function admin_invoice_download($id)
+    {
+        $order = Order::findOrFail($id);
+        $pdf = PDF::setOptions([
+                        'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
+                        'logOutputFile' => storage_path('logs/log.htm'),
+                        'tempDir' => storage_path('logs/')
+                    ])->loadView('invoices.admin_invoice', compact('order'));
+        return $pdf->download('order-'.$order->code.'.pdf');
+    }
 }

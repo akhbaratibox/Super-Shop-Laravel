@@ -108,7 +108,7 @@
                                             <div class="row">
                                                 <div class="col-6">
                                                     <label class="d-flex align-items-center p-3 border rounded gry-bg c-pointer">
-                                                        <input type="radio" name="shipping_type_admin" value="home_delivery" checked class="d-none">
+                                                        <input type="radio" name="shipping_type_admin" value="home_delivery" checked class="d-none" onchange="show_pickup_point(this)" data-target=".pickup_point_id_admin">
                                                         <span class="radio-box"></span>
                                                         <span class="d-block ml-2 strong-600">
                                                             {{ __('Home Delivery') }}
@@ -118,7 +118,7 @@
                                                 @if (\App\BusinessSetting::where('type', 'pickup_point')->first()->value == 1)
                                                     <div class="col-6">
                                                         <label class="d-flex align-items-center p-3 border rounded gry-bg c-pointer">
-                                                            <input type="radio" name="shipping_type_admin" value="pickup_point" class="d-none">
+                                                            <input type="radio" name="shipping_type_admin" value="pickup_point" class="d-none" onchange="show_pickup_point(this)" data-target=".pickup_point_id_admin">
                                                             <span class="radio-box"></span>
                                                             <span class="d-block ml-2 strong-600">
                                                                 {{ __('Local Pickup') }}
@@ -129,7 +129,7 @@
                                             </div>
 
                                             @if (\App\BusinessSetting::where('type', 'pickup_point')->first()->value == 1)
-                                                <div class="mt-3">
+                                                <div class="mt-3 pickup_point_id_admin d-none">
                                                     <select class="pickup-select form-control-lg w-100" name="pickup_point_id_admin" data-placeholder="Select a pickup point">
                                                             <option>Select your nearest pickup point</option>
                                                         @foreach (\App\PickupPoint::where('pick_up_status',1)->get() as $key => $pick_up_point)
@@ -178,7 +178,7 @@
                                                     <div class="row">
                                                         <div class="col-6">
                                                             <label class="d-flex align-items-center p-3 border rounded gry-bg c-pointer">
-                                                                <input type="radio" name="shipping_type_{{ $key }}" value="home_delivery" checked class="d-none">
+                                                                <input type="radio" name="shipping_type_{{ $key }}" value="home_delivery" checked class="d-none" onchange="show_pickup_point(this)" data-target=".pickup_point_id_{{ $key }}">
                                                                 <span class="radio-box"></span>
                                                                 <span class="d-block ml-2 strong-600">
                                                                     {{ __('Home Delivery') }}
@@ -189,7 +189,7 @@
                                                             @if (is_array(json_decode(\App\Shop::where('user_id', $key)->first()->pick_up_point_id)))
                                                                 <div class="col-6">
                                                                     <label class="d-flex align-items-center p-3 border rounded gry-bg c-pointer">
-                                                                        <input type="radio" name="shipping_type_{{ $key }}" value="pickup_point" class="d-none">
+                                                                        <input type="radio" name="shipping_type_{{ $key }}" value="pickup_point" class="d-none" onchange="show_pickup_point(this)" data-target=".pickup_point_id_{{ $key }}">
                                                                         <span class="radio-box"></span>
                                                                         <span class="d-block ml-2 strong-600">
                                                                             {{ __('Local Pickup') }}
@@ -204,7 +204,7 @@
                                                         @if (is_array(json_decode(\App\Shop::where('user_id', $key)->first()->pick_up_point_id)))
                                                             @foreach (json_decode(\App\Shop::where('user_id', $key)->first()->pick_up_point_id) as $pick_up_point)
                                                                 @if (\App\PickupPoint::find($pick_up_point) != null)
-                                                                    <div class="mt-3">
+                                                                    <div class="mt-3 pickup_point_id_{{ $key }} d-none">
                                                                         <select class="pickup-select form-control-lg w-100" name="pickup_point_id_{{ $key }}" data-placeholder="Select a pickup point">
                                                                             <option>Select your nearest pickup point</option>
                                                                             <option value="{{ \App\PickupPoint::find($pick_up_point)->id }}" data-address="{{ \App\PickupPoint::find($pick_up_point)->address }}" data-phone="{{ \App\PickupPoint::find($pick_up_point)->phone }}">
@@ -251,8 +251,20 @@
         function display_option(key){
 
         }
-        $(document).ready(function(){
+        function show_pickup_point(el) {
+        	var value = $(el).val();
+        	var target = $(el).data('target');
 
-            });
+            console.log(value);
+
+        	if(value == 'home_delivery'){
+                if(!$(target).hasClass('d-none')){
+                    $(target).addClass('d-none');
+                }
+        	}else{
+        		$(target).removeClass('d-none');
+        	}
+        }
+
     </script>
 @endsection

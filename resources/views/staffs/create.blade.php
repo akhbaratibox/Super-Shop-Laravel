@@ -47,24 +47,6 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label" for="bank_name">{{__('Bank Name')}}</label>
-                    <div class="col-sm-9">
-                        <input type="text" placeholder="{{__('Bank Name')}}" id="bank_name" name="bank_name" class="form-control" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label" for="bank_acc_name">{{__('Bank Account Name')}}</label>
-                    <div class="col-sm-9">
-                        <input type="text" placeholder="{{__('Bank Account Name')}}" id="bank_acc_name" name="bank_acc_name" class="form-control" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label" for="bank_acc_no">{{__('Bank Account No')}}</label>
-                    <div class="col-sm-9">
-                        <input type="text" placeholder="{{__('Bank Account No')}}" id="bank_acc_no" name="bank_acc_no" class="form-control" required>
-                    </div>
-                </div>
             </div>
             <div class="panel-footer text-right">
                 <button class="btn btn-purple" type="submit">{{__('Save')}}</button>

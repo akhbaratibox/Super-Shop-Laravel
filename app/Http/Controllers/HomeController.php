@@ -453,6 +453,7 @@ class HomeController extends Controller
         }
         else{
             $price = $product->unit_price;
+            $quantity = $product->current_stock;
         }
 
         //discount calculation

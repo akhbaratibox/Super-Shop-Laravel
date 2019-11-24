@@ -26,7 +26,7 @@
                     <th>{{__('Location')}}</th>
                     <th>{{__('Pickup Station Contact')}}</th>
                     <th>{{__('Status')}}</th>
-                    <th>{{__('Cash On Pickup')}}</th>
+                    {{-- <th>{{__('Cash On Pickup')}}</th> --}}
                     <th width="10%">{{__('Options')}}</th>
                 </tr>
             </thead>
@@ -52,17 +52,6 @@
                             @else
                                 <div class="label label-table label-success">
                                     {{ __('Open') }}
-                                </div>
-                            @endif
-                        </td>
-                        <td>
-                            @if ($pickup_point->cash_on_pickup_status != 1)
-                                <div class="label label-table label-danger">
-                                    {{ __('Disable') }}
-                                </div>
-                            @else
-                                <div class="label label-table label-success">
-                                    {{ __('Enable') }}
                                 </div>
                             @endif
                         </td>

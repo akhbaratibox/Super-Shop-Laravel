@@ -41,53 +41,56 @@ class CouponController extends Controller
      */
     public function store(Request $request)
     {
-      $coupon = new Coupon;
-        if ($request->coupon_type == "product_base") {
-            $coupon->type = $request->coupon_type;
-            $coupon->code = $request->coupon_code;
-            $coupon->discount = $request->discount;
-            $coupon->discount_type = $request->discount_type;
-            $coupon->start_date = strtotime($request->start_date);
-            $coupon->end_date = strtotime($request->end_date);
-            $cupon_details = array();
-            for($key = 0; $key < count($request->category_ids)-1; $key++) {
-                $data['category_id'] = $request->category_ids[$key];
-                $data['subcategory_id'] = $request->subcategory_ids[$key];
-                $data['subsubcategory_id'] = $request->subsubcategory_ids[$key];
-                $data['product_id'] = $request->product_ids[$key];
-                array_push($cupon_details, $data);
-            }
-            $coupon->details = json_encode($cupon_details);
-            if ($coupon->save()) {
-                flash('Coupon has been saved successfully')->success();
-                return redirect()->route('coupon.index');
-            }
-            else{
-                flash('Something went wrong')->danger();
-                return back();
-            }
+        if(count(Coupon::where('code', $request->coupon_code)->get()) > 0){
+            flash('Coupon already exist for this coupon code')->danger();
+            return back();
         }
-        elseif ($request->coupon_type == "cart_base") {
-            $coupon->type = $request->coupon_type;
-            $coupon->code = $request->coupon_code;
-            $coupon->discount = $request->discount;
-            $coupon->discount_type = $request->discount_type;
-            $coupon->start_date = strtotime($request->start_date);
-            $coupon->end_date = strtotime($request->end_date);
-            $data = array();
-            $data['min_buy'] = $request->min_buy;
-            $data['max_discount'] = $request->max_discount;
-            $coupon->details = json_encode($data);
-            if ($coupon->save()) {
-                flash('Coupon has been saved successfully')->success();
-                return redirect()->route('coupon.index');
-            }
-            else{
-                flash('Something went wrong')->danger();
-                return back();
-            }
-        }
-
+        $coupon = new Coupon;
+          if ($request->coupon_type == "product_base") {
+              $coupon->type = $request->coupon_type;
+              $coupon->code = $request->coupon_code;
+              $coupon->discount = $request->discount;
+              $coupon->discount_type = $request->discount_type;
+              $coupon->start_date = strtotime($request->start_date);
+              $coupon->end_date = strtotime($request->end_date);
+              $cupon_details = array();
+              for($key = 0; $key < count($request->category_ids)-1; $key++) {
+                  $data['category_id'] = $request->category_ids[$key];
+                  $data['subcategory_id'] = $request->subcategory_ids[$key];
+                  $data['subsubcategory_id'] = $request->subsubcategory_ids[$key];
+                  $data['product_id'] = $request->product_ids[$key];
+                  array_push($cupon_details, $data);
+              }
+              $coupon->details = json_encode($cupon_details);
+              if ($coupon->save()) {
+                  flash('Coupon has been saved successfully')->success();
+                  return redirect()->route('coupon.index');
+              }
+              else{
+                  flash('Something went wrong')->danger();
+                  return back();
+              }
+          }
+          elseif ($request->coupon_type == "cart_base") {
+              $coupon->type = $request->coupon_type;
+              $coupon->code = $request->coupon_code;
+              $coupon->discount = $request->discount;
+              $coupon->discount_type = $request->discount_type;
+              $coupon->start_date = strtotime($request->start_date);
+              $coupon->end_date = strtotime($request->end_date);
+              $data = array();
+              $data['min_buy'] = $request->min_buy;
+              $data['max_discount'] = $request->max_discount;
+              $coupon->details = json_encode($data);
+              if ($coupon->save()) {
+                  flash('Coupon has been saved successfully')->success();
+                  return redirect()->route('coupon.index');
+              }
+              else{
+                  flash('Something went wrong')->danger();
+                  return back();
+              }
+          }
     }
 
     /**

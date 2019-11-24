@@ -12,11 +12,11 @@
                 <h6 class="strong-600">
                     {{ __($product->name) }}
                 </h6>
-                <div class="row no-gutters mt-2 mb-2">
-                    <div class="col-2">
+                <div class="row align-items-center no-gutters mt-2 mb-2">
+                    <div class="col-sm-2">
                         <div>{{__('Price')}}:</div>
                     </div>
-                    <div class="col-10">
+                    <div class="col-sm-10">
                         <div class="heading-6 text-danger">
                             <strong>
                                 {{ single_price($data['price']*$data['quantity']) }}

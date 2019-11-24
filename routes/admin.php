@@ -166,6 +166,8 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 	Route::get('/pick_up_points/destroy/{id}', 'PickupPointController@destroy')->name('pick_up_points.destroy');
 
 
-	Route::get('pick_up_points.','OrderController@order_index')->name('pick_up_point.order_index');
-	Route::get('/pick_up_points/{id}/show', 'OrderController@pickup_point_order_sales_show')->name('pick_up_point.order_show');
+	Route::get('orders_by_pickup_point','OrderController@order_index')->name('pick_up_point.order_index');
+	Route::get('/orders_by_pickup_point/{id}/show', 'OrderController@pickup_point_order_sales_show')->name('pick_up_point.order_show');
+
+	Route::get('invoice/admin/{order_id}', 'InvoiceController@admin_invoice_download')->name('admin.invoice.download');
 });

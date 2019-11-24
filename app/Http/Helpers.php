@@ -381,6 +381,12 @@ if (! function_exists('updateCartSetup')) {
             if(cartSetup()){
                 setcookie('cartUpdated', time(), time() + (86400 * 30), "/");
             }
+        } else {
+            if($_COOKIE['cartUpdated']+21600 < time()){
+                if(cartSetup()){
+                    setcookie('cartUpdated', time(), time() + (86400 * 30), "/");
+                }            
+            }
         }
         return $return;
     }

@@ -50,7 +50,7 @@ Route::post('/cart/updateQuantity', 'CartController@updateQuantity')->name('cart
 
 Route::post('/checkout/payment', 'CheckoutController@checkout')->name('payment.checkout');
 Route::get('/checkout', 'CheckoutController@get_shipping_info')->name('checkout.shipping_info');
-Route::post('/checkout/delivery_info', 'CheckoutController@store_shipping_info')->name('checkout.store_shipping_infostore');
+Route::any('/checkout/delivery_info', 'CheckoutController@store_shipping_info')->name('checkout.store_shipping_infostore');
 Route::post('/checkout/payment_select', 'CheckoutController@store_delivery_info')->name('checkout.store_delivery_info');
 Route::post('/get_pick_ip_points', 'HomeController@get_pick_ip_points')->name('shipping_info.get_pick_ip_points');
 Route::get('/checkout/payment_select', 'CheckoutController@get_payment_info')->name('checkout.payment_info');

@@ -41,7 +41,7 @@ class PickupPointController extends Controller
         $pickup_point->address = $request->address;
         $pickup_point->phone = $request->phone;
         $pickup_point->pick_up_status = $request->pick_up_status;
-        $pickup_point->cash_on_pickup_status = $request->cash_on_pickup_status;
+        //$pickup_point->cash_on_pickup_status = $request->cash_on_pickup_status;
         $pickup_point->staff_id = $request->staff_id;
         if ($pickup_point->save()) {
             flash(__('PicupPoint has been inserted successfully'))->success();
@@ -90,7 +90,7 @@ class PickupPointController extends Controller
         $pickup_point->address = $request->address;
         $pickup_point->phone = $request->phone;
         $pickup_point->pick_up_status = $request->pick_up_status;
-        $pickup_point->cash_on_pickup_status = $request->cash_on_pickup_status;
+        //$pickup_point->cash_on_pickup_status = $request->cash_on_pickup_status;
         $pickup_point->staff_id = $request->staff_id;
         if ($pickup_point->save()) {
             flash(__('PicupPoint has been updated successfully'))->success();
